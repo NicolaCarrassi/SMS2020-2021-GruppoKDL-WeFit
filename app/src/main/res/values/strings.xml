@@ -1,0 +1,16 @@
+<resources>
+    <string name="app_name" translatable="false">WeFit</string>
+
+
+    <!-- Login labels -->
+    <string name="email" translatable="false">Email</string>
+    <string name="password" translatable="false">Password</string>
+    <string name="login" translatable="false">Login</string>
+    <string name="new_user_label">New user? Sign up</string>
+    <string name="forgot_password">I forgot my password</string>
+
+    <string name="error_email">Please insert a valid email address</string>
+    <string name="error_password">The password must have a lowercase letter, a capital letter, a digit and it must be between 8 and 20 characters</string>
+
+
+</resources>

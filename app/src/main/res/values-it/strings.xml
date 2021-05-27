@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <string name="new_user_label">Non sei iscritto? Registrati</string>
+    <string name="forgot_password">Ho dimenticato la password</string>
+
+    <string name="error_email">Inserire una email valida</string>
+    <string name="error_password">La password deve contenere almeno una lettera maiuscola, una lettera minuscola, un numero e deve essere compresa tra 8 e 20 caratteri</string>
+
+
+</resources>

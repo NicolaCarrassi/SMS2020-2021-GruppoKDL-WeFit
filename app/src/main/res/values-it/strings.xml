@@ -7,6 +7,12 @@
     <string name="error_email">Inserire una email valida</string>
     <string name="error_password">La password deve contenere almeno una lettera maiuscola, una lettera minuscola, un numero e deve essere compresa tra 8 e 20 caratteri</string>
 
+    <!-- Bottom Navigation labels -->
+    <string name="text_label_home">Home</string>
+    <string name="text_label_training">Allenamento</string>
+    <string name="text_label_add">Registra</string>
+    <string name="text_label_diet">Alimentazione</string>
+
     <string name="first_name">Nome</string>
     <string name="last_name">Cognome</string>
     <string name="registration">Registrazione</string>

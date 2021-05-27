@@ -1,6 +1,11 @@
 <resources>
     <string name="app_name" translatable="false">WeFit</string>
 
+    <!-- Bottom Navigation labels -->
+    <string name="text_label_home">Home</string>
+    <string name="text_label_training">Training</string>
+    <string name="text_label_add">Add</string>
+    <string name="text_label_diet">Diet</string>
 
     <!-- Login labels -->
     <string name="email" translatable="false">Email</string>

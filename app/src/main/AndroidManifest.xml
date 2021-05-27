@@ -11,7 +11,7 @@
         android:theme="@style/Theme.WeFit">
         <activity android:name=".RegistrationActivity"></activity>
         <activity android:name=".LoginActivity" />
-        <activity android:name=".MainActivity">
+        <activity android:name=".MainActivityUser">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 

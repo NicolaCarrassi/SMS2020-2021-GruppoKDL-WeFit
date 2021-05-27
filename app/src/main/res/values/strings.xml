@@ -14,17 +14,52 @@
     <string name="new_user_label">New user? Sign up</string>
     <string name="forgot_password">I forgot my password</string>
 
-    <string name="error_email"><u>Please insert a valid email address</u></string>
-    <string name="error_password">The password must have a lowercase letter, a capital letter, a digit and it must be between 8 and 20 characters</string>
 
+
+    <!-- Registration labels -->
     <string name="first_name">First Name</string>
     <string name="last_name">Last Name</string>
     <string name="registration">Registration</string>
-    <string name="gender">I am a:</string>
+    <string name="gender">Gender</string>
     <string name="male">Male</string>
     <string name="female">Female</string>
     <string name="birth_date">Birth date:</string>
     <string name="forward">Forward</string>
     <string name="otherwise_login_label">Otherwise login with:</string>
+
+    <string name="role_label">I am a: </string>
+
+    <string name="back_button">Back</string>
+    <string name="register_button">Register</string>
+    <string name="confirm_password">Confirm your password</string>
+    <string name="coach_label">Coach</string>
+    <string name="client_label">Client</string>
+
+    <!--Registration Client Fragment -->
+    <string name="new_client">New client</string>
+    <string name="height">Height</string>
+    <string name="weight">Weight</string>
+    <string name="choose_objective">Choose your objective:</string>
+    <string name="fit_objective">Shape definition</string>
+    <string name="shape_objective">Gain mass</string>
+    <string name="lose_weight_objective">Lose weight</string>
+
+    <!--Registration Coach Fragment -->
+    <string name="new_coach">New coach</string>
+    <string name="choose_competences">Select your competences</string>
+    <string name="personal_trainer">Personal trainer</string>
+    <string name="dietician">Dietician</string>
+    <string name="attach_certification">Attach your certification:*</string>
+    <string name="certification_checked">*They will be checked by our staff to confirm your registration</string>
+
+
+    <!-- ERRORS STRING -->
+    <string name="error_email"><u>Please insert a valid email address</u></string>
+    <string name="error_password">The password must have a lowercase letter, a capital letter, a digit and it must be between 8 and 20 characters</string>
+    <string name="name_error">Insert a valid name</string>
+    <string name="date_error">Please pick a date</string>
+    <string name="error_radio">Choose a value</string>
+    <string name="error_password_not_matching">Passwords not matching</string>
+
 
 </resources>

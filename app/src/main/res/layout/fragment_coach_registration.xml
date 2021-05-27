@@ -1,0 +1,97 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    tools:context=".fragment.CoachRegistrationFragment">
+
+
+    <TextView
+        android:id="@+id/new_coach_label"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="@string/new_coach"
+        android:gravity="center"
+        android:textSize="30sp"
+        android:textStyle="bold"
+        android:textColor="?attr/colorPrimary" />
+
+
+    <TextView
+        android:id="@+id/competences_label"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="@string/choose_competences"
+        android:textSize="20sp"
+        android:textStyle="bold"
+        android:gravity="center"
+        android:layout_marginVertical="15dp"/>
+
+
+    <CheckBox
+        android:id="@+id/personal_trainer_checkbox"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/personal_trainer"
+        android:layout_marginHorizontal="140dp"
+        android:layoutDirection="rtl"/>
+
+
+    <CheckBox
+        android:id="@+id/dietician_checkbox"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/dietician"
+        android:layout_marginHorizontal="140dp"
+        android:layoutDirection="rtl"/>
+
+    <View
+        android:id="@+id/first_separation"
+        android:layout_width="match_parent"
+        android:layout_height="2dp"
+        android:background="?attr/colorPrimary"
+        android:layout_marginVertical="5dp"
+        android:layout_marginHorizontal="40dp"
+        android:layout_marginBottom="25dp"
+        android:elevation="2dp"/>
+
+    <TextView
+        android:id="@+id/attach_certification_label"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="@string/attach_certification"
+        android:textSize="20sp"
+        android:textStyle="bold"
+        android:gravity="center"
+        android:layout_marginVertical="15dp"/>
+
+    <ImageView
+        android:id="@+id/sent_certification"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:src="@mipmap/ic_launcher"/>
+
+    <TextView
+        android:id="@+id/certification_control"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/certification_checked"
+        android:layout_gravity="center"
+        android:layout_marginVertical="20dp"
+        android:maxEms="16"/>
+
+    <View
+        android:id="@+id/second_separation"
+        android:layout_width="match_parent"
+        android:layout_height="2dp"
+        android:background="?attr/colorPrimary"
+        android:layout_marginVertical="5dp"
+        android:layout_marginHorizontal="40dp"
+        android:layout_marginBottom="25dp"
+        android:elevation="2dp"/>
+
+
+
+</LinearLayout>

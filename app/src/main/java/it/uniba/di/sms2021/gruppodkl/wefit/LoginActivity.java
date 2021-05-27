@@ -74,14 +74,14 @@ public class LoginActivity extends AppCompatActivity implements LoginActivityCon
             mEmail.setError(getResources().getString(R.string.error_email));
             mEmail.requestFocus();
         }
-        if (res) {
-            if (TextUtils.isEmpty(passwordText) || !(Pattern.compile(UtilityStrings.PASSOWRD_REGEX).matcher(passwordText).matches())) {
-                //email corretta, password sbagliata
-                res = false;
-                mPassword.setError(getResources().getString(R.string.error_password));
+        if (TextUtils.isEmpty(passwordText) || !(Pattern.compile(UtilityStrings.PASSOWRD_REGEX).matcher(passwordText).matches())) {
+            if(res)
                 mPassword.requestFocus();
-            }
+
+            res = false;
+            mPassword.setError(getResources().getString(R.string.error_password));
         }
+
         return res;
     }
 

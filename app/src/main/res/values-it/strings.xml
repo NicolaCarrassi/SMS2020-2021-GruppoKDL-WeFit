@@ -4,8 +4,6 @@
     <string name="new_user_label">Non sei iscritto? Registrati</string>
     <string name="forgot_password">Ho dimenticato la password</string>
 
-    <string name="error_email">Inserire una email valida</string>
-    <string name="error_password">La password deve contenere almeno una lettera maiuscola, una lettera minuscola, un numero e deve essere compresa tra 8 e 20 caratteri</string>
 
     <!-- Bottom Navigation labels -->
     <string name="text_label_home">Home</string>
@@ -22,4 +20,41 @@
     <string name="birth_date">Data di nascita:</string>
     <string name="forward">Avanti</string>
     <string name="otherwise_login_label">Oppure accedi con:</string>
+
+    <string name="role_label">Sono un:</string>
+    <string name="back_button">Indietro</string>
+    <string name="register_button">Registrati</string>
+    <string name="confirm_password">Conferma la password</string>
+    <string name="coach_label">Coach</string>
+    <string name="client_label">Cliente</string>
+
+    <!--Registration Client Fragment -->
+    <string name="new_client">Nuovo cliente</string>
+    <string name="height">Altezza</string>
+    <string name="weight">Peso</string>
+    <string name="choose_objective">Seleziona il tuo obiettivo:</string>
+    <string name="fit_objective">Migliorare la forma</string>
+    <string name="shape_objective">Aumentare la massa</string>
+    <string name="lose_weight_objective">Perdere peso</string>
+
+    <!--Registration Coach Fragment -->
+    <string name="new_coach">Nuovo coach</string>
+    <string name="choose_competences">Seleziona le tue competenze </string>
+    <string name="personal_trainer">Personal trainer</string>
+    <string name="dietician">Dietologo</string>
+    <string name="attach_certification">Allega la tua certificazione:*</string>
+    <string name="certification_checked">*Verranno controllate dal nostro staff per confermare la tua registrazione</string>
+
+    <!-- ERRORS STRING -->
+    <string name="error_email">Inserire una email valida</string>
+    <string name="error_password">La password deve contenere almeno una lettera maiuscola, una lettera minuscola, un numero e deve essere compresa tra 8 e 20 caratteri</string>
+    <string name="name_error">Inserire un nome valido</string>
+    <string name="date_error">Selezionare una data</string>
+    <string name="error_radio">Selezionare almeno un valore</string>
+    <string name="error_password_not_matching">Le password non corrispondono</string>
+
+
+
+
+
 </resources>

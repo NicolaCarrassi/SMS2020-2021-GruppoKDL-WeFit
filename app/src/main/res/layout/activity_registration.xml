@@ -6,6 +6,7 @@
     android:layout_height="match_parent"
     tools:context=".RegistrationActivity">
 
+
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
@@ -16,105 +17,257 @@
             android:layout_height="wrap_content"
             android:text="@string/registration"
             android:textSize="30sp"/>
+
     </LinearLayout>
 
+
+    <!--Prima schermata, dati personali -->
     <RelativeLayout
         android:id="@+id/layout_personal_data"
         android:layout_width="match_parent"
-        android:layout_height="match_parent">
+        android:layout_height="match_parent"
+        android:visibility="gone">
 
+
+        <TextView
+            android:id="@+id/first_name_label"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="122dp"
+            android:text="@string/first_name"
+            android:layout_marginStart="8dp"/>
 
         <EditText
             android:id="@+id/first_name_edit_text"
-            android:layout_width="match_parent"
+            android:layout_width="@dimen/width_edit_text"
             android:layout_height="wrap_content"
-            android:layout_alignParentTop="true"
             android:layout_marginTop="111dp"
+            android:layout_toEndOf="@id/first_name_label"
+            android:layout_marginStart="20dp"
             android:hint="@string/first_name"
             android:inputType="text" />
 
+
+        <TextView
+            android:id="@+id/last_name_label"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/first_name_label"
+            android:layout_marginTop="45dp"
+            android:text="@string/last_name"
+            android:layout_marginStart="@dimen/start_registration_margin"/>
+
         <EditText
             android:id="@+id/last_name_text"
-            android:layout_width="match_parent"
+            android:layout_width="@dimen/width_edit_text"
             android:layout_height="wrap_content"
             android:layout_below="@id/first_name_edit_text"
-            android:layout_marginTop="51dp"
+            android:layout_alignParentEnd="true"
+            android:layout_marginTop="19dp"
             android:hint="@string/last_name"
             android:inputType="text" />
-
 
         <TextView
             android:id="@+id/label_gender"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_below="@id/last_name_text"
-            android:layout_marginTop="55dp"
-            android:text="@string/gender" />
+            android:layout_alignParentEnd="true"
+            android:layout_marginTop="26dp"
+            android:text="@string/gender"
+            android:gravity="center"/>
 
         <RadioGroup
-            android:id="@+id/radio_gender"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_below="@+id/label_gender">
-
-            <com.google.android.material.radiobutton.MaterialRadioButton
-                android:id="@+id/radio_male"
-                android:layout_width="wrap_content"
+                android:id="@+id/radio_gender"
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="@string/male" />
+                android:orientation="horizontal"
+                android:layout_below="@id/label_gender">
 
-            <com.google.android.material.radiobutton.MaterialRadioButton
-                android:id="@+id/radio_female"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="@string/female" />
-        </RadioGroup>
+                <androidx.appcompat.widget.AppCompatRadioButton
+                    android:id="@+id/radio_male"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="@string/male"
+                    android:layout_weight="1" />
+
+                <com.google.android.material.radiobutton.MaterialRadioButton
+                    android:id="@+id/radio_female"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="@string/female"
+                    android:layout_weight="1"/>
+            </RadioGroup>
+
 
         <TextView
             android:id="@+id/birth_date_label"
-            android:layout_width="match_parent"
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_below="@id/radio_gender"
-            android:layout_marginTop="39dp"
-            android:text="@string/birth_date" />
+            android:layout_marginTop="18dp"
+            android:layout_marginEnd="9dp"
+            android:text="@string/birth_date"
+            android:layout_marginStart="@dimen/start_registration_margin"/>
 
         <EditText
             android:id="@+id/birth_date_edit_text"
-            android:layout_width="match_parent"
+            android:layout_width="@dimen/width_edit_text"
+            android:layout_height="wrap_content"
+            android:layout_toEndOf="@id/birth_date_label"
+            android:layout_below="@id/radio_gender"
+            android:hint="@string/birth_date"
+            android:layout_marginStart="9dp"
+            android:inputType="date" />
+
+        <TextView
+            android:id="@+id/registration_email_label"
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_below="@id/birth_date_label"
-            android:hint="@string/birth_date"
-            android:inputType="date" />
+            android:layout_marginStart="@dimen/start_registration_margin"
+            android:layout_marginTop="89dp"
+            android:text="@string/email" />
+
+        <EditText
+            android:id="@+id/registration_email_edit_text"
+            android:layout_width="@dimen/width_edit_text"
+            android:layout_height="wrap_content"
+            android:layout_toEndOf="@id/registration_email_label"
+            android:layout_below="@+id/birth_date_edit_text"
+            android:hint="@string/email"
+            android:inputType="textEmailAddress"
+            android:layout_marginStart = "40dp"
+            android:layout_marginTop="70dp"/>
+
+        <TextView
+            android:id="@+id/password_label"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/registration_email_label"
+            android:layout_marginTop="25dp"
+            android:layout_marginStart="@dimen/start_registration_margin"
+            android:text="@string/password" />
+
+        <EditText
+            android:id="@+id/registration_password_edit_text"
+            android:layout_width="@dimen/width_edit_text"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/registration_email_edit_text"
+            android:layout_toEndOf="@id/password_label"
+            android:layout_marginStart="20dp"
+            android:hint="@string/password"
+            android:inputType="textPassword" />
+
+        <TextView
+            android:id="@+id/password_confirm_label"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/password_label"
+            android:layout_marginTop="16dp"
+            android:text="@string/confirm_password"
+            android:maxEms="5"
+            android:layout_marginStart="@dimen/start_registration_margin"/>
+
+        <EditText
+            android:id="@+id/confirm_password_edit_text"
+            android:layout_width="@dimen/width_edit_text"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/registration_password_edit_text"
+            android:layout_toEndOf="@id/password_confirm_label"
+            android:hint="@string/password"
+            android:inputType="textPassword" />
+
 
         <Button
             android:id="@+id/forward_first_button"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_below="@+id/birth_date_edit_text"
-            android:layout_alignParentStart="true"
             android:layout_alignParentEnd="true"
-            android:layout_alignParentBottom="true"
             android:layout_marginStart="118dp"
-            android:layout_marginTop="43dp"
-            android:layout_marginEnd="109dp"
-            android:layout_marginBottom="115dp"
+            android:layout_marginTop="286dp"
+            android:layout_marginEnd="154dp"
+            android:layout_marginBottom="29dp"
             android:text="@string/forward" />
 
 
     </RelativeLayout>
 
+
     <RelativeLayout
         android:id="@+id/layout_coach_client"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:visibility="gone">
+        android:visibility="visible"
+        android:layout_marginTop="50dp">
 
-        <Button
-            android:id="@+id/click"
+        <TextView
+            android:id="@+id/label_role"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginTop="100dp"
-            android:text="click me"/>
+            android:text="@string/role_label"
+            android:gravity="center"/>
+
+
+            <RadioGroup
+                android:id="@+id/radio_role"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginEnd="0dp"
+                android:layout_marginBottom="0dp"
+                android:orientation="horizontal"
+                android:layout_below="@+id/label_role">
+
+                <androidx.appcompat.widget.AppCompatRadioButton
+                    android:id="@+id/radio_coach"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:text="@string/coach_label" />
+
+                <androidx.appcompat.widget.AppCompatRadioButton
+                    android:id="@+id/radio_client"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:text="@string/client_label"/>
+
+            </RadioGroup>
+
+
+        <LinearLayout
+            android:id="@+id/register_anchor_point"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_marginTop="15dp"
+            android:orientation="vertical"
+            android:layout_below="@id/radio_role"
+            android:layout_above="@id/button_layout">
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/button_layout"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_alignParentBottom="true">
+            <Button
+                android:id="@+id/back_button"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/back_button"
+                android:layout_weight="1"
+                style="?android:attr/buttonBarButtonStyle"/>
+
+            <Button
+                android:id="@+id/register_button"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:text="@string/register_button"
+                style="?android:attr/buttonBarButtonStyle"/>
+        </LinearLayout>
+
 
     </RelativeLayout>
 

@@ -13,7 +13,17 @@ public class LoginActivityPresenter implements LoginActivityContract.Presenter {
 
     @Override
     public void doLogin(String email, String password) {
+        mView.onSuccess();
+    }
 
+    @Override
+    public void newUser() {
+        mView.onFailure();
+    }
+
+    @Override
+    public void forgotPassword() {
+        mView.onFailure();
     }
 }
 

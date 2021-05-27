@@ -7,5 +7,13 @@
     <string name="error_email">Inserire una email valida</string>
     <string name="error_password">La password deve contenere almeno una lettera maiuscola, una lettera minuscola, un numero e deve essere compresa tra 8 e 20 caratteri</string>
 
+    <string name="first_name">Nome</string>
+    <string name="last_name">Cognome</string>
+    <string name="registration">Registrazione</string>
+    <string name="gender">Sono un:</string>
+    <string name="male">Uomo</string>
+    <string name="female">Donna</string>
+    <string name="birth_date">Data di nascita:</string>
+    <string name="forward">Avanti</string>
 
 </resources>

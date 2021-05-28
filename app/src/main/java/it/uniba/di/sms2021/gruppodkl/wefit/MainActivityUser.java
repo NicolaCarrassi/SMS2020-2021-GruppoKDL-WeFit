@@ -1,7 +1,6 @@
 package it.uniba.di.sms2021.gruppodkl.wefit;
 
 
-import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.os.Bundle;
@@ -10,7 +9,7 @@ import android.view.MenuItem;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 
 import it.uniba.di.sms2021.gruppodkl.wefit.fragment.DietFragment;
-import it.uniba.di.sms2021.gruppodkl.wefit.fragment.HomeFragment;
+import it.uniba.di.sms2021.gruppodkl.wefit.fragment.HomeFragmentUser;
 import it.uniba.di.sms2021.gruppodkl.wefit.fragment.TrainingFragment;
 
 public class MainActivityUser extends AppCompatActivity {
@@ -23,8 +22,8 @@ public class MainActivityUser extends AppCompatActivity {
         setContentView(R.layout.activity_main);
 
         if (savedInstanceState == null){
-            final HomeFragment homeFragment = new HomeFragment();
-            getSupportFragmentManager().beginTransaction().replace(R.id.anchor_point,homeFragment).commit();
+            final HomeFragmentUser homeFragmentUser = new HomeFragmentUser();
+            getSupportFragmentManager().beginTransaction().replace(R.id.anchor_point, homeFragmentUser).commit();
         }
 
         bind();
@@ -44,8 +43,8 @@ public class MainActivityUser extends AppCompatActivity {
                 boolean res;
                 switch(item.getItemId()) {
                     case R.id.home:
-                        final HomeFragment homeFragment = new HomeFragment();
-                        getSupportFragmentManager().beginTransaction().replace(R.id.anchor_point,homeFragment).commit();
+                        final HomeFragmentUser homeFragmentUser = new HomeFragmentUser();
+                        getSupportFragmentManager().beginTransaction().replace(R.id.anchor_point, homeFragmentUser).commit();
                         res =  true;
                         break;
                     case R.id.training:

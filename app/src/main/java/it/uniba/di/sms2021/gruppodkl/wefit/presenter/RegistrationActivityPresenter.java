@@ -109,7 +109,6 @@ public class RegistrationActivityPresenter implements RegistrationActivityContra
     }
 
 
-
 }
 
 

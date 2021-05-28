@@ -11,7 +11,11 @@
         <item name="colorOnSecondary">@color/black</item>
         <!-- Status bar color. -->
         <item name="android:statusBarColor" tools:targetApi="l">?attr/colorPrimaryVariant</item>
-        <!-- Customize your theme here. -->
+        <!-- Bottom navigation style -->
+        <item name="bottomNavigationStyle">@style/Widget.App.BottomNavigationView</item>
+        <!-- Back icon style -->
+        <item name="toolbarNavigationButtonStyle">@style/Toolbar.Button.Navigation.Tinted</item>
+
     </style>
 
     <!-- Bottom navigation -->
@@ -19,7 +23,19 @@
         <item name="materialThemeOverlay">@style/ThemeOverlay.App.BottomNavigationView</item>
     </style>
     <style name="ThemeOverlay.App.BottomNavigationView" parent="">
-        <item name="colorPrimary">@color/snow_storm_light</item>
+        <item name="colorPrimaryDark">@color/snow_storm_light</item>
         <item name="colorOnPrimary">@color/snow_storm_dark</item>
     </style>
+
+    <!-- Toolbar -->
+    <style name="MyToolbarStyle" parent="Widget.AppCompat.Toolbar">
+        <item name="iconTint">@color/white</item>
+        <item name="colorControlNormal">@color/white</item>
+    </style>
+
+    <!-- Back icon -->
+    <style name="Toolbar.Button.Navigation.Tinted" parent="Widget.AppCompat.Toolbar.Button.Navigation">
+        <item name="tint">@color/white</item>
+    </style>
+
 </resources>

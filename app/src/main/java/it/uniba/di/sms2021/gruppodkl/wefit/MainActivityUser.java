@@ -11,6 +11,7 @@ import androidx.fragment.app.Fragment;
 import android.os.Bundle;
 import android.text.Layout;
 import android.util.Log;
+import android.view.Gravity;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.widget.Toast;
@@ -29,7 +30,7 @@ import it.uniba.di.sms2021.gruppodkl.wefit.fragment.SettingsFragment;
 import it.uniba.di.sms2021.gruppodkl.wefit.fragment.TermsFragment;
 import it.uniba.di.sms2021.gruppodkl.wefit.fragment.TrainingFragment;
 
-public class MainActivityUser extends AppCompatActivity {
+public class MainActivityUser extends AppCompatActivity implements HomeFragmentUser.OpenDrawer {
 
     private BottomNavigationView mBottomNavigation;
     private NavigationView mNavigationView;
@@ -154,4 +155,9 @@ public class MainActivityUser extends AppCompatActivity {
 
     }
 
+
+    @Override
+    public void openDrw() {
+        mDrawer.openDrawer(Gravity.RIGHT);
+    }
 }

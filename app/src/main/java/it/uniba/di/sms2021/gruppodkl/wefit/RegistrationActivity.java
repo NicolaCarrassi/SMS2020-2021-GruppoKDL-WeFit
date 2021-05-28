@@ -1,10 +1,5 @@
 package it.uniba.di.sms2021.gruppodkl.wefit;
 
-import androidx.annotation.NonNull;
-import androidx.annotation.Nullable;
-import androidx.appcompat.app.AppCompatActivity;
-import androidx.fragment.app.Fragment;
-
 import android.app.DatePickerDialog;
 import android.content.Intent;
 import android.net.Uri;
@@ -22,6 +17,9 @@ import android.widget.RadioGroup;
 import android.widget.RelativeLayout;
 import android.widget.Toast;
 
+import androidx.annotation.NonNull;
+import androidx.appcompat.app.AppCompatActivity;
+
 import java.text.DateFormat;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
@@ -35,6 +33,7 @@ import it.uniba.di.sms2021.gruppodkl.wefit.contract.RegistrationActivityContract
 import it.uniba.di.sms2021.gruppodkl.wefit.contract.fragment.RegistrationFragmentContract;
 import it.uniba.di.sms2021.gruppodkl.wefit.fragment.ClientRegistrationFragment;
 import it.uniba.di.sms2021.gruppodkl.wefit.fragment.CoachRegistrationFragment;
+import it.uniba.di.sms2021.gruppodkl.wefit.model.User;
 import it.uniba.di.sms2021.gruppodkl.wefit.presenter.RegistrationActivityPresenter;
 import it.uniba.di.sms2021.gruppodkl.wefit.utility.Keys;
 import it.uniba.di.sms2021.gruppodkl.wefit.utility.UtilityStrings;
@@ -277,7 +276,6 @@ public class RegistrationActivity extends AppCompatActivity implements DatePicke
 
     private void fetchAddictionalData(Map<String,String> userData){
         boolean isCorrect = true;
-        Map<String, String> addictionalData = new HashMap<>();
 
         if(checkRadioGroup(mRadioRole)){
             if(R.id.radio_client == mRadioRole.getCheckedRadioButtonId())
@@ -291,7 +289,7 @@ public class RegistrationActivity extends AppCompatActivity implements DatePicke
         if(isCorrect){
             isCorrect = mFragmentView.areCorrect();
             if(isCorrect){
-                addictionalData.putAll(mFragmentView.getAddictionalData());
+                Map<String, String> addictionalData = new HashMap<>(mFragmentView.getAddictionalData());
                 mPresenter.registerUser(userData,addictionalData);
             }
         }
@@ -405,15 +403,17 @@ public class RegistrationActivity extends AppCompatActivity implements DatePicke
     }
 
     @Override
-    public void onSuccess() {
-        Log.d("AOO", "Successo");
-        //cambio schermata in base a tipologia user
+    public void onSuccess(User user) {
+        if(user.role.equals(Keys.Role.CLIENT)){
+            Intent intent = new Intent(this, MainActivityUser.class);
+            startActivity(intent);
+        }
+
     }
 
     @Override
     public void onFailure() {
         //TODO aggiungi stringa
-        Log.d("AOO", "Fallimento");
         Toast.makeText(this, "Failed to register a user", Toast.LENGTH_SHORT).show();
     }
 }

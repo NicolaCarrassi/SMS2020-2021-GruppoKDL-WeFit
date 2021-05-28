@@ -2,10 +2,12 @@ package it.uniba.di.sms2021.gruppodkl.wefit.contract;
 
 import java.util.Map;
 
+import it.uniba.di.sms2021.gruppodkl.wefit.model.User;
+
 public interface RegistrationActivityContract {
 
     interface View{
-        void onSuccess();
+        void onSuccess(User user);
         void onFailure();
     }
 

@@ -19,7 +19,11 @@
     <string name="female">Donna</string>
     <string name="birth_date">Data di nascita:</string>
     <string name="forward">Avanti</string>
+    <string name="forgot_mail_sent">Ti è stata inviata una mail</string>
+    <string name="error_sending_mail">C\'è stato un errore nell\'invio della mail</string>
     <string name="otherwise_login_label">Oppure accedi con:</string>
+
+
 
     <string name="role_label">Sono un:</string>
     <string name="back_button">Indietro</string>

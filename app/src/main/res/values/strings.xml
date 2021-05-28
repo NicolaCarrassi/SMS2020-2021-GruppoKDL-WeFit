@@ -14,6 +14,8 @@
     <string name="new_user_label">New user? Sign up</string>
     <string name="forgot_password">I forgot my password</string>
     <string name="otherwise_login_label">Otherwise login with:</string>
+    <string name="forgot_mail_sent">Email sent</string>
+    <string name="error_sending_mail">There has been an error sending the mail</string>
 
 
     <!-- Registration labels -->
@@ -25,10 +27,7 @@
     <string name="female">Female</string>
     <string name="birth_date">Birth date:</string>
     <string name="forward">Forward</string>
-
-
     <string name="role_label">I am a: </string>
-
     <string name="back_button">Back</string>
     <string name="register_button">Register</string>
     <string name="confirm_password">Confirm your password</string>

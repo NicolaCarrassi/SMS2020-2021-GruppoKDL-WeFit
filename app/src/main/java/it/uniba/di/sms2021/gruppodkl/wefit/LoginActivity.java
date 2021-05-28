@@ -70,7 +70,7 @@ public class LoginActivity extends AppCompatActivity implements LoginActivityCon
             }
         });
 
-        mForgotPassword.setOnClickListener(v -> mPresenter.forgotPassword());
+        mForgotPassword.setOnClickListener(v -> mPresenter.forgotPassword(mEmail.getText().toString()));
 
         mNewUser.setOnClickListener(v -> newUser());
 
@@ -130,6 +130,22 @@ public class LoginActivity extends AppCompatActivity implements LoginActivityCon
     @Override
     public void onFailure() {
         Toast.makeText(this, "Nome utente o password errati", Toast.LENGTH_SHORT).show();
+    }
+
+    @Override
+    public void emailSent() {
+        Toast.makeText(this,getResources().getString(R.string.forgot_mail_sent), Toast.LENGTH_SHORT).show();
+    }
+
+    @Override
+    public void failedToSendEmail() {
+        Toast.makeText(this,getResources().getString(R.string.error_sending_mail), Toast.LENGTH_SHORT).show();
+
+    }
+
+    @Override
+    public void wrongEmail() {
+        Toast.makeText(this, getResources().getString(R.string.error_email), Toast.LENGTH_SHORT).show();
     }
 
 }

@@ -1,5 +1,6 @@
 package it.uniba.di.sms2021.gruppodkl.wefit.presenter;
 
+import android.util.Patterns;
 import com.google.firebase.auth.FirebaseAuth;
 
 import it.uniba.di.sms2021.gruppodkl.wefit.contract.LoginActivityContract;
@@ -26,8 +27,19 @@ public class LoginActivityPresenter implements LoginActivityContract.Presenter {
 
 
     @Override
-    public void forgotPassword() {
-        mView.onFailure();
+    public void forgotPassword(String email) {
+
+        if(Patterns.EMAIL_ADDRESS.matcher(email).matches()) {
+            FirebaseAuth.getInstance().sendPasswordResetEmail(email)
+                    .addOnCompleteListener(task -> {
+                        if (task.isSuccessful())
+                            mView.emailSent();
+                        else
+                            mView.failedToSendEmail();
+                    });
+        } else {
+            mView.wrongEmail();
+        }
     }
 }
 

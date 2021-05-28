@@ -5,11 +5,14 @@ public interface LoginActivityContract {
     interface View{
         void onSuccess();
         void onFailure();
+        void emailSent();
+        void failedToSendEmail();
+        void wrongEmail();
     }
 
     interface Presenter{
         void doLogin(String email, String password);
-        void forgotPassword();
+        void forgotPassword(String email);
     }
 
 }

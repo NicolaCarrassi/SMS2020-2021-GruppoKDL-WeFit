@@ -28,6 +28,6 @@
     <!-- Frost -->
     <color name="light_blue">#5CADFF</color>
     <color name="blue">#1B6DC1</color>
-    <color name="white_custom">#D5FFFFFF</color>
+    <color name="white_custom">#BBFFFFFF</color>
 
 </resources>

@@ -30,5 +30,6 @@
     <color name="blue">#1B6DC1</color>
     <color name="white_custom">#BBFFFFFF</color>
     <color name="transparent">#00FFFFFF</color>
+    <color name="black_custom">#E1000000</color>
 
 </resources>

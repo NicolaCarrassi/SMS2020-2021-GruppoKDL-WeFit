@@ -38,4 +38,11 @@
     </style>
 
 
+
+    <!-- Navigation bar divider -->
+    <style name="Theme.WeFit.NavigationBar" >
+        <item name="android:listDivider">@color/white</item>
+        <item name="android:textColorSecondary">@color/white</item>
+        <item name="android:dividerHeight">3dp</item>
+    </style>
 </resources>

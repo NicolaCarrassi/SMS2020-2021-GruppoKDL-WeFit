@@ -52,6 +52,9 @@
     <string name="date_error">Selezionare una data</string>
     <string name="error_radio">Selezionare almeno un valore</string>
     <string name="error_password_not_matching">Le password non corrispondono</string>
+    <string name="error_height">Inserire una altezza compresa tra 100 e 230 cm</string>
+    <string name="error_weight">Il peso deve essee maggiore di  40kg</string>
+
 
 
 

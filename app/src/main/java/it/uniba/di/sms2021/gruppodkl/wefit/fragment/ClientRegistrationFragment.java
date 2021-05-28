@@ -6,18 +6,28 @@ import android.os.Bundle;
 import androidx.annotation.NonNull;
 import androidx.fragment.app.Fragment;
 
+import android.text.TextUtils;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.EditText;
+import android.widget.RadioButton;
 import android.widget.RadioGroup;
+import android.widget.TextView;
+
+import java.text.ParseException;
+import java.util.HashMap;
+import java.util.Map;
 
 import it.uniba.di.sms2021.gruppodkl.wefit.R;
 import it.uniba.di.sms2021.gruppodkl.wefit.contract.fragment.ClientRegistrationFragmentContract;
 import it.uniba.di.sms2021.gruppodkl.wefit.presenter.fragment.ClientRegistrationFragmentPresenter;
+import it.uniba.di.sms2021.gruppodkl.wefit.utility.Keys;
 
 
 public class ClientRegistrationFragment extends Fragment implements ClientRegistrationFragmentContract.View {
+
+
 
     public interface ClientRegistrationActivityCallbacks{
 
@@ -76,5 +86,89 @@ public class ClientRegistrationFragment extends Fragment implements ClientRegist
     public ClientRegistrationFragmentContract.Presenter getPresenter(){
         return mPresenter;
     }
+
+    @Override
+    public boolean areCorrect() {
+        final int MIN_HEIGHT = 100;
+        final int MAX_HEIGHT = 230;
+        final float MIN_WEIGHT = 40.0f;
+
+        boolean result = true;
+        String temp; //contiene i valori
+        int height, objective;
+        float weight;
+
+        temp = mHeightEdit.getText().toString();
+        if(!TextUtils.isEmpty(temp)){
+            try{
+                height = Integer.parseInt(temp);
+
+                if(height < MIN_HEIGHT || height > MAX_HEIGHT)
+                    result = false;
+
+            } catch(Exception e){
+                result = false;
+            }
+        } else {
+            result = false;
+        }
+
+        if(!result)
+            mHeightEdit.setError(getResources().getString(R.string.error_height));
+
+
+        temp = mWeightEdit.getText().toString();
+        if(!TextUtils.isEmpty(temp)){
+            try {
+                weight = Float.parseFloat(temp);
+
+                if(weight < MIN_WEIGHT)
+                    result = false;
+
+            } catch (Exception e){
+                result = false;
+                mWeightEdit.setError(getResources().getString(R.string.error_weight));
+            }
+        } else {
+            result = false;
+            mWeightEdit.setError(getResources().getString(R.string.error_weight));
+        }
+
+
+        objective = mObjectiveRadio.getCheckedRadioButtonId();
+
+        if(objective <= 0){
+            int lastChild = mObjectiveRadio.getChildCount() -1;
+            ((RadioButton)mObjectiveRadio.getChildAt(lastChild)).setError(getResources().getString(R.string.error_radio));
+            result = false;
+        }
+
+        return result;
+    }
+
+    @Override
+    public Map<String, String> getAddictionalData() {
+        Map<String,String> addictionalData = new HashMap<>();
+
+
+        addictionalData.put(Keys.ClientRegistrationKeys.HEIGHT, mHeightEdit.getText().toString());
+        addictionalData.put(Keys.ClientRegistrationKeys.WEIGHT, mWeightEdit.getText().toString());
+
+
+        int radioResult = mObjectiveRadio.getCheckedRadioButtonId();
+
+        if(radioResult == R.id.fit_objective_radio)
+            addictionalData.put(Keys.ClientRegistrationKeys.OBJECTIVE, getResources().getString(R.string.fit_objective));
+
+        if(radioResult == R.id.lose_objective_radio)
+            addictionalData.put(Keys.ClientRegistrationKeys.OBJECTIVE, getResources().getString(R.string.lose_weight_objective));
+
+        if(radioResult == R.id.shape_objective_radio)
+            addictionalData.put(Keys.ClientRegistrationKeys.OBJECTIVE,getResources().getString(R.string.shape_objective));
+
+
+        return addictionalData;
+    }
+
 
 }

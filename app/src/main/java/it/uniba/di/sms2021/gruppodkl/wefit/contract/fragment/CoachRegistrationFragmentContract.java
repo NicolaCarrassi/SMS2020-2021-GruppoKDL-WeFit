@@ -1,6 +1,6 @@
 package it.uniba.di.sms2021.gruppodkl.wefit.contract.fragment;
 
-public interface ClientRegistrationFragmentContract{
+public interface CoachRegistrationFragmentContract{
 
     interface View extends RegistrationFragmentContract.View{
 

@@ -79,7 +79,7 @@
             android:text="@string/fit_objective"/>
 
         <RadioButton
-            android:id="@+id/shape_objective_radip"
+            android:id="@+id/shape_objective_radio"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="@string/shape_objective"/>

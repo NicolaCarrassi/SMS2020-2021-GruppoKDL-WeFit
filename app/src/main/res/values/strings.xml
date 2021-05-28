@@ -60,6 +60,8 @@
     <string name="date_error">Please pick a date</string>
     <string name="error_radio">Choose a value</string>
     <string name="error_password_not_matching">Passwords not matching</string>
+    <string name="error_height">Height must be between 100cm and 230 cm</string>
+    <string name="error_weight">Weight must be more than 40kg</string>
 
 
 </resources>

@@ -67,7 +67,7 @@
         android:layout_marginVertical="15dp"/>
 
     <ImageView
-        android:id="@+id/sent_certification"
+        android:id="@+id/send_certification"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_gravity="center"

@@ -5,7 +5,8 @@ import java.util.Map;
 public interface RegistrationActivityContract {
 
     interface View{
-
+        void onSuccess();
+        void onFailure();
     }
 
     interface Presenter{

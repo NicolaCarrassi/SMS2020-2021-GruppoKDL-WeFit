@@ -24,4 +24,14 @@ public interface Keys {
         String OBJECTIVE = "OBJECTIVE";
     }
 
+    interface Gender{
+        String MALE = "Male";
+        String FEMALE = "Female";
+    }
+
+    interface Role{
+        String CLIENT = "Client";
+        String COACH = "Coach";
+    }
+
 }

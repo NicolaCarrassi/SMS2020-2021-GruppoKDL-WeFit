@@ -1,10 +1,13 @@
 package it.uniba.di.sms2021.gruppodkl.wefit;
 
 import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.fragment.app.Fragment;
 
 import android.app.DatePickerDialog;
+import android.content.Intent;
+import android.net.Uri;
 import android.os.Bundle;
 import android.text.TextUtils;
 import android.util.Log;
@@ -17,6 +20,7 @@ import android.widget.EditText;
 import android.widget.RadioButton;
 import android.widget.RadioGroup;
 import android.widget.RelativeLayout;
+import android.widget.Toast;
 
 import java.text.DateFormat;
 import java.text.ParseException;
@@ -28,13 +32,18 @@ import java.util.Map;
 import java.util.regex.Pattern;
 
 import it.uniba.di.sms2021.gruppodkl.wefit.contract.RegistrationActivityContract;
+import it.uniba.di.sms2021.gruppodkl.wefit.contract.fragment.RegistrationFragmentContract;
 import it.uniba.di.sms2021.gruppodkl.wefit.fragment.ClientRegistrationFragment;
 import it.uniba.di.sms2021.gruppodkl.wefit.fragment.CoachRegistrationFragment;
 import it.uniba.di.sms2021.gruppodkl.wefit.presenter.RegistrationActivityPresenter;
 import it.uniba.di.sms2021.gruppodkl.wefit.utility.Keys;
 import it.uniba.di.sms2021.gruppodkl.wefit.utility.UtilityStrings;
 
-public class RegistrationActivity extends AppCompatActivity implements DatePickerDialog.OnDateSetListener, RegistrationActivityContract.View {
+public class RegistrationActivity extends AppCompatActivity implements DatePickerDialog.OnDateSetListener,
+        RegistrationActivityContract.View, CoachRegistrationFragment.CoachCallBackActivity, ClientRegistrationFragment.ClientRegistrationActivityCallbacks {
+
+    private static final String TAG = RegistrationActivity.class.getSimpleName();
+    private static final int IMAGE_INTENT_CODE = 1;
 
     public interface ViewActivated{
         String PERSONAL_INFO = "PERSONAL_INFO";
@@ -58,6 +67,10 @@ public class RegistrationActivity extends AppCompatActivity implements DatePicke
     private Button mRegisterButton;
 
     private boolean mHasBeenOpened = false;
+    private RegistrationFragmentContract.View mFragmentView;
+
+
+    private Uri mUri;
 
 
 
@@ -121,19 +134,38 @@ public class RegistrationActivity extends AppCompatActivity implements DatePicke
 
         mRadioRole.setOnCheckedChangeListener((group, checkedId) -> {
             boolean isClient = checkedId == R.id.radio_client;
-            final Fragment nextFragment;
+            ClientRegistrationFragment clientRegistrationFragment;
+            CoachRegistrationFragment coachRegistrationFragment;
 
-                if(isClient)
-                    nextFragment = new ClientRegistrationFragment();
-                else
-                    nextFragment = new CoachRegistrationFragment();
+                if(isClient) {
+                    clientRegistrationFragment = new ClientRegistrationFragment();
+                    mFragmentView = clientRegistrationFragment;
 
-                if(mHasBeenOpened)
-                    getSupportFragmentManager().beginTransaction().replace(R.id.register_anchor_point, nextFragment).commit();
-                else {
-                    mHasBeenOpened = true;
-                    getSupportFragmentManager().beginTransaction().add(R.id.register_anchor_point, nextFragment).commit();
+                    if(mHasBeenOpened)
+                        getSupportFragmentManager().beginTransaction()
+                                .replace(R.id.register_anchor_point, clientRegistrationFragment).commit();
+                    else {
+                        mHasBeenOpened = true;
+                        getSupportFragmentManager().beginTransaction()
+                                .add(R.id.register_anchor_point, clientRegistrationFragment).commit();
+                    }
+
+                }else {
+                    coachRegistrationFragment = new CoachRegistrationFragment();
+                    mFragmentView = coachRegistrationFragment;
+
+                    if(mHasBeenOpened)
+                        getSupportFragmentManager().beginTransaction()
+                                .replace(R.id.register_anchor_point, coachRegistrationFragment).commit();
+                    else {
+                        mHasBeenOpened = true;
+                        getSupportFragmentManager().beginTransaction()
+                                .add(R.id.register_anchor_point, coachRegistrationFragment).commit();
+                    }
                 }
+
+
+
             });
 
         mRegisterButton.setOnClickListener(v -> fetchUserData());
@@ -159,7 +191,7 @@ public class RegistrationActivity extends AppCompatActivity implements DatePicke
         try{
             date = simpleDateFormat.parse(temp);
         } catch (ParseException e){
-            Log.d("AOO", "Sta un problema");
+            Log.d(TAG, "Error in parsing");
         }
         DateFormat dateFormatter = android.text.format.DateFormat.getDateFormat(this);
         assert date != null;
@@ -213,9 +245,9 @@ public class RegistrationActivity extends AppCompatActivity implements DatePicke
         //GENDER
         if(checkRadioGroup(mRadioGender)){
             if(R.id.radio_male == mRadioGender.getCheckedRadioButtonId())
-                userData.put(Keys.RegistrationKeys.GENDER, getResources().getString(R.string.male));
+                userData.put(Keys.RegistrationKeys.GENDER,Keys.Gender.MALE);
             else
-                userData.put(Keys.RegistrationKeys.GENDER,getResources().getString(R.string.female));
+                userData.put(Keys.RegistrationKeys.GENDER,Keys.Gender.FEMALE);
         } else {
             if(isCorrect)
                 isCorrect = false;
@@ -249,21 +281,20 @@ public class RegistrationActivity extends AppCompatActivity implements DatePicke
 
         if(checkRadioGroup(mRadioRole)){
             if(R.id.radio_client == mRadioRole.getCheckedRadioButtonId())
-                userData.put(Keys.RegistrationKeys.ROLE, getResources().getString(R.string.client_label));
+                userData.put(Keys.RegistrationKeys.ROLE, Keys.Role.CLIENT);
             else
-                userData.put(Keys.RegistrationKeys.ROLE,getResources().getString(R.string.coach_label));
+                userData.put(Keys.RegistrationKeys.ROLE,Keys.Role.COACH);
         } else
             isCorrect = false;
 
-        //TODO Controlla che i dati del fragment siano corretti
-        // e inseriscili nella map con il metodo putAll(Map)
-        // serve un metodo per controllare che tutti i dati siano corretti
-        // che restituisce un booleano e uno per ottenere la mappa chiave valore
 
-
-
-        if(isCorrect)
-            mPresenter.registerUser(userData,addictionalData);
+        if(isCorrect){
+            isCorrect = mFragmentView.areCorrect();
+            if(isCorrect){
+                addictionalData.putAll(mFragmentView.getAddictionalData());
+                mPresenter.registerUser(userData,addictionalData);
+            }
+        }
     }
 
 
@@ -279,7 +310,7 @@ public class RegistrationActivity extends AppCompatActivity implements DatePicke
         String password= mPasswordEdit.getText().toString();
         String confirmPassword = mConfirmPasswordEdit.getText().toString();
 
-        if (TextUtils.isEmpty(password) || !(Pattern.compile(UtilityStrings.PASSOWRD_REGEX).matcher(password).matches())) {
+        if (!TextUtils.isEmpty(password) && (Pattern.compile(UtilityStrings.PASSOWRD_REGEX).matcher(password).matches())) {
             if(password.equals(confirmPassword))
                 insertPassword = true;
             else{
@@ -351,10 +382,38 @@ public class RegistrationActivity extends AppCompatActivity implements DatePicke
     }
 
 
+    @Override
+    protected void onActivityResult(int requestCode, int resultCode, Intent data) {
+        super.onActivityResult(requestCode, resultCode, data);
+
+        if(requestCode == IMAGE_INTENT_CODE && resultCode == RESULT_OK && data != null && data.getData() != null){
+            mUri = data.getData();
+        }
+    }
+
+    @Override
+    public void openFindFile() {
+        Intent intent = new Intent(Intent.ACTION_GET_CONTENT);
+        intent.setType("file/*");
+        startActivityForResult(intent, IMAGE_INTENT_CODE);
+    }
 
 
+    @Override
+    public Uri getFileURI() {
+        return mUri;
+    }
 
+    @Override
+    public void onSuccess() {
+        Log.d("AOO", "Successo");
+        //cambio schermata in base a tipologia user
+    }
 
-
-
+    @Override
+    public void onFailure() {
+        //TODO aggiungi stringa
+        Log.d("AOO", "Fallimento");
+        Toast.makeText(this, "Failed to register a user", Toast.LENGTH_SHORT).show();
+    }
 }

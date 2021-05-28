@@ -9,7 +9,6 @@ public interface LoginActivityContract {
 
     interface Presenter{
         void doLogin(String email, String password);
-        void newUser();
         void forgotPassword();
     }
 

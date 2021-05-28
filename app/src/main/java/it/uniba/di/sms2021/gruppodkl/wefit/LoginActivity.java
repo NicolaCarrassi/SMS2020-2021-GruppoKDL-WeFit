@@ -2,13 +2,16 @@ package it.uniba.di.sms2021.gruppodkl.wefit;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.content.Intent;
 import android.os.Bundle;
+import android.text.InputType;
 import android.text.TextUtils;
 import android.util.Log;
 import android.util.Patterns;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -29,6 +32,7 @@ public class LoginActivity extends AppCompatActivity implements LoginActivityCon
     private TextView mForgotPassword;
 
     private Button mLoginButton;
+    private ImageView mPasswordImageView;
 
 
     @Override
@@ -41,14 +45,22 @@ public class LoginActivity extends AppCompatActivity implements LoginActivityCon
         this.mPresenter = new LoginActivityPresenter(this);
     }
 
+    /**
+     * Il metodo permette di effettuare il binding degli elementi della view
+     */
     private void bind(){
         this.mEmail = findViewById(R.id.email_edit_text);
         this.mPassword = findViewById(R.id.password_edit_text);
         this.mLoginButton = findViewById(R.id.login_button);
         this.mNewUser = findViewById(R.id.new_user_label);
         this.mForgotPassword = findViewById(R.id.forgot_password_label);
+        this.mPasswordImageView = findViewById(R.id.password_visible);
     }
 
+    /**
+     * Il metodo permette di impostare i listeners degli elementi grafici collegati alla view
+     * Deve essere chiamato dopo il metodo bind()
+     */
     private void setListeners(){
         mLoginButton.setOnClickListener(v -> {
             String emailText = mEmail.getText().toString();
@@ -60,11 +72,26 @@ public class LoginActivity extends AppCompatActivity implements LoginActivityCon
 
         mForgotPassword.setOnClickListener(v -> mPresenter.forgotPassword());
 
-        mNewUser.setOnClickListener(v -> mPresenter.newUser());
+        mNewUser.setOnClickListener(v -> newUser());
 
+        mPasswordImageView.setOnClickListener(v -> {
+            if(mPassword.getInputType() == 129) {
+                mPassword.setInputType(InputType.TYPE_TEXT_VARIATION_VISIBLE_PASSWORD);
+            }else {
+                mPassword.setInputType(129);
+            }
+        });
 
     }
 
+    /**
+     * Il metodo permette di controllare che gli attributi di email e password
+     * siano stati inseriti correttamente
+     *
+     * @param emailText stringa contenente il testo della email
+     * @param passwordText stringa contenente il testo della password
+     * @return true se gli attributi sono conformi ai requisiti, false altrimenti
+     */
     private boolean checkAttributes(String emailText, String passwordText) {
         boolean res = true;
 
@@ -85,17 +112,24 @@ public class LoginActivity extends AppCompatActivity implements LoginActivityCon
         return res;
     }
 
-
+    /**
+     * Il metodo permette di accedere alla schermata di registrazione
+     */
+    private void newUser(){
+        Intent intent = new Intent(this,RegistrationActivity.class);
+        startActivity(intent);
+    }
 
 
     @Override
     public void onSuccess() {
-        Log.d("AOO", "Sto qua");
+        Intent intent = new Intent(this, MainActivityUser.class);
+        startActivity(intent);
     }
 
     @Override
     public void onFailure() {
-        Log.d("AOO", "Sto al punto giusto");
+        Toast.makeText(this, "Nome utente o password errati", Toast.LENGTH_SHORT).show();
     }
 
 }

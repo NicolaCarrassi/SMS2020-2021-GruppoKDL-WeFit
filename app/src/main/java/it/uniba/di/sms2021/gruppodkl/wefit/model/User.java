@@ -22,5 +22,7 @@ public class User {
     }
 
 
-
+    public void setImage(String imageUri) {
+        this.image = imageUri;
+    }
 }

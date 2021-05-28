@@ -17,4 +17,5 @@ public class Client extends User {
         this.weight = weight;
         this.objective = objective;
     }
+
 }

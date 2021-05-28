@@ -5,10 +5,10 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:orientation="vertical"
-        tools:context=".LoginActivity">
-        <!--android:background="@drawable/backgrounddoodle"
-    android:backgroundTint="@color/frost_light_blue"
-    android:backgroundTintMode="screen"<!-->
+        tools:context=".LoginActivity"
+        android:background="@drawable/doodle1080p"
+        android:backgroundTint="@color/white_custom"
+        android:backgroundTintMode="screen">
 
 
         <ImageView

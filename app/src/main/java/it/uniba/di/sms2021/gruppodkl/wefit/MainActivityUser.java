@@ -8,6 +8,7 @@ import androidx.core.view.MenuItemCompat;
 import androidx.drawerlayout.widget.DrawerLayout;
 import androidx.fragment.app.Fragment;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.text.Layout;
 import android.util.Log;
@@ -18,6 +19,7 @@ import android.widget.Toast;
 
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 import com.google.android.material.navigation.NavigationView;
+import com.google.firebase.auth.FirebaseAuth;
 
 import it.uniba.di.sms2021.gruppodkl.wefit.fragment.CoachProfileFragment;
 import it.uniba.di.sms2021.gruppodkl.wefit.fragment.DietFragment;
@@ -146,7 +148,9 @@ public class MainActivityUser extends AppCompatActivity implements HomeFragmentU
                 nextFragment = new TermsFragment();
                 break;
             case R.id.logout_item:
-                //TODO
+                FirebaseAuth.getInstance().signOut();
+                Intent intent = new Intent(this, LoginActivity.class);
+                startActivity(intent);
                 break;
             default:
                 throw new IllegalArgumentException("Nessun Fragment per item selezionato");

@@ -18,6 +18,7 @@ import java.util.regex.Pattern;
 import it.uniba.di.sms2021.gruppodkl.wefit.contract.LoginActivityContract;
 import it.uniba.di.sms2021.gruppodkl.wefit.model.User;
 import it.uniba.di.sms2021.gruppodkl.wefit.presenter.LoginActivityPresenter;
+import it.uniba.di.sms2021.gruppodkl.wefit.utility.Keys;
 import it.uniba.di.sms2021.gruppodkl.wefit.utility.UtilityStrings;
 
 public class LoginActivity extends AppCompatActivity implements LoginActivityContract.View {
@@ -122,9 +123,10 @@ public class LoginActivity extends AppCompatActivity implements LoginActivityCon
 
     @Override
     public void onSuccess(User user) {
-        ((WeFitApplication) getApplication()).setUser(user);
-        Intent intent = new Intent(this, MainActivityUser.class);
-        startActivity(intent);
+      ((WeFitApplication) getApplication()).setUser(user);
+      Intent intent = new Intent(this, MainActivityUser.class);
+      startActivity(intent);
+      finish();
     }
 
     @Override

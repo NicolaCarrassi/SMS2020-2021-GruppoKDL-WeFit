@@ -16,6 +16,7 @@ import it.uniba.di.sms2021.gruppodkl.wefit.R;
  * create an instance of this fragment.
  */
 public class NotificationsFragment extends Fragment {
+    public static final String TAG = NotificationsFragment.class.getSimpleName();
 
     // TODO: Rename parameter arguments, choose names that match
     // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER

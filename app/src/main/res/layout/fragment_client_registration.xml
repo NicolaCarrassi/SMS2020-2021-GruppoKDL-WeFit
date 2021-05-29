@@ -82,7 +82,7 @@
             android:id="@+id/shape_objective_radio"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="@string/shape_objective"/>
+            android:text="@string/gain_mass_objective"/>
 
         <RadioButton
             android:id="@+id/lose_objective_radio"

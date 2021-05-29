@@ -17,6 +17,8 @@ import it.uniba.di.sms2021.gruppodkl.wefit.R;
  */
 public class TermsFragment extends Fragment {
 
+    public static final String TAG = TermsFragment.class.getSimpleName();
+
     // TODO: Rename parameter arguments, choose names that match
     // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
     private static final String ARG_PARAM1 = "param1";

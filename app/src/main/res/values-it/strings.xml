@@ -38,7 +38,7 @@
     <string name="weight">Peso</string>
     <string name="choose_objective">Seleziona il tuo obiettivo:</string>
     <string name="fit_objective">Migliorare la forma</string>
-    <string name="shape_objective">Aumentare la massa</string>
+    <string name="gain_mass_objective">Aumentare la massa</string>
     <string name="lose_weight_objective">Perdere peso</string>
 
     <!--Registration Coach Fragment -->
@@ -74,6 +74,19 @@
     <string name="recap_tab_title">RIEPILOGO SETTIMANALE:</string>
     <string name="training_tab_title">PROSSIMO ALLENAMENTO:</string>
     <string name="diet_tab_title">PROSSIMO PASTO:</string>
+
+    <!-- PROFILE STRING -->
+    <string name="full_name">Nome</string>
+    <string name="edit_name">Modifica il tuo nome</string>
+    <string name="edit_gender">Modifica il tuo genere</string>
+    <string name="edit_height">Aggiorna la tua altezza</string>
+    <string name="edit_objective">Modifica il tuo obiettivo</string>
+    <string name="client_current_weight">Peso attuale</string>
+    <string name="btn_save_update">Aggiorna</string>
+    <string name="edit_pfp">Modifica la foto del profilo</string>
+    <string name="confirm">Conferma</string>
+    <string name="image_changed_string">Immagine modificata con successo</string>
+    <string name="nothing_to_update">Non sono state effettuate modifiche</string>
 
 
 

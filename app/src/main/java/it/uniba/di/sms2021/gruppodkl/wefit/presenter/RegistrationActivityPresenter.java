@@ -130,12 +130,13 @@ public class RegistrationActivityPresenter implements RegistrationActivityContra
 
            if(specificData.containsKey(Keys.CoachRegistrationKeys.ATTACHED_FILE)) {
 
-               StorageReference fileRef = FirebaseStorage.getInstance().getReference("certifications")
+               StorageReference fileRef = FirebaseStorage.getInstance().getReference(Keys.Collections.CERTIFICATION)
                        .child(System.currentTimeMillis() + "." + mView.getFileExtension());
 
               fileRef.putFile(mView.getFileURI())
                 .addOnSuccessListener(taskSnapshot -> {
                     Task<Uri> uriTask = taskSnapshot.getStorage().getDownloadUrl();
+
                     while(!uriTask.isComplete());
 
                     Uri uri = uriTask.getResult();
@@ -143,8 +144,8 @@ public class RegistrationActivityPresenter implements RegistrationActivityContra
                     Map<String, Object> map = new HashMap<>();
                     assert uri != null;
                     map.put("certificationUri", uri.toString());
-                    coachDocument.update(map)
-                            .addOnSuccessListener(unused -> Log.d("AOO", "SICCESS")).addOnFailureListener(e -> Log.d("AOO","QUA ERRORA"));
+
+                    coachDocument.update(map);
                 });
            }
             mView.onSuccess(coach);

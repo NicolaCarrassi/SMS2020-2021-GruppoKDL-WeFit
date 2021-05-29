@@ -1,10 +1,13 @@
 package it.uniba.di.sms2021.gruppodkl.wefit.model;
 
+import android.graphics.Bitmap;
+
+
+
 public class User {
 
     public interface UserKeys{
         String FULL_NAME = "fullName";
-        String EMAIL = "email";
         String BIRTH_DATE ="birthDate";
         String GENDER = "gender";
         String IMAGE = "image";
@@ -17,6 +20,9 @@ public class User {
     public String gender;
     public String image;
     public String role;
+
+    private Bitmap imageBitmap = null;
+
 
     public User(){
 
@@ -34,6 +40,21 @@ public class User {
     public void setImage(String imageUri) {
         this.image = imageUri;
     }
+
+    public void setImageBitmap(Bitmap bitmap){
+        this.imageBitmap = bitmap;
+    }
+
+    public Bitmap getImageBitmap() {
+        return imageBitmap;
+    }
+
+    public boolean isBitmapImageAvailable(){
+        return imageBitmap !=  null;
+    }
+
+
+
 }
 
 

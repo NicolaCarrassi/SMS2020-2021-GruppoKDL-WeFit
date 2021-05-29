@@ -10,7 +10,6 @@ public interface Keys {
         String BIRTH_DATE = "BIRTH_DATE";
         String GENDER = "GENDER";
         String ROLE = "ROLE";
-        String FULL_NAME = "FULL_NAME";
     }
 
     interface CoachRegistrationKeys{
@@ -35,8 +34,17 @@ public interface Keys {
         String COACH = "Coach";
     }
 
+    interface Objectives{
+        String SHAPE_DEFINITION = "Shape definition";
+        String GAIN_MASS = "Gain mass";
+        String LOSE_WEIGHT = "Lose weight";
+    }
+
     interface Collections{
         String USERS = "Users";
+        String CERTIFICATION = "certifications";
+        String IMAGES = "images";
     }
+
 
 }

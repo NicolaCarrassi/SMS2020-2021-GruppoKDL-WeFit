@@ -40,7 +40,7 @@
     <string name="weight">Weight</string>
     <string name="choose_objective">Choose your objective:</string>
     <string name="fit_objective">Shape definition</string>
-    <string name="shape_objective">Gain mass</string>
+    <string name="gain_mass_objective">Gain mass</string>
     <string name="lose_weight_objective">Lose weight</string>
 
     <!--Registration Coach Fragment -->
@@ -79,5 +79,19 @@
     <string name="training_tab_title">NEXT TRAINING:</string>
     <string name="diet_tab_title">NEXT MEAL:</string>
 
+
+
+    <!-- PROFILE STRING -->
+    <string name="full_name">Full name</string>
+    <string name="edit_name">Edit your name</string>
+    <string name="edit_gender">Edit your gender</string>
+    <string name="edit_height">Edit your height</string>
+    <string name="edit_objective">Edit your objective</string>
+    <string name="client_current_weight">Your current weight</string>
+    <string name="btn_save_update">Update</string>
+    <string name="edit_pfp">Edit your profile picture</string>
+    <string name="confirm">Confirm</string>
+    <string name="image_changed_string">Image updated successfully!</string>
+    <string name="nothing_to_update">There is nothing to update</string>
 
 </resources>

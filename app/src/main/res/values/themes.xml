@@ -79,7 +79,7 @@
     <style name="EditTextCustom" parent="TextAppearance.AppCompat">
         <item name="android:editTextColor">@color/white</item>
         <item name="android:textColorHint">@color/white</item>
-        <item name="android:textSize">18dp</item>
+        <item name="android:textSize">18sp</item>
         <item name="android:elevation">4dp</item>
     </style>
 

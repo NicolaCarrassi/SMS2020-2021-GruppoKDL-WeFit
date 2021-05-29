@@ -33,7 +33,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:orientation="vertical"
-        android:visibility="gone">
+        android:visibility="visible">
 
         <LinearLayout
             android:layout_width="match_parent"
@@ -47,7 +47,7 @@
                 android:layout_height="wrap_content"
                 android:orientation="vertical"
                 android:layout_weight="1"
-                android:layout_marginRight="10dp">
+                android:layout_marginEnd="10dp">
                 <EditText
                     android:id="@+id/first_name_edit_text"
                     android:layout_width="match_parent"
@@ -73,7 +73,7 @@
             android:layout_height="wrap_content"
             android:orientation="vertical"
             android:layout_weight="1"
-            android:layout_marginLeft="10dp">
+            android:layout_marginStart="10dp">
 
             <EditText
                 android:id="@+id/last_name_text"
@@ -147,7 +147,10 @@
             android:hint="@string/password"
             android:inputType="textPassword"
             android:background="@drawable/edittext_rounded_corners"
-            android:theme="@style/EditTextCustom"
+            android:textColor="@color/white"
+            android:textColorHint="@color/white"
+            android:textSize="18sp"
+            android:elevation="4dp"
             android:layout_gravity="center_horizontal"
             android:layout_marginTop="40dp"/>
 
@@ -158,9 +161,14 @@
             android:hint="@string/confirm_password"
             android:inputType="textPassword"
             android:background="@drawable/edittext_rounded_corners"
-            android:theme="@style/EditTextCustom"
             android:layout_gravity="center_horizontal"
-            android:layout_marginTop="40dp"/>
+            android:layout_marginTop="40dp"
+            android:textColor="@color/white"
+            android:textColorHint="@color/white"
+            android:textSize="18sp"
+            android:elevation="4dp"/>
+
+        <!--android:theme="@style/EditTextCustom"-->
 
         <Button
             android:id="@+id/forward_first_button"
@@ -177,7 +185,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:orientation="vertical"
-        android:visibility="visible"
+        android:visibility="gone"
         android:layout_marginTop="50dp">
 
         <TextView
@@ -219,17 +227,14 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginTop="15dp"
-            android:orientation="vertical"
-            android:layout_below="@id/radio_role"
-            android:layout_above="@id/button_layout">
+            android:orientation="vertical">
         </LinearLayout>
 
         <LinearLayout
             android:id="@+id/button_layout"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:orientation="horizontal"
-            android:layout_alignParentBottom="true">
+            android:orientation="horizontal">
             <Button
                 android:id="@+id/back_button"
                 android:layout_width="wrap_content"

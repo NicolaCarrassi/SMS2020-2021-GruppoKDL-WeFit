@@ -29,13 +29,7 @@ public class ClientRegistrationFragment extends Fragment implements ClientRegist
 
 
 
-    public interface ClientRegistrationActivityCallbacks{
-
-    }
-
    private ClientRegistrationFragmentContract.Presenter mPresenter;
-   private ClientRegistrationActivityCallbacks mActivity;
-
    private EditText mHeightEdit;
    private EditText mWeightEdit;
    private RadioGroup mObjectiveRadio;
@@ -46,22 +40,9 @@ public class ClientRegistrationFragment extends Fragment implements ClientRegist
         // Required empty public constructor
     }
 
-
-    @Override
-    public void onAttach(@NonNull Context context) {
-        super.onAttach(context);
-
-        if(context instanceof ClientRegistrationActivityCallbacks){
-            mActivity = (ClientRegistrationActivityCallbacks) context;
-        }else{
-            throw new IllegalStateException("Context must be an instance of ClientRegistrationFragmentContract.Presenter");
-        }
-    }
-
     @Override
     public void onDetach() {
         super.onDetach();
-        mActivity = null;
     }
 
     @Override
@@ -158,13 +139,13 @@ public class ClientRegistrationFragment extends Fragment implements ClientRegist
         int radioResult = mObjectiveRadio.getCheckedRadioButtonId();
 
         if(radioResult == R.id.fit_objective_radio)
-            addictionalData.put(Keys.ClientRegistrationKeys.OBJECTIVE, getResources().getString(R.string.fit_objective));
+            addictionalData.put(Keys.ClientRegistrationKeys.OBJECTIVE, Keys.Objectives.SHAPE_DEFINITION);
 
         if(radioResult == R.id.lose_objective_radio)
-            addictionalData.put(Keys.ClientRegistrationKeys.OBJECTIVE, getResources().getString(R.string.lose_weight_objective));
+            addictionalData.put(Keys.ClientRegistrationKeys.OBJECTIVE, Keys.Objectives.LOSE_WEIGHT);
 
         if(radioResult == R.id.shape_objective_radio)
-            addictionalData.put(Keys.ClientRegistrationKeys.OBJECTIVE,getResources().getString(R.string.shape_objective));
+            addictionalData.put(Keys.ClientRegistrationKeys.OBJECTIVE,Keys.Objectives.GAIN_MASS);
 
 
         return addictionalData;

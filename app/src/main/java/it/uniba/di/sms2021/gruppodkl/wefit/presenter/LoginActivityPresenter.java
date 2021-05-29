@@ -18,6 +18,11 @@ public class LoginActivityPresenter implements LoginActivityContract.Presenter {
     private final FirebaseAuth mAuth = FirebaseAuth.getInstance();
     private User user;
 
+    /**
+     * Costruttore del presenter
+     *
+     * @param view View per i callbacks
+     */
     public LoginActivityPresenter(LoginActivityContract.View view){
         this.mView = view;
     }
@@ -33,19 +38,31 @@ public class LoginActivityPresenter implements LoginActivityContract.Presenter {
                 usersRef.get()
                         .addOnSuccessListener(documentSnapshot -> {
                             if(documentSnapshot.exists()){
-                                if(documentSnapshot.getString(User.UserKeys.ROLE).equals(Keys.Role.CLIENT)) {
-                                    int height = documentSnapshot.getDouble(Client.ClientKeys.HEIGHT).intValue();
-                                    float weight = documentSnapshot.getDouble(Client.ClientKeys.WEIGHT).floatValue();
+                                if(documentSnapshot.contains(User.UserKeys.ROLE) &&
+                                        documentSnapshot.getString(User.UserKeys.ROLE).equals(Keys.Role.CLIENT)) {
+
+                                    Double temp = documentSnapshot.getDouble(Client.ClientKeys.HEIGHT);
+
+                                    assert temp != null;
+                                    int height = temp.intValue() ;
+
+                                    temp = documentSnapshot.getDouble(Client.ClientKeys.WEIGHT);
+                                    assert temp != null;
+                                    float weight = temp.floatValue();
 
                                     user = new Client(documentSnapshot.getString(Client.ClientKeys.FULL_NAME), email, documentSnapshot.getString(Client.ClientKeys.BIRTH_DATE),
                                             documentSnapshot.getString(Client.ClientKeys.GENDER), Keys.Role.CLIENT, height,
                                             weight, documentSnapshot.getString(Client.ClientKeys.OBJECTIVE));
+
                                 } else {
 
                                     user = new Coach(documentSnapshot.getString(Coach.CoachKeys.FULL_NAME), email, documentSnapshot.getString(Coach.CoachKeys.BIRTH_DATE),
                                             documentSnapshot.getString(Coach.CoachKeys.GENDER), Keys.Role.COACH, documentSnapshot.getBoolean(Coach.CoachKeys.IS_PERSONAL_TRAINER),
                                             documentSnapshot.getBoolean(Coach.CoachKeys.IS_DIETIST), documentSnapshot.getString(Coach.CoachKeys.CERTIFICATION));
                                 }
+
+                                if(documentSnapshot.contains(User.UserKeys.IMAGE) && documentSnapshot.getString(User.UserKeys.IMAGE) != null)
+                                    user.setImage(documentSnapshot.getString(User.UserKeys.IMAGE));
 
                                 mView.onSuccess(user);
                             }

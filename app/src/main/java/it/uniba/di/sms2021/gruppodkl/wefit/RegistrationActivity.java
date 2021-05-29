@@ -45,7 +45,7 @@ import it.uniba.di.sms2021.gruppodkl.wefit.utility.Keys;
 import it.uniba.di.sms2021.gruppodkl.wefit.utility.UtilityStrings;
 
 public class RegistrationActivity extends AppCompatActivity implements DatePickerDialog.OnDateSetListener,
-        RegistrationActivityContract.View, CoachRegistrationFragment.CoachCallBackActivity, ClientRegistrationFragment.ClientRegistrationActivityCallbacks {
+        RegistrationActivityContract.View, CoachRegistrationFragment.CoachCallBackActivity {
 
     private static final String TAG = RegistrationActivity.class.getSimpleName();
     private static final int IMAGE_INTENT_CODE = 1;
@@ -441,6 +441,7 @@ public class RegistrationActivity extends AppCompatActivity implements DatePicke
     @Override
     protected void onActivityResult(int requestCode, int resultCode, Intent data) {
         super.onActivityResult(requestCode, resultCode, data);
+
         if(requestCode == IMAGE_INTENT_CODE && resultCode == RESULT_OK && data != null && data.getData() != null){
             Log.d("AOO", data.getData().toString());
             mUri = data.getData();
@@ -468,6 +469,7 @@ public class RegistrationActivity extends AppCompatActivity implements DatePicke
         if(user.role.equals(Keys.Role.CLIENT)){
             Intent intent = new Intent(this, MainActivityUser.class);
             startActivity(intent);
+            finish();
         }
 
     }
@@ -501,5 +503,7 @@ public class RegistrationActivity extends AppCompatActivity implements DatePicke
             }
         }
     }
+
+
 
 }

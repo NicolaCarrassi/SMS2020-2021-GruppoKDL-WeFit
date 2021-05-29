@@ -1,6 +1,5 @@
 package it.uniba.di.sms2021.gruppodkl.wefit.model;
 
-import android.net.Uri;
 
 public class Coach extends User {
 

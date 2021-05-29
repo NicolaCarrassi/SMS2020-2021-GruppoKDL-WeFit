@@ -15,4 +15,5 @@ public class WeFitApplication extends Application {
     public void setUser(User user) {
         this.user = user;
     }
+
 }

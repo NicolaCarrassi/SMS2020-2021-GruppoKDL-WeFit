@@ -69,6 +69,15 @@
     <string name="terms_drawer">Termini e condizioni</string>
     <string name="logout_drawer">Esci</string>
 
+    <!-- HOME FRAGMENT -->
+    <string name="hi_user_string">Ciao</string>
+    <string name="recap_tab_title">RIEPILOGO SETTIMANALE:</string>
+    <string name="training_tab_title">PROSSIMO ALLENAMENTO:</string>
+    <string name="diet_tab_title">PROSSIMO PASTO:</string>
+
+
+
+
 
 
 

@@ -6,9 +6,7 @@
         android:layout_height="match_parent"
         android:orientation="vertical"
         tools:context=".LoginActivity"
-        android:background="@drawable/doodle1080p"
-        android:backgroundTint="@color/white_custom"
-        android:backgroundTintMode="screen">
+        style="@style/BackgroundCustom">
 
 
         <ImageView
@@ -20,14 +18,11 @@
             android:layout_marginTop="50dp"
             android:layout_marginBottom="50dp"/>
 
-        <View
-            android:id="@+id/view"
+        <include layout="@layout/spacer_layout"
             android:layout_width="match_parent"
-            android:layout_height="2dp"
-            android:background="?attr/colorPrimary"
-            android:layout_marginHorizontal="40dp"
-            android:layout_marginBottom="25dp"
-            android:elevation="2dp"/>
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="25dp"/>
+
 
         <EditText
             android:id="@+id/email_edit_text"
@@ -36,10 +31,8 @@
             android:background="@drawable/edittext_rounded_corners"
             android:hint="@string/email"
             android:layout_marginHorizontal="70dp"
-            android:textColor="@color/white"
-            android:textColorHint="@color/white"
-            android:layout_marginBottom="10dp"
-            android:elevation="4dp"/>
+            android:theme="@style/EditTextCustom"
+            android:layout_marginBottom="10dp"/>
 
         <LinearLayout
             android:layout_width="match_parent"
@@ -56,11 +49,8 @@
                 android:background="@drawable/edittext_rounded_corners"
                 android:hint="@string/password"
                 android:inputType="textPassword"
-
-                android:textColor="@color/white"
-                android:textColorHint="@color/white"
-                android:layout_weight="0.8"
-                android:elevation="4dp"/>
+                android:theme="@style/EditTextCustom"
+                android:layout_weight="0.8"/>
 
             <ImageView
                 android:id="@+id/password_visible"
@@ -116,14 +106,11 @@
             android:layout_gravity="center_horizontal"
             android:layout_marginTop="10dp"/>
 
-        <View
-            android:id="@+id/view2"
+        <include layout="@layout/spacer_layout"
             android:layout_width="match_parent"
-            android:layout_height="2dp"
-            android:layout_marginHorizontal="30dp"
-            android:background="?attr/colorPrimary"
-            android:elevation="2dp"
+            android:layout_height="wrap_content"
             android:layout_marginTop="10dp"/>
+
         <TextView
             android:id="@+id/new_user_label"
             android:layout_width="wrap_content"

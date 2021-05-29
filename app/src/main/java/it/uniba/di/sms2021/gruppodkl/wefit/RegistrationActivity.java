@@ -17,6 +17,7 @@ import android.webkit.MimeTypeMap;
 import android.widget.Button;
 import android.widget.DatePicker;
 import android.widget.EditText;
+import android.widget.LinearLayout;
 import android.widget.RadioButton;
 import android.widget.RadioGroup;
 import android.widget.RelativeLayout;
@@ -54,7 +55,7 @@ public class RegistrationActivity extends AppCompatActivity implements DatePicke
         String COACH_CLIENT = "COACH_CLIENT";
     }
 
-    private RelativeLayout mPersonalDataLayout;
+    private LinearLayout mPersonalDataLayout;
     private RegistrationActivityContract.Presenter mPresenter;
     private EditText mFirstNameEdit;
     private EditText mLastNameEdit;
@@ -65,7 +66,7 @@ public class RegistrationActivity extends AppCompatActivity implements DatePicke
     private EditText mConfirmPasswordEdit;
     private Button mFirstForwardButton;
 
-    private RelativeLayout mCoachClientLayout;
+    private LinearLayout mCoachClientLayout;
     private RadioGroup mRadioRole;
     private Button mBackButton;
     private Button mRegisterButton;

@@ -36,6 +36,7 @@
         app:elevation="4dp"
         app:headerLayout="@layout/drawer_header"
         android:background="?attr/colorPrimary"
+        app:itemIconTint="@color/white"
         android:theme="@style/Theme.WeFit.NavigationBar"
         app:itemTextColor="@color/white"/>
 

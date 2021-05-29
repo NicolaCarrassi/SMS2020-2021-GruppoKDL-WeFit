@@ -8,9 +8,7 @@
     tools:context=".fragment.HomeFragmentUser"
     android:gravity="center_horizontal"
     android:orientation="vertical"
-    android:background="@drawable/doodle1080p"
-    android:backgroundTint="@color/white_custom"
-    android:backgroundTintMode="screen">
+    style="@style/BackgroundCustom">
 
     <include layout="@layout/toolbar"
         android:layout_width="match_parent"

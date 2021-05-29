@@ -26,7 +26,7 @@
     <string name="male">Male</string>
     <string name="female">Female</string>
     <string name="birth_date">Birth date:</string>
-    <string name="forward">Forward</string>
+    <string name="next">Next</string>
     <string name="role_label">I am a: </string>
     <string name="back_button">Back</string>
     <string name="register_button">Register</string>

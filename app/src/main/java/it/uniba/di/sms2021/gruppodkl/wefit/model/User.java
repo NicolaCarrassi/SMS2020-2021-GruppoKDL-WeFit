@@ -2,6 +2,15 @@ package it.uniba.di.sms2021.gruppodkl.wefit.model;
 
 public class User {
 
+    public interface UserKeys{
+        String FULL_NAME = "fullName";
+        String EMAIL = "email";
+        String BIRTH_DATE ="birthDate";
+        String GENDER = "gender";
+        String IMAGE = "image";
+        String ROLE = "role";
+    }
+
     public String fullName;
     public String email;
     public String birthDate;
@@ -26,3 +35,5 @@ public class User {
         this.image = imageUri;
     }
 }
+
+

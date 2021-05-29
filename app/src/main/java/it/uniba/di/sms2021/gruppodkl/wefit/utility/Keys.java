@@ -35,4 +35,8 @@ public interface Keys {
         String COACH = "Coach";
     }
 
+    interface Collections{
+        String USERS = "Users";
+    }
+
 }

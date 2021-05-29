@@ -1,5 +1,6 @@
 package it.uniba.di.sms2021.gruppodkl.wefit.fragment;
 
+import android.content.ContentResolver;
 import android.content.Context;
 import android.content.Intent;
 import android.net.Uri;
@@ -11,8 +12,12 @@ import androidx.fragment.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.webkit.MimeTypeMap;
 import android.widget.CheckBox;
 import android.widget.ImageView;
+
+import com.google.firebase.storage.FirebaseStorage;
+import com.google.firebase.storage.StorageReference;
 
 import java.util.HashMap;
 import java.util.Map;
@@ -113,11 +118,12 @@ public class CoachRegistrationFragment extends Fragment implements CoachRegistra
 
         if(mPersonalTrainerCheckBox.isChecked())
             addictionalData.put(Keys.CoachRegistrationKeys.IS_PERSONAL_TRAINER, PERSONAL_TRAINER);
+
         if(mDieticianCheckBox.isChecked())
             addictionalData.put(Keys.CoachRegistrationKeys.IS_DIETICIAN, DIETICIAN);
 
-        if(mCertificationUri != null)
-            addictionalData.put(Keys.CoachRegistrationKeys.ATTACHED_FILE, mCertificationUri.toString());
+        if(mActivity.getFileURI() != null)
+            addictionalData.put(Keys.CoachRegistrationKeys.ATTACHED_FILE, mActivity.getFileURI().toString());
 
         return addictionalData;
     }

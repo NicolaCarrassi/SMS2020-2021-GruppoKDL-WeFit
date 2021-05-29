@@ -6,9 +6,7 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.text.InputType;
 import android.text.TextUtils;
-import android.util.Log;
 import android.util.Patterns;
-import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageView;
@@ -18,6 +16,7 @@ import android.widget.Toast;
 import java.util.regex.Pattern;
 
 import it.uniba.di.sms2021.gruppodkl.wefit.contract.LoginActivityContract;
+import it.uniba.di.sms2021.gruppodkl.wefit.model.User;
 import it.uniba.di.sms2021.gruppodkl.wefit.presenter.LoginActivityPresenter;
 import it.uniba.di.sms2021.gruppodkl.wefit.utility.UtilityStrings;
 
@@ -63,8 +62,8 @@ public class LoginActivity extends AppCompatActivity implements LoginActivityCon
      */
     private void setListeners(){
         mLoginButton.setOnClickListener(v -> {
-            String emailText = mEmail.getText().toString();
-            String passwordText = mPassword.getText().toString();
+            String emailText = mEmail.getText().toString().trim().toLowerCase();
+            String passwordText = mPassword.getText().toString().trim();
             if(checkAttributes(emailText, passwordText)){
                 mPresenter.doLogin(emailText,passwordText);
             }
@@ -122,7 +121,8 @@ public class LoginActivity extends AppCompatActivity implements LoginActivityCon
 
 
     @Override
-    public void onSuccess() {
+    public void onSuccess(User user) {
+        ((WeFitApplication) getApplication()).setUser(user);
         Intent intent = new Intent(this, MainActivityUser.class);
         startActivity(intent);
     }

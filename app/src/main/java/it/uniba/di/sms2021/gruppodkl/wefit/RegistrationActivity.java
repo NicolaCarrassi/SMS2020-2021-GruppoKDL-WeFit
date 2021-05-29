@@ -1,14 +1,19 @@
 package it.uniba.di.sms2021.gruppodkl.wefit;
 
 import android.app.DatePickerDialog;
+import android.content.ContentResolver;
 import android.content.Intent;
 import android.net.Uri;
 import android.os.Bundle;
+import android.text.Editable;
 import android.text.TextUtils;
+import android.text.TextWatcher;
 import android.util.Log;
 import android.util.Patterns;
 import android.view.MotionEvent;
 import android.view.View;
+import android.view.ViewGroup;
+import android.webkit.MimeTypeMap;
 import android.widget.Button;
 import android.widget.DatePicker;
 import android.widget.EditText;
@@ -84,7 +89,7 @@ public class RegistrationActivity extends AppCompatActivity implements DatePicke
 
         if(savedInstanceState != null){
             if(savedInstanceState.containsKey(ViewActivated.COACH_CLIENT)){
-                setActivatedView(mCoachClientLayout, mPersonalDataLayout);
+                changeActiveLayout(mCoachClientLayout, mPersonalDataLayout);
             }
         }
 
@@ -92,6 +97,9 @@ public class RegistrationActivity extends AppCompatActivity implements DatePicke
     }
 
 
+    /**
+     * Il metodo permette di collegare gli elementi del layout ad oggetti
+     */
     private void bind(){
         mPersonalDataLayout = findViewById(R.id.layout_personal_data);
         mCoachClientLayout = findViewById(R.id.layout_coach_client);
@@ -115,9 +123,12 @@ public class RegistrationActivity extends AppCompatActivity implements DatePicke
 
     }
 
+    /**
+     * Il metodo permette di impostare tutti i listener necessari alla view
+     */
     private void setListeners(){
 
-        mFirstForwardButton.setOnClickListener(v -> setActivatedView(mCoachClientLayout, mPersonalDataLayout));
+        mFirstForwardButton.setOnClickListener(v -> changeActiveLayout(mCoachClientLayout, mPersonalDataLayout));
 
 
         //date picker
@@ -129,7 +140,7 @@ public class RegistrationActivity extends AppCompatActivity implements DatePicke
             return false;
         });
 
-        mBackButton.setOnClickListener(v -> setActivatedView(mPersonalDataLayout, mCoachClientLayout));
+        mBackButton.setOnClickListener(v -> changeActiveLayout(mPersonalDataLayout, mCoachClientLayout));
 
         mRadioRole.setOnCheckedChangeListener((group, checkedId) -> {
             boolean isClient = checkedId == R.id.radio_client;
@@ -162,14 +173,44 @@ public class RegistrationActivity extends AppCompatActivity implements DatePicke
                                 .add(R.id.register_anchor_point, coachRegistrationFragment).commit();
                     }
                 }
-
-
-
             });
+
+        mPasswordEdit.addTextChangedListener(new TextWatcher() {
+            @Override
+            public void beforeTextChanged(CharSequence s, int start, int count, int after) {
+            }
+
+            @Override
+            public void onTextChanged(CharSequence s, int start, int before, int count) {
+            }
+
+            @Override
+            public void afterTextChanged(Editable s) {
+                checkifMatching();
+            }
+        });
+
+        mConfirmPasswordEdit.addTextChangedListener(new TextWatcher() {
+            @Override
+            public void beforeTextChanged(CharSequence s, int start, int count, int after) {
+            }
+
+            @Override
+            public void onTextChanged(CharSequence s, int start, int before, int count) {
+            }
+
+            @Override
+            public void afterTextChanged(Editable s) {
+                checkifMatching();
+            }
+        });
 
         mRegisterButton.setOnClickListener(v -> fetchUserData());
     }
 
+    /**
+     * Il metodo permette di mostrare un date picker
+     */
     private void showDatePicker(){
         DatePickerDialog datePickerDialog = new DatePickerDialog(
                 this,
@@ -208,11 +249,21 @@ public class RegistrationActivity extends AppCompatActivity implements DatePicke
         }
     }
 
-    private void setActivatedView(RelativeLayout activeLayout, RelativeLayout disappearingLayout){
+    /**
+     * Il metodo permette di impostare il layout che deve essere visibile all'utente
+     *
+     * @param activeLayout layout da impostare come attivo
+     * @param disappearingLayout layout da impostare come invisibile
+     */
+    private void changeActiveLayout(ViewGroup activeLayout, ViewGroup disappearingLayout){
         disappearingLayout.setVisibility(View.GONE);
         activeLayout.setVisibility(View.VISIBLE);
     }
 
+    /**
+     * Il metodo permette di ottenere i dati inseriti nel form da parte dell'utente, controllando
+     * che essi siano corretti, in caso di errore mostra all'utente che vi è un errore in quel campo
+     */
     private void fetchUserData(){
         Map<String,String> userData = new HashMap<>();
         boolean isCorrect = true; //serve per capire che i dati inseriti siano corretti
@@ -258,8 +309,6 @@ public class RegistrationActivity extends AppCompatActivity implements DatePicke
             if(isCorrect)
                 isCorrect = false;
         }
-
-
         if(passwordCheck())
             userData.put(Keys.RegistrationKeys.PASSWORD, mPasswordEdit.getText().toString());
         else {
@@ -269,11 +318,19 @@ public class RegistrationActivity extends AppCompatActivity implements DatePicke
 
         if(isCorrect)
             fetchAddictionalData(userData);
-         else
-            setActivatedView(mPersonalDataLayout,mCoachClientLayout);
+         else {
+            changeActiveLayout(mPersonalDataLayout, mCoachClientLayout);
+            Toast.makeText(this, getResources().getString(R.string.error_general), Toast.LENGTH_LONG).show();
+        }
     }
 
 
+    /**
+     * Il metodo permette di ottenere i dati presenti nel secondo relative layout
+     * della View, quindi ruolo e dati specifici rispetto al ruolo.
+     *
+     * @param userData dati precedentemente ottenuti
+     */
     private void fetchAddictionalData(Map<String,String> userData){
         boolean isCorrect = true;
 
@@ -383,16 +440,18 @@ public class RegistrationActivity extends AppCompatActivity implements DatePicke
     @Override
     protected void onActivityResult(int requestCode, int resultCode, Intent data) {
         super.onActivityResult(requestCode, resultCode, data);
-
         if(requestCode == IMAGE_INTENT_CODE && resultCode == RESULT_OK && data != null && data.getData() != null){
+            Log.d("AOO", data.getData().toString());
             mUri = data.getData();
         }
     }
 
     @Override
     public void openFindFile() {
+
+
         Intent intent = new Intent(Intent.ACTION_GET_CONTENT);
-        intent.setType("file/*");
+        intent.setType("application/pdf, image/*");
         startActivityForResult(intent, IMAGE_INTENT_CODE);
     }
 
@@ -404,6 +463,7 @@ public class RegistrationActivity extends AppCompatActivity implements DatePicke
 
     @Override
     public void onSuccess(User user) {
+        ((WeFitApplication) getApplication()).setUser(user);
         if(user.role.equals(Keys.Role.CLIENT)){
             Intent intent = new Intent(this, MainActivityUser.class);
             startActivity(intent);
@@ -416,4 +476,29 @@ public class RegistrationActivity extends AppCompatActivity implements DatePicke
         //TODO aggiungi stringa
         Toast.makeText(this, "Failed to register a user", Toast.LENGTH_SHORT).show();
     }
+
+    public String getFileExtension(){
+        ContentResolver contentResolver = getContentResolver();
+        MimeTypeMap mime = MimeTypeMap.getSingleton();
+        return  mime.getExtensionFromMimeType(contentResolver.getType(mUri));
+    }
+
+    /**
+     * Il metodo permette di verificare che le due password inserite siano uguali
+     */
+    public void checkifMatching(){
+        String passwordText = mPasswordEdit.getText().toString();
+        String confirmPasswordText = mConfirmPasswordEdit.getText().toString();
+
+        if(!TextUtils.isEmpty(passwordText) && !TextUtils.isEmpty(confirmPasswordText)){
+            if(!passwordText.equals(confirmPasswordText)){
+                mPasswordEdit.setError(getResources().getString(R.string.error_password_not_matching));
+                mConfirmPasswordEdit.setError(getResources().getString(R.string.error_password_not_matching));
+            } else {
+                mPasswordEdit.setError(null);
+                mConfirmPasswordEdit.setError(null);
+            }
+        }
+    }
+
 }

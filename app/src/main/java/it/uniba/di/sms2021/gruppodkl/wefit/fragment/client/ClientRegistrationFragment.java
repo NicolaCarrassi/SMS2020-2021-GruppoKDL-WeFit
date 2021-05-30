@@ -1,9 +1,7 @@
-package it.uniba.di.sms2021.gruppodkl.wefit.fragment;
+package it.uniba.di.sms2021.gruppodkl.wefit.fragment.client;
 
-import android.content.Context;
 import android.os.Bundle;
 
-import androidx.annotation.NonNull;
 import androidx.fragment.app.Fragment;
 
 import android.text.TextUtils;
@@ -14,18 +12,15 @@ import android.view.ViewGroup;
 import android.widget.EditText;
 import android.widget.RadioButton;
 import android.widget.RadioGroup;
-import android.widget.TextView;
-import android.widget.Toast;
 
 import androidx.appcompat.widget.Toolbar;
 
-import java.text.ParseException;
 import java.util.HashMap;
 import java.util.Map;
 
 import it.uniba.di.sms2021.gruppodkl.wefit.R;
-import it.uniba.di.sms2021.gruppodkl.wefit.contract.fragment.ClientRegistrationFragmentContract;
-import it.uniba.di.sms2021.gruppodkl.wefit.presenter.fragment.ClientRegistrationFragmentPresenter;
+import it.uniba.di.sms2021.gruppodkl.wefit.contract.fragment.client.ClientRegistrationFragmentContract;
+import it.uniba.di.sms2021.gruppodkl.wefit.presenter.fragment.client.ClientRegistrationFragmentPresenter;
 import it.uniba.di.sms2021.gruppodkl.wefit.utility.Keys;
 
 
@@ -51,7 +46,7 @@ public class ClientRegistrationFragment extends Fragment implements ClientRegist
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
-        View layout =  inflater.inflate(R.layout.fragment_client_registration, container, false);
+        View layout =  inflater.inflate(R.layout.client_registration_fragment, container, false);
 
         mPresenter = new ClientRegistrationFragmentPresenter(this);
         bind(layout);

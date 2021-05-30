@@ -1,4 +1,4 @@
-package it.uniba.di.sms2021.gruppodkl.wefit.presenter.fragment;
+package it.uniba.di.sms2021.gruppodkl.wefit.presenter.fragment.client;
 
 import android.net.Uri;
 
@@ -10,15 +10,15 @@ import com.google.firebase.storage.StorageReference;
 import java.util.HashMap;
 import java.util.Map;
 
-import it.uniba.di.sms2021.gruppodkl.wefit.contract.fragment.ProfileFragmentContract;
+import it.uniba.di.sms2021.gruppodkl.wefit.contract.fragment.client.ClientProfileFragmentContract;
 import it.uniba.di.sms2021.gruppodkl.wefit.model.User;
 import it.uniba.di.sms2021.gruppodkl.wefit.utility.Keys;
 
-public class ProfileFragmentPresenter implements ProfileFragmentContract.Presenter {
+public class ClientMyProfilePresenter implements ClientProfileFragmentContract.Presenter {
 
-    private final ProfileFragmentContract.View mView;
+    private final ClientProfileFragmentContract.View mView;
 
-    public ProfileFragmentPresenter(ProfileFragmentContract.View view){
+    public ClientMyProfilePresenter(ClientProfileFragmentContract.View view){
         this.mView = view;
     }
 

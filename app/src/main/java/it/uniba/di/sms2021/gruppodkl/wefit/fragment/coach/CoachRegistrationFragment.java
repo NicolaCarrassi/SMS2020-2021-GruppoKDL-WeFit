@@ -1,8 +1,6 @@
-package it.uniba.di.sms2021.gruppodkl.wefit.fragment;
+package it.uniba.di.sms2021.gruppodkl.wefit.fragment.coach;
 
-import android.content.ContentResolver;
 import android.content.Context;
-import android.content.Intent;
 import android.net.Uri;
 import android.os.Bundle;
 
@@ -12,18 +10,14 @@ import androidx.fragment.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.webkit.MimeTypeMap;
 import android.widget.CheckBox;
 import android.widget.ImageView;
-
-import com.google.firebase.storage.FirebaseStorage;
-import com.google.firebase.storage.StorageReference;
 
 import java.util.HashMap;
 import java.util.Map;
 
 import it.uniba.di.sms2021.gruppodkl.wefit.R;
-import it.uniba.di.sms2021.gruppodkl.wefit.contract.fragment.CoachRegistrationFragmentContract;
+import it.uniba.di.sms2021.gruppodkl.wefit.contract.fragment.coach.CoachRegistrationFragmentContract;
 import it.uniba.di.sms2021.gruppodkl.wefit.utility.Keys;
 
 
@@ -69,7 +63,7 @@ public class CoachRegistrationFragment extends Fragment implements CoachRegistra
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
-        View layout =  inflater.inflate(R.layout.fragment_coach_registration, container, false);
+        View layout =  inflater.inflate(R.layout.coach_registration_fragment, container, false);
 
         bind(layout);
         setListeners();

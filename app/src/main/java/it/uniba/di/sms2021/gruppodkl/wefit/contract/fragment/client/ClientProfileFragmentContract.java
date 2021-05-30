@@ -1,4 +1,4 @@
-package it.uniba.di.sms2021.gruppodkl.wefit.contract.fragment;
+package it.uniba.di.sms2021.gruppodkl.wefit.contract.fragment.client;
 
 import android.net.Uri;
 
@@ -6,7 +6,7 @@ import java.util.Map;
 
 import it.uniba.di.sms2021.gruppodkl.wefit.model.User;
 
-public interface ProfileFragmentContract {
+public interface ClientProfileFragmentContract {
 
     interface View{
         String getFileExtension(Uri uri);

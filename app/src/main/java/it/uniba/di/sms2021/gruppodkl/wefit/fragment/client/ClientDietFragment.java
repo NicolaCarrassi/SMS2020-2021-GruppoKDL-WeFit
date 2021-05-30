@@ -1,4 +1,4 @@
-package it.uniba.di.sms2021.gruppodkl.wefit.fragment;
+package it.uniba.di.sms2021.gruppodkl.wefit.fragment.client;
 
 import android.os.Bundle;
 
@@ -12,11 +12,12 @@ import it.uniba.di.sms2021.gruppodkl.wefit.R;
 
 /**
  * A simple {@link Fragment} subclass.
- * Use the {@link ProgressFragment#newInstance} factory method to
+ * Use the {@link ClientDietFragment#newInstance} factory method to
  * create an instance of this fragment.
  */
-public class ProgressFragment extends Fragment {
-    public static final String TAG = HomeFragmentUser.class.getSimpleName();
+public class ClientDietFragment extends Fragment {
+
+    public static final String TAG = ClientDietFragment.class.getSimpleName();
 
     // TODO: Rename parameter arguments, choose names that match
     // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
@@ -27,7 +28,7 @@ public class ProgressFragment extends Fragment {
     private String mParam1;
     private String mParam2;
 
-    public ProgressFragment() {
+    public ClientDietFragment() {
         // Required empty public constructor
     }
 
@@ -37,11 +38,11 @@ public class ProgressFragment extends Fragment {
      *
      * @param param1 Parameter 1.
      * @param param2 Parameter 2.
-     * @return A new instance of fragment ProgressFragment.
+     * @return A new instance of fragment DietFragment.
      */
     // TODO: Rename and change types and number of parameters
-    public static ProgressFragment newInstance(String param1, String param2) {
-        ProgressFragment fragment = new ProgressFragment();
+    public static ClientDietFragment newInstance(String param1, String param2) {
+        ClientDietFragment fragment = new ClientDietFragment();
         Bundle args = new Bundle();
         args.putString(ARG_PARAM1, param1);
         args.putString(ARG_PARAM2, param2);
@@ -62,6 +63,6 @@ public class ProgressFragment extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_progress, container, false);
+        return inflater.inflate(R.layout.client_diet_fragment, container, false);
     }
 }

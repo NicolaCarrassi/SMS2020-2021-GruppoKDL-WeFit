@@ -1,4 +1,4 @@
-package it.uniba.di.sms2021.gruppodkl.wefit.fragment;
+package it.uniba.di.sms2021.gruppodkl.wefit.fragment.client;
 
 import android.os.Bundle;
 
@@ -12,12 +12,11 @@ import it.uniba.di.sms2021.gruppodkl.wefit.R;
 
 /**
  * A simple {@link Fragment} subclass.
- * Use the {@link TrainingFragment#newInstance} factory method to
+ * Use the {@link ClientMyProgressFragment#newInstance} factory method to
  * create an instance of this fragment.
  */
-public class TrainingFragment extends Fragment {
-
-    public static final String TAG = TrainingFragment.class.getSimpleName();
+public class ClientMyProgressFragment extends Fragment {
+    public static final String TAG = ClientHomeFragment.class.getSimpleName();
 
     // TODO: Rename parameter arguments, choose names that match
     // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
@@ -28,7 +27,7 @@ public class TrainingFragment extends Fragment {
     private String mParam1;
     private String mParam2;
 
-    public TrainingFragment() {
+    public ClientMyProgressFragment() {
         // Required empty public constructor
     }
 
@@ -38,11 +37,11 @@ public class TrainingFragment extends Fragment {
      *
      * @param param1 Parameter 1.
      * @param param2 Parameter 2.
-     * @return A new instance of fragment TrainingFragment.
+     * @return A new instance of fragment ProgressFragment.
      */
     // TODO: Rename and change types and number of parameters
-    public static TrainingFragment newInstance(String param1, String param2) {
-        TrainingFragment fragment = new TrainingFragment();
+    public static ClientMyProgressFragment newInstance(String param1, String param2) {
+        ClientMyProgressFragment fragment = new ClientMyProgressFragment();
         Bundle args = new Bundle();
         args.putString(ARG_PARAM1, param1);
         args.putString(ARG_PARAM2, param2);
@@ -63,6 +62,6 @@ public class TrainingFragment extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_training, container, false);
+        return inflater.inflate(R.layout.client_progress_frament, container, false);
     }
 }

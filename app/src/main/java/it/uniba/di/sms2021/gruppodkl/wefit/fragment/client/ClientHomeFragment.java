@@ -1,8 +1,6 @@
-package it.uniba.di.sms2021.gruppodkl.wefit.fragment;
+package it.uniba.di.sms2021.gruppodkl.wefit.fragment.client;
 
 import android.content.Context;
-import android.graphics.Bitmap;
-import android.graphics.BitmapFactory;
 import android.os.Bundle;
 
 import androidx.annotation.NonNull;
@@ -18,25 +16,19 @@ import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.TextView;
 
-import com.google.firebase.storage.FirebaseStorage;
-import com.google.firebase.storage.StorageReference;
-
-import java.io.File;
-import java.io.IOException;
-
 import it.uniba.di.sms2021.gruppodkl.wefit.R;
 import it.uniba.di.sms2021.gruppodkl.wefit.WeFitApplication;
 import it.uniba.di.sms2021.gruppodkl.wefit.model.Client;
 
 
-public class HomeFragmentUser extends Fragment {
+public class ClientHomeFragment extends Fragment {
 
-    public static final String TAG = HomeFragmentUser.class.getSimpleName();
+    public static final String TAG = ClientHomeFragment.class.getSimpleName();
 
 
     private Toolbar mToolbar;
     private MenuItem mDrawable;
-    private OpenDrawer mActivity;
+    private WeFitApplication.OpenDrawer mActivity;
     private Client mUser;
     private ImageView mImageView;
     private CardView mRecapTab;
@@ -44,15 +36,15 @@ public class HomeFragmentUser extends Fragment {
     private CardView mDietTab;
 
 
-    public HomeFragmentUser() {
+    public ClientHomeFragment() {
         //empty public constructor
     }
 
     @Override
     public void onAttach(@NonNull Context context) {
         super.onAttach(context);
-        if (context instanceof OpenDrawer){
-            mActivity = (OpenDrawer) context;
+        if (context instanceof WeFitApplication.OpenDrawer){
+            mActivity = (WeFitApplication.OpenDrawer) context;
         }
     }
 
@@ -66,7 +58,7 @@ public class HomeFragmentUser extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
-        final View layout =  inflater.inflate(R.layout.user_fragment_home, container, false);
+        final View layout =  inflater.inflate(R.layout.client_home_fragment, container, false);
 
         mUser = (Client) ((WeFitApplication) getActivity().getApplicationContext()).getUser();
 
@@ -77,10 +69,7 @@ public class HomeFragmentUser extends Fragment {
     }
 
     private void bind(View view) {
-        mToolbar = view.findViewById(R.id.toolbar);
-        mToolbar.inflateMenu(R.menu.toolbar_menu);
-        mToolbar.setNavigationIcon(R.drawable.back_24);
-        mDrawable = mToolbar.getMenu().findItem(R.id.action_menu);
+        ((WeFitApplication) getActivity().getApplicationContext()).setToolbar(view, mActivity);
         mImageView = view.findViewById(R.id.user_image);
         mRecapTab = view.findViewById(R.id.recap_tab);
         mTrainingTab = view.findViewById(R.id.training_tab);
@@ -98,46 +87,38 @@ public class HomeFragmentUser extends Fragment {
     }
 
     private void setListener(){
-        mDrawable.setOnMenuItemClickListener(item -> {
-            mActivity.openDrw();
-            return false;
-        });
-
         mImageView.setOnClickListener(v -> {
-            final ProfileFragment profileFragment = new ProfileFragment();
+            final ClientMyProfileFragment clientMyProfileFragment = new ClientMyProfileFragment();
 
             FragmentActivity activity = getActivity();
             if(activity != null)
-                activity.getSupportFragmentManager().beginTransaction().replace(R.id.anchor_point,profileFragment).commit();
+                activity.getSupportFragmentManager().beginTransaction().replace(R.id.anchor_point, clientMyProfileFragment).commit();
         });
 
         mRecapTab.setOnClickListener(v -> {
-            final ProgressFragment progressFragment = new ProgressFragment();
+            final ClientMyProgressFragment clientMyProgressFragment = new ClientMyProgressFragment();
 
             FragmentActivity activity = getActivity();
             if(activity != null)
-                activity.getSupportFragmentManager().beginTransaction().replace(R.id.anchor_point,progressFragment).commit();
+                activity.getSupportFragmentManager().beginTransaction().replace(R.id.anchor_point, clientMyProgressFragment).commit();
         });
 
         mTrainingTab.setOnClickListener(v -> {
-            final TrainingFragment trainingFragment = new TrainingFragment();
+            final ClientMyTrainingFragment clientMyTrainingFragment = new ClientMyTrainingFragment();
 
             FragmentActivity activity = getActivity();
             if(activity != null)
-                activity.getSupportFragmentManager().beginTransaction().replace(R.id.anchor_point,trainingFragment).commit();
+                activity.getSupportFragmentManager().beginTransaction().replace(R.id.anchor_point, clientMyTrainingFragment).commit();
         });
 
         mDietTab.setOnClickListener(v -> {
-            final DietFragment dietFragment = new DietFragment();
+            final ClientDietFragment clientDietFragment = new ClientDietFragment();
 
             FragmentActivity activity = getActivity();
             if(activity != null)
-                activity.getSupportFragmentManager().beginTransaction().replace(R.id.anchor_point,dietFragment).commit();
+                activity.getSupportFragmentManager().beginTransaction().replace(R.id.anchor_point, clientDietFragment).commit();
         });
     }
 
-    public interface OpenDrawer {
-        void openDrw();
-    }
 
 }

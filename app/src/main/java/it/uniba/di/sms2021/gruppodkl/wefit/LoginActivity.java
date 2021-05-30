@@ -1,7 +1,6 @@
 package it.uniba.di.sms2021.gruppodkl.wefit;
 
 import androidx.appcompat.app.AppCompatActivity;
-import androidx.appcompat.widget.Toolbar;
 
 import android.content.Intent;
 import android.os.Bundle;
@@ -16,10 +15,10 @@ import android.widget.Toast;
 
 import java.util.regex.Pattern;
 
+import it.uniba.di.sms2021.gruppodkl.wefit.client.ClientMainActivity;
 import it.uniba.di.sms2021.gruppodkl.wefit.contract.LoginActivityContract;
 import it.uniba.di.sms2021.gruppodkl.wefit.model.User;
 import it.uniba.di.sms2021.gruppodkl.wefit.presenter.LoginActivityPresenter;
-import it.uniba.di.sms2021.gruppodkl.wefit.utility.Keys;
 import it.uniba.di.sms2021.gruppodkl.wefit.utility.UtilityStrings;
 
 public class LoginActivity extends AppCompatActivity implements LoginActivityContract.View {
@@ -125,7 +124,7 @@ public class LoginActivity extends AppCompatActivity implements LoginActivityCon
     @Override
     public void onSuccess(User user) {
       ((WeFitApplication) getApplication()).setUser(user);
-      Intent intent = new Intent(this, MainActivityUser.class);
+      Intent intent = new Intent(this, ClientMainActivity.class);
       startActivity(intent);
       finish();
     }

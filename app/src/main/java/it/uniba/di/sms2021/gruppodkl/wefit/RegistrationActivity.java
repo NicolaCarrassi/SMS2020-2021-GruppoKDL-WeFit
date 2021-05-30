@@ -20,7 +20,6 @@ import android.widget.EditText;
 import android.widget.LinearLayout;
 import android.widget.RadioButton;
 import android.widget.RadioGroup;
-import android.widget.RelativeLayout;
 import android.widget.Toast;
 
 import androidx.annotation.NonNull;
@@ -35,10 +34,11 @@ import java.util.HashMap;
 import java.util.Map;
 import java.util.regex.Pattern;
 
+import it.uniba.di.sms2021.gruppodkl.wefit.client.ClientMainActivity;
 import it.uniba.di.sms2021.gruppodkl.wefit.contract.RegistrationActivityContract;
 import it.uniba.di.sms2021.gruppodkl.wefit.contract.fragment.RegistrationFragmentContract;
-import it.uniba.di.sms2021.gruppodkl.wefit.fragment.ClientRegistrationFragment;
-import it.uniba.di.sms2021.gruppodkl.wefit.fragment.CoachRegistrationFragment;
+import it.uniba.di.sms2021.gruppodkl.wefit.fragment.client.ClientRegistrationFragment;
+import it.uniba.di.sms2021.gruppodkl.wefit.fragment.coach.CoachRegistrationFragment;
 import it.uniba.di.sms2021.gruppodkl.wefit.model.User;
 import it.uniba.di.sms2021.gruppodkl.wefit.presenter.RegistrationActivityPresenter;
 import it.uniba.di.sms2021.gruppodkl.wefit.utility.Keys;
@@ -467,7 +467,7 @@ public class RegistrationActivity extends AppCompatActivity implements DatePicke
     public void onSuccess(User user) {
         ((WeFitApplication) getApplication()).setUser(user);
         if(user.role.equals(Keys.Role.CLIENT)){
-            Intent intent = new Intent(this, MainActivityUser.class);
+            Intent intent = new Intent(this, ClientMainActivity.class);
             startActivity(intent);
             finish();
         }

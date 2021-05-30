@@ -1,4 +1,4 @@
-package it.uniba.di.sms2021.gruppodkl.wefit;
+package it.uniba.di.sms2021.gruppodkl.wefit.client;
 
 
 import android.content.Intent;
@@ -15,17 +15,21 @@ import com.google.android.material.bottomnavigation.BottomNavigationView;
 import com.google.android.material.navigation.NavigationView;
 import com.google.firebase.auth.FirebaseAuth;
 
-import it.uniba.di.sms2021.gruppodkl.wefit.fragment.AddFragment;
-import it.uniba.di.sms2021.gruppodkl.wefit.fragment.CoachProfileFragment;
-import it.uniba.di.sms2021.gruppodkl.wefit.fragment.DietFragment;
-import it.uniba.di.sms2021.gruppodkl.wefit.fragment.HomeFragmentUser;
+import it.uniba.di.sms2021.gruppodkl.wefit.LoginActivity;
+import it.uniba.di.sms2021.gruppodkl.wefit.R;
+import it.uniba.di.sms2021.gruppodkl.wefit.SettingsActivity;
+import it.uniba.di.sms2021.gruppodkl.wefit.WeFitApplication;
+import it.uniba.di.sms2021.gruppodkl.wefit.fragment.client.ClientAddFragment;
+import it.uniba.di.sms2021.gruppodkl.wefit.fragment.client.ClientMyCoachFragment;
+import it.uniba.di.sms2021.gruppodkl.wefit.fragment.client.ClientDietFragment;
+import it.uniba.di.sms2021.gruppodkl.wefit.fragment.client.ClientHomeFragment;
 import it.uniba.di.sms2021.gruppodkl.wefit.fragment.NotificationsFragment;
-import it.uniba.di.sms2021.gruppodkl.wefit.fragment.ProfileFragment;
-import it.uniba.di.sms2021.gruppodkl.wefit.fragment.ProgressFragment;
+import it.uniba.di.sms2021.gruppodkl.wefit.fragment.client.ClientMyProfileFragment;
+import it.uniba.di.sms2021.gruppodkl.wefit.fragment.client.ClientMyProgressFragment;
 import it.uniba.di.sms2021.gruppodkl.wefit.fragment.TermsFragment;
-import it.uniba.di.sms2021.gruppodkl.wefit.fragment.TrainingFragment;
+import it.uniba.di.sms2021.gruppodkl.wefit.fragment.client.ClientMyTrainingFragment;
 
-public class MainActivityUser extends AppCompatActivity implements HomeFragmentUser.OpenDrawer, ProfileFragment.ProfileFragmentActivity {
+public class ClientMainActivity extends AppCompatActivity implements WeFitApplication.OpenDrawer, ClientMyProfileFragment.ProfileFragmentActivity {
 
 
 
@@ -39,8 +43,8 @@ public class MainActivityUser extends AppCompatActivity implements HomeFragmentU
         setContentView(R.layout.activity_main);
 
         if (savedInstanceState == null){
-            final HomeFragmentUser homeFragmentUser = new HomeFragmentUser();
-            getSupportFragmentManager().beginTransaction().replace(R.id.anchor_point, homeFragmentUser).commit();
+            final ClientHomeFragment clientHomeFragment = new ClientHomeFragment();
+            getSupportFragmentManager().beginTransaction().replace(R.id.anchor_point, clientHomeFragment).commit();
         }
 
         bind();
@@ -51,7 +55,7 @@ public class MainActivityUser extends AppCompatActivity implements HomeFragmentU
 
     private void bind() {
         mBottomNavigation = findViewById(R.id.bottom_navigation);
-        mBottomNavigation.inflateMenu(R.menu.bottom_navigation_menu_user);
+        mBottomNavigation.inflateMenu(R.menu.client_bottom_navigation_menu);
     }
 
     private void setListener(){
@@ -59,23 +63,23 @@ public class MainActivityUser extends AppCompatActivity implements HomeFragmentU
             boolean res;
             switch(item.getItemId()) {
                 case R.id.home:
-                    final HomeFragmentUser homeFragmentUser = new HomeFragmentUser();
-                    getSupportFragmentManager().beginTransaction().replace(R.id.anchor_point, homeFragmentUser, HomeFragmentUser.TAG).commit();
+                    final ClientHomeFragment clientHomeFragment = new ClientHomeFragment();
+                    getSupportFragmentManager().beginTransaction().replace(R.id.anchor_point, clientHomeFragment, ClientHomeFragment.TAG).commit();
                     res =  true;
                     break;
                 case R.id.training:
-                    final TrainingFragment trainingFragment = new TrainingFragment();
-                    getSupportFragmentManager().beginTransaction().replace(R.id.anchor_point,trainingFragment, TrainingFragment.TAG).commit();
+                    final ClientMyTrainingFragment clientMyTrainingFragment = new ClientMyTrainingFragment();
+                    getSupportFragmentManager().beginTransaction().replace(R.id.anchor_point, clientMyTrainingFragment, ClientMyTrainingFragment.TAG).commit();
                     res =  true;
                     break;
                 case R.id.add:
-                    final AddFragment addFragment = new AddFragment();
-                    addFragment.show(getSupportFragmentManager(),AddFragment.TAG);
+                    final ClientAddFragment clientAddFragment = new ClientAddFragment();
+                    clientAddFragment.show(getSupportFragmentManager(), ClientAddFragment.TAG);
                     res =  true;
                     break;
                 case R.id.diet:
-                    final DietFragment dietFragment = new DietFragment();
-                    getSupportFragmentManager().beginTransaction().replace(R.id.anchor_point,dietFragment, DietFragment.TAG).commit();
+                    final ClientDietFragment clientDietFragment = new ClientDietFragment();
+                    getSupportFragmentManager().beginTransaction().replace(R.id.anchor_point, clientDietFragment, ClientDietFragment.TAG).commit();
                     res =  true;
                     break;
                 default:
@@ -89,7 +93,7 @@ public class MainActivityUser extends AppCompatActivity implements HomeFragmentU
     private void setNavigationView(){
         mDrawer = findViewById(R.id.drawer_layout);
         mNavigationView = findViewById(R.id.navigation);
-        mNavigationView.inflateMenu(R.menu.menu_drawer_cliente);
+        mNavigationView.inflateMenu(R.menu.client_menu_drawer);
         mNavigationView.setNavigationItemSelectedListener(item -> {
             showFragment(item);
             Log.d("DRAWER","Selezionato nel drawer: " + item);
@@ -108,20 +112,20 @@ public class MainActivityUser extends AppCompatActivity implements HomeFragmentU
 
         switch(itemId){
             case R.id.profile_item:
-                nextFragment = new ProfileFragment();
-                tag = ProfileFragment.TAG;
+                nextFragment = new ClientMyProfileFragment();
+                tag = ClientMyProfileFragment.TAG;
                 break;
             case R.id.coach_item:
-                nextFragment = new CoachProfileFragment();
-                tag = CoachProfileFragment.TAG;
+                nextFragment = new ClientMyCoachFragment();
+                tag = ClientMyCoachFragment.TAG;
                 break;
             case R.id.notifications_item:
                 nextFragment = new NotificationsFragment();
                 tag = NotificationsFragment.TAG;
                 break;
             case R.id.progress_item:
-                nextFragment = new ProgressFragment();
-                tag = ProgressFragment.TAG;
+                nextFragment = new ClientMyProgressFragment();
+                tag = ClientMyProgressFragment.TAG;
                 break;
             case R.id.settings_item:
                 transactionNeeded = false;
@@ -165,9 +169,9 @@ public class MainActivityUser extends AppCompatActivity implements HomeFragmentU
         if(requestCode == IMAGE_RECEIVED_CODE && resultCode == RESULT_OK
         && data != null && data.getData() != null){
 
-            ProfileFragment profileFragment = (ProfileFragment) getSupportFragmentManager().findFragmentByTag(ProfileFragment.TAG);
-            if(profileFragment != null && profileFragment.isVisible()){
-                profileFragment.onImageReveived(data.getData());
+            ClientMyProfileFragment clientMyProfileFragment = (ClientMyProfileFragment) getSupportFragmentManager().findFragmentByTag(ClientMyProfileFragment.TAG);
+            if(clientMyProfileFragment != null && clientMyProfileFragment.isVisible()){
+                clientMyProfileFragment.onImageReveived(data.getData());
             }
         }
     }
@@ -178,7 +182,7 @@ public class MainActivityUser extends AppCompatActivity implements HomeFragmentU
     public void changeImage() {
         Intent intent = new Intent(Intent.ACTION_GET_CONTENT);
         intent.setType("image/*");
-        startActivityForResult(intent, ProfileFragment.ProfileFragmentActivity.IMAGE_RECEIVED_CODE);
+        startActivityForResult(intent, ClientMyProfileFragment.ProfileFragmentActivity.IMAGE_RECEIVED_CODE);
     }
 
 

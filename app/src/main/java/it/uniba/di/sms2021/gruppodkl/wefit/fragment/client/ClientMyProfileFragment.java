@@ -1,10 +1,8 @@
-package it.uniba.di.sms2021.gruppodkl.wefit.fragment;
+package it.uniba.di.sms2021.gruppodkl.wefit.fragment.client;
 
 import android.app.AlertDialog;
 import android.content.ContentResolver;
 import android.content.Context;
-import android.graphics.Bitmap;
-import android.graphics.BitmapFactory;
 import android.net.Uri;
 import android.os.Bundle;
 import android.text.TextUtils;
@@ -19,30 +17,26 @@ import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
+
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentActivity;
 
-import com.google.firebase.storage.FirebaseStorage;
-import com.google.firebase.storage.StorageReference;
-
-import java.io.File;
-import java.io.IOException;
 import java.util.HashMap;
 import java.util.Map;
 
 import it.uniba.di.sms2021.gruppodkl.wefit.R;
 import it.uniba.di.sms2021.gruppodkl.wefit.WeFitApplication;
-import it.uniba.di.sms2021.gruppodkl.wefit.contract.fragment.ProfileFragmentContract;
+import it.uniba.di.sms2021.gruppodkl.wefit.contract.fragment.client.ClientProfileFragmentContract;
 import it.uniba.di.sms2021.gruppodkl.wefit.model.Client;
-import it.uniba.di.sms2021.gruppodkl.wefit.presenter.fragment.ProfileFragmentPresenter;
+import it.uniba.di.sms2021.gruppodkl.wefit.presenter.fragment.client.ClientMyProfilePresenter;
 import it.uniba.di.sms2021.gruppodkl.wefit.utility.Keys;
 
 
-public class ProfileFragment extends Fragment implements ProfileFragmentContract.View {
+public class ClientMyProfileFragment extends Fragment implements ClientProfileFragmentContract.View {
 
-    public static final String TAG = ProfileFragment.class.getSimpleName();
+    public static final String TAG = ClientMyProfileFragment.class.getSimpleName();
 
     private static final int GENDER_ALERT_DIALOG = 0;
     private static final int OBJECTIVE_ALERT_DIALOG = 1;
@@ -54,14 +48,14 @@ public class ProfileFragment extends Fragment implements ProfileFragmentContract
      * Interfaccia che contiene tutti i metodi che l'activity in cui si desidera
      * utilizzare il fragment deve contenere
      */
-    public interface ProfileFragmentActivity{
+    public interface ProfileFragmentActivity extends WeFitApplication.OpenDrawer {
        void changeImage();
        int IMAGE_RECEIVED_CODE = 777;
     }
 
     private Client mUser;
     private ProfileFragmentActivity mActivity;
-    private ProfileFragmentContract.Presenter mPresenter;
+    private ClientProfileFragmentContract.Presenter mPresenter;
 
     private ImageView mProfilePicture;
     private ImageView mEditProfilePicture;
@@ -83,7 +77,7 @@ public class ProfileFragment extends Fragment implements ProfileFragmentContract
 
 
 
-    public ProfileFragment() {
+    public ClientMyProfileFragment() {
         // Required empty public constructor
     }
 
@@ -104,13 +98,13 @@ public class ProfileFragment extends Fragment implements ProfileFragmentContract
     @Nullable
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable  ViewGroup container, @Nullable Bundle savedInstanceState) {
-        View layout = inflater.inflate(R.layout.fragment_client_profile, container, false);
+        View layout = inflater.inflate(R.layout.client_my_profile_fragment, container, false);
 
         FragmentActivity activity = getActivity();
         if(activity != null)
             mUser = (Client) ((WeFitApplication) activity.getApplicationContext()).getUser();
 
-        mPresenter = new ProfileFragmentPresenter(this);
+        mPresenter = new ClientMyProfilePresenter(this);
 
         bind(layout);
         setListeners();
@@ -124,6 +118,9 @@ public class ProfileFragment extends Fragment implements ProfileFragmentContract
      * @param view La view da cui prendere i riferimenti
      */
     private void bind(View view){
+        ((WeFitApplication) getActivity().getApplicationContext()).setToolbar(view, (WeFitApplication.OpenDrawer)mActivity);
+
+
         mProfilePicture = view.findViewById(R.id.profile_image);
         mEditProfilePicture = view.findViewById(R.id.edit_pfp);
 

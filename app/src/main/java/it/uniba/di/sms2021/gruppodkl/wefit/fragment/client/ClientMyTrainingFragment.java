@@ -1,4 +1,4 @@
-package it.uniba.di.sms2021.gruppodkl.wefit.fragment;
+package it.uniba.di.sms2021.gruppodkl.wefit.fragment.client;
 
 import android.os.Bundle;
 
@@ -8,19 +8,16 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
-import com.google.android.material.bottomsheet.BottomSheetDialogFragment;
-
 import it.uniba.di.sms2021.gruppodkl.wefit.R;
 
 /**
  * A simple {@link Fragment} subclass.
- * Use the {@link AddFragment#newInstance} factory method to
+ * Use the {@link ClientMyTrainingFragment#newInstance} factory method to
  * create an instance of this fragment.
  */
-public class AddFragment extends BottomSheetDialogFragment {
+public class ClientMyTrainingFragment extends Fragment {
 
-    public static final String TAG = AddFragment.class.getSimpleName();
-
+    public static final String TAG = ClientMyTrainingFragment.class.getSimpleName();
 
     // TODO: Rename parameter arguments, choose names that match
     // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
@@ -31,7 +28,7 @@ public class AddFragment extends BottomSheetDialogFragment {
     private String mParam1;
     private String mParam2;
 
-    public AddFragment() {
+    public ClientMyTrainingFragment() {
         // Required empty public constructor
     }
 
@@ -41,11 +38,11 @@ public class AddFragment extends BottomSheetDialogFragment {
      *
      * @param param1 Parameter 1.
      * @param param2 Parameter 2.
-     * @return A new instance of fragment AddFragment.
+     * @return A new instance of fragment TrainingFragment.
      */
     // TODO: Rename and change types and number of parameters
-    public static AddFragment newInstance(String param1, String param2) {
-        AddFragment fragment = new AddFragment();
+    public static ClientMyTrainingFragment newInstance(String param1, String param2) {
+        ClientMyTrainingFragment fragment = new ClientMyTrainingFragment();
         Bundle args = new Bundle();
         args.putString(ARG_PARAM1, param1);
         args.putString(ARG_PARAM2, param2);
@@ -66,6 +63,6 @@ public class AddFragment extends BottomSheetDialogFragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_add, container, false);
+        return inflater.inflate(R.layout.client_training_fragment, container, false);
     }
 }

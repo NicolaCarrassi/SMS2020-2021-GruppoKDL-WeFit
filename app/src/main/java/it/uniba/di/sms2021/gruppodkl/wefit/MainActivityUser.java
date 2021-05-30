@@ -22,7 +22,6 @@ import it.uniba.di.sms2021.gruppodkl.wefit.fragment.HomeFragmentUser;
 import it.uniba.di.sms2021.gruppodkl.wefit.fragment.NotificationsFragment;
 import it.uniba.di.sms2021.gruppodkl.wefit.fragment.ProfileFragment;
 import it.uniba.di.sms2021.gruppodkl.wefit.fragment.ProgressFragment;
-import it.uniba.di.sms2021.gruppodkl.wefit.fragment.SettingsFragment;
 import it.uniba.di.sms2021.gruppodkl.wefit.fragment.TermsFragment;
 import it.uniba.di.sms2021.gruppodkl.wefit.fragment.TrainingFragment;
 
@@ -100,9 +99,11 @@ public class MainActivityUser extends AppCompatActivity implements HomeFragmentU
     }
 
     private void showFragment(final MenuItem item){
-        final int itemId = item.getItemId();
         Fragment nextFragment = new Fragment();
+        Intent intent;
         String tag = "SETTINGS";
+        final int itemId = item.getItemId();
+        boolean transactionNeeded = true;
 
 
         switch(itemId){
@@ -122,25 +123,30 @@ public class MainActivityUser extends AppCompatActivity implements HomeFragmentU
                 nextFragment = new ProgressFragment();
                 tag = ProgressFragment.TAG;
                 break;
-            case R.id.settings:
-                //TODO Sostituisci con activity
-                nextFragment = new SettingsFragment();
+            case R.id.settings_item:
+                transactionNeeded = false;
+                intent = new Intent(this, SettingsActivity.class);
+                startActivity(intent);
                 break;
+
             case R.id.terms_item:
                 nextFragment = new TermsFragment();
                 tag = TermsFragment.TAG;
                 break;
 
             case R.id.logout_item:
+                transactionNeeded = false;
                 FirebaseAuth.getInstance().signOut();
-                Intent intent = new Intent(this, LoginActivity.class);
+                intent = new Intent(this, LoginActivity.class);
                 startActivity(intent);
                 break;
 
             default:
                 throw new IllegalArgumentException("Nessun Fragment per item selezionato");
         }
-        getSupportFragmentManager().beginTransaction().replace(R.id.anchor_point, nextFragment, tag).commit();
+
+        if(transactionNeeded)
+            getSupportFragmentManager().beginTransaction().replace(R.id.anchor_point, nextFragment, tag).commit();
 
     }
 

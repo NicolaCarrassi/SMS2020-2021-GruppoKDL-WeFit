@@ -143,6 +143,7 @@ public class ClientMainActivity extends AppCompatActivity implements WeFitApplic
                 FirebaseAuth.getInstance().signOut();
                 intent = new Intent(this, LoginActivity.class);
                 startActivity(intent);
+                finish();
                 break;
 
             default:

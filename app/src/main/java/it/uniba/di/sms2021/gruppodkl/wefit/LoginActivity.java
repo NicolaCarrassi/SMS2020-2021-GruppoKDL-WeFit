@@ -1,12 +1,19 @@
 package it.uniba.di.sms2021.gruppodkl.wefit;
 
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.appcompat.app.AppCompatDelegate;
+import androidx.preference.PreferenceManager;
 
+import android.content.Context;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.text.InputType;
 import android.text.TextUtils;
+import android.util.Log;
 import android.util.Patterns;
+import android.view.KeyEvent;
+import android.view.inputmethod.EditorInfo;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageView;
@@ -43,7 +50,18 @@ public class LoginActivity extends AppCompatActivity implements LoginActivityCon
         this.bind();
         this.setListeners();
         this.mPresenter = new LoginActivityPresenter(this);
+
+        SharedPreferences sp = this.getSharedPreferences("settings", Context.MODE_PRIVATE);
+
+        if(sp != null && sp.contains(SettingsActivity.Keys.DARK_MODE_VALUE)) {
+            int darkMode = sp.getInt(SettingsActivity.Keys.DARK_MODE_VALUE,AppCompatDelegate.MODE_NIGHT_NO);
+            AppCompatDelegate.setDefaultNightMode(darkMode);
+        } else
+            AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_NO);
+
     }
+
+
 
     /**
      * Il metodo permette di effettuare il binding degli elementi della view
@@ -62,13 +80,7 @@ public class LoginActivity extends AppCompatActivity implements LoginActivityCon
      * Deve essere chiamato dopo il metodo bind()
      */
     private void setListeners(){
-        mLoginButton.setOnClickListener(v -> {
-            String emailText = mEmail.getText().toString().trim().toLowerCase();
-            String passwordText = mPassword.getText().toString().trim();
-            if(checkAttributes(emailText, passwordText)){
-                mPresenter.doLogin(emailText,passwordText);
-            }
-        });
+        mLoginButton.setOnClickListener(v ->doLogin());
 
         mForgotPassword.setOnClickListener(v -> mPresenter.forgotPassword(mEmail.getText().toString()));
 
@@ -79,6 +91,19 @@ public class LoginActivity extends AppCompatActivity implements LoginActivityCon
                 mPassword.setInputType(InputType.TYPE_TEXT_VARIATION_VISIBLE_PASSWORD);
             }else {
                 mPassword.setInputType(129);
+            }
+        });
+
+        mPassword.setOnEditorActionListener(new TextView.OnEditorActionListener() {
+            @Override
+            public boolean onEditorAction(TextView v, int actionId, KeyEvent event) {
+                boolean handled = false;
+
+                if(actionId == EditorInfo.IME_ACTION_GO){
+                    handled = true;
+                    doLogin();
+                }
+                return handled;
             }
         });
 
@@ -110,6 +135,16 @@ public class LoginActivity extends AppCompatActivity implements LoginActivityCon
         }
 
         return res;
+    }
+
+
+    private void doLogin(){
+        Log.d("AOO", "Sto qua");
+        String emailText = mEmail.getText().toString().trim().toLowerCase();
+        String passwordText = mPassword.getText().toString().trim();
+        if(!emailText.equals("") && !passwordText.equals(""))
+            if(checkAttributes(emailText, passwordText))
+                mPresenter.doLogin(emailText,passwordText);
     }
 
     /**

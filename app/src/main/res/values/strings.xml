@@ -109,4 +109,13 @@
     <string name="dark_mode">Dark mode</string>
     <string name="language_summary">Choose the language of the system</string>
 
+    <string name="feedback_tab_title">LAST FEEDBACK</string>
+    <string name="text_label_clients">Clients</string>
+    <string name="text_label_feedback">Feedbacks</string>
+
+    <string name="failed_to_register">Failed to register a user</string>
+
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment" translatable="false">Hello blank fragment</string>
+
 </resources>

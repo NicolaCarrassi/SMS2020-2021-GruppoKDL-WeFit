@@ -1,18 +1,11 @@
 package it.uniba.di.sms2021.gruppodkl.wefit.presenter;
 
-import android.graphics.Bitmap;
-import android.graphics.BitmapFactory;
-import android.util.Log;
 import android.util.Patterns;
 
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.firestore.DocumentReference;
 import com.google.firebase.firestore.FirebaseFirestore;
-import com.google.firebase.storage.FirebaseStorage;
-import com.google.firebase.storage.StorageReference;
 
-import java.io.File;
-import java.io.IOException;
 
 import it.uniba.di.sms2021.gruppodkl.wefit.contract.LoginActivityContract;
 import it.uniba.di.sms2021.gruppodkl.wefit.model.Client;

@@ -16,6 +16,7 @@ import com.google.firebase.auth.FirebaseAuth;
 import java.lang.ref.WeakReference;
 
 import it.uniba.di.sms2021.gruppodkl.wefit.client.ClientMainActivity;
+import it.uniba.di.sms2021.gruppodkl.wefit.coach.CoachMainActivity;
 import it.uniba.di.sms2021.gruppodkl.wefit.contract.SplashActivityContract;
 import it.uniba.di.sms2021.gruppodkl.wefit.model.Client;
 import it.uniba.di.sms2021.gruppodkl.wefit.model.User;
@@ -92,6 +93,10 @@ public class SplashActivity extends AppCompatActivity  implements SplashActivity
         mHandler.removeCallbacksAndMessages(null);
     }
 
+    /**
+     * Il metodo permette di passare alla schermata successiva dopo
+     * il tempo di attesa
+     */
     private void goAhead(){
         final Intent intent;
         if(FirebaseAuth.getInstance().getCurrentUser() != null)
@@ -105,23 +110,28 @@ public class SplashActivity extends AppCompatActivity  implements SplashActivity
 
     @Override
     public void onSuccess(User user) {
-        Intent intent = null;
+        Intent intent;
 
         ((WeFitApplication) getApplication()).setUser(user);
 
         if(user instanceof Client)
             intent = new Intent(this, ClientMainActivity.class);
-        //TODO Aggiungi caso coach
+        else
+            intent = new Intent(this, CoachMainActivity.class);
 
-        if(intent != null) {
-            startActivity(intent);
-            finish();
-        }
+
+        startActivity(intent);
+        finish();
     }
 
     private static class UiHandler extends Handler{
         private final WeakReference<SplashActivity> activityRef;
 
+        /**
+         * Costruttore della classe
+         *
+         * @param activityRef riferimento all'activity cui è collegto
+         */
         public UiHandler(final SplashActivity activityRef){
             this.activityRef = new WeakReference<>(activityRef);
         }

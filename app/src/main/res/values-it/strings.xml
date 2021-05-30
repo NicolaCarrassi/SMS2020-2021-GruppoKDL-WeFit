@@ -103,4 +103,10 @@
     <string name="dark_mode">Modalità scura</string>
     <string name="language_summary">Scegli la lingua di sistema</string>
 
+    <string name="feedback_tab_title">ULTIMO FEEDBACK</string>
+    <string name="text_label_clients">Clienti</string>
+    <string name="text_label_feedback">Feedbacks</string>
+
+    <string name="failed_to_register">Errore nella registrazione dell\'utente</string>
+
 </resources>

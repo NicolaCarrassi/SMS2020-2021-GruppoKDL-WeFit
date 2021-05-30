@@ -11,9 +11,14 @@ import it.uniba.di.sms2021.gruppodkl.wefit.utility.Keys;
 
 public class SplashActivityPresenter implements SplashActivityContract.Presenter {
 
-    private SplashActivityContract.View mView;
+    private final SplashActivityContract.View mView;
     private User mUser;
 
+    /**
+     * Costruttore della classe
+     *
+     * @param view View che implementa il contract
+     */
     public SplashActivityPresenter(SplashActivityContract.View view){
         this.mView = view;
     }
@@ -22,7 +27,6 @@ public class SplashActivityPresenter implements SplashActivityContract.Presenter
     @Override
     public void fetchUserData(String email) {
         DocumentReference usersRef = FirebaseFirestore.getInstance().collection(Keys.Collections.USERS).document(email);
-
         usersRef.get()
                 .addOnSuccessListener(documentSnapshot -> {
                     if(documentSnapshot.exists()){

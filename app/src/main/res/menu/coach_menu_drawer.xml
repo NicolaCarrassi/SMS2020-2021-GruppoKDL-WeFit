@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    tools:context=".client.ClientMainActivity">
+
+    <group android:id="@+id/coach">
+        <item
+            android:id="@+id/profile_item"
+            android:checkable="true"
+            android:icon="@drawable/profile_icon"
+            android:orderInCategory="100"
+            android:title="@string/my_profile_drawer"
+            app:showAsAction="ifRoom"/>
+
+        <item
+            android:id="@+id/notifications_item"
+            android:checkable="true"
+            android:icon="@drawable/notifications_icon"
+            android:orderInCategory="100"
+            android:title="@string/notifications_drawer"
+            app:showAsAction="ifRoom"/>
+
+    </group>
+
+    <group android:id="@+id/settings">
+        <item
+            android:id="@+id/settings_item"
+            android:checkable="true"
+            android:icon="@drawable/settings_icon"
+            android:orderInCategory="100"
+            android:title="@string/settings_drawer"
+            app:showAsAction="never"/>
+        <item
+            android:id="@+id/terms_item"
+            android:checkable="true"
+            android:icon="@drawable/terms_icon"
+            android:orderInCategory="100"
+            android:title="@string/terms_drawer"
+            app:showAsAction="never"/>
+    </group>
+
+    <group android:id="@+id/logout">
+        <item
+            android:id="@+id/logout_item"
+            android:checkable="true"
+            android:icon="@drawable/logout_logo"
+            android:orderInCategory="100"
+            android:title="@string/logout_drawer"
+            app:showAsAction="never"/>
+    </group>
+</menu>

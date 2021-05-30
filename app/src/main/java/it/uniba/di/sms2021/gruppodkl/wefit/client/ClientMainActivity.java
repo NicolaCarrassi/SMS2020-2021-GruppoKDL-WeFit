@@ -30,9 +30,7 @@ import it.uniba.di.sms2021.gruppodkl.wefit.fragment.client.ClientMyProgressFragm
 import it.uniba.di.sms2021.gruppodkl.wefit.fragment.TermsFragment;
 import it.uniba.di.sms2021.gruppodkl.wefit.fragment.client.ClientMyTrainingFragment;
 
-public class ClientMainActivity extends AppCompatActivity implements WeFitApplication.OpenDrawer, ClientMyProfileFragment.ProfileFragmentActivity {
-
-
+public class ClientMainActivity extends AppCompatActivity implements WeFitApplication.CallbackOperations, ClientMyProfileFragment.ProfileFragmentActivity {
 
     private BottomNavigationView mBottomNavigation;
     private NavigationView mNavigationView;
@@ -54,11 +52,20 @@ public class ClientMainActivity extends AppCompatActivity implements WeFitApplic
 
     }
 
+    /**
+     * Il metodo permette di associare gli elementi della view
+     * ad oggetti
+     */
     private void bind() {
         mBottomNavigation = findViewById(R.id.bottom_navigation);
         mBottomNavigation.inflateMenu(R.menu.client_bottom_navigation_menu);
     }
 
+
+    /**
+     * Il metodo permette di settare i listeners collegati
+     * ai vari eventi
+     */
     private void setListener(){
         mBottomNavigation.setOnNavigationItemSelectedListener(item -> {
             boolean res;

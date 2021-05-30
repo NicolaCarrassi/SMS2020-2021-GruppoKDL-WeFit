@@ -10,22 +10,49 @@ import it.uniba.di.sms2021.gruppodkl.wefit.model.User;
 
 public class WeFitApplication extends Application {
 
-    public interface OpenDrawer{
+    public interface CallbackOperations{
+        /**
+         * Il metodo permette di aprire il drawer
+         */
         void openDrw();
+
+        /**
+         * Il metodo permette di tornare indietro
+         */
         void goBack();
     }
 
+    /**
+     * Utente autenticato
+     */
     private User user;
 
+    /**
+     * Il metodo permette di restituire l'istanza dell'utente autenticato
+     *
+     * @return User utente autenticato
+     */
     public User getUser() {
         return user;
     }
 
+    /**
+     * Il metodo permette di impostare l'utente autenticato
+     *
+     * @param user utente autenticato
+     */
     public void setUser(User user) {
         this.user = user;
     }
 
-    public void setToolbar(View view, OpenDrawer activity){
+    /**
+     * Il metodo permette di impostare la toolbar associata alla view
+     * La toolbar deve avere necessariamente id toolbar
+     *
+     * @param view view che include la toolbar
+     * @param activity activity utilizzata per l'impostazione dei metodi di Callback
+     */
+    public void setToolbar(View view, CallbackOperations activity){
         Toolbar mToolbar = view.findViewById(R.id.toolbar);
         mToolbar.inflateMenu(R.menu.toolbar_menu);
         mToolbar.setNavigationIcon(R.drawable.back_24);
@@ -36,12 +63,7 @@ public class WeFitApplication extends Application {
             return false;
         });
 
-        mToolbar.setNavigationOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                activity.goBack();
-            }
-        });
+        mToolbar.setNavigationOnClickListener(v -> activity.goBack());
     }
 
 }

@@ -4,13 +4,11 @@ import android.content.Context;
 import android.os.Bundle;
 
 import androidx.annotation.NonNull;
-import androidx.appcompat.widget.Toolbar;
 import androidx.cardview.widget.CardView;
 import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentActivity;
 
 import android.view.LayoutInflater;
-import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
@@ -26,9 +24,8 @@ public class ClientHomeFragment extends Fragment {
     public static final String TAG = ClientHomeFragment.class.getSimpleName();
 
 
-    private Toolbar mToolbar;
-    private MenuItem mDrawable;
-    private WeFitApplication.OpenDrawer mActivity;
+
+    private WeFitApplication.CallbackOperations mActivity;
     private Client mUser;
     private ImageView mImageView;
     private CardView mRecapTab;
@@ -43,8 +40,8 @@ public class ClientHomeFragment extends Fragment {
     @Override
     public void onAttach(@NonNull Context context) {
         super.onAttach(context);
-        if (context instanceof WeFitApplication.OpenDrawer){
-            mActivity = (WeFitApplication.OpenDrawer) context;
+        if (context instanceof WeFitApplication.CallbackOperations){
+            mActivity = (WeFitApplication.CallbackOperations) context;
         }
     }
 

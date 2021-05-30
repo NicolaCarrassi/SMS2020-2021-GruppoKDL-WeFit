@@ -23,7 +23,9 @@ import android.widget.Toast;
 import java.util.regex.Pattern;
 
 import it.uniba.di.sms2021.gruppodkl.wefit.client.ClientMainActivity;
+import it.uniba.di.sms2021.gruppodkl.wefit.coach.CoachMainActivity;
 import it.uniba.di.sms2021.gruppodkl.wefit.contract.LoginActivityContract;
+import it.uniba.di.sms2021.gruppodkl.wefit.model.Client;
 import it.uniba.di.sms2021.gruppodkl.wefit.model.User;
 import it.uniba.di.sms2021.gruppodkl.wefit.presenter.LoginActivityPresenter;
 import it.uniba.di.sms2021.gruppodkl.wefit.utility.UtilityStrings;
@@ -94,17 +96,14 @@ public class LoginActivity extends AppCompatActivity implements LoginActivityCon
             }
         });
 
-        mPassword.setOnEditorActionListener(new TextView.OnEditorActionListener() {
-            @Override
-            public boolean onEditorAction(TextView v, int actionId, KeyEvent event) {
-                boolean handled = false;
+        mPassword.setOnEditorActionListener((v, actionId, event) -> {
+            boolean handled = false;
 
-                if(actionId == EditorInfo.IME_ACTION_GO){
-                    handled = true;
-                    doLogin();
-                }
-                return handled;
+            if(actionId == EditorInfo.IME_ACTION_GO){
+                handled = true;
+                doLogin();
             }
+            return handled;
         });
 
     }
@@ -138,6 +137,9 @@ public class LoginActivity extends AppCompatActivity implements LoginActivityCon
     }
 
 
+    /**
+     * Il metodo permette di effettuare il login
+     */
     private void doLogin(){
         mLoginButton.setClickable(false);
         Log.d("AOO", "Sto qua");
@@ -163,10 +165,18 @@ public class LoginActivity extends AppCompatActivity implements LoginActivityCon
 
     @Override
     public void onSuccess(User user) {
-      ((WeFitApplication) getApplication()).setUser(user);
-      Intent intent = new Intent(this, ClientMainActivity.class);
-      startActivity(intent);
-      finish();
+        Intent intent;
+
+        ((WeFitApplication) getApplication()).setUser(user);
+
+
+        if(user instanceof Client)
+            intent = new Intent(this, ClientMainActivity.class);
+        else
+            intent = new Intent(this, CoachMainActivity.class);
+
+        startActivity(intent);
+        finish();
     }
 
     @Override

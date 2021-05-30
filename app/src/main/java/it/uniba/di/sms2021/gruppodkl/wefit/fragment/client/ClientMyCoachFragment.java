@@ -22,13 +22,13 @@ public class ClientMyCoachFragment extends Fragment {
 
     private Toolbar mToolbar;
     private MenuItem mDrawable;
-    private WeFitApplication.OpenDrawer mActivity;
+    private WeFitApplication.CallbackOperations mActivity;
 
     @Override
     public void onAttach(@NonNull Context context) {
         super.onAttach(context);
-        if (context instanceof WeFitApplication.OpenDrawer){
-            mActivity = (WeFitApplication.OpenDrawer) context;
+        if (context instanceof WeFitApplication.CallbackOperations){
+            mActivity = (WeFitApplication.CallbackOperations) context;
         }
     }
 

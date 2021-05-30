@@ -1,13 +1,23 @@
 <?xml version="1.0" encoding="utf-8"?>
 <menu xmlns:android="http://schemas.android.com/apk/res/android">
+
     <item
-        android:id="@+id/page_1"
+        android:id="@+id/clients"
+        android:enabled="true"
+        android:icon="@drawable/people_icon"
+        android:title="@string/text_label_clients"/>
+
+    <item
+        android:id="@+id/home"
         android:enabled="true"
         android:icon="@drawable/home_24"
         android:title="@string/text_label_home"/>
+
     <item
-        android:id="@+id/page_3"
+        android:id="@+id/feedbacks"
         android:enabled="true"
-        android:icon="@drawable/add_box_24"
-        android:title="@string/text_label_add"/>
+        android:icon="@drawable/star_icon"
+        android:title="@string/text_label_feedback"/>
+
+
 </menu>

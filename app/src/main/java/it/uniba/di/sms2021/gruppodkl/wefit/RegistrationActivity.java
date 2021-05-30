@@ -40,10 +40,12 @@ import java.util.Map;
 import java.util.regex.Pattern;
 
 import it.uniba.di.sms2021.gruppodkl.wefit.client.ClientMainActivity;
+import it.uniba.di.sms2021.gruppodkl.wefit.coach.CoachMainActivity;
 import it.uniba.di.sms2021.gruppodkl.wefit.contract.RegistrationActivityContract;
 import it.uniba.di.sms2021.gruppodkl.wefit.contract.fragment.RegistrationFragmentContract;
 import it.uniba.di.sms2021.gruppodkl.wefit.fragment.client.ClientRegistrationFragment;
 import it.uniba.di.sms2021.gruppodkl.wefit.fragment.coach.CoachRegistrationFragment;
+import it.uniba.di.sms2021.gruppodkl.wefit.model.Client;
 import it.uniba.di.sms2021.gruppodkl.wefit.model.User;
 import it.uniba.di.sms2021.gruppodkl.wefit.presenter.RegistrationActivityPresenter;
 import it.uniba.di.sms2021.gruppodkl.wefit.utility.Keys;
@@ -511,19 +513,21 @@ public class RegistrationActivity extends AppCompatActivity implements DatePicke
 
     @Override
     public void onSuccess(User user) {
-        ((WeFitApplication) getApplication()).setUser(user);
-        if(user.role.equals(Keys.Role.CLIENT)){
-            Intent intent = new Intent(this, ClientMainActivity.class);
-            startActivity(intent);
-            finish();
-        }
+        Intent intent;
 
+        ((WeFitApplication) getApplication()).setUser(user);
+        if(user instanceof Client)
+            intent = new Intent(this, ClientMainActivity.class);
+        else
+            intent = new Intent(this, CoachMainActivity.class);
+
+        startActivity(intent);
+        finish();
     }
 
     @Override
     public void onFailure() {
-        //TODO aggiungi stringa
-        Toast.makeText(this, "Failed to register a user", Toast.LENGTH_SHORT).show();
+        Toast.makeText(this, getResources().getString(R.string.failed_to_register), Toast.LENGTH_SHORT).show();
     }
 
     public String getFileExtension(){

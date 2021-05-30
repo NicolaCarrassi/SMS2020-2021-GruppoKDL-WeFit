@@ -48,7 +48,7 @@ public class ClientMyProfileFragment extends Fragment implements ClientProfileFr
      * Interfaccia che contiene tutti i metodi che l'activity in cui si desidera
      * utilizzare il fragment deve contenere
      */
-    public interface ProfileFragmentActivity extends WeFitApplication.OpenDrawer {
+    public interface ProfileFragmentActivity extends WeFitApplication.CallbackOperations {
        void changeImage();
        int IMAGE_RECEIVED_CODE = 777;
     }
@@ -118,7 +118,7 @@ public class ClientMyProfileFragment extends Fragment implements ClientProfileFr
      * @param view La view da cui prendere i riferimenti
      */
     private void bind(View view){
-        ((WeFitApplication) getActivity().getApplicationContext()).setToolbar(view, (WeFitApplication.OpenDrawer)mActivity);
+        ((WeFitApplication) getActivity().getApplicationContext()).setToolbar(view, mActivity);
 
 
         mProfilePicture = view.findViewById(R.id.profile_image);

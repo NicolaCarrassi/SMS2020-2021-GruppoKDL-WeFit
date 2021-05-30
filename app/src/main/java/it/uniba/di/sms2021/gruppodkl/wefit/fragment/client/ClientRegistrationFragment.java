@@ -5,7 +5,6 @@ import android.os.Bundle;
 import androidx.fragment.app.Fragment;
 
 import android.text.TextUtils;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -13,25 +12,21 @@ import android.widget.EditText;
 import android.widget.RadioButton;
 import android.widget.RadioGroup;
 
-import androidx.appcompat.widget.Toolbar;
 
 import java.util.HashMap;
 import java.util.Map;
 
 import it.uniba.di.sms2021.gruppodkl.wefit.R;
-import it.uniba.di.sms2021.gruppodkl.wefit.WeFitApplication;
-import it.uniba.di.sms2021.gruppodkl.wefit.contract.fragment.client.ClientRegistrationFragmentContract;
-import it.uniba.di.sms2021.gruppodkl.wefit.presenter.fragment.client.ClientRegistrationFragmentPresenter;
+import it.uniba.di.sms2021.gruppodkl.wefit.contract.fragment.RegistrationFragmentContract;
 import it.uniba.di.sms2021.gruppodkl.wefit.utility.Keys;
 
 
-public class ClientRegistrationFragment extends Fragment implements ClientRegistrationFragmentContract.View {
+public class ClientRegistrationFragment extends Fragment implements RegistrationFragmentContract.View {
 
-    private ClientRegistrationFragmentContract.Presenter mPresenter;
     private EditText mHeightEdit;
     private EditText mWeightEdit;
     private RadioGroup mObjectiveRadio;
-    private WeFitApplication.OpenDrawer mActivity;
+
 
 
 
@@ -50,7 +45,6 @@ public class ClientRegistrationFragment extends Fragment implements ClientRegist
         // Inflate the layout for this fragment
         View layout =  inflater.inflate(R.layout.client_registration_fragment, container, false);
 
-        mPresenter = new ClientRegistrationFragmentPresenter(this);
         bind(layout);
 
         return layout;
@@ -64,9 +58,6 @@ public class ClientRegistrationFragment extends Fragment implements ClientRegist
         mObjectiveRadio = layout.findViewById(R.id.radio_objective);
     }
 
-    public ClientRegistrationFragmentContract.Presenter getPresenter(){
-        return mPresenter;
-    }
 
     @Override
     public boolean areCorrect() {

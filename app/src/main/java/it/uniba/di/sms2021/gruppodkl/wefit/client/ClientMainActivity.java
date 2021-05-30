@@ -1,6 +1,7 @@
 package it.uniba.di.sms2021.gruppodkl.wefit.client;
 
 
+import android.app.FragmentManager;
 import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
@@ -44,7 +45,7 @@ public class ClientMainActivity extends AppCompatActivity implements WeFitApplic
 
         if (savedInstanceState == null){
             final ClientHomeFragment clientHomeFragment = new ClientHomeFragment();
-            getSupportFragmentManager().beginTransaction().replace(R.id.anchor_point, clientHomeFragment).commit();
+            getSupportFragmentManager().beginTransaction().add(R.id.anchor_point, clientHomeFragment).addToBackStack("homedefault").commit();
         }
 
         bind();
@@ -64,12 +65,12 @@ public class ClientMainActivity extends AppCompatActivity implements WeFitApplic
             switch(item.getItemId()) {
                 case R.id.home:
                     final ClientHomeFragment clientHomeFragment = new ClientHomeFragment();
-                    getSupportFragmentManager().beginTransaction().replace(R.id.anchor_point, clientHomeFragment, ClientHomeFragment.TAG).commit();
+                    getSupportFragmentManager().beginTransaction().replace(R.id.anchor_point, clientHomeFragment, ClientHomeFragment.TAG).addToBackStack(ClientHomeFragment.TAG).commit();
                     res =  true;
                     break;
                 case R.id.training:
                     final ClientMyTrainingFragment clientMyTrainingFragment = new ClientMyTrainingFragment();
-                    getSupportFragmentManager().beginTransaction().replace(R.id.anchor_point, clientMyTrainingFragment, ClientMyTrainingFragment.TAG).commit();
+                    getSupportFragmentManager().beginTransaction().replace(R.id.anchor_point, clientMyTrainingFragment, ClientMyTrainingFragment.TAG).addToBackStack(ClientMyTrainingFragment.TAG).commit();
                     res =  true;
                     break;
                 case R.id.add:
@@ -79,7 +80,7 @@ public class ClientMainActivity extends AppCompatActivity implements WeFitApplic
                     break;
                 case R.id.diet:
                     final ClientDietFragment clientDietFragment = new ClientDietFragment();
-                    getSupportFragmentManager().beginTransaction().replace(R.id.anchor_point, clientDietFragment, ClientDietFragment.TAG).commit();
+                    getSupportFragmentManager().beginTransaction().replace(R.id.anchor_point, clientDietFragment, ClientDietFragment.TAG).addToBackStack(ClientDietFragment.TAG).commit();
                     res =  true;
                     break;
                 default:
@@ -151,7 +152,7 @@ public class ClientMainActivity extends AppCompatActivity implements WeFitApplic
         }
 
         if(transactionNeeded)
-            getSupportFragmentManager().beginTransaction().replace(R.id.anchor_point, nextFragment, tag).commit();
+            getSupportFragmentManager().beginTransaction().replace(R.id.anchor_point, nextFragment, tag).addToBackStack(tag).commit();
 
     }
 
@@ -159,6 +160,21 @@ public class ClientMainActivity extends AppCompatActivity implements WeFitApplic
     @Override
     public void openDrw() {
         mDrawer.openDrawer(GravityCompat.END);
+    }
+
+    @Override
+    public void onBackPressed(){
+        FragmentManager fm = getFragmentManager();
+        if (fm.getBackStackEntryCount() > 0) {
+            fm.popBackStack();
+        } else {
+            super.onBackPressed();
+        }
+    }
+
+    @Override
+    public void goBack() {
+        onBackPressed();
     }
 
 

@@ -12,6 +12,7 @@ public class WeFitApplication extends Application {
 
     public interface OpenDrawer{
         void openDrw();
+        void goBack();
     }
 
     private User user;
@@ -29,9 +30,17 @@ public class WeFitApplication extends Application {
         mToolbar.inflateMenu(R.menu.toolbar_menu);
         mToolbar.setNavigationIcon(R.drawable.back_24);
         MenuItem mDrawable = mToolbar.getMenu().findItem(R.id.action_menu);
+
         mDrawable.setOnMenuItemClickListener(item -> {
             activity.openDrw();
             return false;
+        });
+
+        mToolbar.setNavigationOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                activity.goBack();
+            }
         });
     }
 

@@ -118,6 +118,8 @@ public class ClientHomeFragment extends Fragment {
             if(activity != null)
                 activity.getSupportFragmentManager().beginTransaction().replace(R.id.anchor_point, clientDietFragment).commit();
         });
+
+
     }
 
 

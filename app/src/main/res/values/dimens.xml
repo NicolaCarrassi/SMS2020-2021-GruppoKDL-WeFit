@@ -4,7 +4,9 @@
     <dimen name="width_edit_text">320dp</dimen>
     <dimen name="start_registration_margin">8dp</dimen>
     <dimen name="margin_horizontal">20dp</dimen>
+    <dimen name="font_size_custom_h1">30sp</dimen>
     <dimen name="font_size_custom_h2">26sp</dimen>
+    <dimen name="font_size_custom_p">20sp</dimen>
     <dimen name="font_size_card_title">24sp</dimen>
     <dimen name="font_size_card_text">22sp</dimen>
     <dimen name="splash_size">200dp</dimen>

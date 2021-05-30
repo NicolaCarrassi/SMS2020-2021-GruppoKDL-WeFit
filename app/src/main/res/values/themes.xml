@@ -46,11 +46,24 @@
 
 
     <!-- LISTA FONT -->
+    <!-- Custom h1 -->
+    <style name="custom_h1">
+        <item name="android:textColor">@color/blue</item>
+        <item name="android:textSize">@dimen/font_size_custom_h1</item>
+        <item name="android:textStyle">bold</item>
+        <item name="textAllCaps">true</item>
+
+    </style>
     <!-- Custom h2 -->
     <style name="custom_h2">
         <item name="android:textColor">@color/black</item>
         <item name="android:textSize">@dimen/font_size_custom_h2</item>
         <item name="android:textStyle">bold</item>
+    </style>
+    <!-- Custom p -->
+    <style name="custom_p">
+        <item name="android:textColor">@color/black</item>
+        <item name="android:textSize">@dimen/font_size_custom_p</item>
     </style>
     <!-- Card Title -->
     <style name="card_title">

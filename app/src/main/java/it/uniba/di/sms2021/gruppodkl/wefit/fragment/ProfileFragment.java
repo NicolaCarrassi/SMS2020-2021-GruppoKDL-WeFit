@@ -47,6 +47,7 @@ public class ProfileFragment extends Fragment implements ProfileFragmentContract
     private static final int GENDER_ALERT_DIALOG = 0;
     private static final int OBJECTIVE_ALERT_DIALOG = 1;
     private boolean mHasImageChanged = false;
+    private int dialogElementChosen;
 
 
     /**
@@ -127,28 +128,21 @@ public class ProfileFragment extends Fragment implements ProfileFragmentContract
         mEditProfilePicture = view.findViewById(R.id.edit_pfp);
 
         mFullNameEditText = view.findViewById(R.id.profile_name_edit_text);
-        mEditFullName= view.findViewById(R.id.edit_full_name);
+        mEditFullName= view.findViewById(R.id.profile_edit_name);
 
         mGenderEditText= view.findViewById(R.id.profile_gender_text);
         mEditGender= view.findViewById(R.id.edit_gender);
 
         mHeightEditText= view.findViewById(R.id.profile_height_edit);
-        mEditHeight= view.findViewById(R.id.edit_height);
+        mEditHeight= view.findViewById(R.id.profile_edit_height);
 
         mObjectiveEditText= view.findViewById(R.id.profile_objective_edit);
         mEditObjective= view.findViewById(R.id.edit_objective);
 
         if(mUser.image != null){
-            if(!mUser.isBitmapImageAvailable()) {
-                StorageReference storageRef = FirebaseStorage.getInstance().getReferenceFromUrl(mUser.image);
-                try {
-                    File localFile = File.createTempFile("images", "jpg");
-                    storageRef.getFile(localFile).addOnSuccessListener(taskSnapshot -> {
-                        Bitmap bitmap = BitmapFactory.decodeFile(localFile.getAbsolutePath());
-                        mUser.setImageBitmap(bitmap);
-                    });
-                } catch (IOException e) {}
-            }
+            if(!mUser.isBitmapImageAvailable())
+                mUser.createImageBitmap();
+
             mProfilePicture.setImageBitmap(mUser.getImageBitmap());
         }
 
@@ -158,7 +152,7 @@ public class ProfileFragment extends Fragment implements ProfileFragmentContract
         if(mUser.objective.equals(Keys.Objectives.LOSE_WEIGHT)){
             objective = getResources().getString(R.string.lose_weight_objective);
         } else {
-            if(mUser.objective.equals(Keys.Objectives.SHAPE_DEFINITION))
+            if(mUser.objective.equals(Keys.Objectives.FIT_OBJECTIVE))
                 objective = getResources().getString(R.string.fit_objective);
             else
                 objective = getResources().getString(R.string.gain_mass_objective);
@@ -178,37 +172,48 @@ public class ProfileFragment extends Fragment implements ProfileFragmentContract
         temp.setText(String.format("%.2f",mUser.weight));
 
         mUpdateButton = view.findViewById(R.id.btn_save_profile_update);
+
+        mFullNameEditText.setClickable(false);
+        mHeightEditText.setClickable(false);
     }
 
     /**
      * Il metodo permette di impostare tutti i listeners necessari
      */
     private void setListeners(){
-        mEditProfilePicture.setOnClickListener(v -> mActivity.changeImage());
+        mEditProfilePicture.setOnClickListener(v -> {
+            mActivity.changeImage();
+            checkIfButtonIsActivated();});
 
         mEditFullName.setOnClickListener(v -> {
-            makeButtonClickable(mFullNameEditText);
+            Log.d("AOO","cliccato");
+            makeEditTextFocused(mFullNameEditText);
             checkIfButtonIsActivated();
         });
 
         mEditHeight.setOnClickListener(v -> {
-            makeButtonClickable(mHeightEditText);
+            makeEditTextFocused(mHeightEditText);
             checkIfButtonIsActivated();
         });
 
         mEditGender.setOnClickListener(v ->{
-            showGenderDialog(GENDER_ALERT_DIALOG);
+            showUpdateDialog(GENDER_ALERT_DIALOG);
             checkIfButtonIsActivated();
         });
 
         mEditObjective.setOnClickListener(v ->{
-            showGenderDialog(OBJECTIVE_ALERT_DIALOG);
+            showUpdateDialog(OBJECTIVE_ALERT_DIALOG);
             checkIfButtonIsActivated();
         });
 
     }
 
-    private void makeButtonClickable(EditText editText) {
+    /**
+     * Il metodo permette di rendere cliccabile una EditText
+     *
+     * @param editText EditText di cui si vuol editare il valore
+     */
+    private void makeEditTextFocused(EditText editText) {
         if(!editText.isClickable()) {
             editText.setClickable(true);
             editText.setFocusable(true);
@@ -221,7 +226,9 @@ public class ProfileFragment extends Fragment implements ProfileFragmentContract
      * tasto per effettare l'update del profilo è attivo
      */
     private void checkIfButtonIsActivated(){
+        Log.d("AOO", "Stiamo qua");
         if(mUpdateButton.getVisibility() == View.INVISIBLE){
+            Log.d("AOO", "Cliccabile");
             mUpdateButton.setVisibility(View.VISIBLE);
             mUpdateButton.setFocusable(true);
              mUpdateButton.setClickable(true);
@@ -247,7 +254,12 @@ public class ProfileFragment extends Fragment implements ProfileFragmentContract
             somethingChanged = true;
         }
 
-        if(!TextUtils.isEmpty(gender) && !gender.equals(mUser.gender)){
+        if(gender.equals(getResources().getString(R.string.male)))
+            gender = Keys.Gender.MALE;
+        else
+            gender = Keys.Gender.FEMALE;
+
+        if(!gender.equals(mUser.gender)) {
             map.put(Client.ClientKeys.GENDER, gender);
             mUser.gender = gender;
             somethingChanged = true;
@@ -259,19 +271,33 @@ public class ProfileFragment extends Fragment implements ProfileFragmentContract
             somethingChanged = true;
         }
 
-        if(!TextUtils.isEmpty(objective) && !objective.equals(mUser.objective)){
+        if(objective.equals(getResources().getString(R.string.fit_objective)))
+            objective = Keys.Objectives.FIT_OBJECTIVE;
+        else
+            if(objective.equals(getResources().getString(R.string.gain_mass_objective)))
+                objective = Keys.Objectives.GAIN_MASS;
+            else
+                objective = Keys.Objectives.LOSE_WEIGHT;
+
+
+        if(!objective.equals(mUser.objective)){
             map.put(Client.ClientKeys.OBJECTIVE, objective);
             mUser.objective = objective;
             somethingChanged = true;
         }
 
-        if(somethingChanged)
+        if(somethingChanged) {
+            Log.d("AOO", "QUALCOSA è cambiato");
             mPresenter.updateUser(map, mUser);
-        else {
-            if(mHasImageChanged)
-                Toast.makeText(getContext(),getResources().getString(R.string.image_changed_string),Toast.LENGTH_SHORT).show();
-            else
-                Toast.makeText(getContext(),getResources().getString(R.string.nothing_to_update),Toast.LENGTH_SHORT).show();
+            Toast.makeText(getActivity(), getResources().getString(R.string.update_successful), Toast.LENGTH_SHORT).show();
+        }else {
+            if(mHasImageChanged) {
+                Log.d("AOO", "Solo immagine");
+                Toast.makeText(getActivity(), getResources().getString(R.string.image_changed_string), Toast.LENGTH_SHORT).show();
+            }else {
+                Log.d("AOO", "Tutto uguale");
+                Toast.makeText(getActivity(), getResources().getString(R.string.nothing_to_update), Toast.LENGTH_SHORT).show();
+            }
         }
 
         mHasImageChanged = false;
@@ -299,54 +325,59 @@ public class ProfileFragment extends Fragment implements ProfileFragmentContract
      *
      * @param type tipo di alert dialog da mostrare
      */
-    private void showGenderDialog(int type){
+    private void showUpdateDialog(int type){
 
         AlertDialog.Builder builder = new AlertDialog.Builder(getActivity());
 
          if(type == GENDER_ALERT_DIALOG){
+
+             //Alert dialog per il genere
+
              builder.setTitle(getResources().getString(R.string.gender));
              String[] genders = {getResources().getString(R.string.male), getResources().getString(R.string.female)};
-             int checkedItem = mUser.gender.equals(Keys.Gender.MALE) ? 0 : 1;
 
-             builder.setSingleChoiceItems(genders, checkedItem, (dialog, which) -> {});
+             dialogElementChosen = mGenderEditText.getText().toString().equals(getResources().getString(R.string.male)) ? 0 : 1;
+             builder.setSingleChoiceItems(genders, dialogElementChosen, (dialog, which) -> dialogElementChosen = which);
 
              builder.setPositiveButton(getResources().getString(R.string.confirm), (dialog, which) -> {
-                 if(which == 0)
-                     mGenderEditText.setText(Keys.Gender.MALE);
+                 if(dialogElementChosen == 0)
+                     mGenderEditText.setText(getResources().getString(R.string.male));
                  else
-                     mGenderEditText.setText(Keys.Gender.FEMALE);
+                     mGenderEditText.setText(getResources().getString(R.string.female));
              });
 
          } else {
+
+             //Alert dialog per l'obiettivo
+
              String[] objectives = {getResources().getString(R.string.fit_objective),
                      getResources().getString(R.string.gain_mass_objective), getResources().getString(R.string.lose_weight_objective)};
-             int checkedItem;
 
-             if(mUser.objective.equals(Keys.Objectives.SHAPE_DEFINITION)){
-                 checkedItem = 0;
+             // imposto il valore selezionato
+
+             if(mObjectiveEditText.getText().toString().equals(getResources().getString(R.string.fit_objective))){
+                 dialogElementChosen = 0;
              } else {
-                 if(mUser.objective.equals(Keys.Objectives.LOSE_WEIGHT)){
-                     checkedItem = 1;
+                 if(mObjectiveEditText.getText().toString().equals(getResources().getString(R.string.gain_mass_objective))){
+                     dialogElementChosen = 1;
                  }else {
-                     checkedItem =2;
+                     dialogElementChosen =2;
                  }
              }
 
-
-             builder.setSingleChoiceItems(objectives, checkedItem, (dialog, which) -> {});
+             builder.setSingleChoiceItems(objectives, dialogElementChosen, (dialog, which) -> dialogElementChosen = which);
 
              builder.setPositiveButton(getResources().getString(R.string.confirm), (dialog, which) -> {
-                 if(which == 0)
-                     mObjectiveEditText.setText(Keys.Objectives.SHAPE_DEFINITION);
+                 if(dialogElementChosen == 0)
+                     mObjectiveEditText.setText(getResources().getString(R.string.fit_objective));
                  else
-                     if(which == 1)
-                        mObjectiveEditText.setText(Keys.Objectives.LOSE_WEIGHT);
+                     if(dialogElementChosen == 1)
+                        mObjectiveEditText.setText(getResources().getString(R.string.gain_mass_objective));
                     else
-                        mObjectiveEditText.setText(Keys.Objectives.GAIN_MASS);
+                        mObjectiveEditText.setText(getResources().getString(R.string.lose_weight_objective));
              });
-
-
          }
+
         builder.setNegativeButton(getResources().getString(R.string.back_button), null);
         builder.create().show();
     }

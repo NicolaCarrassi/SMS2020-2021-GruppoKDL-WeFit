@@ -139,7 +139,7 @@ public class ClientRegistrationFragment extends Fragment implements ClientRegist
         int radioResult = mObjectiveRadio.getCheckedRadioButtonId();
 
         if(radioResult == R.id.fit_objective_radio)
-            addictionalData.put(Keys.ClientRegistrationKeys.OBJECTIVE, Keys.Objectives.SHAPE_DEFINITION);
+            addictionalData.put(Keys.ClientRegistrationKeys.OBJECTIVE, Keys.Objectives.FIT_OBJECTIVE);
 
         if(radioResult == R.id.lose_objective_radio)
             addictionalData.put(Keys.ClientRegistrationKeys.OBJECTIVE, Keys.Objectives.LOSE_WEIGHT);

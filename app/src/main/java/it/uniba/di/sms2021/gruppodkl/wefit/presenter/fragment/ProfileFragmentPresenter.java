@@ -25,6 +25,10 @@ public class ProfileFragmentPresenter implements ProfileFragmentContract.Present
     @Override
     public void saveImage(Uri uri, User user) {
 
+        if(user.image != null){
+            FirebaseStorage.getInstance().getReferenceFromUrl(user.image).delete();
+        }
+
         StorageReference fileRef = FirebaseStorage.getInstance().getReference(Keys.Collections.IMAGES)
                 .child(System.currentTimeMillis() + "." + mView.getFileExtension(uri));
 
@@ -46,6 +50,7 @@ public class ProfileFragmentPresenter implements ProfileFragmentContract.Present
                     FirebaseFirestore.getInstance().collection(Keys.Collections.USERS).document(user.email)
                             .update(map);
                     user.setImage(imageUri);
+                    user.createImageBitmap();
                 });
 
     }

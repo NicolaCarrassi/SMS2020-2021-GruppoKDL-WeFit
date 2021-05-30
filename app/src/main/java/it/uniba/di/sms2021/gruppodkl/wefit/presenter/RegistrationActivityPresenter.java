@@ -80,7 +80,7 @@ public class RegistrationActivityPresenter implements RegistrationActivityContra
         firstName = firstName.trim();
         firstName = firstName.substring(0,1).toUpperCase() + firstName.substring(1).toLowerCase();
         lastName = lastName.trim();
-        lastName = lastName.substring(0,1).toUpperCase() + firstName.substring(1).toLowerCase();
+        lastName = lastName.substring(0,1).toUpperCase() + lastName.substring(1).toLowerCase();
 
         String fullName = firstName + " " + lastName;
         String email = userData.get(Keys.RegistrationKeys.EMAIL);

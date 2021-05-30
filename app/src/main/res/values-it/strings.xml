@@ -89,10 +89,16 @@
     <string name="image_changed_string">Immagine modificata con successo</string>
     <string name="nothing_to_update">Non sono state effettuate modifiche</string>
 
-
-
-
-
-
+    <!-- ADD FRAGMENT STRING -->
+    <string name="add_meal">Registra Pasto</string>
+    <string name="add_weight">Registra Peso</string>
+    <string name="add_training">Registra Allenamento</string>
+    <!-- SETTINGS STRINGS -->
+    <string name="title_activity_settings">Impostazioni</string>
+    <string name="night_mode_on">Modalità notte attiva</string>
+    <string name="night_mode_off">Modalità notte non attiva</string>
+    <string name="language">Lingua di sistema</string>
+    <string name="dark_mode">Modalità scura</string>
+    <string name="language_summary">Scegli la lingua di sistema</string>
 
 </resources>

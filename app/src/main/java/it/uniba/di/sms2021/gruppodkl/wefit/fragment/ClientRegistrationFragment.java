@@ -7,6 +7,7 @@ import androidx.annotation.NonNull;
 import androidx.fragment.app.Fragment;
 
 import android.text.TextUtils;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -14,6 +15,9 @@ import android.widget.EditText;
 import android.widget.RadioButton;
 import android.widget.RadioGroup;
 import android.widget.TextView;
+import android.widget.Toast;
+
+import androidx.appcompat.widget.Toolbar;
 
 import java.text.ParseException;
 import java.util.HashMap;
@@ -27,12 +31,10 @@ import it.uniba.di.sms2021.gruppodkl.wefit.utility.Keys;
 
 public class ClientRegistrationFragment extends Fragment implements ClientRegistrationFragmentContract.View {
 
-
-
-   private ClientRegistrationFragmentContract.Presenter mPresenter;
-   private EditText mHeightEdit;
-   private EditText mWeightEdit;
-   private RadioGroup mObjectiveRadio;
+    private ClientRegistrationFragmentContract.Presenter mPresenter;
+    private EditText mHeightEdit;
+    private EditText mWeightEdit;
+    private RadioGroup mObjectiveRadio;
 
 
 
@@ -62,6 +64,16 @@ public class ClientRegistrationFragment extends Fragment implements ClientRegist
         mHeightEdit = layout.findViewById(R.id.height_edit_text);
         mWeightEdit = layout.findViewById(R.id.weight_edit_text);
         mObjectiveRadio = layout.findViewById(R.id.radio_objective);
+        Toolbar mToolbar = layout.findViewById(R.id.toolbar);
+        mToolbar.inflateMenu(R.menu.toolbar_menu);
+        mToolbar.setNavigationIcon(R.drawable.back_24);
+        mToolbar.setOnClickListener(new View.OnClickListener(){
+            @Override
+            public void onClick(View v) {
+                Log.d("GESU", "CLICCATO INDIETRO");
+            }
+        });
+
     }
 
     public ClientRegistrationFragmentContract.Presenter getPresenter(){

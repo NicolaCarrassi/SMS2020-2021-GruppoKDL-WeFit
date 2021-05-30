@@ -1,6 +1,7 @@
 package it.uniba.di.sms2021.gruppodkl.wefit;
 
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.appcompat.widget.Toolbar;
 
 import android.content.Intent;
 import android.os.Bundle;

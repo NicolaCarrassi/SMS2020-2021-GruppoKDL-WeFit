@@ -5,10 +5,7 @@
         android:layout_height="match_parent"
         android:orientation="vertical"
         tools:context=".LoginActivity"
-        android:background="@drawable/doodle1080p"
-        android:backgroundTint="@color/white_custom"
-        android:backgroundTintMode="screen">
-
+        style="@style/BackgroundCustom">
 
         <ImageView
             android:id="@+id/logo_image"

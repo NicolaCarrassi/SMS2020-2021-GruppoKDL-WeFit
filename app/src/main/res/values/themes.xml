@@ -34,7 +34,7 @@
 
     <!-- Back icon -->
     <style name="Toolbar.Button.Navigation.Tinted" parent="Widget.AppCompat.Toolbar.Button.Navigation">
-        <item name="tint">@color/white</item>
+        <item name="tint">@color/frost_blue</item>
     </style>
 
     <!-- Navigation bar divider -->

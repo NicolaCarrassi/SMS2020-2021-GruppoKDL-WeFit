@@ -139,12 +139,17 @@ public class LoginActivity extends AppCompatActivity implements LoginActivityCon
 
 
     private void doLogin(){
+        mLoginButton.setClickable(false);
         Log.d("AOO", "Sto qua");
         String emailText = mEmail.getText().toString().trim().toLowerCase();
         String passwordText = mPassword.getText().toString().trim();
-        if(!emailText.equals("") && !passwordText.equals(""))
-            if(checkAttributes(emailText, passwordText))
-                mPresenter.doLogin(emailText,passwordText);
+        if(!emailText.equals("") && !passwordText.equals("")) {
+            if (checkAttributes(emailText, passwordText)) {
+                mPresenter.doLogin(emailText, passwordText);
+            } else
+                mLoginButton.setClickable(true);
+        } else
+            mLoginButton.setClickable(true);
     }
 
     /**
@@ -166,6 +171,7 @@ public class LoginActivity extends AppCompatActivity implements LoginActivityCon
 
     @Override
     public void onFailure() {
+        mLoginButton.setClickable(true);
         Toast.makeText(this, "Nome utente o password errati", Toast.LENGTH_SHORT).show();
     }
 

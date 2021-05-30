@@ -36,9 +36,7 @@
     </LinearLayout>
 
 
-    <include layout="@layout/spacer_layout"
-        android:layout_height="wrap_content"
-        android:layout_width="wrap_content"/>
+
 
     <!--Prima schermata, dati personali -->
     <LinearLayout
@@ -46,7 +44,9 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:orientation="vertical"
-        android:visibility="gone">
+        android:visibility="visible"
+        android:layout_gravity="center_vertical"
+        android:gravity="center_vertical">
 
         <LinearLayout
             android:layout_width="match_parent"
@@ -188,13 +188,18 @@
     </LinearLayout>
 
     <!--> Seconda schermata con Cliente/Coach <-->
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
     <LinearLayout
         android:id="@+id/layout_coach_client"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:orientation="vertical"
-        android:visibility="visible"
+        android:visibility="gone"
         android:layout_marginTop="20dp">
+
+
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
@@ -265,7 +270,6 @@
             android:id="@+id/register_anchor_point"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginTop="15dp"
             android:orientation="vertical">
         </LinearLayout>
         <LinearLayout
@@ -279,7 +283,9 @@
                 android:text="@string/register_button"
                 android:theme="@style/ButtonCustom"
                 android:layout_gravity="center|bottom"
-                android:layout_marginVertical="10dp"/>
+                android:layout_marginTop="20dp"
+                android:layout_marginBottom="50dp"/>
         </LinearLayout>
     </LinearLayout>
+    </ScrollView>
 </LinearLayout>

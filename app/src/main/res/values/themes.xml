@@ -109,11 +109,13 @@
         <item name="android:backgroundTintMode">screen</item>
     </style>
 
+    <!-- Icon custom -->
     <style name="BackIconCustom" parent="Theme.AppCompat.Light.DarkActionBar">
         <item name="android:tint">?attr/colorPrimary</item>
         <item name="android:tintMode">multiply</item>
     </style>
 
+    <!-- Button custom-->
     <style name="ButtonCustom" parent="Widget.AppCompat.Button">
         <item name="android:background">@drawable/button_rounded_corners</item>
         <item name="android:textStyle">bold</item>

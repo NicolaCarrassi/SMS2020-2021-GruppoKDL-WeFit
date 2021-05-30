@@ -14,6 +14,8 @@ import android.view.MotionEvent;
 import android.view.View;
 import android.view.ViewGroup;
 import android.webkit.MimeTypeMap;
+import android.widget.AdapterView;
+import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.DatePicker;
 import android.widget.EditText;
@@ -21,6 +23,8 @@ import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.RadioButton;
 import android.widget.RadioGroup;
+import android.widget.Spinner;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import androidx.annotation.NonNull;
@@ -60,16 +64,15 @@ public class RegistrationActivity extends AppCompatActivity implements DatePicke
     private RegistrationActivityContract.Presenter mPresenter;
     private EditText mFirstNameEdit;
     private EditText mLastNameEdit;
-    private RadioGroup mRadioGender;
     private EditText mBirthDateEdit;
     private EditText mEmailEdit;
     private EditText mPasswordEdit;
     private EditText mConfirmPasswordEdit;
     private Button mFirstForwardButton;
+    private Spinner mSpinner;
 
     private LinearLayout mCoachClientLayout;
     private RadioGroup mRadioRole;
-    private Button mBackButton;
     private Button mRegisterButton;
     private ImageView mBackIcon;
 
@@ -96,6 +99,8 @@ public class RegistrationActivity extends AppCompatActivity implements DatePicke
             }
         }
 
+
+
         this.setListeners();
     }
 
@@ -107,10 +112,11 @@ public class RegistrationActivity extends AppCompatActivity implements DatePicke
         mPersonalDataLayout = findViewById(R.id.layout_personal_data);
         mCoachClientLayout = findViewById(R.id.layout_coach_client);
 
-
         mFirstNameEdit = findViewById(R.id.first_name_edit_text);
         mLastNameEdit = findViewById(R.id.last_name_text);
-        mRadioGender = findViewById(R.id.radio_gender);
+
+        mSpinner = findViewById(R.id.spinner_gender);
+
         mBirthDateEdit = findViewById(R.id.birth_date_edit_text);
         mEmailEdit = findViewById(R.id.registration_email_edit_text);
         mPasswordEdit = findViewById(R.id.registration_password_edit_text);
@@ -208,15 +214,28 @@ public class RegistrationActivity extends AppCompatActivity implements DatePicke
 
         mRegisterButton.setOnClickListener(v -> fetchUserData());
 
-        mBackIcon.setOnClickListener(new View.OnClickListener() {
+        mBackIcon.setOnClickListener(v -> {
+            if(mPersonalDataLayout.getVisibility()==View.VISIBLE)
+                onBackPressed();
+            else
+                changeActiveLayout(mPersonalDataLayout, mCoachClientLayout);
+        });
+
+        mSpinner.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
             @Override
-            public void onClick(View v) {
-                if(mPersonalDataLayout.getVisibility()==View.VISIBLE)
-                    onBackPressed();
-                else
-                    changeActiveLayout(mPersonalDataLayout, mCoachClientLayout);
+            public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
+
+            }
+
+            @Override
+            public void onNothingSelected(AdapterView<?> parent) {
+
             }
         });
+
+        ArrayAdapter<CharSequence> adapter = ArrayAdapter.createFromResource(this, R.array.gender, android.R.layout.simple_spinner_item);
+        adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+        mSpinner.setAdapter(adapter);
     }
 
     /**
@@ -303,15 +322,16 @@ public class RegistrationActivity extends AppCompatActivity implements DatePicke
             mBirthDateEdit.setError(getResources().getString(R.string.date_error));
         }
 
-        //GENDER
-        if(checkRadioGroup(mRadioGender)){
-            if(R.id.radio_male == mRadioGender.getCheckedRadioButtonId())
+        if(checkSpinner(mSpinner)){
+            Log.d("DIOCANE", "" + mSpinner.getSelectedItem());
+            if(mSpinner.getSelectedItem().toString().equals(getResources().getString(R.string.male))){
                 userData.put(Keys.RegistrationKeys.GENDER,Keys.Gender.MALE);
-            else
+            }else{
                 userData.put(Keys.RegistrationKeys.GENDER,Keys.Gender.FEMALE);
-        } else {
+            }
+        }else{
             if(isCorrect)
-                isCorrect = false;
+                isCorrect=false;
         }
 
         if(checkEmail())
@@ -428,11 +448,28 @@ public class RegistrationActivity extends AppCompatActivity implements DatePicke
     }
 
     /**
-     * Il metodo permette di controllare che sia stata selezionata almeno una opzione dal RadioGroup
+     * Il metodo permette di controllare che sia stata selezionata almeno una opzione dallo Spinner
      *
-     * @param radioGroup RadioGroup di cui si vuole sapere se è stato selezionato un elemento
-     * @return True se è stato selezionato almeno un elemento, false altirmenti
+     * @param mSpinner spinner di cui si vuole sapere se è stato selezionato un elemento
+     * @return True se è stato selezionato almeno un elemento, false altrimenti
      */
+    private boolean checkSpinner(Spinner mSpinner){
+        boolean insertData = false;
+
+        if(mSpinner.getSelectedItemPosition()>0){
+            insertData = true;
+        } else{
+            ((TextView)mSpinner.getSelectedView()).setError(getResources().getString(R.string.error_gender));
+        }
+        return insertData;
+    }
+
+    /**
+     * Il metodo permette di controllare che sia stata selezionata almeno una opzione dal RadioGroup
+     * @param radioGroup di cui si vuole sapere se è stato selezionato un elemento
+     * @return True se è stato selezionato almeno un elemento, false altrimenti
+     */
+
     private boolean checkRadioGroup(RadioGroup radioGroup){
         int radioButtonChecked = radioGroup.getCheckedRadioButtonId();
         boolean insertData = false;
@@ -443,7 +480,6 @@ public class RegistrationActivity extends AppCompatActivity implements DatePicke
             ((RadioButton)radioGroup.getChildAt(lastChild)).setError(getResources().getString(R.string.error_radio));
         } else
             insertData = true;
-
         return insertData;
     }
 

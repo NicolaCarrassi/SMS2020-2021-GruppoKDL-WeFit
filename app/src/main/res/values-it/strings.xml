@@ -17,6 +17,7 @@
     <string name="gender">Sono un:</string>
     <string name="male">Uomo</string>
     <string name="female">Donna</string>
+    <string name="select_gender">Seleziona genere</string>
     <string name="birth_date">Data di nascita:</string>
     <string name="next">Avanti</string>
     <string name="forgot_mail_sent">Ti è stata inviata una mail</string>
@@ -59,6 +60,7 @@
     <string name="error_height">Inserire una altezza compresa tra 100 e 230 cm</string>
     <string name="error_weight">Il peso deve essee maggiore di  40kg</string>
     <string name="error_general">Vi sono degli errori</string>
+    <string name="error_gender">Seleziona un genere valido</string>
 
     <!-- DRAWER STRINGS -->
     <string name="my_profile_drawer">Il mio profilo</string>

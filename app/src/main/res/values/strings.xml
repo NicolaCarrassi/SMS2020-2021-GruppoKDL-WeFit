@@ -25,6 +25,7 @@
     <string name="gender">Gender</string>
     <string name="male">Male</string>
     <string name="female">Female</string>
+    <string name="select_gender">Select gender</string>
     <string name="birth_date">Birth date:</string>
     <string name="next">Next</string>
     <string name="role_label">I am a: </string>
@@ -33,6 +34,7 @@
     <string name="confirm_password">Confirm your password</string>
     <string name="coach_label">Coach</string>
     <string name="client_label">Client</string>
+
 
     <!--Registration Client Fragment -->
     <string name="new_client">New client</string>
@@ -62,7 +64,7 @@
     <string name="error_height">Height must be between 100cm and 230 cm</string>
     <string name="error_weight">Weight must be more than 40kg</string>
     <string name="error_general">There are some errors</string>
-
+    <string name="error_gender">Select a valid gender</string>
 
     <!-- DRAWER STRINGS -->
     <string name="my_profile_drawer">My profile</string>

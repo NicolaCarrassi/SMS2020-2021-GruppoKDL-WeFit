@@ -17,6 +17,7 @@ import android.webkit.MimeTypeMap;
 import android.widget.Button;
 import android.widget.DatePicker;
 import android.widget.EditText;
+import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.RadioButton;
 import android.widget.RadioGroup;
@@ -70,6 +71,7 @@ public class RegistrationActivity extends AppCompatActivity implements DatePicke
     private RadioGroup mRadioRole;
     private Button mBackButton;
     private Button mRegisterButton;
+    private ImageView mBackIcon;
 
     private boolean mHasBeenOpened = false;
     private RegistrationFragmentContract.View mFragmentView;
@@ -117,9 +119,9 @@ public class RegistrationActivity extends AppCompatActivity implements DatePicke
         mFirstForwardButton = findViewById(R.id.forward_first_button);
 
         mRadioRole = findViewById(R.id.radio_role);
-        mBackButton = findViewById(R.id.back_button);
-        mRegisterButton = findViewById(R.id.register_button);
 
+        mRegisterButton = findViewById(R.id.register_button);
+        mBackIcon = findViewById(R.id.back_icon);
 
 
     }
@@ -140,8 +142,6 @@ public class RegistrationActivity extends AppCompatActivity implements DatePicke
             }
             return false;
         });
-
-        mBackButton.setOnClickListener(v -> changeActiveLayout(mPersonalDataLayout, mCoachClientLayout));
 
         mRadioRole.setOnCheckedChangeListener((group, checkedId) -> {
             boolean isClient = checkedId == R.id.radio_client;
@@ -207,6 +207,16 @@ public class RegistrationActivity extends AppCompatActivity implements DatePicke
         });
 
         mRegisterButton.setOnClickListener(v -> fetchUserData());
+
+        mBackIcon.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                if(mPersonalDataLayout.getVisibility()==View.VISIBLE)
+                    onBackPressed();
+                else
+                    changeActiveLayout(mPersonalDataLayout, mCoachClientLayout);
+            }
+        });
     }
 
     /**

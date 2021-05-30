@@ -19,6 +19,7 @@ import java.util.HashMap;
 import java.util.Map;
 
 import it.uniba.di.sms2021.gruppodkl.wefit.R;
+import it.uniba.di.sms2021.gruppodkl.wefit.WeFitApplication;
 import it.uniba.di.sms2021.gruppodkl.wefit.contract.fragment.client.ClientRegistrationFragmentContract;
 import it.uniba.di.sms2021.gruppodkl.wefit.presenter.fragment.client.ClientRegistrationFragmentPresenter;
 import it.uniba.di.sms2021.gruppodkl.wefit.utility.Keys;
@@ -30,6 +31,7 @@ public class ClientRegistrationFragment extends Fragment implements ClientRegist
     private EditText mHeightEdit;
     private EditText mWeightEdit;
     private RadioGroup mObjectiveRadio;
+    private WeFitApplication.OpenDrawer mActivity;
 
 
 
@@ -56,19 +58,10 @@ public class ClientRegistrationFragment extends Fragment implements ClientRegist
 
 
     private void bind(View layout){
+
         mHeightEdit = layout.findViewById(R.id.height_edit_text);
         mWeightEdit = layout.findViewById(R.id.weight_edit_text);
         mObjectiveRadio = layout.findViewById(R.id.radio_objective);
-        Toolbar mToolbar = layout.findViewById(R.id.toolbar);
-        mToolbar.inflateMenu(R.menu.toolbar_menu);
-        mToolbar.setNavigationIcon(R.drawable.back_24);
-        mToolbar.setOnClickListener(new View.OnClickListener(){
-            @Override
-            public void onClick(View v) {
-                Log.d("GESU", "CLICCATO INDIETRO");
-            }
-        });
-
     }
 
     public ClientRegistrationFragmentContract.Presenter getPresenter(){

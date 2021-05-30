@@ -34,7 +34,7 @@
 
     <!-- Back icon -->
     <style name="Toolbar.Button.Navigation.Tinted" parent="Widget.AppCompat.Toolbar.Button.Navigation">
-        <item name="tint">@color/blue</item>
+        <item name="tint">@color/white</item>
     </style>
 
     <!-- Navigation bar divider -->
@@ -76,7 +76,7 @@
 
 
     <!-- Edit text custom -->
-    <style name="EditTextCustom" parent="TextAppearance.AppCompat">
+    <style name="EditTextCustom" parent="Theme.Design.Light">
         <item name="android:editTextColor">@color/white</item>
         <item name="android:textColorHint">@color/white</item>
         <item name="android:textSize">18sp</item>
@@ -86,6 +86,7 @@
     <!-- Radio button custom -->
     <style name="RadiobuttonCustom">
         <item name="colorAccent">?attr/colorPrimary</item>
+        <item name="buttonTint">?attr/colorPrimary</item>
     </style>
 
     <!-- Background custom -->
@@ -95,4 +96,15 @@
         <item name="android:backgroundTintMode">screen</item>
     </style>
 
+    <style name="BackIconCustom" parent="Theme.AppCompat.Light.DarkActionBar">
+        <item name="android:tint">?attr/colorPrimary</item>
+        <item name="android:tintMode">multiply</item>
+    </style>
+
+    <style name="ButtonCustom" parent="Widget.AppCompat.Button">
+        <item name="android:background">@drawable/button_rounded_corners</item>
+        <item name="android:textStyle">bold</item>
+        <item name="android:textSize">18sp</item>
+        <item name="android:textColor">@color/white</item>
+    </style>
 </resources>

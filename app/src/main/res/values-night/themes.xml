@@ -39,7 +39,7 @@
     </style>
 
     <!-- EditText -->
-    <style name="EditTextCustom" parent="TextAppearance.AppCompat">
+    <style name="EditTextCustom" parent="Theme.Design.Light">
         <item name="android:editTextColor">@color/white</item>
         <item name="android:textColorHint">@color/white</item>
         <item name="android:textSize">18dp</item>
@@ -50,5 +50,18 @@
         <item name="android:background">@drawable/doodle1080p</item>
         <item name="android:backgroundTint">@color/black_custom</item>
         <item name="android:backgroundTintMode">src_over</item>
+    </style>
+
+    <style name="BackIconCustom" parent="Theme.AppCompat.Light">
+        <item name="android:tint">@color/white</item>
+        <item name="android:tintMode">multiply</item>
+    </style>
+
+    <style name="ButtonCustom" parent="Widget.AppCompat.Button">
+        <item name="android:background">@drawable/button_rounded_corners</item>
+        <item name="android:textStyle">bold</item>
+        <item name="android:textSize">18sp</item>
+        <item name="android:textColor">@color/frost_blue</item>
+
     </style>
 </resources>

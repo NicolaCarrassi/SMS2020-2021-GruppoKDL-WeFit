@@ -80,7 +80,6 @@
     <string name="diet_tab_title">NEXT MEAL:</string>
 
 
-
     <!-- PROFILE STRING -->
     <string name="full_name">Full name</string>
     <string name="edit_name">Edit your name</string>
@@ -93,5 +92,10 @@
     <string name="confirm">Confirm</string>
     <string name="image_changed_string">Image updated successfully!</string>
     <string name="nothing_to_update">There is nothing to update</string>
+
+    <!-- ADD FRAGMENT STRING -->
+    <string name="add_meal">Add Meal</string>
+    <string name="add_weight">Add Weight</string>
+    <string name="add_training">Add Training</string>
 
 </resources>

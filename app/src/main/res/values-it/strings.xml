@@ -88,9 +88,10 @@
     <string name="image_changed_string">Immagine modificata con successo</string>
     <string name="nothing_to_update">Non sono state effettuate modifiche</string>
 
-
-
-
+    <!-- ADD FRAGMENT STRING -->
+    <string name="add_meal">Registra Pasto</string>
+    <string name="add_weight">Registra Peso</string>
+    <string name="add_training">Registra Allenamento</string>
 
 
 

@@ -15,6 +15,7 @@ import com.google.android.material.bottomnavigation.BottomNavigationView;
 import com.google.android.material.navigation.NavigationView;
 import com.google.firebase.auth.FirebaseAuth;
 
+import it.uniba.di.sms2021.gruppodkl.wefit.fragment.AddFragment;
 import it.uniba.di.sms2021.gruppodkl.wefit.fragment.CoachProfileFragment;
 import it.uniba.di.sms2021.gruppodkl.wefit.fragment.DietFragment;
 import it.uniba.di.sms2021.gruppodkl.wefit.fragment.HomeFragmentUser;
@@ -69,6 +70,8 @@ public class MainActivityUser extends AppCompatActivity implements HomeFragmentU
                     res =  true;
                     break;
                 case R.id.add:
+                    final AddFragment addFragment = new AddFragment();
+                    addFragment.show(getSupportFragmentManager(),AddFragment.TAG);
                     res =  true;
                     break;
                 case R.id.diet:

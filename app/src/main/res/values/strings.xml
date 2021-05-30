@@ -90,6 +90,7 @@
     <string name="btn_save_update">Update</string>
     <string name="edit_pfp">Edit your profile picture</string>
     <string name="confirm">Confirm</string>
+    <string name="update_successful">Profile updated successfully!</string>
     <string name="image_changed_string">Image updated successfully!</string>
     <string name="nothing_to_update">There is nothing to update</string>
 

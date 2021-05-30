@@ -89,21 +89,12 @@ public class HomeFragmentUser extends Fragment {
         TextView mTextView = view.findViewById(R.id.hi_user);
         mTextView.setText(getResources().getString(R.string.hi_user_string) + " " + mUser.fullName.split(" ")[0] + " !");
 
-        if(mUser.image != null){
-            if(!mUser.isBitmapImageAvailable()) {
-                StorageReference storageRef = FirebaseStorage.getInstance().getReferenceFromUrl(mUser.image);
-                try {
-                    File localFile = File.createTempFile("images", "jpg");
-                    storageRef.getFile(localFile).addOnSuccessListener(taskSnapshot -> {
-                        Bitmap bitmap = BitmapFactory.decodeFile(localFile.getAbsolutePath());
-                        mImageView.setImageBitmap(bitmap);
-                        mUser.setImageBitmap(bitmap);
-                    });
-                } catch (IOException ignored) {}
-            } else
-                mImageView.setImageBitmap(mUser.getImageBitmap());
-        }
+        if(mUser.image != null) {
+            if (!mUser.isBitmapImageAvailable())
+                mUser.createImageBitmap();
 
+            mImageView.setImageBitmap(mUser.getImageBitmap());
+        }
     }
 
     private void setListener(){

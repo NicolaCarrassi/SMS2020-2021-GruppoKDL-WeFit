@@ -85,6 +85,7 @@
     <string name="btn_save_update">Aggiorna</string>
     <string name="edit_pfp">Modifica la foto del profilo</string>
     <string name="confirm">Conferma</string>
+    <string name="update_successful">Profilo aggiornato con successo</string>
     <string name="image_changed_string">Immagine modificata con successo</string>
     <string name="nothing_to_update">Non sono state effettuate modifiche</string>
 

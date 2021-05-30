@@ -35,7 +35,7 @@ public interface Keys {
     }
 
     interface Objectives{
-        String SHAPE_DEFINITION = "Shape definition";
+        String FIT_OBJECTIVE = "Shape definition";
         String GAIN_MASS = "Gain mass";
         String LOSE_WEIGHT = "Lose weight";
     }

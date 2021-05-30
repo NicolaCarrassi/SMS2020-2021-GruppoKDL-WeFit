@@ -1,10 +1,18 @@
 package it.uniba.di.sms2021.gruppodkl.wefit.presenter;
 
+import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
+import android.util.Log;
 import android.util.Patterns;
 
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.firestore.DocumentReference;
 import com.google.firebase.firestore.FirebaseFirestore;
+import com.google.firebase.storage.FirebaseStorage;
+import com.google.firebase.storage.StorageReference;
+
+import java.io.File;
+import java.io.IOException;
 
 import it.uniba.di.sms2021.gruppodkl.wefit.contract.LoginActivityContract;
 import it.uniba.di.sms2021.gruppodkl.wefit.model.Client;
@@ -39,6 +47,7 @@ public class LoginActivityPresenter implements LoginActivityContract.Presenter {
                         .addOnSuccessListener(documentSnapshot -> {
                             if(documentSnapshot.exists()){
                                 if(documentSnapshot.contains(User.UserKeys.ROLE) &&
+                                        documentSnapshot.getString(User.UserKeys.ROLE) != null &&
                                         documentSnapshot.getString(User.UserKeys.ROLE).equals(Keys.Role.CLIENT)) {
 
                                     Double temp = documentSnapshot.getDouble(Client.ClientKeys.HEIGHT);
@@ -61,9 +70,10 @@ public class LoginActivityPresenter implements LoginActivityContract.Presenter {
                                             documentSnapshot.getBoolean(Coach.CoachKeys.IS_DIETIST), documentSnapshot.getString(Coach.CoachKeys.CERTIFICATION));
                                 }
 
-                                if(documentSnapshot.contains(User.UserKeys.IMAGE) && documentSnapshot.getString(User.UserKeys.IMAGE) != null)
+                                if(documentSnapshot.contains(User.UserKeys.IMAGE) && documentSnapshot.getString(User.UserKeys.IMAGE) != null) {
                                     user.setImage(documentSnapshot.getString(User.UserKeys.IMAGE));
-
+                                    user.createImageBitmap();
+                                }
                                 mView.onSuccess(user);
                             }
                         });

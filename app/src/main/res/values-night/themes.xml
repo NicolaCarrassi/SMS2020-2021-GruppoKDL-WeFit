@@ -46,22 +46,30 @@
         <item name="android:elevation">4dp</item>
     </style>
 
+    <!-- Background doodle custom -->
     <style name="BackgroundCustom" parent="Theme.AppCompat.Light">
         <item name="android:background">@drawable/doodle1080p</item>
         <item name="android:backgroundTint">@color/black_custom</item>
         <item name="android:backgroundTintMode">src_over</item>
     </style>
 
+    <!-- Icon back -->
     <style name="BackIconCustom" parent="Theme.AppCompat.Light">
         <item name="android:tint">@color/white</item>
         <item name="android:tintMode">multiply</item>
     </style>
 
+    <!-- Button custom-->
     <style name="ButtonCustom" parent="Widget.AppCompat.Button">
         <item name="android:background">@drawable/button_rounded_corners</item>
         <item name="android:textStyle">bold</item>
         <item name="android:textSize">18sp</item>
         <item name="android:textColor">@color/frost_blue</item>
+    </style>
 
+    <!-- Spinner custom -->
+    <style name="SpinnerCustom" parent="Widget.AppCompat.Spinner">
+        <item name="android:background">@drawable/spinner_rounded_corners</item>
+        <item name="android:textColor">@color/white</item>
     </style>
 </resources>

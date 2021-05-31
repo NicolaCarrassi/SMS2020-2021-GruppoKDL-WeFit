@@ -128,5 +128,8 @@
     <string name="cancel">Cancel</string>
     <string name="leave_coach_title">Leave your coach</string>
     <string name="leave_coach_text">Are you sure you want to leave your coach?</string>
+    <string name="competences">Competences</string>
+    <string name="email_hint">Email:</string>
+    <string name="add">Add</string>
 
 </resources>

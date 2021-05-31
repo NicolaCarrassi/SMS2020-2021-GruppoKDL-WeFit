@@ -19,12 +19,14 @@ import it.uniba.di.sms2021.gruppodkl.wefit.SettingsActivity;
 import it.uniba.di.sms2021.gruppodkl.wefit.WeFitApplication;
 import it.uniba.di.sms2021.gruppodkl.wefit.fragment.NotificationsFragment;
 import it.uniba.di.sms2021.gruppodkl.wefit.fragment.TermsFragment;
+import it.uniba.di.sms2021.gruppodkl.wefit.fragment.client.ClientMyProfileFragment;
 import it.uniba.di.sms2021.gruppodkl.wefit.fragment.coach.CoachClientsFragment;
 import it.uniba.di.sms2021.gruppodkl.wefit.fragment.coach.CoachFeedbacksFragment;
 import it.uniba.di.sms2021.gruppodkl.wefit.fragment.coach.CoachHomeFragment;
 import it.uniba.di.sms2021.gruppodkl.wefit.fragment.coach.CoachProfileFragment;
 
-public class CoachMainActivity extends AppCompatActivity implements WeFitApplication.CallbackOperations {
+public class CoachMainActivity extends AppCompatActivity implements WeFitApplication.CallbackOperations,
+        CoachProfileFragment.CoachProfileActivity {
 
     private BottomNavigationView mBottomNavigationView;
     private NavigationView mNavigationView;
@@ -35,12 +37,14 @@ public class CoachMainActivity extends AppCompatActivity implements WeFitApplica
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
+        bind();
+
         if(savedInstanceState == null){
             final CoachHomeFragment coachHomeFragment = new CoachHomeFragment();
             getSupportFragmentManager().beginTransaction().replace(R.id.anchor_point, coachHomeFragment).commit();
         }
 
-        bind();
+
         setListeners();
     }
 
@@ -144,5 +148,37 @@ public class CoachMainActivity extends AppCompatActivity implements WeFitApplica
         onBackPressed();
     }
 
+
+    @Override
+    public void changeImage() {
+        Intent intent = new Intent(Intent.ACTION_GET_CONTENT);
+        intent.setType("image/*");
+        startActivityForResult(intent, ClientMyProfileFragment.ProfileFragmentActivity.IMAGE_RECEIVED_CODE);
+    }
+
+    @Override
+    protected void onActivityResult(int requestCode, int resultCode, Intent data){
+        super.onActivityResult(requestCode, resultCode, data);
+
+        switch (requestCode){
+            case IMAGE_RECEIVED_CODE:
+                if(resultCode == RESULT_OK
+                        && data != null && data.getData() != null){
+
+                    CoachProfileFragment coachProfileFragment = (CoachProfileFragment) getSupportFragmentManager().findFragmentByTag(CoachProfileFragment.TAG);
+                    if(coachProfileFragment != null && coachProfileFragment.isVisible()){
+                        coachProfileFragment.onImageReceived(data.getData());
+                    }
+               }
+            break;
+            case FILE_RECEIVED_CODE:
+                if(resultCode == RESULT_OK && data != null && data.getData() != null) {
+                    CoachProfileFragment coachProfileFragment = ((CoachProfileFragment) getSupportFragmentManager().findFragmentByTag(CoachProfileFragment.TAG));
+
+                    if(coachProfileFragment != null && coachProfileFragment.isVisible())
+                        coachProfileFragment.onFileReceived(data.getData().toString());
+                }
+        }
+    }
 
 }

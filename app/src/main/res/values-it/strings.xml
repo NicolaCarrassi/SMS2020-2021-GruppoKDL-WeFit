@@ -122,5 +122,9 @@
     <string name="cancel">Annulla</string>
     <string name="leave_coach_title">Lascia il tuo coach</string>
     <string name="leave_coach_text">Sei sicuro di voler lasciare il tuo coach?</string>
+    <string name="competences">Competenze</string>
+    <string name="email_hint">Email:</string>
+    <string name="add">Aggiungi</string>
+
 
 </resources>

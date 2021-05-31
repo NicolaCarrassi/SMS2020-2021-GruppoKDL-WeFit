@@ -11,6 +11,8 @@ import java.util.HashMap;
 import java.util.Map;
 
 import it.uniba.di.sms2021.gruppodkl.wefit.contract.fragment.client.ClientProfileFragmentContract;
+import it.uniba.di.sms2021.gruppodkl.wefit.db.UserDb;
+import it.uniba.di.sms2021.gruppodkl.wefit.model.Client;
 import it.uniba.di.sms2021.gruppodkl.wefit.model.User;
 import it.uniba.di.sms2021.gruppodkl.wefit.utility.Keys;
 
@@ -23,10 +25,10 @@ public class ClientMyProfilePresenter implements ClientProfileFragmentContract.P
     }
 
     @Override
-    public void saveImage(Uri uri, User user) {
+    public void saveImage(Uri uri, Client client) {
 
-        if(user.image != null){
-            FirebaseStorage.getInstance().getReferenceFromUrl(user.image).delete();
+        if(client.image != null){
+            FirebaseStorage.getInstance().getReferenceFromUrl(client.image).delete();
         }
 
         StorageReference fileRef = FirebaseStorage.getInstance().getReference(Keys.Collections.IMAGES)
@@ -47,20 +49,17 @@ public class ClientMyProfilePresenter implements ClientProfileFragmentContract.P
 
 
                     //inserisco l'immagine nel db
-                    FirebaseFirestore.getInstance().collection(Keys.Collections.USERS).document(user.email)
+                    FirebaseFirestore.getInstance().collection(Keys.Collections.USERS).document(client.email)
                             .update(map);
-                    user.setImage(imageUri);
-                    user.createImageBitmap(this);
+                    client.setImage(imageUri);
+                    client.createImageBitmap(this);
                 });
 
     }
 
     @Override
-    public void updateUser(Map<String, Object> map, User user) {
-
-        FirebaseFirestore.getInstance().collection(Keys.Collections.USERS).document(user.email)
-                .update(map);
-
+    public void updateUser(Map<String, Object> map, Client client) {
+        UserDb.update(client, map);
     }
 
     @Override

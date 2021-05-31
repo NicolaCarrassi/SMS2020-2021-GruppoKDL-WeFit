@@ -42,7 +42,7 @@ public class ClientMyProfileFragment extends Fragment implements ClientProfileFr
     private static final int GENDER_ALERT_DIALOG = 0;
     private static final int OBJECTIVE_ALERT_DIALOG = 1;
     private boolean mHasImageChanged = false;
-    private int dialogElementChosen;
+    private int mDialogElementChosen;
 
 
     /**
@@ -184,7 +184,6 @@ public class ClientMyProfileFragment extends Fragment implements ClientProfileFr
             checkIfButtonIsActivated();});
 
         mEditFullName.setOnClickListener(v -> {
-            Log.d("AOO","cliccato");
             makeEditTextFocused(mFullNameEditText);
             checkIfButtonIsActivated();
         });
@@ -224,9 +223,7 @@ public class ClientMyProfileFragment extends Fragment implements ClientProfileFr
      * tasto per effettare l'update del profilo è attivo
      */
     private void checkIfButtonIsActivated(){
-        Log.d("AOO", "Stiamo qua");
         if(mUpdateButton.getVisibility() == View.INVISIBLE){
-            Log.d("AOO", "Cliccabile");
             mUpdateButton.setVisibility(View.VISIBLE);
             mUpdateButton.setFocusable(true);
              mUpdateButton.setClickable(true);
@@ -285,15 +282,12 @@ public class ClientMyProfileFragment extends Fragment implements ClientProfileFr
         }
 
         if(somethingChanged) {
-            Log.d("AOO", "QUALCOSA è cambiato");
             mPresenter.updateUser(map, mUser);
             Toast.makeText(getActivity(), getResources().getString(R.string.update_successful), Toast.LENGTH_SHORT).show();
         }else {
             if(mHasImageChanged) {
-                Log.d("AOO", "Solo immagine");
                 Toast.makeText(getActivity(), getResources().getString(R.string.image_changed_string), Toast.LENGTH_SHORT).show();
             }else {
-                Log.d("AOO", "Tutto uguale");
                 Toast.makeText(getActivity(), getResources().getString(R.string.nothing_to_update), Toast.LENGTH_SHORT).show();
             }
         }
@@ -334,11 +328,11 @@ public class ClientMyProfileFragment extends Fragment implements ClientProfileFr
              builder.setTitle(getResources().getString(R.string.gender));
              String[] genders = {getResources().getString(R.string.male), getResources().getString(R.string.female)};
 
-             dialogElementChosen = mGenderEditText.getText().toString().equals(getResources().getString(R.string.male)) ? 0 : 1;
-             builder.setSingleChoiceItems(genders, dialogElementChosen, (dialog, which) -> dialogElementChosen = which);
+             mDialogElementChosen = mGenderEditText.getText().toString().equals(getResources().getString(R.string.male)) ? 0 : 1;
+             builder.setSingleChoiceItems(genders, mDialogElementChosen, (dialog, which) -> mDialogElementChosen = which);
 
              builder.setPositiveButton(getResources().getString(R.string.confirm), (dialog, which) -> {
-                 if(dialogElementChosen == 0)
+                 if(mDialogElementChosen == 0)
                      mGenderEditText.setText(getResources().getString(R.string.male));
                  else
                      mGenderEditText.setText(getResources().getString(R.string.female));
@@ -354,22 +348,22 @@ public class ClientMyProfileFragment extends Fragment implements ClientProfileFr
              // imposto il valore selezionato
 
              if(mObjectiveEditText.getText().toString().equals(getResources().getString(R.string.fit_objective))){
-                 dialogElementChosen = 0;
+                 mDialogElementChosen = 0;
              } else {
                  if(mObjectiveEditText.getText().toString().equals(getResources().getString(R.string.gain_mass_objective))){
-                     dialogElementChosen = 1;
+                     mDialogElementChosen = 1;
                  }else {
-                     dialogElementChosen =2;
+                     mDialogElementChosen =2;
                  }
              }
 
-             builder.setSingleChoiceItems(objectives, dialogElementChosen, (dialog, which) -> dialogElementChosen = which);
+             builder.setSingleChoiceItems(objectives, mDialogElementChosen, (dialog, which) -> mDialogElementChosen = which);
 
              builder.setPositiveButton(getResources().getString(R.string.confirm), (dialog, which) -> {
-                 if(dialogElementChosen == 0)
+                 if(mDialogElementChosen == 0)
                      mObjectiveEditText.setText(getResources().getString(R.string.fit_objective));
                  else
-                     if(dialogElementChosen == 1)
+                     if(mDialogElementChosen == 1)
                         mObjectiveEditText.setText(getResources().getString(R.string.gain_mass_objective));
                     else
                         mObjectiveEditText.setText(getResources().getString(R.string.lose_weight_objective));
@@ -380,12 +374,8 @@ public class ClientMyProfileFragment extends Fragment implements ClientProfileFr
         builder.create().show();
     }
 
-    /**
-     * Il metodo permette di ottenere l'estensione di un file, fornito in input il proprio URI
-     *
-     * @param uri uri del file di cui si vuole conoscere l'estensione
-     * @return Stringa contenente l'estensione del file
-     */
+
+    @Override
     public String getFileExtension(Uri uri){
         ContentResolver contentResolver = getActivity().getContentResolver();
         MimeTypeMap mime = MimeTypeMap.getSingleton();

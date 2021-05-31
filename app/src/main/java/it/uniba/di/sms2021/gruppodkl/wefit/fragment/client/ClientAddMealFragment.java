@@ -15,6 +15,8 @@ import it.uniba.di.sms2021.gruppodkl.wefit.R;
 
 public class ClientAddMealFragment extends Fragment {
 
+    public static final String TAG = ClientAddMealFragment.class.getSimpleName();
+
     private Spinner mSpinner;
 
     public ClientAddMealFragment() {

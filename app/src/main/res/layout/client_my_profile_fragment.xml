@@ -79,8 +79,6 @@
                 android:layout_height="wrap_content"
                 android:hint="@string/full_name"
                 android:layout_gravity="start"
-                android:clickable="false"
-                android:focusable="false"
                 android:inputType="text"
                 style="@style/custom_p"/>
 
@@ -246,12 +244,6 @@
     </LinearLayout>
 
 
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:orientation="horizontal"
-        android:gravity="center">
-    </LinearLayout>
     <Button
         android:id="@+id/btn_save_profile_update"
         android:layout_marginTop="20dp"

@@ -51,12 +51,13 @@
     </RelativeLayout>
 
     <Button
+        android:id="@+id/btn_add_weight"
         android:layout_gravity="center_horizontal"
         android:layout_marginTop="@dimen/margin_horizontal"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         style="@style/ButtonCustom"
 
-        android:text="Invia"/>
+        android:text="@string/add"/>
 
 </LinearLayout>

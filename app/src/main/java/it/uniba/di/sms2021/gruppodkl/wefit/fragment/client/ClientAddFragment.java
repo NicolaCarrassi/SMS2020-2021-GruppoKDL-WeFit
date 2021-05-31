@@ -2,8 +2,7 @@ package it.uniba.di.sms2021.gruppodkl.wefit.fragment.client;
 
 import android.os.Bundle;
 
-import androidx.fragment.app.Fragment;
-import androidx.fragment.app.FragmentActivity;
+
 import androidx.fragment.app.FragmentTransaction;
 
 import android.view.LayoutInflater;
@@ -50,40 +49,31 @@ public class ClientAddFragment extends BottomSheetDialogFragment {
     }
 
     private void setListener(){
-        mAddWeight.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                mAddPanel.setVisibility(View.GONE);
-                final ClientAddWeightFragment clientAddWeightFragment = new ClientAddWeightFragment();
+        mAddWeight.setOnClickListener(v -> {
+            mAddPanel.setVisibility(View.GONE);
+            final ClientAddWeightFragment clientAddWeightFragment = new ClientAddWeightFragment();
 
-                FragmentTransaction fragmentTransaction;
-                fragmentTransaction = getChildFragmentManager().beginTransaction();
-                fragmentTransaction.replace(R.id.bottom_sheet_container, clientAddWeightFragment).commit();
-            }
+            FragmentTransaction fragmentTransaction;
+            fragmentTransaction = getChildFragmentManager().beginTransaction();
+            fragmentTransaction.replace(R.id.bottom_sheet_container, clientAddWeightFragment, ClientAddWeightFragment.TAG).commit();
         });
 
-        mAddTraining.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                mAddPanel.setVisibility(View.GONE);
-                final ClientAddTrainingFragment clientAddTrainingFragment = new ClientAddTrainingFragment();
+        mAddTraining.setOnClickListener(v -> {
+            mAddPanel.setVisibility(View.GONE);
+            final ClientAddTrainingFragment clientAddTrainingFragment = new ClientAddTrainingFragment();
 
-                FragmentTransaction fragmentTransaction;
-                fragmentTransaction = getChildFragmentManager().beginTransaction();
-                fragmentTransaction.replace(R.id.bottom_sheet_container, clientAddTrainingFragment).commit();
-            }
+            FragmentTransaction fragmentTransaction;
+            fragmentTransaction = getChildFragmentManager().beginTransaction();
+            fragmentTransaction.replace(R.id.bottom_sheet_container, clientAddTrainingFragment, ClientAddTrainingFragment.TAG).commit();
         });
 
-        mAddMeal.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                mAddPanel.setVisibility(View.GONE);
-                final ClientAddMealFragment clientAddMealFragment = new ClientAddMealFragment();
+        mAddMeal.setOnClickListener(v -> {
+            mAddPanel.setVisibility(View.GONE);
+            final ClientAddMealFragment clientAddMealFragment = new ClientAddMealFragment();
 
-                FragmentTransaction fragmentTransaction;
-                fragmentTransaction = getChildFragmentManager().beginTransaction();
-                fragmentTransaction.replace(R.id.bottom_sheet_container, clientAddMealFragment).commit();
-            }
+            FragmentTransaction fragmentTransaction;
+            fragmentTransaction = getChildFragmentManager().beginTransaction();
+            fragmentTransaction.replace(R.id.bottom_sheet_container, clientAddMealFragment, ClientAddMealFragment.TAG).commit();
         });
     }
 }

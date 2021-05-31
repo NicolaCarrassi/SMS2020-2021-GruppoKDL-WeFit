@@ -184,7 +184,7 @@ public class RegistrationActivityPresenter implements RegistrationActivityContra
 
                         Map<String, Object> map = new HashMap<>();
                         assert uri != null;
-                        map.put("certificationUri", uri.toString());
+                        map.put(Coach.CoachKeys.CERTIFICATION, uri.toString());
 
                         UserDb.update(coach, map);
                     });

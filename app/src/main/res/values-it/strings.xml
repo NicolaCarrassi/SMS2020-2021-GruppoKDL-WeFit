@@ -17,7 +17,7 @@
     <string name="gender">Sono un:</string>
     <string name="male">Uomo</string>
     <string name="female">Donna</string>
-    <string name="select_gender">Seleziona genere</string>
+    <string name="select_gender">Genere</string>
     <string name="birth_date">Data di nascita:</string>
     <string name="next">Avanti</string>
     <string name="forgot_mail_sent">Ti è stata inviata una mail</string>

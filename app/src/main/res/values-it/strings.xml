@@ -83,7 +83,7 @@
     <string name="edit_gender">Modifica il tuo genere</string>
     <string name="edit_height">Aggiorna la tua altezza</string>
     <string name="edit_objective">Modifica il tuo obiettivo</string>
-    <string name="client_current_weight">Peso attuale</string>
+    <string name="client_current_weight">Peso attuale: </string>
     <string name="btn_save_update">Aggiorna</string>
     <string name="edit_pfp">Modifica la foto del profilo</string>
     <string name="confirm">Conferma</string>

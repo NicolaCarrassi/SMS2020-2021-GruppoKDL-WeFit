@@ -88,7 +88,7 @@
     <string name="edit_gender">Edit your gender</string>
     <string name="edit_height">Edit your height</string>
     <string name="edit_objective">Edit your objective</string>
-    <string name="client_current_weight">Your current weight</string>
+    <string name="client_current_weight">Your current weight: </string>
     <string name="btn_save_update">Update</string>
     <string name="edit_pfp">Edit your profile picture</string>
     <string name="confirm">Confirm</string>

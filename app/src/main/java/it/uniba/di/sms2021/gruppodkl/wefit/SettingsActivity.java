@@ -17,7 +17,7 @@ import java.util.Locale;
 
 public class SettingsActivity extends AppCompatActivity {
 
-    public interface Keys{
+    public interface SettingKeys{
         String DARK = "my_dark_mode";
         String LANGUAGE = "my_language";
         String DARK_MODE_VALUE = "dm_value";
@@ -53,7 +53,7 @@ public class SettingsActivity extends AppCompatActivity {
         private CheckBoxPreference mDarkModePref;
         private ListPreference mLanguagePref;
         private SharedPreferences mSharedPref;
-        private SharedPreferences.Editor editor;
+        private SharedPreferences.Editor mEditor;
 
 
 
@@ -62,10 +62,10 @@ public class SettingsActivity extends AppCompatActivity {
             setPreferencesFromResource(R.xml.root_preferences, rootKey);
 
             mSharedPref = getActivity().getSharedPreferences("settings", MODE_PRIVATE);
-            editor = mSharedPref.edit();
 
-            mDarkModePref = findPreference(Keys.DARK);
-            mLanguagePref = findPreference(Keys.LANGUAGE);
+
+            mDarkModePref = findPreference(SettingKeys.DARK);
+            mLanguagePref = findPreference(SettingKeys.LANGUAGE);
 
             mDarkModePref.setOnPreferenceChangeListener((preference, newValue) -> {
                 setDarkMode(newValue);
@@ -76,12 +76,9 @@ public class SettingsActivity extends AppCompatActivity {
                 mLanguagePref.setDefaultValue("en");
             }
 
-            mLanguagePref.setOnPreferenceChangeListener(new Preference.OnPreferenceChangeListener() {
-                @Override
-                public boolean onPreferenceChange(Preference preference, Object newValue) {
-                    changeLanguage(newValue);
-                    return true;
-                }
+            mLanguagePref.setOnPreferenceChangeListener((preference, newValue) -> {
+                changeLanguage(newValue);
+                return true;
             });
 
         }
@@ -89,18 +86,18 @@ public class SettingsActivity extends AppCompatActivity {
         private void setDarkMode(Object val){
             boolean res = (Boolean) val;
             int mode = res ? AppCompatDelegate.MODE_NIGHT_YES : AppCompatDelegate.MODE_NIGHT_NO;
-
+            mEditor = mSharedPref.edit();
 
             if(res) {
                 AppCompatDelegate.setDefaultNightMode(mode);
-                editor.putInt(Keys.DARK_MODE_VALUE, AppCompatDelegate.MODE_NIGHT_YES);
+                mEditor.putInt(SettingKeys.DARK_MODE_VALUE, AppCompatDelegate.MODE_NIGHT_YES);
             }else {
                 AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_NO);
-                editor.putInt(Keys.DARK_MODE_VALUE, AppCompatDelegate.MODE_NIGHT_NO);
+                mEditor.putInt(SettingKeys.DARK_MODE_VALUE, AppCompatDelegate.MODE_NIGHT_NO);
             }
 
-            editor.putBoolean(Keys.DARK, res);
-            editor.apply();
+            mEditor.putBoolean(SettingKeys.DARK, res);
+            mEditor.apply();
         }
 
 
@@ -108,13 +105,14 @@ public class SettingsActivity extends AppCompatActivity {
         private void changeLanguage(Object value){
             String lang = (String) value;
             Locale locale;
+            mEditor = mSharedPref.edit();
 
             if(lang.equals("en")) {
                 locale = new Locale("en");
-                editor.putString(Keys.LANGUAGE_VALUE, "en");
+                mEditor.putString(SettingKeys.LANGUAGE_VALUE, "en");
             }else {
                 locale = new Locale("it_IT");
-                editor.putString(Keys.LANGUAGE_VALUE, "it_IT");
+                mEditor.putString(SettingKeys.LANGUAGE_VALUE, "it_IT");
             }
 
             Locale.setDefault(locale);
@@ -123,7 +121,7 @@ public class SettingsActivity extends AppCompatActivity {
             config.setLocale(locale);
             getActivity().getResources().updateConfiguration(config, getActivity().getResources().getDisplayMetrics());
 
-            editor.apply();
+            mEditor.apply();
         }
     }
 

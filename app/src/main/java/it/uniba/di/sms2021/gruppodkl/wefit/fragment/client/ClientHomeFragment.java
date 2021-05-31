@@ -17,9 +17,10 @@ import android.widget.TextView;
 import it.uniba.di.sms2021.gruppodkl.wefit.R;
 import it.uniba.di.sms2021.gruppodkl.wefit.WeFitApplication;
 import it.uniba.di.sms2021.gruppodkl.wefit.model.Client;
+import it.uniba.di.sms2021.gruppodkl.wefit.model.User;
 
 
-public class ClientHomeFragment extends Fragment {
+public class ClientHomeFragment extends Fragment implements User.MyImageBitmapCallback {
 
     public static final String TAG = ClientHomeFragment.class.getSimpleName();
 
@@ -75,13 +76,13 @@ public class ClientHomeFragment extends Fragment {
         TextView mTextView = view.findViewById(R.id.hi_user);
         mTextView.setText(getResources().getString(R.string.hi_user_string) + " " + mUser.fullName.split(" ")[0] + " !");
 
-        if(mUser.image != null) {
+        if (mUser.image != null)
             if (!mUser.isBitmapImageAvailable())
-                mUser.createImageBitmap();
-
-            mImageView.setImageBitmap(mUser.getImageBitmap());
-        }
+                mUser.createImageBitmap(this);
+            else
+                mImageView.setImageBitmap(mUser.getImageBitmap());
     }
+
 
     private void setListener(){
         mImageView.setOnClickListener(v -> {
@@ -116,8 +117,10 @@ public class ClientHomeFragment extends Fragment {
                 activity.getSupportFragmentManager().beginTransaction().replace(R.id.anchor_point, clientDietFragment).commit();
         });
 
-
     }
 
-
+    @Override
+    public void handleCallback() {
+        mImageView.setImageBitmap(mUser.getImageBitmap());
+    }
 }

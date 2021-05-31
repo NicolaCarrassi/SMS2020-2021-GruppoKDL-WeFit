@@ -1,24 +1,18 @@
 package it.uniba.di.sms2021.gruppodkl.wefit;
 
-import androidx.appcompat.app.AppCompatActivity;
-import androidx.appcompat.app.AppCompatDelegate;
-import androidx.preference.PreferenceManager;
-
-import android.content.Context;
 import android.content.Intent;
-import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.text.InputType;
 import android.text.TextUtils;
-import android.util.Log;
 import android.util.Patterns;
-import android.view.KeyEvent;
 import android.view.inputmethod.EditorInfo;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
+
+import androidx.appcompat.app.AppCompatActivity;
 
 import java.util.regex.Pattern;
 
@@ -52,15 +46,6 @@ public class LoginActivity extends AppCompatActivity implements LoginActivityCon
         this.bind();
         this.setListeners();
         this.mPresenter = new LoginActivityPresenter(this);
-
-        SharedPreferences sp = this.getSharedPreferences("settings", Context.MODE_PRIVATE);
-
-        if(sp != null && sp.contains(SettingsActivity.Keys.DARK_MODE_VALUE)) {
-            int darkMode = sp.getInt(SettingsActivity.Keys.DARK_MODE_VALUE,AppCompatDelegate.MODE_NIGHT_NO);
-            AppCompatDelegate.setDefaultNightMode(darkMode);
-        } else
-            AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_NO);
-
     }
 
 
@@ -132,7 +117,6 @@ public class LoginActivity extends AppCompatActivity implements LoginActivityCon
             res = false;
             mPassword.setError(getResources().getString(R.string.error_password));
         }
-
         return res;
     }
 
@@ -142,7 +126,6 @@ public class LoginActivity extends AppCompatActivity implements LoginActivityCon
      */
     private void doLogin(){
         mLoginButton.setClickable(false);
-        Log.d("AOO", "Sto qua");
         String emailText = mEmail.getText().toString().trim().toLowerCase();
         String passwordText = mPassword.getText().toString().trim();
         if(!emailText.equals("") && !passwordText.equals("")) {
@@ -169,7 +152,6 @@ public class LoginActivity extends AppCompatActivity implements LoginActivityCon
 
         ((WeFitApplication) getApplication()).setUser(user);
 
-
         if(user instanceof Client)
             intent = new Intent(this, ClientMainActivity.class);
         else
@@ -182,7 +164,7 @@ public class LoginActivity extends AppCompatActivity implements LoginActivityCon
     @Override
     public void onFailure() {
         mLoginButton.setClickable(true);
-        Toast.makeText(this, "Nome utente o password errati", Toast.LENGTH_SHORT).show();
+        Toast.makeText(this, getResources().getString(R.string.error_login), Toast.LENGTH_SHORT).show();
     }
 
     @Override

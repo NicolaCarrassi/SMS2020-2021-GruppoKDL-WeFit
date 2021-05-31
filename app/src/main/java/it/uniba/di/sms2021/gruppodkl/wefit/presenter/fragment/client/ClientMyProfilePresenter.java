@@ -14,7 +14,7 @@ import it.uniba.di.sms2021.gruppodkl.wefit.contract.fragment.client.ClientProfil
 import it.uniba.di.sms2021.gruppodkl.wefit.model.User;
 import it.uniba.di.sms2021.gruppodkl.wefit.utility.Keys;
 
-public class ClientMyProfilePresenter implements ClientProfileFragmentContract.Presenter {
+public class ClientMyProfilePresenter implements ClientProfileFragmentContract.Presenter, User.MyImageBitmapCallback {
 
     private final ClientProfileFragmentContract.View mView;
 
@@ -50,7 +50,7 @@ public class ClientMyProfilePresenter implements ClientProfileFragmentContract.P
                     FirebaseFirestore.getInstance().collection(Keys.Collections.USERS).document(user.email)
                             .update(map);
                     user.setImage(imageUri);
-                    user.createImageBitmap();
+                    user.createImageBitmap(this);
                 });
 
     }
@@ -63,6 +63,9 @@ public class ClientMyProfilePresenter implements ClientProfileFragmentContract.P
 
     }
 
+    @Override
+    public void handleCallback() {
+    }
 }
 
 

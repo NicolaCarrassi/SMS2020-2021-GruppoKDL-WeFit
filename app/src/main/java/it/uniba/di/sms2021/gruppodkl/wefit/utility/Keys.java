@@ -70,6 +70,14 @@ public interface Keys {
         String USERS = "Users";
         String CERTIFICATION = "certifications";
         String IMAGES = "images";
+        String WEIGHT = "weight";
+        String RATINGS = "ratings";
+    }
+
+    interface RatingInfo{
+        String RATE = "rate";
+        String MESSAGE = "message";
+        String CLIENT = "client";
     }
 
 

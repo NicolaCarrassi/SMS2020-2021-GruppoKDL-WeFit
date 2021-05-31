@@ -110,4 +110,11 @@
     <string name="failed_to_register">Errore nella registrazione dell\'utente</string>
     <string name="add_string">Registra</string>
 
+    <string name="leave_feedback">Rilascia un feedback</string>
+    <string name="change_coach">Annulla iscrizione</string>
+    <string name="error_login">Email o password errati</string>
+    <string name="cancel">Annulla</string>
+    <string name="leave_coach_title">Lascia il tuo coach</string>
+    <string name="leave_coach_text">Sei sicuro di voler lasciare il tuo coach?</string>
+
 </resources>

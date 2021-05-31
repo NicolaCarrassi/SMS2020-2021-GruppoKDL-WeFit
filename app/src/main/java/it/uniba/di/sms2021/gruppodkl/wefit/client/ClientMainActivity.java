@@ -16,6 +16,8 @@ import com.google.android.material.bottomnavigation.BottomNavigationView;
 import com.google.android.material.navigation.NavigationView;
 import com.google.firebase.auth.FirebaseAuth;
 
+import java.util.Map;
+
 import it.uniba.di.sms2021.gruppodkl.wefit.LoginActivity;
 import it.uniba.di.sms2021.gruppodkl.wefit.R;
 import it.uniba.di.sms2021.gruppodkl.wefit.SettingsActivity;
@@ -29,8 +31,10 @@ import it.uniba.di.sms2021.gruppodkl.wefit.fragment.client.ClientMyProfileFragme
 import it.uniba.di.sms2021.gruppodkl.wefit.fragment.client.ClientMyProgressFragment;
 import it.uniba.di.sms2021.gruppodkl.wefit.fragment.TermsFragment;
 import it.uniba.di.sms2021.gruppodkl.wefit.fragment.client.ClientMyTrainingFragment;
+import it.uniba.di.sms2021.gruppodkl.wefit.utility.Keys;
 
-public class ClientMainActivity extends AppCompatActivity implements WeFitApplication.CallbackOperations, ClientMyProfileFragment.ProfileFragmentActivity {
+public class ClientMainActivity extends AppCompatActivity implements WeFitApplication.CallbackOperations,
+        ClientMyProfileFragment.ProfileFragmentActivity, ClientMyCoachFragment.CoachProfileCallbacks{
 
     private BottomNavigationView mBottomNavigation;
     private NavigationView mNavigationView;
@@ -49,7 +53,6 @@ public class ClientMainActivity extends AppCompatActivity implements WeFitApplic
         bind();
         setListener();
         setNavigationView();
-
     }
 
     /**
@@ -201,13 +204,24 @@ public class ClientMainActivity extends AppCompatActivity implements WeFitApplic
     }
 
 
-
     @Override
     public void changeImage() {
         Intent intent = new Intent(Intent.ACTION_GET_CONTENT);
         intent.setType("image/*");
         startActivityForResult(intent, ClientMyProfileFragment.ProfileFragmentActivity.IMAGE_RECEIVED_CODE);
     }
+
+    @Override
+    public void makeRating(Map<String, Object> map){
+        String userEmail = ((WeFitApplication) getApplicationContext()).getUser().email;
+        map.put(Keys.RatingInfo.CLIENT, userEmail);
+
+        ClientMyCoachFragment coachFragment = (ClientMyCoachFragment) getSupportFragmentManager().findFragmentByTag(ClientMyCoachFragment.TAG);
+        if(coachFragment!= null)
+            coachFragment.handleFeedback(map);
+    }
+
+
 
 
 }

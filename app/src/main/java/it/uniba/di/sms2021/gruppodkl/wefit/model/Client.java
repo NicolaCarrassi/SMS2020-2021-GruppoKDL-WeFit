@@ -7,12 +7,13 @@ public class Client extends User {
         String HEIGHT = "height";
         String WEIGHT = "weight";
         String OBJECTIVE = "objective";
-
+        String COACH = "coach";
     }
 
     public float weight;
     public int height;
     public String objective;
+    public String coach = null;
 
     public Client(){
         super();
@@ -25,4 +26,7 @@ public class Client extends User {
         this.objective = objective;
     }
 
+    public void setCoach(String coach) {
+        this.coach = coach;
+    }
 }

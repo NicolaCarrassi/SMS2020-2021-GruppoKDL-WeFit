@@ -10,19 +10,24 @@ import com.google.firebase.firestore.FirebaseFirestore;
 import com.google.firebase.storage.FirebaseStorage;
 import com.google.firebase.storage.StorageReference;
 
+import java.io.ObjectStreamException;
+import java.security.Key;
 import java.util.HashMap;
 import java.util.Map;
 import java.util.Objects;
 
 import it.uniba.di.sms2021.gruppodkl.wefit.contract.RegistrationActivityContract;
+import it.uniba.di.sms2021.gruppodkl.wefit.db.UserDb;
 import it.uniba.di.sms2021.gruppodkl.wefit.model.Client;
 import it.uniba.di.sms2021.gruppodkl.wefit.model.Coach;
+import it.uniba.di.sms2021.gruppodkl.wefit.model.User;
 import it.uniba.di.sms2021.gruppodkl.wefit.utility.Keys;
 
 public class RegistrationActivityPresenter implements RegistrationActivityContract.Presenter {
 
-    public final  RegistrationActivityContract.View mView;
-    public final FirebaseAuth mAuth = FirebaseAuth.getInstance();
+    private final  RegistrationActivityContract.View mView;
+    private final UserDb.UserCallbacks mCallbacks;
+    private final FirebaseAuth mAuth = FirebaseAuth.getInstance();
 
 
     /**
@@ -32,6 +37,31 @@ public class RegistrationActivityPresenter implements RegistrationActivityContra
      */
     public RegistrationActivityPresenter(RegistrationActivityContract.View view){
         this.mView = view;
+
+        mCallbacks = new UserDb.UserCallbacks() {
+            @Override
+            public void userLoaded(User user, boolean success) {
+                // OPERAZIONE NON GESTITA
+            }
+
+            @Override
+            public void hasBeenCreated(User user, boolean success) {
+                if(user instanceof Client){
+                    if(success) {
+                        createClientSubCollections((Client) user);
+                        mView.onSuccess(user);
+                    }else
+                        mView.onFailure();
+                    //coach
+                } else
+                    if(success){
+                        loadCertification((Coach) user);
+                        mView.onSuccess(user);
+                    }else
+                        mView.onFailure();
+            }
+        };
+
     }
 
 
@@ -97,17 +127,12 @@ public class RegistrationActivityPresenter implements RegistrationActivityContra
 
             Client client = new Client(fullName, email, birthDate, gender,role,height,weight,objective);
 
-            FirebaseFirestore.getInstance().collection(Keys.Collections.USERS).document(client.email).set(client)
-                    .addOnCompleteListener(task -> {
-                        if(task.isSuccessful()) {
-                            createClientSubCollections(client);
-                        } else {
-                            mView.onFailure();
-                        }
-                    });
+            UserDb.create(client, mCallbacks);
+
         }else {
            boolean isPersonalTrainer = false;
            boolean isDietist = false;
+           String certificationUri = null;
 
             if(specificData.containsKey(Keys.CoachRegistrationKeys.IS_PERSONAL_TRAINER))
                 isPersonalTrainer = true;
@@ -115,42 +140,16 @@ public class RegistrationActivityPresenter implements RegistrationActivityContra
            if (specificData.containsKey(Keys.CoachRegistrationKeys.IS_DIETICIAN))
                isDietist = true;
 
-
-            Coach coach = new Coach(fullName, email, birthDate, gender,role,isPersonalTrainer,isDietist, null);
-
-            DocumentReference coachDocument = FirebaseFirestore.getInstance().collection(Keys.Collections.USERS).document(coach.email);
-
-            coachDocument.set(coach)
-                    .addOnCompleteListener(task -> {
-                        if(!task.isSuccessful()) {
-                            mView.onFailure();
-                        }
-                    });
+           if(specificData.containsKey(Keys.CoachRegistrationKeys.ATTACHED_FILE))
+                certificationUri = specificData.get(Keys.CoachRegistrationKeys.ATTACHED_FILE);
 
 
-           if(specificData.containsKey(Keys.CoachRegistrationKeys.ATTACHED_FILE)) {
+            Coach coach = new Coach(fullName, email, birthDate, gender,role,isPersonalTrainer,isDietist, certificationUri);
 
-               StorageReference fileRef = FirebaseStorage.getInstance().getReference(Keys.Collections.CERTIFICATION)
-                       .child(System.currentTimeMillis() + "." + mView.getFileExtension());
-
-              fileRef.putFile(mView.getFileURI())
-                .addOnSuccessListener(taskSnapshot -> {
-                    Task<Uri> uriTask = taskSnapshot.getStorage().getDownloadUrl();
-
-                    while(!uriTask.isComplete());
-
-                    Uri uri = uriTask.getResult();
-
-                    Map<String, Object> map = new HashMap<>();
-                    assert uri != null;
-                    map.put("certificationUri", uri.toString());
-
-                    coachDocument.update(map);
-                });
+            UserDb.create(coach, mCallbacks);
            }
-            mView.onSuccess(coach);
         }
-    }
+
 
     /**
      * Il metodo permette di creare la subcollection del peso dell'utente nel db
@@ -160,18 +159,35 @@ public class RegistrationActivityPresenter implements RegistrationActivityContra
      */
     public void createClientSubCollections(Client client){
         final String WEIGHT = "weight";
-        final Map<String, Float> weightMap = new HashMap<>();
+        final Map<String, Object> weightMap = new HashMap<>();
 
         weightMap.put(Keys.ClientRegistrationKeys.WEIGHT,client.weight);
 
         //creo la collection dei pesi nel document avente email quella dell'utente appena registrato
-
-        FirebaseFirestore.getInstance().collection(Keys.Collections.USERS).document(client.email)
-                .collection(WEIGHT).add(weightMap);
+        UserDb.addInSubCollection(client.email, Keys.Collections.WEIGHT, weightMap);
 
         mView.onSuccess(client);
     }
 
+    public void loadCertification(Coach coach){
+        if(coach.certificationUri != null) {
+            StorageReference fileRef = FirebaseStorage.getInstance().getReference(Keys.Collections.CERTIFICATION)
+                    .child(System.currentTimeMillis() + "." + mView.getFileExtension());
+
+            fileRef.putFile(mView.getFileURI())
+                    .addOnSuccessListener(taskSnapshot -> {
+                        Task<Uri> uriTask = taskSnapshot.getStorage().getDownloadUrl();
+
+                        while(!uriTask.isComplete());
+
+                        Uri uri = uriTask.getResult();
+
+                        Map<String, Object> map = new HashMap<>();
+                        assert uri != null;
+                        map.put("certificationUri", uri.toString());
+
+                        UserDb.update(coach, map);
+                    });
+        }
+    }
 }
-
-

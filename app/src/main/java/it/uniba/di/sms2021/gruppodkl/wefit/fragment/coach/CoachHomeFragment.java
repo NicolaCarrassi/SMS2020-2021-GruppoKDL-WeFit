@@ -18,9 +18,10 @@ import it.uniba.di.sms2021.gruppodkl.wefit.R;
 import it.uniba.di.sms2021.gruppodkl.wefit.WeFitApplication;
 import it.uniba.di.sms2021.gruppodkl.wefit.fragment.client.ClientMyProfileFragment;
 import it.uniba.di.sms2021.gruppodkl.wefit.model.Coach;
+import it.uniba.di.sms2021.gruppodkl.wefit.model.User;
 
 
-public class CoachHomeFragment extends Fragment {
+public class CoachHomeFragment extends Fragment implements User.MyImageBitmapCallback{
 
     public static final String TAG = CoachHomeFragment.class.getSimpleName();
 
@@ -77,12 +78,11 @@ public class CoachHomeFragment extends Fragment {
         TextView textView = layout.findViewById(R.id.hi_user);
         textView.setText(getResources().getString(R.string.hi_user_string)+ " "+ mCoach.fullName.split(" ")[0]+ " !");
 
-        if(mCoach.image != null){
+        if(mCoach.image != null)
             if(!mCoach.isBitmapImageAvailable())
-                mCoach.createImageBitmap();
-
-            mImageView.setImageBitmap(mCoach.getImageBitmap());
-        }
+                mCoach.createImageBitmap(this);
+            else
+                mImageView.setImageBitmap(mCoach.getImageBitmap());
     }
 
     /**
@@ -102,4 +102,8 @@ public class CoachHomeFragment extends Fragment {
         //TODO Imposta gli altri listeners delle card
     }
 
+    @Override
+    public void handleCallback() {
+        mImageView.setImageBitmap(mCoach.getImageBitmap());
+    }
 }

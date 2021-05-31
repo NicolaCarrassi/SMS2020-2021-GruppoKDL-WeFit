@@ -30,11 +30,12 @@ import it.uniba.di.sms2021.gruppodkl.wefit.R;
 import it.uniba.di.sms2021.gruppodkl.wefit.WeFitApplication;
 import it.uniba.di.sms2021.gruppodkl.wefit.contract.fragment.client.ClientProfileFragmentContract;
 import it.uniba.di.sms2021.gruppodkl.wefit.model.Client;
+import it.uniba.di.sms2021.gruppodkl.wefit.model.User;
 import it.uniba.di.sms2021.gruppodkl.wefit.presenter.fragment.client.ClientMyProfilePresenter;
 import it.uniba.di.sms2021.gruppodkl.wefit.utility.Keys;
 
 
-public class ClientMyProfileFragment extends Fragment implements ClientProfileFragmentContract.View {
+public class ClientMyProfileFragment extends Fragment implements ClientProfileFragmentContract.View, User.MyImageBitmapCallback {
 
     public static final String TAG = ClientMyProfileFragment.class.getSimpleName();
 
@@ -136,12 +137,12 @@ public class ClientMyProfileFragment extends Fragment implements ClientProfileFr
         mObjectiveEditText= view.findViewById(R.id.profile_objective_edit);
         mEditObjective= view.findViewById(R.id.edit_objective);
 
-        if(mUser.image != null){
+        if(mUser.image != null)
             if(!mUser.isBitmapImageAvailable())
-                mUser.createImageBitmap();
+                mUser.createImageBitmap(this);
+            else
+                mProfilePicture.setImageBitmap(mUser.getImageBitmap());
 
-            mProfilePicture.setImageBitmap(mUser.getImageBitmap());
-        }
 
         String gender = mUser.gender.equals(Keys.Gender.MALE) ? getResources().getString(R.string.male) : getResources().getString(R.string.female);
         String objective;
@@ -391,5 +392,8 @@ public class ClientMyProfileFragment extends Fragment implements ClientProfileFr
         return  mime.getExtensionFromMimeType(contentResolver.getType(uri));
     }
 
-
+    @Override
+    public void handleCallback() {
+        mProfilePicture.setImageBitmap(mUser.getImageBitmap());
+    }
 }

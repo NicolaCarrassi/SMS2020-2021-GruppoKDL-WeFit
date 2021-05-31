@@ -1,6 +1,8 @@
 package it.uniba.di.sms2021.gruppodkl.wefit;
 
+import android.content.Context;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.os.Handler;
 import android.os.Message;
@@ -10,6 +12,7 @@ import android.view.View;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.appcompat.app.AppCompatDelegate;
 
 import com.google.firebase.auth.FirebaseAuth;
 
@@ -65,6 +68,14 @@ public class SplashActivity extends AppCompatActivity  implements SplashActivity
         getWindow().getDecorView().setSystemUiVisibility(View.SYSTEM_UI_FLAG_HIDE_NAVIGATION);
 
         this.mPresenter = new SplashActivityPresenter(this);
+
+        SharedPreferences sp = this.getSharedPreferences("settings", Context.MODE_PRIVATE);
+
+        if(sp != null && sp.contains(SettingsActivity.SettingKeys.DARK_MODE_VALUE)) {
+            int darkMode = sp.getInt(SettingsActivity.SettingKeys.DARK_MODE_VALUE, AppCompatDelegate.MODE_NIGHT_NO);
+            AppCompatDelegate.setDefaultNightMode(darkMode);
+        } else
+            AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_NO);
 
         if(savedInstanceState != null)
             this.mStartTime = savedInstanceState.getLong(START_TIME_KEY);

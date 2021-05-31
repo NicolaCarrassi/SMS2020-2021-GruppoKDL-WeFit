@@ -15,11 +15,11 @@
         android:layout_height="wrap_content" />
 
     <TextView
+        android:id="@+id/coach_name_title"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginTop="10dp"
         android:textAlignment="center"
-        android:text="Rossellina"
         style="@style/custom_h1"/>
 
     <androidx.cardview.widget.CardView
@@ -43,8 +43,8 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:numStars="5"
-        android:rating="3"
-        android:layout_marginTop="10dp"/>
+        android:layout_marginTop="10dp"
+        android:isIndicator="true"/>
 
     <LinearLayout
         android:layout_width="match_parent"
@@ -52,47 +52,55 @@
         android:orientation="vertical"
         android:layout_marginHorizontal="@dimen/margin_horizontal">
 
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="20dp"
-        style="@style/custom_p"
-        android:text="Rossellina"/>
+        <TextView
+            android:id="@+id/coach_full_name"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
+            style="@style/custom_p" />
 
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="10dp"
-        style="@style/custom_p"
-        android:text="Vulpis"/>
 
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="10dp"
-        style="@style/custom_p"
-        android:text="Donna"/>
+        <TextView
+            android:id="@+id/coach_gender"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
+            style="@style/custom_p" />
 
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="10dp"
-        style="@style/custom_p"
-        android:text="ross.vulpis@lorda.it"/>
+        <TextView
+            android:id="@+id/coach_mail"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
+            style="@style/custom_p" />
 
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="10dp"
-        style="@style/custom_p"
-        android:text="Abilità..."/>
+        <TextView
+            android:id="@+id/coach_skills"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
+            style="@style/custom_p" />
 
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="10dp"
-        style="@style/custom_p"
-        android:text="Bio..."/>
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="horizontal"
+        android:layout_gravity="center"
+        android:gravity="top|center">
+
+        <Button
+            android:id="@+id/leave_a_feedback_button"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/leave_feedback" />
+
+        <Button
+            android:id="@+id/change_coach_button"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/change_coach" />
 
     </LinearLayout>
 

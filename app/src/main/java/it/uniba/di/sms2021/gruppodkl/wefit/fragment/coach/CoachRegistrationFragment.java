@@ -7,6 +7,7 @@ import android.os.Bundle;
 import androidx.annotation.NonNull;
 import androidx.fragment.app.Fragment;
 
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -23,10 +24,13 @@ import it.uniba.di.sms2021.gruppodkl.wefit.utility.Keys;
 
 public class CoachRegistrationFragment extends Fragment implements CoachRegistrationFragmentContract.View {
 
+    public static final String TAG = CoachRegistrationFragment.class.getSimpleName();
+
     private CheckBox mPersonalTrainerCheckBox;
     private CheckBox mDieticianCheckBox;
-    private ImageView mAddCertification;
-    private Uri mCertificationUri;
+    private ImageView mAddCertificationIcon;
+    private ImageView mCertificationAddedIcon;
+    private String mCertificationUri;
     private boolean mHasBeenClicked = false;
 
     private CoachCallBackActivity mActivity;
@@ -72,25 +76,28 @@ public class CoachRegistrationFragment extends Fragment implements CoachRegistra
     }
 
 
+    /**
+     * Il metodo permette di associare gli elementi della view ad oggetti
+     *
+     * @param view View di cui si è fatto l'inflate.
+     */
     private void bind(View view){
         mPersonalTrainerCheckBox = view.findViewById(R.id.personal_trainer_checkbox);
         mDieticianCheckBox = view.findViewById(R.id.dietician_checkbox);
-        mAddCertification = view.findViewById(R.id.send_certification);
-        mAddCertification.setClickable(true);
+        mAddCertificationIcon = view.findViewById(R.id.send_certification);
+        mAddCertificationIcon.setClickable(true);
+        mCertificationAddedIcon = view.findViewById(R.id.check_icon);
     }
 
+    /**
+     * Il metodo permette di impostare i listeners
+     *
+     */
     private void setListeners(){
-        mAddCertification.setOnClickListener(v -> {
-            //TODO gestisci click
+        mAddCertificationIcon.setOnClickListener(v -> {
+            mAddCertificationIcon.setClickable(false);
             if(!mHasBeenClicked)
-                 mActivity.openFindFile();
-                 mCertificationUri = mActivity.getFileURI();
-
-            //In caso di certificazione aggiunta
-            if(mCertificationUri != null) {
-                mHasBeenClicked = true;
-                mAddCertification.setClickable(false);
-            }
+                mActivity.openFindFile();
         });
     }
 
@@ -117,8 +124,26 @@ public class CoachRegistrationFragment extends Fragment implements CoachRegistra
             addictionalData.put(Keys.CoachRegistrationKeys.IS_DIETICIAN, DIETICIAN);
 
         if(mActivity.getFileURI() != null)
-            addictionalData.put(Keys.CoachRegistrationKeys.ATTACHED_FILE, mActivity.getFileURI().toString());
+            addictionalData.put(Keys.CoachRegistrationKeys.ATTACHED_FILE, mCertificationUri);
 
         return addictionalData;
     }
+
+    /**
+     * Il metodo permette di gestire la situazione di ricezione dell'uri della certificazione
+     * caricata.
+     *
+     * @param uri Uri della risorsa
+     */
+    public void uriObtained(String uri){
+        mCertificationUri = uri;
+
+        if (mCertificationUri != null) {
+            mAddCertificationIcon.setVisibility(View.GONE);
+            mCertificationAddedIcon.setVisibility(View.VISIBLE);
+            mHasBeenClicked = true;
+        } else
+            mAddCertificationIcon.setClickable(true);
+    }
+
 }

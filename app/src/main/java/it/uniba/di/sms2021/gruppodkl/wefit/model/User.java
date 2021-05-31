@@ -23,6 +23,10 @@ public class User {
         String ROLE = "role";
     }
 
+    public interface MyImageBitmapCallback{
+        void handleCallback();
+    }
+
     public String fullName;
     public String email;
     public String birthDate;
@@ -63,7 +67,7 @@ public class User {
     }
 
 
-    public void createImageBitmap(){
+    public void createImageBitmap(MyImageBitmapCallback callback){
         if(image != null) {
 
             StorageReference storageRef = FirebaseStorage.getInstance().getReferenceFromUrl(image);
@@ -71,6 +75,7 @@ public class User {
                 File localFile = File.createTempFile("images", "jpg");
                 storageRef.getFile(localFile).addOnSuccessListener(taskSnapshot -> {
                     this.imageBitmap = BitmapFactory.decodeFile(localFile.getAbsolutePath());
+                    callback.handleCallback();
                 });
             } catch (IOException e) {
                 Log.d(LoginActivityPresenter.class.getSimpleName(), e.getLocalizedMessage());
@@ -78,8 +83,6 @@ public class User {
 
         }
     }
-
-
 
 }
 

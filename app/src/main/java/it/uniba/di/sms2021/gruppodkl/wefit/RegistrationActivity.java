@@ -471,7 +471,6 @@ public class RegistrationActivity extends AppCompatActivity implements DatePicke
      * @param radioGroup di cui si vuole sapere se è stato selezionato un elemento
      * @return True se è stato selezionato almeno un elemento, false altrimenti
      */
-
     private boolean checkRadioGroup(RadioGroup radioGroup){
         int radioButtonChecked = radioGroup.getCheckedRadioButtonId();
         boolean insertData = false;
@@ -491,14 +490,14 @@ public class RegistrationActivity extends AppCompatActivity implements DatePicke
         super.onActivityResult(requestCode, resultCode, data);
 
         if(requestCode == IMAGE_INTENT_CODE && resultCode == RESULT_OK && data != null && data.getData() != null){
-            Log.d("AOO", data.getData().toString());
             mUri = data.getData();
+            if(mFragmentView instanceof CoachRegistrationFragment)
+                ((CoachRegistrationFragment) mFragmentView).uriObtained(mUri.toString());
         }
     }
 
     @Override
     public void openFindFile() {
-
 
         Intent intent = new Intent(Intent.ACTION_GET_CONTENT);
         intent.setType("application/pdf, image/*");
@@ -553,7 +552,4 @@ public class RegistrationActivity extends AppCompatActivity implements DatePicke
             }
         }
     }
-
-
-
 }

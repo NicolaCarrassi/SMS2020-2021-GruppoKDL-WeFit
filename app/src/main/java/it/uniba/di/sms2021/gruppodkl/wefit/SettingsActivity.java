@@ -1,10 +1,8 @@
 package it.uniba.di.sms2021.gruppodkl.wefit;
 
-import android.content.Intent;
 import android.content.SharedPreferences;
 import android.content.res.Configuration;
 import android.os.Bundle;
-import android.util.Log;
 import android.widget.ImageView;
 
 import androidx.appcompat.app.ActionBar;
@@ -14,11 +12,8 @@ import androidx.preference.CheckBoxPreference;
 import androidx.preference.ListPreference;
 import androidx.preference.Preference;
 import androidx.preference.PreferenceFragmentCompat;
-import androidx.preference.PreferenceManager;
 
 import java.util.Locale;
-
-import io.grpc.Context;
 
 public class SettingsActivity extends AppCompatActivity {
 

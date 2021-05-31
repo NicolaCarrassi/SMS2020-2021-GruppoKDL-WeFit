@@ -108,5 +108,6 @@
     <string name="text_label_feedback">Feedbacks</string>
 
     <string name="failed_to_register">Errore nella registrazione dell\'utente</string>
+    <string name="add_string">Registra</string>
 
 </resources>

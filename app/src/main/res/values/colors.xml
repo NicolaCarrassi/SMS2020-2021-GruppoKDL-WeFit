@@ -18,6 +18,7 @@
     <color name="polar_dark">#3B4252</color>
     <color name="polar_mid">#434C5E</color>
     <color name="polar_light">#4C566A</color>
+    <color name="light_grey">#EFEFEF</color>
 
     <!-- Frost -->
     <color name="frost_aquamarine">#8FBCBB</color>

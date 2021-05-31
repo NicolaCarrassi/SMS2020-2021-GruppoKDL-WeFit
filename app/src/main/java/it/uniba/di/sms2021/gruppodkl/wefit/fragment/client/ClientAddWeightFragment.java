@@ -10,6 +10,8 @@ import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.EditText;
 
+import java.math.BigDecimal;
+
 import it.uniba.di.sms2021.gruppodkl.wefit.R;
 
 
@@ -50,20 +52,16 @@ public class ClientAddWeightFragment extends Fragment {
         mButtonDecrease.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                final String presentValStr=mWeightValue.getText().toString();
-                double presentDoubleVal= Double.parseDouble(presentValStr);
-                presentDoubleVal--;
-                mWeightValue.setText(String.valueOf(presentDoubleVal));
+                final BigDecimal newValue = new BigDecimal(mWeightValue.getText().toString()).subtract(BigDecimal.valueOf(0.1));
+                mWeightValue.setText(newValue.toString().substring(0,4));
             }
         });
 
         mButtonIncrease.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                final String presentValStr=mWeightValue.getText().toString();
-                double presentDoubleVal= Double.parseDouble(presentValStr);
-                presentDoubleVal++;
-                mWeightValue.setText(String.valueOf(presentDoubleVal));
+                final BigDecimal newValue = new BigDecimal(mWeightValue.getText().toString()).add(BigDecimal.valueOf(0.1));
+                mWeightValue.setText(newValue.toString().substring(0,4));
             }
         });
     }

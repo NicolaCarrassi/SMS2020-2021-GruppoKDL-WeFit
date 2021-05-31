@@ -108,7 +108,13 @@
     <string name="text_label_feedback">Feedbacks</string>
 
     <string name="failed_to_register">Errore nella registrazione dell\'utente</string>
+
+    <!-- Add panel -->
     <string name="add_string">Registra</string>
+    <string name="select_training">Seleziona Allenamento</string>
+    <string name="select_meal">Seleziona Pasto</string>
+
+    <string name="hello_blank_fragment">ciao mondo</string>
 
     <string name="leave_feedback">Rilascia un feedback</string>
     <string name="change_coach">Annulla iscrizione</string>

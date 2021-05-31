@@ -19,7 +19,10 @@ public class ClientAddFragment extends BottomSheetDialogFragment {
 
     public static final String TAG = ClientAddFragment.class.getSimpleName();
     private LinearLayout mAddWeight;
+    private LinearLayout mAddTraining;
     private LinearLayout mAddPanel;
+    private LinearLayout mAddMeal;
+
 
 
     public ClientAddFragment() {
@@ -41,6 +44,9 @@ public class ClientAddFragment extends BottomSheetDialogFragment {
     private void bind(View layout){
         mAddPanel = layout.findViewById(R.id.add_container);
         mAddWeight = layout.findViewById(R.id.add_weight);
+        mAddTraining = layout.findViewById(R.id.add_training);
+        mAddMeal = layout.findViewById(R.id.add_meal);
+
     }
 
     private void setListener(){
@@ -53,6 +59,30 @@ public class ClientAddFragment extends BottomSheetDialogFragment {
                 FragmentTransaction fragmentTransaction;
                 fragmentTransaction = getChildFragmentManager().beginTransaction();
                 fragmentTransaction.replace(R.id.bottom_sheet_container, clientAddWeightFragment).commit();
+            }
+        });
+
+        mAddTraining.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                mAddPanel.setVisibility(View.GONE);
+                final ClientAddTrainingFragment clientAddTrainingFragment = new ClientAddTrainingFragment();
+
+                FragmentTransaction fragmentTransaction;
+                fragmentTransaction = getChildFragmentManager().beginTransaction();
+                fragmentTransaction.replace(R.id.bottom_sheet_container, clientAddTrainingFragment).commit();
+            }
+        });
+
+        mAddMeal.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                mAddPanel.setVisibility(View.GONE);
+                final ClientAddMealFragment clientAddMealFragment = new ClientAddMealFragment();
+
+                FragmentTransaction fragmentTransaction;
+                fragmentTransaction = getChildFragmentManager().beginTransaction();
+                fragmentTransaction.replace(R.id.bottom_sheet_container, clientAddMealFragment).commit();
             }
         });
     }

@@ -15,4 +15,19 @@
         <item>@string/male</item>
         <item>@string/female</item>
     </string-array>
+
+    <string-array name="training">
+        <item>@string/select_training</item>
+        <item>day_1</item>
+        <item>day_2</item>
+        <item>day_3</item>
+    </string-array>
+
+    <string-array name="meal">
+        <item>@string/select_meal</item>
+        <item>meal_1</item>
+        <item>meal_2</item>
+        <item>meal_3</item>
+    </string-array>
+
 </resources>

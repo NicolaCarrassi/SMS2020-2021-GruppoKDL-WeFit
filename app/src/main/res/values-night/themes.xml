@@ -117,7 +117,7 @@
         <item name="android:background">@drawable/button_rounded_corners</item>
         <item name="android:textStyle">bold</item>
         <item name="android:textSize">18sp</item>
-        <item name="android:textColor">@color/frost_blue</item>
+        <item name="android:textColor">@color/white</item>
     </style>
 
     <!-- Spinner custom -->

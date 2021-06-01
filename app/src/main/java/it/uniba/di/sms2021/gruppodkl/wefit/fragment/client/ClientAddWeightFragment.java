@@ -100,14 +100,11 @@ public class ClientAddWeightFragment extends BottomSheetDialogFragment implement
             }
         });
 
-        mBackButton.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                dismiss();
-                ClientAddFragment parent = (ClientAddFragment) getActivity().getSupportFragmentManager().findFragmentByTag(ClientAddFragment.TAG);
-                if(parent!=null){
-                    parent.dismiss();
-                }
+        mBackButton.setOnClickListener(v -> {
+            dismiss();
+            ClientAddFragment parent = (ClientAddFragment) getActivity().getSupportFragmentManager().findFragmentByTag(ClientAddFragment.TAG);
+            if(parent!=null){
+                parent.dismiss();
             }
         });
     }

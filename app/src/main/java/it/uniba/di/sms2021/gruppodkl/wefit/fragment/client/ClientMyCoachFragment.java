@@ -116,8 +116,8 @@ public class ClientMyCoachFragment extends Fragment implements ClientMyCoachCont
         mClient= (Client) ((WeFitApplication) getActivity().getApplicationContext()).getUser();
         if(mClient.coach != null)
             mPresenter.getCoachData(mClient.coach);
-        //else
-        //TODO passa alla schermata di richiesta nuovo coach
+        else
+            onCoachNotFound();
     }
 
 
@@ -158,8 +158,9 @@ public class ClientMyCoachFragment extends Fragment implements ClientMyCoachCont
 
     @Override
     public void onCoachNotFound() {
-        Log.d("AOO", "Non ha coach");
-        //TODO Passa a fragment di richiesta a nuovo coach
+        ClientCoachListFragment fragment = new ClientCoachListFragment();
+        getActivity().getSupportFragmentManager().beginTransaction().replace(R.id.anchor_point,fragment,ClientCoachListFragment.TAG)
+                .addToBackStack(null).commit();
     }
 
     @Override
@@ -187,6 +188,9 @@ public class ClientMyCoachFragment extends Fragment implements ClientMyCoachCont
                 .setTitle(getResources().getString(R.string.leave_coach_title))
                 .setMessage(getResources().getString(R.string.leave_coach_text))
                 .setNegativeButton(R.string.cancel, (dialog, which) -> dialog.dismiss())
-                .setPositiveButton(R.string.confirm, (dialog, which) -> mPresenter.leaveCoach(mClient)).show();
+                .setPositiveButton(R.string.confirm, (dialog, which) ->{
+                    mClient.email = null;
+                    mPresenter.leaveCoach(mClient);
+                }).show();
     }
 }

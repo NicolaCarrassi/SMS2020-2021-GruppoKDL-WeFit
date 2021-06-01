@@ -139,6 +139,8 @@
     <string name="read_all">Read all</string>
     <string name="no_feedback_received">You have received no Feedbacks</string>
     <string name="no_feedback_received_parag">Ask your clients to give you a feedback!</string>
+    <string name="request_subscribe">SUBSCRIBE</string>
+    <string name="choose_a_coach">Choose a coach</string>
 
 
 </resources>

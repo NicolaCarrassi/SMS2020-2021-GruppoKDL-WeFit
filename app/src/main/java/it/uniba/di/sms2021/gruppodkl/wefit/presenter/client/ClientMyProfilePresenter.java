@@ -11,7 +11,7 @@ import java.util.HashMap;
 import java.util.Map;
 
 import it.uniba.di.sms2021.gruppodkl.wefit.contract.client.ClientProfileFragmentContract;
-import it.uniba.di.sms2021.gruppodkl.wefit.db.UserDb;
+import it.uniba.di.sms2021.gruppodkl.wefit.db.UserDAO;
 import it.uniba.di.sms2021.gruppodkl.wefit.model.Client;
 import it.uniba.di.sms2021.gruppodkl.wefit.model.User;
 import it.uniba.di.sms2021.gruppodkl.wefit.utility.Keys;
@@ -59,7 +59,7 @@ public class ClientMyProfilePresenter implements ClientProfileFragmentContract.P
 
     @Override
     public void updateUser(Map<String, Object> map, Client client) {
-        UserDb.update(client, map);
+        UserDAO.update(client, map);
     }
 
     @Override

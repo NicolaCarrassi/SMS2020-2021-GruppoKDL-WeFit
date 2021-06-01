@@ -25,6 +25,7 @@
                 android:background="@color/transparent"
                 android:clickable="true">
                 <ImageView
+                    android:id="@+id/pfp_coach"
                     android:layout_width="100dp"
                     android:layout_height="100dp"
                     android:src="@drawable/gab">
@@ -51,7 +52,7 @@
                     android:id="@+id/button_item_coach_list"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="RICHIEDI ISCRIZIONE"
+                    android:text="@string/request_subscribe"
                     android:backgroundTint="#66BB66"
                     android:backgroundTintMode="screen"
 

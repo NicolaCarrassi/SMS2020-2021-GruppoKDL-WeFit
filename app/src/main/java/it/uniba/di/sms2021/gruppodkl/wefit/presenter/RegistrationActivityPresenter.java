@@ -1,23 +1,18 @@
 package it.uniba.di.sms2021.gruppodkl.wefit.presenter;
 
 import android.net.Uri;
-import android.util.Log;
 
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.FirebaseAuth;
-import com.google.firebase.firestore.DocumentReference;
-import com.google.firebase.firestore.FirebaseFirestore;
 import com.google.firebase.storage.FirebaseStorage;
 import com.google.firebase.storage.StorageReference;
 
-import java.io.ObjectStreamException;
-import java.security.Key;
 import java.util.HashMap;
 import java.util.Map;
 import java.util.Objects;
 
 import it.uniba.di.sms2021.gruppodkl.wefit.contract.RegistrationActivityContract;
-import it.uniba.di.sms2021.gruppodkl.wefit.db.UserDb;
+import it.uniba.di.sms2021.gruppodkl.wefit.db.UserDAO;
 import it.uniba.di.sms2021.gruppodkl.wefit.model.Client;
 import it.uniba.di.sms2021.gruppodkl.wefit.model.Coach;
 import it.uniba.di.sms2021.gruppodkl.wefit.model.User;
@@ -26,7 +21,7 @@ import it.uniba.di.sms2021.gruppodkl.wefit.utility.Keys;
 public class RegistrationActivityPresenter implements RegistrationActivityContract.Presenter {
 
     private final  RegistrationActivityContract.View mView;
-    private final UserDb.UserCallbacks mCallbacks;
+    private final UserDAO.UserCallbacks mCallbacks;
     private final FirebaseAuth mAuth = FirebaseAuth.getInstance();
 
 
@@ -38,7 +33,7 @@ public class RegistrationActivityPresenter implements RegistrationActivityContra
     public RegistrationActivityPresenter(RegistrationActivityContract.View view){
         this.mView = view;
 
-        mCallbacks = new UserDb.UserCallbacks() {
+        mCallbacks = new UserDAO.UserCallbacks() {
             @Override
             public void userLoaded(User user, boolean success) {
                 // OPERAZIONE NON GESTITA
@@ -125,9 +120,9 @@ public class RegistrationActivityPresenter implements RegistrationActivityContra
             int height = Integer.parseInt(Objects.requireNonNull(specificData.get(Keys.ClientRegistrationKeys.HEIGHT)));
             String objective = specificData.get(Keys.ClientRegistrationKeys.OBJECTIVE);
 
-            Client client = new Client(fullName, email, birthDate, gender,role,height,weight,objective);
+            Client client = new Client(fullName, email, birthDate, gender,role,height,weight,objective, false);
 
-            UserDb.create(client, mCallbacks);
+            UserDAO.create(client, mCallbacks);
 
         }else {
            boolean isPersonalTrainer = false;
@@ -146,7 +141,7 @@ public class RegistrationActivityPresenter implements RegistrationActivityContra
 
             Coach coach = new Coach(fullName, email, birthDate, gender,role,isPersonalTrainer,isDietist, certificationUri);
 
-            UserDb.create(coach, mCallbacks);
+            UserDAO.create(coach, mCallbacks);
            }
         }
 
@@ -164,7 +159,7 @@ public class RegistrationActivityPresenter implements RegistrationActivityContra
         weightMap.put(Keys.ClientRegistrationKeys.WEIGHT,client.weight);
 
         //creo la collection dei pesi nel document avente email quella dell'utente appena registrato
-        UserDb.addInSubCollection(client.email, Keys.Collections.WEIGHT, weightMap);
+        UserDAO.addInSubCollection(client.email, Keys.Collections.WEIGHT, weightMap);
 
         mView.onSuccess(client);
     }
@@ -186,7 +181,7 @@ public class RegistrationActivityPresenter implements RegistrationActivityContra
                         assert uri != null;
                         map.put(Coach.CoachKeys.CERTIFICATION, uri.toString());
 
-                        UserDb.update(coach, map);
+                        UserDAO.update(coach, map);
                     });
         }
     }

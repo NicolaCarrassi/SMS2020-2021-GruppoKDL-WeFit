@@ -1,19 +1,18 @@
 package it.uniba.di.sms2021.gruppodkl.wefit.presenter;
 
-import android.util.Log;
 import android.util.Patterns;
 
 import com.google.firebase.auth.FirebaseAuth;
 
 import it.uniba.di.sms2021.gruppodkl.wefit.contract.LoginActivityContract;
-import it.uniba.di.sms2021.gruppodkl.wefit.db.UserDb;
+import it.uniba.di.sms2021.gruppodkl.wefit.db.UserDAO;
 import it.uniba.di.sms2021.gruppodkl.wefit.model.User;
 
 public class LoginActivityPresenter implements LoginActivityContract.Presenter {
 
     private final LoginActivityContract.View mView;
     private final FirebaseAuth mAuth = FirebaseAuth.getInstance();
-    private final UserDb.UserCallbacks mCallBack;
+    private final UserDAO.UserCallbacks mCallBack;
 
     /**
      * Costruttore del presenter
@@ -24,7 +23,7 @@ public class LoginActivityPresenter implements LoginActivityContract.Presenter {
 
         this.mView = view;
 
-        mCallBack = new UserDb.UserCallbacks() {
+        mCallBack = new UserDAO.UserCallbacks() {
             @Override
             public void userLoaded(User user, boolean success) {
                 if (success && user != null)
@@ -45,7 +44,7 @@ public class LoginActivityPresenter implements LoginActivityContract.Presenter {
     public void doLogin(String email, String password) {
         mAuth.signInWithEmailAndPassword(email,password).addOnCompleteListener(task -> {
             if(task.isSuccessful()) {
-                UserDb.getUser(email, mCallBack);
+                UserDAO.getUser(email, mCallBack);
             } else
                 mView.onFailure();
         });

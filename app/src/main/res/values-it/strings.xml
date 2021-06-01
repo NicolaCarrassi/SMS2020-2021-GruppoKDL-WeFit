@@ -134,6 +134,9 @@
     <string name="read_all">Leggi tutti</string>
     <string name="no_feedback_received">Non hai ricevuto nessun feedback</string>
     <string name="no_feedback_received_parag">Chiedi ai tuoi clienti di lasciarti un feedback!</string>
+    <string name="request_subscribe">RICHIEDI ISCRIZIONE</string>
+    <string name="choose_a_coach">Seleziona un coach</string>
+
 
 
 </resources>

@@ -13,7 +13,7 @@
     <TextView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="@string/app_name"
+        android:text="@string/choose_a_coach"
         style="@style/custom_h1"
         android:layout_gravity="center_horizontal"
         android:gravity="center">

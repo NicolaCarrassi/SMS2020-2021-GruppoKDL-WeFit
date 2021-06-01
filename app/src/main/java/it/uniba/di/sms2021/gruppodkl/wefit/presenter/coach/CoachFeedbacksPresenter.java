@@ -3,11 +3,11 @@ package it.uniba.di.sms2021.gruppodkl.wefit.presenter.coach;
 import java.util.List;
 
 import it.uniba.di.sms2021.gruppodkl.wefit.contract.coach.CoachFeedbacksContract;
-import it.uniba.di.sms2021.gruppodkl.wefit.db.UserDb;
+import it.uniba.di.sms2021.gruppodkl.wefit.db.CoachDAO;
 import it.uniba.di.sms2021.gruppodkl.wefit.model.Coach;
 import it.uniba.di.sms2021.gruppodkl.wefit.model.Feedback;
 
-public class CoachFeedbacksPresenter implements CoachFeedbacksContract.Presenter, UserDb.RatingsCallbacks {
+public class CoachFeedbacksPresenter implements CoachFeedbacksContract.Presenter, CoachDAO.RatingCallbacks {
 
     private final CoachFeedbacksContract.View mView;
 
@@ -16,7 +16,7 @@ public class CoachFeedbacksPresenter implements CoachFeedbacksContract.Presenter
     }
 
     public void fetchLastFeedback(Coach coach){
-        UserDb.getLastFeedback(coach.email, this);
+        CoachDAO.getLastFeedback(coach.email, this);
     }
 
     @Override
@@ -26,7 +26,7 @@ public class CoachFeedbacksPresenter implements CoachFeedbacksContract.Presenter
 
     @Override
     public void feedbacksLoaded(List<Feedback> feedbackList) {
-        //NON GESTITo
+        //NON GESTITO
     }
 
     public void lastFeedbackLoaded(Feedback feedback, float mean, int numElem){

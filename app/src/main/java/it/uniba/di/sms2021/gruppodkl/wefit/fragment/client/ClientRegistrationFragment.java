@@ -138,7 +138,6 @@ public class ClientRegistrationFragment extends Fragment implements Registration
         if(radioResult == R.id.shape_objective_radio)
             addictionalData.put(Keys.ClientRegistrationKeys.OBJECTIVE,Keys.Objectives.GAIN_MASS);
 
-
         return addictionalData;
     }
 

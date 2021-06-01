@@ -11,7 +11,7 @@ import java.util.HashMap;
 import java.util.Map;
 
 import it.uniba.di.sms2021.gruppodkl.wefit.contract.coach.CoachProfileContract;
-import it.uniba.di.sms2021.gruppodkl.wefit.db.UserDb;
+import it.uniba.di.sms2021.gruppodkl.wefit.db.UserDAO;
 import it.uniba.di.sms2021.gruppodkl.wefit.model.Coach;
 import it.uniba.di.sms2021.gruppodkl.wefit.model.User;
 import it.uniba.di.sms2021.gruppodkl.wefit.utility.Keys;
@@ -67,7 +67,7 @@ public class CoachProfilePresenter implements CoachProfileContract.Presenter, Us
 
     @Override
     public void updateCoach(Map<String, Object> map, Coach coach) {
-       UserDb.update(coach,map);
+       UserDAO.update(coach,map);
     }
 
     @Override
@@ -88,7 +88,7 @@ public class CoachProfilePresenter implements CoachProfileContract.Presenter, Us
                            Map<String, Object> map = new HashMap<>();
                            map.put(Coach.CoachKeys.CERTIFICATION, uri.toString());
 
-                           UserDb.update(coach, map);
+                           UserDAO.update(coach, map);
                        }
                     });
         }

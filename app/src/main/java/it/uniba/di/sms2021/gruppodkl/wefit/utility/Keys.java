@@ -72,6 +72,7 @@ public interface Keys {
         String IMAGES = "images";
         String WEIGHT = "weight";
         String RATINGS = "ratings";
+        String REQUESTS = "requests";
     }
 
     interface RatingInfo{
@@ -79,6 +80,12 @@ public interface Keys {
         String MESSAGE = "message";
         String CLIENT = "client";
         String CLIENT_NAME = "clientFullName";
+    }
+
+    interface Request{
+        String MAIL = "email";
+        String NAME = "fullName";
+        String IMAGE = "image";
     }
 
 

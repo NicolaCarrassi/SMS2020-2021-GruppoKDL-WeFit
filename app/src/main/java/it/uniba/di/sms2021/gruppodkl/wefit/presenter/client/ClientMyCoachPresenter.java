@@ -5,7 +5,8 @@ import java.util.List;
 import java.util.Map;
 
 import it.uniba.di.sms2021.gruppodkl.wefit.contract.client.ClientMyCoachContract;
-import it.uniba.di.sms2021.gruppodkl.wefit.db.UserDb;
+import it.uniba.di.sms2021.gruppodkl.wefit.db.CoachDAO;
+import it.uniba.di.sms2021.gruppodkl.wefit.db.UserDAO;
 import it.uniba.di.sms2021.gruppodkl.wefit.model.Client;
 import it.uniba.di.sms2021.gruppodkl.wefit.model.Coach;
 import it.uniba.di.sms2021.gruppodkl.wefit.model.Feedback;
@@ -15,13 +16,13 @@ import it.uniba.di.sms2021.gruppodkl.wefit.utility.Keys;
 public class ClientMyCoachPresenter implements ClientMyCoachContract.Presenter {
 
     private ClientMyCoachContract.View mView;
-    private final UserDb.UserCallbacks mUserCallbacks;
-    private final UserDb.RatingsCallbacks mRatingCallbacks;
+    private final UserDAO.UserCallbacks mUserCallbacks;
+    private final CoachDAO.RatingCallbacks mRatingCallbacks;
 
     public ClientMyCoachPresenter(ClientMyCoachContract.View mView) {
         this.mView = mView;
 
-        mUserCallbacks = new UserDb.UserCallbacks() {
+        mUserCallbacks = new UserDAO.UserCallbacks() {
             @Override
             public void userLoaded(User user, boolean success) {
                 if(user != null)
@@ -35,10 +36,10 @@ public class ClientMyCoachPresenter implements ClientMyCoachContract.Presenter {
             }
         };
 
-        mRatingCallbacks = new UserDb.RatingsCallbacks() {
+        mRatingCallbacks = new CoachDAO.RatingCallbacks() {
             @Override
             public void ratingMeanLoaded(float ratingMean) {
-                mView.onCoachRatingStarsObtained(ratingMean);
+
             }
 
             @Override
@@ -56,12 +57,12 @@ public class ClientMyCoachPresenter implements ClientMyCoachContract.Presenter {
 
     @Override
     public void getCoachData(String coachEmail) {
-        UserDb.getUser(coachEmail, mUserCallbacks);
+        UserDAO.getUser(coachEmail, mUserCallbacks);
     }
 
     @Override
     public void addFeedback(Map<String, Object> map, String coachEmail) {
-        UserDb.addInSubCollection(coachEmail, Keys.Collections.RATINGS, map);
+        UserDAO.addInSubCollection(coachEmail, Keys.Collections.RATINGS, map);
     }
 
     @Override
@@ -71,13 +72,13 @@ public class ClientMyCoachPresenter implements ClientMyCoachContract.Presenter {
         Map<String, Object> map = new HashMap<>();
         map.put(Client.ClientKeys.COACH, null);
 
-        UserDb.update(client,map);
+        UserDAO.update(client,map);
 
         //TODO Rimuovi anche il collegamento opposto COACH --> CLIENT --> CLIENT_LIST
     }
 
     @Override
     public void getCoachRatingStars(Coach coach) {
-        UserDb.getCoachRatingStars(coach, mRatingCallbacks);
+        CoachDAO.getCoachRatingStars(coach, mRatingCallbacks);
     }
 }

@@ -1,13 +1,13 @@
 package it.uniba.di.sms2021.gruppodkl.wefit.presenter;
 
 import it.uniba.di.sms2021.gruppodkl.wefit.contract.SplashActivityContract;
-import it.uniba.di.sms2021.gruppodkl.wefit.db.UserDb;
+import it.uniba.di.sms2021.gruppodkl.wefit.db.UserDAO;
 import it.uniba.di.sms2021.gruppodkl.wefit.model.User;
 
 public class SplashActivityPresenter implements SplashActivityContract.Presenter {
 
     private final SplashActivityContract.View mView;
-    private final UserDb.UserCallbacks mCallbacks;
+    private final UserDAO.UserCallbacks mCallbacks;
 
 
     /**
@@ -18,7 +18,7 @@ public class SplashActivityPresenter implements SplashActivityContract.Presenter
     public SplashActivityPresenter(SplashActivityContract.View view){
         this.mView = view;
 
-        mCallbacks = new UserDb.UserCallbacks() {
+        mCallbacks = new UserDAO.UserCallbacks() {
             @Override
             public void userLoaded(User user, boolean success) {
                 if(user != null)
@@ -35,6 +35,6 @@ public class SplashActivityPresenter implements SplashActivityContract.Presenter
 
     @Override
     public void fetchUserData(String email) {
-        UserDb.getUser(email, mCallbacks);
+        UserDAO.getUser(email, mCallbacks);
     }
 }

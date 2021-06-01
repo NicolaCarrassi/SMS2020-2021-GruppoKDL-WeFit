@@ -4,7 +4,7 @@ import java.util.HashMap;
 import java.util.Map;
 
 import it.uniba.di.sms2021.gruppodkl.wefit.contract.client.ClientAddWeightContract;
-import it.uniba.di.sms2021.gruppodkl.wefit.db.UserDb;
+import it.uniba.di.sms2021.gruppodkl.wefit.db.UserDAO;
 import it.uniba.di.sms2021.gruppodkl.wefit.model.Client;
 import it.uniba.di.sms2021.gruppodkl.wefit.utility.Keys;
 
@@ -19,8 +19,8 @@ public class ClientAddWeightPresenter implements ClientAddWeightContract.Present
     public void addWeight(Client client, float weight) {
         Map<String, Object> map = new HashMap<>();
         map.put(Client.ClientKeys.WEIGHT, weight);
-        UserDb.addInSubCollection(client.email, Keys.Collections.WEIGHT,map);
-        UserDb.update(client, map);
+        UserDAO.addInSubCollection(client.email, Keys.Collections.WEIGHT,map);
+        UserDAO.update(client, map);
         mView.onSuccess();
     }
 }

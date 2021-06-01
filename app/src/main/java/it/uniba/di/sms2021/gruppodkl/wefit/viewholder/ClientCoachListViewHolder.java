@@ -1,8 +1,57 @@
 package it.uniba.di.sms2021.gruppodkl.wefit.viewholder;
 
-import com.google.firebase.firestore.FirebaseFirestore;
+import android.view.View;
+import android.widget.Button;
+import android.widget.ImageView;
+import android.widget.TextView;
 
-public class ClientCoachListViewHolder {
+import androidx.annotation.NonNull;
+import androidx.recyclerview.widget.RecyclerView;
 
-    private FirebaseFirestore firebaseFirestore;
+import it.uniba.di.sms2021.gruppodkl.wefit.R;
+import it.uniba.di.sms2021.gruppodkl.wefit.model.Coach;
+import it.uniba.di.sms2021.gruppodkl.wefit.model.User;
+
+public class ClientCoachListViewHolder extends RecyclerView.ViewHolder implements User.MyImageBitmapCallback {
+
+    private ImageView mCoachImage;
+    private TextView mCoachName;
+    private Button mRequestButton;
+    private Coach mCoach;
+    private ItemClickListener mItemClickListener;
+
+    public ClientCoachListViewHolder(@NonNull View itemView, ItemClickListener itemClickListener) {
+        super(itemView);
+
+        mCoachImage = itemView.findViewById(R.id.pfp_coach);
+        mCoachName = itemView.findViewById(R.id.name_item_coach_list);
+        mRequestButton = itemView.findViewById(R.id.button_item_coach_list);
+
+        mItemClickListener = itemClickListener;
+        mRequestButton.setOnClickListener(v -> mItemClickListener.onItemClick(mCoach));
+        mCoachImage.setOnClickListener(v -> mItemClickListener.onProfileOpened(mCoach));
+    }
+
+    public void setValues(Coach coach){
+        mCoach = coach;
+        if(coach.image != null){
+            if(!coach.isBitmapImageAvailable())
+                coach.createImageBitmap(this);
+
+            coach.setImageBitmap(coach.getImageBitmap());
+        }
+        mCoachName.setText(coach.fullName);
+    }
+
+    @Override
+    public void handleCallback() {
+        mCoachImage.setImageBitmap(mCoach.getImageBitmap());
+    }
+
+
+
+    public interface ItemClickListener{
+        void onItemClick(Coach coach);
+        void onProfileOpened(Coach coach);
+    }
 }

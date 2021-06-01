@@ -7,7 +7,6 @@ import android.os.Bundle;
 import androidx.annotation.NonNull;
 import androidx.fragment.app.Fragment;
 
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -18,7 +17,7 @@ import java.util.HashMap;
 import java.util.Map;
 
 import it.uniba.di.sms2021.gruppodkl.wefit.R;
-import it.uniba.di.sms2021.gruppodkl.wefit.contract.fragment.coach.CoachRegistrationFragmentContract;
+import it.uniba.di.sms2021.gruppodkl.wefit.contract.coach.CoachRegistrationFragmentContract;
 import it.uniba.di.sms2021.gruppodkl.wefit.utility.Keys;
 
 

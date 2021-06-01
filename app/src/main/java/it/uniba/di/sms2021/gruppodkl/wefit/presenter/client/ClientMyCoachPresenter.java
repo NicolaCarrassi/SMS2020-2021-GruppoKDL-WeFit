@@ -1,14 +1,14 @@
 package it.uniba.di.sms2021.gruppodkl.wefit.presenter.client;
 
-import android.util.Log;
-
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 
-import it.uniba.di.sms2021.gruppodkl.wefit.contract.fragment.client.ClientMyCoachContract;
+import it.uniba.di.sms2021.gruppodkl.wefit.contract.client.ClientMyCoachContract;
 import it.uniba.di.sms2021.gruppodkl.wefit.db.UserDb;
 import it.uniba.di.sms2021.gruppodkl.wefit.model.Client;
 import it.uniba.di.sms2021.gruppodkl.wefit.model.Coach;
+import it.uniba.di.sms2021.gruppodkl.wefit.model.Feedback;
 import it.uniba.di.sms2021.gruppodkl.wefit.model.User;
 import it.uniba.di.sms2021.gruppodkl.wefit.utility.Keys;
 
@@ -35,7 +35,22 @@ public class ClientMyCoachPresenter implements ClientMyCoachContract.Presenter {
             }
         };
 
-        mRatingCallbacks = mView::onCoachRatingStarsObtained;
+        mRatingCallbacks = new UserDb.RatingsCallbacks() {
+            @Override
+            public void ratingMeanLoaded(float ratingMean) {
+                mView.onCoachRatingStarsObtained(ratingMean);
+            }
+
+            @Override
+            public void feedbacksLoaded(List<Feedback> feedbackList) {
+                //
+            }
+
+            @Override
+            public void lastFeedbackLoaded(Feedback feedback, float mean, int numElem) {
+                //
+            }
+        };
     }
 
 

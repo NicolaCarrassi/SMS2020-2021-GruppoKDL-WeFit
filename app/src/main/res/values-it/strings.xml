@@ -126,5 +126,11 @@
     <string name="email_hint">Email:</string>
     <string name="add">Aggiungi</string>
 
+    <string name="received_feedbacks">FEEDBACK RICEVUTI</string>
+    <string name="feedback_number">Feedback totali: </string>
+    <string name="read_all">Leggi tutti</string>
+    <string name="no_feedback_received">Non hai ricevuto nessun feedback</string>
+    <string name="no_feedback_received_parag">Chiedi ai tuoi clienti di lasciarti un feedback!</string>
+
 
 </resources>

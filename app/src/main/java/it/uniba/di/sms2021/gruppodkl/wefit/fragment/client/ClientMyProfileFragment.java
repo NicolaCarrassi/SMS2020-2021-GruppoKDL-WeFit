@@ -6,7 +6,6 @@ import android.content.Context;
 import android.net.Uri;
 import android.os.Bundle;
 import android.text.TextUtils;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -28,10 +27,10 @@ import java.util.Map;
 
 import it.uniba.di.sms2021.gruppodkl.wefit.R;
 import it.uniba.di.sms2021.gruppodkl.wefit.WeFitApplication;
-import it.uniba.di.sms2021.gruppodkl.wefit.contract.fragment.client.ClientProfileFragmentContract;
+import it.uniba.di.sms2021.gruppodkl.wefit.contract.client.ClientProfileFragmentContract;
 import it.uniba.di.sms2021.gruppodkl.wefit.model.Client;
 import it.uniba.di.sms2021.gruppodkl.wefit.model.User;
-import it.uniba.di.sms2021.gruppodkl.wefit.presenter.fragment.client.ClientMyProfilePresenter;
+import it.uniba.di.sms2021.gruppodkl.wefit.presenter.client.ClientMyProfilePresenter;
 import it.uniba.di.sms2021.gruppodkl.wefit.utility.Keys;
 
 

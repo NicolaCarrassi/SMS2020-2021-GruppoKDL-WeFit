@@ -12,7 +12,6 @@ import android.widget.RatingBar;
 import java.util.HashMap;
 import java.util.Map;
 
-import it.uniba.di.sms2021.gruppodkl.wefit.contract.fragment.client.ClientMyCoachContract;
 import it.uniba.di.sms2021.gruppodkl.wefit.fragment.client.ClientMyCoachFragment;
 import it.uniba.di.sms2021.gruppodkl.wefit.utility.Keys;
 
@@ -54,16 +53,22 @@ public class AddFeedbackDialog extends Dialog implements View.OnClickListener {
                 dismiss();
                 break;
             case R.id.rating_button:
-                if(activity instanceof ClientMyCoachFragment.CoachProfileCallbacks)
-                    ((ClientMyCoachFragment.CoachProfileCallbacks) activity).makeRating(getRatingInfo());
-                dismiss();
+                if(ratingBar.getRating() > 0) {
+                    if (activity instanceof ClientMyCoachFragment.CoachProfileCallbacks)
+                        ((ClientMyCoachFragment.CoachProfileCallbacks) activity).makeRating(getRatingInfo());
+                    dismiss();
+                }
                 break;
             default:
                 break;
         }
     }
 
-
+    /**
+     * Prendo le informazioni presenti nel dialog per il rating
+     *
+     * @return Mappa con informazioni sul rating appena fornito
+     */
     private Map<String, Object> getRatingInfo(){
         Map<String, Object> ratingInfo = new HashMap<>();
         String text = feedbackText.getText().toString().trim();

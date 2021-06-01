@@ -78,6 +78,7 @@ public interface Keys {
         String RATE = "rate";
         String MESSAGE = "message";
         String CLIENT = "client";
+        String CLIENT_NAME = "clientFullName";
     }
 
 

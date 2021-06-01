@@ -1,4 +1,4 @@
-package it.uniba.di.sms2021.gruppodkl.wefit.contract.fragment.client;
+package it.uniba.di.sms2021.gruppodkl.wefit.contract.client;
 
 import it.uniba.di.sms2021.gruppodkl.wefit.model.Client;
 

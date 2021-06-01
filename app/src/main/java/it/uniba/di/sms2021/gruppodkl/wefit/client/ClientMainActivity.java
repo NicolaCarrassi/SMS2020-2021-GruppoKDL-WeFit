@@ -31,6 +31,7 @@ import it.uniba.di.sms2021.gruppodkl.wefit.fragment.client.ClientMyProfileFragme
 import it.uniba.di.sms2021.gruppodkl.wefit.fragment.client.ClientMyProgressFragment;
 import it.uniba.di.sms2021.gruppodkl.wefit.fragment.TermsFragment;
 import it.uniba.di.sms2021.gruppodkl.wefit.fragment.client.ClientMyTrainingFragment;
+import it.uniba.di.sms2021.gruppodkl.wefit.model.User;
 import it.uniba.di.sms2021.gruppodkl.wefit.utility.Keys;
 
 public class ClientMainActivity extends AppCompatActivity implements WeFitApplication.CallbackOperations,
@@ -213,8 +214,9 @@ public class ClientMainActivity extends AppCompatActivity implements WeFitApplic
 
     @Override
     public void makeRating(Map<String, Object> map){
-        String userEmail = ((WeFitApplication) getApplicationContext()).getUser().email;
-        map.put(Keys.RatingInfo.CLIENT, userEmail);
+        User user = ((WeFitApplication) getApplicationContext()).getUser();
+        map.put(Keys.RatingInfo.CLIENT, user.email);
+        map.put(Keys.RatingInfo.CLIENT_NAME, user.fullName);
 
         ClientMyCoachFragment coachFragment = (ClientMyCoachFragment) getSupportFragmentManager().findFragmentByTag(ClientMyCoachFragment.TAG);
         if(coachFragment!= null)

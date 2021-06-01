@@ -1,4 +1,4 @@
-package it.uniba.di.sms2021.gruppodkl.wefit.presenter.fragment.client;
+package it.uniba.di.sms2021.gruppodkl.wefit.presenter.client;
 
 import android.net.Uri;
 
@@ -10,7 +10,7 @@ import com.google.firebase.storage.StorageReference;
 import java.util.HashMap;
 import java.util.Map;
 
-import it.uniba.di.sms2021.gruppodkl.wefit.contract.fragment.client.ClientProfileFragmentContract;
+import it.uniba.di.sms2021.gruppodkl.wefit.contract.client.ClientProfileFragmentContract;
 import it.uniba.di.sms2021.gruppodkl.wefit.db.UserDb;
 import it.uniba.di.sms2021.gruppodkl.wefit.model.Client;
 import it.uniba.di.sms2021.gruppodkl.wefit.model.User;

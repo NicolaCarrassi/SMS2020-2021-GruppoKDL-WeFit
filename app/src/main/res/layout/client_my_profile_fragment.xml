@@ -54,7 +54,7 @@
             android:background="@drawable/pencil_icon"
             android:layout_marginStart="10dp"
             android:layout_gravity="bottom"
-            android:backgroundTint="@color/black"
+            android:backgroundTint="?attr/colorOnPrimary"
             android:contentDescription="@string/edit_pfp"/>
 
     </LinearLayout>
@@ -200,7 +200,7 @@
                 android:layout_width="30dp"
                 android:layout_height="30dp"
                 android:background="@drawable/pencil_icon"
-                android:backgroundTint="@color/black"
+                android:backgroundTint="?attr/colorOnPrimary"
                 android:contentDescription="@string/edit_name"
                 android:clickable="true"
                 android:focusable="true"
@@ -214,7 +214,7 @@
 
                 android:background="@drawable/pencil_icon"
 
-                android:backgroundTint="@color/black"
+                android:backgroundTint="?attr/colorOnPrimary"
                 android:contentDescription="@string/edit_gender"
                 android:layout_height="30dp"
                 android:layout_marginBottom="15dp"/>
@@ -226,7 +226,7 @@
                 android:background="@drawable/pencil_icon"
                 android:layout_height="30dp"
 
-                android:backgroundTint="@color/black"
+                android:backgroundTint="?attr/colorOnPrimary"
                 android:contentDescription="@string/edit_height"
                 android:layout_marginBottom="15dp"/>
 
@@ -237,7 +237,7 @@
                 android:background="@drawable/pencil_icon"
                 android:layout_height="30dp"
 
-                android:backgroundTint="@color/black"
+                android:backgroundTint="?attr/colorOnPrimary"
                 android:contentDescription="@string/edit_objective"/>
         </LinearLayout>
     </LinearLayout>

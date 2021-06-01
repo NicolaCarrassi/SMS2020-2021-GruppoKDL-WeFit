@@ -5,7 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    tools:context=".fragment.client.ClientHomeFragment"
+    tools:context=".fragment.client.ClientMyProfileFragment"
     android:gravity="center_horizontal"
     android:orientation="vertical"
     style="@style/BackgroundCustom">
@@ -243,11 +243,14 @@
     </LinearLayout>
 
 
-    <Button
+    <com.google.android.material.button.MaterialButton
         android:id="@+id/btn_save_profile_update"
         android:layout_marginTop="20dp"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="@string/btn_save_update"
+        style="@style/MaterialButtonCustom"
+        android:paddingHorizontal="30dp"
+        android:paddingVertical="15dp"
         android:visibility="invisible"/>
 </LinearLayout>

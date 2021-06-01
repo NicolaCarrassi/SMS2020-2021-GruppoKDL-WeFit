@@ -22,6 +22,8 @@ import android.widget.Toast;
 import androidx.annotation.NonNull;
 import androidx.fragment.app.Fragment;
 
+import com.google.android.material.button.MaterialButton;
+
 import java.util.HashMap;
 import java.util.Map;
 
@@ -58,7 +60,7 @@ public class CoachProfileFragment extends Fragment implements CoachProfileContra
     private ImageView mCertificationAlreadyAttachedImage;
     private TextView mEmail;
 
-    private Button mUpdateButton;
+    private MaterialButton mUpdateButton;
 
 
 

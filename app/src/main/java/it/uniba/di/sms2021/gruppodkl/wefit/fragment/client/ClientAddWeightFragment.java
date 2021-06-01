@@ -16,6 +16,7 @@ import android.widget.ImageView;
 import android.widget.LinearLayout;
 
 import com.google.android.material.bottomsheet.BottomSheetDialogFragment;
+import com.google.android.material.button.MaterialButton;
 
 import java.math.BigDecimal;
 
@@ -32,14 +33,14 @@ public class ClientAddWeightFragment extends BottomSheetDialogFragment implement
 
     private static final float MIN_WEIGHT = 40.0f;
 
-    private Button mButtonDecrease;
-    private Button mButtonIncrease;
+    private MaterialButton mButtonDecrease;
+    private MaterialButton mButtonIncrease;
     private EditText mWeightValue;
-    private Button mAddWeight;
+    private MaterialButton mAddWeight;
     private Client mClient;
     private ClientAddWeightPresenter mPresenter;
     private AnimatedVectorDrawable mSuccessAnimation;
-    private Button mBackButton;
+    private MaterialButton mBackButton;
     private LinearLayout mAddWeightPanel;
     private LinearLayout mAddWeightSuccess;
 

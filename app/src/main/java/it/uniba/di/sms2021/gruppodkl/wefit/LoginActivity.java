@@ -14,6 +14,8 @@ import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import com.google.android.material.button.MaterialButton;
+
 import java.util.regex.Pattern;
 
 import it.uniba.di.sms2021.gruppodkl.wefit.client.ClientMainActivity;
@@ -34,7 +36,7 @@ public class LoginActivity extends AppCompatActivity implements LoginActivityCon
     private TextView mNewUser;
     private TextView mForgotPassword;
 
-    private Button mLoginButton;
+    private MaterialButton mLoginButton;
     private ImageView mPasswordImageView;
 
 

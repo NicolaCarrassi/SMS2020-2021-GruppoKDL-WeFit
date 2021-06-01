@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".fragment.client.ClientAddTrainingFragment"
+    tools:context=".fragment.client.ClientAddMealFragment"
     android:orientation="vertical"
     android:layout_marginVertical="35dp">
 
@@ -26,12 +26,14 @@
         style="@style/SpinnerCustom">
     </Spinner>
 
-    <Button
+    <com.google.android.material.button.MaterialButton
         android:layout_gravity="center_horizontal"
         android:layout_marginTop="@dimen/margin_horizontal"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        style="@style/ButtonCustom"
+        style="@style/MaterialButtonCustom"
+        android:paddingHorizontal="30dp"
+        android:paddingVertical="15dp"
         android:text="Invia"/>
 
 </LinearLayout>

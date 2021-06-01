@@ -22,6 +22,8 @@ import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentActivity;
 
+import com.google.android.material.button.MaterialButton;
+
 import java.util.HashMap;
 import java.util.Map;
 
@@ -72,7 +74,7 @@ public class ClientMyProfileFragment extends Fragment implements ClientProfileFr
     private EditText mObjectiveEditText;
     private ImageView mEditObjective;
 
-    private Button mUpdateButton;
+    private MaterialButton mUpdateButton;
 
 
 

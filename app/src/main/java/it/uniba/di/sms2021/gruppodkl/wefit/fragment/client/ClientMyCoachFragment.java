@@ -14,6 +14,7 @@ import android.widget.TextView;
 import androidx.annotation.NonNull;
 import androidx.fragment.app.Fragment;
 
+import com.google.android.material.button.MaterialButton;
 import com.google.android.material.dialog.MaterialAlertDialogBuilder;
 
 import java.util.Map;
@@ -45,8 +46,8 @@ public class ClientMyCoachFragment extends Fragment implements ClientMyCoachCont
     private TextView mCoachGender;
     private TextView mCoachMail;
     private TextView mCoachSkills;
-    private Button mFeedbackButton;
-    private Button mLeaveCoachButton;
+    private MaterialButton mFeedbackButton;
+    private MaterialButton mLeaveCoachButton;
     private RatingBar mRatingBar;
 
     private Client mClient;

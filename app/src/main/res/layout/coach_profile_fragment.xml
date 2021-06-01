@@ -6,7 +6,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         xmlns:app="http://schemas.android.com/apk/res-auto"
-        tools:context=".fragment.client.ClientHomeFragment"
+        tools:context=".fragment.coach.CoachProfileFragment"
         android:gravity="center_horizontal"
         android:orientation="vertical"
         style="@style/BackgroundCustom">
@@ -254,12 +254,15 @@
             android:layout_marginHorizontal="40dp"
             android:elevation="2dp"/>
 
-        <Button
+        <com.google.android.material.button.MaterialButton
             android:id="@+id/btn_save_profile_update"
             android:layout_marginTop="20dp"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="@string/btn_save_update"
-            android:visibility="invisible"/>
+            android:visibility="invisible"
+            style="@style/MaterialButtonCustom"
+            android:paddingHorizontal="30dp"
+            android:paddingVertical="15dp"/>
     </LinearLayout>
 </ScrollView>

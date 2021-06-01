@@ -27,12 +27,14 @@
         android:layout_height="50dp"
         android:gravity="center_horizontal" >
 
-        <Button android:id="@+id/buttonDecrease"
+        <com.google.android.material.button.MaterialButton
+            android:id="@+id/buttonDecrease"
             android:layout_width="50dp"
             android:layout_height="50dp"
             android:layout_alignParentLeft="true"
             android:layout_alignParentTop="true"
-            style="@style/ButtonCustom"
+            style="@style/MaterialButtonCustom"
+            android:backgroundTint="@color/light_blue"
             android:text="-" />
 
         <EditText
@@ -46,23 +48,26 @@
             style="@style/custom_p"
             android:text="70.0" />
 
-        <Button android:id="@+id/buttonIncrease"
+        <com.google.android.material.button.MaterialButton
+            android:id="@+id/buttonIncrease"
             android:layout_width="50dp"
             android:layout_height="50dp"
             android:layout_alignParentTop="true"
             android:layout_toRightOf="@+id/weightValue"
-            style="@style/ButtonCustom"
-
+            style="@style/MaterialButtonCustom"
+            android:backgroundTint="@color/light_blue"
             android:text="+" />
     </RelativeLayout>
 
-    <Button
+    <com.google.android.material.button.MaterialButton
         android:id="@+id/btn_add_weight"
         android:layout_gravity="center_horizontal"
         android:layout_marginTop="@dimen/margin_horizontal"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        style="@style/ButtonCustom"
+        style="@style/MaterialButtonCustom"
+        android:paddingHorizontal="30dp"
+        android:paddingVertical="15dp"
         android:text="@string/add"/>
 
     </LinearLayout>
@@ -89,13 +94,15 @@
             android:layout_width="80dp"
             android:layout_height="80dp"/>
 
-        <Button
+        <com.google.android.material.button.MaterialButton
             android:id="@+id/back_home"
             android:layout_gravity="center_horizontal"
             android:layout_marginTop="@dimen/margin_horizontal"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            style="@style/ButtonCustom"
+            style="@style/MaterialButtonCustom"
+            android:paddingHorizontal="30dp"
+            android:paddingVertical="15dp"
             android:text="@string/back"/>
 
     </LinearLayout>

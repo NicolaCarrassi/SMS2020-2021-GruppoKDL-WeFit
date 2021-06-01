@@ -8,7 +8,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         xmlns:app="http://schemas.android.com/apk/res-auto"
-        tools:context=".fragment.client.ClientHomeFragment"
+        tools:context=".fragment.client.CoachFeedbacksFragment"
         android:gravity="center_horizontal"
         android:orientation="vertical"
         style="@style/BackgroundCustom">
@@ -99,12 +99,14 @@
             android:maxLines="5"
             android:lines="5" />
 
-        <Button
+        <com.google.android.material.button.MaterialButton
             android:id="@+id/btn_read_all"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="@string/read_all"
-            android:textStyle="bold" />
+            style="@style/MaterialButtonCustom"
+            android:paddingHorizontal="30dp"
+            android:paddingVertical="15dp"
+            android:text="@string/read_all"/>
 
         <TextView
             android:id="@+id/no_feedback_title"

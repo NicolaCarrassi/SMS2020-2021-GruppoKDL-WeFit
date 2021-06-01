@@ -26,12 +26,14 @@
         style="@style/SpinnerCustom">
     </Spinner>
 
-    <Button
+    <com.google.android.material.button.MaterialButton
         android:layout_gravity="center_horizontal"
         android:layout_marginTop="@dimen/margin_horizontal"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        style="@style/ButtonCustom"
+        android:paddingHorizontal="30dp"
+        android:paddingVertical="15dp"
+        style="@style/MaterialButtonCustom"
         android:text="Invia"/>
 
 </LinearLayout>

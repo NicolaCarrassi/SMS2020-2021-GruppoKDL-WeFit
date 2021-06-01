@@ -27,7 +27,7 @@
         android:layout_width="150dp"
         android:layout_height="150dp"
         app:cardCornerRadius="75dp"
-        android:layout_marginTop="20dp">
+        android:layout_marginTop="40dp">
 
         <ImageView
             android:id="@+id/profile_image_coach"
@@ -50,7 +50,8 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:orientation="vertical"
-        android:layout_marginHorizontal="@dimen/margin_horizontal">
+        android:layout_marginHorizontal="@dimen/margin_horizontal"
+        android:layout_marginTop="40dp">
 
         <TextView
             android:id="@+id/coach_full_name"
@@ -85,24 +86,34 @@
 
     <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
+        android:layout_height="wrap_content"
         android:orientation="horizontal"
         android:layout_gravity="center"
-        android:gravity="top|center">
+        android:gravity="top|center"
+        android:layout_marginHorizontal="@dimen/margin_horizontal"
+        android:layout_marginTop="@dimen/margin_horizontal">
 
-        <Button
+        <com.google.android.material.button.MaterialButton
             android:id="@+id/leave_a_feedback_button"
-            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="@string/leave_feedback" />
+            android:layout_width="fill_parent"
+            android:text="@string/leave_feedback"
+            style="@style/MaterialButtonCustom"
+            android:paddingVertical="15dp"
+            android:layout_weight="1"
+            android:layout_marginRight="10dp"/>
 
-        <Button
+        <com.google.android.material.button.MaterialButton
             android:id="@+id/change_coach_button"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
+            android:layout_height="match_parent"
+            android:layout_width="fill_parent"
+            style="@style/MaterialButtonCustom"
+            android:textSize="17dp"
+            android:paddingVertical="15dp"
+            android:layout_weight="1"
+            android:layout_marginLeft="10dp"
             android:text="@string/change_coach" />
 
     </LinearLayout>
-
 
 </LinearLayout>

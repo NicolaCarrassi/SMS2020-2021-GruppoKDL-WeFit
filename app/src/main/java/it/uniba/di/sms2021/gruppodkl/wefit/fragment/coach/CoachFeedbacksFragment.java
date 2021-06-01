@@ -17,6 +17,8 @@ import android.widget.ImageView;
 import android.widget.RatingBar;
 import android.widget.TextView;
 
+import com.google.android.material.button.MaterialButton;
+
 import org.w3c.dom.Text;
 
 import it.uniba.di.sms2021.gruppodkl.wefit.R;
@@ -43,7 +45,7 @@ public class CoachFeedbacksFragment extends Fragment implements User.MyImageBitm
     private RatingBar mLastFeedbackRating;
     private TextView mLastReviewText;
     private TextView mLastFeedbackLabel;
-    private Button mReadAllButton;
+    private MaterialButton mReadAllButton;
     private TextView mNoFeedbackTitle;
     private TextView mNoFeedbackParagraph;
 

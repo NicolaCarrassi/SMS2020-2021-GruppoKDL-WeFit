@@ -157,14 +157,16 @@
             android:theme="@style/EditTextCustom"
             android:elevation="4dp"/>
 
-        <Button
+        <com.google.android.material.button.MaterialButton
             android:id="@+id/forward_first_button"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            style="@style/MaterialButtonCustom"
+            android:paddingHorizontal="30dp"
+            android:paddingVertical="15dp"
             android:text="@string/next"
             android:layout_gravity="center_horizontal"
-            android:layout_marginTop="40dp"
-            android:background="@drawable/button_rounded_corners"/>
+            android:layout_marginTop="40dp" />
 
     </LinearLayout>
 </ScrollView>
@@ -258,12 +260,14 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:orientation="vertical">
-            <Button
+            <com.google.android.material.button.MaterialButton
                 android:id="@+id/register_button"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="@string/register_button"
-                android:theme="@style/ButtonCustom"
+                style="@style/MaterialButtonCustom"
+                android:paddingHorizontal="30dp"
+                android:paddingVertical="15dp"
                 android:layout_gravity="center|bottom"
                 android:layout_marginTop="20dp"
                 android:layout_marginBottom="50dp"/>

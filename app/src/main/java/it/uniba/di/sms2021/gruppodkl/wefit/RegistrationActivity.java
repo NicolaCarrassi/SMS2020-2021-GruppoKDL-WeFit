@@ -30,6 +30,8 @@ import android.widget.Toast;
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
+import com.google.android.material.button.MaterialButton;
+
 import java.text.DateFormat;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
@@ -70,12 +72,12 @@ public class RegistrationActivity extends AppCompatActivity implements DatePicke
     private EditText mEmailEdit;
     private EditText mPasswordEdit;
     private EditText mConfirmPasswordEdit;
-    private Button mFirstForwardButton;
+    private MaterialButton mFirstForwardButton;
     private Spinner mSpinner;
 
     private LinearLayout mCoachClientLayout;
     private RadioGroup mRadioRole;
-    private Button mRegisterButton;
+    private MaterialButton mRegisterButton;
     private ImageView mBackIcon;
 
     private boolean mHasBeenOpened = false;

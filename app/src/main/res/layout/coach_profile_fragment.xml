@@ -108,9 +108,8 @@
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="match_parent"
-                        android:hint="@string/email_hint"
+                        android:text="@string/email_hint"
                         android:layout_marginStart="5dp"
-                        android:textColorHint="@color/black"
                         android:clickable="false"
                         style="@style/custom_p"/>
                     <TextView

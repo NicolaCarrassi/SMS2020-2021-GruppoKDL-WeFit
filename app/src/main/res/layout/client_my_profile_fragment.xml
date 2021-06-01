@@ -127,9 +127,8 @@
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="match_parent"
-                    android:hint="Email: "
+                    android:text="Email: "
                     android:layout_marginStart="5dp"
-                    android:textColorHint="@color/black"
                     android:clickable="false"
                     style="@style/custom_p"/>
             <TextView
@@ -159,8 +158,7 @@
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="match_parent"
-                    android:hint="@string/client_current_weight"
-                    android:textColorHint="@color/black"
+                    android:text="@string/client_current_weight"
                     android:layout_marginStart="5dp"
                     android:clickable="false"
                     style="@style/custom_p"/>
@@ -177,7 +175,8 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="kg"
-                    style="@style/custom_p"/>
+                    style="@style/custom_p"
+                    android:layout_marginLeft="2dp"/>
 
             </LinearLayout>
             <View

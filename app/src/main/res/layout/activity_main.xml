@@ -38,6 +38,7 @@
         android:background="?attr/colorPrimary"
         app:itemIconTint="@color/white"
         android:theme="@style/Theme.WeFit.NavigationBar"
-        app:itemTextColor="@color/white"/>
+        app:itemTextColor="@color/white"
+        android:fitsSystemWindows="false"/>
 
 </androidx.drawerlayout.widget.DrawerLayout>

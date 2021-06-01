@@ -34,7 +34,7 @@ import it.uniba.di.sms2021.gruppodkl.wefit.fragment.client.ClientMyTrainingFragm
 import it.uniba.di.sms2021.gruppodkl.wefit.utility.Keys;
 
 public class ClientMainActivity extends AppCompatActivity implements WeFitApplication.CallbackOperations,
-        ClientMyProfileFragment.ProfileFragmentActivity, ClientMyCoachFragment.CoachProfileCallbacks{
+        ClientMyProfileFragment.ProfileFragmentActivity, ClientMyCoachFragment.CoachProfileCallbacks, ClientAddFragment.bottomNavigationSelector {
 
     private BottomNavigationView mBottomNavigation;
     private NavigationView mNavigationView;
@@ -222,6 +222,16 @@ public class ClientMainActivity extends AppCompatActivity implements WeFitApplic
     }
 
 
+    @Override
+    public void selectBottomNavigationItem() {
+        Fragment f = getSupportFragmentManager().findFragmentById(R.id.anchor_point);
 
-
+        if(f instanceof ClientHomeFragment){
+            mBottomNavigation.setSelectedItemId(R.id.home);
+        } else if (f instanceof ClientDietFragment){
+            mBottomNavigation.setSelectedItemId(R.id.diet);
+        } else if (f instanceof ClientMyTrainingFragment){
+            mBottomNavigation.setSelectedItemId(R.id.training);
+        }
+    }
 }

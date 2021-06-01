@@ -113,6 +113,9 @@
     <string name="add_string">Registra</string>
     <string name="select_training">Seleziona Allenamento</string>
     <string name="select_meal">Seleziona Pasto</string>
+    <string name="back">Indietro</string>
+    <string name="weight_successfully_added">Peso Inserito Con Successo!</string>
+
 
     <string name="hello_blank_fragment">ciao mondo</string>
 

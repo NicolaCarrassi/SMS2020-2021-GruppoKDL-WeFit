@@ -1,8 +1,11 @@
 package it.uniba.di.sms2021.gruppodkl.wefit.fragment.client;
 
+import android.graphics.drawable.AnimatedVectorDrawable;
+import android.graphics.drawable.AnimationDrawable;
 import android.os.Bundle;
 
 import androidx.fragment.app.Fragment;
+import androidx.fragment.app.FragmentActivity;
 
 import android.util.Log;
 import android.view.LayoutInflater;
@@ -10,6 +13,10 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.ImageView;
+import android.widget.LinearLayout;
+
+import com.google.android.material.bottomsheet.BottomSheetDialogFragment;
 
 import java.math.BigDecimal;
 
@@ -20,7 +27,7 @@ import it.uniba.di.sms2021.gruppodkl.wefit.model.Client;
 import it.uniba.di.sms2021.gruppodkl.wefit.presenter.fragment.client.ClientAddWeightPresenter;
 
 
-public class ClientAddWeightFragment extends Fragment implements ClientAddWeightContract.View {
+public class ClientAddWeightFragment extends BottomSheetDialogFragment implements ClientAddWeightContract.View {
 
     public static final String TAG = ClientAddWeightFragment.class.getSimpleName();
 
@@ -32,6 +39,10 @@ public class ClientAddWeightFragment extends Fragment implements ClientAddWeight
     private Button mAddWeight;
     private Client mClient;
     private ClientAddWeightPresenter mPresenter;
+    private AnimatedVectorDrawable mSuccessAnimation;
+    private Button mBackButton;
+    private LinearLayout mAddWeightPanel;
+    private LinearLayout mAddWeightSuccess;
 
 
     public ClientAddWeightFragment() {
@@ -62,6 +73,12 @@ public class ClientAddWeightFragment extends Fragment implements ClientAddWeight
         mWeightValue = layout.findViewById(R.id.weightValue);
         mWeightValue.setText(Float.toString(mClient.weight));
         mAddWeight = layout.findViewById(R.id.btn_add_weight);
+        ImageView mImageView = layout.findViewById(R.id.success_anim);
+        mImageView.setBackgroundResource(R.drawable.success_anim);
+        mSuccessAnimation = (AnimatedVectorDrawable) mImageView.getBackground();
+        mAddWeightPanel = layout.findViewById(R.id.add_weight_panel);
+        mAddWeightSuccess = layout.findViewById(R.id.add_weight_success);
+        mBackButton = layout.findViewById(R.id.back_home);
     }
 
     private void setListener(){
@@ -83,12 +100,24 @@ public class ClientAddWeightFragment extends Fragment implements ClientAddWeight
                 mPresenter.addWeight(mClient, weight);
             }
         });
+
+        mBackButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                dismiss();
+                ClientAddFragment parent = (ClientAddFragment) getActivity().getSupportFragmentManager().findFragmentByTag(ClientAddFragment.TAG);
+                if(parent!=null){
+                    parent.dismiss();
+                }
+            }
+        });
     }
 
     @Override
     public void onSuccess() {
-        //TODO Aggiungi un effetto grafico (NON UN TOAST CHE HANNO ROTTO IL CAZZO)
-        // per avvisare che il peso è stato registrato, chiudi anche la schermata
-        // di add
+        mAddWeightPanel.setVisibility(View.GONE);
+        mAddWeightSuccess.setVisibility(View.VISIBLE);
+        mSuccessAnimation.start();
     }
+
 }

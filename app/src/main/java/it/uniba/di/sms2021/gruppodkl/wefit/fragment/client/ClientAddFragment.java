@@ -1,8 +1,11 @@
 package it.uniba.di.sms2021.gruppodkl.wefit.fragment.client;
 
+import android.content.Context;
+import android.content.DialogInterface;
 import android.os.Bundle;
 
 
+import androidx.annotation.NonNull;
 import androidx.fragment.app.FragmentTransaction;
 
 import android.view.LayoutInflater;
@@ -21,8 +24,22 @@ public class ClientAddFragment extends BottomSheetDialogFragment {
     private LinearLayout mAddTraining;
     private LinearLayout mAddPanel;
     private LinearLayout mAddMeal;
+    private bottomNavigationSelector mActivity;
 
 
+    @Override
+    public void onAttach(Context context) {
+        super.onAttach(context);
+        if(context instanceof bottomNavigationSelector){
+            mActivity=(bottomNavigationSelector) context;
+        }
+    }
+
+    @Override
+    public void onDetach() {
+        super.onDetach();
+        mActivity = null;
+    }
 
     public ClientAddFragment() {
         // Required empty public constructor
@@ -75,5 +92,21 @@ public class ClientAddFragment extends BottomSheetDialogFragment {
             fragmentTransaction = getChildFragmentManager().beginTransaction();
             fragmentTransaction.replace(R.id.bottom_sheet_container, clientAddMealFragment, ClientAddMealFragment.TAG).commit();
         });
+    }
+
+    public interface bottomNavigationSelector {
+        void selectBottomNavigationItem();
+    }
+
+    @Override
+    public void dismiss() {
+        super.dismiss();
+        mActivity.selectBottomNavigationItem();
+    }
+
+    @Override
+    public void onDismiss(DialogInterface dialog) {
+        super.onDismiss(dialog);
+        mActivity.selectBottomNavigationItem();
     }
 }

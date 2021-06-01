@@ -5,9 +5,15 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".fragment.client.ClientAddWeightFragment"
-    android:orientation="vertical"
-    android:layout_marginVertical="35dp">
+    android:orientation="vertical">
 
+    <LinearLayout
+        android:id="@+id/add_weight_panel"
+        android:visibility="visible"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:layout_marginVertical="35dp">
     <TextView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
@@ -57,7 +63,41 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         style="@style/ButtonCustom"
-
         android:text="@string/add"/>
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/add_weight_success"
+        android:visibility="gone"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginVertical="40dp"
+        android:orientation="vertical">
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/weight_successfully_added"
+            android:textAlignment="center"
+            style="@style/custom_h2"/>
+
+        <ImageView
+            android:layout_gravity="center_horizontal"
+            android:layout_marginTop="@dimen/margin_horizontal"
+            android:id="@+id/success_anim"
+            android:layout_width="80dp"
+            android:layout_height="80dp"/>
+
+        <Button
+            android:id="@+id/back_home"
+            android:layout_gravity="center_horizontal"
+            android:layout_marginTop="@dimen/margin_horizontal"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            style="@style/ButtonCustom"
+            android:text="@string/back"/>
+
+    </LinearLayout>
 
 </LinearLayout>

@@ -42,6 +42,7 @@ public class CoachMainActivity extends AppCompatActivity implements WeFitApplica
         if(savedInstanceState == null){
             final CoachHomeFragment coachHomeFragment = new CoachHomeFragment();
             getSupportFragmentManager().beginTransaction().replace(R.id.anchor_point, coachHomeFragment).commit();
+            mBottomNavigationView.setSelectedItemId(R.id.home_item);
         }
 
 
@@ -94,7 +95,7 @@ public class CoachMainActivity extends AppCompatActivity implements WeFitApplica
                 fragment = new CoachClientsFragment();
                 tag = CoachClientsFragment.TAG;
                 break;
-            case R.id.home:
+            case R.id.home_item:
                 fragment = new CoachHomeFragment();
                 tag = CoachHomeFragment.TAG;
                 break;

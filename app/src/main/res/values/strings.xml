@@ -134,6 +134,11 @@
     <string name="competences">Competences</string>
     <string name="email_hint">Email:</string>
     <string name="add">Add</string>
+    <string name="received_feedbacks">RECEIVED FEEDBACKS</string>
+    <string name="feedback_number">Feedback number: </string>
+    <string name="read_all">Read all</string>
+    <string name="no_feedback_received">You have received no Feedbacks</string>
+    <string name="no_feedback_received_parag">Ask your clients to give you a feedback!</string>
 
 
 </resources>

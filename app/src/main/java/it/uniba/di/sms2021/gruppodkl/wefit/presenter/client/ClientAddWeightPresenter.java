@@ -1,9 +1,9 @@
-package it.uniba.di.sms2021.gruppodkl.wefit.presenter.fragment.client;
+package it.uniba.di.sms2021.gruppodkl.wefit.presenter.client;
 
 import java.util.HashMap;
 import java.util.Map;
 
-import it.uniba.di.sms2021.gruppodkl.wefit.contract.fragment.client.ClientAddWeightContract;
+import it.uniba.di.sms2021.gruppodkl.wefit.contract.client.ClientAddWeightContract;
 import it.uniba.di.sms2021.gruppodkl.wefit.db.UserDb;
 import it.uniba.di.sms2021.gruppodkl.wefit.model.Client;
 import it.uniba.di.sms2021.gruppodkl.wefit.utility.Keys;

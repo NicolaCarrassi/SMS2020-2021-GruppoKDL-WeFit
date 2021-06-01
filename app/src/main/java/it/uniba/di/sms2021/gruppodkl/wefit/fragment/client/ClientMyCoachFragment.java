@@ -21,7 +21,7 @@ import java.util.Map;
 import it.uniba.di.sms2021.gruppodkl.wefit.AddFeedbackDialog;
 import it.uniba.di.sms2021.gruppodkl.wefit.R;
 import it.uniba.di.sms2021.gruppodkl.wefit.WeFitApplication;
-import it.uniba.di.sms2021.gruppodkl.wefit.contract.fragment.client.ClientMyCoachContract;
+import it.uniba.di.sms2021.gruppodkl.wefit.contract.client.ClientMyCoachContract;
 import it.uniba.di.sms2021.gruppodkl.wefit.model.Client;
 import it.uniba.di.sms2021.gruppodkl.wefit.model.Coach;
 import it.uniba.di.sms2021.gruppodkl.wefit.model.User;

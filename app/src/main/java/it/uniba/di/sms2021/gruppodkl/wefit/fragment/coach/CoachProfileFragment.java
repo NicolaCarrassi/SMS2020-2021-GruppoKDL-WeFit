@@ -159,6 +159,10 @@ public class CoachProfileFragment extends Fragment implements CoachProfileContra
         mIsPersonalTrainer.setOnClickListener(v -> checkIfButtonIsActivated());
     }
 
+    /**
+     * Il metodo permette di popolare la view con gli attributi
+     * dell'utente
+     */
     private void setValues(){
         if(mCoach.image != null)
             if(!mCoach.isBitmapImageAvailable())

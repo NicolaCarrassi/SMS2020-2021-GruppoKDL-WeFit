@@ -7,7 +7,6 @@ import android.os.Bundle;
 import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentActivity;
 
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -22,9 +21,9 @@ import java.math.BigDecimal;
 
 import it.uniba.di.sms2021.gruppodkl.wefit.R;
 import it.uniba.di.sms2021.gruppodkl.wefit.WeFitApplication;
-import it.uniba.di.sms2021.gruppodkl.wefit.contract.fragment.client.ClientAddWeightContract;
+import it.uniba.di.sms2021.gruppodkl.wefit.contract.client.ClientAddWeightContract;
 import it.uniba.di.sms2021.gruppodkl.wefit.model.Client;
-import it.uniba.di.sms2021.gruppodkl.wefit.presenter.fragment.client.ClientAddWeightPresenter;
+import it.uniba.di.sms2021.gruppodkl.wefit.presenter.client.ClientAddWeightPresenter;
 
 
 public class ClientAddWeightFragment extends BottomSheetDialogFragment implements ClientAddWeightContract.View {

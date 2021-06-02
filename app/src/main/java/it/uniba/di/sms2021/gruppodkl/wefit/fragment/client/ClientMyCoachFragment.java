@@ -297,13 +297,13 @@ public class ClientMyCoachFragment extends Fragment implements ClientMyCoachCont
                 })
                 .setPositiveButton(getResources().getString(R.string.yes), (dialog, which) ->{
                     mPresenter.deleteRequestToCoach(mClient, mCoach);
+                    mClient.coach = null;
+                    mClient.pendingRequests = false;
                     mRemoveRequestButton.setVisibility(View.GONE);
                     mRequestSubButton.setVisibility(View.VISIBLE);
                     mRequestSubButton.setClickable(true);
+                    Toast.makeText(getActivity(),getResources().getString(R.string.request_deleted), Toast.LENGTH_SHORT).show();
                     dialog.dismiss();})
                 .show();
-        Toast.makeText(getActivity(),getResources().getString(R.string.request_deleted), Toast.LENGTH_SHORT).show();
-
     }
-
 }

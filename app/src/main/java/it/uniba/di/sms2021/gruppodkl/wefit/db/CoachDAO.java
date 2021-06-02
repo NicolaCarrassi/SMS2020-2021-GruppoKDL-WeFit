@@ -7,6 +7,8 @@ import com.google.firebase.firestore.QueryDocumentSnapshot;
 import java.util.ArrayList;
 import java.util.List;
 
+import javax.security.auth.callback.Callback;
+
 import it.uniba.di.sms2021.gruppodkl.wefit.model.Coach;
 import it.uniba.di.sms2021.gruppodkl.wefit.model.Feedback;
 import it.uniba.di.sms2021.gruppodkl.wefit.utility.Keys;
@@ -24,6 +26,10 @@ public class CoachDAO extends UserDAO {
         void ratingMeanLoaded(float ratingMean);
         void feedbacksLoaded(List<Feedback> feedbackList);
         void lastFeedbackLoaded(Feedback feedback, float mean, int numElem);
+    }
+
+    public interface RequestCallbacks{
+        void requestNumberLoaded(int numRequest);
     }
 
     public static void getFeedbackList(String coachEmail, RatingCallbacks callback){
@@ -95,7 +101,20 @@ public class CoachDAO extends UserDAO {
                     }
                 });
     }
-
+    public static void getRequestNumber(String coachEmail, RequestCallbacks callback){
+        sNumElement=0;
+        FirebaseFirestore.getInstance().collection(Keys.Collections.USERS).document(coachEmail)
+                .collection(Keys.Collections.REQUESTS).get()
+                .addOnCompleteListener(task -> {
+                    if(task.isSuccessful()){
+                        assert task.getResult() !=null;
+                        for(QueryDocumentSnapshot documentSnapshot : task.getResult()){
+                            sNumElement++;
+                        }
+                        callback.requestNumberLoaded(sNumElement);
+                    }
+                });
+    }
     public static Query queryAllRequests(String coachMail) {
         return FirebaseFirestore.getInstance().collection(Keys.Collections.USERS)
                 .document(coachMail).collection(Keys.Collections.REQUESTS);

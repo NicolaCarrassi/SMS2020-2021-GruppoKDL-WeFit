@@ -147,6 +147,14 @@
     <string name="no_requests">There are no requests</string>
     <string name="request_sent">You have already sent a request to a coach</string>
     <string name="error_request">Error sending the request. Please try again later</string>
+    <string name="follower_request">Follower request</string>
+
+    <!-- PLURALS -->
+    <plurals name="numberClientRequest">
+        <item quantity="one">One client would like to be followed by you</item>
+        <item quantity="other">%d clients would like to be followed by you</item>
+    </plurals>
+    <string name="zero_client_request">You do not have any client request yet</string>
 
 
 </resources>

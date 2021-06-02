@@ -139,8 +139,17 @@
     <string name="client_requests">RICHIESTE CLIENTI</string>
     <string name="accept">Accetta</string>
     <string name="decline">Rifiuta</string>
+    <string name="no_requests">Non ci sono richieste</string>
+    <string name="request_sent">Hai giá mandato la richiesta</string>
+    <string name="error_request">C\'é un errore nella richiesta. Per favore prova piú tardi.</string>
+    <string name="follower_request">Richieste di segui</string>
 
-
+    <!-- PLURALS-->
+    <plurals name="numberClientRequest">
+        <item quantity="one">Un cliente vorrebbe essere seguito da te</item>
+        <item quantity="other">%d clienti vorrebbero essere seguiti da te</item>
+    </plurals>
+    <string name="zero_client_request">Non hai ancora richieste</string>
 
 
 

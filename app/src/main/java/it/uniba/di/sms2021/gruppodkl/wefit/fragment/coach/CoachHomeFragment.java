@@ -1,6 +1,7 @@
 package it.uniba.di.sms2021.gruppodkl.wefit.fragment.coach;
 
 import android.content.Context;
+import android.content.res.Resources;
 import android.os.Bundle;
 
 import androidx.annotation.NonNull;
@@ -16,12 +17,14 @@ import android.widget.TextView;
 
 import it.uniba.di.sms2021.gruppodkl.wefit.R;
 import it.uniba.di.sms2021.gruppodkl.wefit.WeFitApplication;
+import it.uniba.di.sms2021.gruppodkl.wefit.contract.coach.CoachHomeContract;
 import it.uniba.di.sms2021.gruppodkl.wefit.fragment.client.ClientMyProfileFragment;
 import it.uniba.di.sms2021.gruppodkl.wefit.model.Coach;
 import it.uniba.di.sms2021.gruppodkl.wefit.model.User;
+import it.uniba.di.sms2021.gruppodkl.wefit.presenter.coach.CoachHomePresenter;
 
 
-public class CoachHomeFragment extends Fragment implements User.MyImageBitmapCallback{
+public class CoachHomeFragment extends Fragment implements User.MyImageBitmapCallback, CoachHomeContract.View {
 
     public static final String TAG = CoachHomeFragment.class.getSimpleName();
 
@@ -31,6 +34,8 @@ public class CoachHomeFragment extends Fragment implements User.MyImageBitmapCal
     private CardView mTrainingCard;
     private CardView mDietCard;
     private CardView mRequestsTab;
+    private TextView mFollowerRequestTextView;
+    private CoachHomeContract.Presenter mPresenter;
 
     public CoachHomeFragment(){
 
@@ -58,6 +63,7 @@ public class CoachHomeFragment extends Fragment implements User.MyImageBitmapCal
 
         bind(layout);
         setListeners();
+        mPresenter = new CoachHomePresenter(this);
 
         return layout;
     }
@@ -78,11 +84,20 @@ public class CoachHomeFragment extends Fragment implements User.MyImageBitmapCal
         TextView textView = layout.findViewById(R.id.hi_user);
         textView.setText(getResources().getString(R.string.hi_user_string)+ " "+ mCoach.fullName.split(" ")[0]+ " !");
 
+        mFollowerRequestTextView = layout.findViewById(R.id.follower_request_textview);
+
         if(mCoach.image != null)
             if(!mCoach.isBitmapImageAvailable())
                 mCoach.createImageBitmap(this);
             else
                 mImageView.setImageBitmap(mCoach.getImageBitmap());
+
+    }
+
+    @Override
+    public void onStart() {
+        super.onStart();
+        mPresenter.loadNumberRequest(mCoach);
     }
 
     /**
@@ -113,5 +128,17 @@ public class CoachHomeFragment extends Fragment implements User.MyImageBitmapCal
     @Override
     public void handleCallback() {
         mImageView.setImageBitmap(mCoach.getImageBitmap());
+    }
+
+
+    //Dato che zero viene ignorato dai plurals, lo metto a mano
+    @Override
+    public void onRequestNumberLoaded(int num) {
+
+        Resources res = getResources();
+        if(num == 0)
+            mFollowerRequestTextView.setText(R.string.zero_client_request);
+        else
+            mFollowerRequestTextView.setText(res.getQuantityString(R.plurals.numberClientRequest, num, num));
     }
 }

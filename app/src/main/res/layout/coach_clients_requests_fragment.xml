@@ -48,8 +48,9 @@
                     android:layout_height="wrap_content"
                     android:visibility="gone"
                     android:text="@string/no_requests"
+                    android:layout_gravity="center"
                     android:gravity="center"
-                    style="@style/custom_h2"/>
+                    style="@style/custom_p"/>
 
             </LinearLayout>
         </LinearLayout>

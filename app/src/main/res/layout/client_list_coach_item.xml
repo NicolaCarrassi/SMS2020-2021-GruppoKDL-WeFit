@@ -3,8 +3,8 @@
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    android:layout_marginVertical="5dp"
-    android:layout_marginHorizontal="5dp">
+    android:layout_marginBottom="20dp"
+    android:layout_marginHorizontal="@dimen/margin_horizontal">
 
     <androidx.cardview.widget.CardView
         android:layout_width="match_parent"
@@ -48,17 +48,14 @@
                 style="@style/custom_h1">
 
             </TextView>
-                <Button
+                <com.google.android.material.button.MaterialButton
                     android:id="@+id/button_item_coach_list"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="@string/request_subscribe"
-                    android:backgroundTint="#66BB66"
-                    android:backgroundTintMode="screen"
-
-                    android:theme="@style/ButtonCustom">
-
-                </Button>
+                    android:backgroundTint="@color/green"
+                    style="@style/MaterialButtonCustom"
+                    android:paddingHorizontal="30dp"/>
             </LinearLayout>
         </LinearLayout>
     </androidx.cardview.widget.CardView>

@@ -8,6 +8,8 @@ import android.widget.TextView;
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.google.android.material.button.MaterialButton;
+
 import it.uniba.di.sms2021.gruppodkl.wefit.R;
 import it.uniba.di.sms2021.gruppodkl.wefit.model.Coach;
 import it.uniba.di.sms2021.gruppodkl.wefit.model.User;
@@ -16,7 +18,7 @@ public class CoachListViewHolder extends RecyclerView.ViewHolder implements User
 
     private ImageView mCoachImage;
     private TextView mCoachName;
-    private Button mRequestButton;
+    private MaterialButton mRequestButton;
     private Coach mCoach;
     private ItemClickListener mItemClickListener;
 

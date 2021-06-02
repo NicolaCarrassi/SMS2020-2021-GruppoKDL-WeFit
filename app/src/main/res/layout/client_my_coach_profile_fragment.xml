@@ -99,7 +99,7 @@
             android:layout_width="fill_parent"
             android:text="@string/leave_feedback"
             style="@style/MaterialButtonCustom"
-            android:paddingVertical="15dp"
+            android:paddingVertical="10dp"
             android:layout_weight="1"
             android:layout_marginRight="10dp"/>
 
@@ -108,8 +108,9 @@
             android:layout_height="match_parent"
             android:layout_width="fill_parent"
             style="@style/MaterialButtonCustom"
+            android:backgroundTint="@color/red"
             android:textSize="17dp"
-            android:paddingVertical="15dp"
+            android:paddingVertical="10dp"
             android:layout_weight="1"
             android:layout_marginLeft="10dp"
             android:text="@string/change_coach" />

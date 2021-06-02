@@ -34,5 +34,6 @@
     <color name="black_custom">#E1000000</color>
     <color name="red">#DD0000</color>
     <color name="grey">#ACACAC</color>
+    <color name="green">#66BB66</color>
 
 </resources>

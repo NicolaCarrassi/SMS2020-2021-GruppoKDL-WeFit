@@ -25,7 +25,10 @@ public class ClientDAO extends UserDAO {
                 .collection(Keys.Collections.REQUESTS).document(client.email).set(requestsElement)
                 .addOnCompleteListener(task -> {
                     if(task.isSuccessful()){
+                        client.pendingRequests = true;
+                        client.coach = coach.email;
                         Map<String, Object> map = new HashMap<>();
+                        map.put(Client.ClientKeys.COACH, coach.email);
                         map.put(Client.ClientKeys.HAS_PENDING_REQUESTS, true);
                         UserDAO.update(client, map);
                     }
@@ -37,6 +40,11 @@ public class ClientDAO extends UserDAO {
 
     public static Query listAllCoach(){
         return FirebaseFirestore.getInstance().collection(Keys.Collections.USERS).whereEqualTo(User.UserKeys.ROLE, Keys.Role.COACH);
+    }
+
+    public static void deleteRequestToCoach(String clientMail, String coachMail){
+        FirebaseFirestore.getInstance().collection(Keys.Collections.USERS).document(coachMail)
+                .collection(Keys.Collections.REQUESTS).document(clientMail).delete();
     }
 
 

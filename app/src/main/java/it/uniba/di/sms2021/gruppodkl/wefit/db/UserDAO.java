@@ -1,11 +1,15 @@
 package it.uniba.di.sms2021.gruppodkl.wefit.db;
 
 
+import android.util.Log;
+
 import com.google.firebase.firestore.DocumentReference;
 import com.google.firebase.firestore.DocumentSnapshot;
 import com.google.firebase.firestore.FirebaseFirestore;
 import com.google.firebase.firestore.Query;
+import com.google.firebase.firestore.WriteBatch;
 
+import java.util.HashMap;
 import java.util.Map;
 
 import it.uniba.di.sms2021.gruppodkl.wefit.model.Client;
@@ -72,7 +76,33 @@ public class UserDAO {
 
 
     public static void update(User user, Map<String, Object> map){
-        FirebaseFirestore.getInstance().collection(Keys.Collections.USERS).document(user.email).update(map);
+        Map<String,Object> requestToCoachUpdate = new HashMap<>();
+        WriteBatch batch = FirebaseFirestore.getInstance().batch();
+
+        DocumentReference mandatoryUpdate =
+                FirebaseFirestore.getInstance().collection(Keys.Collections.USERS).document(user.email);
+
+        DocumentReference requestUpdate = null;
+
+
+        if(user instanceof Client && ((Client) user).pendingRequests){
+            Client client = (Client) user;
+
+            requestToCoachUpdate.put(Client.ClientKeys.FULL_NAME, client.fullName);
+            requestToCoachUpdate.put(Client.ClientKeys.IMAGE, client.image);
+
+            requestUpdate = FirebaseFirestore.getInstance().collection(Keys.Collections.USERS).document(client.coach)
+                    .collection(Keys.Collections.REQUESTS).document(client.email);
+        }
+
+        batch.update(mandatoryUpdate, map);
+
+        if(requestUpdate != null){
+            batch.update(requestUpdate, requestToCoachUpdate);
+        }
+
+
+        batch.commit();
     }
 
 

@@ -49,9 +49,8 @@ public class ClientMyProfilePresenter implements ClientProfileFragmentContract.P
 
 
                     //inserisco l'immagine nel db
-                    FirebaseFirestore.getInstance().collection(Keys.Collections.USERS).document(client.email)
-                            .update(map);
                     client.setImage(imageUri);
+                    UserDAO.update(client, map);
                     client.createImageBitmap(this);
                 });
 

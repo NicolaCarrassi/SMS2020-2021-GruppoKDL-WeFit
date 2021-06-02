@@ -15,19 +15,19 @@ public class Client extends User {
     public int height;
     public String objective;
     public String coach = null;
-    public  boolean hasPendingRequests;
+    public  boolean pendingRequests;
 
     public Client(){
         super();
     }
 
     public Client(String fullName, String email, String birthDate, String gender,String role,
-                  int height, float weight, String objective, boolean hasPendingRequests){
+                  int height, float weight, String objective, boolean pendingRequests){
         super(fullName, email, birthDate, gender, role);
         this.height = height;
         this.weight = weight;
         this.objective = objective;
-        this.hasPendingRequests = hasPendingRequests;
+        this.pendingRequests = pendingRequests;
     }
 
     public void setCoach(String coach) {

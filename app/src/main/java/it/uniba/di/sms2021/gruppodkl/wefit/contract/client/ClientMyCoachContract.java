@@ -11,6 +11,9 @@ public interface ClientMyCoachContract {
         void onCoachDataReceived(Coach coach);
         void onCoachNotFound();
         void onCoachRatingStarsObtained(float numStars);
+        void requestSentSuccessfully();
+        void requestFailed();
+
     }
 
     interface Presenter{
@@ -18,5 +21,7 @@ public interface ClientMyCoachContract {
         void addFeedback(Map<String, Object> map, String coachEmail);
         void leaveCoach(Client client);
         void getCoachRatingStars(Coach coach);
+        void sendRequestToCoach(Client client, Coach coach);
+        void deleteRequestToCoach(Client client, Coach coach);
     }
 }

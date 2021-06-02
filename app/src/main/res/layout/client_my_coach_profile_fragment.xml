@@ -115,6 +115,28 @@
             android:layout_marginLeft="10dp"
             android:text="@string/change_coach" />
 
+        <com.google.android.material.button.MaterialButton
+            android:id="@+id/btn_coach_subscribe"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/request_subscribe"
+            style="@style/MaterialButtonCustom"
+            android:paddingVertical="10dp"
+            android:textSize="17sp"
+            android:visibility="gone"/>
+
+        <com.google.android.material.button.MaterialButton
+            android:id="@+id/btn_coach_remove_request"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/remove_request"
+            style="@style/MaterialButtonCustom"
+            android:paddingVertical="10dp"
+            android:textSize="17sp"
+            android:backgroundTint="@color/red"
+            android:visibility="gone"/>
+
+
     </LinearLayout>
 
 </LinearLayout>

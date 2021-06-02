@@ -19,6 +19,7 @@ import it.uniba.di.sms2021.gruppodkl.wefit.SettingsActivity;
 import it.uniba.di.sms2021.gruppodkl.wefit.WeFitApplication;
 import it.uniba.di.sms2021.gruppodkl.wefit.fragment.NotificationsFragment;
 import it.uniba.di.sms2021.gruppodkl.wefit.fragment.TermsFragment;
+import it.uniba.di.sms2021.gruppodkl.wefit.fragment.client.ClientHomeFragment;
 import it.uniba.di.sms2021.gruppodkl.wefit.fragment.client.ClientMyProfileFragment;
 import it.uniba.di.sms2021.gruppodkl.wefit.fragment.coach.CoachClientsFragment;
 import it.uniba.di.sms2021.gruppodkl.wefit.fragment.coach.CoachFeedbacksFragment;
@@ -147,6 +148,16 @@ public class CoachMainActivity extends AppCompatActivity implements WeFitApplica
     @Override
     public void goBack() {
         onBackPressed();
+    }
+
+    @Override
+    public void goHome() {
+        CoachHomeFragment coachHomeFragment = new CoachHomeFragment();
+
+        getSupportFragmentManager().beginTransaction().replace(R.id.anchor_point, coachHomeFragment, CoachHomeFragment.TAG)
+                .addToBackStack(CoachHomeFragment.TAG).commit();
+
+        mBottomNavigationView.setSelectedItemId(R.id.home_item);
     }
 
 

@@ -1,16 +1,23 @@
 package it.uniba.di.sms2021.gruppodkl.wefit.db;
 
+import com.google.firebase.firestore.CollectionReference;
+import com.google.firebase.firestore.DocumentReference;
 import com.google.firebase.firestore.FirebaseFirestore;
 import com.google.firebase.firestore.Query;
 import com.google.firebase.firestore.QueryDocumentSnapshot;
+import com.google.firebase.firestore.WriteBatch;
 
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 import javax.security.auth.callback.Callback;
 
+import it.uniba.di.sms2021.gruppodkl.wefit.model.Client;
 import it.uniba.di.sms2021.gruppodkl.wefit.model.Coach;
 import it.uniba.di.sms2021.gruppodkl.wefit.model.Feedback;
+import it.uniba.di.sms2021.gruppodkl.wefit.model.Request;
 import it.uniba.di.sms2021.gruppodkl.wefit.utility.Keys;
 
 public class CoachDAO extends UserDAO {
@@ -31,6 +38,9 @@ public class CoachDAO extends UserDAO {
     public interface RequestCallbacks{
         void requestNumberLoaded(int numRequest);
     }
+
+
+
 
     public static void getFeedbackList(String coachEmail, RatingCallbacks callback){
         if(sFeedbackList != null)
@@ -101,6 +111,7 @@ public class CoachDAO extends UserDAO {
                     }
                 });
     }
+
     public static void getRequestNumber(String coachEmail, RequestCallbacks callback){
         sNumElement=0;
         FirebaseFirestore.getInstance().collection(Keys.Collections.USERS).document(coachEmail)
@@ -119,5 +130,32 @@ public class CoachDAO extends UserDAO {
         return FirebaseFirestore.getInstance().collection(Keys.Collections.USERS)
                 .document(coachMail).collection(Keys.Collections.REQUESTS);
     }
+
+
+    public static void handleRequest(Coach coach, Request request, boolean accepted){
+
+        CollectionReference collection = FirebaseFirestore.getInstance().collection(Keys.Collections.USERS);
+
+        Map<String, Object> map = new HashMap<>();
+        if(accepted)
+            map.put(Client.ClientKeys.COACH, coach.email);
+        else
+            map.put(Client.ClientKeys.COACH, null);
+
+        map.put(Client.ClientKeys.HAS_PENDING_REQUESTS, false);
+
+        WriteBatch batch = FirebaseFirestore.getInstance().batch();
+
+        DocumentReference removeRequest = collection.document(coach.email).collection(Keys.Collections.REQUESTS).document(request.email);
+
+        DocumentReference updateClientInfo = collection.document(request.email);
+
+        batch.delete(removeRequest);
+        batch.update(updateClientInfo, map);
+
+        batch.commit();
+    }
+
+
 
 }

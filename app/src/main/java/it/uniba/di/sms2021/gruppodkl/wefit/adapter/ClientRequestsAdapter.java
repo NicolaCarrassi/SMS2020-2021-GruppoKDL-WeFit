@@ -1,33 +1,33 @@
 package it.uniba.di.sms2021.gruppodkl.wefit.adapter;
 
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
 import androidx.annotation.NonNull;
 
-import com.firebase.ui.firestore.paging.FirestorePagingAdapter;
-import com.firebase.ui.firestore.paging.FirestorePagingOptions;
+import com.firebase.ui.firestore.FirestoreRecyclerAdapter;
+import com.firebase.ui.firestore.FirestoreRecyclerOptions;
 
 import it.uniba.di.sms2021.gruppodkl.wefit.R;
 import it.uniba.di.sms2021.gruppodkl.wefit.contract.coach.CoachClientsRequestsContract;
+import it.uniba.di.sms2021.gruppodkl.wefit.db.CoachDAO;
+import it.uniba.di.sms2021.gruppodkl.wefit.model.Coach;
 import it.uniba.di.sms2021.gruppodkl.wefit.model.Request;
 import it.uniba.di.sms2021.gruppodkl.wefit.viewholder.ClientRequestsViewHolder;
 
-public class ClientRequestsAdapter extends FirestorePagingAdapter<Request, ClientRequestsViewHolder>
-        implements ClientRequestsViewHolder.ViewHolderCallback {
+public class ClientRequestsAdapter extends FirestoreRecyclerAdapter<Request, ClientRequestsViewHolder>
+        implements ClientRequestsViewHolder.ViewHolderCallback{
 
     private CoachClientsRequestsContract.Presenter mPresenter;
+    private Coach mCoach;
 
 
-    /**
-     * Construct a new FirestorePagingAdapter from the given {@link FirestorePagingOptions}.
-     *
-     * @param options
-     */
-    public ClientRequestsAdapter(FirestorePagingOptions<Request> options, CoachClientsRequestsContract.Presenter presenter) {
+    public ClientRequestsAdapter(FirestoreRecyclerOptions<Request> options, CoachClientsRequestsContract.Presenter presenter, Coach coach) {
         super(options);
         this.mPresenter = presenter;
+        this.mCoach = coach;
     }
 
     @Override
@@ -44,12 +44,14 @@ public class ClientRequestsAdapter extends FirestorePagingAdapter<Request, Clien
     }
 
     @Override
-    public void acceptRequest(Request request) {
-        //TODO Gestisci accetta
+    public void acceptRequest(int position) {
+        CoachDAO.handleRequest(mCoach, getItem(position),  true);
     }
 
     @Override
-    public void declineRequest(Request request) {
-        //TODO Gestisci rifiuta
+    public void declineRequest(int position) {
+       CoachDAO.handleRequest(mCoach, getItem(position),  false);
     }
+
+
 }

@@ -15,8 +15,8 @@ public class ClientRequestsViewHolder extends RecyclerView.ViewHolder implements
 
 
     public interface ViewHolderCallback{
-        void acceptRequest(Request request);
-        void declineRequest(Request request);
+        void acceptRequest(int position);
+        void declineRequest(int position);
     }
 
     private final ViewHolderCallback mCallback;
@@ -36,8 +36,8 @@ public class ClientRequestsViewHolder extends RecyclerView.ViewHolder implements
         mAcceptButton = itemView.findViewById(R.id.accept_button);
         mDeclineButton = itemView.findViewById(R.id.decline_button);
 
-        mAcceptButton.setOnClickListener(v -> mCallback.acceptRequest(mRequest));
-        mDeclineButton.setOnClickListener(v -> mCallback.declineRequest(mRequest));
+        mAcceptButton.setOnClickListener(v -> mCallback.acceptRequest(getAdapterPosition()));
+        mDeclineButton.setOnClickListener(v -> mCallback.declineRequest(getAdapterPosition()));
     }
 
 

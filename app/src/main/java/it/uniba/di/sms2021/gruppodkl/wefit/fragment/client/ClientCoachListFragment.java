@@ -18,6 +18,7 @@ import it.uniba.di.sms2021.gruppodkl.wefit.R;
 import it.uniba.di.sms2021.gruppodkl.wefit.WeFitApplication;
 import it.uniba.di.sms2021.gruppodkl.wefit.adapter.CoachListAdapter;
 import it.uniba.di.sms2021.gruppodkl.wefit.contract.client.ClientCoachListContract;
+import it.uniba.di.sms2021.gruppodkl.wefit.fragment.coach.CoachProfileFragment;
 import it.uniba.di.sms2021.gruppodkl.wefit.model.Client;
 import it.uniba.di.sms2021.gruppodkl.wefit.model.Coach;
 import it.uniba.di.sms2021.gruppodkl.wefit.presenter.client.ClientCoachListPresenter;
@@ -90,5 +91,13 @@ public class ClientCoachListFragment extends Fragment implements ClientCoachList
     @Override
     public void onRequestSent() {
         Toast.makeText(getActivity(), getResources().getString(R.string.request_sent), Toast.LENGTH_SHORT).show();
+    }
+
+    @Override
+    public void openCoachProfileWithMail(String mail) {
+        ClientMyCoachFragment fragment = ClientMyCoachFragment.newInstance(false ,mail);
+
+        getActivity().getSupportFragmentManager().beginTransaction().replace(R.id.anchor_point, fragment, ClientMyCoachFragment.TAG)
+                .addToBackStack(ClientMyCoachFragment.TAG).commit();
     }
 }

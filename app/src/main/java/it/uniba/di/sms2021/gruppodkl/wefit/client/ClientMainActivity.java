@@ -31,6 +31,7 @@ import it.uniba.di.sms2021.gruppodkl.wefit.fragment.client.ClientMyProfileFragme
 import it.uniba.di.sms2021.gruppodkl.wefit.fragment.client.ClientMyProgressFragment;
 import it.uniba.di.sms2021.gruppodkl.wefit.fragment.TermsFragment;
 import it.uniba.di.sms2021.gruppodkl.wefit.fragment.client.ClientMyTrainingFragment;
+import it.uniba.di.sms2021.gruppodkl.wefit.model.Client;
 import it.uniba.di.sms2021.gruppodkl.wefit.model.User;
 import it.uniba.di.sms2021.gruppodkl.wefit.utility.Keys;
 
@@ -128,7 +129,8 @@ public class ClientMainActivity extends AppCompatActivity implements WeFitApplic
                 tag = ClientMyProfileFragment.TAG;
                 break;
             case R.id.coach_item:
-                nextFragment = new ClientMyCoachFragment();
+                Client client = (Client) ((WeFitApplication)getApplicationContext()).getUser();
+                nextFragment = ClientMyCoachFragment.newInstance(true, client.coach);
                 tag = ClientMyCoachFragment.TAG;
                 break;
             case R.id.notifications_item:
@@ -188,6 +190,15 @@ public class ClientMainActivity extends AppCompatActivity implements WeFitApplic
         onBackPressed();
     }
 
+    @Override
+    public void goHome() {
+        ClientHomeFragment clientHomeFragment = new ClientHomeFragment();
+
+        getSupportFragmentManager().beginTransaction().replace(R.id.anchor_point, clientHomeFragment,ClientHomeFragment.TAG)
+                .addToBackStack(ClientHomeFragment.TAG).commit();
+
+        mBottomNavigation.setSelectedItemId(R.id.home);
+    }
 
 
     @Override

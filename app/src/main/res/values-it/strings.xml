@@ -151,6 +151,15 @@
     </plurals>
     <string name="zero_client_request">Non hai ancora richieste</string>
 
+    <string name="remove_request">Cancella richiesta</string>
+    <string name="are_you_sure">Sei sicuro?</string>
+    <string name="remove_request_message">Sei sicuro di cancellare la tua richiesta al coach?</string>
+    <string name="no">No</string>
+    <string name="yes">Si</string>
+    <string name="request_successful_title">RICHIESTA INVIATA CON SUCCESSO</string>
+    <string name="request_sent_successuflly">Richiesta inviata con successo</string>
+    <string name="request_deleted">La tua richiesta è stata cancellata</string>
+
 
 
 </resources>

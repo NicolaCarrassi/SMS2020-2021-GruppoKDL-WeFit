@@ -44,7 +44,7 @@ public class ClientCoachListPresenter implements ClientCoachListContract.Present
 
     @Override
     public void openCoachProfile(Coach coach) {
-        //TODO IN ATTESA DI MODIFICA A PROFILO COACH VISTA CLIENT
+        mView.openCoachProfileWithMail(coach.email);
     }
 
 

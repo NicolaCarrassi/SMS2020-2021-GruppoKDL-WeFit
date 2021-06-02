@@ -155,6 +155,14 @@
         <item quantity="other">%d clients would like to be followed by you</item>
     </plurals>
     <string name="zero_client_request">You do not have any client request yet</string>
+    <string name="remove_request">Cancel request</string>
+    <string name="are_you_sure">Are you sure?</string>
+    <string name="remove_request_message">Are you sure to delete your request to the coach?</string>
+    <string name="no">No</string>
+    <string name="yes">Yes</string>
+    <string name="request_successful_title">REQUEST SENT SUCCESSFULLY</string>
+    <string name="request_sent_successuflly">Request sent successfully</string>
+    <string name="request_deleted">Your request has been deleted</string>
 
 
 </resources>

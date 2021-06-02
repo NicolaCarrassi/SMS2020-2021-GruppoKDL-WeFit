@@ -20,6 +20,7 @@ import it.uniba.di.sms2021.gruppodkl.wefit.adapter.ClientRequestsAdapter;
 import it.uniba.di.sms2021.gruppodkl.wefit.contract.coach.CoachClientsRequestsContract;
 import it.uniba.di.sms2021.gruppodkl.wefit.model.Coach;
 import it.uniba.di.sms2021.gruppodkl.wefit.presenter.coach.CoachClientRequestsPresenter;
+import it.uniba.di.sms2021.gruppodkl.wefit.recyclerview.CustomRecyclerView;
 
 public class CoachClientsRequestsFragment extends Fragment
     implements CoachClientsRequestsContract.View {
@@ -31,11 +32,12 @@ public class CoachClientsRequestsFragment extends Fragment
         // Required empty public constructor
     }
 
-    private RecyclerView mRecyclerView;
+    private CustomRecyclerView mRecyclerView;
     private ClientRequestsAdapter mAdapter;
     private WeFitApplication.CallbackOperations mActivity;
     private TextView mEmpty;
     private CoachClientsRequestsContract.Presenter mPresenter;
+
 
     @Override
     public void onAttach(@NonNull Context context) {
@@ -66,6 +68,7 @@ public class CoachClientsRequestsFragment extends Fragment
         mRecyclerView.setAdapter(mAdapter);
 
         mEmpty = layout.findViewById(R.id.empty_requests);
+        mRecyclerView.setEmptyView(mEmpty);
 
         return layout;
     }
@@ -82,7 +85,6 @@ public class CoachClientsRequestsFragment extends Fragment
         super.onStop();
         mAdapter.stopListening();
     }
-
 
 
 

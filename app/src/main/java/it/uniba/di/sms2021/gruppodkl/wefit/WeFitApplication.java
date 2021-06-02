@@ -20,6 +20,11 @@ public class WeFitApplication extends Application {
          * Il metodo permette di tornare indietro
          */
         void goBack();
+
+        /**
+         * Il metodo permette di tornare alla home
+         */
+        void goHome();
     }
 
     /**

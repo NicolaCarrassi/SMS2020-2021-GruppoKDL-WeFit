@@ -10,6 +10,7 @@ public interface ClientCoachListContract {
                 void onFailure();
                 void onSuccess();
                 void onRequestSent();
+                void openCoachProfileWithMail(String mail);
         }
 
         interface Presenter{

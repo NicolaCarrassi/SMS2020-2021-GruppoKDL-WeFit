@@ -2,24 +2,27 @@ package it.uniba.di.sms2021.gruppodkl.wefit;
 
 import android.app.Dialog;
 import android.content.Context;
-import android.content.Intent;
 import android.graphics.drawable.AnimatedVectorDrawable;
 import android.os.Bundle;
-import android.view.View;
 import android.widget.ImageView;
+import it.uniba.di.sms2021.gruppodkl.wefit.WeFitApplication.CallbackOperations;
 
 import com.google.android.material.button.MaterialButton;
 
-import it.uniba.di.sms2021.gruppodkl.wefit.client.ClientMainActivity;
 
 public class ClientRequestCoachSentDialog extends Dialog {
 
     private AnimatedVectorDrawable mSuccessAnimation;
     private MaterialButton mBack;
+    private WeFitApplication.CallbackOperations mActivity;
+
 
 
     public ClientRequestCoachSentDialog(Context context) {
         super(context);
+
+        if(context instanceof CallbackOperations)
+            mActivity = (CallbackOperations) context;
     }
 
     @Override
@@ -33,11 +36,9 @@ public class ClientRequestCoachSentDialog extends Dialog {
         mSuccessAnimation.start();
 
         mBack = findViewById(R.id.back_button);
-        mBack.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                dismiss();
-            }
+        mBack.setOnClickListener(v -> {
+            mActivity.goHome();
+            dismiss();
         });
     }
 

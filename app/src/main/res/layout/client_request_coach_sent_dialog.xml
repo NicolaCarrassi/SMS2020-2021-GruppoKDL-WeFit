@@ -11,7 +11,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         style="@style/custom_h1"
-        android:text="REQUEST SENT SUCCESSFULLY"
+        android:text="@string/request_successful_title"
         android:gravity="center"/>
 
     <ImageView

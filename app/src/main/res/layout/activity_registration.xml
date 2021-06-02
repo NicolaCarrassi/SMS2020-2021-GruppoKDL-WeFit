@@ -39,15 +39,14 @@
 
     <!--Prima schermata, dati personali -->
     <ScrollView
+        android:id="@+id/layout_personal_data"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:layout_marginTop="40dp">
     <LinearLayout
-        android:id="@+id/layout_personal_data"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:orientation="vertical"
-        android:visibility="visible">
+        android:orientation="vertical">
 
         <LinearLayout
             android:layout_width="match_parent"
@@ -173,14 +172,14 @@
 
     <!--> Seconda schermata con Cliente/Coach <-->
     <ScrollView
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content">
-    <LinearLayout
         android:id="@+id/layout_coach_client"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:visibility="gone">
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
         android:orientation="vertical"
-        android:visibility="gone"
         android:layout_marginTop="20dp">
 
 

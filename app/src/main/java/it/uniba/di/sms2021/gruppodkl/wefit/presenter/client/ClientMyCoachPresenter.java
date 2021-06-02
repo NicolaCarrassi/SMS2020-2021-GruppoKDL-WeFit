@@ -5,6 +5,7 @@ import java.util.List;
 import java.util.Map;
 
 import it.uniba.di.sms2021.gruppodkl.wefit.contract.client.ClientMyCoachContract;
+import it.uniba.di.sms2021.gruppodkl.wefit.db.ClientDAO;
 import it.uniba.di.sms2021.gruppodkl.wefit.db.CoachDAO;
 import it.uniba.di.sms2021.gruppodkl.wefit.db.UserDAO;
 import it.uniba.di.sms2021.gruppodkl.wefit.model.Client;
@@ -13,7 +14,7 @@ import it.uniba.di.sms2021.gruppodkl.wefit.model.Feedback;
 import it.uniba.di.sms2021.gruppodkl.wefit.model.User;
 import it.uniba.di.sms2021.gruppodkl.wefit.utility.Keys;
 
-public class ClientMyCoachPresenter implements ClientMyCoachContract.Presenter {
+public class ClientMyCoachPresenter implements ClientMyCoachContract.Presenter, ClientDAO.ClientDAOCallbacks {
 
     private ClientMyCoachContract.View mView;
     private final UserDAO.UserCallbacks mUserCallbacks;
@@ -39,7 +40,7 @@ public class ClientMyCoachPresenter implements ClientMyCoachContract.Presenter {
         mRatingCallbacks = new CoachDAO.RatingCallbacks() {
             @Override
             public void ratingMeanLoaded(float ratingMean) {
-
+                mView.onCoachRatingStarsObtained(ratingMean);
             }
 
             @Override
@@ -70,7 +71,6 @@ public class ClientMyCoachPresenter implements ClientMyCoachContract.Presenter {
 
         Map<String, Object> map = new HashMap<>();
         map.put(Client.ClientKeys.COACH, null);
-
         UserDAO.update(client, map);
 
         mView.onCoachNotFound();
@@ -79,5 +79,28 @@ public class ClientMyCoachPresenter implements ClientMyCoachContract.Presenter {
     @Override
     public void getCoachRatingStars(Coach coach) {
         CoachDAO.getCoachRatingStars(coach, mRatingCallbacks);
+    }
+
+    @Override
+    public void sendRequestToCoach(Client client, Coach coach) {
+        Map<String, Object> map = new HashMap<>();
+        map.put(Keys.Request.NAME, client.fullName);
+        map.put(Keys.Request.MAIL, client.email);
+        map.put(Keys.Request.IMAGE, client.image);
+
+        ClientDAO.requestToCoach(client, coach,map,this);
+    }
+
+    @Override
+    public void deleteRequestToCoach(Client client, Coach coach) {
+        ClientDAO.deleteRequestToCoach(client.email, coach.email);
+    }
+
+    @Override
+    public void requestSent(boolean isSuccessful) {
+        if(isSuccessful)
+            mView.requestSentSuccessfully();
+        else
+            mView.requestFailed();
     }
 }

@@ -23,6 +23,7 @@ import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.RadioButton;
 import android.widget.RadioGroup;
+import android.widget.ScrollView;
 import android.widget.Spinner;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -64,7 +65,7 @@ public class RegistrationActivity extends AppCompatActivity implements DatePicke
         String COACH_CLIENT = "COACH_CLIENT";
     }
 
-    private LinearLayout mPersonalDataLayout;
+    private ScrollView mPersonalDataLayout;
     private RegistrationActivityContract.Presenter mPresenter;
     private EditText mFirstNameEdit;
     private EditText mLastNameEdit;
@@ -75,7 +76,7 @@ public class RegistrationActivity extends AppCompatActivity implements DatePicke
     private MaterialButton mFirstForwardButton;
     private Spinner mSpinner;
 
-    private LinearLayout mCoachClientLayout;
+    private ScrollView mCoachClientLayout;
     private RadioGroup mRadioRole;
     private MaterialButton mRegisterButton;
     private ImageView mBackIcon;
@@ -132,7 +133,6 @@ public class RegistrationActivity extends AppCompatActivity implements DatePicke
 
         mRegisterButton = findViewById(R.id.register_button);
         mBackIcon = findViewById(R.id.back_icon);
-
 
     }
 

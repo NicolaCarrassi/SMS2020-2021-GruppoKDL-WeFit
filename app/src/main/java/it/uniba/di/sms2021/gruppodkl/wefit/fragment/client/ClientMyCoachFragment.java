@@ -190,7 +190,7 @@ public class ClientMyCoachFragment extends Fragment implements ClientMyCoachCont
                 .setMessage(getResources().getString(R.string.leave_coach_text))
                 .setNegativeButton(R.string.cancel, (dialog, which) -> dialog.dismiss())
                 .setPositiveButton(R.string.confirm, (dialog, which) ->{
-                    mClient.email = null;
+                    mClient.coach = null;
                     mPresenter.leaveCoach(mClient);
                 }).show();
     }

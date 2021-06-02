@@ -9,12 +9,14 @@ public interface ClientCoachListContract {
         interface View{
                 void onFailure();
                 void onSuccess();
+                void onRequestSent();
         }
 
         interface Presenter{
                 CoachListAdapter getAdapter();
                 void openCoachProfile(Coach coach);
                 void sendRequestToCoach(Coach coach);
+                void requestAlreadySent();
         }
 
 

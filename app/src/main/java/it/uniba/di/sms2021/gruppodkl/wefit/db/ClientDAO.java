@@ -1,12 +1,14 @@
 package it.uniba.di.sms2021.gruppodkl.wefit.db;
 
 import com.google.firebase.firestore.FirebaseFirestore;
+import com.google.firebase.firestore.Query;
 
 import java.util.HashMap;
 import java.util.Map;
 
 import it.uniba.di.sms2021.gruppodkl.wefit.model.Client;
 import it.uniba.di.sms2021.gruppodkl.wefit.model.Coach;
+import it.uniba.di.sms2021.gruppodkl.wefit.model.User;
 import it.uniba.di.sms2021.gruppodkl.wefit.utility.Keys;
 
 public class ClientDAO extends UserDAO {
@@ -30,6 +32,11 @@ public class ClientDAO extends UserDAO {
                     sSuccess = task.isSuccessful();
                     callback.requestSent(sSuccess);
                 });
+    }
+
+
+    public static Query listAllCoach(){
+        return FirebaseFirestore.getInstance().collection(Keys.Collections.USERS).whereEqualTo(User.UserKeys.ROLE, Keys.Role.COACH);
     }
 
 

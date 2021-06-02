@@ -37,7 +37,7 @@ public class ClientCoachListPresenter implements ClientCoachListContract.Present
                 .build();
 
         FirestorePagingOptions<Coach> options = new FirestorePagingOptions.Builder<Coach>()
-                .setQuery(UserDAO.listAllCoach(), config, Coach.class).build();
+                .setQuery(ClientDAO.listAllCoach(), config, Coach.class).build();
 
         return new CoachListAdapter(options, this);
     }
@@ -62,6 +62,11 @@ public class ClientCoachListPresenter implements ClientCoachListContract.Present
             mView.onFailure();
         else
             mView.onSuccess();
+    }
+
+    @Override
+    public void requestAlreadySent(){
+        mView.onRequestSent();
     }
 
 

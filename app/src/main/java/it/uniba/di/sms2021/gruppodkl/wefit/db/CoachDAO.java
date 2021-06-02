@@ -1,6 +1,7 @@
 package it.uniba.di.sms2021.gruppodkl.wefit.db;
 
 import com.google.firebase.firestore.FirebaseFirestore;
+import com.google.firebase.firestore.Query;
 import com.google.firebase.firestore.QueryDocumentSnapshot;
 
 import java.util.ArrayList;
@@ -16,6 +17,8 @@ public class CoachDAO extends UserDAO {
     private static Feedback sFeedback;
     private static int sNumElement;
     private static float sRatingMean;
+
+
 
     public interface RatingCallbacks{
         void ratingMeanLoaded(float ratingMean);
@@ -91,6 +94,11 @@ public class CoachDAO extends UserDAO {
                             callbacks.ratingMeanLoaded(0);
                     }
                 });
+    }
+
+    public static Query queryAllRequests(String coachMail) {
+        return FirebaseFirestore.getInstance().collection(Keys.Collections.USERS)
+                .document(coachMail).collection(Keys.Collections.REQUESTS);
     }
 
 }

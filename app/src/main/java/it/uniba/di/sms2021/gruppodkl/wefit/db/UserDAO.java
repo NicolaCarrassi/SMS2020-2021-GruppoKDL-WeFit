@@ -81,9 +81,6 @@ public class UserDAO {
                 .collection(subCollection).add(map);
     }
 
-    public static Query listAllCoach(){
-        return FirebaseFirestore.getInstance().collection(Keys.Collections.USERS).whereEqualTo(User.UserKeys.ROLE, Keys.Role.COACH);
-    }
 
 
 }

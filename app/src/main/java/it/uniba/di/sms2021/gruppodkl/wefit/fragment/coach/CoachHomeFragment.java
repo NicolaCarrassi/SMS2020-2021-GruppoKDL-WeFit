@@ -96,10 +96,18 @@ public class CoachHomeFragment extends Fragment implements User.MyImageBitmapCal
 
             FragmentActivity activity = getActivity();
             if(activity != null)
-                activity.getSupportFragmentManager().beginTransaction().replace(R.id.anchor_point, coachProfileFragment).commit();
+                activity.getSupportFragmentManager().beginTransaction().replace(R.id.anchor_point, coachProfileFragment, CoachProfileFragment.TAG)
+                        .addToBackStack(CoachProfileFragment.TAG).commit();
         });
 
-        //TODO Imposta gli altri listeners delle card
+       mRequestsTab.setOnClickListener(v -> {
+           final CoachClientsRequestsFragment requestsFragment = new CoachClientsRequestsFragment();
+
+           FragmentActivity activity = getActivity();
+           if(activity != null)
+               activity.getSupportFragmentManager().beginTransaction().replace(R.id.anchor_point,requestsFragment, CoachClientsRequestsFragment.TAG)
+               .addToBackStack(CoachClientsRequestsFragment.TAG).commit();
+       });
     }
 
     @Override

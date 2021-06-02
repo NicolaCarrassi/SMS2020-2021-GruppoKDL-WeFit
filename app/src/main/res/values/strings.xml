@@ -144,6 +144,9 @@
     <string name="client_requests">CLIENT REQUESTS</string>
     <string name="accept">Accept</string>
     <string name="decline">Decline</string>
+    <string name="no_requests">There are no requests</string>
+    <string name="request_sent">You have already sent a request to a coach</string>
+    <string name="error_request">Error sending the request. Please try again later</string>
 
 
 </resources>

@@ -39,8 +39,6 @@ public class CoachListViewHolder extends RecyclerView.ViewHolder implements User
         if(coach.image != null){
             if(!coach.isBitmapImageAvailable())
                 coach.createImageBitmap(this);
-
-            coach.setImageBitmap(coach.getImageBitmap());
         }
         mCoachName.setText(coach.fullName);
     }

@@ -67,14 +67,13 @@ public class ClientMyCoachPresenter implements ClientMyCoachContract.Presenter {
 
     @Override
     public void leaveCoach(Client client) {
-        String coachEmail = client.coach;
 
         Map<String, Object> map = new HashMap<>();
         map.put(Client.ClientKeys.COACH, null);
 
-        UserDAO.update(client,map);
+        UserDAO.update(client, map);
 
-        //TODO Rimuovi anche il collegamento opposto COACH --> CLIENT --> CLIENT_LIST
+        mView.onCoachNotFound();
     }
 
     @Override

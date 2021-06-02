@@ -5,6 +5,7 @@ import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.fragment.app.Fragment;
@@ -18,7 +19,9 @@ import it.uniba.di.sms2021.gruppodkl.wefit.WeFitApplication;
 import it.uniba.di.sms2021.gruppodkl.wefit.adapter.CoachListAdapter;
 import it.uniba.di.sms2021.gruppodkl.wefit.contract.client.ClientCoachListContract;
 import it.uniba.di.sms2021.gruppodkl.wefit.model.Client;
+import it.uniba.di.sms2021.gruppodkl.wefit.model.Coach;
 import it.uniba.di.sms2021.gruppodkl.wefit.presenter.client.ClientCoachListPresenter;
+import it.uniba.di.sms2021.gruppodkl.wefit.viewholder.CoachListViewHolder;
 
 public class ClientCoachListFragment extends Fragment implements ClientCoachListContract.View {
 
@@ -34,8 +37,8 @@ public class ClientCoachListFragment extends Fragment implements ClientCoachList
     public View onCreateView(LayoutInflater inflater,  ViewGroup container,  Bundle savedInstanceState) {
         View layout =  inflater.inflate(R.layout.client_coach_list, container, false);
 
-        mClient = (Client) ((WeFitApplication) getActivity().getApplicationContext()).getUser();
-        mPresenter = new ClientCoachListPresenter(this, mClient);
+        Client client = (Client) ((WeFitApplication) getActivity().getApplicationContext()).getUser();
+        mPresenter = new ClientCoachListPresenter(this, client);
 
         ((WeFitApplication) getActivity().getApplicationContext()).setToolbar(layout, mActivity);
 
@@ -74,8 +77,8 @@ public class ClientCoachListFragment extends Fragment implements ClientCoachList
 
     @Override
     public void onFailure() {
-        mAdapter.setClickable(false);
-        //TODO Notifica errore all'utente
+        mAdapter.setClickable(true);
+        Toast.makeText(getActivity(), getResources().getString(R.string.error_request), Toast.LENGTH_SHORT).show();
     }
 
     @Override
@@ -84,4 +87,8 @@ public class ClientCoachListFragment extends Fragment implements ClientCoachList
         addDialog.show();
     }
 
+    @Override
+    public void onRequestSent() {
+        Toast.makeText(getActivity(), getResources().getString(R.string.request_sent), Toast.LENGTH_SHORT).show();
+    }
 }

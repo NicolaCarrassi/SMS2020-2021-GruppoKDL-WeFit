@@ -52,7 +52,8 @@ public class CoachListAdapter extends FirestorePagingAdapter<Coach, CoachListVie
         if(mIsClickable) {
             mIsClickable = false; //blocco i click successivi
             mPresenter.sendRequestToCoach(coach);
-        }
+        } else
+            mPresenter.requestAlreadySent();
     }
 
     @Override

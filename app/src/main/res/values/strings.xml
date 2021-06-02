@@ -141,6 +141,9 @@
     <string name="no_feedback_received_parag">Ask your clients to give you a feedback!</string>
     <string name="request_subscribe">SUBSCRIBE</string>
     <string name="choose_a_coach">Choose a coach</string>
+    <string name="client_requests">CLIENT REQUESTS</string>
+    <string name="accept">Accept</string>
+    <string name="decline">Decline</string>
 
 
 </resources>

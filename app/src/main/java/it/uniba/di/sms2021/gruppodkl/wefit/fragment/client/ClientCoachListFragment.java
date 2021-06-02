@@ -19,7 +19,7 @@ import it.uniba.di.sms2021.gruppodkl.wefit.contract.client.ClientCoachListContra
 import it.uniba.di.sms2021.gruppodkl.wefit.model.Client;
 import it.uniba.di.sms2021.gruppodkl.wefit.model.Coach;
 import it.uniba.di.sms2021.gruppodkl.wefit.presenter.client.ClientCoachListPresenter;
-import it.uniba.di.sms2021.gruppodkl.wefit.viewholder.ClientCoachListViewHolder;
+import it.uniba.di.sms2021.gruppodkl.wefit.viewholder.CoachListViewHolder;
 
 public class ClientCoachListFragment extends Fragment implements ClientCoachListContract.View {
 
@@ -27,7 +27,7 @@ public class ClientCoachListFragment extends Fragment implements ClientCoachList
 
     private ClientCoachListContract.Presenter mPresenter;
     private RecyclerView mRecycler;
-    private FirestorePagingAdapter<Coach, ClientCoachListViewHolder> mAdapter;
+    private FirestorePagingAdapter<Coach, CoachListViewHolder> mAdapter;
     private Client mClient;
     private WeFitApplication.CallbackOperations mActivity;
 

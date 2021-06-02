@@ -12,7 +12,7 @@ import it.uniba.di.sms2021.gruppodkl.wefit.R;
 import it.uniba.di.sms2021.gruppodkl.wefit.model.Coach;
 import it.uniba.di.sms2021.gruppodkl.wefit.model.User;
 
-public class ClientCoachListViewHolder extends RecyclerView.ViewHolder implements User.MyImageBitmapCallback {
+public class CoachListViewHolder extends RecyclerView.ViewHolder implements User.MyImageBitmapCallback {
 
     private ImageView mCoachImage;
     private TextView mCoachName;
@@ -20,7 +20,7 @@ public class ClientCoachListViewHolder extends RecyclerView.ViewHolder implement
     private Coach mCoach;
     private ItemClickListener mItemClickListener;
 
-    public ClientCoachListViewHolder(@NonNull View itemView, ItemClickListener itemClickListener) {
+    public CoachListViewHolder(@NonNull View itemView, ItemClickListener itemClickListener) {
         super(itemView);
 
         mCoachImage = itemView.findViewById(R.id.pfp_coach);

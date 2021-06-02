@@ -15,6 +15,7 @@ import com.firebase.ui.firestore.paging.FirestorePagingAdapter;
 
 import it.uniba.di.sms2021.gruppodkl.wefit.R;
 import it.uniba.di.sms2021.gruppodkl.wefit.WeFitApplication;
+import it.uniba.di.sms2021.gruppodkl.wefit.adapter.CoachListAdapter;
 import it.uniba.di.sms2021.gruppodkl.wefit.contract.client.ClientCoachListContract;
 import it.uniba.di.sms2021.gruppodkl.wefit.model.Client;
 import it.uniba.di.sms2021.gruppodkl.wefit.model.Coach;
@@ -27,7 +28,7 @@ public class ClientCoachListFragment extends Fragment implements ClientCoachList
 
     private ClientCoachListContract.Presenter mPresenter;
     private RecyclerView mRecycler;
-    private FirestorePagingAdapter<Coach, CoachListViewHolder> mAdapter;
+    private CoachListAdapter mAdapter;
     private Client mClient;
     private WeFitApplication.CallbackOperations mActivity;
 
@@ -71,6 +72,17 @@ public class ClientCoachListFragment extends Fragment implements ClientCoachList
     public void onStop() {
         super.onStop();
         mAdapter.stopListening();
+    }
+
+    @Override
+    public void onFailure() {
+        mAdapter.setClickable(false);
+        //TODO Notifica errore all'utente
+    }
+
+    @Override
+    public void onSuccess(){
+        //TODO Gestisci invio richiesta con successo
     }
 
 }

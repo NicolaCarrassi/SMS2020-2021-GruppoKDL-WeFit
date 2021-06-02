@@ -7,7 +7,14 @@ import androidx.recyclerview.widget.RecyclerView;
 
 public class ClientRequestsViewHolder extends RecyclerView.ViewHolder {
 
-    public ClientRequestsViewHolder(@NonNull  View itemView) {
+    public interface ViewHolderCallback{
+
+    }
+
+    private ViewHolderCallback mCallback;
+
+    public ClientRequestsViewHolder(@NonNull  View itemView, ViewHolderCallback callback) {
         super(itemView);
+        mCallback = callback;
     }
 }

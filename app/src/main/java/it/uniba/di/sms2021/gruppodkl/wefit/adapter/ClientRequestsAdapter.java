@@ -9,11 +9,12 @@ import androidx.annotation.NonNull;
 import com.firebase.ui.firestore.paging.FirestorePagingAdapter;
 import com.firebase.ui.firestore.paging.FirestorePagingOptions;
 
+import it.uniba.di.sms2021.gruppodkl.wefit.R;
 import it.uniba.di.sms2021.gruppodkl.wefit.model.Client;
 import it.uniba.di.sms2021.gruppodkl.wefit.model.Coach;
 import it.uniba.di.sms2021.gruppodkl.wefit.viewholder.ClientRequestsViewHolder;
 
-public class ClientRequestsAdapter extends FirestorePagingAdapter<Client, ClientRequestsViewHolder> {
+public class ClientRequestsAdapter extends FirestorePagingAdapter<Client, ClientRequestsViewHolder> implements ClientRequestsViewHolder.ViewHolderCallback {
 
     private Coach mCurrentCoach;
     //private mPresenter;
@@ -31,12 +32,14 @@ public class ClientRequestsAdapter extends FirestorePagingAdapter<Client, Client
 
     @Override
     protected void onBindViewHolder(@NonNull ClientRequestsViewHolder holder, int position, @NonNull Client model) {
-      //  View view = LayoutInflater.from()
+      //holder.setValues(model);
     }
 
 
     @Override
     public ClientRequestsViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
-        return null;
+       View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.coach_list_requests_item, parent, false);
+
+       return  new ClientRequestsViewHolder(view, this);
     }
 }

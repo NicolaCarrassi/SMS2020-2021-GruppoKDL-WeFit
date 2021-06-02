@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_marginVertical="@dimen/margin_horizontal"
+    tools:context="ClientRequestCoachSentDialog">
+
+    <TextView
+        android:id="@+id/title"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        style="@style/custom_h1"
+        android:text="REQUEST SENT SUCCESSFULLY"
+        android:gravity="center"/>
+
+    <ImageView
+        android:layout_below="@id/title"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="@dimen/margin_horizontal"
+        android:id="@+id/success_anim"
+        android:layout_width="80dp"
+        android:layout_height="80dp"/>
+
+    <com.google.android.material.button.MaterialButton
+        android:id="@+id/back_button"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/success_anim"
+        android:layout_centerHorizontal="true"
+        android:text="@string/back"
+        style="@style/MaterialButtonCustom"
+        android:paddingHorizontal="30dp"
+        android:paddingVertical="10dp"
+        android:layout_marginTop="20dp"/>
+
+</RelativeLayout>

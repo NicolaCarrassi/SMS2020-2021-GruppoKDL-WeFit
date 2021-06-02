@@ -62,7 +62,6 @@ public class ClientCoachListPresenter implements ClientCoachListContract.Present
             mView.onFailure();
         else
             mView.onSuccess();
-        //TODO FAI COMPARIRE QUALCOSA, L'UTENTE LA CLICCA E TORNA ALLA SCHERMATA PRECEDENTE
     }
 
 

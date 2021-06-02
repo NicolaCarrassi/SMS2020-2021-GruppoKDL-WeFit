@@ -10,15 +10,10 @@ import androidx.annotation.NonNull;
 import com.firebase.ui.firestore.paging.FirestorePagingAdapter;
 import com.firebase.ui.firestore.paging.FirestorePagingOptions;
 
-import java.util.HashMap;
-import java.util.Map;
-
 import it.uniba.di.sms2021.gruppodkl.wefit.R;
 import it.uniba.di.sms2021.gruppodkl.wefit.contract.client.ClientCoachListContract;
-import it.uniba.di.sms2021.gruppodkl.wefit.db.ClientDAO;
 import it.uniba.di.sms2021.gruppodkl.wefit.model.Client;
 import it.uniba.di.sms2021.gruppodkl.wefit.model.Coach;
-import it.uniba.di.sms2021.gruppodkl.wefit.utility.Keys;
 import it.uniba.di.sms2021.gruppodkl.wefit.viewholder.CoachListViewHolder;
 
 public class CoachListAdapter extends FirestorePagingAdapter<Coach, CoachListViewHolder>

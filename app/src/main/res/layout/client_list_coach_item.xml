@@ -45,7 +45,7 @@
                 android:layout_gravity="center_horizontal"
                 android:gravity="center"
                 android:textColor="@color/white"
-                style="@style/custom_h1">
+                style="@style/custom_h2">
 
             </TextView>
                 <com.google.android.material.button.MaterialButton
@@ -55,7 +55,7 @@
                     android:text="@string/request_subscribe"
                     android:backgroundTint="@color/green"
                     style="@style/MaterialButtonCustom"
-                    android:paddingHorizontal="30dp"/>
+                    android:textSize="16sp"/>
             </LinearLayout>
         </LinearLayout>
     </androidx.cardview.widget.CardView>

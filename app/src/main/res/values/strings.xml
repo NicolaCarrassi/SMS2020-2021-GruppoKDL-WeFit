@@ -163,6 +163,12 @@
     <string name="request_successful_title">REQUEST SENT SUCCESSFULLY</string>
     <string name="request_sent_successuflly">Request sent successfully</string>
     <string name="request_deleted">Your request has been deleted</string>
+    <string name="client_request">Client Request</string>
+    <string name="objective">Objective: </string>
+    <string name="kg">kg</string>
+    <string name="current_weight">Current weight:</string>
+    <string name="cm">cm</string>
+    <string name="error_loading_profile">There have been problems loading the profile</string>
 
 
 </resources>

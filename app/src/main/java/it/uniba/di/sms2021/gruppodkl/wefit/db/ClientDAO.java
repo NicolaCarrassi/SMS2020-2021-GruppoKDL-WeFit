@@ -1,7 +1,9 @@
 package it.uniba.di.sms2021.gruppodkl.wefit.db;
 
+import com.google.firebase.firestore.DocumentReference;
 import com.google.firebase.firestore.FirebaseFirestore;
 import com.google.firebase.firestore.Query;
+import com.google.firebase.firestore.WriteBatch;
 
 import java.util.HashMap;
 import java.util.Map;
@@ -43,8 +45,26 @@ public class ClientDAO extends UserDAO {
     }
 
     public static void deleteRequestToCoach(String clientMail, String coachMail){
-        FirebaseFirestore.getInstance().collection(Keys.Collections.USERS).document(coachMail)
-                .collection(Keys.Collections.REQUESTS).document(clientMail).delete();
+
+        FirebaseFirestore firebaseInstance = FirebaseFirestore.getInstance();
+
+        WriteBatch batch = firebaseInstance.batch();
+
+        DocumentReference deleteRequest = firebaseInstance.collection(Keys.Collections.USERS).document(coachMail)
+                .collection(Keys.Collections.REQUESTS).document(clientMail);
+
+
+        DocumentReference updateRequest = firebaseInstance.collection(Keys.Collections.USERS).document(clientMail);
+
+        //valori da aggiornare nel cliente
+        Map<String, Object> map = new HashMap<>();
+        map.put(Client.ClientKeys.COACH, null);
+        map.put(Client.ClientKeys.HAS_PENDING_REQUESTS, false);
+
+        batch.delete(deleteRequest);
+        batch.update(updateRequest, map);
+
+        batch.commit();
     }
 
 

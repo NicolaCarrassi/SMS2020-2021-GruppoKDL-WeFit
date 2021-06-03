@@ -28,4 +28,10 @@ public class CoachClientRequestsPresenter implements CoachClientsRequestsContrac
 
         return new ClientRequestsAdapter(options, this, mCoach);
     }
+
+    @Override
+    public void showUserProfile(Request request) {
+        if(request != null)
+            mView.showClientProfile(request);
+    }
 }

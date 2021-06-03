@@ -160,6 +160,13 @@
     <string name="request_sent_successuflly">Richiesta inviata con successo</string>
     <string name="request_deleted">La tua richiesta è stata cancellata</string>
 
+    <string name="client_request">RICHIESTA CLIENTE</string>
+    <string name="objective">Obiettivo: </string>
+    <string name="kg">kg</string>
+    <string name="current_weight">Peso attuale:</string>
+    <string name="cm">cm</string>
+    <string name="error_loading_profile">Ci sono stati problemi nel caricare il profilo</string>
+
 
 
 </resources>

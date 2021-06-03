@@ -304,21 +304,21 @@ public class RegistrationActivity extends AppCompatActivity implements DatePicke
 
 
         if(checkName(mFirstNameEdit))
-            userData.put(Keys.RegistrationKeys.FIRST_NAME,mFirstNameEdit.getText().toString());
+            userData.put(User.UserKeys.FIRST_NAME,mFirstNameEdit.getText().toString());
         else
             isCorrect = false;
 
 
 
         if(checkName(mLastNameEdit)){
-            userData.put(Keys.RegistrationKeys.LAST_NAME, mLastNameEdit.getText().toString());
+            userData.put(User.UserKeys.LAST_NAME, mLastNameEdit.getText().toString());
         } else {
             if(isCorrect)
                 isCorrect = false;
         }
 
         if(!TextUtils.isEmpty(mBirthDateEdit.getText().toString())) {
-           userData.put(Keys.RegistrationKeys.BIRTH_DATE, mBirthDateEdit.getText().toString());
+           userData.put(User.UserKeys.BIRTH_DATE, mBirthDateEdit.getText().toString());
         } else{
             if(isCorrect)
                 isCorrect = false;
@@ -329,9 +329,9 @@ public class RegistrationActivity extends AppCompatActivity implements DatePicke
         if(checkSpinner(mSpinner)){
             Log.d("DIOCANE", "" + mSpinner.getSelectedItem());
             if(mSpinner.getSelectedItem().toString().equals(getResources().getString(R.string.male))){
-                userData.put(Keys.RegistrationKeys.GENDER,Keys.Gender.MALE);
+                userData.put(User.UserKeys.GENDER,Keys.Gender.MALE);
             }else{
-                userData.put(Keys.RegistrationKeys.GENDER,Keys.Gender.FEMALE);
+                userData.put(User.UserKeys.GENDER,Keys.Gender.FEMALE);
             }
         }else{
             if(isCorrect)
@@ -339,13 +339,13 @@ public class RegistrationActivity extends AppCompatActivity implements DatePicke
         }
 
         if(checkEmail())
-            userData.put(Keys.RegistrationKeys.EMAIL, mEmailEdit.getText().toString());
+            userData.put(User.UserKeys.EMAIL, mEmailEdit.getText().toString());
         else {
             if(isCorrect)
                 isCorrect = false;
         }
         if(passwordCheck())
-            userData.put(Keys.RegistrationKeys.PASSWORD, mPasswordEdit.getText().toString());
+            userData.put(User.UserKeys.PASSWORD, mPasswordEdit.getText().toString());
         else {
             if(isCorrect)
                 isCorrect = false;
@@ -371,9 +371,9 @@ public class RegistrationActivity extends AppCompatActivity implements DatePicke
 
         if(checkRadioGroup(mRadioRole)){
             if(R.id.radio_client == mRadioRole.getCheckedRadioButtonId())
-                userData.put(Keys.RegistrationKeys.ROLE, Keys.Role.CLIENT);
+                userData.put(User.UserKeys.ROLE, Keys.Role.CLIENT);
             else
-                userData.put(Keys.RegistrationKeys.ROLE,Keys.Role.COACH);
+                userData.put(User.UserKeys.ROLE,Keys.Role.COACH);
         } else
             isCorrect = false;
 

@@ -2,6 +2,8 @@ package it.uniba.di.sms2021.gruppodkl.wefit.model;
 
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
+import android.os.Parcel;
+import android.os.Parcelable;
 import android.util.Log;
 
 import com.google.firebase.storage.FirebaseStorage;
@@ -12,7 +14,7 @@ import java.io.IOException;
 
 import it.uniba.di.sms2021.gruppodkl.wefit.presenter.LoginActivityPresenter;
 
-public class Request {
+public class Request implements Parcelable {
 
     public interface RequestImageBitmapCallback{
         void handleCallback();
@@ -33,6 +35,7 @@ public class Request {
         this.fullName = clientName;
         this.image = clientImage;
     }
+
 
     public boolean isBitmapImageAvailable(){
         return imageBitmap != null;
@@ -61,5 +64,36 @@ public class Request {
         }
     }
 
+
+
+    protected Request(Parcel in) {
+        email = in.readString();
+        fullName = in.readString();
+        image = in.readString();
+    }
+
+    @Override
+    public void writeToParcel(Parcel dest, int flags) {
+        dest.writeString(email);
+        dest.writeString(fullName);
+        dest.writeString(image);
+    }
+
+    @Override
+    public int describeContents() {
+        return 0;
+    }
+
+    public static final Creator<Request> CREATOR = new Creator<Request>() {
+        @Override
+        public Request createFromParcel(Parcel in) {
+            return new Request(in);
+        }
+
+        @Override
+        public Request[] newArray(int size) {
+            return new Request[size];
+        }
+    };
 
 }

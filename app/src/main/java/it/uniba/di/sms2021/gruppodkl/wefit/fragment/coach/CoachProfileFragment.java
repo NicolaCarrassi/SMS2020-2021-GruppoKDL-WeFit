@@ -179,7 +179,7 @@ public class CoachProfileFragment extends Fragment implements CoachProfileContra
         mEmail.setText(mCoach.email);
 
         mIsPersonalTrainer.setChecked(mCoach.isPersonalTrainer);
-        mIsDietician.setChecked(mCoach.isDietist);
+        mIsDietician.setChecked(mCoach.isDietician);
 
         if(mCoach.certificationUri != null){
             mNoCertificationAttachedImage.setVisibility(View.GONE);
@@ -216,7 +216,7 @@ public class CoachProfileFragment extends Fragment implements CoachProfileContra
         String fullName = mFullName.getText().toString().trim();
         String gender = mGender.getText().toString().equals(getResources().getString(R.string.male)) ? Keys.Gender.MALE : Keys.Gender.FEMALE;
         boolean isPersonalTrainer = mIsPersonalTrainer.isChecked();
-        boolean isDietist = mIsDietician.isChecked();
+        boolean isDietician = mIsDietician.isChecked();
 
         if(!TextUtils.isEmpty(fullName) && !fullName.equalsIgnoreCase(mCoach.fullName)){
             map.put(Coach.CoachKeys.FULL_NAME, fullName);
@@ -236,10 +236,10 @@ public class CoachProfileFragment extends Fragment implements CoachProfileContra
             map.put(Coach.CoachKeys.IS_PERSONAL_TRAINER, isPersonalTrainer);
         }
 
-        if(isDietist != mCoach.isDietist){
-            mCoach.isDietist = isDietist;
+        if(isDietician != mCoach.isDietician){
+            mCoach.isDietician = isDietician;
             anyChange = true;
-            map.put(Coach.CoachKeys.IS_DIETIST, isDietist);
+            map.put(Coach.CoachKeys.IS_DIETICIAN, isDietician);
         }
         String msg;
 

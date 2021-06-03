@@ -53,5 +53,10 @@ public class ClientRequestsAdapter extends FirestoreRecyclerAdapter<Request, Cli
        CoachDAO.handleRequest(mCoach, getItem(position),  false);
     }
 
+    @Override
+    public void showUserProfile(int position) {
+        mPresenter.showUserProfile(getItem(position));
+    }
+
 
 }

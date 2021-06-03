@@ -5,12 +5,12 @@ public class Coach extends User {
 
     public interface CoachKeys extends UserKeys{
         String IS_PERSONAL_TRAINER = "isPersonalTrainer";
-        String IS_DIETIST = "isDietist";
+        String IS_DIETICIAN = "isDietician";
         String CERTIFICATION = "certificationUri";
     }
 
     public boolean isPersonalTrainer = false;
-    public boolean isDietist = false;
+    public boolean isDietician = false;
     public String certificationUri = null;
 
 
@@ -24,7 +24,7 @@ public class Coach extends User {
         if(isPersonalTrainer)
             this.isPersonalTrainer = true;
         if(isDietist)
-            this.isDietist = true;
+            this.isDietician = true;
 
         this.certificationUri = certificationUri;
     }

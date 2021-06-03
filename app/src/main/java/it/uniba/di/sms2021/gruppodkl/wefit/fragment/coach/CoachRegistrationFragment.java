@@ -18,6 +18,7 @@ import java.util.Map;
 
 import it.uniba.di.sms2021.gruppodkl.wefit.R;
 import it.uniba.di.sms2021.gruppodkl.wefit.contract.coach.CoachRegistrationFragmentContract;
+import it.uniba.di.sms2021.gruppodkl.wefit.model.Coach;
 import it.uniba.di.sms2021.gruppodkl.wefit.utility.Keys;
 
 
@@ -117,13 +118,13 @@ public class CoachRegistrationFragment extends Fragment implements CoachRegistra
 
 
         if(mPersonalTrainerCheckBox.isChecked())
-            addictionalData.put(Keys.CoachRegistrationKeys.IS_PERSONAL_TRAINER, PERSONAL_TRAINER);
+            addictionalData.put(Coach.CoachKeys.IS_PERSONAL_TRAINER, PERSONAL_TRAINER);
 
         if(mDieticianCheckBox.isChecked())
-            addictionalData.put(Keys.CoachRegistrationKeys.IS_DIETICIAN, DIETICIAN);
+            addictionalData.put(Coach.CoachKeys.IS_DIETICIAN, DIETICIAN);
 
         if(mActivity.getFileURI() != null)
-            addictionalData.put(Keys.CoachRegistrationKeys.ATTACHED_FILE, mCertificationUri);
+            addictionalData.put(Coach.CoachKeys.CERTIFICATION, mCertificationUri);
 
         return addictionalData;
     }

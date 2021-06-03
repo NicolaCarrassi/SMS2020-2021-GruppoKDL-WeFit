@@ -19,6 +19,7 @@ import it.uniba.di.sms2021.gruppodkl.wefit.WeFitApplication;
 import it.uniba.di.sms2021.gruppodkl.wefit.adapter.ClientRequestsAdapter;
 import it.uniba.di.sms2021.gruppodkl.wefit.contract.coach.CoachClientsRequestsContract;
 import it.uniba.di.sms2021.gruppodkl.wefit.model.Coach;
+import it.uniba.di.sms2021.gruppodkl.wefit.model.Request;
 import it.uniba.di.sms2021.gruppodkl.wefit.presenter.coach.CoachClientRequestsPresenter;
 import it.uniba.di.sms2021.gruppodkl.wefit.recyclerview.CustomRecyclerView;
 
@@ -87,5 +88,10 @@ public class CoachClientsRequestsFragment extends Fragment
     }
 
 
-
+    @Override
+    public void showClientProfile(Request request) {
+        CoachClientRequestProfileFragment fragment = CoachClientRequestProfileFragment.newInstance(request);
+        getActivity().getSupportFragmentManager().beginTransaction().replace(R.id.anchor_point, fragment,CoachClientRequestProfileFragment.TAG)
+                .addToBackStack(CoachClientRequestProfileFragment.TAG).commit();
+    }
 }

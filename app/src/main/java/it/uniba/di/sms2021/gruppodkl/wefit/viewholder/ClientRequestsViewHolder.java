@@ -17,6 +17,7 @@ public class ClientRequestsViewHolder extends RecyclerView.ViewHolder implements
     public interface ViewHolderCallback{
         void acceptRequest(int position);
         void declineRequest(int position);
+        void showUserProfile(int position);
     }
 
     private final ViewHolderCallback mCallback;
@@ -38,6 +39,7 @@ public class ClientRequestsViewHolder extends RecyclerView.ViewHolder implements
 
         mAcceptButton.setOnClickListener(v -> mCallback.acceptRequest(getAdapterPosition()));
         mDeclineButton.setOnClickListener(v -> mCallback.declineRequest(getAdapterPosition()));
+        mProfilePicture.setOnClickListener(v -> callback.showUserProfile(getAdapterPosition()));
     }
 
 

@@ -16,6 +16,10 @@ import it.uniba.di.sms2021.gruppodkl.wefit.presenter.LoginActivityPresenter;
 public class User {
 
     public interface UserKeys{
+        String FIRST_NAME = "firstName";
+        String LAST_NAME = "lastName";
+        String EMAIL = "email";
+        String PASSWORD = "password";
         String FULL_NAME = "fullName";
         String BIRTH_DATE ="birthDate";
         String GENDER = "gender";

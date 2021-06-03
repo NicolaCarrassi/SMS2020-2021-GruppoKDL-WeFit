@@ -18,6 +18,7 @@ import java.util.Map;
 
 import it.uniba.di.sms2021.gruppodkl.wefit.R;
 import it.uniba.di.sms2021.gruppodkl.wefit.contract.fragment.RegistrationFragmentContract;
+import it.uniba.di.sms2021.gruppodkl.wefit.model.Client;
 import it.uniba.di.sms2021.gruppodkl.wefit.utility.Keys;
 
 
@@ -123,20 +124,20 @@ public class ClientRegistrationFragment extends Fragment implements Registration
         Map<String,String> addictionalData = new HashMap<>();
 
 
-        addictionalData.put(Keys.ClientRegistrationKeys.HEIGHT, mHeightEdit.getText().toString());
-        addictionalData.put(Keys.ClientRegistrationKeys.WEIGHT, mWeightEdit.getText().toString());
+        addictionalData.put(Client.ClientKeys.HEIGHT, mHeightEdit.getText().toString());
+        addictionalData.put(Client.ClientKeys.WEIGHT, mWeightEdit.getText().toString());
 
 
         int radioResult = mObjectiveRadio.getCheckedRadioButtonId();
 
         if(radioResult == R.id.fit_objective_radio)
-            addictionalData.put(Keys.ClientRegistrationKeys.OBJECTIVE, Keys.Objectives.FIT_OBJECTIVE);
+            addictionalData.put(Client.ClientKeys.OBJECTIVE, Keys.Objectives.FIT_OBJECTIVE);
 
         if(radioResult == R.id.lose_objective_radio)
-            addictionalData.put(Keys.ClientRegistrationKeys.OBJECTIVE, Keys.Objectives.LOSE_WEIGHT);
+            addictionalData.put(Client.ClientKeys.OBJECTIVE, Keys.Objectives.LOSE_WEIGHT);
 
         if(radioResult == R.id.shape_objective_radio)
-            addictionalData.put(Keys.ClientRegistrationKeys.OBJECTIVE,Keys.Objectives.GAIN_MASS);
+            addictionalData.put(Client.ClientKeys.OBJECTIVE,Keys.Objectives.GAIN_MASS);
 
         return addictionalData;
     }

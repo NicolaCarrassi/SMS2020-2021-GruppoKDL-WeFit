@@ -214,10 +214,10 @@ public class ClientMyCoachFragment extends Fragment implements ClientMyCoachCont
         if(coach.isPersonalTrainer) {
             skills = getResources().getString(R.string.personal_trainer);
 
-            if(coach.isDietist)
+            if(coach.isDietician)
                 skills = skills + " | " + getResources().getString(R.string.dietician);
         }else {
-            if (coach.isDietist)
+            if (coach.isDietician)
                 skills = getResources().getString(R.string.dietician);
         }
         mCoachSkills.setText(skills);

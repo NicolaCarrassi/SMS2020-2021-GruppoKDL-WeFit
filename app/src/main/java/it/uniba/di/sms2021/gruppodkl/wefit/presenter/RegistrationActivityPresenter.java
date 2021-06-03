@@ -73,8 +73,8 @@ public class RegistrationActivityPresenter implements RegistrationActivityContra
      * @param specificData dati specifici della tipologia dell'utennte
      */
     private void createAuthenticationData(Map<String,String> userData, Map<String,String> specificData){
-        String email = userData.get(Keys.RegistrationKeys.EMAIL);
-        String password = userData.get(Keys.RegistrationKeys.PASSWORD);
+        String email = userData.get(User.UserKeys.EMAIL);
+        String password = userData.get(User.UserKeys.PASSWORD);
 
         assert email != null;
         assert password != null;
@@ -96,8 +96,8 @@ public class RegistrationActivityPresenter implements RegistrationActivityContra
      * @param specificData dati specifici alla tipologia dell'utente
      */
     private void createUser(Map<String, String> userData, Map<String, String> specificData){
-        String firstName = userData.get(Keys.RegistrationKeys.FIRST_NAME);
-        String lastName = userData.get(Keys.RegistrationKeys.LAST_NAME);
+        String firstName = userData.get(User.UserKeys.FIRST_NAME);
+        String lastName = userData.get(User.UserKeys.LAST_NAME);
 
         assert firstName != null;
         assert lastName != null;
@@ -108,17 +108,17 @@ public class RegistrationActivityPresenter implements RegistrationActivityContra
         lastName = lastName.substring(0,1).toUpperCase() + lastName.substring(1).toLowerCase();
 
         String fullName = firstName + " " + lastName;
-        String email = userData.get(Keys.RegistrationKeys.EMAIL);
-        String birthDate = userData.get(Keys.RegistrationKeys.BIRTH_DATE);
-        String role = userData.get(Keys.RegistrationKeys.ROLE);
-        String gender = userData.get(Keys.RegistrationKeys.GENDER);
+        String email = userData.get(User.UserKeys.EMAIL);
+        String birthDate = userData.get(User.UserKeys.BIRTH_DATE);
+        String role = userData.get(User.UserKeys.ROLE);
+        String gender = userData.get(User.UserKeys.GENDER);
 
         //Dati addizionali
         assert role != null;
         if(role.equals(Keys.Role.CLIENT)){
-            float weight = Float.parseFloat(Objects.requireNonNull(specificData.get(Keys.ClientRegistrationKeys.WEIGHT)));
-            int height = Integer.parseInt(Objects.requireNonNull(specificData.get(Keys.ClientRegistrationKeys.HEIGHT)));
-            String objective = specificData.get(Keys.ClientRegistrationKeys.OBJECTIVE);
+            float weight = Float.parseFloat(Objects.requireNonNull(specificData.get(Client.ClientKeys.WEIGHT)));
+            int height = Integer.parseInt(Objects.requireNonNull(specificData.get(Client.ClientKeys.HEIGHT)));
+            String objective = specificData.get(Client.ClientKeys.OBJECTIVE);
 
             Client client = new Client(fullName, email, birthDate, gender,role,height,weight,objective, false);
 
@@ -129,14 +129,14 @@ public class RegistrationActivityPresenter implements RegistrationActivityContra
            boolean isDietist = false;
            String certificationUri = null;
 
-            if(specificData.containsKey(Keys.CoachRegistrationKeys.IS_PERSONAL_TRAINER))
+            if(specificData.containsKey(Coach.CoachKeys.IS_PERSONAL_TRAINER))
                 isPersonalTrainer = true;
 
-           if (specificData.containsKey(Keys.CoachRegistrationKeys.IS_DIETICIAN))
+           if (specificData.containsKey(Coach.CoachKeys.IS_DIETICIAN))
                isDietist = true;
 
-           if(specificData.containsKey(Keys.CoachRegistrationKeys.ATTACHED_FILE))
-                certificationUri = specificData.get(Keys.CoachRegistrationKeys.ATTACHED_FILE);
+           if(specificData.containsKey(Coach.CoachKeys.CERTIFICATION))
+                certificationUri = specificData.get(Coach.CoachKeys.CERTIFICATION);
 
 
             Coach coach = new Coach(fullName, email, birthDate, gender,role,isPersonalTrainer,isDietist, certificationUri);
@@ -156,7 +156,7 @@ public class RegistrationActivityPresenter implements RegistrationActivityContra
         final String WEIGHT = "weight";
         final Map<String, Object> weightMap = new HashMap<>();
 
-        weightMap.put(Keys.ClientRegistrationKeys.WEIGHT,client.weight);
+        weightMap.put(Client.ClientKeys.WEIGHT,client.weight);
 
         //creo la collection dei pesi nel document avente email quella dell'utente appena registrato
         UserDAO.addInSubCollection(client.email, Keys.Collections.WEIGHT, weightMap);

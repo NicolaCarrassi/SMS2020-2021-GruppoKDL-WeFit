@@ -66,7 +66,7 @@
             android:layout_height="wrap_content"
             android:text="@string/accept"
             style="@style/MaterialButtonCustom"
-            android:paddingHorizontal="30dp"
+            android:paddingHorizontal="20dp"
             android:paddingVertical="10dp"
             android:backgroundTint="@color/green"/>
 

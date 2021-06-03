@@ -11,7 +11,7 @@ import androidx.recyclerview.widget.RecyclerView;
 import it.uniba.di.sms2021.gruppodkl.wefit.R;
 import it.uniba.di.sms2021.gruppodkl.wefit.model.Request;
 
-public class ClientRequestsViewHolder extends RecyclerView.ViewHolder implements Request.RequestImageBitmapCallback {
+public class CoachClientRequestsViewHolder extends RecyclerView.ViewHolder implements Request.RequestImageBitmapCallback {
 
 
     public interface ViewHolderCallback{
@@ -28,7 +28,7 @@ public class ClientRequestsViewHolder extends RecyclerView.ViewHolder implements
     private final Button mAcceptButton;
     private final Button mDeclineButton;
 
-    public ClientRequestsViewHolder(@NonNull  View itemView, ViewHolderCallback callback) {
+    public CoachClientRequestsViewHolder(@NonNull  View itemView, ViewHolderCallback callback) {
         super(itemView);
         mCallback = callback;
 

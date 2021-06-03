@@ -12,17 +12,13 @@ import androidx.fragment.app.Fragment;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
-import it.uniba.di.sms2021.gruppodkl.wefit.AddFeedbackDialog;
 import it.uniba.di.sms2021.gruppodkl.wefit.ClientRequestCoachSentDialog;
 import it.uniba.di.sms2021.gruppodkl.wefit.R;
 import it.uniba.di.sms2021.gruppodkl.wefit.WeFitApplication;
-import it.uniba.di.sms2021.gruppodkl.wefit.adapter.CoachListAdapter;
+import it.uniba.di.sms2021.gruppodkl.wefit.adapter.ClientCoachListAdapter;
 import it.uniba.di.sms2021.gruppodkl.wefit.contract.client.ClientCoachListContract;
-import it.uniba.di.sms2021.gruppodkl.wefit.fragment.coach.CoachProfileFragment;
 import it.uniba.di.sms2021.gruppodkl.wefit.model.Client;
-import it.uniba.di.sms2021.gruppodkl.wefit.model.Coach;
 import it.uniba.di.sms2021.gruppodkl.wefit.presenter.client.ClientCoachListPresenter;
-import it.uniba.di.sms2021.gruppodkl.wefit.viewholder.CoachListViewHolder;
 
 public class ClientCoachListFragment extends Fragment implements ClientCoachListContract.View {
 
@@ -30,7 +26,7 @@ public class ClientCoachListFragment extends Fragment implements ClientCoachList
 
     private ClientCoachListContract.Presenter mPresenter;
     private RecyclerView mRecycler;
-    private CoachListAdapter mAdapter;
+    private ClientCoachListAdapter mAdapter;
     private Client mClient;
     private WeFitApplication.CallbackOperations mActivity;
 

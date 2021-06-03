@@ -1,6 +1,5 @@
 package it.uniba.di.sms2021.gruppodkl.wefit.adapter;
 
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -15,32 +14,32 @@ import it.uniba.di.sms2021.gruppodkl.wefit.contract.coach.CoachClientsRequestsCo
 import it.uniba.di.sms2021.gruppodkl.wefit.db.CoachDAO;
 import it.uniba.di.sms2021.gruppodkl.wefit.model.Coach;
 import it.uniba.di.sms2021.gruppodkl.wefit.model.Request;
-import it.uniba.di.sms2021.gruppodkl.wefit.viewholder.ClientRequestsViewHolder;
+import it.uniba.di.sms2021.gruppodkl.wefit.viewholder.CoachClientRequestsViewHolder;
 
-public class ClientRequestsAdapter extends FirestoreRecyclerAdapter<Request, ClientRequestsViewHolder>
-        implements ClientRequestsViewHolder.ViewHolderCallback{
+public class CoachClientRequestsAdapter extends FirestoreRecyclerAdapter<Request, CoachClientRequestsViewHolder>
+        implements CoachClientRequestsViewHolder.ViewHolderCallback{
 
     private CoachClientsRequestsContract.Presenter mPresenter;
     private Coach mCoach;
 
 
-    public ClientRequestsAdapter(FirestoreRecyclerOptions<Request> options, CoachClientsRequestsContract.Presenter presenter, Coach coach) {
+    public CoachClientRequestsAdapter(FirestoreRecyclerOptions<Request> options, CoachClientsRequestsContract.Presenter presenter, Coach coach) {
         super(options);
         this.mPresenter = presenter;
         this.mCoach = coach;
     }
 
     @Override
-    protected void onBindViewHolder(@NonNull ClientRequestsViewHolder holder, int position, @NonNull Request model) {
+    protected void onBindViewHolder(@NonNull CoachClientRequestsViewHolder holder, int position, @NonNull Request model) {
       holder.setValues(model);
     }
 
 
     @Override
-    public ClientRequestsViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
+    public CoachClientRequestsViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
        View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.coach_list_requests_item, parent, false);
 
-       return  new ClientRequestsViewHolder(view, this);
+       return  new CoachClientRequestsViewHolder(view, this);
     }
 
     @Override

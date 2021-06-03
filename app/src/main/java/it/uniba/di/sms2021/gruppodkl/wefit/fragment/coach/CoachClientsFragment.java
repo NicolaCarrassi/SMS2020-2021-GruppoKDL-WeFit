@@ -3,66 +3,91 @@ package it.uniba.di.sms2021.gruppodkl.wefit.fragment.coach;
 import android.os.Bundle;
 
 import androidx.fragment.app.Fragment;
+import androidx.recyclerview.widget.LinearLayoutManager;
 
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.TextView;
+import android.widget.Toast;
 
 import it.uniba.di.sms2021.gruppodkl.wefit.R;
+import it.uniba.di.sms2021.gruppodkl.wefit.WeFitApplication;
+import it.uniba.di.sms2021.gruppodkl.wefit.adapter.CoachMyClientListAdapter;
+import it.uniba.di.sms2021.gruppodkl.wefit.contract.coach.CoachClientsContract;
+import it.uniba.di.sms2021.gruppodkl.wefit.presenter.coach.CoachClientsPresenter;
+import it.uniba.di.sms2021.gruppodkl.wefit.presenter.coach.CoachMyClientProfileFragment;
+import it.uniba.di.sms2021.gruppodkl.wefit.recyclerview.CustomRecyclerView;
 
-/**
- * A simple {@link Fragment} subclass.
- * Use the {@link CoachClientsFragment#newInstance} factory method to
- * create an instance of this fragment.
- */
-public class CoachClientsFragment extends Fragment {
+
+public class CoachClientsFragment extends Fragment implements CoachClientsContract.View {
 
     public static final String TAG = CoachClientsFragment.class.getSimpleName();
+    private CoachMyClientListAdapter mAdapter;
 
-    // TODO: Rename parameter arguments, choose names that match
-    // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
-    private static final String ARG_PARAM1 = "param1";
-    private static final String ARG_PARAM2 = "param2";
 
-    // TODO: Rename and change types of parameters
-    private String mParam1;
-    private String mParam2;
+    private CoachClientsContract.Presenter mPresenter;
 
-    public CoachClientsFragment() {
-        // Required empty public constructor
+    public CoachClientsFragment(){
+        //empty constructor
     }
 
-    /**
-     * Use this factory method to create a new instance of
-     * this fragment using the provided parameters.
-     *
-     * @param param1 Parameter 1.
-     * @param param2 Parameter 2.
-     * @return A new instance of fragment CoachClientsFragment.
-     */
-    // TODO: Rename and change types and number of parameters
-    public static CoachClientsFragment newInstance(String param1, String param2) {
-        CoachClientsFragment fragment = new CoachClientsFragment();
-        Bundle args = new Bundle();
-        args.putString(ARG_PARAM1, param1);
-        args.putString(ARG_PARAM2, param2);
-        fragment.setArguments(args);
-        return fragment;
-    }
-
-    @Override
-    public void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
-        if (getArguments() != null) {
-            mParam1 = getArguments().getString(ARG_PARAM1);
-            mParam2 = getArguments().getString(ARG_PARAM2);
-        }
-    }
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.coach_clients_fragment, container, false);
+        View layout =  inflater.inflate(R.layout.coach_clients_fragment, container, false);
+
+        mPresenter = new CoachClientsPresenter(this);
+
+        bind(layout);
+
+        return layout;
+    }
+
+    private void bind(View view){
+        //toolbar
+        if(getActivity() instanceof WeFitApplication.CallbackOperations) {
+            WeFitApplication.CallbackOperations activity = (WeFitApplication.CallbackOperations) getActivity();
+            ((WeFitApplication) getActivity().getApplicationContext()).setToolbar(view, activity);
+        }
+
+        //prendi elementi view
+        CustomRecyclerView recyclerView = view.findViewById(R.id.recycler_client_list);
+        TextView emptyView = view.findViewById(R.id.empty_client_list);
+
+        //gestione recycler
+        String coachEmail = ((WeFitApplication) getActivity().getApplicationContext()).getUser().email;
+        mAdapter = mPresenter.getAdapter(coachEmail);
+        recyclerView.setAdapter(mAdapter);
+        recyclerView.setLayoutManager(new LinearLayoutManager(getContext()));
+
+        recyclerView.setEmptyView(emptyView);
+    }
+
+    @Override
+    public void onStart() {
+        super.onStart();
+        mAdapter.startListening();
+    }
+
+    @Override
+    public void onStop() {
+        super.onStop();
+        mAdapter.stopListening();
+    }
+
+    @Override
+    public void openClientProfile(String clientMail) {
+        Fragment clientProfileFragment = CoachMyClientProfileFragment.newInstance(clientMail);
+
+        getActivity().getSupportFragmentManager().beginTransaction().replace(R.id.anchor_point,clientProfileFragment, CoachMyClientProfileFragment.TAG)
+                .addToBackStack(CoachMyClientProfileFragment.TAG).commit();
+    }
+
+    @Override
+    public void errorOpeningProfile() {
+        Toast.makeText(getActivity(), getResources().getString(R.string.error_loading_profile), Toast.LENGTH_SHORT).show();
     }
 }

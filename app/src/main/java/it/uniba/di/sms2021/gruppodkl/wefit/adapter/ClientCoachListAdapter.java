@@ -14,10 +14,10 @@ import it.uniba.di.sms2021.gruppodkl.wefit.R;
 import it.uniba.di.sms2021.gruppodkl.wefit.contract.client.ClientCoachListContract;
 import it.uniba.di.sms2021.gruppodkl.wefit.model.Client;
 import it.uniba.di.sms2021.gruppodkl.wefit.model.Coach;
-import it.uniba.di.sms2021.gruppodkl.wefit.viewholder.CoachListViewHolder;
+import it.uniba.di.sms2021.gruppodkl.wefit.viewholder.ClientCoachListViewHolder;
 
-public class CoachListAdapter extends FirestorePagingAdapter<Coach, CoachListViewHolder>
-        implements CoachListViewHolder.ItemClickListener{
+public class ClientCoachListAdapter extends FirestorePagingAdapter<Coach, ClientCoachListViewHolder>
+        implements ClientCoachListViewHolder.ItemClickListener{
 
     private Client mClient;
     private ClientCoachListContract.Presenter mPresenter;
@@ -28,22 +28,22 @@ public class CoachListAdapter extends FirestorePagingAdapter<Coach, CoachListVie
      *
      * @param options
      */
-    public CoachListAdapter(FirestorePagingOptions<Coach> options, ClientCoachListContract.Presenter presenter) {
+    public ClientCoachListAdapter(FirestorePagingOptions<Coach> options, ClientCoachListContract.Presenter presenter) {
         super(options);
         mPresenter = presenter;
     }
 
     @Override
-    protected void onBindViewHolder(@NonNull CoachListViewHolder holder, int position, @NonNull Coach model) {
+    protected void onBindViewHolder(@NonNull ClientCoachListViewHolder holder, int position, @NonNull Coach model) {
         holder.setValues(model);
     }
 
     @Override
-    public CoachListViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
+    public ClientCoachListViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
         View view = LayoutInflater.from(parent.getContext()).
                 inflate(R.layout.client_list_coach_item, parent, false);
 
-        return new CoachListViewHolder(view, this);
+        return new ClientCoachListViewHolder(view, this);
     }
 
 

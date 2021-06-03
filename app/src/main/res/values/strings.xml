@@ -169,6 +169,12 @@
     <string name="current_weight">Current weight:</string>
     <string name="cm">cm</string>
     <string name="error_loading_profile">There have been problems loading the profile</string>
+    <string name="client_list">CLIENT LIST</string>
+    <string name="no_clients">You have no clients</string>
+    <string name="your_feedbacks">YOUR FEEDBACKS</string>
+    <string name="initial_weight">Initial weight</string>
+    <string name="training_schedule_caps">TRAINING SCHEDULE</string>
+    <string name="diet_caps">DIET</string>
 
 
 </resources>

@@ -44,11 +44,6 @@ public class ClientMyCoachPresenter implements ClientMyCoachContract.Presenter, 
             }
 
             @Override
-            public void feedbacksLoaded(List<Feedback> feedbackList) {
-                //
-            }
-
-            @Override
             public void lastFeedbackLoaded(Feedback feedback, float mean, int numElem) {
                 //
             }

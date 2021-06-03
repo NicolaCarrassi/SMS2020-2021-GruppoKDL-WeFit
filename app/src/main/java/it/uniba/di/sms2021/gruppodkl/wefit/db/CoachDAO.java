@@ -1,7 +1,10 @@
 package it.uniba.di.sms2021.gruppodkl.wefit.db;
 
+import android.util.Log;
+
 import com.google.firebase.firestore.CollectionReference;
 import com.google.firebase.firestore.DocumentReference;
+import com.google.firebase.firestore.DocumentSnapshot;
 import com.google.firebase.firestore.FirebaseFirestore;
 import com.google.firebase.firestore.Query;
 import com.google.firebase.firestore.QueryDocumentSnapshot;
@@ -12,8 +15,6 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
-import javax.security.auth.callback.Callback;
-
 import it.uniba.di.sms2021.gruppodkl.wefit.model.Client;
 import it.uniba.di.sms2021.gruppodkl.wefit.model.Coach;
 import it.uniba.di.sms2021.gruppodkl.wefit.model.Feedback;
@@ -22,16 +23,17 @@ import it.uniba.di.sms2021.gruppodkl.wefit.utility.Keys;
 
 public class CoachDAO extends UserDAO {
 
-    private static List<Feedback> sFeedbackList;
+
     private static Feedback sFeedback;
     private static int sNumElement;
     private static float sRatingMean;
+    private static Client sClient;
+    private static List<Float> sClientWeightList;
 
 
 
     public interface RatingCallbacks{
         void ratingMeanLoaded(float ratingMean);
-        void feedbacksLoaded(List<Feedback> feedbackList);
         void lastFeedbackLoaded(Feedback feedback, float mean, int numElem);
     }
 
@@ -39,27 +41,10 @@ public class CoachDAO extends UserDAO {
         void requestNumberLoaded(int numRequest);
     }
 
+    public interface ClientCallbacks{
 
-
-
-    public static void getFeedbackList(String coachEmail, RatingCallbacks callback){
-        if(sFeedbackList != null)
-            sFeedbackList.clear();
-        else
-            sFeedbackList = new ArrayList<>();
-
-        FirebaseFirestore.getInstance().collection(Keys.Collections.USERS).document(coachEmail)
-                .collection(Keys.Collections.RATINGS).get()
-                .addOnCompleteListener(task -> {
-                    if(task.isSuccessful()) {
-                        assert task.getResult() != null;
-                        for (QueryDocumentSnapshot documentSnapshot : task.getResult())
-
-                            sFeedbackList.add(documentSnapshot.toObject(Feedback.class));
-                    }
-
-                    callback.feedbacksLoaded(sFeedbackList);
-                });
+        void failure();
+        void success(Client client, List<Float> weightList);
     }
 
 
@@ -119,17 +104,12 @@ public class CoachDAO extends UserDAO {
                 .addOnCompleteListener(task -> {
                     if(task.isSuccessful()){
                         assert task.getResult() !=null;
-                        for(QueryDocumentSnapshot documentSnapshot : task.getResult()){
-                            sNumElement++;
-                        }
+                        sNumElement = task.getResult().getDocuments().size();
                         callback.requestNumberLoaded(sNumElement);
                     }
                 });
     }
-    public static Query queryAllRequests(String coachMail) {
-        return FirebaseFirestore.getInstance().collection(Keys.Collections.USERS)
-                .document(coachMail).collection(Keys.Collections.REQUESTS);
-    }
+
 
 
     public static void handleRequest(Coach coach, Request request, boolean accepted){
@@ -156,6 +136,55 @@ public class CoachDAO extends UserDAO {
         batch.commit();
     }
 
+
+    public static void getAllClientInfo(String clientMail,ClientCallbacks callback){
+        //inizializzo le variabili statiche
+        sClient = null;
+
+        if(sClientWeightList != null)
+            sClientWeightList.clear();
+        else
+            sClientWeightList = new ArrayList<>();
+
+        FirebaseFirestore instance = FirebaseFirestore.getInstance();
+
+        instance.collection(Keys.Collections.USERS).document(clientMail).get().addOnCompleteListener(clientTask -> {
+            if(clientTask.isComplete()) {
+                sClient = clientTask.getResult().toObject(Client.class);
+                instance.collection(Keys.Collections.USERS).document(clientMail).collection(Keys.Collections.WEIGHT)
+                        .get().addOnCompleteListener(weightTask -> {
+                            if(weightTask.isComplete()){
+                                for (DocumentSnapshot documentSnapshot : weightTask.getResult()) {
+                                    float weight = documentSnapshot.getDouble(Client.ClientKeys.WEIGHT).floatValue();
+                                    sClientWeightList.add(weight);
+                                }
+                                callback.success(sClient, sClientWeightList);
+                            } else
+                                callback.failure();
+                        });
+            } else
+                callback.failure();
+        });
+    }
+
+
+    public static Query queryAllRequests(String coachMail) {
+        return FirebaseFirestore.getInstance().collection(Keys.Collections.USERS)
+                .document(coachMail).collection(Keys.Collections.REQUESTS);
+    }
+
+
+    public static Query queryClentsList(String coachMail){
+        return FirebaseFirestore.getInstance().collection(Keys.Collections.USERS)
+                .whereEqualTo(Client.ClientKeys.COACH, coachMail)
+                .whereEqualTo(Client.ClientKeys.HAS_PENDING_REQUESTS, false);
+    }
+
+
+    public static Query queryFeedbackList(String coachMail){
+        return FirebaseFirestore.getInstance().collection(Keys.Collections.USERS)
+                .document(coachMail).collection(Keys.Collections.RATINGS);
+    }
 
 
 }

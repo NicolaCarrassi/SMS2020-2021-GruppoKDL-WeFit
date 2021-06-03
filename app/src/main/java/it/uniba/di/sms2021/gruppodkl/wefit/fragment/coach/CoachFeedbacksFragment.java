@@ -135,10 +135,15 @@ public class CoachFeedbacksFragment extends Fragment implements User.MyImageBitm
             mReadAllButton.setClickable(true);
             mReadAllButton.setFocusable(true);
 
-            mReadAllButton.setOnClickListener(v -> {
-                  //TODO CREA SCHERMATA CON TUTTI I FEEDBACK
-            });
+            mReadAllButton.setOnClickListener(v -> openAllFeedbackPage());
         }
+    }
+
+    private void openAllFeedbackPage() {
+        CoachAllFeedbackFragment fragment = new CoachAllFeedbackFragment();
+
+        getActivity().getSupportFragmentManager().beginTransaction().replace(R.id.anchor_point, fragment, CoachAllFeedbackFragment.TAG)
+                .addToBackStack(CoachAllFeedbackFragment.TAG).commit();
     }
 
     @Override

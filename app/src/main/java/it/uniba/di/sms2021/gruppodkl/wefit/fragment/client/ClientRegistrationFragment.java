@@ -17,7 +17,7 @@ import java.util.HashMap;
 import java.util.Map;
 
 import it.uniba.di.sms2021.gruppodkl.wefit.R;
-import it.uniba.di.sms2021.gruppodkl.wefit.contract.fragment.RegistrationFragmentContract;
+import it.uniba.di.sms2021.gruppodkl.wefit.contract.RegistrationFragmentContract;
 import it.uniba.di.sms2021.gruppodkl.wefit.model.Client;
 import it.uniba.di.sms2021.gruppodkl.wefit.utility.Keys;
 

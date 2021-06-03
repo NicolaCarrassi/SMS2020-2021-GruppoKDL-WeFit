@@ -1,7 +1,6 @@
 package it.uniba.di.sms2021.gruppodkl.wefit.viewholder;
 
 import android.view.View;
-import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
 
@@ -14,15 +13,15 @@ import it.uniba.di.sms2021.gruppodkl.wefit.R;
 import it.uniba.di.sms2021.gruppodkl.wefit.model.Coach;
 import it.uniba.di.sms2021.gruppodkl.wefit.model.User;
 
-public class CoachListViewHolder extends RecyclerView.ViewHolder implements User.MyImageBitmapCallback {
+public class ClientCoachListViewHolder extends RecyclerView.ViewHolder implements User.MyImageBitmapCallback {
 
-    private ImageView mCoachImage;
-    private TextView mCoachName;
+    private final ImageView mCoachImage;
+    private final TextView mCoachName;
     private MaterialButton mRequestButton;
     private Coach mCoach;
-    private ItemClickListener mItemClickListener;
+    private final ItemClickListener mItemClickListener;
 
-    public CoachListViewHolder(@NonNull View itemView, ItemClickListener itemClickListener) {
+    public ClientCoachListViewHolder(@NonNull View itemView, ItemClickListener itemClickListener) {
         super(itemView);
 
         mCoachImage = itemView.findViewById(R.id.pfp_coach);

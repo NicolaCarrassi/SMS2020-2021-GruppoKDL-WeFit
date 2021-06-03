@@ -4,7 +4,6 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     xmlns:tools="http://schemas.android.com/tools"
-    tools:context=".fragment.coach.CoachClientsRequestsFragment"
     >
 
     <include layout="@layout/toolbar"
@@ -15,7 +14,7 @@
     <TextView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="@string/client_list"
+        android:text="@string/your_feedbacks"
         style="@style/custom_h1"
         android:layout_gravity="center_horizontal"
         android:gravity="center"
@@ -30,24 +29,13 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:orientation="vertical">
-
-            <it.uniba.di.sms2021.gruppodkl.wefit.recyclerview.CustomRecyclerView
-                android:id="@+id/recycler_client_list"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                tools:listitem="@layout/client_list_item"
-                android:visibility="visible"/>
-
-            <TextView
-                android:id="@+id/empty_client_list"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:visibility="gone"
-                android:text="@string/no_clients"
-                android:layout_gravity="center"
-                android:gravity="center"
-                style="@style/custom_p"/>
-            </LinearLayout>
+                <androidx.recyclerview.widget.RecyclerView
+                    android:id="@+id/recycler_feedback"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    tools:listitem="@layout/coach_feedback_list_item">
+                </androidx.recyclerview.widget.RecyclerView>
+        </LinearLayout>
     </ScrollView>
 
 </LinearLayout>

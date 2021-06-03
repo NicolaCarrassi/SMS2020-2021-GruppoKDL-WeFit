@@ -6,7 +6,6 @@ import android.os.Bundle;
 import androidx.annotation.NonNull;
 import androidx.fragment.app.Fragment;
 import androidx.recyclerview.widget.LinearLayoutManager;
-import androidx.recyclerview.widget.RecyclerView;
 
 import android.view.LayoutInflater;
 import android.view.View;
@@ -16,7 +15,7 @@ import android.widget.TextView;
 
 import it.uniba.di.sms2021.gruppodkl.wefit.R;
 import it.uniba.di.sms2021.gruppodkl.wefit.WeFitApplication;
-import it.uniba.di.sms2021.gruppodkl.wefit.adapter.ClientRequestsAdapter;
+import it.uniba.di.sms2021.gruppodkl.wefit.adapter.CoachClientRequestsAdapter;
 import it.uniba.di.sms2021.gruppodkl.wefit.contract.coach.CoachClientsRequestsContract;
 import it.uniba.di.sms2021.gruppodkl.wefit.model.Coach;
 import it.uniba.di.sms2021.gruppodkl.wefit.model.Request;
@@ -34,7 +33,7 @@ public class CoachClientsRequestsFragment extends Fragment
     }
 
     private CustomRecyclerView mRecyclerView;
-    private ClientRequestsAdapter mAdapter;
+    private CoachClientRequestsAdapter mAdapter;
     private WeFitApplication.CallbackOperations mActivity;
     private TextView mEmpty;
     private CoachClientsRequestsContract.Presenter mPresenter;

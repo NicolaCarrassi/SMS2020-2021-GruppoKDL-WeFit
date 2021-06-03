@@ -7,10 +7,9 @@ import com.firebase.ui.firestore.paging.FirestorePagingOptions;
 import java.util.HashMap;
 import java.util.Map;
 
-import it.uniba.di.sms2021.gruppodkl.wefit.adapter.CoachListAdapter;
+import it.uniba.di.sms2021.gruppodkl.wefit.adapter.ClientCoachListAdapter;
 import it.uniba.di.sms2021.gruppodkl.wefit.contract.client.ClientCoachListContract;
 import it.uniba.di.sms2021.gruppodkl.wefit.db.ClientDAO;
-import it.uniba.di.sms2021.gruppodkl.wefit.db.UserDAO;
 import it.uniba.di.sms2021.gruppodkl.wefit.model.Client;
 import it.uniba.di.sms2021.gruppodkl.wefit.model.Coach;
 import it.uniba.di.sms2021.gruppodkl.wefit.utility.Keys;
@@ -27,7 +26,7 @@ public class ClientCoachListPresenter implements ClientCoachListContract.Present
         mClient = currentClient;
     }
 
-    public CoachListAdapter getAdapter(){
+    public ClientCoachListAdapter getAdapter(){
 
         PagedList.Config config = new PagedList.Config.Builder()
                 .setEnablePlaceholders(false)
@@ -39,7 +38,7 @@ public class ClientCoachListPresenter implements ClientCoachListContract.Present
         FirestorePagingOptions<Coach> options = new FirestorePagingOptions.Builder<Coach>()
                 .setQuery(ClientDAO.listAllCoach(), config, Coach.class).build();
 
-        return new CoachListAdapter(options, this);
+        return new ClientCoachListAdapter(options, this);
     }
 
     @Override

@@ -24,10 +24,6 @@ public class CoachFeedbacksPresenter implements CoachFeedbacksContract.Presenter
         //NON GESTITO
     }
 
-    @Override
-    public void feedbacksLoaded(List<Feedback> feedbackList) {
-        //NON GESTITO
-    }
 
     public void lastFeedbackLoaded(Feedback feedback, float mean, int numElem){
         if(numElem > 0)

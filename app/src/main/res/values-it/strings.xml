@@ -167,6 +167,12 @@
     <string name="cm">cm</string>
     <string name="error_loading_profile">Ci sono stati problemi nel caricare il profilo</string>
 
+    <string name="client_list">LISTA CLIENTI</string>
+    <string name="no_clients">Non hai ancora dei clienti</string>
+    <string name="your_feedbacks">I TUOI FEEDBACK</string>
+    <string name="initial_weight">Peso iniziale</string>
+    <string name="training_schedule_caps">SCHEDA ALLENAMENTO</string>
+    <string name="diet_caps">DIETA</string>
 
 
 </resources>

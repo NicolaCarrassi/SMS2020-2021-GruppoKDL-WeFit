@@ -3,7 +3,7 @@ package it.uniba.di.sms2021.gruppodkl.wefit.presenter.coach;
 
 import com.firebase.ui.firestore.FirestoreRecyclerOptions;
 
-import it.uniba.di.sms2021.gruppodkl.wefit.adapter.ClientRequestsAdapter;
+import it.uniba.di.sms2021.gruppodkl.wefit.adapter.CoachClientRequestsAdapter;
 import it.uniba.di.sms2021.gruppodkl.wefit.contract.coach.CoachClientsRequestsContract;
 import it.uniba.di.sms2021.gruppodkl.wefit.db.CoachDAO;
 import it.uniba.di.sms2021.gruppodkl.wefit.model.Coach;
@@ -21,12 +21,12 @@ public class CoachClientRequestsPresenter implements CoachClientsRequestsContrac
     }
 
     @Override
-    public ClientRequestsAdapter makeAdapter() {
+    public CoachClientRequestsAdapter makeAdapter() {
 
         FirestoreRecyclerOptions<Request> options = new FirestoreRecyclerOptions.Builder<Request>()
                 .setQuery(CoachDAO.queryAllRequests(mCoach.email), Request.class).build();
 
-        return new ClientRequestsAdapter(options, this, mCoach);
+        return new CoachClientRequestsAdapter(options, this, mCoach);
     }
 
     @Override

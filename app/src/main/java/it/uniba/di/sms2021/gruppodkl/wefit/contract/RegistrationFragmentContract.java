@@ -1,4 +1,4 @@
-package it.uniba.di.sms2021.gruppodkl.wefit.contract.fragment;
+package it.uniba.di.sms2021.gruppodkl.wefit.contract;
 
 import java.util.Map;
 

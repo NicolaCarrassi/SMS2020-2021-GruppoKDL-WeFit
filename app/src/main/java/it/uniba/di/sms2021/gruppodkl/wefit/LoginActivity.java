@@ -26,7 +26,7 @@ import it.uniba.di.sms2021.gruppodkl.wefit.model.User;
 import it.uniba.di.sms2021.gruppodkl.wefit.presenter.LoginActivityPresenter;
 import it.uniba.di.sms2021.gruppodkl.wefit.utility.UtilityStrings;
 
-public class LoginActivity extends AppCompatActivity implements LoginActivityContract.View {
+public class LoginActivity extends BaseActivity implements LoginActivityContract.View {
 
     private LoginActivityContract.Presenter mPresenter;
 

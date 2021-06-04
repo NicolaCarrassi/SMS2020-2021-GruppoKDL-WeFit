@@ -179,4 +179,13 @@
     <string name="training_plan">Training plan</string>
 
 
+    <string name="preference_languages">Choose the language of the application</string>
+    <string-array name="settings_language_values">
+        <item>Default (System setting)</item>
+        <item>English</item>
+        <item>Italiano</item>
+    </string-array>
+
+
+
 </resources>

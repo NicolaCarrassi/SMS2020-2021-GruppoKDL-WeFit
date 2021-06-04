@@ -6,6 +6,7 @@
     <string name="text_label_training">Training</string>
     <string name="text_label_add">Add</string>
     <string name="text_label_diet">Diet</string>
+    <string name="text_label_run">Run</string>
 
     <!-- Login labels -->
     <string name="email" translatable="false">Email</string>
@@ -185,7 +186,7 @@
         <item>English</item>
         <item>Italiano</item>
     </string-array>
-
+    <string name="title_activity_run">Map</string>
 
 
 </resources>

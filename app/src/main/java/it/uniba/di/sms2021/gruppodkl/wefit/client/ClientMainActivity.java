@@ -31,6 +31,7 @@ import it.uniba.di.sms2021.gruppodkl.wefit.fragment.client.ClientMyProfileFragme
 import it.uniba.di.sms2021.gruppodkl.wefit.fragment.client.ClientMyProgressFragment;
 import it.uniba.di.sms2021.gruppodkl.wefit.fragment.TermsFragment;
 import it.uniba.di.sms2021.gruppodkl.wefit.fragment.client.ClientMyTrainingFragment;
+import it.uniba.di.sms2021.gruppodkl.wefit.fragment.client.ClientRunFragment;
 import it.uniba.di.sms2021.gruppodkl.wefit.model.Client;
 import it.uniba.di.sms2021.gruppodkl.wefit.model.User;
 import it.uniba.di.sms2021.gruppodkl.wefit.utility.Keys;
@@ -93,6 +94,11 @@ public class ClientMainActivity extends AppCompatActivity implements WeFitApplic
                 case R.id.diet:
                     final ClientDietFragment clientDietFragment = new ClientDietFragment();
                     getSupportFragmentManager().beginTransaction().replace(R.id.anchor_point, clientDietFragment, ClientDietFragment.TAG).addToBackStack(ClientDietFragment.TAG).commit();
+                    res =  true;
+                    break;
+                case R.id.run:
+                    final ClientRunFragment clientRunFragment = new ClientRunFragment();
+                    getSupportFragmentManager().beginTransaction().replace(R.id.anchor_point, clientRunFragment, ClientRunFragment.TAG).addToBackStack(ClientRunFragment.TAG).commit();
                     res =  true;
                     break;
                 default:

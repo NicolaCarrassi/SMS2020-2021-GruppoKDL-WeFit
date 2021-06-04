@@ -10,6 +10,7 @@
     <string name="text_label_training">Allenamento</string>
     <string name="text_label_add">Registra</string>
     <string name="text_label_diet">Alimentazione</string>
+    <string name="text_label_run">Corsa</string>
 
     <string name="first_name">Nome</string>
     <string name="last_name">Cognome</string>

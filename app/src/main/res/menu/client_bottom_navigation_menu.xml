@@ -20,5 +20,9 @@
         android:enabled="true"
         android:icon="@drawable/meal_24dp"
         android:title="@string/text_label_diet"/>
-
+    <item
+        android:id="@+id/run"
+        android:enabled="true"
+        android:icon="@drawable/run_24"
+        android:title="@string/text_label_run"/>
 </menu>

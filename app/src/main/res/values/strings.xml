@@ -181,6 +181,13 @@
 
 
     <string name="preference_languages">Choose the language of the application</string>
+    <string name="sunday">Sunday</string>
+    <string name="monday">Monday</string>
+    <string name="tuesday">Tuesday</string>
+    <string name="wednesday">Wednesday</string>
+    <string name="thursday">Thursday</string>
+    <string name="friday">Friday</string>
+    <string name="saturday">Satuday</string>
     <string-array name="settings_language_values">
         <item>Default (System setting)</item>
         <item>English</item>

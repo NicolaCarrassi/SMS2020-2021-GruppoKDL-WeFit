@@ -185,6 +185,15 @@
         <item>Italiano</item>
     </string-array>
 
+    <string name="sunday">Domenica</string>
+    <string name="monday">Lunedì</string>
+    <string name="tuesday">Martedì</string>
+    <string name="wednesday">Mercoledì</string>
+    <string name="thursday">Giovedì</string>
+    <string name="friday">Venerdì</string>
+    <string name="saturday">Sabato</string>
+    <string name="title_activity_run">Mappa</string>
+
 
 
 </resources>

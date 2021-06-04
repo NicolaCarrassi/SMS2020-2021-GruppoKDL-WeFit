@@ -34,7 +34,7 @@
                 android:id="@+id/recycler_training_days"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                tools:listitem="@layout/client_training_day_item"
+                tools:listitem="@layout/training_day_item"
                 android:visibility="visible">
 
             </it.uniba.di.sms2021.gruppodkl.wefit.recyclerview.CustomRecyclerView>

@@ -4,16 +4,14 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
-import androidx.annotation.NonNull;
-
 import com.firebase.ui.firestore.paging.FirestorePagingAdapter;
 import com.firebase.ui.firestore.paging.FirestorePagingOptions;
 
 import it.uniba.di.sms2021.gruppodkl.wefit.R;
 import it.uniba.di.sms2021.gruppodkl.wefit.model.Training;
-import it.uniba.di.sms2021.gruppodkl.wefit.viewholder.ClientMyTrainingViewHolder;
+import it.uniba.di.sms2021.gruppodkl.wefit.viewholder.TrainingViewHolder;
 
-public class ClientMyTrainingAdapter extends FirestorePagingAdapter<Training,ClientMyTrainingViewHolder> implements ClientMyTrainingViewHolder.ClientMyTrainingCallbacks {
+public class ClientMyTrainingAdapter extends FirestorePagingAdapter<Training, TrainingViewHolder> implements TrainingViewHolder.ClientMyTrainingCallbacks {
 
 
     /**
@@ -26,15 +24,24 @@ public class ClientMyTrainingAdapter extends FirestorePagingAdapter<Training,Cli
     }
 
     @Override
-    public ClientMyTrainingViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
-        View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.client_training_day_item, parent, false);
-        return new ClientMyTrainingViewHolder(view, this);
+    public TrainingViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
+        View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.training_day_item, parent, false);
+        return new TrainingViewHolder(view, this);
     }
 
     @Override
-    protected void onBindViewHolder(ClientMyTrainingViewHolder holder, int position, Training model) {
-        holder.setValues(model);
+    protected void onBindViewHolder(TrainingViewHolder holder, int position, Training model) {
+        holder.setValues(model, false);
     }
 
 
+    @Override
+    public void deleteTraining(int position) {
+        //NON NECESSARIO, IL CLIENT NON HA PERMESSI PER CANCELLARE GLI ALLENAMENTI
+    }
+
+    @Override
+    public void onElementChecked(int position) {
+        //TODO APERTURA PAGINA
+    }
 }

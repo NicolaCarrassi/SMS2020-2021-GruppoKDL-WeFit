@@ -67,5 +67,8 @@ public class ClientDAO extends UserDAO {
         batch.commit();
     }
 
-
+    public static Query queryTraining(String clientMail){
+        return FirebaseFirestore.getInstance().collection(Keys.Collections.USERS)
+                .document(clientMail).collection(Keys.Collections.TRAINING);
+    }
 }

@@ -38,6 +38,7 @@ public interface Keys {
         String WEIGHT = "weight";
         String RATINGS = "ratings";
         String REQUESTS = "requests";
+        String TRAINING = "training";
     }
 
     interface RatingInfo{

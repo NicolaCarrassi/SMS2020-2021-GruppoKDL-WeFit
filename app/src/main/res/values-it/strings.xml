@@ -173,6 +173,8 @@
     <string name="initial_weight">Peso iniziale</string>
     <string name="training_schedule_caps">SCHEDA ALLENAMENTO</string>
     <string name="diet_caps">DIETA</string>
+    <string name="no_training">Non ci sono allenamenti disponibili</string>
+    <string name="training_plan">Piano di allenamento</string>
 
 
 </resources>

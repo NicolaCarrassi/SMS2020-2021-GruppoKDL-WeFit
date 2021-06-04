@@ -175,6 +175,8 @@
     <string name="initial_weight">Initial weight</string>
     <string name="training_schedule_caps">TRAINING SCHEDULE</string>
     <string name="diet_caps">DIET</string>
+    <string name="no_training">No training plan avalaible</string>
+    <string name="training_plan">Training plan</string>
 
 
 </resources>

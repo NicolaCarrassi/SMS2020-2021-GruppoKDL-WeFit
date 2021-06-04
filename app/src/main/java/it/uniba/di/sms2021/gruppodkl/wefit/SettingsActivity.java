@@ -12,10 +12,13 @@ import androidx.preference.CheckBoxPreference;
 import androidx.preference.ListPreference;
 import androidx.preference.Preference;
 import androidx.preference.PreferenceFragmentCompat;
+import androidx.preference.PreferenceManager;
 
 import java.util.Locale;
 
-public class SettingsActivity extends AppCompatActivity {
+import it.uniba.di.sms2021.gruppodkl.wefit.utility.LocaleHelper;
+
+public class SettingsActivity extends BaseActivity {
 
     public interface SettingKeys{
         String DARK = "my_dark_mode";
@@ -48,7 +51,8 @@ public class SettingsActivity extends AppCompatActivity {
     }
 
 
-    public static class SettingsFragment extends PreferenceFragmentCompat {
+    public static class SettingsFragment extends PreferenceFragmentCompat
+        implements SharedPreferences.OnSharedPreferenceChangeListener{
 
         private CheckBoxPreference mDarkModePref;
         private ListPreference mLanguagePref;
@@ -103,28 +107,27 @@ public class SettingsActivity extends AppCompatActivity {
 
         //TODO correggi!
         private void changeLanguage(Object value){
-            String lang = (String) value;
-            Locale locale;
-            mEditor = mSharedPref.edit();
+        }
 
-            if(lang.equals("en")) {
-                locale = new Locale("en");
-                mEditor.putString(SettingKeys.LANGUAGE_VALUE, "en");
-            }else {
-                locale = new Locale("it_IT");
-                mEditor.putString(SettingKeys.LANGUAGE_VALUE, "it_IT");
+        @Override
+        public void onSharedPreferenceChanged(SharedPreferences sharedPreferences, String key) {
+            if (SettingKeys.LANGUAGE.equals(key)) {
+                LocaleHelper.setLocale(getContext(), PreferenceManager.getDefaultSharedPreferences(getContext()).getString(key, ""));
+                getActivity().recreate();
             }
+        }
 
-            Locale.setDefault(locale);
+        @Override
+        public void onResume() {
+            super.onResume();
+            getPreferenceScreen().getSharedPreferences().registerOnSharedPreferenceChangeListener(this);
+        }
 
-            Configuration config = getActivity().getResources().getConfiguration();
-            config.setLocale(locale);
-            getActivity().getResources().updateConfiguration(config, getActivity().getResources().getDisplayMetrics());
-
-            mEditor.apply();
+        @Override
+        public void onPause() {
+            super.onPause();
+            getPreferenceScreen().getSharedPreferences().unregisterOnSharedPreferenceChangeListener(this);
         }
     }
-
-
 
 }

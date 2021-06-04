@@ -25,7 +25,7 @@ import it.uniba.di.sms2021.gruppodkl.wefit.model.Client;
 import it.uniba.di.sms2021.gruppodkl.wefit.model.User;
 import it.uniba.di.sms2021.gruppodkl.wefit.presenter.SplashActivityPresenter;
 
-public class SplashActivity extends AppCompatActivity  implements SplashActivityContract.View {
+public class SplashActivity extends BaseActivity  implements SplashActivityContract.View {
 
     // costanti
     private static final String TAG_LOG = SplashActivity.class.getName();

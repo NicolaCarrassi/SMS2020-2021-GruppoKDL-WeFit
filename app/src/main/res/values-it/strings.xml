@@ -175,4 +175,13 @@
     <string name="diet_caps">DIETA</string>
 
 
+    <string name="preference_languages">Cambia la lingua dell\'applicazione</string>
+    <string-array name="settings_language_values">
+        <item>Default (Impostazioni di sistema)</item>
+        <item>English</item>
+        <item>Italiano</item>
+    </string-array>
+
+
+
 </resources>

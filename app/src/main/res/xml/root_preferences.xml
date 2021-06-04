@@ -16,8 +16,10 @@
         <ListPreference
             app:key="my_language"
             app:title="@string/language"
-            app:entries="@array/language_entries"
-            app:entryValues="@array/language_values"
+            app:dialogTitle="@string/preference_languages"
+            app:entries="@array/settings_language_values"
+            app:entryValues="@array/locales"
+            app:defaultValue="@string/system_locale"
             app:summary="@string/language_summary" />
 
     </PreferenceCategory>

@@ -52,7 +52,7 @@ import it.uniba.di.sms2021.gruppodkl.wefit.presenter.RegistrationActivityPresent
 import it.uniba.di.sms2021.gruppodkl.wefit.utility.Keys;
 import it.uniba.di.sms2021.gruppodkl.wefit.utility.UtilityStrings;
 
-public class RegistrationActivity extends AppCompatActivity implements DatePickerDialog.OnDateSetListener,
+public class RegistrationActivity extends BaseActivity implements DatePickerDialog.OnDateSetListener,
         RegistrationActivityContract.View, CoachRegistrationFragment.CoachCallBackActivity {
 
     private static final String TAG = RegistrationActivity.class.getSimpleName();

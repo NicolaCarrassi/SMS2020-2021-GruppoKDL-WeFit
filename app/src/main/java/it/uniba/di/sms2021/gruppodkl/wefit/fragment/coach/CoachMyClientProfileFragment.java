@@ -1,9 +1,10 @@
-package it.uniba.di.sms2021.gruppodkl.wefit.presenter.coach;
+package it.uniba.di.sms2021.gruppodkl.wefit.fragment.coach;
 
 import android.os.Bundle;
 
 import androidx.fragment.app.Fragment;
 
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -12,6 +13,15 @@ import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.jjoe64.graphview.DefaultLabelFormatter;
+import com.jjoe64.graphview.GraphView;
+import com.jjoe64.graphview.helper.DateAsXAxisLabelFormatter;
+import com.jjoe64.graphview.series.DataPoint;
+import com.jjoe64.graphview.series.LineGraphSeries;
+import com.jjoe64.graphview.series.PointsGraphSeries;
+
+import java.text.SimpleDateFormat;
+import java.util.Date;
 import java.util.List;
 
 import it.uniba.di.sms2021.gruppodkl.wefit.R;
@@ -19,6 +29,8 @@ import it.uniba.di.sms2021.gruppodkl.wefit.WeFitApplication;
 import it.uniba.di.sms2021.gruppodkl.wefit.contract.coach.CoachMyClientProfileContract;
 import it.uniba.di.sms2021.gruppodkl.wefit.model.Client;
 import it.uniba.di.sms2021.gruppodkl.wefit.model.User;
+import it.uniba.di.sms2021.gruppodkl.wefit.presenter.coach.CoachMyClientProfilePresenter;
+import it.uniba.di.sms2021.gruppodkl.wefit.utility.GraphSettings;
 
 
 //TODO Continua quando avrai nuove parti
@@ -44,6 +56,7 @@ public class CoachMyClientProfileFragment extends Fragment implements CoachMyCli
     private TextView mCLientCurrentWeight;
     private Button mClientTrainingSchedule;
     private Button mClientDiet;
+    private GraphView mWeightGraph;
 
 
 
@@ -58,7 +71,6 @@ public class CoachMyClientProfileFragment extends Fragment implements CoachMyCli
      * @param clientMail mail del cliente di cui si vuole visualizzare il profilo
      * @return A new instance of fragment CoachMyClientProfileFragment.
      */
-    // TODO: Rename and change types and number of parameters
     public static CoachMyClientProfileFragment newInstance(String clientMail) {
         CoachMyClientProfileFragment fragment = new CoachMyClientProfileFragment();
         Bundle args = new Bundle();
@@ -83,7 +95,7 @@ public class CoachMyClientProfileFragment extends Fragment implements CoachMyCli
         mPresenter = new CoachMyClientProfilePresenter(this);
         bind(layout);
 
-        //setListeners() <-- CHIAMALO QUANDO PUOI EFFETTIVAMENTE EVITARE DI FARE CRASHARE APP
+        setListeners();
         return layout;
     }
 
@@ -104,6 +116,7 @@ public class CoachMyClientProfileFragment extends Fragment implements CoachMyCli
         mCLientCurrentWeight = view.findViewById(R.id.current_weight);
         mClientTrainingSchedule = view.findViewById(R.id.btn_training_schedule);
         mClientDiet = view.findViewById(R.id.btn_diet);
+        mWeightGraph = view.findViewById(R.id.graph);
     }
 
     private void setListeners(){
@@ -112,7 +125,10 @@ public class CoachMyClientProfileFragment extends Fragment implements CoachMyCli
     }
 
     private void goClientTraining(){
-        //TODO
+        CoachMyClientScheduleFragment fragment = CoachMyClientScheduleFragment.newInstance(mClientMail);
+
+        getActivity().getSupportFragmentManager().beginTransaction().replace(R.id.anchor_point, fragment,CoachMyClientScheduleFragment.TAG)
+                .addToBackStack(CoachMyClientScheduleFragment.TAG).commit();
     }
 
     private void goClientDiet(){
@@ -127,7 +143,7 @@ public class CoachMyClientProfileFragment extends Fragment implements CoachMyCli
     }
 
     @Override
-    public void onClientDataReceived(Client client, List<Float> weightList) {
+    public void onClientDataReceived(Client client, List<Float> weightList, List<Date> dateList) {
         mClientName.setText(client.fullName.toUpperCase());
         mClientProfile = client;
 
@@ -141,11 +157,13 @@ public class CoachMyClientProfileFragment extends Fragment implements CoachMyCli
         mClientInitialWeight.setText(Float.toString(weightList.get(0)));
         mCLientCurrentWeight.setText(Float.toString(client.weight));
 
-        //TODO Crea plot e mostralo
+        GraphSettings.graphSettings(mWeightGraph, dateList, weightList);
     }
 
     @Override
     public void handleCallback() {
         mClientImage.setImageBitmap(mClientProfile.getImageBitmap());
     }
+
+
 }

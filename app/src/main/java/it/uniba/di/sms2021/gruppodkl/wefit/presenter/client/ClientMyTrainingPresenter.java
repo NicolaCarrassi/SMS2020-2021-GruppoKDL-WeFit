@@ -7,7 +7,6 @@ import com.firebase.ui.firestore.paging.FirestorePagingOptions;
 import it.uniba.di.sms2021.gruppodkl.wefit.adapter.ClientMyTrainingAdapter;
 import it.uniba.di.sms2021.gruppodkl.wefit.contract.client.ClientMyTrainingContract;
 import it.uniba.di.sms2021.gruppodkl.wefit.db.ClientDAO;
-import it.uniba.di.sms2021.gruppodkl.wefit.model.Client;
 import it.uniba.di.sms2021.gruppodkl.wefit.model.Training;
 
 public class ClientMyTrainingPresenter implements ClientMyTrainingContract.Presenter {
@@ -29,6 +28,11 @@ public class ClientMyTrainingPresenter implements ClientMyTrainingContract.Prese
         FirestorePagingOptions<Training> options = new FirestorePagingOptions.Builder<Training>()
                 .setQuery(ClientDAO.queryTraining(clientEmail), config, Training.class)
                 .build();
-        return new ClientMyTrainingAdapter(options);
+        return new ClientMyTrainingAdapter(options, this);
+    }
+
+    @Override
+    public void openTrainingSpecification(Training training) {
+        //TODO
     }
 }

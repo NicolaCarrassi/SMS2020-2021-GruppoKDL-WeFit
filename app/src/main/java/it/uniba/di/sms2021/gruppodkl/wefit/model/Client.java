@@ -9,6 +9,7 @@ public class Client extends User {
         String OBJECTIVE = "objective";
         String COACH = "coach";
         String HAS_PENDING_REQUESTS = "pendingRequests";
+        String WEIGHT_DATE = "weightDate";
     }
 
     public float weight;

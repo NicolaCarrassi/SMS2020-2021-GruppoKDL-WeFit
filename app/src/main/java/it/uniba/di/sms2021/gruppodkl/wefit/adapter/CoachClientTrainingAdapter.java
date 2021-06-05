@@ -44,11 +44,11 @@ public class CoachClientTrainingAdapter extends FirestoreRecyclerAdapter<Trainin
 
     @Override
     public void deleteTraining(int position) {
-        //mPresenter.deleteItem(getItem(position));
+        mPresenter.deleteTraining(getItem(position));
     }
 
     @Override
     public void onElementChecked(int position) {
-        //mPresenter.openTrainingSpecification(getItem(position));
+        mPresenter.openTrainingSpecification(getItem(position));
     }
 }

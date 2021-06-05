@@ -1,5 +1,10 @@
 package it.uniba.di.sms2021.gruppodkl.wefit.presenter.coach;
 
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
+import java.util.AbstractMap;
+import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 
 import it.uniba.di.sms2021.gruppodkl.wefit.contract.coach.CoachMyClientProfileContract;
@@ -26,9 +31,21 @@ public class CoachMyClientProfilePresenter implements CoachMyClientProfileContra
     }
 
     @Override
-    public void success(Client client, List<Float> weightList) {
+    public void success(Client client, List<Float> weightList, List<String> dateList) {
+        List<Date> listDate = new ArrayList<>();
+        SimpleDateFormat formatter = new SimpleDateFormat("yyyy-MM-dd");
+
+        for (String date: dateList) {
+            try {
+                listDate.add(formatter.parse(date));
+            } catch (ParseException e) {
+                e.printStackTrace();
+            }
+        }
+
+
         if(client != null && !weightList.isEmpty())
-            mView.onClientDataReceived(client, weightList);
+            mView.onClientDataReceived(client, weightList, listDate);
         else
             mView.onFailure();
     }

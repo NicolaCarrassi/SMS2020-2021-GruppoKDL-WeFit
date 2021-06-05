@@ -11,6 +11,7 @@ import com.google.firebase.firestore.QueryDocumentSnapshot;
 import com.google.firebase.firestore.WriteBatch;
 
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -29,6 +30,7 @@ public class CoachDAO extends UserDAO {
     private static float sRatingMean;
     private static Client sClient;
     private static List<Float> sClientWeightList;
+    private static List<String> sDateList;
 
 
 
@@ -44,7 +46,7 @@ public class CoachDAO extends UserDAO {
     public interface ClientCallbacks{
 
         void failure();
-        void success(Client client, List<Float> weightList);
+        void success(Client client, List<Float> weightList, List<String> dateList);
     }
 
 
@@ -146,6 +148,12 @@ public class CoachDAO extends UserDAO {
         else
             sClientWeightList = new ArrayList<>();
 
+        if(sDateList != null)
+            sDateList.clear();
+        else
+            sDateList = new ArrayList<>();
+
+
         FirebaseFirestore instance = FirebaseFirestore.getInstance();
 
         instance.collection(Keys.Collections.USERS).document(clientMail).get().addOnCompleteListener(clientTask -> {
@@ -157,8 +165,9 @@ public class CoachDAO extends UserDAO {
                                 for (DocumentSnapshot documentSnapshot : weightTask.getResult()) {
                                     float weight = documentSnapshot.getDouble(Client.ClientKeys.WEIGHT).floatValue();
                                     sClientWeightList.add(weight);
+                                    sDateList.add(documentSnapshot.getString(Client.ClientKeys.WEIGHT_DATE));
                                 }
-                                callback.success(sClient, sClientWeightList);
+                                callback.success(sClient, sClientWeightList,sDateList);
                             } else
                                 callback.failure();
                         });

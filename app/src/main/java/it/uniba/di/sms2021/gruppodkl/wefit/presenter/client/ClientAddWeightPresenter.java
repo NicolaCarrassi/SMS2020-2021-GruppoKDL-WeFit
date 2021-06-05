@@ -1,5 +1,7 @@
 package it.uniba.di.sms2021.gruppodkl.wefit.presenter.client;
 
+import java.text.SimpleDateFormat;
+import java.util.Date;
 import java.util.HashMap;
 import java.util.Map;
 
@@ -17,10 +19,14 @@ public class ClientAddWeightPresenter implements ClientAddWeightContract.Present
 
     @Override
     public void addWeight(Client client, float weight) {
+        SimpleDateFormat dataFormat = new SimpleDateFormat("yyyy-MM-dd");
+        String today = dataFormat.format(new Date());
+
         Map<String, Object> map = new HashMap<>();
         map.put(Client.ClientKeys.WEIGHT, weight);
-        UserDAO.addInSubCollection(client.email, Keys.Collections.WEIGHT,map);
         UserDAO.update(client, map);
+        map.put(Client.ClientKeys.WEIGHT_DATE, today);
+        UserDAO.addInSubCollection(client.email, Keys.Collections.WEIGHT,map);
         mView.onSuccess();
     }
 }

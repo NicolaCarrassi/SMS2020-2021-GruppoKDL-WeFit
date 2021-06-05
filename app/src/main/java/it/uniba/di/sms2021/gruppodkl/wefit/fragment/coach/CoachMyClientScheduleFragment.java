@@ -1,6 +1,5 @@
 package it.uniba.di.sms2021.gruppodkl.wefit.fragment.coach;
 
-import android.app.Activity;
 import android.os.Bundle;
 
 import androidx.fragment.app.Fragment;
@@ -14,7 +13,6 @@ import android.widget.TextView;
 import com.firebase.ui.firestore.FirestoreRecyclerAdapter;
 import com.google.android.material.button.MaterialButton;
 
-import org.w3c.dom.Text;
 
 import it.uniba.di.sms2021.gruppodkl.wefit.R;
 import it.uniba.di.sms2021.gruppodkl.wefit.WeFitApplication;
@@ -30,6 +28,8 @@ import it.uniba.di.sms2021.gruppodkl.wefit.viewholder.TrainingViewHolder;
  * create an instance of this fragment.
  */
 public class CoachMyClientScheduleFragment extends Fragment implements CoachMyClientScheduleContract.View{
+
+    public static final String TAG = CoachMyClientScheduleFragment.class.getSimpleName();
 
     private static final String CLIENT_MAIL = "coachMail";
     private String mClientMail;
@@ -80,14 +80,14 @@ public class CoachMyClientScheduleFragment extends Fragment implements CoachMyCl
             ((WeFitApplication) getActivity().getApplicationContext()).setToolbar(view,act);
         }
 
-        mPresenter = new CoachMyClientSchedulePresenter(this);
+        mPresenter = new CoachMyClientSchedulePresenter(this, mClientMail);
 
         mClientName = view.findViewById(R.id.client_name);
         mRecyclerView = view.findViewById(R.id.train_recycler);
         mEmptyTrainingLabel = view.findViewById(R.id.no_trainings);
         mAddTrainingButton = view.findViewById(R.id.btn_new_training);
 
-        //mAdapter = mPresenter.getAdapter();
+        mAdapter = mPresenter.getAdapter(mClientMail);
 
         mRecyclerView.setAdapter(mAdapter);
         mRecyclerView.setLayoutManager(new LinearLayoutManager(getContext()));
@@ -98,7 +98,22 @@ public class CoachMyClientScheduleFragment extends Fragment implements CoachMyCl
         return view;
     }
 
+
+    @Override
+    public void onStart() {
+        super.onStart();
+        mAdapter.startListening();
+    }
+
+    @Override
+    public void onStop() {
+        super.onStop();
+        mAdapter.stopListening();
+    }
+
     private void addNewTraining() {
+        String defaultTrainingName = getResources().getString(R.string.new_training);
+        mPresenter.addNewTraining(defaultTrainingName);
     }
 
 

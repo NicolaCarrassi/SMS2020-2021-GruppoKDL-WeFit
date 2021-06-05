@@ -39,6 +39,7 @@ public interface Keys {
         String RATINGS = "ratings";
         String REQUESTS = "requests";
         String TRAINING = "training";
+        String EXERCISES = "exercises";
     }
 
     interface RatingInfo{
@@ -62,6 +63,7 @@ public interface Keys {
         int THURSDAY = 4;
         int FRIDAY = 5;
         int SATURDAY = 6;
+        int NOT_SET = 7;
     }
 
 

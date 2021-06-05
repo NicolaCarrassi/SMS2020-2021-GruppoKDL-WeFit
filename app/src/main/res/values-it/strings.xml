@@ -194,6 +194,12 @@
     <string name="saturday">Sabato</string>
     <string name="title_activity_run">Mappa</string>
 
+    <string name="new_training">Nuovo allenamento</string>
+    <string name="training_day">Giorno dell\'allenamento: </string>
+    <string name="duration">Tempo necessario: </string>
+    <string name="add_exercise">Aggiungi un esercizio</string>
+    <string name="no_exercises">Non ci sono ancora esercizi</string>
+
 
 
 </resources>

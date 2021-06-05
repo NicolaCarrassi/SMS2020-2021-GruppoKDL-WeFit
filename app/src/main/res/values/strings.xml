@@ -194,6 +194,11 @@
         <item>Italiano</item>
     </string-array>
     <string name="title_activity_run">Map</string>
+    <string name="new_training">New training</string>
+    <string name="training_day">Day of the training: </string>
+    <string name="duration">Time required: </string>
+    <string name="add_exercise">Add an exercise</string>
+    <string name="no_exercises">There are no exercises yet</string>
 
 
 </resources>

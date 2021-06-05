@@ -16,7 +16,6 @@ import it.uniba.di.sms2021.gruppodkl.wefit.WeFitApplication;
 import it.uniba.di.sms2021.gruppodkl.wefit.adapter.CoachMyClientListAdapter;
 import it.uniba.di.sms2021.gruppodkl.wefit.contract.coach.CoachClientsContract;
 import it.uniba.di.sms2021.gruppodkl.wefit.presenter.coach.CoachClientsPresenter;
-import it.uniba.di.sms2021.gruppodkl.wefit.presenter.coach.CoachMyClientProfileFragment;
 import it.uniba.di.sms2021.gruppodkl.wefit.recyclerview.CustomRecyclerView;
 
 

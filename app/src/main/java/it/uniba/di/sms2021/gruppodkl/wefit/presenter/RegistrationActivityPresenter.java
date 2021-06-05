@@ -7,6 +7,8 @@ import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.storage.FirebaseStorage;
 import com.google.firebase.storage.StorageReference;
 
+import java.text.SimpleDateFormat;
+import java.util.Date;
 import java.util.HashMap;
 import java.util.Map;
 import java.util.Objects;
@@ -153,10 +155,13 @@ public class RegistrationActivityPresenter implements RegistrationActivityContra
      * @param client Il client di cui si intende registrare il peso
      */
     public void createClientSubCollections(Client client){
-        final String WEIGHT = "weight";
+        SimpleDateFormat dataFormat = new SimpleDateFormat("yyyy-MM-dd");
+        String today = dataFormat.format(new Date());
         final Map<String, Object> weightMap = new HashMap<>();
 
+
         weightMap.put(Client.ClientKeys.WEIGHT,client.weight);
+        weightMap.put(Client.ClientKeys.WEIGHT_DATE, today);
 
         //creo la collection dei pesi nel document avente email quella dell'utente appena registrato
         UserDAO.addInSubCollection(client.email, Keys.Collections.WEIGHT, weightMap);

@@ -8,19 +8,22 @@ import com.firebase.ui.firestore.paging.FirestorePagingAdapter;
 import com.firebase.ui.firestore.paging.FirestorePagingOptions;
 
 import it.uniba.di.sms2021.gruppodkl.wefit.R;
+import it.uniba.di.sms2021.gruppodkl.wefit.contract.client.ClientMyTrainingContract;
 import it.uniba.di.sms2021.gruppodkl.wefit.model.Training;
 import it.uniba.di.sms2021.gruppodkl.wefit.viewholder.TrainingViewHolder;
 
 public class ClientMyTrainingAdapter extends FirestorePagingAdapter<Training, TrainingViewHolder> implements TrainingViewHolder.ClientMyTrainingCallbacks {
 
+    private final ClientMyTrainingContract.Presenter mPresenter;
 
     /**
      * Construct a new FirestorePagingAdapter from the given {@link FirestorePagingOptions}.
      *
      * @param options
      */
-    public ClientMyTrainingAdapter(FirestorePagingOptions<Training> options) {
+    public ClientMyTrainingAdapter(FirestorePagingOptions<Training> options, ClientMyTrainingContract.Presenter presenter) {
         super(options);
+        this.mPresenter = presenter;
     }
 
     @Override
@@ -42,6 +45,6 @@ public class ClientMyTrainingAdapter extends FirestorePagingAdapter<Training, Tr
 
     @Override
     public void onElementChecked(int position) {
-        //TODO APERTURA PAGINA
+        mPresenter.openTrainingSpecification(getItem(position).toObject(Training.class));
     }
 }

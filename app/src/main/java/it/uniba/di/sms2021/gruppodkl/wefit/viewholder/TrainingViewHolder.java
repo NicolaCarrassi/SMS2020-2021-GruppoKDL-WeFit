@@ -73,8 +73,11 @@ public class TrainingViewHolder extends RecyclerView.ViewHolder {
             case Keys.WeekDay.FRIDAY:
                 dayOfTheWeek =  mView.getResources().getString(R.string.friday);
                 break;
-            default:
+            case Keys.WeekDay.SATURDAY:
                 dayOfTheWeek =  mView.getResources().getString(R.string.saturday);
+                break;
+            default:
+                dayOfTheWeek ="";
         }
         return dayOfTheWeek;
     }

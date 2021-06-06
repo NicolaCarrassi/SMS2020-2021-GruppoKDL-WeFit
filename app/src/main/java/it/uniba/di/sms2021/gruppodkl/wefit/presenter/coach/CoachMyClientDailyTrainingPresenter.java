@@ -34,13 +34,7 @@ public class CoachMyClientDailyTrainingPresenter implements CoachMyClientDailyTr
         return new CoachMyClientTrainingSpecificationListAdapter(options, clientMail, training.getId());
     }
 
-    @Override
-    public void addExercise(String clientMail, String trainingId, Map<String, Object> map) {
-        //CREO L'ISTANZA DELL'ESERCIZIO
-        Exercise exercise = new Exercise((String)map.get(Exercise.ExerciseKeys.NAME), (int)map.get(Exercise.ExerciseKeys.REPS), (boolean)map.get(Exercise.ExerciseKeys.TIME));
 
-        TrainingDAO.addExerciseInTraining(clientMail, trainingId, exercise);
-    }
 
     @Override
     public void updateTraining(String clientMail, Training training) {

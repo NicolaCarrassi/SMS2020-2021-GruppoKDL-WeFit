@@ -7,7 +7,7 @@ public class Exercise {
     public int reps;
     public boolean hasTime;
     public String videoUrl;
-    public String description;
+
 
 
     public interface ExerciseKeys{
@@ -16,7 +16,6 @@ public class Exercise {
         String REPS = "reps";
         String TIME = "hasTime";
         String VIDEO = "videoUrl";
-        String DESCRIPTION = "description";
     }
 
     public Exercise(){
@@ -29,6 +28,7 @@ public class Exercise {
         this.reps = reps;
         this.hasTime = time;
     }
+
 
     public String getRepsString(){
         String res = "";

@@ -103,7 +103,7 @@ public class CoachMyClientDailyTrainingFragment extends Fragment implements Coac
 
 
         //IMPOSTO LISTENERS PER IL BOTTONE
-        mBtnAddExercises.setOnClickListener(v -> addExercise());
+        mBtnAddExercises.setOnClickListener(v -> showAdd());
 
         return layout;
     }
@@ -121,19 +121,12 @@ public class CoachMyClientDailyTrainingFragment extends Fragment implements Coac
         mAdapter.stopListening();
     }
 
-    // TODO AGGIUNGI LOGICA PER L'OTTENIMENTO DEI DATI (probabilmente sarà dopo la comparsa di qualcosa)
-    private void addExercise(){
-        String exerciseName= null;
-        int exerciseReps = 0 ;
-        boolean hasTime = false;
-
-        Map<String, Object> map = new HashMap<>();
-        map.put(Exercise.ExerciseKeys.NAME, exerciseName);
-        map.put(Exercise.ExerciseKeys.REPS, exerciseReps);
-        map.put(Exercise.ExerciseKeys.TIME, hasTime);
-
-        mPresenter.addExercise(mClientMail, mTraining.getId(), map);
+    private void showAdd(){
+        final CoachAddExerciseFragment addFragment = CoachAddExerciseFragment.newInstance(mClientMail,mTraining);
+        addFragment.show(getActivity().getSupportFragmentManager(), CoachAddExerciseFragment.TAG);
     }
+
+
 
     //TODO Implementa logica di ottenimento e controllo dei dati
     private void UpdateTraining(){

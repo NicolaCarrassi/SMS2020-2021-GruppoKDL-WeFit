@@ -200,6 +200,12 @@
     <string name="add_exercise">Aggiungi un esercizio</string>
     <string name="no_exercises">Non ci sono ancora esercizi</string>
 
+    <string name="exercise_name">Nome dell\'esercizio</string>
+    <string name="time">Tempo</string>
+    <string name="reps_number">Numero di ripetizioni</string>
+    <string name="seconds">sec</string>
+    <string name="seconds_number">Numero di secondi</string>
+    <string name="error_data_missing">Mancano alcuni dati</string>
 
 
 </resources>

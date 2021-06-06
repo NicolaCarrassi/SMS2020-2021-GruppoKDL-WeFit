@@ -1,10 +1,11 @@
 package it.uniba.di.sms2021.gruppodkl.wefit.viewholder;
 
 import android.view.View;
-import android.widget.Button;
+import android.widget.ImageButton;
 import android.widget.TextView;
 
 import androidx.recyclerview.widget.RecyclerView;
+
 
 import it.uniba.di.sms2021.gruppodkl.wefit.R;
 import it.uniba.di.sms2021.gruppodkl.wefit.model.Exercise;
@@ -32,12 +33,12 @@ public class TrainingDetailViewHolder extends RecyclerView.ViewHolder {
         //BINDING ELEMENTI DELLA VIEW
         mRepetitionNumber = itemView.findViewById(R.id.exercise_repetition_number);
         mExerciseName = itemView.findViewById(R.id.exercise_name);
-        Button mDeleteExerciseButton = itemView.findViewById(R.id.delete_exercise_button);
+        ImageButton mDeleteExerciseButton = itemView.findViewById(R.id.delete_exercise_button);
 
         mCoachCallback = coachCallback;
 
         mDeleteExerciseButton.setVisibility(View.VISIBLE);
-
+        mDeleteExerciseButton.setClickable(true);
         mDeleteExerciseButton.setOnClickListener(v -> mCoachCallback.deleteExercise(getAdapterPosition()));
     }
 
@@ -48,7 +49,7 @@ public class TrainingDetailViewHolder extends RecyclerView.ViewHolder {
         //BINDING ELEMENTI DELLA VIEW
         mRepetitionNumber = itemView.findViewById(R.id.exercise_repetition_number);
         mExerciseName = itemView.findViewById(R.id.exercise_name);
-        Button mOpenSpecificationButton = itemView.findViewById(R.id.info_exercise_button);
+        ImageButton mOpenSpecificationButton = itemView.findViewById(R.id.info_exercise_button);
 
         mClientCallback = clientCallback;
 

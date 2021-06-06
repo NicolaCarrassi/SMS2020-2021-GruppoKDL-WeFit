@@ -24,14 +24,14 @@ public class ClientAddFragment extends BottomSheetDialogFragment {
     private LinearLayout mAddTraining;
     private LinearLayout mAddPanel;
     private LinearLayout mAddMeal;
-    private bottomNavigationSelector mActivity;
+    private BottomNavigationSelector mActivity;
 
 
     @Override
     public void onAttach(Context context) {
         super.onAttach(context);
-        if(context instanceof bottomNavigationSelector){
-            mActivity=(bottomNavigationSelector) context;
+        if(context instanceof BottomNavigationSelector){
+            mActivity=(BottomNavigationSelector) context;
         }
     }
 
@@ -94,7 +94,7 @@ public class ClientAddFragment extends BottomSheetDialogFragment {
         });
     }
 
-    public interface bottomNavigationSelector {
+    public interface BottomNavigationSelector {
         void selectBottomNavigationItem();
     }
 

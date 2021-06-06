@@ -37,7 +37,7 @@ import it.uniba.di.sms2021.gruppodkl.wefit.model.User;
 import it.uniba.di.sms2021.gruppodkl.wefit.utility.Keys;
 
 public class ClientMainActivity extends AppCompatActivity implements WeFitApplication.CallbackOperations,
-        ClientMyProfileFragment.ProfileFragmentActivity, ClientMyCoachFragment.CoachProfileCallbacks, ClientAddFragment.bottomNavigationSelector {
+        ClientMyProfileFragment.ProfileFragmentActivity, ClientMyCoachFragment.CoachProfileCallbacks, ClientAddFragment.BottomNavigationSelector {
 
     private BottomNavigationView mBottomNavigation;
     private NavigationView mNavigationView;

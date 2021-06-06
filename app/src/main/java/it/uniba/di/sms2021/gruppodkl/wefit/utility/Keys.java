@@ -39,7 +39,7 @@ public interface Keys {
         String RATINGS = "ratings";
         String REQUESTS = "requests";
         String TRAINING = "training";
-        String EXERCISES = "exercises";
+        String EXERCISES = "Exercises";
     }
 
     interface RatingInfo{

@@ -1,9 +1,12 @@
 package it.uniba.di.sms2021.gruppodkl.wefit.db;
 
 import com.google.firebase.firestore.DocumentReference;
+import com.google.firebase.firestore.DocumentSnapshot;
 import com.google.firebase.firestore.FirebaseFirestore;
 import com.google.firebase.firestore.Query;
 
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Map;
 
 import it.uniba.di.sms2021.gruppodkl.wefit.model.Exercise;
@@ -12,6 +15,11 @@ import it.uniba.di.sms2021.gruppodkl.wefit.utility.Keys;
 
 public class TrainingDAO {
 
+    public interface ExercisesCallbacks{
+        void onExercisesLoaded(List<String> exerciseNames);
+    }
+
+    private static List<String> sExerciseNames;
 
     public static Query getClientTrainingSchedule(String clientMail){
         return FirebaseFirestore.getInstance().collection(Keys.Collections.USERS).document(clientMail)
@@ -59,12 +67,32 @@ public class TrainingDAO {
 
     public static void updateTraining(String clientMail, Map<String,Object> map){
         String id = (String) map.get(Training.TrainingKeys.ID);
-        map.remove(Training.TrainingKeys.ID);
+
+        if(id != null) {
+            map.remove(Training.TrainingKeys.ID);
 
 
-        FirebaseFirestore.getInstance().collection(Keys.Collections.USERS).document(clientMail)
-                .collection(Keys.Collections.TRAINING).document(id).update(map);
-
+            FirebaseFirestore.getInstance().collection(Keys.Collections.USERS).document(clientMail)
+                    .collection(Keys.Collections.TRAINING).document(id).update(map);
+        }
     }
+
+    public static void fetchAllExercises(ExercisesCallbacks callbacks){
+        if(sExerciseNames != null)
+            sExerciseNames.clear();
+        else
+            sExerciseNames = new ArrayList<>();
+
+        FirebaseFirestore.getInstance().collection(Keys.Collections.EXERCISES).get()
+                .addOnCompleteListener(task -> {
+                    if(task.isSuccessful()){
+                        for(DocumentSnapshot documentSnapshot: task.getResult())
+                            sExerciseNames.add(documentSnapshot.getString(Exercise.ExerciseKeys.NAME));
+
+                        callbacks.onExercisesLoaded(sExerciseNames);
+                    }
+                });
+    }
+
 
 }

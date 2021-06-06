@@ -199,6 +199,12 @@
     <string name="duration">Time required: </string>
     <string name="add_exercise">Add an exercise</string>
     <string name="no_exercises">There are no exercises yet</string>
+    <string name="exercise_name">Exercise name</string>
+    <string name="time">Time</string>
+    <string name="reps_number">Number of repetition</string>
+    <string name="seconds">sec</string>
+    <string name="seconds_number">Number of seconds</string>
+    <string name="error_data_missing">Some data are missing</string>
 
 
 </resources>

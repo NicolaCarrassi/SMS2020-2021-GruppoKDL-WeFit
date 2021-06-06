@@ -16,7 +16,6 @@ public interface CoachMyClientDailyTrainingContract {
 
     interface Presenter{
         FirestoreRecyclerAdapter<Exercise, TrainingDetailViewHolder> getAdapter(String clientMail, Training training);
-        void addExercise(String clientMail, String trainingId, Map<String, Object> map);
         void updateTraining(String clientMail, Training training);
     }
 

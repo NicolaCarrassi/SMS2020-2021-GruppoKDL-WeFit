@@ -116,5 +116,13 @@ public class CoachMyClientScheduleFragment extends Fragment implements CoachMyCl
         mPresenter.addNewTraining(defaultTrainingName);
     }
 
+    @Override
+    //TODO AGGIUNGI LOGICA MASTER FLOW DETAIL
+    public void openTrainingSpecification(Training training) {
+        CoachMyClientDailyTrainingFragment fragment = CoachMyClientDailyTrainingFragment.newInstance(mClientMail,training);
 
+        getActivity().getSupportFragmentManager().beginTransaction()
+                .replace(R.id.anchor_point, fragment, CoachMyClientDailyTrainingFragment.TAG)
+                .addToBackStack(CoachMyClientDailyTrainingFragment.TAG).commit();
+    }
 }

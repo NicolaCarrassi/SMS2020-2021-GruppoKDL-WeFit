@@ -20,6 +20,7 @@ import it.uniba.di.sms2021.gruppodkl.wefit.model.Training;
 import it.uniba.di.sms2021.gruppodkl.wefit.model.User;
 import it.uniba.di.sms2021.gruppodkl.wefit.presenter.client.ClientMyTrainingSpecificationPresenter;
 import it.uniba.di.sms2021.gruppodkl.wefit.recyclerview.CustomRecyclerView;
+import it.uniba.di.sms2021.gruppodkl.wefit.utility.DayOfTheWeek;
 import it.uniba.di.sms2021.gruppodkl.wefit.utility.Keys;
 import it.uniba.di.sms2021.gruppodkl.wefit.viewholder.TrainingDetailViewHolder;
 
@@ -73,7 +74,7 @@ public class ClientMyTrainingSpecificationFragment extends Fragment implements C
 
         mTrainingName.setText(mTraining.title);
         mTrainingTime.setText(mTrainingTime.getText() + mTraining.getDurationTime());
-        mTrainingDay.setText(mTrainingDay.getText() + getDayOfTheWeek(mTraining.dayOfWeek));
+        mTrainingDay.setText(mTrainingDay.getText() + DayOfTheWeek.getDayOfTheWeek(mTraining.dayOfWeek, layout));
 
         User user = ((WeFitApplication)getActivity().getApplicationContext()).getUser();
 
@@ -100,35 +101,7 @@ public class ClientMyTrainingSpecificationFragment extends Fragment implements C
         mAdapter.stopListening();
     }
 
-    private String getDayOfTheWeek(int day){
-        String dayOfTheWeek;
-        switch (day){
-            case Keys.WeekDay.SUNDAY:
-                dayOfTheWeek =  getResources().getString(R.string.sunday);
-                break;
-            case Keys.WeekDay.MONDAY:
-                dayOfTheWeek =  getResources().getString(R.string.monday);
-                break;
-            case Keys.WeekDay.TUESDAY:
-                dayOfTheWeek =  getResources().getString(R.string.tuesday);
-                break;
-            case Keys.WeekDay.WEDNESDAY:
-                dayOfTheWeek =  getResources().getString(R.string.wednesday);
-                break;
-            case Keys.WeekDay.THURSDAY:
-                dayOfTheWeek =  getResources().getString(R.string.thursday);
-                break;
-            case Keys.WeekDay.FRIDAY:
-                dayOfTheWeek =  getResources().getString(R.string.friday);
-                break;
-            case Keys.WeekDay.SATURDAY:
-                dayOfTheWeek =  getResources().getString(R.string.saturday);
-                break;
-            default:
-                dayOfTheWeek ="";
-        }
-        return dayOfTheWeek;
-    }
+
 
 
 

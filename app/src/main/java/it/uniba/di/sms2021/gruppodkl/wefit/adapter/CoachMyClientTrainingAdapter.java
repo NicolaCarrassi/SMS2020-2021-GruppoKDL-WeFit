@@ -14,7 +14,7 @@ import it.uniba.di.sms2021.gruppodkl.wefit.contract.coach.CoachMyClientScheduleC
 import it.uniba.di.sms2021.gruppodkl.wefit.model.Training;
 import it.uniba.di.sms2021.gruppodkl.wefit.viewholder.TrainingViewHolder;
 
-public class CoachClientTrainingAdapter extends FirestoreRecyclerAdapter<Training, TrainingViewHolder>
+public class CoachMyClientTrainingAdapter extends FirestoreRecyclerAdapter<Training, TrainingViewHolder>
     implements TrainingViewHolder.ClientMyTrainingCallbacks{
 
     private final CoachMyClientScheduleContract.Presenter mPresenter;
@@ -23,9 +23,9 @@ public class CoachClientTrainingAdapter extends FirestoreRecyclerAdapter<Trainin
      * Create a new RecyclerView adapter that listens to a Firestore Query.  See {@link
      * FirestoreRecyclerOptions} for configuration options.
      *
-     * @param options
+     * @param options opzioni di configurazione
      */
-    public CoachClientTrainingAdapter(@NonNull FirestoreRecyclerOptions<Training> options, CoachMyClientScheduleContract.Presenter presenter) {
+    public CoachMyClientTrainingAdapter(@NonNull FirestoreRecyclerOptions<Training> options, CoachMyClientScheduleContract.Presenter presenter) {
         super(options);
         mPresenter = presenter;
     }

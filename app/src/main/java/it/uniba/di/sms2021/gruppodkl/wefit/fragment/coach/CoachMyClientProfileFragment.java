@@ -157,7 +157,7 @@ public class CoachMyClientProfileFragment extends Fragment implements CoachMyCli
         mClientInitialWeight.setText(Float.toString(weightList.get(0)));
         mCLientCurrentWeight.setText(Float.toString(client.weight));
 
-        GraphSettings.graphSettings(mWeightGraph, dateList, weightList);
+       GraphSettings.graphSettings(mWeightGraph, dateList, weightList);
     }
 
     @Override

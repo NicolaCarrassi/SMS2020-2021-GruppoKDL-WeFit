@@ -9,19 +9,18 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import it.uniba.di.sms2021.gruppodkl.wefit.R;
 import it.uniba.di.sms2021.gruppodkl.wefit.model.Training;
-import it.uniba.di.sms2021.gruppodkl.wefit.utility.Keys;
+import it.uniba.di.sms2021.gruppodkl.wefit.utility.DayOfTheWeek;
 
 public class TrainingViewHolder extends RecyclerView.ViewHolder {
 
-    private TextView mDay;
-    private TextView mTitle;
-    private TextView mTime;
-    private ClientMyTrainingCallbacks mCallbacks;
-    private Button mDeleteTrainingButton;
-    private CardView mTrainingCard;
-    private View mView;
+    private final TextView mDay;
+    private final TextView mTitle;
+    private final TextView mTime;
+    private final ClientMyTrainingCallbacks mCallbacks;
+    private final Button mDeleteTrainingButton;
+    private final CardView mTrainingCard;
+    private final View mView;
 
-    private Training mTraining;
 
     public TrainingViewHolder(View itemView, ClientMyTrainingCallbacks callback) {
         super(itemView);
@@ -39,9 +38,8 @@ public class TrainingViewHolder extends RecyclerView.ViewHolder {
 
 
     public void setValues(Training model, boolean isEditable){
-        mTraining = model;
 
-        mDay.setText(getDayOfTheWeek(model.dayOfWeek));
+        mDay.setText(DayOfTheWeek.getDayOfTheWeek(model.dayOfWeek, mView));
         mTitle.setText(model.title);
         mTime.setText(model.getDurationTime());
 
@@ -52,35 +50,7 @@ public class TrainingViewHolder extends RecyclerView.ViewHolder {
     }
 
 
-    private String getDayOfTheWeek(int day){
-        String dayOfTheWeek;
-        switch (day){
-            case Keys.WeekDay.SUNDAY:
-                dayOfTheWeek =  mView.getResources().getString(R.string.sunday);
-                break;
-            case Keys.WeekDay.MONDAY:
-                dayOfTheWeek =  mView.getResources().getString(R.string.monday);
-                break;
-            case Keys.WeekDay.TUESDAY:
-                dayOfTheWeek =  mView.getResources().getString(R.string.tuesday);
-                break;
-            case Keys.WeekDay.WEDNESDAY:
-                dayOfTheWeek =  mView.getResources().getString(R.string.wednesday);
-                break;
-            case Keys.WeekDay.THURSDAY:
-                dayOfTheWeek =  mView.getResources().getString(R.string.thursday);
-                break;
-            case Keys.WeekDay.FRIDAY:
-                dayOfTheWeek =  mView.getResources().getString(R.string.friday);
-                break;
-            case Keys.WeekDay.SATURDAY:
-                dayOfTheWeek =  mView.getResources().getString(R.string.saturday);
-                break;
-            default:
-                dayOfTheWeek ="";
-        }
-        return dayOfTheWeek;
-    }
+
 
     public interface ClientMyTrainingCallbacks{
         void deleteTraining(int position);

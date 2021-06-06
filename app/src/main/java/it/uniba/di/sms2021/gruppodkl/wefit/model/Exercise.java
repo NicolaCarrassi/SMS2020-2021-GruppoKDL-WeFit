@@ -9,10 +9,26 @@ public class Exercise {
     public String videoUrl;
     public String description;
 
+
+    public interface ExerciseKeys{
+        String ID = "exerciseId";
+        String NAME = "name";
+        String REPS = "reps";
+        String TIME = "hasTime";
+        String VIDEO = "videoUrl";
+        String DESCRIPTION = "description";
+    }
+
     public Exercise(){
 
     }
 
+
+    public Exercise(String name, int reps, boolean time){
+        this.name = name;
+        this.reps = reps;
+        this.hasTime = time;
+    }
 
     public String getRepsString(){
         String res = "";

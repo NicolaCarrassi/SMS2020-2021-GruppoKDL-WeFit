@@ -3,11 +3,11 @@ package it.uniba.di.sms2021.gruppodkl.wefit.presenter.coach;
 import com.firebase.ui.firestore.FirestoreRecyclerAdapter;
 import com.firebase.ui.firestore.FirestoreRecyclerOptions;
 
-import it.uniba.di.sms2021.gruppodkl.wefit.adapter.CoachClientTrainingAdapter;
+import it.uniba.di.sms2021.gruppodkl.wefit.adapter.CoachMyClientTrainingAdapter;
 import it.uniba.di.sms2021.gruppodkl.wefit.contract.coach.CoachMyClientScheduleContract;
 import it.uniba.di.sms2021.gruppodkl.wefit.db.TrainingDAO;
 import it.uniba.di.sms2021.gruppodkl.wefit.model.Training;
-import it.uniba.di.sms2021.gruppodkl.wefit.utility.Keys;
+import it.uniba.di.sms2021.gruppodkl.wefit.utility.DayOfTheWeek;
 import it.uniba.di.sms2021.gruppodkl.wefit.viewholder.TrainingViewHolder;
 
 public class CoachMyClientSchedulePresenter implements CoachMyClientScheduleContract.Presenter {
@@ -28,12 +28,12 @@ public class CoachMyClientSchedulePresenter implements CoachMyClientScheduleCont
         FirestoreRecyclerOptions<Training> options = new FirestoreRecyclerOptions.Builder<Training>()
                 .setQuery(TrainingDAO.getClientTrainingSchedule(clientMail), Training.class).build();
 
-        return new CoachClientTrainingAdapter(options, this);
+        return new CoachMyClientTrainingAdapter(options, this);
     }
 
     @Override
     public void addNewTraining(String trainingName) {
-        TrainingDAO.addTraining(mClientMail, new Training(null, trainingName, Keys.WeekDay.NOT_SET, 0));
+        TrainingDAO.addTraining(mClientMail, new Training(null, trainingName, DayOfTheWeek.WeekDay.NOT_SET, 0));
     }
 
     @Override
@@ -43,6 +43,6 @@ public class CoachMyClientSchedulePresenter implements CoachMyClientScheduleCont
 
     @Override
     public void openTrainingSpecification(Training training) {
-        //TODO
+        mView.openTrainingSpecification(training);
     }
 }

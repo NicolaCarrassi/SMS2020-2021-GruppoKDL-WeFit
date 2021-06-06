@@ -8,6 +8,7 @@ import it.uniba.di.sms2021.gruppodkl.wefit.viewholder.TrainingViewHolder;
 public interface CoachMyClientScheduleContract {
 
     interface View{
+        void openTrainingSpecification(Training training);
     }
 
     interface Presenter{

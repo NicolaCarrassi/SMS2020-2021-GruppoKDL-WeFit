@@ -2,6 +2,8 @@ package it.uniba.di.sms2021.gruppodkl.wefit.contract.coach;
 
 import com.firebase.ui.firestore.FirestoreRecyclerAdapter;
 
+import java.util.Map;
+
 import it.uniba.di.sms2021.gruppodkl.wefit.model.Exercise;
 import it.uniba.di.sms2021.gruppodkl.wefit.model.Training;
 import it.uniba.di.sms2021.gruppodkl.wefit.viewholder.TrainingDetailViewHolder;
@@ -14,6 +16,8 @@ public interface CoachMyClientDailyTrainingContract {
 
     interface Presenter{
         FirestoreRecyclerAdapter<Exercise, TrainingDetailViewHolder> getAdapter(String clientMail, Training training);
+        void addExercise(String clientMail, String trainingId, Map<String, Object> map);
+        void updateTraining(String clientMail, Training training);
     }
 
 }

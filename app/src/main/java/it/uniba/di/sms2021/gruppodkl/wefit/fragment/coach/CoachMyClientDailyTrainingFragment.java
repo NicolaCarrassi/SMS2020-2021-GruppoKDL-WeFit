@@ -13,12 +13,16 @@ import androidx.recyclerview.widget.LinearLayoutManager;
 import com.firebase.ui.firestore.FirestoreRecyclerAdapter;
 import com.google.android.material.button.MaterialButton;
 
+import java.util.HashMap;
+import java.util.Map;
+
 import it.uniba.di.sms2021.gruppodkl.wefit.R;
 import it.uniba.di.sms2021.gruppodkl.wefit.contract.coach.CoachMyClientDailyTrainingContract;
 import it.uniba.di.sms2021.gruppodkl.wefit.model.Exercise;
 import it.uniba.di.sms2021.gruppodkl.wefit.model.Training;
 import it.uniba.di.sms2021.gruppodkl.wefit.presenter.coach.CoachMyClientDailyTrainingPresenter;
 import it.uniba.di.sms2021.gruppodkl.wefit.recyclerview.CustomRecyclerView;
+import it.uniba.di.sms2021.gruppodkl.wefit.utility.DayOfTheWeek;
 import it.uniba.di.sms2021.gruppodkl.wefit.utility.Keys;
 import it.uniba.di.sms2021.gruppodkl.wefit.viewholder.TrainingDetailViewHolder;
 
@@ -89,7 +93,7 @@ public class CoachMyClientDailyTrainingFragment extends Fragment implements Coac
 
         mTrainingName.setText(mTraining.title);
         mTrainingTime.setText(mTrainingTime.getText() + mTraining.getDurationTime());
-        mTrainingDay.setText(mTrainingDay.getText() + getDayOfTheWeek(mTraining.dayOfWeek));
+        mTrainingDay.setText(mTrainingDay.getText() + DayOfTheWeek.getDayOfTheWeek(mTraining.dayOfWeek, layout));
 
         //GESTIONE RECYCLERVIEW
         mAdapter = mPresenter.getAdapter(mClientMail, mTraining);
@@ -98,15 +102,11 @@ public class CoachMyClientDailyTrainingFragment extends Fragment implements Coac
         mRecycler.setEmptyView(mEmpty);
 
 
-        //IMPOSTO LISTENERS
-        //TODO
+        //IMPOSTO LISTENERS PER IL BOTTONE
+        mBtnAddExercises.setOnClickListener(v -> addExercise());
 
         return layout;
     }
-
-
-
-
 
 
     @Override
@@ -121,37 +121,42 @@ public class CoachMyClientDailyTrainingFragment extends Fragment implements Coac
         mAdapter.stopListening();
     }
 
+    // TODO AGGIUNGI LOGICA PER L'OTTENIMENTO DEI DATI (probabilmente sarà dopo la comparsa di qualcosa)
+    private void addExercise(){
+        String exerciseName= null;
+        int exerciseReps = 0 ;
+        boolean hasTime = false;
 
+        Map<String, Object> map = new HashMap<>();
+        map.put(Exercise.ExerciseKeys.NAME, exerciseName);
+        map.put(Exercise.ExerciseKeys.REPS, exerciseReps);
+        map.put(Exercise.ExerciseKeys.TIME, hasTime);
 
-    private String getDayOfTheWeek(int day){
-        String dayOfTheWeek;
-        switch (day){
-            case Keys.WeekDay.SUNDAY:
-                dayOfTheWeek =  getResources().getString(R.string.sunday);
-                break;
-            case Keys.WeekDay.MONDAY:
-                dayOfTheWeek =  getResources().getString(R.string.monday);
-                break;
-            case Keys.WeekDay.TUESDAY:
-                dayOfTheWeek =  getResources().getString(R.string.tuesday);
-                break;
-            case Keys.WeekDay.WEDNESDAY:
-                dayOfTheWeek =  getResources().getString(R.string.wednesday);
-                break;
-            case Keys.WeekDay.THURSDAY:
-                dayOfTheWeek =  getResources().getString(R.string.thursday);
-                break;
-            case Keys.WeekDay.FRIDAY:
-                dayOfTheWeek =  getResources().getString(R.string.friday);
-                break;
-            case Keys.WeekDay.SATURDAY:
-                dayOfTheWeek =  getResources().getString(R.string.saturday);
-                break;
-            default:
-                dayOfTheWeek ="";
-        }
-        return dayOfTheWeek;
+        mPresenter.addExercise(mClientMail, mTraining.getId(), map);
     }
+
+    //TODO Implementa logica di ottenimento e controllo dei dati
+    private void UpdateTraining(){
+        String trainingName = null;
+        int trainingDay = 0 ; //usa il metodo DayOfTheWeek.getCodeFromString(String day, View view) DA IMPLEMENTARE
+        int trainingTime = 0;
+
+        //UPDATE CAMPI DEL TRAINING
+        mTraining.time = trainingTime;
+        mTraining.title = trainingName;
+        mTraining.dayOfWeek = trainingDay;
+
+        // UPDATE INFO NELLA VIEW
+        mTrainingDay.setText(getResources().getString(R.string.training_day) + DayOfTheWeek.getDayOfTheWeek(trainingDay,getView())); //FUNZIONA?
+        mTrainingName.setText(trainingName);
+        mTrainingTime.setText(getResources().getString(R.string.duration) + mTraining.getDurationTime());
+
+        mPresenter.updateTraining(mClientMail, mTraining);
+
+    }
+
+
+
 
 
 }

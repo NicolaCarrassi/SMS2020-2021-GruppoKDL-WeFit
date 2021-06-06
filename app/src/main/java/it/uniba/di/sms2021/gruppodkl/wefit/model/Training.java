@@ -4,6 +4,15 @@ import android.os.Parcel;
 import android.os.Parcelable;
 
 public class Training implements Parcelable {
+
+    public interface TrainingKeys{
+        String ID ="id";
+        String TITLE = "title";
+        String DAY_OF_WEEK = "dayOfWeek";
+        String TIME = "time";
+    }
+
+
     private String id;
     public String title;
     public int dayOfWeek;

@@ -33,6 +33,7 @@ public class ClientMyTrainingPresenter implements ClientMyTrainingContract.Prese
 
     @Override
     public void openTrainingSpecification(Training training) {
-        //TODO
+        if(training != null)
+            mView.openTrainingSchedule(training);
     }
 }

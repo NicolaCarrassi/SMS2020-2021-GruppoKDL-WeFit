@@ -16,6 +16,7 @@ import it.uniba.di.sms2021.gruppodkl.wefit.R;
 import it.uniba.di.sms2021.gruppodkl.wefit.WeFitApplication;
 import it.uniba.di.sms2021.gruppodkl.wefit.adapter.ClientMyTrainingAdapter;
 import it.uniba.di.sms2021.gruppodkl.wefit.contract.client.ClientMyTrainingContract;
+import it.uniba.di.sms2021.gruppodkl.wefit.model.Training;
 import it.uniba.di.sms2021.gruppodkl.wefit.presenter.client.ClientMyTrainingPresenter;
 import it.uniba.di.sms2021.gruppodkl.wefit.recyclerview.CustomRecyclerView;
 
@@ -72,4 +73,15 @@ public class ClientMyTrainingFragment extends Fragment implements ClientMyTraini
         super.onStop();
         mAdapter.stopListening();
     }
+
+
+    @Override
+    //TODO AGGIUNGI LOGICA MASTER FLOW DETAIL
+    public void openTrainingSchedule(Training training) {
+        ClientMyTrainingSpecificationFragment fragment = ClientMyTrainingSpecificationFragment.newInstance(training);
+        getActivity().getSupportFragmentManager().beginTransaction()
+                .replace(R.id.anchor_point,fragment,ClientMyTrainingSpecificationFragment.TAG)
+                .addToBackStack(ClientMyTrainingSpecificationFragment.TAG).commit();
+    }
+
 }

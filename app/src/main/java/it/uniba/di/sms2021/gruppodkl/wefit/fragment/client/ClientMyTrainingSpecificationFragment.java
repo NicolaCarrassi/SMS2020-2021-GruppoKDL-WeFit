@@ -21,7 +21,6 @@ import it.uniba.di.sms2021.gruppodkl.wefit.model.User;
 import it.uniba.di.sms2021.gruppodkl.wefit.presenter.client.ClientMyTrainingSpecificationPresenter;
 import it.uniba.di.sms2021.gruppodkl.wefit.recyclerview.CustomRecyclerView;
 import it.uniba.di.sms2021.gruppodkl.wefit.utility.DayOfTheWeek;
-import it.uniba.di.sms2021.gruppodkl.wefit.utility.Keys;
 import it.uniba.di.sms2021.gruppodkl.wefit.viewholder.TrainingDetailViewHolder;
 
 public class ClientMyTrainingSpecificationFragment extends Fragment implements ClientTrainingSpecificationContract.View {
@@ -102,7 +101,11 @@ public class ClientMyTrainingSpecificationFragment extends Fragment implements C
     }
 
 
+    @Override
+    public void openExercisePage(String exerciseName) {
+        ClientExerciseSpecificationFragment fragment = ClientExerciseSpecificationFragment.newInstance(exerciseName);
 
-
-
+        getActivity().getSupportFragmentManager().beginTransaction().replace(R.id.anchor_point, fragment, ClientExerciseSpecificationFragment.TAG)
+                .addToBackStack(ClientExerciseSpecificationFragment.TAG).commit();
+    }
 }

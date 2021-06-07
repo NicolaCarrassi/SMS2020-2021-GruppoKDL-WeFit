@@ -9,11 +9,12 @@ import it.uniba.di.sms2021.gruppodkl.wefit.viewholder.TrainingDetailViewHolder;
 public interface ClientTrainingSpecificationContract {
 
     interface View{
-
+        void openExercisePage(String exerciseName);
     }
 
     interface Presenter{
         FirestorePagingAdapter<Exercise, TrainingDetailViewHolder> getAdapter(String clientMail, Training training);
+        void showExercise(Exercise exercise);
     }
 
 }

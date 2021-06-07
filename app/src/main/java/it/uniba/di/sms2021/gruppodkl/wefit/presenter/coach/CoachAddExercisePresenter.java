@@ -28,6 +28,11 @@ public class CoachAddExercisePresenter implements CoachAddExerciseContract.Prese
     }
 
     @Override
+    public void onInformationLoaded(Exercise exercise) {
+        //NON NECESSARIO
+    }
+
+    @Override
     public void addExercise(String clientMail, String trainingId, Map<String, Object> map) {
         if(map.containsKey(Exercise.ExerciseKeys.REPS) && map.containsKey(Exercise.ExerciseKeys.TIME) && map.containsKey(Exercise.ExerciseKeys.NAME)
             && map.get(Exercise.ExerciseKeys.NAME) != null && map.get(Exercise.ExerciseKeys.REPS) != null && map.get(Exercise.ExerciseKeys.TIME) != null ) {

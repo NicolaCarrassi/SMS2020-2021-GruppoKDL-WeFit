@@ -19,9 +19,13 @@ public class TrainingDAO {
 
     public interface ExercisesCallbacks{
         void onExercisesLoaded(List<String> exerciseNames);
+        void onInformationLoaded(Exercise exercise);
     }
 
+
+
     private static List<String> sExerciseNames;
+    private static Exercise sExercise;
 
     public static Query getClientTrainingSchedule(String clientMail){
         return FirebaseFirestore.getInstance().collection(Keys.Collections.USERS).document(clientMail)
@@ -94,6 +98,18 @@ public class TrainingDAO {
                         callbacks.onExercisesLoaded(sExerciseNames);
                     }
                 });
+    }
+
+    public static void loadExerciseInformation(String exerciseName, ExercisesCallbacks callbacks){
+        sExercise = null;
+
+        FirebaseFirestore.getInstance().collection(Keys.Collections.EXERCISES).whereEqualTo(Exercise.ExerciseKeys.NAME, exerciseName)
+                .get().addOnCompleteListener(task -> {
+                    if(task.isSuccessful()){
+                        sExercise = task.getResult().toObjects(Exercise.class).get(0); //GLI ESERCIZI DOVREBBERO DIFFERIRE PER NOME, QUINDI PRENDO SOLO IL PRIMO
+                        callbacks.onInformationLoaded(sExercise);
+                    }
+        });
     }
 
 

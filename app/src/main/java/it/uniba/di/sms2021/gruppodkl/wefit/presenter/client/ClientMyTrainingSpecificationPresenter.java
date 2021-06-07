@@ -39,6 +39,12 @@ public class ClientMyTrainingSpecificationPresenter implements ClientTrainingSpe
                 .build();
 
 
-        return new ClientTrainingSpecificationListAdapter(options);
+        return new ClientTrainingSpecificationListAdapter(options, this);
+    }
+
+    @Override
+    public void showExercise(Exercise exercise) {
+        if(exercise != null)
+            mView.openExercisePage(exercise.name);
     }
 }

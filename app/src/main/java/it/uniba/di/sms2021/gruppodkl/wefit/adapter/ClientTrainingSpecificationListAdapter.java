@@ -10,17 +10,23 @@ import com.firebase.ui.firestore.paging.FirestorePagingAdapter;
 import com.firebase.ui.firestore.paging.FirestorePagingOptions;
 
 import it.uniba.di.sms2021.gruppodkl.wefit.R;
+import it.uniba.di.sms2021.gruppodkl.wefit.contract.client.ClientTrainingSpecificationContract;
 import it.uniba.di.sms2021.gruppodkl.wefit.model.Exercise;
 import it.uniba.di.sms2021.gruppodkl.wefit.viewholder.TrainingDetailViewHolder;
 
 public class ClientTrainingSpecificationListAdapter extends FirestorePagingAdapter<Exercise, TrainingDetailViewHolder> implements TrainingDetailViewHolder.TrainingDetailClient {
+
+    private final ClientTrainingSpecificationContract.Presenter mPresenter;
+
     /**
      * Construct a new FirestorePagingAdapter from the given {@link FirestorePagingOptions}.
      *
-     * @param options
+     * @param options opzioni di sistema
+     * @param presenter presenter
      */
-    public ClientTrainingSpecificationListAdapter(@NonNull  FirestorePagingOptions<Exercise> options) {
+    public ClientTrainingSpecificationListAdapter(@NonNull  FirestorePagingOptions<Exercise> options, ClientTrainingSpecificationContract.Presenter presenter) {
         super(options);
+        this.mPresenter = presenter;
     }
 
     @Override
@@ -37,6 +43,6 @@ public class ClientTrainingSpecificationListAdapter extends FirestorePagingAdapt
 
     @Override
     public void showExerciseInfo(int position) {
-        //TODO
+        mPresenter.showExercise(getItem(position).toObject(Exercise.class));
     }
 }

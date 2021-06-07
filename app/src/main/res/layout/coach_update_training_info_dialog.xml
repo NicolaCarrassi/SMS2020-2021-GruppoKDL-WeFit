@@ -1,0 +1,120 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:layout_marginVertical="@dimen/margin_horizontal">
+
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        style="@style/custom_h1"
+        android:text="@string/update_traning"
+        android:gravity="center"/>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:layout_marginTop="@dimen/margin_horizontal">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            style="@style/custom_p"
+            android:text="@string/training_name"/>
+
+        <EditText
+            android:id="@+id/training_name_edit_text"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@drawable/edittext_rounded_corners"
+            android:hint="@string/training_name"
+            android:layout_marginHorizontal="10dp"
+            android:theme="@style/EditTextCustom"
+            android:layout_marginBottom="10dp"
+            android:inputType="text"/>
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:layout_marginTop="@dimen/margin_horizontal">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            style="@style/custom_p"
+            android:text="@string/training_day"/>
+
+        <Spinner
+            android:id="@+id/spinner_training_day"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_gravity="bottom"
+            android:spinnerMode="dropdown"
+            style="@style/SpinnerCustom"
+            android:layout_marginHorizontal="10dp">
+        </Spinner>
+
+    </LinearLayout>
+
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:layout_marginTop="@dimen/margin_horizontal">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            style="@style/custom_p"
+            android:text="@string/training_time"/>
+
+        <EditText
+            android:id="@+id/training_time_edit_text"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@drawable/edittext_rounded_corners"
+            android:hint="@string/time"
+            android:layout_marginHorizontal="10dp"
+            android:theme="@style/EditTextCustom"
+            android:layout_marginBottom="10dp"
+            android:inputType="number"/>
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_marginTop="10dp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal">
+
+        <com.google.android.material.button.MaterialButton
+            android:id="@+id/btn_cancel"
+            android:layout_weight="0.5"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/cancel"
+            style="@style/MaterialButtonCustom"
+            android:maxLines="2"
+            android:layout_marginEnd="5dp"
+            android:textSize="15sp"
+            android:paddingVertical="10dp"/>
+
+        <com.google.android.material.button.MaterialButton
+            android:id="@+id/btn_update"
+            android:layout_weight="0.5"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:text="@string/btn_save_update"
+            android:textSize="15sp"
+            style="@style/MaterialButtonCustom"
+            android:layout_marginStart="5dp"
+            android:paddingVertical="10dp"/>
+    </LinearLayout>
+
+</LinearLayout>

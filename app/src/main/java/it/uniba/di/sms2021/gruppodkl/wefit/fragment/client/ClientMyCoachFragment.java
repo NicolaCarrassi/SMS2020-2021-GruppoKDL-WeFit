@@ -20,7 +20,7 @@ import com.google.android.material.dialog.MaterialAlertDialogBuilder;
 
 import java.util.Map;
 
-import it.uniba.di.sms2021.gruppodkl.wefit.AddFeedbackDialog;
+import it.uniba.di.sms2021.gruppodkl.wefit.client.AddFeedbackDialog;
 import it.uniba.di.sms2021.gruppodkl.wefit.R;
 import it.uniba.di.sms2021.gruppodkl.wefit.WeFitApplication;
 import it.uniba.di.sms2021.gruppodkl.wefit.contract.client.ClientMyCoachContract;

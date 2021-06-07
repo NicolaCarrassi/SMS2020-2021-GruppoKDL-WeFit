@@ -3,10 +3,8 @@ package it.uniba.di.sms2021.gruppodkl.wefit.fragment.coach;
 import android.os.Bundle;
 
 import androidx.annotation.Nullable;
-import androidx.fragment.app.Fragment;
 
 import android.text.TextUtils;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -46,8 +44,6 @@ public class CoachAddExerciseFragment extends BottomSheetDialogFragment implemen
     private TextView mTextViewNumberOf;
     private TextView mTextViewSeconds;
     private EditText mEditTextNumber;
-    private Button mButtonCancel;
-    private Button mButtonAdd;
 
     private CoachAddExerciseContract.Presenter mPresenter;
 
@@ -92,8 +88,8 @@ public class CoachAddExerciseFragment extends BottomSheetDialogFragment implemen
         mTextViewSeconds = layout.findViewById(R.id.seconds_label);
         mEditTextNumber = layout.findViewById(R.id.edit_text_number);
 
-        mButtonCancel = layout.findViewById(R.id.btn_cancel);
-        mButtonAdd = layout.findViewById(R.id.btn_add);
+        Button mButtonCancel = layout.findViewById(R.id.btn_cancel);
+        Button mButtonAdd = layout.findViewById(R.id.btn_add);
 
         mSpinnerExercise = layout.findViewById(R.id.spinner_exercise);
 
@@ -124,7 +120,7 @@ public class CoachAddExerciseFragment extends BottomSheetDialogFragment implemen
 
     @Override
     public void onExercisesNamesLoaded(List<String> list) {
-        ArrayAdapter<String> adapter = new ArrayAdapter<String>(getActivity(), R.layout.spinner_layout);
+        ArrayAdapter<String> adapter = new ArrayAdapter<>(getActivity(), R.layout.spinner_layout);
         adapter.addAll(list);
         adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
         mSpinnerExercise.setAdapter(adapter);
@@ -137,9 +133,13 @@ public class CoachAddExerciseFragment extends BottomSheetDialogFragment implemen
         String exerciseName = (String) mSpinnerExercise.getSelectedItem();
         boolean hasTime = mButtonRadioGroup.getCheckedRadioButtonId() == R.id.time_radio;
 
-        if (!TextUtils.isEmpty(mEditTextNumber.getText().toString()))
-            exerciseReps = Integer.valueOf(mEditTextNumber.getText().toString());
-        else
+        if (!TextUtils.isEmpty(mEditTextNumber.getText().toString())) {
+            exerciseReps = Integer.parseInt(mEditTextNumber.getText().toString());
+
+            if(exerciseReps <= 0)
+                isCorrect = false;
+
+        }else
             isCorrect = false;
 
         if (isCorrect && mButtonRadioGroup.getCheckedRadioButtonId() != -1) {

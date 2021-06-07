@@ -1,5 +1,7 @@
 package it.uniba.di.sms2021.gruppodkl.wefit.db;
 
+import android.util.Log;
+
 import com.google.firebase.firestore.DocumentReference;
 import com.google.firebase.firestore.DocumentSnapshot;
 import com.google.firebase.firestore.FirebaseFirestore;

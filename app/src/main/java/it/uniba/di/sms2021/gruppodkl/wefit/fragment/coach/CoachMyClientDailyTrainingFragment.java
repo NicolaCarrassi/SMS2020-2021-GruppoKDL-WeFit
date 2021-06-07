@@ -4,6 +4,7 @@ import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ImageView;
 import android.widget.TextView;
 
 import androidx.annotation.Nullable;
@@ -13,20 +14,19 @@ import androidx.recyclerview.widget.LinearLayoutManager;
 import com.firebase.ui.firestore.FirestoreRecyclerAdapter;
 import com.google.android.material.button.MaterialButton;
 
-import java.util.HashMap;
-import java.util.Map;
+
 
 import it.uniba.di.sms2021.gruppodkl.wefit.R;
+import it.uniba.di.sms2021.gruppodkl.wefit.coach.EditTrainingDialog;
 import it.uniba.di.sms2021.gruppodkl.wefit.contract.coach.CoachMyClientDailyTrainingContract;
 import it.uniba.di.sms2021.gruppodkl.wefit.model.Exercise;
 import it.uniba.di.sms2021.gruppodkl.wefit.model.Training;
 import it.uniba.di.sms2021.gruppodkl.wefit.presenter.coach.CoachMyClientDailyTrainingPresenter;
 import it.uniba.di.sms2021.gruppodkl.wefit.recyclerview.CustomRecyclerView;
 import it.uniba.di.sms2021.gruppodkl.wefit.utility.DayOfTheWeek;
-import it.uniba.di.sms2021.gruppodkl.wefit.utility.Keys;
 import it.uniba.di.sms2021.gruppodkl.wefit.viewholder.TrainingDetailViewHolder;
 
-public class CoachMyClientDailyTrainingFragment extends Fragment implements CoachMyClientDailyTrainingContract.View {
+public class CoachMyClientDailyTrainingFragment extends Fragment implements CoachMyClientDailyTrainingContract.View, EditTrainingDialog.EditTrainingDialogCallbacks {
 
     public static final String TAG = CoachMyClientDailyTrainingFragment.class.getSimpleName();
 
@@ -41,14 +41,7 @@ public class CoachMyClientDailyTrainingFragment extends Fragment implements Coac
     private TextView mTrainingDay;
     private TextView mTrainingTime;
 
-    private CustomRecyclerView mRecycler;
     private FirestoreRecyclerAdapter<Exercise, TrainingDetailViewHolder> mAdapter;
-
-    private MaterialButton mBtnAddExercises;
-    private TextView mEmpty;
-
-
-
 
 
     public CoachMyClientDailyTrainingFragment(){
@@ -82,18 +75,24 @@ public class CoachMyClientDailyTrainingFragment extends Fragment implements Coac
 
         View layout = inflater.inflate(R.layout.coach_my_client_daily_traning, container, false);
 
+
         mPresenter = new CoachMyClientDailyTrainingPresenter(this);
 
         mTrainingName = layout.findViewById(R.id.training_name);
         mTrainingDay = layout.findViewById(R.id.training_day);
         mTrainingTime = layout.findViewById(R.id.training_time);
-        mRecycler = layout.findViewById(R.id.train_recycler);
-        mBtnAddExercises = layout.findViewById(R.id.btn_add_exercise);
-        mEmpty = layout.findViewById(R.id.no_exercises);
+        CustomRecyclerView mRecycler = layout.findViewById(R.id.train_recycler);
+        MaterialButton mBtnAddExercises = layout.findViewById(R.id.btn_add_exercise);
+        TextView mEmpty = layout.findViewById(R.id.no_exercises);
+        ImageView mEditTrainingImage = layout.findViewById(R.id.edit_training_info);
+
+        String trainingTime = mTrainingTime.getText() + mTraining.convertDurationTime();
+        String trainingDay = mTrainingDay.getText() + DayOfTheWeek.getDayOfTheWeek(mTraining.dayOfWeek, layout);
 
         mTrainingName.setText(mTraining.title);
-        mTrainingTime.setText(mTrainingTime.getText() + mTraining.getDurationTime());
-        mTrainingDay.setText(mTrainingDay.getText() + DayOfTheWeek.getDayOfTheWeek(mTraining.dayOfWeek, layout));
+        mTrainingTime.setText(trainingTime);
+        mTrainingDay.setText(trainingDay);
+
 
         //GESTIONE RECYCLERVIEW
         mAdapter = mPresenter.getAdapter(mClientMail, mTraining);
@@ -104,6 +103,7 @@ public class CoachMyClientDailyTrainingFragment extends Fragment implements Coac
 
         //IMPOSTO LISTENERS PER IL BOTTONE
         mBtnAddExercises.setOnClickListener(v -> showAdd());
+        mEditTrainingImage.setOnClickListener(v -> openEditTrainingDialog());
 
         return layout;
     }
@@ -127,27 +127,25 @@ public class CoachMyClientDailyTrainingFragment extends Fragment implements Coac
     }
 
 
-
-    //TODO Implementa logica di ottenimento e controllo dei dati
-    private void UpdateTraining(){
-        String trainingName = null;
-        int trainingDay = 0 ; //usa il metodo DayOfTheWeek.getCodeFromString(String day, View view) DA IMPLEMENTARE
-        int trainingTime = 0;
-
-        //UPDATE CAMPI DEL TRAINING
-        mTraining.time = trainingTime;
-        mTraining.title = trainingName;
-        mTraining.dayOfWeek = trainingDay;
+    @Override
+    public void editTraining(Training training){
+        mTraining = training;
+        String trainingDay = getResources().getString(R.string.training_day) + DayOfTheWeek.getDayOfTheWeek(mTraining.dayOfWeek,getView());
+        String trainingDuration = getResources().getString(R.string.duration) + mTraining.convertDurationTime();
 
         // UPDATE INFO NELLA VIEW
-        mTrainingDay.setText(getResources().getString(R.string.training_day) + DayOfTheWeek.getDayOfTheWeek(trainingDay,getView())); //FUNZIONA?
-        mTrainingName.setText(trainingName);
-        mTrainingTime.setText(getResources().getString(R.string.duration) + mTraining.getDurationTime());
+        mTrainingDay.setText(trainingDay); //FUNZIONA?
+        mTrainingName.setText(mTraining.title);
+        mTrainingTime.setText(trainingDuration);
 
         mPresenter.updateTraining(mClientMail, mTraining);
-
     }
 
+
+    private void openEditTrainingDialog(){
+        EditTrainingDialog dialog = new EditTrainingDialog(getActivity(), this, mTraining);
+        dialog.show();
+    }
 
 
 

@@ -1,5 +1,6 @@
 package it.uniba.di.sms2021.gruppodkl.wefit.presenter.coach;
 
+
 import java.util.List;
 import java.util.Map;
 
@@ -28,14 +29,15 @@ public class CoachAddExercisePresenter implements CoachAddExerciseContract.Prese
 
     @Override
     public void addExercise(String clientMail, String trainingId, Map<String, Object> map) {
-
         if(map.containsKey(Exercise.ExerciseKeys.REPS) && map.containsKey(Exercise.ExerciseKeys.TIME) && map.containsKey(Exercise.ExerciseKeys.NAME)
             && map.get(Exercise.ExerciseKeys.NAME) != null && map.get(Exercise.ExerciseKeys.REPS) != null && map.get(Exercise.ExerciseKeys.TIME) != null ) {
 
-            Exercise exercise = new Exercise((String) map.get(Exercise.ExerciseKeys.NAME), (int) map.get(Exercise.ExerciseKeys.REPS), (boolean) map.get(Exercise.ExerciseKeys.TIME));
+            boolean hasTime = (boolean) map.get(Exercise.ExerciseKeys.TIME);
+            int reps = (int) map.get(Exercise.ExerciseKeys.REPS);
+
+            Exercise exercise = new Exercise((String) map.get(Exercise.ExerciseKeys.NAME),reps,hasTime);
 
             TrainingDAO.addExerciseInTraining(clientMail, trainingId, exercise);
         }
     }
-
 }

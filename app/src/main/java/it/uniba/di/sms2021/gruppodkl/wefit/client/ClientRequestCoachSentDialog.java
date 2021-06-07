@@ -1,10 +1,12 @@
-package it.uniba.di.sms2021.gruppodkl.wefit;
+package it.uniba.di.sms2021.gruppodkl.wefit.client;
 
 import android.app.Dialog;
 import android.content.Context;
 import android.graphics.drawable.AnimatedVectorDrawable;
 import android.os.Bundle;
 import android.widget.ImageView;
+
+import it.uniba.di.sms2021.gruppodkl.wefit.R;
 import it.uniba.di.sms2021.gruppodkl.wefit.WeFitApplication.CallbackOperations;
 
 import com.google.android.material.button.MaterialButton;
@@ -14,7 +16,7 @@ public class ClientRequestCoachSentDialog extends Dialog {
 
     private AnimatedVectorDrawable mSuccessAnimation;
     private MaterialButton mBack;
-    private WeFitApplication.CallbackOperations mActivity;
+    private CallbackOperations mActivity;
 
 
 

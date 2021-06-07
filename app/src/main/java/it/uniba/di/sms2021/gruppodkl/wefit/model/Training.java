@@ -41,7 +41,7 @@ public class Training implements Parcelable {
         return id;
     }
 
-    public String getDurationTime(){
+    public String convertDurationTime(){
         if(time > 60)
             return time/60 + " h " + time%60 + " min";
         else

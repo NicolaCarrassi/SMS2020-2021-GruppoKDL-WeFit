@@ -41,7 +41,7 @@ public class TrainingViewHolder extends RecyclerView.ViewHolder {
 
         mDay.setText(DayOfTheWeek.getDayOfTheWeek(model.dayOfWeek, mView));
         mTitle.setText(model.title);
-        mTime.setText(model.getDurationTime());
+        mTime.setText(model.convertDurationTime());
 
         if(isEditable) {
             mDeleteTrainingButton.setVisibility(View.VISIBLE);

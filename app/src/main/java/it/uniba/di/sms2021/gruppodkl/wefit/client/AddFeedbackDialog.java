@@ -1,4 +1,4 @@
-package it.uniba.di.sms2021.gruppodkl.wefit;
+package it.uniba.di.sms2021.gruppodkl.wefit.client;
 
 import android.app.Activity;
 import android.app.Dialog;
@@ -12,6 +12,7 @@ import android.widget.RatingBar;
 import java.util.HashMap;
 import java.util.Map;
 
+import it.uniba.di.sms2021.gruppodkl.wefit.R;
 import it.uniba.di.sms2021.gruppodkl.wefit.fragment.client.ClientMyCoachFragment;
 import it.uniba.di.sms2021.gruppodkl.wefit.utility.Keys;
 

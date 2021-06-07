@@ -52,6 +52,6 @@ public class CoachMyClientTrainingSpecificationListAdapter extends FirestoreRecy
 
     @Override
     public void deleteExercise(int position) {
-        TrainingDAO.deleteExercise(getItem(position).getId(),mTrainingId, mClientMail);
+        TrainingDAO.deleteExercise(mClientMail, mTrainingId, getItem(position).getId());
     }
 }

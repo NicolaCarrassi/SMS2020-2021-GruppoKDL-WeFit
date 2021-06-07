@@ -73,7 +73,7 @@ public class ClientMyTrainingSpecificationFragment extends Fragment implements C
         TextView mEmpty = layout.findViewById(R.id.no_exercises);
 
         mTrainingName.setText(mTraining.title);
-        mTrainingTime.setText(mTrainingTime.getText() + mTraining.getDurationTime());
+        mTrainingTime.setText(mTrainingTime.getText() + mTraining.convertDurationTime());
         mTrainingDay.setText(mTrainingDay.getText() + DayOfTheWeek.getDayOfTheWeek(mTraining.dayOfWeek, layout));
 
         User user = ((WeFitApplication)getActivity().getApplicationContext()).getUser();

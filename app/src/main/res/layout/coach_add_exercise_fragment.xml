@@ -126,9 +126,6 @@
             android:layout_marginStart="5dp"
             android:paddingVertical="10dp"/>
 
-
-
-
     </LinearLayout>
 
 

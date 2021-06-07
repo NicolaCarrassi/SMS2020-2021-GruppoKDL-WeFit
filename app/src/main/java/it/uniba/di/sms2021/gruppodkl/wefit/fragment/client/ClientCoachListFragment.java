@@ -12,7 +12,7 @@ import androidx.fragment.app.Fragment;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
-import it.uniba.di.sms2021.gruppodkl.wefit.ClientRequestCoachSentDialog;
+import it.uniba.di.sms2021.gruppodkl.wefit.client.ClientRequestCoachSentDialog;
 import it.uniba.di.sms2021.gruppodkl.wefit.R;
 import it.uniba.di.sms2021.gruppodkl.wefit.WeFitApplication;
 import it.uniba.di.sms2021.gruppodkl.wefit.adapter.ClientCoachListAdapter;

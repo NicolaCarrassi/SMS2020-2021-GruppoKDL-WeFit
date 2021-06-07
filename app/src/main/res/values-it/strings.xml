@@ -1,16 +1,20 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
 
-    <string name="new_user_label">Non sei iscritto? Registrati</string>
-    <string name="forgot_password">Ho dimenticato la password</string>
-
-
     <!-- Bottom Navigation labels -->
     <string name="text_label_home">Home</string>
     <string name="text_label_training">Allenamento</string>
     <string name="text_label_add">Registra</string>
     <string name="text_label_diet">Alimentazione</string>
     <string name="text_label_run">Corsa</string>
+
+
+    <string name="new_user_label">Non sei iscritto? Registrati</string>
+    <string name="forgot_password">Ho dimenticato la password</string>
+    <string name="otherwise_login_label">Oppure accedi con:</string>
+    <string name="forgot_mail_sent">Ti è stata inviata una mail</string>
+    <string name="error_sending_mail">C\'è stato un errore nell\'invio della mail</string>
+
 
     <string name="first_name">Nome</string>
     <string name="last_name">Cognome</string>
@@ -21,10 +25,6 @@
     <string name="select_gender">Genere</string>
     <string name="birth_date">Data di nascita:</string>
     <string name="next">Avanti</string>
-    <string name="forgot_mail_sent">Ti è stata inviata una mail</string>
-    <string name="error_sending_mail">C\'è stato un errore nell\'invio della mail</string>
-    <string name="otherwise_login_label">Oppure accedi con:</string>
-
 
 
     <string name="role_label">Sono un:</string>
@@ -62,6 +62,12 @@
     <string name="error_weight">Il peso deve essee maggiore di  40kg</string>
     <string name="error_general">Vi sono degli errori</string>
     <string name="error_gender">Seleziona un genere valido</string>
+    <string name="error_login">Email o password errati</string>
+    <string name="error_request">C\'é un errore nella richiesta. Per favore prova piú tardi.</string>
+    <string name="error_loading_profile">Ci sono stati problemi nel caricare il profilo</string>
+    <string name="error_data_missing">Mancano alcuni dati</string>
+    <string name="error_training_name">Inserire il nome dell\'allenamento</string>
+    <string name="error_training_time">Inserire la durata dell\'allenamento</string>
 
     <!-- DRAWER STRINGS -->
     <string name="my_profile_drawer">Il mio profilo</string>
@@ -96,6 +102,7 @@
     <string name="add_meal">Registra Pasto</string>
     <string name="add_weight">Registra Peso</string>
     <string name="add_training">Registra Allenamento</string>
+
     <!-- SETTINGS STRINGS -->
     <string name="title_activity_settings">Impostazioni</string>
     <string name="night_mode_on">Modalità notte attiva</string>
@@ -118,11 +125,11 @@
     <string name="weight_successfully_added">Peso Inserito Con Successo!</string>
 
 
+    <!-- TODO Rimuovi -->
     <string name="hello_blank_fragment">ciao mondo</string>
 
     <string name="leave_feedback">Rilascia un feedback</string>
     <string name="change_coach">Annulla iscrizione</string>
-    <string name="error_login">Email o password errati</string>
     <string name="cancel">Annulla</string>
     <string name="leave_coach_title">Lascia il tuo coach</string>
     <string name="leave_coach_text">Sei sicuro di voler lasciare il tuo coach?</string>
@@ -142,7 +149,6 @@
     <string name="decline">Rifiuta</string>
     <string name="no_requests">Non ci sono richieste</string>
     <string name="request_sent">Hai giá mandato la richiesta</string>
-    <string name="error_request">C\'é un errore nella richiesta. Per favore prova piú tardi.</string>
     <string name="follower_request">Richieste di segui</string>
 
     <!-- PLURALS-->
@@ -161,12 +167,11 @@
     <string name="request_sent_successuflly">Richiesta inviata con successo</string>
     <string name="request_deleted">La tua richiesta è stata cancellata</string>
 
-    <string name="client_request">RICHIESTA CLIENTE</string>
+    <string name="client_request">richiesta cliente</string>
     <string name="objective">Obiettivo: </string>
     <string name="kg">kg</string>
     <string name="current_weight">Peso attuale:</string>
     <string name="cm">cm</string>
-    <string name="error_loading_profile">Ci sono stati problemi nel caricare il profilo</string>
 
     <string name="client_list">LISTA CLIENTI</string>
     <string name="no_clients">Non hai ancora dei clienti</string>
@@ -179,11 +184,8 @@
 
 
     <string name="preference_languages">Cambia la lingua dell\'applicazione</string>
-    <string-array name="settings_language_values">
-        <item>Default (Impostazioni di sistema)</item>
-        <item>English</item>
-        <item>Italiano</item>
-    </string-array>
+    <string name="default_language">Default (Impostazioni di sistema)</string>
+
 
     <string name="sunday">Domenica</string>
     <string name="monday">Lunedì</string>
@@ -192,6 +194,9 @@
     <string name="thursday">Giovedì</string>
     <string name="friday">Venerdì</string>
     <string name="saturday">Sabato</string>
+    <string name="unspecified">Non specificato</string>
+
+
     <string name="title_activity_run">Mappa</string>
 
     <string name="new_training">Nuovo allenamento</string>
@@ -205,7 +210,12 @@
     <string name="reps_number">Numero di ripetizioni</string>
     <string name="seconds">sec</string>
     <string name="seconds_number">Numero di secondi</string>
-    <string name="error_data_missing">Mancano alcuni dati</string>
+
+
+    <string name="update_traning">Aggiorna info dell\'allenamento</string>
+    <string name="training_name">Nome allenamento</string>
+    <string name="training_time">Durata (minuti)</string>
+
 
 
 </resources>

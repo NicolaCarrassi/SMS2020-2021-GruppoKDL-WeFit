@@ -30,7 +30,7 @@ public class Exercise {
     }
 
 
-    public String getRepsString(){
+    public String convertRepsNumberToString(){
         String res = "";
 
         if(hasTime){

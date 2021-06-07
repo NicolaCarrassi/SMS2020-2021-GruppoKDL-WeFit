@@ -60,7 +60,7 @@ public class TrainingDetailViewHolder extends RecyclerView.ViewHolder {
 
 
     public void setValues(Exercise exercise) {
-        mRepetitionNumber.setText(exercise.getRepsString());
+        mRepetitionNumber.setText(exercise.convertRepsNumberToString());
 
         mExerciseName.setText(exercise.name);
     }

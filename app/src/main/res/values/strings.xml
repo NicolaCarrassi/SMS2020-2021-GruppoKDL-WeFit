@@ -29,6 +29,8 @@
     <string name="select_gender">Gender</string>
     <string name="birth_date">Birth date:</string>
     <string name="next">Next</string>
+
+
     <string name="role_label">I am a: </string>
     <string name="back_button">Back</string>
     <string name="register_button">Register</string>
@@ -66,6 +68,13 @@
     <string name="error_weight">Weight must be more than 40kg</string>
     <string name="error_general">There are some errors</string>
     <string name="error_gender">Select a valid gender</string>
+    <string name="error_login">Wrong email or password</string>
+    <string name="error_request">Error sending the request. Please try again later</string>
+    <string name="error_loading_profile">There have been problems loading the profile</string>
+    <string name="error_data_missing">Some data are missing</string>
+    <string name="error_training_name">Please insert the name of the training</string>
+    <string name="error_training_time">Please add the duration of the training</string>
+
 
     <!-- DRAWER STRINGS -->
     <string name="my_profile_drawer">My profile</string>
@@ -123,18 +132,18 @@
     <string name="back">Back</string>
     <string name="weight_successfully_added">Weight Successfully Added!</string>
 
-
+    <!-- TODO Rimuovi -->
     <string name="hello_blank_fragment">ciao mondo</string>
 
     <string name="leave_feedback">Leave a feedback</string>
     <string name="change_coach">Unsubscribe</string>
-    <string name="error_login">Wrong email or password</string>
     <string name="cancel">Cancel</string>
     <string name="leave_coach_title">Leave your coach</string>
     <string name="leave_coach_text">Are you sure you want to leave your coach?</string>
     <string name="competences">Competences</string>
     <string name="email_hint">Email:</string>
     <string name="add">Add</string>
+
     <string name="received_feedbacks">RECEIVED FEEDBACKS</string>
     <string name="feedback_number">Feedback number: </string>
     <string name="read_all">Read all</string>
@@ -147,7 +156,6 @@
     <string name="decline">Decline</string>
     <string name="no_requests">There are no requests</string>
     <string name="request_sent">You have already sent a request to a coach</string>
-    <string name="error_request">Error sending the request. Please try again later</string>
     <string name="follower_request">Follower request</string>
 
     <!-- PLURALS -->
@@ -156,6 +164,7 @@
         <item quantity="other">%d clients would like to be followed by you</item>
     </plurals>
     <string name="zero_client_request">You do not have any client request yet</string>
+
     <string name="remove_request">Cancel request</string>
     <string name="are_you_sure">Are you sure?</string>
     <string name="remove_request_message">Are you sure to delete your request to the coach?</string>
@@ -164,12 +173,13 @@
     <string name="request_successful_title">REQUEST SENT SUCCESSFULLY</string>
     <string name="request_sent_successuflly">Request sent successfully</string>
     <string name="request_deleted">Your request has been deleted</string>
+
     <string name="client_request">Client Request</string>
     <string name="objective">Objective: </string>
     <string name="kg">kg</string>
     <string name="current_weight">Current weight:</string>
     <string name="cm">cm</string>
-    <string name="error_loading_profile">There have been problems loading the profile</string>
+
     <string name="client_list">CLIENT LIST</string>
     <string name="no_clients">You have no clients</string>
     <string name="your_feedbacks">YOUR FEEDBACKS</string>
@@ -181,6 +191,8 @@
 
 
     <string name="preference_languages">Choose the language of the application</string>
+    <string name="default_language">Default (System setting)</string>
+
     <string name="sunday">Sunday</string>
     <string name="monday">Monday</string>
     <string name="tuesday">Tuesday</string>
@@ -188,23 +200,29 @@
     <string name="thursday">Thursday</string>
     <string name="friday">Friday</string>
     <string name="saturday">Satuday</string>
-    <string-array name="settings_language_values">
-        <item>Default (System setting)</item>
-        <item>English</item>
-        <item>Italiano</item>
-    </string-array>
+    <string name="unspecified">Not specified</string>
+
+
     <string name="title_activity_run">Map</string>
+
+
     <string name="new_training">New training</string>
     <string name="training_day">Day of the training: </string>
     <string name="duration">Time required: </string>
     <string name="add_exercise">Add an exercise</string>
     <string name="no_exercises">There are no exercises yet</string>
+
+
     <string name="exercise_name">Exercise name</string>
     <string name="time">Time</string>
     <string name="reps_number">Number of repetition</string>
     <string name="seconds">sec</string>
     <string name="seconds_number">Number of seconds</string>
-    <string name="error_data_missing">Some data are missing</string>
+
+
+    <string name="update_traning">Edit training info</string>
+    <string name="training_name">Training name</string>
+    <string name="training_time">Time (minutes)</string>
 
 
 </resources>

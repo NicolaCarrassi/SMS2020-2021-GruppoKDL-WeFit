@@ -29,7 +29,7 @@
                     android:id="@+id/client_pfp"
                     android:layout_width="100dp"
                     android:layout_height="100dp"
-                    android:src="@drawable/gab">
+                    android:src="@drawable/default_avatar">
                 </ImageView>
             </androidx.cardview.widget.CardView>
             <LinearLayout

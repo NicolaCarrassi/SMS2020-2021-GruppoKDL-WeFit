@@ -4,7 +4,6 @@ import android.os.Bundle;
 
 import androidx.fragment.app.Fragment;
 
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -13,14 +12,8 @@ import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import com.jjoe64.graphview.DefaultLabelFormatter;
 import com.jjoe64.graphview.GraphView;
-import com.jjoe64.graphview.helper.DateAsXAxisLabelFormatter;
-import com.jjoe64.graphview.series.DataPoint;
-import com.jjoe64.graphview.series.LineGraphSeries;
-import com.jjoe64.graphview.series.PointsGraphSeries;
 
-import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.List;
 
@@ -154,8 +147,12 @@ public class CoachMyClientProfileFragment extends Fragment implements CoachMyCli
                 mClientImage.setImageBitmap(client.getImageBitmap());
         }
 
-        mClientInitialWeight.setText(Float.toString(weightList.get(0)));
-        mCLientCurrentWeight.setText(Float.toString(client.weight));
+
+        String clientInitialWeight = Float.toString(weightList.get(0)) ;
+        String clientCurrentWeight = Float.toString(client.weight);
+
+        mClientInitialWeight.setText(clientInitialWeight);
+        mCLientCurrentWeight.setText(clientCurrentWeight);
 
        GraphSettings.graphSettings(mWeightGraph, dateList, weightList);
     }

@@ -17,6 +17,7 @@ import com.google.android.gms.maps.GoogleMap;
 import com.google.android.gms.maps.model.LatLng;
 import com.google.android.gms.maps.model.MarkerOptions;
 import com.google.android.gms.tasks.OnCompleteListener;
+import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.android.gms.tasks.Task;
 
 import java.util.concurrent.Executor;
@@ -29,12 +30,11 @@ public class RunActivityPresenter implements RunActivityContract.Presenter {
     private final RunActivityContract.View mView;
 
     private final LatLng defaultLocation = new LatLng(-33.8523341, 151.2106085);
+    private Location mCurrentLocation;
 
     public RunActivityPresenter(RunActivityContract.View mView) {
         this.mView = mView;
     }
-
-
 
     @Override
     @SuppressLint("MissingPermission")
@@ -42,12 +42,9 @@ public class RunActivityPresenter implements RunActivityContract.Presenter {
         Task<Location> locationResult = fusedLocationProviderClient.getLastLocation();
         locationResult.addOnCompleteListener(activity, new OnCompleteListener<Location>() {
             @Override
-            public void onComplete(@NonNull Task<Location> task) {
-                if (task.isSuccessful()) {
-                    Location actualLocation = task.getResult();
-                    if(actualLocation!=null) {
-                        mView.setLocation(actualLocation);
-                    }
+            public void onComplete(Task<Location> location) {
+                if(location!=null){
+                    mView.setLocation(location.getResult());
                 }
             }
         });

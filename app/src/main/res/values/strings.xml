@@ -228,5 +228,8 @@
     <string name="no_trainings_made">You haven\'t registered any training this week</string>
     <string name="completed_trainings">Trainings completed: </string>
 
+    <!-- RUN ACTIVITY -->
+    <string name="location_permission_denied">Location Permission Denied! Impossible to get current position.</string>
+
 
 </resources>

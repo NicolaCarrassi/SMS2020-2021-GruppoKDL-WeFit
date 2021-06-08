@@ -3,11 +3,11 @@ package it.uniba.di.sms2021.gruppodkl.wefit.fragment.client;
 import android.os.Bundle;
 
 
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.webkit.WebView;
+import android.webkit.WebViewClient;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -16,7 +16,6 @@ import androidx.fragment.app.Fragment;
 
 import com.google.android.youtube.player.YouTubeInitializationResult;
 import com.google.android.youtube.player.YouTubePlayer;
-import com.google.android.youtube.player.YouTubePlayerSupportFragment;
 import com.google.android.youtube.player.YouTubePlayerSupportFragmentX;
 
 import it.uniba.di.sms2021.gruppodkl.wefit.R;
@@ -36,12 +35,10 @@ public class ClientExerciseSpecificationFragment extends Fragment implements Cli
     public static final String TAG = ClientExerciseSpecificationFragment.class.getSimpleName();
 
     private static final String EXERCISE_NAME = "exercise_name";
-    private static final int RECOVERY_DIALOG_REQUEST = 1;
 
     private String mExerciseName;
 
 
-    private Exercise mExercise;
     private ClientExerciseSpecificationContract.Presenter mPresenter;
     private WebView mWebView;
 
@@ -112,13 +109,20 @@ public class ClientExerciseSpecificationFragment extends Fragment implements Cli
 
     @Override
     public void onInfoLoaded(Exercise exercise){
-        mExercise = exercise;
-        mTextViewExerciseTitle.setText(mExercise.name);
+        mTextViewExerciseTitle.setText(exercise.name);
 
         if(mYoutubePlayer != null) {
-            mYoutubePlayer.cueVideo(mExercise.videoUrl);
-            showEmbeddedPlayer();
+            mYoutubePlayer.cueVideo(exercise.videoUrl);
+        } else {
+            String beforeVideoId = "<iframe width=\"100%\" height=\"100%\" src=\"https://www.youtube.com/embed/";
+            String afterVideoId = "\" frameborder=\"0\" allowfullscreen></iframe>";
+
+            String url = beforeVideoId + exercise.videoUrl + afterVideoId;
+
+            mWebView.loadData(url, "text/html", "utf-8");
         }
+
+        mTextViewExerciseDescription.setText(mPresenter.getExerciseDescription(exercise.name,getActivity()));
     }
 
     @Override
@@ -145,18 +149,21 @@ public class ClientExerciseSpecificationFragment extends Fragment implements Cli
     }
 
 
+    /**
+     * Il metodo permette,in caso di errori della inizializzazione
+     * del player di youtube, ottenere il video youtube tramite una webView presente
+     * nel layout
+     */
     private void showEmbeddedPlayer(){
-        getChildFragmentManager().beginTransaction().remove(mYoutubePlayerFragment);
+        getChildFragmentManager().beginTransaction().remove(mYoutubePlayerFragment).commit();
         mWebView.setVisibility(View.VISIBLE);
-
-        String url = String.format("<iframe width=\"100%\" height=\"100%\" src=\"https://www.youtube.com/embed/%s\" frameborder=\"0\" allowfullscreen></iframe>","mExercise.videoUrl");
-
-        Log.d("AOO", url);
-
-        //TODO Sistema format della stringa, genera un player embedded e aprilo
-        // in modo da riprodurre correttamente il video in qualsiasi situazione
-        // (probabilmente ci sarà un errore nel manifest)
-        // Trova una soluzione anche al problema delle descrizioni degli esercizi
+        mWebView.getSettings().setJavaScriptEnabled(true);
+        mWebView.setWebViewClient(new WebViewClient(){
+            @Override
+            public boolean shouldOverrideUrlLoading(WebView view, String url){
+                return false;
+            }
+        });
     }
 
 

@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <string name="bicycle_crunches">Bicycle crunches</string>
+    <string name="heel_touch">Heel touch</string>
+    <string name="jumping_jacks">Jumping jacks</string>
+    <string name="leg_raises">Leg raises</string>
+    <string name="military_push_ups">Military push ups</string>
+    <string name="mountain_climber">Mountain climber</string>
+    <string name="plank">Plank</string>
+    <string name="push_ups">Push ups</string>
+    <string name="reverse_crunches">Reverse crunches</string>
+    <string name="russian_twist">Russian twist</string>
+    <string name="side_crunches">Side crunches</string>
+    <string name="sit_ups">Sit-ups</string>
+
+
+    <string name="bicycle_crunches_description">Bicycle crunches descrizione</string>
+    <string name="heel_touch_description">Heel touch descrizione</string>
+    <string name="jumping_jacks_description">Jumping jacks descrizione</string>
+    <string name="leg_raises_description">Leg raises descrizione</string>
+    <string name="military_push_ups_description">Military push ups descrizione</string>
+    <string name="mountain_climber_description">Mountain climber descrizione</string>
+    <string name="plank_description">Plank descrizione</string>
+    <string name="push_ups_description">Push ups descrizione</string>
+    <string name="reverse_crunches_description">Reverse crunches descrizione</string>
+    <string name="russian_twist_description">Russian twist descrizione</string>
+    <string name="side_crunches_description">Side crunches descrizione</string>
+    <string name="sit_ups_description">Sit-ups descrizione</string>
+
+
+
+
+
+
+</resources>

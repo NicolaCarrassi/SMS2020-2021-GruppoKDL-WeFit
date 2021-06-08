@@ -216,6 +216,12 @@
     <string name="training_name">Nome allenamento</string>
     <string name="training_time">Durata (minuti)</string>
 
+    <string name="send">Invia</string>
+    <string name="no_trainings_assigned">Non hai allenamenti assegnati</string>
+    <string name="no_trainings_made">Non hai completato nessun allenamento questa settimana</string>
+    <string name="completed_trainings">Allenamenti completati: </string>
+
+
 
 
 </resources>

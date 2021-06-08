@@ -223,6 +223,10 @@
     <string name="update_traning">Edit training info</string>
     <string name="training_name">Training name</string>
     <string name="training_time">Time (minutes)</string>
+    <string name="send">Send</string>
+    <string name="no_trainings_assigned">You have no trainings assigned</string>
+    <string name="no_trainings_made">You haven\'t registered any training this week</string>
+    <string name="completed_trainings">Trainings completed: </string>
 
 
 </resources>

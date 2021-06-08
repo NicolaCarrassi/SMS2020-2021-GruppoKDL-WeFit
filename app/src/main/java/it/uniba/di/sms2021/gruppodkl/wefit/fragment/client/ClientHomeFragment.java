@@ -16,15 +16,18 @@ import android.widget.TextView;
 
 import it.uniba.di.sms2021.gruppodkl.wefit.R;
 import it.uniba.di.sms2021.gruppodkl.wefit.WeFitApplication;
+import it.uniba.di.sms2021.gruppodkl.wefit.contract.client.ClientHomeContract;
 import it.uniba.di.sms2021.gruppodkl.wefit.model.Client;
 import it.uniba.di.sms2021.gruppodkl.wefit.model.User;
+import it.uniba.di.sms2021.gruppodkl.wefit.utility.Keys;
 
 
-public class ClientHomeFragment extends Fragment implements User.MyImageBitmapCallback {
+public class ClientHomeFragment extends Fragment implements User.MyImageBitmapCallback, ClientHomeContract.View {
 
     public static final String TAG = ClientHomeFragment.class.getSimpleName();
 
 
+    private ClientHomeContract.Presenter mPresenter;
 
     private WeFitApplication.CallbackOperations mActivity;
     private Client mUser;
@@ -32,6 +35,7 @@ public class ClientHomeFragment extends Fragment implements User.MyImageBitmapCa
     private CardView mRecapTab;
     private CardView mTrainingTab;
     private CardView mDietTab;
+    private TextView mCompletedTrainingTextView;
 
 
     public ClientHomeFragment() {
@@ -59,6 +63,7 @@ public class ClientHomeFragment extends Fragment implements User.MyImageBitmapCa
         final View layout =  inflater.inflate(R.layout.client_home_fragment, container, false);
 
         mUser = (Client) ((WeFitApplication) getActivity().getApplicationContext()).getUser();
+        mPresenter = new ClientHomePresenter(this);
 
         bind(layout);
         setListener();
@@ -72,6 +77,7 @@ public class ClientHomeFragment extends Fragment implements User.MyImageBitmapCa
         mRecapTab = view.findViewById(R.id.recap_tab);
         mTrainingTab = view.findViewById(R.id.training_tab);
         mDietTab = view.findViewById(R.id.diet_tab);
+        mCompletedTrainingTextView = view.findViewById(R.id.completed_trainings);
 
         TextView mTextView = view.findViewById(R.id.hi_user);
         mTextView.setText(getResources().getString(R.string.hi_user_string) + " " + mUser.fullName.split(" ")[0] + " !");
@@ -122,5 +128,32 @@ public class ClientHomeFragment extends Fragment implements User.MyImageBitmapCa
     @Override
     public void handleCallback() {
         mImageView.setImageBitmap(mUser.getImageBitmap());
+    }
+
+    @Override
+    public void onStart() {
+        super.onStart();
+        mPresenter.loadTrainingInformation(mUser.email);
+    }
+
+
+    @Override
+    public void userCompletedTrainings(int completedTrainings, int trainingsNumber, int flag) {
+        String text;
+
+        switch (flag){
+            case Keys.CompletedFlags.NO_DENOMINATOR:
+                text = getResources().getString(R.string.no_trainings_assigned);
+                break;
+            case Keys.CompletedFlags.NO_NUMERATOR:
+                text = getResources().getString(R.string.no_trainings_made);
+                break;
+            case Keys.CompletedFlags.CORRECT:
+                text = getResources().getString(R.string.completed_trainings) + completedTrainings + "/" + trainingsNumber;
+                break;
+            default:
+                text = "";
+        }
+        mCompletedTrainingTextView.setText(text);
     }
 }

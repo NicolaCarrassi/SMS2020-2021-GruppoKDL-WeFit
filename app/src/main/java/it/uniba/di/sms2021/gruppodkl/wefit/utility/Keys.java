@@ -40,6 +40,7 @@ public interface Keys {
         String REQUESTS = "requests";
         String TRAINING = "training";
         String EXERCISES = "Exercises";
+        String COMPLETED_TRAINING = "completed_training";
     }
 
     interface RatingInfo{
@@ -53,6 +54,12 @@ public interface Keys {
         String MAIL = "email";
         String NAME = "fullName";
         String IMAGE = "image";
+    }
+
+    interface CompletedFlags{
+        int NO_DENOMINATOR = 0;
+        int NO_NUMERATOR = 1;
+        int CORRECT = 2;
     }
 
 

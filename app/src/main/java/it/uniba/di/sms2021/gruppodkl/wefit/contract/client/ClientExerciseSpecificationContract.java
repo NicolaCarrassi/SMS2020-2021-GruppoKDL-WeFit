@@ -1,5 +1,7 @@
 package it.uniba.di.sms2021.gruppodkl.wefit.contract.client;
 
+import android.content.Context;
+
 import it.uniba.di.sms2021.gruppodkl.wefit.model.Exercise;
 
 public interface ClientExerciseSpecificationContract {
@@ -11,6 +13,7 @@ public interface ClientExerciseSpecificationContract {
 
     interface Presenter{
         void loadVideoInformation(String exerciseName);
+        String getExerciseDescription(String exerciseName, Context context);
     }
 
 }

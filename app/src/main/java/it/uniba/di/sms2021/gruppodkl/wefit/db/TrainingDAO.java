@@ -1,11 +1,11 @@
 package it.uniba.di.sms2021.gruppodkl.wefit.db;
 
-import android.util.Log;
 
 import com.google.firebase.firestore.DocumentReference;
 import com.google.firebase.firestore.DocumentSnapshot;
 import com.google.firebase.firestore.FirebaseFirestore;
 import com.google.firebase.firestore.Query;
+import com.google.firebase.firestore.QuerySnapshot;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -17,14 +17,24 @@ import it.uniba.di.sms2021.gruppodkl.wefit.utility.Keys;
 
 public class TrainingDAO {
 
+    public interface RegisterTrainingKeys{
+        String TRAINING_NAME = "trainingName";
+        String DATE = "date";
+    }
+
+
     public interface ExercisesCallbacks{
         void onExercisesLoaded(List<String> exerciseNames);
         void onInformationLoaded(Exercise exercise);
     }
 
+    public interface TrainingCallbacks{
+        void onTrainingListLoaded(List<String> trainingNames);
+    }
 
 
-    private static List<String> sExerciseNames;
+
+    private static List<String> sList;
     private static Exercise sExercise;
 
     public static Query getClientTrainingSchedule(String clientMail){
@@ -84,18 +94,18 @@ public class TrainingDAO {
     }
 
     public static void fetchAllExercises(ExercisesCallbacks callbacks){
-        if(sExerciseNames != null)
-            sExerciseNames.clear();
+        if(sList != null)
+            sList.clear();
         else
-            sExerciseNames = new ArrayList<>();
+            sList = new ArrayList<>();
 
         FirebaseFirestore.getInstance().collection(Keys.Collections.EXERCISES).get()
                 .addOnCompleteListener(task -> {
                     if(task.isSuccessful()){
                         for(DocumentSnapshot documentSnapshot: task.getResult())
-                            sExerciseNames.add(documentSnapshot.getString(Exercise.ExerciseKeys.NAME));
+                            sList.add(documentSnapshot.getString(Exercise.ExerciseKeys.NAME));
 
-                        callbacks.onExercisesLoaded(sExerciseNames);
+                        callbacks.onExercisesLoaded(sList);
                     }
                 });
     }
@@ -110,6 +120,32 @@ public class TrainingDAO {
                         callbacks.onInformationLoaded(sExercise);
                     }
         });
+    }
+
+
+    public static void getAllTrainingNames(String clientMail, TrainingCallbacks callback){
+        if(sList != null)
+            sList.clear();
+        else
+            sList = new ArrayList<>();
+
+        FirebaseFirestore.getInstance().collection(Keys.Collections.USERS).document(clientMail)
+                .collection(Keys.Collections.TRAINING).get()
+                .addOnCompleteListener(task -> {
+                    if(task.isSuccessful()){
+                        QuerySnapshot querySnapshot = task.getResult();
+                        for(DocumentSnapshot documentSnapshot : querySnapshot.getDocuments())
+                            sList.add(documentSnapshot.getString(Training.TrainingKeys.TITLE));
+
+                        callback.onTrainingListLoaded(sList);
+                    }
+                });
+    }
+
+
+    public static void registerTrainingComplete(String clientMail, Map<String, Object> map){
+        FirebaseFirestore.getInstance().collection(Keys.Collections.USERS).document(clientMail)
+                .collection(Keys.Collections.COMPLETED_TRAINING).add(map);
     }
 
 

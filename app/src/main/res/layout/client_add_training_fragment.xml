@@ -27,6 +27,7 @@
     </Spinner>
 
     <com.google.android.material.button.MaterialButton
+        android:id="@+id/send_button"
         android:layout_gravity="center_horizontal"
         android:layout_marginTop="@dimen/margin_horizontal"
         android:layout_width="wrap_content"
@@ -34,6 +35,6 @@
         android:paddingHorizontal="30dp"
         android:paddingVertical="15dp"
         style="@style/MaterialButtonCustom"
-        android:text="Invia"/>
+        android:text="@string/send"/>
 
 </LinearLayout>

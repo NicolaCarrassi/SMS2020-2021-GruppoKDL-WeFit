@@ -14,10 +14,9 @@ import it.uniba.di.sms2021.gruppodkl.wefit.model.User;
 
 public class CoachMyClientListViewHolder extends RecyclerView.ViewHolder implements User.MyImageBitmapCallback {
 
-    private ImageView mClientImage;
-    private TextView mClientName;
-    private ClientListCallbacks mCallback;
-    private CardView mCard;
+    private final ImageView mClientImage;
+    private final TextView mClientName;
+    private final ClientListCallbacks mCallback;
 
     private Client mClient;
 
@@ -27,9 +26,10 @@ public class CoachMyClientListViewHolder extends RecyclerView.ViewHolder impleme
         mCallback = callback;
         mClientImage = itemView.findViewById(R.id.client_pfp);
         mClientName = itemView.findViewById(R.id.client_name);
-        mCard = itemView.findViewById(R.id.card_client);
+        CardView mCard = itemView.findViewById(R.id.card_client);
 
         mCard.setOnClickListener(v -> mCallback.openYourClientProfile(getAdapterPosition()));
+        mClientImage.setOnClickListener(v -> mCallback.openYourClientProfile(getAdapterPosition()));
     }
 
 

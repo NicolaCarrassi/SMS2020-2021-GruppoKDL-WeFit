@@ -1,14 +1,14 @@
 package it.uniba.di.sms2021.gruppodkl.wefit.db;
 
 
-import android.util.Log;
 
 import com.google.firebase.firestore.DocumentReference;
 import com.google.firebase.firestore.DocumentSnapshot;
 import com.google.firebase.firestore.FirebaseFirestore;
-import com.google.firebase.firestore.Query;
 import com.google.firebase.firestore.WriteBatch;
 
+import java.text.SimpleDateFormat;
+import java.util.Calendar;
 import java.util.HashMap;
 import java.util.Map;
 
@@ -24,9 +24,15 @@ public class UserDAO {
         void hasBeenCreated(User user, boolean success);
     }
 
+    public interface TrainingLoaded{
+        void trainingLoaded(int trainingCompleted, int trainingTotal);
+    }
+
 
     private static User sUser;
     private static boolean sResult;
+    private static int sTrainingCompleted;
+    private static int sTotalTraining;
 
 
     public static void getUser(String email, UserCallbacks callback){
@@ -112,5 +118,32 @@ public class UserDAO {
     }
 
 
+    public static void loadClientTrainingInformation(String clientMail, TrainingLoaded callback){
+        sTrainingCompleted = 0;
+
+        SimpleDateFormat sdf = new SimpleDateFormat("dd/MM/yy");
+
+        Calendar cal = Calendar.getInstance();
+        cal.add(Calendar.DATE, -7);
+        String startDate = sdf.format(cal.getTime());
+
+        DocumentReference instance = FirebaseFirestore.getInstance().collection(Keys.Collections.USERS).document(clientMail);
+
+        instance.collection(Keys.Collections.COMPLETED_TRAINING)
+                .whereGreaterThan(TrainingDAO.RegisterTrainingKeys.DATE, startDate)
+                .get().addOnCompleteListener(task -> {
+                    if(task.isSuccessful()){
+                        sTrainingCompleted = task.getResult().size();
+
+                        instance.collection(Keys.Collections.TRAINING).get()
+                                .addOnCompleteListener(completed -> {
+                                    if(completed.isSuccessful()){
+                                        sTotalTraining = completed.getResult().size();
+                                        callback.trainingLoaded(sTrainingCompleted, sTotalTraining);
+                                    }
+                                });
+                    }
+        });
+    }
 
 }

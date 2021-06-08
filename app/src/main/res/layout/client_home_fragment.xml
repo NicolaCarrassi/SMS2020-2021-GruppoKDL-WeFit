@@ -54,16 +54,12 @@
                 style="@style/card_title"
                 />
             <TextView
+                android:id="@+id/completed_trainings"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="10dp"
-                android:text="Allenamenti completati 0/4"
                 style="@style/card_text"/>
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="Giorni di dieta rispettati 0/7"
-                style="@style/card_text"/>
+
         </LinearLayout>
     </androidx.cardview.widget.CardView>
 

@@ -220,6 +220,8 @@
     <string name="no_trainings_assigned">Non hai allenamenti assegnati</string>
     <string name="no_trainings_made">Non hai completato nessun allenamento questa settimana</string>
     <string name="completed_trainings">Allenamenti completati: </string>
+    <string name="food_diary">Diario alimentare</string>
+    <string name="shopping_list">Lista della spesa</string>
 
 
     <!-- RUN ACTIVITY -->

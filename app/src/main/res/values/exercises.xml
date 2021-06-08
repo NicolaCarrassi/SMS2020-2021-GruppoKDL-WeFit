@@ -15,18 +15,73 @@
     <string name="sit_ups">Sit-ups</string>
 
 
-    <string name="bicycle_crunches_description">Bicycle crunches descrizione</string>
-    <string name="heel_touch_description">Heel touch descrizione</string>
-    <string name="jumping_jacks_description">Jumping jacks descrizione</string>
-    <string name="leg_raises_description">Leg raises descrizione</string>
-    <string name="military_push_ups_description">Military push ups descrizione</string>
-    <string name="mountain_climber_description">Mountain climber descrizione</string>
-    <string name="plank_description">Plank descrizione</string>
-    <string name="push_ups_description">Push ups descrizione</string>
-    <string name="reverse_crunches_description">Reverse crunches descrizione</string>
-    <string name="russian_twist_description">Russian twist descrizione</string>
-    <string name="side_crunches_description">Side crunches descrizione</string>
-    <string name="sit_ups_description">Sit-ups descrizione</string>
+    <string name="bicycle_crunches_description">Lift one leg just off the ground and extend it out.
+        Lift the other leg and bend your knee towards your chest. As you do so twist through your core so the
+        opposite arm comes towards the raised knee. You don\'t need to touch elbow to knee,
+        instead focus on moving through your core as you turn your torso.
+    </string>
+    <string name="heel_touch_description">
+        Lay down with your back on the ground and your knees bent and pointed towards the ceiling.
+        With your arms on your side raise your shoulders slightly off the ground.
+        Using your abs rotate your right hand down to your right foot and then back up.
+        Then do the same thing with your left hand. Alternate back and forth for the desired amount of repetitions.
+    </string>
+    <string name="jumping_jacks_description">
+        Stand upright with your legs together, arms at your sides. Bend your knees slightly, and jump into the air.
+        As you jump, spread your legs to be about shoulder-width apart. Stretch your arms out and over your head.
+        Jump back to starting position. Repeat.
+    </string>
+    <string name="leg_raises_description">
+        Lie on your back, legs straight and together. Keep your legs straight and lift them all the way up to the ceiling until
+        your butt comes off the floor. Slowly lower your legs back down till they\'re just above the floor. Hold for a moment.
+        Raise your legs back up. Repeat.
+    </string>
+    <string name="military_push_ups_description">
+        Get down on all fours, placing your hands slightly wider than your shoulders. Straighten your arms and legs.
+        Lower your body until your chest nearly touches the floor. Pause, then push yourself back up. Repeat.
+    </string>
+    <string name="mountain_climber_description">
+        Put both hands and knees on the floor.
+        Place your right foot near your right hand and extend your left leg behind you.
+        In one smooth motion, switch your legs, keeping your arms in the same position.
+        Switch your legs back and forth twice, such that your right leg is again close to your right hand.
+    </string>
+    <string name="plank_description">
+        Plant hands directly under shoulders like you’re about to do a push-up.
+        Ground toes into the floor and squeeze glutes to stabilize your body. Your legs should be working, too
+        — be careful not to lock or hyperextend your knees.
+        Neutralize your neck and spine by looking at a spot on the floor about a foot beyond your hands.
+        Your head should be in line with your back.
+    </string>
+    <string name="push_ups_description">
+        Get down on all fours, placing your hands slightly wider than your shoulders. Straighten your arms and legs.
+        Lower your body until your chest nearly touches the floor. Pause, then push yourself back up. Repeat.
+    </string>
+    <string name="reverse_crunches_description">
+        Start lying down with your arms by your sides. Raise your legs so your thighs are perpendicular
+        to the floor and your knees are bent at a 90° angle. Breathe out and contract your abs to bring
+        your knees up towards your chest and raise your hips off the floor.
+        Hold for a beat in this position, then slowly lower your legs back to the starting position.
+    </string>
+    <string name="russian_twist_description">
+        Root into your sit bones as you lift your feet from the floor, keeping your knees bent.
+        Elongate and straighten your spine at a 45-degree angle from the floor, creating a V shape with your torso and thighs.
+        Reach your arms straight out in front, interlacing your fingers or clasping your hands together.
+        Use your abdominals to twist to the right, then back to center, and then to the left.
+    </string>
+    <string name="side_crunches_description">
+        Lie down on the floor or mat in a conventional sit-up position with legs at roughly a 90-degree angle and foot planted on the ground.
+        Do not let your feet come up during this exercise. Place your hands behind your head on either side, keep your elbows pointing out.
+        Lift your right shoulder blade off the floor and then drive your elbow in the direction of your left knee.
+        Keep your chin off your chest and not pulling your head and neck.
+        Squeeze at the top of the movement and then slowly release back to the starting position. Repeat the movement.
+    </string>
+    <string name="sit_ups_description">
+        Lie down on your back. Bend your legs and place feet firmly on the ground to stabilize your lower body.
+        Cross your hands to opposite shoulders or place them behind your ears, without pulling on your neck.
+        Curl your upper body all the way up toward your knees. Exhale as you lift.
+        Slowly, lower yourself down, returning to your starting point. Inhale as you lower.
+    </string>
 
 
 

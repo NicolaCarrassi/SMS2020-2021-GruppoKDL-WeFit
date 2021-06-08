@@ -41,6 +41,8 @@ public class ClientMyCoachFragment extends Fragment implements ClientMyCoachCont
     private static final String HAS_SENT_REQUEST = "hasSentRequest";
     private static final String COACH_MAIL = "coachMail";
 
+    private View mView;
+
     private WeFitApplication.CallbackOperations mActivity;
     private ClientMyCoachContract.Presenter mPresenter;
 
@@ -112,9 +114,10 @@ public class ClientMyCoachFragment extends Fragment implements ClientMyCoachCont
                              Bundle savedInstanceState) {
 
         final View layout =  inflater.inflate(R.layout.client_my_coach_profile_fragment, container, false);
+        mView = layout;
         mClient = (Client) ((WeFitApplication) getActivity().getApplicationContext()).getUser();
         mPresenter = new ClientMyCoachPresenter(this);
-        bind(layout);
+        bind();
         return layout;
     }
 
@@ -129,24 +132,24 @@ public class ClientMyCoachFragment extends Fragment implements ClientMyCoachCont
 
     /**
      * Il metodo permette di effettuare il binding di una view di cui si è fatto l'inflate
-     * @param view view di cui si vuole effettuare l'inflate
+     *
      */
-    private void bind(View view) {
-        ((WeFitApplication) getActivity().getApplicationContext()).setToolbar(view, mActivity);
-        mCoachProfileImage = view.findViewById(R.id.profile_image_coach);
+    private void bind() {
+        ((WeFitApplication) getActivity().getApplicationContext()).setToolbar(mView, mActivity);
+        mCoachProfileImage = mView.findViewById(R.id.profile_image_coach);
 
-        mCoachNameTitle = view.findViewById(R.id.coach_name_title);
-        mCoachName = view.findViewById(R.id.coach_full_name);
-        mCoachGender = view.findViewById(R.id.coach_gender);
-        mCoachMail = view.findViewById(R.id.coach_mail);
-        mCoachSkills = view.findViewById(R.id.coach_skills);
+        mCoachNameTitle = mView.findViewById(R.id.coach_name_title);
+        mCoachName = mView.findViewById(R.id.coach_full_name);
+        mCoachGender = mView.findViewById(R.id.coach_gender);
+        mCoachMail = mView.findViewById(R.id.coach_mail);
+        mCoachSkills = mView.findViewById(R.id.coach_skills);
 
-        mFeedbackButton = view.findViewById(R.id.leave_a_feedback_button);
-        mLeaveCoachButton = view.findViewById(R.id.change_coach_button);
+        mFeedbackButton = mView.findViewById(R.id.leave_a_feedback_button);
+        mLeaveCoachButton = mView.findViewById(R.id.change_coach_button);
 
-        mRatingBar = view.findViewById(R.id.rating_coach);
-        mRequestSubButton = view.findViewById(R.id.btn_coach_subscribe);
-        mRemoveRequestButton = view.findViewById(R.id.btn_coach_remove_request);
+        mRatingBar = mView.findViewById(R.id.rating_coach);
+        mRequestSubButton = mView.findViewById(R.id.btn_coach_subscribe);
+        mRemoveRequestButton = mView.findViewById(R.id.btn_coach_remove_request);
 
 
         if(mHasSentRequest){
@@ -192,11 +195,13 @@ public class ClientMyCoachFragment extends Fragment implements ClientMyCoachCont
         mCoach = coach;
         setListeners();
 
-        if (coach.image != null)
-            if (!coach.isBitmapImageAvailable())
+        if (coach.image != null) {
+            if (!coach.isBitmapImageAvailable()) {
+                ((WeFitApplication) getActivity().getApplicationContext()).startProgress(mView);
                 coach.createImageBitmap(this);
-            else
+            }else
                 mCoachProfileImage.setImageBitmap(coach.getImageBitmap());
+        }
 
         mCoachName.setText(coach.fullName);
         mCoachNameTitle.setText(coach.fullName);
@@ -254,6 +259,7 @@ public class ClientMyCoachFragment extends Fragment implements ClientMyCoachCont
 
     @Override
     public void handleCallback() {
+        ((WeFitApplication) getActivity().getApplicationContext()).stopProgress(mView);
         mCoachProfileImage.setImageBitmap(mCoach.getImageBitmap());
     }
 

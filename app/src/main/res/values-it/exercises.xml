@@ -15,18 +15,57 @@
     <string name="sit_ups">Sit-ups</string>
 
 
-    <string name="bicycle_crunches_description">Bicycle crunches description</string>
-    <string name="heel_touch_description">Heel touch description</string>
-    <string name="jumping_jacks_description">Jumping jacks description</string>
-    <string name="leg_raises_description">Leg raises description</string>
-    <string name="military_push_ups_description">Military push ups description</string>
-    <string name="mountain_climber_description">Mountain climber description</string>
-    <string name="plank_description">Plank description</string>
-    <string name="push_ups_description">Push ups description</string>
-    <string name="reverse_crunches_description">Reverse crunches description</string>
-    <string name="russian_twist_description">Russian twist description</string>
-    <string name="side_crunches_description">Side crunches description</string>
-    <string name="sit_ups_description">Sit-ups description</string>
+    <string name="bicycle_crunches_description">
+        Stendersi sul pavimento, con le mani tenendo la testa, sollevare le ginocchia a gradi con il tuo corpo
+        e muovi i piedi come se pedalassi, toccando a ogni torsione il ginocchio con il gomito opposto.
+    </string>
+    <string name="heel_touch_description">
+        Stesi a terra con le gambe e le braccia lungo i fianchi, sollevare leggermente il busto dal pavimento
+        e toccare con le mani i talloni in modo alternato.
+    </string>
+    <string name="jumping_jacks_description">
+        Con i piedi vicini e le braccia lungo i fianchi, saltare allargando i piedi e sollevando le braccia sulla
+        testa. Tornare alla posizione di partenza e ripetere l\'esercizio.
+        L\'esercizio consente di allenare tutto il corpo, coinvolgendo i gruppi muscolari grandi.
+    </string>
+    <string name="leg_raises_description">
+        Sdraiati sulla schiena e stendi le braccia lungo i fianchi per sostenerti. Poi solleva le gambe tese, formando
+        un angolo retto con il pavimento. Abbassa lentamente le gambe e ripeti l\'esercizio
+    </string>
+    <string name="military_push_ups_description">
+        Alzare e abbassare il corpo con le braccia, tenere il corpo dritto. Questo esercizio è utile per i gruppi
+        del torace, spalle, tricipiti, schiena e gambe.
+    </string>
+    <string name="mountain_climber_description">
+        Comincia dalla posizione dei piegamenti, porta il ginocchio destro verso il petto e cambia piede
+        saltando, portando così il piede sinistro in avanti e il destro indietro.
+        In questo modo rafforzerai diversi gruppi di muscoli, oltre al sistema cardiocircolatorio.
+    </string>
+    <string name="plank_description">
+        Inizia in una posizione di push-up con il peso del corpo pressato su avambracci, gomimri, mani e piedi.
+        Il plank rafforza gli addominali, schiena e spalle.
+    </string>
+    <string name="push_ups_description">
+        Alzare e abbassare il corpo con le braccia, tenere il corpo dritto. Questo esercizio è utile per i gruppi
+        del torace, spalle, tricipiti, schiena e gambe.
+    </string>
+    <string name="reverse_crunches_description">
+        Sdraiati nella posizione di crunch e posiziona le tue mani sotto la schiena. Piega le ginocchia
+        verso il torso e leggermente in alto verso il soffitto.
+    </string>
+    <string name="russian_twist_description">
+        In posizione seduta, con le ginocchia piegate, i piedi leggermente sollevati e la schiena inclinata all\'indietro.
+        Tenendo le mani unite, effettuare delle torsioni da entrambi i lati
+    </string>
+    <string name="side_crunches_description">
+        Sdraiati nella posizione di crunch e piega le gambe su un lato, con le ginocchia piegate, tieni le scapole e la
+        parte alta della schiena piatta a terra. Solleva la testa come per un normale crunch, senza piegare il collo.
+        Torna lentamente nella posizione di partenza e ripeti l\'esercizio
+    </string>
+    <string name="sit_ups_description">
+        In posizione supina, effettua una flessione del tronco fino ad arrivare almeno a 90°. Non staccare i piedi
+        durante la fase di salita
+    </string>
 
 
 

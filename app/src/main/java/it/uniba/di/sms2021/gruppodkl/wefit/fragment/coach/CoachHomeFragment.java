@@ -18,7 +18,6 @@ import android.widget.TextView;
 import it.uniba.di.sms2021.gruppodkl.wefit.R;
 import it.uniba.di.sms2021.gruppodkl.wefit.WeFitApplication;
 import it.uniba.di.sms2021.gruppodkl.wefit.contract.coach.CoachHomeContract;
-import it.uniba.di.sms2021.gruppodkl.wefit.fragment.client.ClientMyProfileFragment;
 import it.uniba.di.sms2021.gruppodkl.wefit.model.Coach;
 import it.uniba.di.sms2021.gruppodkl.wefit.model.User;
 import it.uniba.di.sms2021.gruppodkl.wefit.presenter.coach.CoachHomePresenter;
@@ -27,6 +26,8 @@ import it.uniba.di.sms2021.gruppodkl.wefit.presenter.coach.CoachHomePresenter;
 public class CoachHomeFragment extends Fragment implements User.MyImageBitmapCallback, CoachHomeContract.View {
 
     public static final String TAG = CoachHomeFragment.class.getSimpleName();
+
+    private View mView;
 
     private WeFitApplication.CallbackOperations mActivity;
     private Coach mCoach;
@@ -60,8 +61,8 @@ public class CoachHomeFragment extends Fragment implements User.MyImageBitmapCal
         final View layout =  inflater.inflate(R.layout.coach_home_fragment, container, false);
 
         mCoach = (Coach) ((WeFitApplication) getActivity().getApplicationContext()).getUser();
-
-        bind(layout);
+        mView = layout;
+        bind();
         setListeners();
         mPresenter = new CoachHomePresenter(this);
 
@@ -71,25 +72,25 @@ public class CoachHomeFragment extends Fragment implements User.MyImageBitmapCal
     /**
      * Il metodo permette di associare gli elementi della view ad oggetti
      *
-     * @param layout View in cui sono presenti elementi grafici
      */
-    private void bind(View layout){
-        ((WeFitApplication) getActivity().getApplicationContext()).setToolbar(layout, mActivity);
+    private void bind(){
+        ((WeFitApplication) getActivity().getApplicationContext()).setToolbar(mView, mActivity);
 
-        mImageView = layout.findViewById(R.id.user_image);
-        mDietCard = layout.findViewById(R.id.diet_tab);
-        mTrainingCard = layout.findViewById(R.id.training_tab);
-        mRequestsTab = layout.findViewById(R.id.requests_tab);
+        mImageView = mView.findViewById(R.id.user_image);
+        mDietCard = mView.findViewById(R.id.diet_tab);
+        mTrainingCard = mView.findViewById(R.id.training_tab);
+        mRequestsTab = mView.findViewById(R.id.requests_tab);
 
-        TextView textView = layout.findViewById(R.id.hi_user);
+        TextView textView = mView.findViewById(R.id.hi_user);
         textView.setText(getResources().getString(R.string.hi_user_string)+ " "+ mCoach.fullName.split(" ")[0]+ " !");
 
-        mFollowerRequestTextView = layout.findViewById(R.id.follower_request_textview);
+        mFollowerRequestTextView = mView.findViewById(R.id.follower_request_textview);
 
         if(mCoach.image != null)
-            if(!mCoach.isBitmapImageAvailable())
+            if(!mCoach.isBitmapImageAvailable()) {
                 mCoach.createImageBitmap(this);
-            else
+                ((WeFitApplication) getActivity().getApplicationContext()).startProgress(mView);
+            }else
                 mImageView.setImageBitmap(mCoach.getImageBitmap());
 
     }
@@ -127,6 +128,7 @@ public class CoachHomeFragment extends Fragment implements User.MyImageBitmapCal
 
     @Override
     public void handleCallback() {
+        ((WeFitApplication) getActivity().getApplicationContext()).stopProgress(mView);
         mImageView.setImageBitmap(mCoach.getImageBitmap());
     }
 
@@ -134,7 +136,6 @@ public class CoachHomeFragment extends Fragment implements User.MyImageBitmapCal
     //Dato che zero viene ignorato dai plurals, lo metto a mano
     @Override
     public void onRequestNumberLoaded(int num) {
-
         Resources res = getResources();
         if(num == 0)
             mFollowerRequestTextView.setText(R.string.zero_client_request);

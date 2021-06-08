@@ -227,6 +227,8 @@
     <string name="no_trainings_assigned">You have no trainings assigned</string>
     <string name="no_trainings_made">You haven\'t registered any training this week</string>
     <string name="completed_trainings">Trainings completed: </string>
+    <string name="food_diary">Food diary</string>
+    <string name="shopping_list">Shopping list</string>
 
     <!-- RUN ACTIVITY -->
     <string name="location_permission_denied">Location Permission Denied! Impossible to get current position.</string>

@@ -6,6 +6,8 @@ import android.view.View;
 
 import androidx.appcompat.widget.Toolbar;
 
+import com.google.android.material.progressindicator.CircularProgressIndicator;
+
 import it.uniba.di.sms2021.gruppodkl.wefit.model.User;
 
 public class WeFitApplication extends Application {
@@ -70,5 +72,16 @@ public class WeFitApplication extends Application {
 
         mToolbar.setNavigationOnClickListener(v -> activity.goBack());
     }
+
+
+    public void startProgress(View view){
+        view.findViewById(R.id.circular_progress_indicator).setVisibility(View.VISIBLE);
+    }
+
+    public void stopProgress(View view){
+        view.findViewById(R.id.circular_progress_indicator).setVisibility(View.GONE);
+    }
+
+
 
 }

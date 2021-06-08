@@ -39,6 +39,7 @@ public class CoachMyClientProfileFragment extends Fragment implements CoachMyCli
 
     private static final String CLIENT_MAIL = "clientMail";
 
+    private View mView;
     private String mClientMail;
     private Client mClientProfile;
     private CoachMyClientProfileContract.Presenter mPresenter;
@@ -84,9 +85,9 @@ public class CoachMyClientProfileFragment extends Fragment implements CoachMyCli
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
         View layout =  inflater.inflate(R.layout.coach_my_client_profile_fragment, container, false);
-
+        mView = layout;
         mPresenter = new CoachMyClientProfilePresenter(this);
-        bind(layout);
+        bind();
 
         setListeners();
         return layout;
@@ -98,18 +99,18 @@ public class CoachMyClientProfileFragment extends Fragment implements CoachMyCli
         mPresenter.findUserData(mClientMail);
     }
 
-    private void bind(View view){
+    private void bind(){
         if(getActivity() instanceof WeFitApplication.CallbackOperations){
             WeFitApplication.CallbackOperations activity = (WeFitApplication.CallbackOperations) getActivity();
-            ((WeFitApplication) getActivity().getApplicationContext()).setToolbar(view, activity);
+            ((WeFitApplication) getActivity().getApplicationContext()).setToolbar(mView, activity);
         }
-        mClientName = view.findViewById(R.id.client_name);
-        mClientImage = view.findViewById(R.id.client_pfp);
-        mClientInitialWeight = view.findViewById(R.id.initial_weight);
-        mCLientCurrentWeight = view.findViewById(R.id.current_weight);
-        mClientTrainingSchedule = view.findViewById(R.id.btn_training_schedule);
-        mClientDiet = view.findViewById(R.id.btn_diet);
-        mWeightGraph = view.findViewById(R.id.graph);
+        mClientName = mView.findViewById(R.id.client_name);
+        mClientImage = mView.findViewById(R.id.client_pfp);
+        mClientInitialWeight = mView.findViewById(R.id.initial_weight);
+        mCLientCurrentWeight = mView.findViewById(R.id.current_weight);
+        mClientTrainingSchedule = mView.findViewById(R.id.btn_training_schedule);
+        mClientDiet = mView.findViewById(R.id.btn_diet);
+        mWeightGraph = mView.findViewById(R.id.graph);
     }
 
     private void setListeners(){
@@ -125,14 +126,16 @@ public class CoachMyClientProfileFragment extends Fragment implements CoachMyCli
     }
 
     private void goClientDiet(){
-        //TODO
+        CoachMyClientDietListFragment fragment = CoachMyClientDietListFragment.newInstance(mClientMail, mClientProfile.fullName);
+
+        getActivity().getSupportFragmentManager().beginTransaction().replace(R.id.anchor_point,fragment, CoachMyClientDietListFragment.TAG)
+                .addToBackStack(CoachMyClientDietListFragment.TAG).commit();
     }
 
 
     @Override
     public void onFailure() {
-        //TODO Avvisa il coach che ci sono stati problemi, possibilmente non con un toast come sto facendo io
-        Toast.makeText(getActivity(), "Errore", Toast.LENGTH_SHORT).show();
+        Toast.makeText(getActivity(), getResources().getString(R.string.error_general), Toast.LENGTH_SHORT).show();
     }
 
     @Override
@@ -141,9 +144,10 @@ public class CoachMyClientProfileFragment extends Fragment implements CoachMyCli
         mClientProfile = client;
 
         if(client.image != null) {
-            if (!client.isBitmapImageAvailable())
+            if (!client.isBitmapImageAvailable()) {
+                ((WeFitApplication)getActivity().getApplicationContext()).startProgress(mView);
                 client.createImageBitmap(this);
-            else
+            }else
                 mClientImage.setImageBitmap(client.getImageBitmap());
         }
 
@@ -159,6 +163,7 @@ public class CoachMyClientProfileFragment extends Fragment implements CoachMyCli
 
     @Override
     public void handleCallback() {
+        ((WeFitApplication)getActivity().getApplicationContext()).stopProgress(mView);
         mClientImage.setImageBitmap(mClientProfile.getImageBitmap());
     }
 

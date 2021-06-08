@@ -27,7 +27,9 @@ public class ClientHomeFragment extends Fragment implements User.MyImageBitmapCa
     public static final String TAG = ClientHomeFragment.class.getSimpleName();
 
 
+
     private ClientHomeContract.Presenter mPresenter;
+    private View mView;
 
     private WeFitApplication.CallbackOperations mActivity;
     private Client mUser;
@@ -72,6 +74,7 @@ public class ClientHomeFragment extends Fragment implements User.MyImageBitmapCa
     }
 
     private void bind(View view) {
+        mView = view;
         ((WeFitApplication) getActivity().getApplicationContext()).setToolbar(view, mActivity);
         mImageView = view.findViewById(R.id.user_image);
         mRecapTab = view.findViewById(R.id.recap_tab);
@@ -82,11 +85,13 @@ public class ClientHomeFragment extends Fragment implements User.MyImageBitmapCa
         TextView mTextView = view.findViewById(R.id.hi_user);
         mTextView.setText(getResources().getString(R.string.hi_user_string) + " " + mUser.fullName.split(" ")[0] + " !");
 
-        if (mUser.image != null)
-            if (!mUser.isBitmapImageAvailable())
+        if (mUser.image != null) {
+            if (!mUser.isBitmapImageAvailable()) {
+                ((WeFitApplication) getActivity().getApplicationContext()).startProgress(view);
                 mUser.createImageBitmap(this);
-            else
+            }else
                 mImageView.setImageBitmap(mUser.getImageBitmap());
+        }
     }
 
 
@@ -127,6 +132,7 @@ public class ClientHomeFragment extends Fragment implements User.MyImageBitmapCa
 
     @Override
     public void handleCallback() {
+        ((WeFitApplication) getActivity().getApplicationContext()).stopProgress(mView);
         mImageView.setImageBitmap(mUser.getImageBitmap());
     }
 

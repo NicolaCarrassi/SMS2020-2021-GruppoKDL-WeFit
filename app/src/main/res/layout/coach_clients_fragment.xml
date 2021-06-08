@@ -19,8 +19,7 @@
         style="@style/custom_h1"
         android:layout_gravity="center_horizontal"
         android:gravity="center"
-        android:layout_marginBottom="@dimen/margin_horizontal">
-    </TextView>
+        android:layout_marginBottom="@dimen/margin_horizontal"/>
 
     <ScrollView
         android:layout_width="match_parent"

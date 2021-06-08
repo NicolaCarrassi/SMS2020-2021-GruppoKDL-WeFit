@@ -8,61 +8,83 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
-import it.uniba.di.sms2021.gruppodkl.wefit.R;
+import com.google.android.material.tabs.TabLayout;
 
-/**
- * A simple {@link Fragment} subclass.
- * Use the {@link ClientDietFragment#newInstance} factory method to
- * create an instance of this fragment.
- */
+import it.uniba.di.sms2021.gruppodkl.wefit.R;
+import it.uniba.di.sms2021.gruppodkl.wefit.WeFitApplication;
+
+
 public class ClientDietFragment extends Fragment {
 
     public static final String TAG = ClientDietFragment.class.getSimpleName();
-
-    // TODO: Rename parameter arguments, choose names that match
-    // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
-    private static final String ARG_PARAM1 = "param1";
-    private static final String ARG_PARAM2 = "param2";
-
-    // TODO: Rename and change types of parameters
-    private String mParam1;
-    private String mParam2;
 
     public ClientDietFragment() {
         // Required empty public constructor
     }
 
-    /**
-     * Use this factory method to create a new instance of
-     * this fragment using the provided parameters.
-     *
-     * @param param1 Parameter 1.
-     * @param param2 Parameter 2.
-     * @return A new instance of fragment DietFragment.
-     */
-    // TODO: Rename and change types and number of parameters
-    public static ClientDietFragment newInstance(String param1, String param2) {
-        ClientDietFragment fragment = new ClientDietFragment();
-        Bundle args = new Bundle();
-        args.putString(ARG_PARAM1, param1);
-        args.putString(ARG_PARAM2, param2);
-        fragment.setArguments(args);
-        return fragment;
-    }
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        if (getArguments() != null) {
-            mParam1 = getArguments().getString(ARG_PARAM1);
-            mParam2 = getArguments().getString(ARG_PARAM2);
-        }
     }
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.client_diet_fragment, container, false);
+        View view = inflater.inflate(R.layout.client_diet_fragment, container, false);
+
+        if(getActivity() instanceof WeFitApplication.CallbackOperations){
+            WeFitApplication.CallbackOperations act = (WeFitApplication.CallbackOperations) getActivity();
+            ((WeFitApplication) getActivity().getApplicationContext()).setToolbar(view,act);
+        }
+
+        if(savedInstanceState == null){
+            Fragment fragment = new ClientDietDiaryFragment();
+            getChildFragmentManager().beginTransaction().add(R.id.diet_fragment_anchor, fragment, ClientDietDiaryFragment.TAG)
+                    .addToBackStack(ClientDietDiaryFragment.TAG).commit();
+        }
+
+
+        TabLayout mTabLayout = view.findViewById(R.id.tab_layout);
+        mTabLayout.addOnTabSelectedListener(new TabLayout.OnTabSelectedListener() {
+            @Override
+            public void onTabSelected(TabLayout.Tab tab) {
+                handleTabSelected(tab);
+            }
+
+            @Override
+            public void onTabUnselected(TabLayout.Tab tab) {}
+
+            @Override
+            public void onTabReselected(TabLayout.Tab tab) {
+                handleTabSelected(tab);
+            }
+        });
+        return view;
     }
+
+
+    private void handleTabSelected(TabLayout.Tab tab){
+        Fragment fragment;
+        String text;
+        String tabText = (String)tab.getText();
+
+        assert tabText != null;
+
+        if(tabText.equals(getResources().getString(R.string.food_diary))){
+            fragment = new ClientDietDiaryFragment();
+            text = ClientDietDiaryFragment.TAG;
+        } else if(tabText.equals(getResources().getString(R.string.diet_caps))){
+            fragment = new ClientDietListFragment();
+            text = ClientDietListFragment.TAG;
+        } else{
+            fragment = new ClientDietShoppingListFragment();
+            text = ClientDietShoppingListFragment.TAG;
+        }
+
+        getChildFragmentManager().beginTransaction().replace(R.id.diet_fragment_anchor, fragment, text)
+                .addToBackStack(text).commit();
+    }
+
 }

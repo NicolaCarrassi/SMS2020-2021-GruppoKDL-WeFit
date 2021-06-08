@@ -37,7 +37,7 @@
             android:orientation="vertical">
 
             <LinearLayout
-                android:layout_width="wrap_content"
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:orientation="vertical">
                 <it.uniba.di.sms2021.gruppodkl.wefit.recyclerview.CustomRecyclerView
@@ -55,7 +55,6 @@
                     android:text="@string/add_training"
                     android:lines="2"
                     android:maxLines="2"
-                    android:gravity="center"
                     android:layout_gravity="center_horizontal"/>
             </LinearLayout>
             <TextView

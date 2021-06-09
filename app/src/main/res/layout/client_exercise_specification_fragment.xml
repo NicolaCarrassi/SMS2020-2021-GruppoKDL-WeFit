@@ -4,7 +4,8 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
-    tools:context=".fragment.client.ClientExerciseSpecificationFragment">
+    tools:context=".fragment.client.ClientExerciseSpecificationFragment"
+    style="@style/BackgroundCustom">
 
     <include layout="@layout/toolbar"
         android:layout_width="match_parent"
@@ -17,7 +18,8 @@
         android:layout_height="wrap_content"
         style="@style/custom_h1"
         android:layout_gravity="center_horizontal"
-        android:gravity="center" />
+        android:gravity="center"
+        android:layout_marginVertical="20dp"/>
 
 
     <fragment
@@ -27,6 +29,7 @@
         android:layout_height="180dp"
         android:layout_marginTop="5dp"
         android:layout_marginBottom="40dp"
+        android:layout_marginHorizontal="30dp"
         />
 
     <WebView
@@ -37,13 +40,23 @@
         android:layout_marginBottom="40dp"
         android:visibility="gone"
         />
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="@string/esercise_description"
+        style="@style/custom_h2"
+        android:layout_marginHorizontal="30dp"
+        android:gravity="start">
+    </TextView>
 
     <TextView
         android:id="@+id/exercise_description"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         tools:text="@tools:sample/lorem/random"
-        style="@style/custom_p"/>
+        style="@style/custom_p"
+        android:layout_marginHorizontal="30dp"
+        android:layout_marginBottom="30dp"/>
 
 
 

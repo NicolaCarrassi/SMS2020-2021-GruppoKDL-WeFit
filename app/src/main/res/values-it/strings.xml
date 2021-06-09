@@ -122,7 +122,8 @@
     <string name="select_training">Seleziona Allenamento</string>
     <string name="select_meal">Seleziona Pasto</string>
     <string name="back">Indietro</string>
-    <string name="weight_successfully_added">Peso Inserito Con Successo!</string>
+    <string name="weight_successfully_added">Peso inserito con successo!</string>
+    <string name="training_added">Allenamento inserito con successo!</string>
 
 
     <!-- TODO Rimuovi -->
@@ -204,6 +205,7 @@
     <string name="duration">Tempo necessario: </string>
     <string name="add_exercise">Aggiungi un esercizio</string>
     <string name="no_exercises">Non ci sono ancora esercizi</string>
+    <string name="esercise_description">Descrizione:</string>
 
     <string name="exercise_name">Nome dell\'esercizio</string>
     <string name="time">Tempo</string>
@@ -240,6 +242,7 @@
     <string name="add_meal_to">Aggiungi a: </string>
     <string name="quantity">Quantità</string>
     <string name="error_quantity">Inserisci una quantità valida</string>
+
 
 
 </resources>

@@ -130,7 +130,8 @@
     <string name="select_training">Select Training</string>
     <string name="select_meal">Select Meal</string>
     <string name="back">Back</string>
-    <string name="weight_successfully_added">Weight Successfully Added!</string>
+    <string name="weight_successfully_added">Weight added successfully!</string>
+    <string name="training_added">Training added successfully</string>
 
     <!-- TODO Rimuovi -->
     <string name="hello_blank_fragment">ciao mondo</string>
@@ -211,6 +212,7 @@
     <string name="duration">Time required: </string>
     <string name="add_exercise">Add an exercise</string>
     <string name="no_exercises">There are no exercises yet</string>
+    <string name="esercise_description">Description:</string>
 
 
     <string name="exercise_name">Exercise name</string>
@@ -246,6 +248,8 @@
     <string name="add_meal_to">Add meal to:</string>
     <string name="quantity">Quantity</string>
     <string name="error_quantity">Please insert a valid quantity</string>
+
+
 
 
 </resources>

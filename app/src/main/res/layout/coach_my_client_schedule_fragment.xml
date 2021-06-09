@@ -47,6 +47,15 @@
                     tools:listitem="@layout/training_day_item">
                 </it.uniba.di.sms2021.gruppodkl.wefit.recyclerview.CustomRecyclerView>
 
+                <TextView
+                    android:id="@+id/no_trainings"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="@string/no_training"
+                    style="@style/custom_h2"
+                    android:visibility="gone"
+                    android:gravity="center_horizontal"/>
+
                 <com.google.android.material.button.MaterialButton
                     android:id="@+id/btn_new_training"
                     android:layout_width="wrap_content"
@@ -57,14 +66,7 @@
                     android:maxLines="2"
                     android:layout_gravity="center_horizontal"/>
             </LinearLayout>
-            <TextView
-                android:id="@+id/no_trainings"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:text="@string/no_training"
-                style="@style/custom_h2"
-                android:visibility="gone"
-                android:gravity="center_horizontal"/>
+
         </LinearLayout>
     </ScrollView>
 

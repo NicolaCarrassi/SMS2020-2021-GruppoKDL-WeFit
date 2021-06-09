@@ -226,6 +226,7 @@
 
     <!-- RUN ACTIVITY -->
     <string name="location_permission_denied">Permesso di accesso alla posizione negato! Impossibile ottenere la posizione corrente</string>
+    <string name="starting_point">Posizione di Partenza</string>
 
 
 </resources>

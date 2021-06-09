@@ -1,12 +1,12 @@
 package it.uniba.di.sms2021.gruppodkl.wefit;
 
-import androidx.annotation.NonNull;
 import androidx.core.app.ActivityCompat;
 import androidx.core.content.ContextCompat;
 import androidx.fragment.app.FragmentActivity;
 
 import android.Manifest;
 import android.annotation.SuppressLint;
+import android.content.Intent;
 import android.content.pm.PackageManager;
 import android.location.Location;
 import android.os.Bundle;
@@ -16,16 +16,12 @@ import android.widget.Toast;
 
 import com.google.android.gms.location.FusedLocationProviderClient;
 import com.google.android.gms.location.LocationServices;
-import com.google.android.gms.maps.CameraUpdate;
 import com.google.android.gms.maps.CameraUpdateFactory;
 import com.google.android.gms.maps.GoogleMap;
 import com.google.android.gms.maps.OnMapReadyCallback;
 import com.google.android.gms.maps.SupportMapFragment;
 import com.google.android.gms.maps.model.LatLng;
 import com.google.android.gms.maps.model.MarkerOptions;
-import com.google.android.gms.tasks.OnCompleteListener;
-import com.google.android.gms.tasks.OnSuccessListener;
-import com.google.android.gms.tasks.Task;
 import com.google.android.material.button.MaterialButton;
 
 import it.uniba.di.sms2021.gruppodkl.wefit.contract.client.RunActivityContract;
@@ -40,7 +36,6 @@ public class RunActivity extends FragmentActivity implements OnMapReadyCallback,
     private MaterialButton mStartButton;
 
     private static final int REQUEST_CODE_LOCATION_PERMISSION = 1;
-    private boolean mLocationPermission;
 
     private RunActivityPresenter mPresenter;
 
@@ -80,7 +75,7 @@ public class RunActivity extends FragmentActivity implements OnMapReadyCallback,
                 if (ContextCompat.checkSelfPermission(getApplicationContext(), Manifest.permission.ACCESS_FINE_LOCATION) != PackageManager.PERMISSION_GRANTED) {
                     ActivityCompat.requestPermissions(RunActivity.this, new String[]{Manifest.permission.ACCESS_FINE_LOCATION}, REQUEST_CODE_LOCATION_PERMISSION);
                 } else {
-                    mPresenter.getCurrentLocation(fusedLocationProviderClient,mMap,RunActivity.this);
+                    addMarker(mPresenter.getCurrentLocation(fusedLocationProviderClient,mMap,RunActivity.this), getResources().getString(R.string.starting_point));
                 }
             }
         });
@@ -98,13 +93,14 @@ public class RunActivity extends FragmentActivity implements OnMapReadyCallback,
     public void onMapReady(GoogleMap googleMap) {
         mMap = googleMap;
 
+
         Log.d("gesu","onMapReady - " + mMap);
 
         if (ContextCompat.checkSelfPermission(getApplicationContext(), Manifest.permission.ACCESS_FINE_LOCATION) != PackageManager.PERMISSION_GRANTED) {
             ActivityCompat.requestPermissions(RunActivity.this, new String[]{Manifest.permission.ACCESS_FINE_LOCATION}, REQUEST_CODE_LOCATION_PERMISSION);
         } else {
             mMap.setMyLocationEnabled(true);
-            centerCamera();
+            mPresenter.updateCurrentLocation(fusedLocationProviderClient,mMap,this);
         }
     }
 
@@ -114,9 +110,9 @@ public class RunActivity extends FragmentActivity implements OnMapReadyCallback,
         super.onRequestPermissionsResult(requestCode, permissions, grantResults);
         if (requestCode == REQUEST_CODE_LOCATION_PERMISSION && grantResults.length > 0) {
             if (grantResults[0] == PackageManager.PERMISSION_GRANTED) {
-                Log.d("gesu","onRequestPermissionsResult - " + mMap);
-                mMap.setMyLocationEnabled(true);
-                centerCamera();
+                finish();
+                Intent intent = new Intent(this, RunActivity.class);
+                startActivity(intent);
             } else {
                 Toast.makeText(this, R.string.location_permission_denied, Toast.LENGTH_SHORT).show();
             }
@@ -124,28 +120,14 @@ public class RunActivity extends FragmentActivity implements OnMapReadyCallback,
     }
 
     @Override
-    public void setLocation(Location location) {
+    public void addMarker(Location location, String markerTitle) {
         if (location != null) {
             LatLng myPosition = new LatLng(location.getLatitude(), location.getLongitude());
-            mMap.moveCamera(CameraUpdateFactory.newLatLngZoom(myPosition,17));
-            mMap.addMarker(new MarkerOptions().position(myPosition));
+            mMap.animateCamera(CameraUpdateFactory.newLatLngZoom(myPosition,17));
+            mMap.addMarker(new MarkerOptions().position(myPosition).title(markerTitle));
             } else {
                 mMap.moveCamera(CameraUpdateFactory.newLatLngZoom(defaultLocation, 15));
             }
     }
 
-    @SuppressLint("MissingPermission")
-    public void centerCamera(){
-        Task<Location> locationResult = fusedLocationProviderClient.getLastLocation();
-        Log.d("gesu","centerCamera - " + mMap);
-        locationResult.addOnCompleteListener(this, new OnCompleteListener<Location>() {
-            @Override
-            public void onComplete(@NonNull Task<Location> task) {
-                if(task.isSuccessful()){
-                    LatLng myPosition = new LatLng(task.getResult().getLatitude(), task.getResult().getLongitude());
-                    mMap.moveCamera(CameraUpdateFactory.newLatLngZoom(myPosition,15));
-                }
-            }
-        });
-    }
 }

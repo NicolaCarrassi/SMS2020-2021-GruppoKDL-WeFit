@@ -10,11 +10,12 @@ import com.google.android.gms.maps.GoogleMap;
 public interface RunActivityContract {
 
     interface View{
-        void setLocation(Location location);
+        void addMarker(Location location, String markerTitle);
     }
 
     interface Presenter{
-        void getCurrentLocation(FusedLocationProviderClient fusedLocationProviderClient, GoogleMap map, FragmentActivity activity);
+        void updateCurrentLocation(FusedLocationProviderClient fusedLocationProviderClient, GoogleMap map, FragmentActivity activity);
+        Location getCurrentLocation(FusedLocationProviderClient fusedLocationProviderClient, GoogleMap map,FragmentActivity activity);
     }
 
 }

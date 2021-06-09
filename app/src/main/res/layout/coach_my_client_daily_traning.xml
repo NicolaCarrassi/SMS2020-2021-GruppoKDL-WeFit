@@ -4,6 +4,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     xmlns:tools="http://schemas.android.com/tools"
+    style="@style/BackgroundCustom"
     >
 
     <include layout="@layout/toolbar"
@@ -19,53 +20,71 @@
         android:gravity="center"/>
 
     <LinearLayout
-        android:layout_marginTop="20dp"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:orientation="horizontal">
+        android:orientation="horizontal"
+        android:layout_marginHorizontal="30dp">
+        <LinearLayout
+            android:layout_marginTop="20dp"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:gravity="center"
+            android:layout_weight="0.9"
+            >
 
-        <TextView
-            android:id="@+id/training_day"
+            <TextView
+                android:id="@+id/training_day"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/training_day"
+                style="@style/custom_p"
+                android:textSize="18dp"/>
+
+            <TextView
+                android:id="@+id/training_time"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/duration"
+                style="@style/custom_p"
+                android:textSize="18dp"/>
+
+        </LinearLayout>
+        <ImageView
+            android:id="@+id/edit_training_info"
+
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="@string/training_day"
-            style="@style/custom_p"/>
-
-        <TextView
-            android:id="@+id/training_time"
-            android:layout_marginStart="20dp"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="@string/duration"
-            style="@style/custom_p"/>
-
+            android:src="@drawable/pencil_icon"
+            android:layout_weight="0.1"
+            android:layout_gravity="center"/>
     </LinearLayout>
 
-    <ImageView
-        android:id="@+id/edit_training_info"
-        android:layout_marginHorizontal="20dp"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:src="@drawable/pencil_icon"/>
+
 
     <ScrollView
         android:layout_width="match_parent"
-        android:layout_height="wrap_content">
+        android:layout_height="wrap_content"
+        >
 
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:orientation="vertical">
+            android:orientation="vertical"
+            >
 
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:orientation="vertical">
+                android:orientation="vertical"
+                android:gravity="center_horizontal"
+                android:layout_marginTop="30dp">
                 <it.uniba.di.sms2021.gruppodkl.wefit.recyclerview.CustomRecyclerView
                     android:id="@+id/train_recycler"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    tools:listitem="@layout/training_exercise_item">
+                    tools:listitem="@layout/training_exercise_item"
+                    >
                 </it.uniba.di.sms2021.gruppodkl.wefit.recyclerview.CustomRecyclerView>
 
                 <TextView

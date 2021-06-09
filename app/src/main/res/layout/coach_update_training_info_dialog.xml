@@ -3,20 +3,21 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
-    android:layout_marginVertical="@dimen/margin_horizontal">
+    android:layout_marginVertical="@dimen/margin_horizontal"
+    android:layout_marginHorizontal="30dp">
 
 
     <TextView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        style="@style/custom_h1"
+        style="@style/custom_h2"
         android:text="@string/update_traning"
         android:gravity="center"/>
 
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:orientation="horizontal"
+        android:orientation="vertical"
         android:layout_marginTop="@dimen/margin_horizontal">
 
         <TextView
@@ -31,7 +32,6 @@
             android:layout_height="wrap_content"
             android:background="@drawable/edittext_rounded_corners"
             android:hint="@string/training_name"
-            android:layout_marginHorizontal="10dp"
             android:theme="@style/EditTextCustom"
             android:layout_marginBottom="10dp"
             android:inputType="text"/>
@@ -41,7 +41,7 @@
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:orientation="horizontal"
+        android:orientation="vertical"
         android:layout_marginTop="@dimen/margin_horizontal">
 
         <TextView
@@ -53,11 +53,12 @@
         <Spinner
             android:id="@+id/spinner_training_day"
             android:layout_width="match_parent"
-            android:layout_height="match_parent"
+            android:layout_height="wrap_content"
+            android:padding="10dp"
+            android:elevation="4dp"
             android:layout_gravity="bottom"
             android:spinnerMode="dropdown"
-            style="@style/SpinnerCustom"
-            android:layout_marginHorizontal="10dp">
+            style="@style/SpinnerCustom">
         </Spinner>
 
     </LinearLayout>

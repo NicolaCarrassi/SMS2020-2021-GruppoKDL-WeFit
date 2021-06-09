@@ -152,6 +152,7 @@ public class CoachAddExerciseFragment extends BottomSheetDialogFragment implemen
             map.put(Exercise.ExerciseKeys.TIME, hasTime);
 
             mPresenter.addExercise(mClientMail, mTraining.getId(), map);
+            mEditTextNumber.setText("");
         } else
             Toast.makeText(getActivity(),getResources().getString(R.string.error_data_missing), Toast.LENGTH_SHORT).show();
     }

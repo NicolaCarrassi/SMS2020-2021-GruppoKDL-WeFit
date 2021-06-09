@@ -39,7 +39,8 @@ public class Exercise {
 
             res += reps%60 + " sec";
         }else
-            res = (String.valueOf(reps));
+            res = (String.valueOf(reps)) + " reps ";
+
 
         return res;
     }

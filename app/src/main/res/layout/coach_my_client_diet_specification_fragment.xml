@@ -6,12 +6,18 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent">
 
+
     <LinearLayout
         android:layout_marginTop="@dimen/margin_horizontal"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:orientation="vertical"
         tools:context=".fragment.client.CoachMyClientDietSpecificationFragment">
+
+        <include layout="@layout/toolbar"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+        </include>
 
         <TextView
             android:layout_width="match_parent"

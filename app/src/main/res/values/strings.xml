@@ -235,6 +235,9 @@
     <!-- RUN ACTIVITY -->
     <string name="location_permission_denied">Location Permission Denied! Impossible to get current position.</string>
     <string name="starting_point">Starting Point</string>
+    <string name="notification_location_title">WeFit Run Tracker</string>
+    <string name="notification_location_description">Run tracker active</string>
+    <string name="run_stopped">Run concluded with success!</string>
 
 
     <string name="breakfast_caps">BREAKFAST</string>

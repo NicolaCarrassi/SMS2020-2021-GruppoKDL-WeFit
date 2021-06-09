@@ -3,14 +3,12 @@ package it.uniba.di.sms2021.gruppodkl.wefit;
 import androidx.core.app.ActivityCompat;
 import androidx.core.content.ContextCompat;
 import androidx.fragment.app.FragmentActivity;
-import androidx.localbroadcastmanager.content.LocalBroadcastManager;
 
 import android.Manifest;
 import android.annotation.SuppressLint;
 import android.content.BroadcastReceiver;
 import android.content.Context;
 import android.content.Intent;
-import android.content.IntentFilter;
 import android.content.pm.PackageManager;
 import android.location.Location;
 import android.os.Bundle;
@@ -31,7 +29,6 @@ import com.google.android.material.button.MaterialButton;
 import it.uniba.di.sms2021.gruppodkl.wefit.contract.client.RunActivityContract;
 import it.uniba.di.sms2021.gruppodkl.wefit.databinding.ActivityRunBinding;
 import it.uniba.di.sms2021.gruppodkl.wefit.presenter.client.RunActivityPresenter;
-import it.uniba.di.sms2021.gruppodkl.wefit.service.LocationService;
 
 public class RunActivity extends FragmentActivity implements OnMapReadyCallback, RunActivityContract.View {
 
@@ -121,9 +118,6 @@ public class RunActivity extends FragmentActivity implements OnMapReadyCallback,
     @Override
     public void onMapReady(GoogleMap googleMap) {
         mMap = googleMap;
-
-
-        Log.d("gesu","onMapReady - " + mMap);
 
         if (ContextCompat.checkSelfPermission(getApplicationContext(), Manifest.permission.ACCESS_FINE_LOCATION) != PackageManager.PERMISSION_GRANTED) {
             ActivityCompat.requestPermissions(RunActivity.this, new String[]{Manifest.permission.ACCESS_FINE_LOCATION}, REQUEST_CODE_LOCATION_PERMISSION);

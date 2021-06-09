@@ -88,8 +88,8 @@
     <!-- HOME FRAGMENT -->
     <string name="hi_user_string">Hi</string>
     <string name="recap_tab_title">WEEKLY SUMMARY:</string>
-    <string name="training_tab_title">NEXT TRAINING:</string>
-    <string name="diet_tab_title">NEXT MEAL:</string>
+    <string name="training_tab_title">NEXT TRAINING</string>
+    <string name="diet_tab_title">FOOD DIARY</string>
 
 
     <!-- PROFILE STRING -->

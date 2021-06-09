@@ -39,10 +39,18 @@ public class ClientDietListFragment extends Fragment implements ClientDietListCo
 
         //HANDLING RECYCLER
         mRecycler = view.findViewById(R.id.recycler_diet_days);
-        mRecycler.setAdapter(new DietListAdapter(getActivity()));
+        mRecycler.setAdapter(new DietListAdapter(getActivity(), mPresenter));
         mRecycler.setLayoutManager(new LinearLayoutManager(getActivity()));
 
 
         return view;
+    }
+
+    @Override
+    public void showDietOfTheDay(String weekDay) {
+        ClientDailyDietFragment fragment = ClientDailyDietFragment.newInstance(weekDay);
+
+        getParentFragment().getChildFragmentManager().beginTransaction().replace(R.id.diet_fragment_anchor, fragment, ClientDailyDietFragment.TAG)
+                .addToBackStack(ClientDailyDietFragment.TAG).commit();
     }
 }

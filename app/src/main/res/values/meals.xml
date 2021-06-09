@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="fette_biscottate">Rusks</string>
+    <string name="biscotti">Biscuits </string>
+    <string name="tacchino">Turkey</string>
+    <string name="pesce">Fish</string>
+    <string name="uova">Egg</string>
+    <string name="banana">Banana</string>
+    <string name="lenticchie">Lentils</string>
+    <string name="pasta">Pasta</string>
+    <string name="pera">Pear</string>
+    <string name="carote">Carrots</string>
+    <string name="caffe">Coffee</string>
+    <string name="patate">Potatoes</string>
+    <string name="mela">Apple</string>
+    <string name="pollo">Chicken</string>
+    <string name="latte">Milk</string>
+    <string name="formaggio">Cheese</string>
+    <string name="mozzarella">Mozzarella</string>
+    <string name="tofu">Tofu</string>
+    <string name="riso">Rice</string>
+    <string name="cereali">Cereals</string>
+    <string name="pizza">Pizza</string>
+    <string name="insalata">Salad</string>
+    <string name="pane">Bread</string>
+
+
+</resources>

@@ -6,12 +6,6 @@
         <item>@string/female</item>
     </string-array>
 
-    <string-array name="training">
-        <item>@string/select_training</item>
-        <item>day_1</item>
-        <item>day_2</item>
-        <item>day_3</item>
-    </string-array>
 
     <string-array name="meal">
         <item>@string/select_meal</item>
@@ -36,6 +30,12 @@
         <item>@string/friday</item>
         <item>@string/saturday</item>
         <item>@string/not_set</item>
+    </string-array>
+
+    <string-array name="moment_of_the_day">
+        <item>@string/breakfast</item>
+        <item>@string/lunch</item>
+        <item>@string/dinner</item>
     </string-array>
 
 </resources>

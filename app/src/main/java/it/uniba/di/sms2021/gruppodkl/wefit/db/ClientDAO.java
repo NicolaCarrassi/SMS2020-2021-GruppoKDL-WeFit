@@ -1,5 +1,6 @@
 package it.uniba.di.sms2021.gruppodkl.wefit.db;
 
+
 import com.google.firebase.firestore.DocumentReference;
 import com.google.firebase.firestore.FirebaseFirestore;
 import com.google.firebase.firestore.Query;
@@ -10,6 +11,7 @@ import java.util.Map;
 
 import it.uniba.di.sms2021.gruppodkl.wefit.model.Client;
 import it.uniba.di.sms2021.gruppodkl.wefit.model.Coach;
+import it.uniba.di.sms2021.gruppodkl.wefit.model.Meal;
 import it.uniba.di.sms2021.gruppodkl.wefit.model.User;
 import it.uniba.di.sms2021.gruppodkl.wefit.utility.Keys;
 
@@ -71,4 +73,26 @@ public class ClientDAO extends UserDAO {
         return FirebaseFirestore.getInstance().collection(Keys.Collections.USERS)
                 .document(clientMail).collection(Keys.Collections.TRAINING);
     }
+
+    public static Query getAllDishesOfTheMeal(String clientMail, String dayOftheWeek, int mealType){
+        return FirebaseFirestore.getInstance().collection(Keys.Collections.USERS).document(clientMail)
+                .collection(Keys.Collections.DIET).document(dayOftheWeek).collection(Keys.Collections.MEALS)
+                .whereEqualTo(Meal.MealKeys.MEAL_TYPE, mealType);
+    }
+
+    public static void addMeal(String clientMail, String dayOfTheWeek, Meal meal){
+        DocumentReference ref = FirebaseFirestore.getInstance().collection(Keys.Collections.USERS).document(clientMail)
+                .collection(Keys.Collections.DIET).document(dayOfTheWeek).collection(Keys.Collections.MEALS).document();
+
+        meal.setId(ref.getId());
+
+        ref.set(meal);
+    }
+
+    public static void removeMeal(String clientMail, String dayOfTheWeek, String mealID){
+        FirebaseFirestore.getInstance().collection(Keys.Collections.USERS).document(clientMail)
+                .collection(Keys.Collections.DIET).document(dayOfTheWeek).collection(Keys.Collections.MEALS)
+                .document(mealID).delete();
+    }
+
 }

@@ -9,4 +9,9 @@ public class ClientDietListPresenter implements ClientDietListContract.Presenter
 
     public ClientDietListPresenter(ClientDietListContract.View view){this.mView = view;}
 
+    @Override
+    public void onWeekDaySelected(String weekDay) {
+        if(weekDay != null)
+            mView.showDietOfTheDay(weekDay);
+    }
 }

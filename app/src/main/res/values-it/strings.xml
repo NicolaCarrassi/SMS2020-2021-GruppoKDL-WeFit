@@ -229,4 +229,17 @@
     <string name="starting_point">Posizione di Partenza</string>
 
 
+    <string name="breakfast_caps">COLAZIONE</string>
+    <string name="lunch_caps">PRANZO</string>
+    <string name="dinner_caps">CENA</string>
+    <string name="breakfast">Colazione</string>
+    <string name="lunch">Pranzo</string>
+    <string name="dinner">Cena</string>
+
+    <string name="no_meal_added">Non sono stati aggiunti pasti</string>
+    <string name="add_meal_to">Aggiungi a: </string>
+    <string name="quantity">Quantità</string>
+    <string name="error_quantity">Inserisci una quantità valida</string>
+
+
 </resources>

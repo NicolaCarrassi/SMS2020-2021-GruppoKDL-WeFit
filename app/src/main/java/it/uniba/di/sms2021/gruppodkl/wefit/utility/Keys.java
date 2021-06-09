@@ -41,6 +41,8 @@ public interface Keys {
         String TRAINING = "training";
         String EXERCISES = "Exercises";
         String COMPLETED_TRAINING = "completed_training";
+        String DIET = "diet";
+        String MEALS = "meals";
     }
 
     interface RatingInfo{
@@ -48,6 +50,7 @@ public interface Keys {
         String MESSAGE = "message";
         String CLIENT = "client";
         String CLIENT_NAME = "clientFullName";
+        String DATE = "date";
     }
 
     interface Request{

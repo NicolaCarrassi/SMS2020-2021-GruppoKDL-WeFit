@@ -1,6 +1,5 @@
 package it.uniba.di.sms2021.gruppodkl.wefit.db;
 
-import android.util.Log;
 
 import com.google.firebase.firestore.CollectionReference;
 import com.google.firebase.firestore.DocumentReference;
@@ -11,7 +10,6 @@ import com.google.firebase.firestore.QueryDocumentSnapshot;
 import com.google.firebase.firestore.WriteBatch;
 
 import java.util.ArrayList;
-import java.util.Date;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -56,7 +54,7 @@ public class CoachDAO extends UserDAO {
         sRatingMean = 0;
 
         FirebaseFirestore.getInstance().collection(Keys.Collections.USERS)
-                .document(coachEmail).collection(Keys.Collections.RATINGS).get()
+                .document(coachEmail).collection(Keys.Collections.RATINGS).orderBy(Keys.RatingInfo.DATE).get()
                 .addOnCompleteListener(task -> {
                     if(task.isSuccessful()){
                         assert task.getResult() != null;

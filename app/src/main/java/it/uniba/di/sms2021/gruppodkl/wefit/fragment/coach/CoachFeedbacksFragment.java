@@ -1,25 +1,21 @@
 package it.uniba.di.sms2021.gruppodkl.wefit.fragment.coach;
 
 import android.content.Context;
-import android.content.Intent;
 import android.os.Bundle;
 
 import androidx.annotation.NonNull;
 import androidx.fragment.app.Fragment;
 
-import android.speech.tts.TextToSpeech;
-import android.util.Log;
+
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.RatingBar;
 import android.widget.TextView;
 
 import com.google.android.material.button.MaterialButton;
 
-import org.w3c.dom.Text;
 
 import it.uniba.di.sms2021.gruppodkl.wefit.R;
 import it.uniba.di.sms2021.gruppodkl.wefit.WeFitApplication;
@@ -124,9 +120,12 @@ public class CoachFeedbacksFragment extends Fragment implements User.MyImageBitm
 
     @Override
     public void onLastFeedbackReceived(Feedback feedback, float mean, int numElem) {
+        String feedbackNumber = getResources().getString(R.string.feedback_number) + numElem;
+        String firstName = feedback.clientFullName.split(" ")[0];
+
         mMeanRating.setRating(mean);
-        mFeedbackNumberText.setText(getResources().getString(R.string.feedback_number) + Integer.toString(numElem));
-        mLastFeedbackUserName.setText(feedback.clientFullName.split(" ")[0]);
+        mFeedbackNumberText.setText(feedbackNumber);
+        mLastFeedbackUserName.setText(firstName);
         mLastFeedbackRating.setRating(feedback.rate);
         mLastReviewText.setText(feedback.message);
 

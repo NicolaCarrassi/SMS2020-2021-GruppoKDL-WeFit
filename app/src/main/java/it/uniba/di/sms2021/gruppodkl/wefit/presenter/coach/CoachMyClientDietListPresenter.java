@@ -10,4 +10,9 @@ public class CoachMyClientDietListPresenter implements CoachMyClientDietListCont
     public CoachMyClientDietListPresenter(CoachMyClientDietListContract.View view){ this.mView = view;}
 
 
+    @Override
+    public void onWeekDaySelected(String weekDay) {
+        if(weekDay != null)
+            mView.showDietOfTheDay(weekDay);
+    }
 }

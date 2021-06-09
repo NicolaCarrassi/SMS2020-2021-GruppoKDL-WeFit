@@ -1,11 +1,7 @@
 package it.uniba.di.sms2021.gruppodkl.wefit.utility;
 
 import android.content.Context;
-import android.util.Log;
 import android.view.View;
-
-import java.util.List;
-import java.util.function.LongFunction;
 
 import it.uniba.di.sms2021.gruppodkl.wefit.R;
 
@@ -21,6 +17,8 @@ public class DayOfTheWeek {
         int SATURDAY = 6;
         int NOT_SET = 7;
     }
+
+
 
 
     public static String getDayOfTheWeek(int day, View view){
@@ -54,7 +52,6 @@ public class DayOfTheWeek {
     }
 
     public static int getStringValue(String dayOfTheWeek, Context context){
-        Log.d("AOO", dayOfTheWeek);
         int res = -1;
         String sunday = context.getResources().getString(R.string.sunday);
         String monday = context.getResources().getString(R.string.monday);
@@ -88,6 +85,40 @@ public class DayOfTheWeek {
                 res = WeekDay.SATURDAY;
             else
                 res = WeekDay.NOT_SET;
+        }
+
+        return res;
+    }
+
+
+
+    public static String convertPositionToDayOfTheWeek(int day){
+        String res = null;
+
+        if(day  <= 6){
+            switch (day){
+                case WeekDay.SUNDAY:
+                    res = "sunday";
+                    break;
+                case WeekDay.MONDAY:
+                    res = "monday";
+                    break;
+                case WeekDay.TUESDAY:
+                    res = "tuesday";
+                    break;
+                case WeekDay.WEDNESDAY:
+                    res = "wednesday";
+                    break;
+                case WeekDay.THURSDAY:
+                    res = "thursday";
+                    break;
+                case WeekDay.FRIDAY:
+                    res = "friday";
+                    break;
+                default:
+                    res = "saturday";
+                    break;
+            }
         }
 
         return res;

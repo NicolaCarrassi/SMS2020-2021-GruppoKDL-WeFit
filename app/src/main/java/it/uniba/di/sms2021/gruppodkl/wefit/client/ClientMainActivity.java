@@ -16,6 +16,8 @@ import com.google.android.material.bottomnavigation.BottomNavigationView;
 import com.google.android.material.navigation.NavigationView;
 import com.google.firebase.auth.FirebaseAuth;
 
+import java.text.SimpleDateFormat;
+import java.util.Date;
 import java.util.Map;
 
 import it.uniba.di.sms2021.gruppodkl.wefit.LoginActivity;
@@ -231,9 +233,12 @@ public class ClientMainActivity extends AppCompatActivity implements WeFitApplic
 
     @Override
     public void makeRating(Map<String, Object> map){
+        Date date = new Date();
+        SimpleDateFormat sdf = new SimpleDateFormat("yyyy/MM/dd");
         User user = ((WeFitApplication) getApplicationContext()).getUser();
         map.put(Keys.RatingInfo.CLIENT, user.email);
         map.put(Keys.RatingInfo.CLIENT_NAME, user.fullName);
+        map.put(Keys.RatingInfo.DATE,sdf.format(date));
 
         ClientMyCoachFragment coachFragment = (ClientMyCoachFragment) getSupportFragmentManager().findFragmentByTag(ClientMyCoachFragment.TAG);
         if(coachFragment!= null)

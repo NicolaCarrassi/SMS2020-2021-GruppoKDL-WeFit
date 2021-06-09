@@ -25,22 +25,21 @@ public class ClientCoachListFragment extends Fragment implements ClientCoachList
     public static final String TAG = ClientCoachListFragment.class.getSimpleName();
 
     private ClientCoachListContract.Presenter mPresenter;
-    private RecyclerView mRecycler;
     private ClientCoachListAdapter mAdapter;
-    private Client mClient;
     private WeFitApplication.CallbackOperations mActivity;
 
     @Override
     public View onCreateView(LayoutInflater inflater,  ViewGroup container,  Bundle savedInstanceState) {
         View layout =  inflater.inflate(R.layout.client_coach_list, container, false);
 
+        assert getActivity() != null;
         Client client = (Client) ((WeFitApplication) getActivity().getApplicationContext()).getUser();
         mPresenter = new ClientCoachListPresenter(this, client);
 
         ((WeFitApplication) getActivity().getApplicationContext()).setToolbar(layout, mActivity);
 
         mAdapter = mPresenter.getAdapter();
-        mRecycler = layout.findViewById(R.id.recycler_coach);
+        RecyclerView mRecycler = layout.findViewById(R.id.recycler_coach);
         mRecycler.setLayoutManager(new LinearLayoutManager(getContext()));
         mRecycler.setAdapter(mAdapter);
 
@@ -93,6 +92,7 @@ public class ClientCoachListFragment extends Fragment implements ClientCoachList
     public void openCoachProfileWithMail(String mail) {
         ClientMyCoachFragment fragment = ClientMyCoachFragment.newInstance(false ,mail);
 
+        assert getActivity() != null;
         getActivity().getSupportFragmentManager().beginTransaction().replace(R.id.anchor_point, fragment, ClientMyCoachFragment.TAG)
                 .addToBackStack(ClientMyCoachFragment.TAG).commit();
     }

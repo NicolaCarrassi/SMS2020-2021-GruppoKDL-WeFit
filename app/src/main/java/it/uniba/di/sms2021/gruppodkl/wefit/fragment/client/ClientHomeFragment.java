@@ -19,6 +19,7 @@ import it.uniba.di.sms2021.gruppodkl.wefit.WeFitApplication;
 import it.uniba.di.sms2021.gruppodkl.wefit.contract.client.ClientHomeContract;
 import it.uniba.di.sms2021.gruppodkl.wefit.model.Client;
 import it.uniba.di.sms2021.gruppodkl.wefit.model.User;
+import it.uniba.di.sms2021.gruppodkl.wefit.presenter.client.ClientHomePresenter;
 import it.uniba.di.sms2021.gruppodkl.wefit.utility.Keys;
 
 
@@ -64,6 +65,8 @@ public class ClientHomeFragment extends Fragment implements User.MyImageBitmapCa
         // Inflate the layout for this fragment
         final View layout =  inflater.inflate(R.layout.client_home_fragment, container, false);
 
+        assert getActivity() != null;
+
         mUser = (Client) ((WeFitApplication) getActivity().getApplicationContext()).getUser();
         mPresenter = new ClientHomePresenter(this);
 
@@ -75,6 +78,7 @@ public class ClientHomeFragment extends Fragment implements User.MyImageBitmapCa
 
     private void bind(View view) {
         mView = view;
+        assert getActivity() != null;
         ((WeFitApplication) getActivity().getApplicationContext()).setToolbar(view, mActivity);
         mImageView = view.findViewById(R.id.user_image);
         mRecapTab = view.findViewById(R.id.recap_tab);
@@ -82,8 +86,9 @@ public class ClientHomeFragment extends Fragment implements User.MyImageBitmapCa
         mDietTab = view.findViewById(R.id.diet_tab);
         mCompletedTrainingTextView = view.findViewById(R.id.completed_trainings);
 
+        String hiUserText = getResources().getString(R.string.hi_user_string) + " " + mUser.fullName.split(" ")[0] + " !";
         TextView mTextView = view.findViewById(R.id.hi_user);
-        mTextView.setText(getResources().getString(R.string.hi_user_string) + " " + mUser.fullName.split(" ")[0] + " !");
+        mTextView.setText(hiUserText);
 
         if (mUser.image != null) {
             if (!mUser.isBitmapImageAvailable()) {
@@ -101,7 +106,8 @@ public class ClientHomeFragment extends Fragment implements User.MyImageBitmapCa
 
             FragmentActivity activity = getActivity();
             if(activity != null)
-                activity.getSupportFragmentManager().beginTransaction().replace(R.id.anchor_point, clientMyProfileFragment).commit();
+                activity.getSupportFragmentManager().beginTransaction().replace(R.id.anchor_point, clientMyProfileFragment, ClientMyProfileFragment.TAG)
+                        .addToBackStack(ClientMyProfileFragment.TAG).commit();
         });
 
         mRecapTab.setOnClickListener(v -> {
@@ -109,7 +115,8 @@ public class ClientHomeFragment extends Fragment implements User.MyImageBitmapCa
 
             FragmentActivity activity = getActivity();
             if(activity != null)
-                activity.getSupportFragmentManager().beginTransaction().replace(R.id.anchor_point, clientMyProgressFragment).commit();
+                activity.getSupportFragmentManager().beginTransaction().replace(R.id.anchor_point, clientMyProgressFragment, ClientMyProgressFragment.TAG)
+                        .addToBackStack(ClientMyProgressFragment.TAG).commit();
         });
 
         mTrainingTab.setOnClickListener(v -> {
@@ -117,7 +124,8 @@ public class ClientHomeFragment extends Fragment implements User.MyImageBitmapCa
 
             FragmentActivity activity = getActivity();
             if(activity != null)
-                activity.getSupportFragmentManager().beginTransaction().replace(R.id.anchor_point, clientMyTrainingFragment).commit();
+                activity.getSupportFragmentManager().beginTransaction().replace(R.id.anchor_point, clientMyTrainingFragment, ClientMyTrainingFragment.TAG)
+                        .addToBackStack(ClientMyTrainingFragment.TAG).commit();
         });
 
         mDietTab.setOnClickListener(v -> {
@@ -125,13 +133,15 @@ public class ClientHomeFragment extends Fragment implements User.MyImageBitmapCa
 
             FragmentActivity activity = getActivity();
             if(activity != null)
-                activity.getSupportFragmentManager().beginTransaction().replace(R.id.anchor_point, clientDietFragment).commit();
+                activity.getSupportFragmentManager().beginTransaction().replace(R.id.anchor_point, clientDietFragment, ClientDietFragment.TAG)
+                        .addToBackStack(ClientDietFragment.TAG).commit();
         });
 
     }
 
     @Override
     public void handleCallback() {
+        assert getActivity() != null;
         ((WeFitApplication) getActivity().getApplicationContext()).stopProgress(mView);
         mImageView.setImageBitmap(mUser.getImageBitmap());
     }

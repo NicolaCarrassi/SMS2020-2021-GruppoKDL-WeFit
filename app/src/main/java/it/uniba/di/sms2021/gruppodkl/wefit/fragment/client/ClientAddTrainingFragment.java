@@ -3,9 +3,7 @@ package it.uniba.di.sms2021.gruppodkl.wefit.fragment.client;
 import android.graphics.drawable.AnimatedVectorDrawable;
 import android.os.Bundle;
 
-import androidx.fragment.app.Fragment;
 
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -14,7 +12,6 @@ import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.Spinner;
 import android.widget.TextView;
-import android.widget.Toast;
 import com.google.android.material.bottomsheet.BottomSheetDialogFragment;
 import com.google.android.material.button.MaterialButton;
 
@@ -41,7 +38,6 @@ public class ClientAddTrainingFragment extends BottomSheetDialogFragment impleme
     private AnimatedVectorDrawable mSuccessAnimation;
     private LinearLayout mAddTrainingPanel;
     private LinearLayout mAddTrainingSuccess;
-    private MaterialButton mBackButton;
 
 
     public ClientAddTrainingFragment() {
@@ -58,6 +54,7 @@ public class ClientAddTrainingFragment extends BottomSheetDialogFragment impleme
         mPresenter = new ClientAddTrainingPresenter(this);
         bind(layout);
 
+        assert getActivity() != null;
         mClientMail = ((WeFitApplication) getActivity().getApplicationContext()).getUser().email;
 
         return layout;
@@ -72,10 +69,11 @@ public class ClientAddTrainingFragment extends BottomSheetDialogFragment impleme
         ImageView mImageView = layout.findViewById(R.id.success_anim);
         mImageView.setBackgroundResource(R.drawable.success_anim);
         mSuccessAnimation = (AnimatedVectorDrawable) mImageView.getBackground();
-        mBackButton = layout.findViewById(R.id.back_home);
+        MaterialButton mBackButton = layout.findViewById(R.id.back_home);
 
         mBackButton.setOnClickListener(v -> {
             dismiss();
+            assert getActivity() != null;
             ClientAddFragment parent = (ClientAddFragment) getActivity().getSupportFragmentManager().findFragmentByTag(ClientAddFragment.TAG);
             if(parent!=null){
                 parent.dismiss();

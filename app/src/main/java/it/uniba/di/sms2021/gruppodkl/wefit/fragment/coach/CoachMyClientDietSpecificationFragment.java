@@ -12,6 +12,7 @@ import android.view.ViewGroup;
 import com.google.android.material.button.MaterialButton;
 
 import it.uniba.di.sms2021.gruppodkl.wefit.R;
+import it.uniba.di.sms2021.gruppodkl.wefit.WeFitApplication;
 import it.uniba.di.sms2021.gruppodkl.wefit.adapter.CoachDietDayAdapter;
 import it.uniba.di.sms2021.gruppodkl.wefit.contract.coach.CoachMyClientDietSpecificationContract;
 import it.uniba.di.sms2021.gruppodkl.wefit.model.Meal;
@@ -78,6 +79,19 @@ public class CoachMyClientDietSpecificationFragment extends Fragment
 
         mPresenter = new CoachMyClientDietSpecificationPresenter(this);
 
+        bind(layout);
+
+
+        return layout;
+    }
+
+    private void bind(View layout){
+
+        if(getActivity() != null && getActivity() instanceof WeFitApplication.CallbackOperations){
+            WeFitApplication.CallbackOperations act = (WeFitApplication.CallbackOperations) getActivity();
+            ((WeFitApplication)getActivity().getApplicationContext()).setToolbar(layout,act);
+        }
+
 
         CustomRecyclerView breakfastRecycler = layout.findViewById(R.id.breakfast_recycler);
         mBreakfastAdapter = mPresenter.getAdapter(mClientMail, mDayOfTheWeek, Meal.MealType.BREAKFAST);
@@ -103,11 +117,6 @@ public class CoachMyClientDietSpecificationFragment extends Fragment
 
         addMealButton.setOnClickListener(v -> addMeal());
         updateButton.setOnClickListener(v -> updateMeals());
-
-
-
-
-        return layout;
     }
 
     @Override
@@ -129,8 +138,10 @@ public class CoachMyClientDietSpecificationFragment extends Fragment
 
 
     private void addMeal(){
-        CoachAddMealFragment fragment = CoachAddMealFragment.newInstance(mClientMail, mDayOfTheWeek);
-        fragment.show(getActivity().getSupportFragmentManager(), CoachAddMealFragment.TAG);
+        if(getActivity() != null) {
+            CoachAddMealFragment fragment = CoachAddMealFragment.newInstance(mClientMail, mDayOfTheWeek);
+            fragment.show(getActivity().getSupportFragmentManager(), CoachAddMealFragment.TAG);
+        }
     }
 
     private void updateMeals(){

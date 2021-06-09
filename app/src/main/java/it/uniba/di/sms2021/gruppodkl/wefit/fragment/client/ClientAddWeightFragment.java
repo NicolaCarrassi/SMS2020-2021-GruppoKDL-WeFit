@@ -1,16 +1,13 @@
 package it.uniba.di.sms2021.gruppodkl.wefit.fragment.client;
 
 import android.graphics.drawable.AnimatedVectorDrawable;
-import android.graphics.drawable.AnimationDrawable;
 import android.os.Bundle;
 
-import androidx.fragment.app.Fragment;
-import androidx.fragment.app.FragmentActivity;
+
 
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
@@ -58,6 +55,7 @@ public class ClientAddWeightFragment extends BottomSheetDialogFragment implement
 
 
         mPresenter = new ClientAddWeightPresenter(this);
+        assert getActivity() != null;
         mClient =(Client) ((WeFitApplication) getActivity().getApplicationContext()).getUser();
 
         bind(layout);
@@ -68,10 +66,12 @@ public class ClientAddWeightFragment extends BottomSheetDialogFragment implement
 
 
     private void bind(View layout){
+        String weight = Float.toString(mClient.weight);
+
         mButtonDecrease = layout.findViewById(R.id.buttonDecrease);
         mButtonIncrease = layout.findViewById(R.id.buttonIncrease);
         mWeightValue = layout.findViewById(R.id.weightValue);
-        mWeightValue.setText(Float.toString(mClient.weight));
+        mWeightValue.setText(weight);
         mAddWeight = layout.findViewById(R.id.btn_add_weight);
         ImageView mImageView = layout.findViewById(R.id.success_anim);
         mImageView.setBackgroundResource(R.drawable.success_anim);
@@ -103,6 +103,7 @@ public class ClientAddWeightFragment extends BottomSheetDialogFragment implement
 
         mBackButton.setOnClickListener(v -> {
             dismiss();
+            assert getActivity() != null;
             ClientAddFragment parent = (ClientAddFragment) getActivity().getSupportFragmentManager().findFragmentByTag(ClientAddFragment.TAG);
             if(parent!=null){
                 parent.dismiss();

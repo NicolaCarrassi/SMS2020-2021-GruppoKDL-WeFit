@@ -41,7 +41,6 @@ public class ClientMyTrainingSpecificationFragment extends Fragment implements C
     public static ClientMyTrainingSpecificationFragment newInstance(Training training) {
         ClientMyTrainingSpecificationFragment fragment = new ClientMyTrainingSpecificationFragment();
 
-
         Bundle args = new Bundle();
         args.putParcelable(TRAINING, training);
         fragment.setArguments(args);
@@ -62,6 +61,11 @@ public class ClientMyTrainingSpecificationFragment extends Fragment implements C
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
 
         View layout = inflater.inflate(R.layout.client_daily_training, container, false);
+
+        if(getActivity() instanceof WeFitApplication.CallbackOperations){
+            WeFitApplication.CallbackOperations act = (WeFitApplication.CallbackOperations) getActivity();
+            ((WeFitApplication)getActivity().getApplicationContext()).setToolbar(layout,act);
+        }
 
         ClientTrainingSpecificationContract.Presenter mPresenter = new ClientMyTrainingSpecificationPresenter(this);
 

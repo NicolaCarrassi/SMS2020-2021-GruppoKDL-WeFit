@@ -69,6 +69,7 @@ public class ClientDailyDietFragment extends Fragment implements ClientDailyDiet
         // Inflate the layout for this fragment
         View layout =  inflater.inflate(R.layout.client_daily_diet_fragment, container, false);
 
+        assert getActivity() != null;
         String clientMail = ((WeFitApplication)getActivity().getApplicationContext()).getUser().email;
 
         mPresenter = new ClientDailyDietPresenter(this);

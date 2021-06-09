@@ -28,7 +28,7 @@ public class ClientAddFragment extends BottomSheetDialogFragment {
 
 
     @Override
-    public void onAttach(Context context) {
+    public void onAttach(@NonNull Context context) {
         super.onAttach(context);
         if(context instanceof BottomNavigationSelector){
             mActivity=(BottomNavigationSelector) context;
@@ -105,7 +105,7 @@ public class ClientAddFragment extends BottomSheetDialogFragment {
     }
 
     @Override
-    public void onDismiss(DialogInterface dialog) {
+    public void onDismiss(@NonNull DialogInterface dialog) {
         super.onDismiss(dialog);
         mActivity.selectBottomNavigationItem();
     }

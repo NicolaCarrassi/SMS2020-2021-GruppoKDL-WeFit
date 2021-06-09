@@ -12,6 +12,7 @@ import android.view.ViewGroup;
 import android.widget.TextView;
 
 import it.uniba.di.sms2021.gruppodkl.wefit.R;
+import it.uniba.di.sms2021.gruppodkl.wefit.WeFitApplication;
 import it.uniba.di.sms2021.gruppodkl.wefit.adapter.DietListAdapter;
 import it.uniba.di.sms2021.gruppodkl.wefit.contract.coach.CoachMyClientDietListContract;
 import it.uniba.di.sms2021.gruppodkl.wefit.presenter.coach.CoachMyClientDietListPresenter;
@@ -29,7 +30,6 @@ public class CoachMyClientDietListFragment extends Fragment implements CoachMyCl
     private static final String CLIENT_MAIL  = "clientMail";
     private static final String CLIENT_NAME = "clientName";
 
-    private TextView mTextClientName;
     private CoachMyClientDietListContract.Presenter mPresenter;
 
 
@@ -71,12 +71,16 @@ public class CoachMyClientDietListFragment extends Fragment implements CoachMyCl
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
         View view =  inflater.inflate(R.layout.coach_my_client_diet_list_fragment, container, false);
-
         String title = mClienName.split(" ")[0] + " " + getResources().getString(R.string.diet_caps);
-
         mPresenter = new CoachMyClientDietListPresenter(this);
 
-        mTextClientName = view.findViewById(R.id.diet_client_name);
+        if(getActivity() != null && getActivity() instanceof WeFitApplication.CallbackOperations){
+            WeFitApplication.CallbackOperations act = (WeFitApplication.CallbackOperations) getActivity();
+            ((WeFitApplication) getActivity().getApplicationContext()).setToolbar(view,act);
+        }
+
+
+        TextView mTextClientName = view.findViewById(R.id.diet_client_name);
         mTextClientName.setText(title);
 
         RecyclerView recyclerView = view.findViewById(R.id.recycler_diet_days);
@@ -90,7 +94,8 @@ public class CoachMyClientDietListFragment extends Fragment implements CoachMyCl
     public void showDietOfTheDay(String weekDay) {
         CoachMyClientDietSpecificationFragment fragment = CoachMyClientDietSpecificationFragment.newInstance(mClientMail, weekDay);
 
-        getActivity().getSupportFragmentManager().beginTransaction().replace(R.id.anchor_point, fragment, CoachMyClientDietSpecificationFragment.TAG)
+        if(getActivity() != null)
+            getActivity().getSupportFragmentManager().beginTransaction().replace(R.id.anchor_point, fragment, CoachMyClientDietSpecificationFragment.TAG)
                 .addToBackStack(CoachMyClientDietSpecificationFragment.TAG).commit();
     }
 }

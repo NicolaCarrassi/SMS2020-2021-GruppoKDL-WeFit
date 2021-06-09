@@ -5,15 +5,19 @@ package it.uniba.di.sms2021.gruppodkl.wefit.db;
 import com.google.firebase.firestore.DocumentReference;
 import com.google.firebase.firestore.DocumentSnapshot;
 import com.google.firebase.firestore.FirebaseFirestore;
+import com.google.firebase.firestore.QuerySnapshot;
 import com.google.firebase.firestore.WriteBatch;
 
 import java.text.SimpleDateFormat;
 import java.util.Calendar;
 import java.util.HashMap;
+import java.util.HashSet;
 import java.util.Map;
+import java.util.Set;
 
 import it.uniba.di.sms2021.gruppodkl.wefit.model.Client;
 import it.uniba.di.sms2021.gruppodkl.wefit.model.Coach;
+import it.uniba.di.sms2021.gruppodkl.wefit.model.Training;
 import it.uniba.di.sms2021.gruppodkl.wefit.model.User;
 import it.uniba.di.sms2021.gruppodkl.wefit.utility.Keys;
 
@@ -25,14 +29,14 @@ public class UserDAO {
     }
 
     public interface TrainingLoaded{
-        void trainingLoaded(int trainingCompleted, int trainingTotal);
+        void trainingLoaded(Set<String> trainingMade, Set<String> trainingAssigned);
     }
 
 
     private static User sUser;
     private static boolean sResult;
-    private static int sTrainingCompleted;
-    private static int sTotalTraining;
+    private static Set<String> sTrainingMade;
+    private static Set<String> sTrainingAssigned;
 
 
     public static void getUser(String email, UserCallbacks callback){
@@ -119,7 +123,16 @@ public class UserDAO {
 
 
     public static void loadClientTrainingInformation(String clientMail, TrainingLoaded callback){
-        sTrainingCompleted = 0;
+
+        if(sTrainingAssigned != null)
+            sTrainingAssigned.clear();
+        else
+            sTrainingAssigned = new HashSet<>();
+
+        if(sTrainingMade != null)
+            sTrainingMade.clear();
+        else
+            sTrainingMade = new HashSet<>();
 
         SimpleDateFormat sdf = new SimpleDateFormat("dd/MM/yy");
 
@@ -133,13 +146,18 @@ public class UserDAO {
                 .whereGreaterThan(TrainingDAO.RegisterTrainingKeys.DATE, startDate)
                 .get().addOnCompleteListener(task -> {
                     if(task.isSuccessful()){
-                        sTrainingCompleted = task.getResult().size();
+                        QuerySnapshot snapshots = task.getResult();
+                        for(DocumentSnapshot document : snapshots.getDocuments())
+                            sTrainingMade.add(document.getString(TrainingDAO.RegisterTrainingKeys.TRAINING_NAME));
 
                         instance.collection(Keys.Collections.TRAINING).get()
                                 .addOnCompleteListener(completed -> {
                                     if(completed.isSuccessful()){
-                                        sTotalTraining = completed.getResult().size();
-                                        callback.trainingLoaded(sTrainingCompleted, sTotalTraining);
+                                        QuerySnapshot querySnapshot = task.getResult();
+                                        for(DocumentSnapshot document: querySnapshot.getDocuments())
+                                            sTrainingAssigned.add(document.getString(Training.TrainingKeys.TITLE));
+
+                                        callback.trainingLoaded(sTrainingMade, sTrainingAssigned);
                                     }
                                 });
                     }

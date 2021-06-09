@@ -60,6 +60,7 @@ public class CoachHomeFragment extends Fragment implements User.MyImageBitmapCal
                              Bundle savedInstanceState) {
         final View layout =  inflater.inflate(R.layout.coach_home_fragment, container, false);
 
+        assert getActivity() != null;
         mCoach = (Coach) ((WeFitApplication) getActivity().getApplicationContext()).getUser();
         mView = layout;
         bind();
@@ -74,6 +75,9 @@ public class CoachHomeFragment extends Fragment implements User.MyImageBitmapCal
      *
      */
     private void bind(){
+        String temp;
+
+        assert getActivity() != null;
         ((WeFitApplication) getActivity().getApplicationContext()).setToolbar(mView, mActivity);
 
         mImageView = mView.findViewById(R.id.user_image);
@@ -82,7 +86,8 @@ public class CoachHomeFragment extends Fragment implements User.MyImageBitmapCal
         mRequestsTab = mView.findViewById(R.id.requests_tab);
 
         TextView textView = mView.findViewById(R.id.hi_user);
-        textView.setText(getResources().getString(R.string.hi_user_string)+ " "+ mCoach.fullName.split(" ")[0]+ " !");
+        temp = getResources().getString(R.string.hi_user_string)+ " "+ mCoach.fullName.split(" ")[0]+ " !";
+        textView.setText(temp);
 
         mFollowerRequestTextView = mView.findViewById(R.id.follower_request_textview);
 
@@ -128,6 +133,7 @@ public class CoachHomeFragment extends Fragment implements User.MyImageBitmapCal
 
     @Override
     public void handleCallback() {
+        assert getActivity() != null;
         ((WeFitApplication) getActivity().getApplicationContext()).stopProgress(mView);
         mImageView.setImageBitmap(mCoach.getImageBitmap());
     }

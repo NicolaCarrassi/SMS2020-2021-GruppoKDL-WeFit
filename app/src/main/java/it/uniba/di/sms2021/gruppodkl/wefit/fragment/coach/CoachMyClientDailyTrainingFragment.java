@@ -123,6 +123,7 @@ public class CoachMyClientDailyTrainingFragment extends Fragment implements Coac
 
     private void showAdd(){
         final CoachAddExerciseFragment addFragment = CoachAddExerciseFragment.newInstance(mClientMail,mTraining);
+        assert getActivity() != null;
         addFragment.show(getActivity().getSupportFragmentManager(), CoachAddExerciseFragment.TAG);
     }
 
@@ -143,6 +144,7 @@ public class CoachMyClientDailyTrainingFragment extends Fragment implements Coac
 
 
     private void openEditTrainingDialog(){
+        assert getActivity() != null;
         EditTrainingDialog dialog = new EditTrainingDialog(getActivity(), this, mTraining);
         dialog.show();
     }

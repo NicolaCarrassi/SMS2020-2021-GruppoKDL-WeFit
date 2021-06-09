@@ -32,10 +32,8 @@ public class CoachClientsRequestsFragment extends Fragment
         // Required empty public constructor
     }
 
-    private CustomRecyclerView mRecyclerView;
     private CoachClientRequestsAdapter mAdapter;
     private WeFitApplication.CallbackOperations mActivity;
-    private TextView mEmpty;
     private CoachClientsRequestsContract.Presenter mPresenter;
 
 
@@ -57,17 +55,18 @@ public class CoachClientsRequestsFragment extends Fragment
                              Bundle savedInstanceState) {
         View layout =  inflater.inflate(R.layout.coach_clients_requests_fragment, container, false);
 
+        assert getActivity() != null;
         Coach coach = (Coach) ((WeFitApplication) getActivity().getApplicationContext()).getUser();
         mPresenter = new CoachClientRequestsPresenter(this, coach);
 
 
         ((WeFitApplication)getActivity().getApplicationContext()).setToolbar(layout, mActivity);
-        mRecyclerView = layout.findViewById(R.id.recycler_requests);
+        CustomRecyclerView mRecyclerView = layout.findViewById(R.id.recycler_requests);
         mAdapter = mPresenter.makeAdapter();
         mRecyclerView.setLayoutManager(new LinearLayoutManager(getContext()));
         mRecyclerView.setAdapter(mAdapter);
 
-        mEmpty = layout.findViewById(R.id.empty_requests);
+        TextView mEmpty = layout.findViewById(R.id.empty_requests);
         mRecyclerView.setEmptyView(mEmpty);
 
         return layout;
@@ -90,6 +89,8 @@ public class CoachClientsRequestsFragment extends Fragment
     @Override
     public void showClientProfile(Request request) {
         CoachClientRequestProfileFragment fragment = CoachClientRequestProfileFragment.newInstance(request);
+
+        assert getActivity() != null;
         getActivity().getSupportFragmentManager().beginTransaction().replace(R.id.anchor_point, fragment,CoachClientRequestProfileFragment.TAG)
                 .addToBackStack(CoachClientRequestProfileFragment.TAG).commit();
     }

@@ -19,8 +19,8 @@ import it.uniba.di.sms2021.gruppodkl.wefit.viewholder.CoachClientRequestsViewHol
 public class CoachClientRequestsAdapter extends FirestoreRecyclerAdapter<Request, CoachClientRequestsViewHolder>
         implements CoachClientRequestsViewHolder.ViewHolderCallback{
 
-    private CoachClientsRequestsContract.Presenter mPresenter;
-    private Coach mCoach;
+    private final CoachClientsRequestsContract.Presenter mPresenter;
+    private final Coach mCoach;
 
 
     public CoachClientRequestsAdapter(FirestoreRecyclerOptions<Request> options, CoachClientsRequestsContract.Presenter presenter, Coach coach) {
@@ -35,6 +35,7 @@ public class CoachClientRequestsAdapter extends FirestoreRecyclerAdapter<Request
     }
 
 
+    @NonNull
     @Override
     public CoachClientRequestsViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
        View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.coach_list_requests_item, parent, false);

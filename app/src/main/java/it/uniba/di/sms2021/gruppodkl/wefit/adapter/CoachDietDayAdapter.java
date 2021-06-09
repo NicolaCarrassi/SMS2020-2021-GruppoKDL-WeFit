@@ -17,7 +17,7 @@ import it.uniba.di.sms2021.gruppodkl.wefit.viewholder.MealViewHolder;
 
 public class CoachDietDayAdapter extends FirestoreRecyclerAdapter<Meal, MealViewHolder> implements  MealViewHolder.CoachDietCallbackInterface {
 
-    private CoachMyClientDietSpecificationContract.Presenter mPresenter;
+    private final CoachMyClientDietSpecificationContract.Presenter mPresenter;
     private RecyclerView.LayoutManager mLayoutManager;
 
     private boolean sIsVisible = false;
@@ -25,7 +25,7 @@ public class CoachDietDayAdapter extends FirestoreRecyclerAdapter<Meal, MealView
      * Create a new RecyclerView adapter that listens to a Firestore Query.  See {@link
      * FirestoreRecyclerOptions} for configuration options.
      *
-     * @param options
+     * @param options opzioni recycler
      */
     public CoachDietDayAdapter(@NonNull FirestoreRecyclerOptions<Meal> options, CoachMyClientDietSpecificationContract.Presenter presenter) {
         super(options);

@@ -19,7 +19,6 @@ import java.util.Map;
 import it.uniba.di.sms2021.gruppodkl.wefit.R;
 import it.uniba.di.sms2021.gruppodkl.wefit.contract.coach.CoachRegistrationFragmentContract;
 import it.uniba.di.sms2021.gruppodkl.wefit.model.Coach;
-import it.uniba.di.sms2021.gruppodkl.wefit.utility.Keys;
 
 
 public class CoachRegistrationFragment extends Fragment implements CoachRegistrationFragmentContract.View {

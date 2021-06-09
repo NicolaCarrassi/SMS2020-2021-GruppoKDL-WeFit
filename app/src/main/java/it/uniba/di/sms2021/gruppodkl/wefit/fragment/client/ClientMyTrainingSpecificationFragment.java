@@ -75,14 +75,20 @@ public class ClientMyTrainingSpecificationFragment extends Fragment implements C
         CustomRecyclerView mRecycler = layout.findViewById(R.id.train_recycler);
         TextView mEmpty = layout.findViewById(R.id.no_exercises);
 
-        mTrainingName.setText(mTraining.title);
-        mTrainingTime.setText(mTrainingTime.getText() + mTraining.convertDurationTime());
-        mTrainingDay.setText(mTrainingDay.getText() + DayOfTheWeek.getDayOfTheWeek(mTraining.dayOfWeek, layout));
+        String temp = mTrainingTime.getText() + mTraining.convertDurationTime();
 
-        User user = ((WeFitApplication)getActivity().getApplicationContext()).getUser();
+        mTrainingName.setText(mTraining.title);
+        mTrainingTime.setText(temp);
+
+        temp = mTrainingDay.getText() + DayOfTheWeek.getDayOfTheWeek(mTraining.dayOfWeek, layout);
+
+        mTrainingDay.setText(temp);
+
+        assert getActivity() != null;
+        String userMail = ((WeFitApplication)getActivity().getApplicationContext()).getUser().email;
 
         //GESTIONE RECYCLERVIEW
-        mAdapter = mPresenter.getAdapter(user.email, mTraining);
+        mAdapter = mPresenter.getAdapter(userMail, mTraining);
         mRecycler.setAdapter(mAdapter);
         mRecycler.setLayoutManager(new LinearLayoutManager(getContext()));
         mRecycler.setEmptyView(mEmpty);
@@ -109,6 +115,7 @@ public class ClientMyTrainingSpecificationFragment extends Fragment implements C
     public void openExercisePage(String exerciseName) {
         ClientExerciseSpecificationFragment fragment = ClientExerciseSpecificationFragment.newInstance(exerciseName);
 
+        assert getActivity() != null;
         getActivity().getSupportFragmentManager().beginTransaction().replace(R.id.anchor_point, fragment, ClientExerciseSpecificationFragment.TAG)
                 .addToBackStack(ClientExerciseSpecificationFragment.TAG).commit();
     }

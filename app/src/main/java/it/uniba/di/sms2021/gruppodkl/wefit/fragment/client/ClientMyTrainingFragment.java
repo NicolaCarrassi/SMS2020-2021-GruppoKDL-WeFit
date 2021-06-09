@@ -26,8 +26,6 @@ public class ClientMyTrainingFragment extends Fragment implements ClientMyTraini
 
     private ClientMyTrainingContract.Presenter mPresenter;
 
-    private CustomRecyclerView mRecyclerView;
-    private TextView mEmpty;
     private ClientMyTrainingAdapter mAdapter;
 
     @Override
@@ -48,9 +46,10 @@ public class ClientMyTrainingFragment extends Fragment implements ClientMyTraini
             ((WeFitApplication) getActivity().getApplicationContext()).setToolbar(view, activity);
         }
 
-        mRecyclerView = view.findViewById(R.id.recycler_training_days);
-        mEmpty = view.findViewById(R.id.empty_training_days);
+        CustomRecyclerView mRecyclerView = view.findViewById(R.id.recycler_training_days);
+        TextView mEmpty = view.findViewById(R.id.empty_training_days);
 
+        assert getActivity() != null;
         String clientEmail = ((WeFitApplication) getActivity().getApplicationContext()).getUser().email;
         mAdapter = mPresenter.getAdapter(clientEmail);
 
@@ -78,6 +77,7 @@ public class ClientMyTrainingFragment extends Fragment implements ClientMyTraini
     //TODO AGGIUNGI LOGICA MASTER FLOW DETAIL
     public void openTrainingSchedule(Training training) {
         ClientMyTrainingSpecificationFragment fragment = ClientMyTrainingSpecificationFragment.newInstance(training);
+        assert getActivity() != null;
         getActivity().getSupportFragmentManager().beginTransaction()
                 .replace(R.id.anchor_point,fragment,ClientMyTrainingSpecificationFragment.TAG)
                 .addToBackStack(ClientMyTrainingSpecificationFragment.TAG).commit();

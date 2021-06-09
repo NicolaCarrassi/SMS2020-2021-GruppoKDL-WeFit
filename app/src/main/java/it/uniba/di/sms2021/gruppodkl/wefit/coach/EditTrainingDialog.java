@@ -33,7 +33,7 @@ public class EditTrainingDialog extends Dialog implements View.OnClickListener{
     private EditText mTrainingNameEdit;
     private EditText mTrainingTimeEdit;
     private Spinner mDayOfTheWeekSpinner;
-    private Context mContext;
+    private final Context mContext;
 
 
     public EditTrainingDialog(@NonNull Context context, final EditTrainingDialogCallbacks callback, Training training) {
@@ -66,8 +66,10 @@ public class EditTrainingDialog extends Dialog implements View.OnClickListener{
         //IMPOSTO VALORI DI DEFAULT
         mTrainingNameEdit.setText(mTraining.title);
 
-        if(mTraining.time > 0)
-            mTrainingTimeEdit.setText(Integer.toString(mTraining.time));
+        if(mTraining.time > 0) {
+            String trainingTime = Integer.toString(mTraining.time);
+            mTrainingTimeEdit.setText(trainingTime);
+        }
 
         ArrayAdapter<CharSequence> adapter = ArrayAdapter.createFromResource(getContext(), R.array.day_of_the_week, R.layout.spinner_layout);
         adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);

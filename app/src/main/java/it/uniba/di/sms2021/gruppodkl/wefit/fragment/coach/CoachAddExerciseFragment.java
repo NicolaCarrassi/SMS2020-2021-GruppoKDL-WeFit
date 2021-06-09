@@ -99,12 +99,11 @@ public class CoachAddExerciseFragment extends BottomSheetDialogFragment implemen
             if(isTime){
                 mTextViewNumberOf.setText(getResources().getString(R.string.seconds_number));
                 mTextViewSeconds.setVisibility(View.VISIBLE);
-                mEditTextNumber.setText("");
             }else {
                 mTextViewNumberOf.setText(getResources().getString(R.string.reps_number));
                 mTextViewSeconds.setVisibility(View.GONE);
-                mEditTextNumber.setText("");
             }
+            mEditTextNumber.setText("");
         });
 
         mButtonCancel.setOnClickListener(v -> dismiss());

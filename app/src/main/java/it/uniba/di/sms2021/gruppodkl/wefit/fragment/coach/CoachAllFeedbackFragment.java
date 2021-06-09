@@ -37,6 +37,7 @@ public class CoachAllFeedbackFragment extends Fragment implements CoachAllFeedba
         CoachAllFeedbacksContract.Presenter mPresenter = new CoachAllFeedbacksPresenter(this);
         RecyclerView mRecycler = layout.findViewById(R.id.recycler_feedback);
 
+        assert getActivity() != null;
         Coach mCoach = (Coach) ((WeFitApplication) getActivity().getApplicationContext()).getUser();
         mAdapter = mPresenter.getAdapter(mCoach.email);
 

@@ -121,6 +121,7 @@ public class CoachMyClientProfileFragment extends Fragment implements CoachMyCli
     private void goClientTraining(){
         CoachMyClientScheduleFragment fragment = CoachMyClientScheduleFragment.newInstance(mClientMail);
 
+        assert getActivity() != null;
         getActivity().getSupportFragmentManager().beginTransaction().replace(R.id.anchor_point, fragment,CoachMyClientScheduleFragment.TAG)
                 .addToBackStack(CoachMyClientScheduleFragment.TAG).commit();
     }
@@ -128,6 +129,7 @@ public class CoachMyClientProfileFragment extends Fragment implements CoachMyCli
     private void goClientDiet(){
         CoachMyClientDietListFragment fragment = CoachMyClientDietListFragment.newInstance(mClientMail, mClientProfile.fullName);
 
+        assert getActivity() != null;
         getActivity().getSupportFragmentManager().beginTransaction().replace(R.id.anchor_point,fragment, CoachMyClientDietListFragment.TAG)
                 .addToBackStack(CoachMyClientDietListFragment.TAG).commit();
     }
@@ -145,6 +147,7 @@ public class CoachMyClientProfileFragment extends Fragment implements CoachMyCli
 
         if(client.image != null) {
             if (!client.isBitmapImageAvailable()) {
+                assert getActivity() != null;
                 ((WeFitApplication)getActivity().getApplicationContext()).startProgress(mView);
                 client.createImageBitmap(this);
             }else
@@ -163,6 +166,7 @@ public class CoachMyClientProfileFragment extends Fragment implements CoachMyCli
 
     @Override
     public void handleCallback() {
+        assert getActivity() != null;
         ((WeFitApplication)getActivity().getApplicationContext()).stopProgress(mView);
         mClientImage.setImageBitmap(mClientProfile.getImageBitmap());
     }

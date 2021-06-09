@@ -96,7 +96,7 @@ public class ClientExerciseSpecificationFragment extends Fragment implements Cli
         mTextViewExerciseDescription = layout.findViewById(R.id.exercise_description);
         mTextViewExerciseTitle = layout.findViewById(R.id.exercise_name);
 
-        initFragment(layout);
+        initFragment();
         
         return layout;
     }
@@ -130,9 +130,10 @@ public class ClientExerciseSpecificationFragment extends Fragment implements Cli
         Toast.makeText(getActivity(), getResources().getString(R.string.error_general), Toast.LENGTH_SHORT).show();
     }
 
-    private void initFragment(View view){
+    private void initFragment(){
         if(mYoutubePlayerFragment == null){
             mYoutubePlayerFragment = (YouTubePlayerSupportFragmentX) getChildFragmentManager().findFragmentById(R.id.youtube_frag);
+            assert mYoutubePlayerFragment != null;
             mYoutubePlayerFragment.initialize(YoutubeConfig.getApiKey(), new YouTubePlayer.OnInitializedListener() {
                 @Override
                 public void onInitializationSuccess(YouTubePlayer.Provider provider, YouTubePlayer youTubePlayer, boolean b) {

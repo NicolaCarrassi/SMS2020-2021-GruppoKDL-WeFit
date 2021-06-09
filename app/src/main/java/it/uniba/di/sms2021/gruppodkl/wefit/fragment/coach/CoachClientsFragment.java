@@ -57,6 +57,7 @@ public class CoachClientsFragment extends Fragment implements CoachClientsContra
         TextView emptyView = view.findViewById(R.id.empty_client_list);
 
         //gestione recycler
+        assert getActivity() != null;
         String coachEmail = ((WeFitApplication) getActivity().getApplicationContext()).getUser().email;
         mAdapter = mPresenter.getAdapter(coachEmail);
         recyclerView.setAdapter(mAdapter);
@@ -81,6 +82,7 @@ public class CoachClientsFragment extends Fragment implements CoachClientsContra
     public void openClientProfile(String clientMail) {
         Fragment clientProfileFragment = CoachMyClientProfileFragment.newInstance(clientMail);
 
+        assert getActivity() != null;
         getActivity().getSupportFragmentManager().beginTransaction().replace(R.id.anchor_point,clientProfileFragment, CoachMyClientProfileFragment.TAG)
                 .addToBackStack(CoachMyClientProfileFragment.TAG).commit();
     }

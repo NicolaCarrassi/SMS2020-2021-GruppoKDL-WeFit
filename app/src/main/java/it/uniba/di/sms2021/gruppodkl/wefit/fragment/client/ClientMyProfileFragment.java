@@ -10,12 +10,10 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.webkit.MimeTypeMap;
-import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
-
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
@@ -120,6 +118,7 @@ public class ClientMyProfileFragment extends Fragment implements ClientProfileFr
      * @param view La view da cui prendere i riferimenti
      */
     private void bind(View view){
+        assert getActivity() != null;
         ((WeFitApplication) getActivity().getApplicationContext()).setToolbar(view, mActivity);
 
 
@@ -157,10 +156,12 @@ public class ClientMyProfileFragment extends Fragment implements ClientProfileFr
                 objective = getResources().getString(R.string.gain_mass_objective);
         }
 
+        String userHeight = Integer.valueOf(mUser.height).toString();
+        String userWeight = String.format("%.2f",mUser.weight);
 
         mFullNameEditText.setText(mUser.fullName);
         mGenderEditText.setText(gender);
-        mHeightEditText.setText(Integer.valueOf(mUser.height).toString());
+        mHeightEditText.setText(userHeight);
         mObjectiveEditText.setText(objective);
 
         // necessaria solo per settare i testi degli attributi non modificabili
@@ -168,7 +169,7 @@ public class ClientMyProfileFragment extends Fragment implements ClientProfileFr
         temp.setText(mUser.email);
 
         temp = view.findViewById(R.id.profile_weight);
-        temp.setText(String.format("%.2f",mUser.weight));
+        temp.setText(userWeight);
 
         mUpdateButton = view.findViewById(R.id.btn_save_profile_update);
 
@@ -378,6 +379,7 @@ public class ClientMyProfileFragment extends Fragment implements ClientProfileFr
 
     @Override
     public String getFileExtension(Uri uri){
+        assert getActivity() != null;
         ContentResolver contentResolver = getActivity().getContentResolver();
         MimeTypeMap mime = MimeTypeMap.getSingleton();
         return  mime.getExtensionFromMimeType(contentResolver.getType(uri));

@@ -19,7 +19,6 @@ import it.uniba.di.sms2021.gruppodkl.wefit.utility.Keys;
 public class AddFeedbackDialog extends Dialog implements View.OnClickListener {
 
     public Activity activity;
-    public Dialog dialog;
     public Button annulla, conferma;
     public RatingBar ratingBar;
     public EditText feedbackText;
@@ -49,20 +48,17 @@ public class AddFeedbackDialog extends Dialog implements View.OnClickListener {
 
     @Override
     public void onClick(View v) {
-        switch (v.getId()){
-            case R.id.annulla:
+        int id = v.getId();
+            if(id == R.id.annulla)
                 dismiss();
-                break;
-            case R.id.rating_button:
-                if(ratingBar.getRating() > 0) {
+            else if (id == R.id.rating_button) {
+                if (ratingBar.getRating() > 0) {
                     if (activity instanceof ClientMyCoachFragment.CoachProfileCallbacks)
                         ((ClientMyCoachFragment.CoachProfileCallbacks) activity).makeRating(getRatingInfo());
+
                     dismiss();
                 }
-                break;
-            default:
-                break;
-        }
+            }
     }
 
     /**

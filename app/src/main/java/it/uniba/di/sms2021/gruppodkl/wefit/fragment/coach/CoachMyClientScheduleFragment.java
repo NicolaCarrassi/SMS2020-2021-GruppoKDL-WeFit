@@ -34,10 +34,6 @@ public class CoachMyClientScheduleFragment extends Fragment implements CoachMyCl
     private static final String CLIENT_MAIL = "coachMail";
     private String mClientMail;
 
-    private TextView mClientName;
-    private CustomRecyclerView mRecyclerView;
-    private TextView mEmptyTrainingLabel;
-    private MaterialButton mAddTrainingButton;
     private FirestoreRecyclerAdapter<Training, TrainingViewHolder> mAdapter;
 
     private CoachMyClientScheduleContract.Presenter mPresenter;
@@ -82,10 +78,9 @@ public class CoachMyClientScheduleFragment extends Fragment implements CoachMyCl
 
         mPresenter = new CoachMyClientSchedulePresenter(this, mClientMail);
 
-        mClientName = view.findViewById(R.id.client_name);
-        mRecyclerView = view.findViewById(R.id.train_recycler);
-        mEmptyTrainingLabel = view.findViewById(R.id.no_trainings);
-        mAddTrainingButton = view.findViewById(R.id.btn_new_training);
+        CustomRecyclerView mRecyclerView = view.findViewById(R.id.train_recycler);
+        TextView mEmptyTrainingLabel = view.findViewById(R.id.no_trainings);
+        MaterialButton mAddTrainingButton = view.findViewById(R.id.btn_new_training);
 
         mAdapter = mPresenter.getAdapter(mClientMail);
 
@@ -121,6 +116,7 @@ public class CoachMyClientScheduleFragment extends Fragment implements CoachMyCl
     public void openTrainingSpecification(Training training) {
         CoachMyClientDailyTrainingFragment fragment = CoachMyClientDailyTrainingFragment.newInstance(mClientMail,training);
 
+        assert getActivity() != null;
         getActivity().getSupportFragmentManager().beginTransaction()
                 .replace(R.id.anchor_point, fragment, CoachMyClientDailyTrainingFragment.TAG)
                 .addToBackStack(CoachMyClientDailyTrainingFragment.TAG).commit();

@@ -9,6 +9,8 @@ import androidx.annotation.NonNull;
 import com.firebase.ui.firestore.paging.FirestorePagingAdapter;
 import com.firebase.ui.firestore.paging.FirestorePagingOptions;
 
+import java.util.Objects;
+
 import it.uniba.di.sms2021.gruppodkl.wefit.R;
 import it.uniba.di.sms2021.gruppodkl.wefit.contract.coach.CoachClientsContract;
 import it.uniba.di.sms2021.gruppodkl.wefit.model.Client;
@@ -32,6 +34,7 @@ public class CoachMyClientListAdapter extends FirestorePagingAdapter<Client, Coa
         mPresenter = presenter;
     }
 
+    @NonNull
     @Override
     public CoachMyClientListViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
         View view = LayoutInflater.from(parent.getContext()).
@@ -48,7 +51,7 @@ public class CoachMyClientListAdapter extends FirestorePagingAdapter<Client, Coa
 
     @Override
     public void openYourClientProfile(int position){
-        String clientMail = getItem(position).getString(Client.ClientKeys.EMAIL);
+        String clientMail = Objects.requireNonNull(getItem(position)).getString(Client.ClientKeys.EMAIL);
         mPresenter.onRequestToOpenProfile(clientMail);
     }
 

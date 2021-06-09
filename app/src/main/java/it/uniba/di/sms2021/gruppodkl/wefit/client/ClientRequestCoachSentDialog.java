@@ -14,8 +14,6 @@ import com.google.android.material.button.MaterialButton;
 
 public class ClientRequestCoachSentDialog extends Dialog {
 
-    private AnimatedVectorDrawable mSuccessAnimation;
-    private MaterialButton mBack;
     private CallbackOperations mActivity;
 
 
@@ -34,10 +32,10 @@ public class ClientRequestCoachSentDialog extends Dialog {
         setCanceledOnTouchOutside(true);
         ImageView mImageView = findViewById(R.id.success_anim);
         mImageView.setBackgroundResource(R.drawable.success_anim);
-        mSuccessAnimation = (AnimatedVectorDrawable) mImageView.getBackground();
+        AnimatedVectorDrawable mSuccessAnimation = (AnimatedVectorDrawable) mImageView.getBackground();
         mSuccessAnimation.start();
 
-        mBack = findViewById(R.id.back_button);
+        MaterialButton mBack = findViewById(R.id.back_button);
         mBack.setOnClickListener(v -> {
             mActivity.goHome();
             dismiss();

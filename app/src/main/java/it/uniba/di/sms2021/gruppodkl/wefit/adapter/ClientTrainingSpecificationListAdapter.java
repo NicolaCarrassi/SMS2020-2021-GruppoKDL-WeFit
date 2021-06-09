@@ -9,6 +9,8 @@ import androidx.annotation.NonNull;
 import com.firebase.ui.firestore.paging.FirestorePagingAdapter;
 import com.firebase.ui.firestore.paging.FirestorePagingOptions;
 
+import java.util.Objects;
+
 import it.uniba.di.sms2021.gruppodkl.wefit.R;
 import it.uniba.di.sms2021.gruppodkl.wefit.contract.client.ClientTrainingSpecificationContract;
 import it.uniba.di.sms2021.gruppodkl.wefit.model.Exercise;
@@ -34,6 +36,7 @@ public class ClientTrainingSpecificationListAdapter extends FirestorePagingAdapt
         holder.setValues(model);
     }
 
+    @NonNull
     @Override
     public TrainingDetailViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
         View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.training_exercise_item, parent, false);
@@ -43,6 +46,6 @@ public class ClientTrainingSpecificationListAdapter extends FirestorePagingAdapt
 
     @Override
     public void showExerciseInfo(int position) {
-        mPresenter.showExercise(getItem(position).toObject(Exercise.class));
+        mPresenter.showExercise(Objects.requireNonNull(getItem(position)).toObject(Exercise.class));
     }
 }

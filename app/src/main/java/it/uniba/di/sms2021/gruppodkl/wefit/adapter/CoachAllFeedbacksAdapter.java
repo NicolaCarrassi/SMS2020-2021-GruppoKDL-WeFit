@@ -19,14 +19,14 @@ public class CoachAllFeedbacksAdapter extends FirestoreRecyclerAdapter<Feedback,
      * Create a new RecyclerView adapter that listens to a Firestore Query.  See {@link
      * FirestoreRecyclerOptions} for configuration options.
      *
-     * @param options
+     * @param options opzioni
      */
     public CoachAllFeedbacksAdapter(@NonNull FirestoreRecyclerOptions<Feedback> options) {
         super(options);
     }
 
     @Override
-    protected void onBindViewHolder(CoachAllFeedbacksViewHolder holder, int position, Feedback model) {
+    protected void onBindViewHolder(CoachAllFeedbacksViewHolder holder, int position, @NonNull Feedback model) {
         holder.setValues(model);
     }
 

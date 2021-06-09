@@ -72,6 +72,8 @@ public class CoachFeedbacksFragment extends Fragment implements User.MyImageBitm
        View layout = inflater.inflate(R.layout.coach_feedbacks_fragment, container, false);
 
        mPresenter = new CoachFeedbacksPresenter(this);
+
+       assert getActivity() != null;
        mUser = ((WeFitApplication) getActivity().getApplicationContext()).getUser();
        bind(layout);
 
@@ -81,6 +83,7 @@ public class CoachFeedbacksFragment extends Fragment implements User.MyImageBitm
 
 
     private void bind(View view){
+        assert getActivity() != null;
         ((WeFitApplication) getActivity().getApplicationContext()).setToolbar(view, mActivity);
 
         mProfilePicture = view.findViewById(R.id.profile_image);
@@ -141,13 +144,16 @@ public class CoachFeedbacksFragment extends Fragment implements User.MyImageBitm
     private void openAllFeedbackPage() {
         CoachAllFeedbackFragment fragment = new CoachAllFeedbackFragment();
 
+        assert getActivity() != null;
         getActivity().getSupportFragmentManager().beginTransaction().replace(R.id.anchor_point, fragment, CoachAllFeedbackFragment.TAG)
                 .addToBackStack(CoachAllFeedbackFragment.TAG).commit();
     }
 
     @Override
     public void onNoFeedbackReceived() {
-        mFeedbackNumberText.setText(mFeedbackNumberText.getText() + "0");
+        String temp = mFeedbackNumberText.getText() + "0";
+
+        mFeedbackNumberText.setText(temp);
         mLastFeedbackLabel.setVisibility(View.GONE);
         mLastFeedbackUserName.setVisibility(View.GONE);
         mLastReviewText.setVisibility(View.GONE);

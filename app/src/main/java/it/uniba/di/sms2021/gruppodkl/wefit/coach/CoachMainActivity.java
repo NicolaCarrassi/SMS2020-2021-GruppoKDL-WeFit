@@ -1,13 +1,13 @@
 package it.uniba.di.sms2021.gruppodkl.wefit.coach;
 
+import android.content.Intent;
+import android.os.Bundle;
+import android.view.MenuItem;
+
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.view.GravityCompat;
 import androidx.drawerlayout.widget.DrawerLayout;
 import androidx.fragment.app.Fragment;
-
-import android.content.Intent;
-import android.os.Bundle;
-import android.view.MenuItem;
 
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 import com.google.android.material.navigation.NavigationView;
@@ -19,7 +19,6 @@ import it.uniba.di.sms2021.gruppodkl.wefit.SettingsActivity;
 import it.uniba.di.sms2021.gruppodkl.wefit.WeFitApplication;
 import it.uniba.di.sms2021.gruppodkl.wefit.fragment.NotificationsFragment;
 import it.uniba.di.sms2021.gruppodkl.wefit.fragment.TermsFragment;
-import it.uniba.di.sms2021.gruppodkl.wefit.fragment.client.ClientHomeFragment;
 import it.uniba.di.sms2021.gruppodkl.wefit.fragment.client.ClientMyProfileFragment;
 import it.uniba.di.sms2021.gruppodkl.wefit.fragment.coach.CoachClientsFragment;
 import it.uniba.di.sms2021.gruppodkl.wefit.fragment.coach.CoachFeedbacksFragment;

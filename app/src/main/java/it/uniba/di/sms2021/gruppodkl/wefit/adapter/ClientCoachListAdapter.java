@@ -12,21 +12,19 @@ import com.firebase.ui.firestore.paging.FirestorePagingOptions;
 
 import it.uniba.di.sms2021.gruppodkl.wefit.R;
 import it.uniba.di.sms2021.gruppodkl.wefit.contract.client.ClientCoachListContract;
-import it.uniba.di.sms2021.gruppodkl.wefit.model.Client;
 import it.uniba.di.sms2021.gruppodkl.wefit.model.Coach;
 import it.uniba.di.sms2021.gruppodkl.wefit.viewholder.ClientCoachListViewHolder;
 
 public class ClientCoachListAdapter extends FirestorePagingAdapter<Coach, ClientCoachListViewHolder>
         implements ClientCoachListViewHolder.ItemClickListener{
 
-    private Client mClient;
-    private ClientCoachListContract.Presenter mPresenter;
+    private final ClientCoachListContract.Presenter mPresenter;
     private boolean mIsClickable = true;
 
     /**
      * Construct a new FirestorePagingAdapter from the given {@link FirestorePagingOptions}.
      *
-     * @param options
+     * @param options opzioni
      */
     public ClientCoachListAdapter(FirestorePagingOptions<Coach> options, ClientCoachListContract.Presenter presenter) {
         super(options);
@@ -38,6 +36,7 @@ public class ClientCoachListAdapter extends FirestorePagingAdapter<Coach, Client
         holder.setValues(model);
     }
 
+    @NonNull
     @Override
     public ClientCoachListViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
         View view = LayoutInflater.from(parent.getContext()).

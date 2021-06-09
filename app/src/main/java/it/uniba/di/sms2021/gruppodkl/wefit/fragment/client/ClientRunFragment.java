@@ -43,12 +43,9 @@ public class ClientRunFragment extends Fragment {
     }
 
     private void setListener(){
-        mButton.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Intent intent = new Intent(getActivity(), RunActivity.class);
-                startActivity(intent);
-            }
+        mButton.setOnClickListener(v -> {
+            Intent intent = new Intent(getActivity(), RunActivity.class);
+            startActivity(intent);
         });
     }
 }

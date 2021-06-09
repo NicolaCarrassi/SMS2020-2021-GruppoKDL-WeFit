@@ -21,7 +21,6 @@ public class ClientDietListFragment extends Fragment implements ClientDietListCo
     public static final String TAG = ClientDietListFragment.class.getSimpleName();
 
 
-    private RecyclerView mRecycler;
     private ClientDietListContract.Presenter mPresenter;
 
 
@@ -38,7 +37,8 @@ public class ClientDietListFragment extends Fragment implements ClientDietListCo
         mPresenter = new ClientDietListPresenter(this);
 
         //HANDLING RECYCLER
-        mRecycler = view.findViewById(R.id.recycler_diet_days);
+        RecyclerView mRecycler = view.findViewById(R.id.recycler_diet_days);
+        assert getActivity() != null;
         mRecycler.setAdapter(new DietListAdapter(getActivity(), mPresenter));
         mRecycler.setLayoutManager(new LinearLayoutManager(getActivity()));
 
@@ -49,6 +49,8 @@ public class ClientDietListFragment extends Fragment implements ClientDietListCo
     @Override
     public void showDietOfTheDay(String weekDay) {
         ClientDailyDietFragment fragment = ClientDailyDietFragment.newInstance(weekDay);
+
+        assert getParentFragment() != null;
 
         getParentFragment().getChildFragmentManager().beginTransaction().replace(R.id.diet_fragment_anchor, fragment, ClientDailyDietFragment.TAG)
                 .addToBackStack(ClientDailyDietFragment.TAG).commit();

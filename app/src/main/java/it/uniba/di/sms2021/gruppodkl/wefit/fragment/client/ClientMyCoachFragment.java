@@ -115,6 +115,7 @@ public class ClientMyCoachFragment extends Fragment implements ClientMyCoachCont
 
         final View layout =  inflater.inflate(R.layout.client_my_coach_profile_fragment, container, false);
         mView = layout;
+        assert getActivity() != null;
         mClient = (Client) ((WeFitApplication) getActivity().getApplicationContext()).getUser();
         mPresenter = new ClientMyCoachPresenter(this);
         bind();
@@ -135,6 +136,7 @@ public class ClientMyCoachFragment extends Fragment implements ClientMyCoachCont
      *
      */
     private void bind() {
+        assert getActivity() != null;
         ((WeFitApplication) getActivity().getApplicationContext()).setToolbar(mView, mActivity);
         mCoachProfileImage = mView.findViewById(R.id.profile_image_coach);
 
@@ -197,6 +199,7 @@ public class ClientMyCoachFragment extends Fragment implements ClientMyCoachCont
 
         if (coach.image != null) {
             if (!coach.isBitmapImageAvailable()) {
+                assert getActivity() != null;
                 ((WeFitApplication) getActivity().getApplicationContext()).startProgress(mView);
                 coach.createImageBitmap(this);
             }else
@@ -234,6 +237,8 @@ public class ClientMyCoachFragment extends Fragment implements ClientMyCoachCont
     @Override
     public void onCoachNotFound() {
         ClientCoachListFragment fragment = new ClientCoachListFragment();
+        assert getActivity() != null;
+
         getActivity().getSupportFragmentManager().beginTransaction().replace(R.id.anchor_point,fragment,ClientCoachListFragment.TAG)
                 .addToBackStack(null).commit();
     }
@@ -259,6 +264,7 @@ public class ClientMyCoachFragment extends Fragment implements ClientMyCoachCont
 
     @Override
     public void handleCallback() {
+        assert getActivity() != null;
         ((WeFitApplication) getActivity().getApplicationContext()).stopProgress(mView);
         mCoachProfileImage.setImageBitmap(mCoach.getImageBitmap());
     }
@@ -274,7 +280,8 @@ public class ClientMyCoachFragment extends Fragment implements ClientMyCoachCont
     }
 
     public void leaveCoachDialog(){
-        new MaterialAlertDialogBuilder(getContext())
+        assert getActivity() != null;
+        new MaterialAlertDialogBuilder(getActivity())
                 .setTitle(getResources().getString(R.string.leave_coach_title))
                 .setMessage(getResources().getString(R.string.leave_coach_text))
                 .setNegativeButton(R.string.cancel, (dialog, which) -> dialog.dismiss())

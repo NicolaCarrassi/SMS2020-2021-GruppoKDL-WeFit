@@ -59,7 +59,6 @@ public class CoachClientRequestProfileFragment extends Fragment implements Coach
      *
      * @return A new instance of fragment CoachClientRequestProfile.
      */
-    // TODO: Rename and change types and number of parameters
     public static CoachClientRequestProfileFragment newInstance(Request request) {
         CoachClientRequestProfileFragment fragment = new CoachClientRequestProfileFragment();
         Bundle args = new Bundle();
@@ -118,6 +117,7 @@ public class CoachClientRequestProfileFragment extends Fragment implements Coach
         mAcceptButton.setOnClickListener(v -> {
             mAcceptButton.setClickable(false);
             mDeclineButton.setClickable(false);
+            assert getActivity() != null;
             Coach coach = (Coach) ((WeFitApplication)getActivity().getApplicationContext()).getUser();
             mPresenter.clientRequest(coach,mRequest, true);
             mAcceptButton.setVisibility(View.GONE);
@@ -127,6 +127,7 @@ public class CoachClientRequestProfileFragment extends Fragment implements Coach
         mDeclineButton.setOnClickListener(v -> {
             mAcceptButton.setClickable(false);
             mDeclineButton.setClickable(false);
+            assert getActivity() != null;
             Coach coach = (Coach) ((WeFitApplication)getActivity().getApplicationContext()).getUser();
             mPresenter.clientRequest(coach, mRequest, false);
             mAcceptButton.setVisibility(View.GONE);
@@ -173,8 +174,12 @@ public class CoachClientRequestProfileFragment extends Fragment implements Coach
         }
 
         mClientObjective.setText(objective);
-        mClientHeight.setText(Integer.toString(mClient.height));
-        mClientWeight.setText(Float.toString(mClient.weight));
+
+        String temp = Integer.toString(mClient.height);
+        mClientHeight.setText(temp);
+
+        temp = Float.toString(mClient.weight);
+        mClientWeight.setText(temp);
     }
 
 

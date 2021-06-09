@@ -21,7 +21,7 @@ public class ClientDietDayAdapter extends FirestorePagingAdapter<Meal, MealViewH
      * Create a new RecyclerView adapter that listens to a Firestore Query.  See {@link
      * FirestorePagingOptions} for configuration options.
      *
-     * @param options
+     * @param options opzioni
      */
     public ClientDietDayAdapter(@NonNull FirestorePagingOptions<Meal> options) {
         super(options);

@@ -7,12 +7,10 @@ import android.content.Intent;
 import android.net.Uri;
 import android.os.Bundle;
 import android.text.TextUtils;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.webkit.MimeTypeMap;
-import android.widget.Button;
 import android.widget.CheckBox;
 import android.widget.EditText;
 import android.widget.ImageView;
@@ -97,6 +95,7 @@ public class CoachProfileFragment extends Fragment implements CoachProfileContra
         View layout =  inflater.inflate(R.layout.coach_profile_fragment, container, false);
 
         mPresenter = new CoachProfilePresenter(this);
+        assert getActivity() != null;
         mCoach = (Coach) ((WeFitApplication) getActivity().getApplicationContext()).getUser();
         bind(layout);
         setListeners();
@@ -110,6 +109,7 @@ public class CoachProfileFragment extends Fragment implements CoachProfileContra
      * @param view view
      */
     private void bind(View view){
+        assert getActivity() != null;
         ((WeFitApplication) getActivity().getApplicationContext()).setToolbar(view, mActivity);
         mProfileImage =  view.findViewById(R.id.profile_image);
         mEditImage = view.findViewById(R.id.edit_pfp);
@@ -298,6 +298,7 @@ public class CoachProfileFragment extends Fragment implements CoachProfileContra
      */
     @Override
     public String getFileExtension(Uri uri){
+        assert getActivity() != null;
         ContentResolver contentResolver = getActivity().getContentResolver();
         MimeTypeMap mime = MimeTypeMap.getSingleton();
         return  mime.getExtensionFromMimeType(contentResolver.getType(uri));

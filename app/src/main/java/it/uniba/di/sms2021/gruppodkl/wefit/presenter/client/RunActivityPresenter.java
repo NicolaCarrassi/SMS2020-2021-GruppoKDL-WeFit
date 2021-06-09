@@ -1,33 +1,28 @@
 package it.uniba.di.sms2021.gruppodkl.wefit.presenter.client;
 
 import android.annotation.SuppressLint;
-import android.content.pm.PackageManager;
+import android.app.ActivityManager;
+import android.content.BroadcastReceiver;
+import android.content.Context;
+import android.content.Intent;
+import android.content.IntentFilter;
 import android.location.Location;
 import android.os.Looper;
-import android.util.Log;
 import android.widget.Toast;
-
 import androidx.annotation.NonNull;
-import androidx.core.app.ActivityCompat;
 import androidx.fragment.app.FragmentActivity;
-
+import androidx.localbroadcastmanager.content.LocalBroadcastManager;
 import com.google.android.gms.location.FusedLocationProviderClient;
 import com.google.android.gms.location.LocationCallback;
 import com.google.android.gms.location.LocationRequest;
 import com.google.android.gms.location.LocationResult;
-import com.google.android.gms.location.LocationServices;
 import com.google.android.gms.maps.CameraUpdateFactory;
 import com.google.android.gms.maps.GoogleMap;
 import com.google.android.gms.maps.model.LatLng;
-import com.google.android.gms.maps.model.MarkerOptions;
 import com.google.android.gms.tasks.OnCompleteListener;
-import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.android.gms.tasks.Task;
-
-import java.util.concurrent.Executor;
-
-import it.uniba.di.sms2021.gruppodkl.wefit.RunActivity;
 import it.uniba.di.sms2021.gruppodkl.wefit.contract.client.RunActivityContract;
+import it.uniba.di.sms2021.gruppodkl.wefit.service.LocationService;
 
 public class RunActivityPresenter implements RunActivityContract.Presenter {
 
@@ -78,5 +73,41 @@ public class RunActivityPresenter implements RunActivityContract.Presenter {
 
     }
 
+    public boolean isLocationServiceRunning(Context context) {
+        ActivityManager activityManager = (ActivityManager) context.getSystemService(Context.ACTIVITY_SERVICE);
+        if (activityManager != null) {
+            for (ActivityManager.RunningServiceInfo service : activityManager.getRunningServices(Integer.MAX_VALUE)) {
+                if (LocationService.class.getName().equals(service.service.getClassName())) {
+                    if (service.foreground) {
+                        return true;
+                    }
+                }
+            }
+            return false;
+        }
+        return false;
+    }
+
+    /**
+     * Metodo che consente di avviare il service
+     */
+    public void startLocationService(Context context, BroadcastReceiver mMessageReceiver, FragmentActivity activity) {
+        if (!isLocationServiceRunning(context)) {
+            Intent intent = new Intent(context, LocationService.class);
+            intent.setAction(LocationService.LocationServiceConstants.ACTION_START_LOCATION_SERVICE);
+            activity.startService(intent);
+            LocalBroadcastManager.getInstance(activity).registerReceiver(mMessageReceiver, new IntentFilter("LocationUpdates"));
+            Toast.makeText(activity, "location service started", Toast.LENGTH_SHORT).show();
+        }
+    }
+
+    public void stopLocationService(Context context, FragmentActivity activity) {
+        if (isLocationServiceRunning(context)) {
+            Intent intent = new Intent(context, LocationService.class);
+            intent.setAction(LocationService.LocationServiceConstants.ACTION_STOP_LOCATION_SERVICE);
+            context.startService(intent);
+            Toast.makeText(activity, "location service stopped", Toast.LENGTH_SHORT).show();
+        }
+    }
 
 }

@@ -3,10 +3,14 @@ package it.uniba.di.sms2021.gruppodkl.wefit;
 import androidx.core.app.ActivityCompat;
 import androidx.core.content.ContextCompat;
 import androidx.fragment.app.FragmentActivity;
+import androidx.localbroadcastmanager.content.LocalBroadcastManager;
 
 import android.Manifest;
 import android.annotation.SuppressLint;
+import android.content.BroadcastReceiver;
+import android.content.Context;
 import android.content.Intent;
+import android.content.IntentFilter;
 import android.content.pm.PackageManager;
 import android.location.Location;
 import android.os.Bundle;
@@ -27,6 +31,7 @@ import com.google.android.material.button.MaterialButton;
 import it.uniba.di.sms2021.gruppodkl.wefit.contract.client.RunActivityContract;
 import it.uniba.di.sms2021.gruppodkl.wefit.databinding.ActivityRunBinding;
 import it.uniba.di.sms2021.gruppodkl.wefit.presenter.client.RunActivityPresenter;
+import it.uniba.di.sms2021.gruppodkl.wefit.service.LocationService;
 
 public class RunActivity extends FragmentActivity implements OnMapReadyCallback, RunActivityContract.View {
 
@@ -34,6 +39,8 @@ public class RunActivity extends FragmentActivity implements OnMapReadyCallback,
     private ActivityRunBinding binding;
 
     private MaterialButton mStartButton;
+    private MaterialButton mStopButton;
+    private MaterialButton mLogButton;
 
     private static final int REQUEST_CODE_LOCATION_PERMISSION = 1;
 
@@ -41,6 +48,10 @@ public class RunActivity extends FragmentActivity implements OnMapReadyCallback,
 
     private FusedLocationProviderClient fusedLocationProviderClient;
     private final LatLng defaultLocation = new LatLng(41.1171, 16.8719);
+    private Location mStartingPosition;
+
+    private Location mReceivedLocations;
+    double latitude, longitude;
 
 
 
@@ -66,6 +77,8 @@ public class RunActivity extends FragmentActivity implements OnMapReadyCallback,
 
     private void bind(){
         mStartButton = findViewById(R.id.start);
+        mStopButton = findViewById(R.id.stop);
+        mLogButton = findViewById(R.id.print_log);
     }
 
     private void setListener(){
@@ -75,8 +88,24 @@ public class RunActivity extends FragmentActivity implements OnMapReadyCallback,
                 if (ContextCompat.checkSelfPermission(getApplicationContext(), Manifest.permission.ACCESS_FINE_LOCATION) != PackageManager.PERMISSION_GRANTED) {
                     ActivityCompat.requestPermissions(RunActivity.this, new String[]{Manifest.permission.ACCESS_FINE_LOCATION}, REQUEST_CODE_LOCATION_PERMISSION);
                 } else {
-                    addMarker(mPresenter.getCurrentLocation(fusedLocationProviderClient,mMap,RunActivity.this), getResources().getString(R.string.starting_point));
+                    mStartingPosition = mPresenter.getCurrentLocation(fusedLocationProviderClient,mMap,RunActivity.this);
+                    addMarker(mStartingPosition, getResources().getString(R.string.starting_point));
+                    mPresenter.startLocationService(getApplicationContext(), mMessageReceiver,RunActivity.this);
                 }
+            }
+        });
+
+        mStopButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                mPresenter.stopLocationService(getApplicationContext(), RunActivity.this);
+            }
+        });
+
+        mLogButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Log.d("pos", "- " + mReceivedLocations.getLatitude() + " - " + mReceivedLocations.getLongitude());
             }
         });
     }
@@ -129,5 +158,18 @@ public class RunActivity extends FragmentActivity implements OnMapReadyCallback,
                 mMap.moveCamera(CameraUpdateFactory.newLatLngZoom(defaultLocation, 15));
             }
     }
+
+    private BroadcastReceiver mMessageReceiver = new BroadcastReceiver() {
+        @Override
+        public void onReceive(Context context, Intent intent) {
+            // Get extra data included in the Intent
+            Bundle b = intent.getBundleExtra("Location");
+            mReceivedLocations = (Location) b.getParcelable("Location");
+            if (mReceivedLocations != null) {
+                latitude = mReceivedLocations.getLatitude();
+                longitude = mReceivedLocations.getLongitude();
+            }
+        }
+    };
 
 }

@@ -1,5 +1,7 @@
 package it.uniba.di.sms2021.gruppodkl.wefit.contract.client;
 
+import android.content.BroadcastReceiver;
+import android.content.Context;
 import android.location.Location;
 
 import androidx.fragment.app.FragmentActivity;
@@ -16,6 +18,9 @@ public interface RunActivityContract {
     interface Presenter{
         void updateCurrentLocation(FusedLocationProviderClient fusedLocationProviderClient, GoogleMap map, FragmentActivity activity);
         Location getCurrentLocation(FusedLocationProviderClient fusedLocationProviderClient, GoogleMap map,FragmentActivity activity);
+        boolean isLocationServiceRunning(Context context);
+        void startLocationService(Context context, BroadcastReceiver mMessageReceiver, FragmentActivity activity);
+        void stopLocationService(Context context, FragmentActivity activity);
     }
 
 }

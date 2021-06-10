@@ -1,9 +1,6 @@
 package it.uniba.di.sms2021.gruppodkl.wefit.presenter.client;
 
 
-
-import android.util.Log;
-
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
@@ -27,7 +24,6 @@ public class ClientDietShoppingListPresenter implements ClientDietShoppingListCo
         for(int i = 1; i<= numberOfDays ; i++)
             daysToQuery.add(DayOfTheWeek.convertPositionToDayOfTheWeek(DayOfTheWeek.getDayOfTheWeekFromCalendar(i)));
 
-        Log.d("AOO", "CE STO nel presenter 1");
 
         MealsDAO.fetchShoppingCart(clientMail, daysToQuery, this);
     }
@@ -37,7 +33,6 @@ public class ClientDietShoppingListPresenter implements ClientDietShoppingListCo
         if(mealsMap == null)
             mealsMap = new HashMap<>();
 
-        Log.d("AOO", "CE STO nel presenter 2");
 
         mView.onShoppingInformationLoaded(mealsMap);
     }

@@ -1,8 +1,12 @@
 package it.uniba.di.sms2021.gruppodkl.wefit.db;
 
-import android.util.Log;
+
+
+
+
 
 import com.google.firebase.firestore.CollectionReference;
+import com.google.firebase.firestore.DocumentReference;
 import com.google.firebase.firestore.DocumentSnapshot;
 import com.google.firebase.firestore.FirebaseFirestore;
 import com.google.firebase.firestore.QuerySnapshot;
@@ -25,25 +29,35 @@ public class MealsDAO {
         void onShoppingCartLoaded(Map<String, Integer> mealsMap);
     }
 
+    public interface MealRegistered{
+        void giveMealsAvailable(boolean breakfastAvailable, boolean lunchAvailable, boolean dinnerAvailable);
+        void onMealRegistered(boolean success);
+        void mealsRegistered(boolean breakfastAvailable, boolean lunchAvailable, boolean dinnerAvailable);
+    }
 
-    private static List<String> sMealsList;
+
+    private static boolean sBreakfastAvailable;
+    private static boolean sLunchAvailable;
+    private static boolean sDinnerAvailable;
+
+    private static List<String> sMealsNameList;
     private static Map<String, Integer> sMealsMap;
 
 
     public static void loadAll(MealsLoaded callback){
-        if(sMealsList != null)
-            sMealsList.clear();
+        if(sMealsNameList != null)
+            sMealsNameList.clear();
         else
-            sMealsList = new ArrayList<>();
+            sMealsNameList = new ArrayList<>();
 
         FirebaseFirestore.getInstance().collection(Keys.Collections.MEALS).get()
                 .addOnCompleteListener(task -> {
                     if(task.isSuccessful()){
                         QuerySnapshot  snapshot = task.getResult();
                         for(DocumentSnapshot doc : snapshot.getDocuments())
-                            sMealsList.add(doc.getString(Meal.MealKeys.NAME));
+                            sMealsNameList.add(doc.getString(Meal.MealKeys.NAME));
 
-                        callback.onMealsLoaded(sMealsList);
+                        callback.onMealsLoaded(sMealsNameList);
                     }
                 });
     }
@@ -82,5 +96,85 @@ public class MealsDAO {
         callback.onShoppingCartLoaded(sMealsMap);
     }
 
+
+    public static void registerMeal(String clientMail, String day, int mealType, String date, MealRegistered callback){
+
+        DocumentReference userRef = FirebaseFirestore.getInstance().collection(Keys.Collections.USERS).document(clientMail);
+
+        userRef.collection(Keys.Collections.DIET).document(day).collection(Keys.Collections.MEALS)
+                .whereEqualTo(Meal.MealKeys.MEAL_TYPE, mealType).get().addOnCompleteListener(task -> {
+                    if(task.isSuccessful()){
+                        QuerySnapshot qs = task.getResult();
+                        if(!qs.isEmpty()){
+                            for(Meal meal : qs.toObjects(Meal.class))
+                                userRef.collection(Keys.Collections.REGISTERED_MEALS).document(date)
+                                    .collection(Keys.Collections.MEALS).document().set(meal);
+                            callback.onMealRegistered(true);
+                        }
+                    }
+                    callback.onMealRegistered(false);
+        });
+    }
+
+
+    public static void checkAvailableMealsForClient(String clientMail, String day, MealRegistered callback){
+        FirebaseFirestore instance = FirebaseFirestore.getInstance();
+        CollectionReference ref = instance.collection(Keys.Collections.USERS).document(clientMail)
+            .collection(Keys.Collections.DIET).document(day).collection(Keys.Collections.MEALS);
+
+        ref.whereEqualTo(Meal.MealKeys.MEAL_TYPE, Meal.MealType.BREAKFAST).get()
+        .addOnCompleteListener(breakfastTask -> {
+            if(breakfastTask.isSuccessful()){
+                sBreakfastAvailable = breakfastTask.getResult().getDocuments().size() > 0;
+
+                ref.whereEqualTo(Meal.MealKeys.MEAL_TYPE, Meal.MealType.LUNCH).get()
+                        .addOnCompleteListener(lunchTask -> {
+                           if(lunchTask.isSuccessful()) {
+                               sLunchAvailable = lunchTask.getResult().getDocuments().size() > 0;
+
+                               ref.whereEqualTo(Meal.MealKeys.MEAL_TYPE, Meal.MealType.DINNER).get()
+                                       .addOnCompleteListener(dinnerTask -> {
+                                           if (dinnerTask.isSuccessful()) {
+                                               sDinnerAvailable = dinnerTask.getResult().getDocuments().size() > 0;
+                                           }
+
+                                           callback.giveMealsAvailable(sBreakfastAvailable, sLunchAvailable, sDinnerAvailable);
+                                       });
+                           }
+                        });
+            }
+        });
+    }
+
+
+    public static void checkRegisteredMeals(String clientMail, String today, MealRegistered callback){
+        FirebaseFirestore instance = FirebaseFirestore.getInstance();
+        CollectionReference ref = instance.collection(Keys.Collections.USERS).document(clientMail)
+                .collection(Keys.Collections.REGISTERED_MEALS).document(today).collection(Keys.Collections.MEALS);
+
+
+        ref.whereEqualTo(Meal.MealKeys.MEAL_TYPE, Meal.MealType.BREAKFAST).get()
+                .addOnCompleteListener(breakfastTask -> {
+                    if(breakfastTask.isSuccessful()){
+                        sBreakfastAvailable = breakfastTask.getResult().getDocuments().size() == 0;
+
+                        ref.whereEqualTo(Meal.MealKeys.MEAL_TYPE, Meal.MealType.LUNCH).get()
+                                .addOnCompleteListener(lunchTask -> {
+                                    if(lunchTask.isSuccessful()) {
+                                        sLunchAvailable = lunchTask.getResult().getDocuments().size() == 0;
+
+                                        ref.whereEqualTo(Meal.MealKeys.MEAL_TYPE, Meal.MealType.DINNER).get()
+                                                .addOnCompleteListener(dinnerTask -> {
+                                                    if (dinnerTask.isSuccessful()) {
+                                                        sDinnerAvailable = dinnerTask.getResult().getDocuments().size() == 0;
+                                                    }
+
+                                                    callback.mealsRegistered(sBreakfastAvailable, sLunchAvailable, sDinnerAvailable);
+                                                });
+                                    }
+                                });
+                    }
+                });
+    }
 
 }

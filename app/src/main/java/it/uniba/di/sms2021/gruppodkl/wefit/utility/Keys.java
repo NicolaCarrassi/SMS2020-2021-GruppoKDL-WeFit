@@ -43,6 +43,7 @@ public interface Keys {
         String COMPLETED_TRAINING = "completed_training";
         String DIET = "diet";
         String MEALS = "meals";
+        String REGISTERED_MEALS = "registered_meals";
     }
 
     interface RatingInfo{

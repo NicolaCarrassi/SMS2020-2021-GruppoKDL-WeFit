@@ -246,6 +246,9 @@
     <string name="quantity">Quantità</string>
     <string name="error_quantity">Inserisci una quantità valida</string>
 
+    <string name="no_meal_registered">Non hai registrato il tuo pasto</string>
+
+
 
 
 </resources>

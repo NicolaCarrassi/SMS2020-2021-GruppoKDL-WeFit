@@ -17,6 +17,7 @@ import it.uniba.di.sms2021.gruppodkl.wefit.utility.Keys;
 
 public class ClientDAO extends UserDAO {
 
+
     public interface ClientDAOCallbacks{
         void requestSent(boolean isSuccessful);
     }
@@ -77,6 +78,13 @@ public class ClientDAO extends UserDAO {
     public static Query getAllDishesOfTheMeal(String clientMail, String dayOftheWeek, int mealType){
         return FirebaseFirestore.getInstance().collection(Keys.Collections.USERS).document(clientMail)
                 .collection(Keys.Collections.DIET).document(dayOftheWeek).collection(Keys.Collections.MEALS)
+                .whereEqualTo(Meal.MealKeys.MEAL_TYPE, mealType);
+    }
+
+
+    public static Query getRegisteredMealsOfTheDay(String clientMail, String day, int mealType) {
+        return FirebaseFirestore.getInstance().collection(Keys.Collections.USERS).document(clientMail)
+                .collection(Keys.Collections.REGISTERED_MEALS).document(day).collection(Keys.Collections.MEALS)
                 .whereEqualTo(Meal.MealKeys.MEAL_TYPE, mealType);
     }
 

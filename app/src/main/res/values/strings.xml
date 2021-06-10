@@ -251,8 +251,7 @@
     <string name="add_meal_to">Add meal to:</string>
     <string name="quantity">Quantity</string>
     <string name="error_quantity">Please insert a valid quantity</string>
-
-
+    <string name="no_meal_registered">You didn\'t register your meal</string>
 
 
 </resources>

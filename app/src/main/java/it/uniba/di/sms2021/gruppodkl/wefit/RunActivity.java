@@ -18,39 +18,42 @@ import android.widget.Toast;
 
 import com.google.android.gms.location.FusedLocationProviderClient;
 import com.google.android.gms.location.LocationServices;
+import com.google.android.gms.maps.CameraUpdate;
 import com.google.android.gms.maps.CameraUpdateFactory;
 import com.google.android.gms.maps.GoogleMap;
 import com.google.android.gms.maps.OnMapReadyCallback;
 import com.google.android.gms.maps.SupportMapFragment;
 import com.google.android.gms.maps.model.LatLng;
 import com.google.android.gms.maps.model.MarkerOptions;
+import com.google.android.gms.maps.model.PolylineOptions;
 import com.google.android.material.button.MaterialButton;
+
+import java.util.ArrayList;
+import java.util.List;
 
 import it.uniba.di.sms2021.gruppodkl.wefit.contract.client.RunActivityContract;
 import it.uniba.di.sms2021.gruppodkl.wefit.databinding.ActivityRunBinding;
 import it.uniba.di.sms2021.gruppodkl.wefit.presenter.client.RunActivityPresenter;
+import it.uniba.di.sms2021.gruppodkl.wefit.utility.MyBroadcastReceiver;
 
-public class RunActivity extends FragmentActivity implements OnMapReadyCallback, RunActivityContract.View {
+public class RunActivity extends FragmentActivity implements OnMapReadyCallback, RunActivityContract.View, MyBroadcastReceiver.OnBroadcastReceiveListener {
 
     private GoogleMap mMap;
     private ActivityRunBinding binding;
 
     private MaterialButton mStartButton;
     private MaterialButton mStopButton;
-    private MaterialButton mLogButton;
 
     private static final int REQUEST_CODE_LOCATION_PERMISSION = 1;
-
     private RunActivityPresenter mPresenter;
 
     private FusedLocationProviderClient fusedLocationProviderClient;
     private final LatLng defaultLocation = new LatLng(41.1171, 16.8719);
     private Location mStartingPosition;
+    private Location mStopPosition;
 
-    private Location mReceivedLocations;
-    double latitude, longitude;
-
-
+    private MyBroadcastReceiver mMessageReceiver;
+    List<Location> listLocation = new ArrayList<Location>();
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -62,6 +65,8 @@ public class RunActivity extends FragmentActivity implements OnMapReadyCallback,
         fusedLocationProviderClient = LocationServices.getFusedLocationProviderClient(this);
 
         mPresenter = new RunActivityPresenter(this);
+
+        mMessageReceiver = new MyBroadcastReceiver(listLocation,this);
 
         bind();
         setListener();
@@ -75,7 +80,6 @@ public class RunActivity extends FragmentActivity implements OnMapReadyCallback,
     private void bind(){
         mStartButton = findViewById(R.id.start);
         mStopButton = findViewById(R.id.stop);
-        mLogButton = findViewById(R.id.print_log);
     }
 
     private void setListener(){
@@ -95,16 +99,12 @@ public class RunActivity extends FragmentActivity implements OnMapReadyCallback,
         mStopButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                mStopPosition = listLocation.get(listLocation.size()-1);
+                addMarker(mStopPosition, getResources().getString(R.string.stop_point));
                 mPresenter.stopLocationService(getApplicationContext(), RunActivity.this);
             }
         });
 
-        mLogButton.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Log.d("pos", "- " + mReceivedLocations.getLatitude() + " - " + mReceivedLocations.getLongitude());
-            }
-        });
     }
 
     /**
@@ -125,6 +125,7 @@ public class RunActivity extends FragmentActivity implements OnMapReadyCallback,
             mMap.setMyLocationEnabled(true);
             mPresenter.updateCurrentLocation(fusedLocationProviderClient,mMap,this);
         }
+
     }
 
     @SuppressLint("MissingPermission")
@@ -153,17 +154,25 @@ public class RunActivity extends FragmentActivity implements OnMapReadyCallback,
             }
     }
 
-    private BroadcastReceiver mMessageReceiver = new BroadcastReceiver() {
-        @Override
-        public void onReceive(Context context, Intent intent) {
-            // Get extra data included in the Intent
-            Bundle b = intent.getBundleExtra("Location");
-            mReceivedLocations = (Location) b.getParcelable("Location");
-            if (mReceivedLocations != null) {
-                latitude = mReceivedLocations.getLatitude();
-                longitude = mReceivedLocations.getLongitude();
-            }
-        }
-    };
+    @Override
+    public void drawPath(Location first, Location second){
+        LatLng start = new LatLng(first.getLatitude(),first.getLongitude());
+        LatLng end = new LatLng(second.getLatitude(),second.getLongitude());
+        mMap.addPolyline(new PolylineOptions().add(start,end));
+    }
 
+    @Override
+    public void centerCamera(Location location){
+        mMap.moveCamera(CameraUpdateFactory.newLatLng(new LatLng(location.getLatitude(),location.getLongitude())));
+    }
+
+    @Override
+    public void onBroadcastReceive() {
+        if(listLocation.size()<=2){
+            drawPath(mStartingPosition,listLocation.get(0));
+        } else {
+            drawPath(listLocation.get(listLocation.size()-2),listLocation.get(listLocation.size()-1));
+            centerCamera(listLocation.get(listLocation.size()-1));
+        }
+    }
 }

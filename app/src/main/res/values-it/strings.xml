@@ -229,6 +229,7 @@
     <!-- RUN ACTIVITY -->
     <string name="location_permission_denied">Permesso di accesso alla posizione negato! Impossibile ottenere la posizione corrente</string>
     <string name="starting_point">Posizione di Partenza</string>
+    <string name="stop_point">Posizione di Arrivo</string>
     <string name="notification_location_title">WeFit Run Tracker</string>
     <string name="notification_location_description">Tracciamento della corsa attivo</string>
     <string name="run_stopped">Corsa terminata con successo!</string>

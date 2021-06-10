@@ -34,16 +34,8 @@
     <com.google.android.material.button.MaterialButton
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginRight="40dp"
         android:text="Stop"
         android:id="@+id/stop"
-        style="@style/MaterialButtonCustom"/>
-
-    <com.google.android.material.button.MaterialButton
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="log"
-        android:id="@+id/print_log"
         style="@style/MaterialButtonCustom"/>
 
     </LinearLayout>

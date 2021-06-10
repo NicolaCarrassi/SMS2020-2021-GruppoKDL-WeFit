@@ -13,6 +13,8 @@ public interface RunActivityContract {
 
     interface View{
         void addMarker(Location location, String markerTitle);
+        void drawPath(Location first, Location second);
+        void centerCamera(Location location);
     }
 
     interface Presenter{

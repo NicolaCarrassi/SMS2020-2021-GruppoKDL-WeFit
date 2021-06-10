@@ -1,13 +1,63 @@
 <?xml version="1.0" encoding="utf-8"?>
-<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".fragment.client.ClientDietShoppingListFragment">
+    android:orientation="vertical"
+    tools:context=".fragment.client.ClientDietShoppingListFragment"
+    style="@style/BackgroundCustom">
+
+    <com.google.android.material.progressindicator.LinearProgressIndicator
+        android:id="@+id/shopping_list_loading"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center_horizontal"
+        android:indeterminate="true"
+        android:visibility="gone"/>
 
     <TextView
+        style="@style/custom_p"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginHorizontal="@dimen/margin_horizontal"
+        android:text="La tua lista della spesa per i prossimi" />
+
+    <LinearLayout
+
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal">
+
+        <Spinner
+            android:layout_marginStart="40dp"
+            android:id="@+id/spinner_days"
+            style="@style/SpinnerCustom"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:paddingVertical="10dp"
+            android:spinnerMode="dropdown" />
+
+        <TextView
+            style="@style/custom_p"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginHorizontal="@dimen/margin_horizontal"
+            android:text="Giorni" />
+    </LinearLayout>
+
+
+    <it.uniba.di.sms2021.gruppodkl.wefit.recyclerview.CustomRecyclerView
+        android:id="@+id/recycler_shopping_list"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:text="LE BUST DELLE BUST DELLE BUST DELL'IMMONDIZIA" />
+        tools:listitem="@layout/shopping_list_item"/>
 
-</FrameLayout>
+    <TextView
+        android:layout_marginTop="40dp"
+        android:id="@+id/empty"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Non ci sono prodotti"
+        android:visibility="gone"/>
+
+</LinearLayout>

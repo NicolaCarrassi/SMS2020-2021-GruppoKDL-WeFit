@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="horizontal"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_marginStart="10dp">
+
+        <TextView
+            android:layout_marginEnd="1dp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="-"
+            style="@style/custom_p"/>
+
+        <TextView
+            android:id="@+id/meal_quantity"
+            android:layout_width="135dp"
+            android:layout_height="wrap_content"
+            style="@style/custom_p"
+            android:layout_marginEnd="10dp"/>
+
+        <TextView
+            android:id="@+id/meal_name"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            style="@style/custom_p"
+            android:gravity="center_horizontal" />
+
+</LinearLayout>

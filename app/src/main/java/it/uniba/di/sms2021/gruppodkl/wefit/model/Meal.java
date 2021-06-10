@@ -60,9 +60,13 @@ public class Meal {
     }
 
 
-    public Meal(String name, int quantity, int mealType){
+    public Meal(String name, int quantity){
         this.name = name;
         this.quantity = quantity;
+    }
+
+    public Meal(String name, int quantity, int mealType){
+        this(name, quantity);
         this.mealType = mealType;
     }
 

@@ -6,7 +6,6 @@ import android.view.View;
 
 import androidx.appcompat.widget.Toolbar;
 
-import com.google.android.material.progressindicator.CircularProgressIndicator;
 
 import it.uniba.di.sms2021.gruppodkl.wefit.model.User;
 

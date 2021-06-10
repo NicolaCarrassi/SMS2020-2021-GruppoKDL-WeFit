@@ -3,66 +3,103 @@ package it.uniba.di.sms2021.gruppodkl.wefit.fragment.client;
 import android.os.Bundle;
 
 import androidx.fragment.app.Fragment;
+import androidx.recyclerview.widget.LinearLayoutManager;
 
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.AdapterView;
+import android.widget.ArrayAdapter;
+import android.widget.Spinner;
+
+import com.google.android.material.progressindicator.LinearProgressIndicator;
+
+import java.util.Map;
 
 import it.uniba.di.sms2021.gruppodkl.wefit.R;
+import it.uniba.di.sms2021.gruppodkl.wefit.WeFitApplication;
+import it.uniba.di.sms2021.gruppodkl.wefit.adapter.ClientShoppingListAdapter;
+import it.uniba.di.sms2021.gruppodkl.wefit.contract.client.ClientDietShoppingListContract;
+import it.uniba.di.sms2021.gruppodkl.wefit.presenter.client.ClientDietShoppingListPresenter;
+import it.uniba.di.sms2021.gruppodkl.wefit.recyclerview.CustomRecyclerView;
 
-/**
- * A simple {@link Fragment} subclass.
- * Use the {@link ClientDietShoppingListFragment#newInstance} factory method to
- * create an instance of this fragment.
- */
-public class ClientDietShoppingListFragment extends Fragment {
+
+public class ClientDietShoppingListFragment extends Fragment implements ClientDietShoppingListContract.View {
 
     public static final String TAG = ClientDietShoppingListFragment.class.getSimpleName();
 
-    // TODO: Rename parameter arguments, choose names that match
-    // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
-    private static final String ARG_PARAM1 = "param1";
-    private static final String ARG_PARAM2 = "param2";
 
-    // TODO: Rename and change types of parameters
-    private String mParam1;
-    private String mParam2;
+    private ClientDietShoppingListContract.Presenter mPresenter;
+    private LinearProgressIndicator mLinearProgress;
+    private Spinner mNumberOfDaysSpinner;
+    private CustomRecyclerView mRecycler;
+    private ClientShoppingListAdapter mAdapter;
+
 
     public ClientDietShoppingListFragment() {
         // Required empty public constructor
     }
 
-    /**
-     * Use this factory method to create a new instance of
-     * this fragment using the provided parameters.
-     *
-     * @param param1 Parameter 1.
-     * @param param2 Parameter 2.
-     * @return A new instance of fragment ClientDietShoppingListFragment.
-     */
-    // TODO: Rename and change types and number of parameters
-    public static ClientDietShoppingListFragment newInstance(String param1, String param2) {
-        ClientDietShoppingListFragment fragment = new ClientDietShoppingListFragment();
-        Bundle args = new Bundle();
-        args.putString(ARG_PARAM1, param1);
-        args.putString(ARG_PARAM2, param2);
-        fragment.setArguments(args);
-        return fragment;
-    }
 
-    @Override
-    public void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
-        if (getArguments() != null) {
-            mParam1 = getArguments().getString(ARG_PARAM1);
-            mParam2 = getArguments().getString(ARG_PARAM2);
-        }
-    }
+
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.client_diet_shopping_list_fragment, container, false);
+        View layout =  inflater.inflate(R.layout.client_diet_shopping_list_fragment, container, false);
+
+
+        mPresenter = new ClientDietShoppingListPresenter(this);
+
+        mLinearProgress = layout.findViewById(R.id.shopping_list_loading);
+        mNumberOfDaysSpinner = layout.findViewById(R.id.spinner_days);
+        mRecycler = layout.findViewById(R.id.recycler_shopping_list);
+        mRecycler.setEmptyView(layout.findViewById(R.id.empty));
+        mRecycler.setLayoutManager(new LinearLayoutManager(getActivity()));
+
+
+        ArrayAdapter<CharSequence> daysAdapter = ArrayAdapter.createFromResource(getActivity(),R.array.number_of_days, R.layout.spinner_layout);
+        daysAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+        mNumberOfDaysSpinner.setAdapter(daysAdapter);
+
+        mNumberOfDaysSpinner.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
+            @Override
+            public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
+                parent.setSelection(position);
+                if(position > 0)
+                    fetchInformations(position);
+            }
+
+            @Override
+            public void onNothingSelected(AdapterView<?> parent) {
+                //
+            }
+        });
+
+        return layout;
+    }
+
+
+
+    private void fetchInformations(int numberOfDays){
+        mNumberOfDaysSpinner.setEnabled(false);
+        mLinearProgress.setVisibility(View.VISIBLE);
+        mRecycler.setVisibility(View.GONE);
+
+        assert getActivity() != null;
+        String clientMail = ((WeFitApplication)getActivity().getApplicationContext()).getUser().email;
+
+        mPresenter.loadShoppingList(clientMail, numberOfDays);
+    }
+
+    @Override
+    public void onShoppingInformationLoaded(Map<String, Integer> mealsMap) {
+        mNumberOfDaysSpinner.setEnabled(true);
+        mLinearProgress.setVisibility(View.GONE);
+        mRecycler.setVisibility(View.VISIBLE);
+        mAdapter = new ClientShoppingListAdapter(mealsMap);
+        mRecycler.setAdapter(mAdapter);
     }
 }

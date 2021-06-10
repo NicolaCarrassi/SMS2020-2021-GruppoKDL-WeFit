@@ -38,4 +38,15 @@
         <item>@string/dinner</item>
     </string-array>
 
+    <string-array name="number_of_days">
+        <item></item>
+        <item>1</item>
+        <item>2</item>
+        <item>3</item>
+        <item>4</item>
+        <item>5</item>
+        <item>6</item>
+        <item>7</item>
+    </string-array>
+
 </resources>

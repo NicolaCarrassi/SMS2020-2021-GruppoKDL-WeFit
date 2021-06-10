@@ -3,6 +3,9 @@ package it.uniba.di.sms2021.gruppodkl.wefit.utility;
 import android.content.Context;
 import android.view.View;
 
+import java.util.Calendar;
+import java.util.Date;
+
 import it.uniba.di.sms2021.gruppodkl.wefit.R;
 
 public class DayOfTheWeek {
@@ -122,6 +125,39 @@ public class DayOfTheWeek {
         }
 
         return res;
+    }
+
+    public static int getDayOfTheWeekFromCalendar(int daysToAdd){
+        Date dt = new Date();
+        Calendar calendar = Calendar.getInstance();
+        calendar.setTime(dt);
+        calendar.add(Calendar.DATE, daysToAdd);
+        int today = calendar.get(Calendar.DAY_OF_WEEK);
+
+        switch (today){
+            case Calendar.SUNDAY:
+                today = WeekDay.SUNDAY;
+                break;
+            case Calendar.MONDAY:
+                today = WeekDay.MONDAY;
+                break;
+            case Calendar.TUESDAY:
+                today = WeekDay.TUESDAY;
+                break;
+            case Calendar.WEDNESDAY:
+                today = WeekDay.WEDNESDAY;
+                break;
+            case Calendar.THURSDAY:
+                today = WeekDay.THURSDAY;
+                break;
+            case Calendar.FRIDAY:
+                today = WeekDay.FRIDAY;
+                break;
+            default:
+                today = WeekDay.SATURDAY;
+        }
+
+        return today;
     }
 
 

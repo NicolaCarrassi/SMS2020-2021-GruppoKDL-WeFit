@@ -4,64 +4,96 @@ import android.os.Bundle;
 
 import androidx.fragment.app.Fragment;
 
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.TextView;
+import android.widget.Toast;
+
+import com.jjoe64.graphview.GraphView;
+
+import java.util.Date;
+import java.util.List;
 
 import it.uniba.di.sms2021.gruppodkl.wefit.R;
+import it.uniba.di.sms2021.gruppodkl.wefit.WeFitApplication;
+import it.uniba.di.sms2021.gruppodkl.wefit.contract.client.ClientProgressContract;
+import it.uniba.di.sms2021.gruppodkl.wefit.model.Client;
+import it.uniba.di.sms2021.gruppodkl.wefit.presenter.client.ClientProgressPresenter;
+import it.uniba.di.sms2021.gruppodkl.wefit.utility.GraphSettings;
 
-/**
- * A simple {@link Fragment} subclass.
- * Use the {@link ClientMyProgressFragment#newInstance} factory method to
- * create an instance of this fragment.
- */
-public class ClientMyProgressFragment extends Fragment {
+
+public class ClientMyProgressFragment extends Fragment implements ClientProgressContract.View {
+
     public static final String TAG = ClientHomeFragment.class.getSimpleName();
+    private static final String CLIENT_MAIL = "clientMail";
 
-    // TODO: Rename parameter arguments, choose names that match
-    // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
-    private static final String ARG_PARAM1 = "param1";
-    private static final String ARG_PARAM2 = "param2";
+    private View mView;
+    private String mClientMail;
+    private TextView mClientInitialWeight;
+    private TextView mClientCurrentWeight;
+    private GraphView mWeightGraph;
+    private ClientProgressContract.Presenter mPresenter;
 
-    // TODO: Rename and change types of parameters
-    private String mParam1;
-    private String mParam2;
-
-    public ClientMyProgressFragment() {
-        // Required empty public constructor
+    public ClientMyProgressFragment(){
+        //
     }
 
-    /**
-     * Use this factory method to create a new instance of
-     * this fragment using the provided parameters.
-     *
-     * @param param1 Parameter 1.
-     * @param param2 Parameter 2.
-     * @return A new instance of fragment ProgressFragment.
-     */
-    // TODO: Rename and change types and number of parameters
-    public static ClientMyProgressFragment newInstance(String param1, String param2) {
+    public static ClientMyProgressFragment newInstance(String clientMail){
         ClientMyProgressFragment fragment = new ClientMyProgressFragment();
         Bundle args = new Bundle();
-        args.putString(ARG_PARAM1, param1);
-        args.putString(ARG_PARAM2, param2);
+        args.putString(CLIENT_MAIL, clientMail);
         fragment.setArguments(args);
         return fragment;
     }
 
     @Override
-    public void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
-        if (getArguments() != null) {
-            mParam1 = getArguments().getString(ARG_PARAM1);
-            mParam2 = getArguments().getString(ARG_PARAM2);
-        }
+    public void onStart() {
+        super.onStart();
+        mPresenter.findUserData(mClientMail);
     }
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
-        // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.client_progress_frament, container, false);
+
+        View layout = inflater.inflate(R.layout.client_progress_frament, container, false);
+        mView = layout;
+        mPresenter = new ClientProgressPresenter(this);
+
+        mClientMail = ((WeFitApplication)getActivity().getApplicationContext()).getUser().email;
+        bind();
+        return layout;
+    }
+
+    private void bind(){
+        if(getActivity() instanceof WeFitApplication.CallbackOperations){
+            WeFitApplication.CallbackOperations act = (WeFitApplication.CallbackOperations) getActivity();
+            ((WeFitApplication) getActivity().getApplicationContext()).setToolbar(mView,act);
+        }
+        mClientInitialWeight = mView.findViewById(R.id.initial_weight);
+        mClientCurrentWeight = mView.findViewById(R.id.current_weight);
+        mWeightGraph = mView.findViewById(R.id.graph);
+
+    }
+
+
+    @Override
+    public void onFailure() {
+        Toast.makeText(getActivity(), R.string.error_data_missing, Toast.LENGTH_SHORT).show();
+    }
+
+    @Override
+    public void onClientDataReceived(List<Float> weightList, List<Date> dateList) {
+
+        String clientInitialWeight = Float.toString(weightList.get(0)) ;
+        String clientCurrentWeight = Float.toString(((Client) ((WeFitApplication) getActivity().getApplicationContext()).getUser()).weight);
+
+
+        mClientInitialWeight.setText(clientInitialWeight);
+        mClientCurrentWeight.setText(clientCurrentWeight);
+
+        GraphSettings.graphSettings(mWeightGraph, dateList, weightList);
     }
 }

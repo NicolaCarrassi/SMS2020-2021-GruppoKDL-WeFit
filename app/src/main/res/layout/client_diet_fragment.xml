@@ -5,7 +5,8 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
-    tools:context=".fragment.client.ClientDietFragment">
+    tools:context=".fragment.client.ClientDietFragment"
+    style="@style/BackgroundCustom">
 
     <include layout="@layout/toolbar"
         android:layout_width="match_parent"
@@ -15,7 +16,8 @@
         android:id="@+id/tab_layout"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        app:tabMode="fixed">
+        app:tabMode="fixed"
+        android:background="@color/transparent">
 
         <com.google.android.material.tabs.TabItem
             android:id="@+id/food_diary_tab_item"

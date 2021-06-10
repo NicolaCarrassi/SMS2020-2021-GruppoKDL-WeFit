@@ -7,11 +7,12 @@
 
     <androidx.cardview.widget.CardView
         android:id="@+id/diet_day_card"
-        android:layout_weight="0.5"
         android:layout_width="match_parent"
-        android:layout_height="0dp"
+        android:layout_height="wrap_content"
         app:cardCornerRadius="30dp"
-        android:layout_marginVertical="20dp">
+        android:layout_marginVertical="20dp"
+        android:paddingVertical="30dp"
+        android:layout_marginHorizontal="30dp">
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
@@ -26,7 +27,8 @@
                 android:gravity="center_horizontal"
                 android:textStyle="bold"
                 style="@style/custom_h2"
-                android:textColor="@color/white">
+                android:textColor="@color/white"
+                android:paddingVertical="10dp">
             </TextView>
         </LinearLayout>
     </androidx.cardview.widget.CardView>

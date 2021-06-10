@@ -2,11 +2,16 @@ package it.uniba.di.sms2021.gruppodkl.wefit.db;
 
 
 import com.google.firebase.firestore.DocumentReference;
+import com.google.firebase.firestore.DocumentSnapshot;
 import com.google.firebase.firestore.FirebaseFirestore;
 import com.google.firebase.firestore.Query;
+import com.google.firebase.firestore.QuerySnapshot;
 import com.google.firebase.firestore.WriteBatch;
 
+import java.security.Key;
+import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 
 import it.uniba.di.sms2021.gruppodkl.wefit.model.Client;
@@ -21,8 +26,13 @@ public class ClientDAO extends UserDAO {
     public interface ClientDAOCallbacks{
         void requestSent(boolean isSuccessful);
     }
+    public interface WeightsLoaded{
+        void onWeightsLoaded(List<Float> weightList, List<String> dateList);
+    }
 
     private static boolean sSuccess;
+    private static List<Float> sWeightList;
+    private static List<String> sDateList;
 
     public static void requestToCoach(Client client, Coach coach, Map<String, Object> requestsElement, ClientDAOCallbacks callback){
 
@@ -103,4 +113,31 @@ public class ClientDAO extends UserDAO {
                 .document(mealID).delete();
     }
 
+    public static void getAllWeights(String clientMail, WeightsLoaded callback){
+        if(sWeightList != null)
+            sWeightList.clear();
+        else
+            sWeightList = new ArrayList<>();
+        if(sDateList != null)
+            sDateList.clear();
+        else
+            sDateList = new ArrayList<>();
+
+        FirebaseFirestore.getInstance().collection(Keys.Collections.USERS).document(clientMail)
+                .collection(Keys.Collections.WEIGHT).get()
+                .addOnCompleteListener(task -> {
+                    if(task.isSuccessful()){
+                        QuerySnapshot qs = task.getResult();
+                        if(qs != null && !qs.isEmpty()){
+                            List<DocumentSnapshot> documents = qs.getDocuments();
+                            for(DocumentSnapshot document : documents){
+                                float weight = document.getDouble(Client.ClientKeys.WEIGHT).floatValue();
+                                sWeightList.add(weight);
+                                sDateList.add(document.getString(Client.ClientKeys.WEIGHT_DATE));
+                            }
+                            callback.onWeightsLoaded(sWeightList, sDateList);
+                        }
+                    }
+                });
+    }
 }

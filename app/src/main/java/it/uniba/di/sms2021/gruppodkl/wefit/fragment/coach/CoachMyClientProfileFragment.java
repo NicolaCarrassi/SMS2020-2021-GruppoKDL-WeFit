@@ -26,7 +26,6 @@ import it.uniba.di.sms2021.gruppodkl.wefit.presenter.coach.CoachMyClientProfileP
 import it.uniba.di.sms2021.gruppodkl.wefit.utility.GraphSettings;
 
 
-//TODO Continua quando avrai nuove parti
 
 /**
  * A simple {@link Fragment} subclass.

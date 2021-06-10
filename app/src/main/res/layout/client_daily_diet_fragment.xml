@@ -11,13 +11,15 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:orientation="vertical"
-        tools:context=".fragment.client.ClientDailyDietFragment">
+        tools:context=".fragment.client.ClientDailyDietFragment"
+        android:layout_marginHorizontal="30dp">
 
         <TextView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:text="@string/breakfast_caps"
-            style="@style/custom_h2"/>
+            style="@style/custom_h2"
+            android:layout_marginBottom="10dp"/>
 
         <it.uniba.di.sms2021.gruppodkl.wefit.recyclerview.CustomRecyclerView
             android:id="@+id/breakfast_recycler"
@@ -38,7 +40,8 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:text="@string/lunch_caps"
-            style="@style/custom_h2"/>
+            style="@style/custom_h2"
+            android:layout_marginBottom="10dp"/>
 
         <it.uniba.di.sms2021.gruppodkl.wefit.recyclerview.CustomRecyclerView
             android:id="@+id/lunch_recycler"
@@ -58,7 +61,8 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:text="@string/dinner_caps"
-            style="@style/custom_h2"/>
+            style="@style/custom_h2"
+            android:layout_marginBottom="10dp"/>
 
         <it.uniba.di.sms2021.gruppodkl.wefit.recyclerview.CustomRecyclerView
             android:id="@+id/dinner_recycler"

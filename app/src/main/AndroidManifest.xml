@@ -40,6 +40,10 @@
             android:name="com.google.android.geo.API_KEY"
             android:value="${MAPS_API_KEY}" />
 
+        <meta-data
+            android:name="com.google.firebase.messaging.default_notification_icon"
+            android:resource="@drawable/logo" />
+
         <activity
             android:name=".RunActivity"
             android:label="@string/title_activity_run"/>
@@ -68,6 +72,22 @@
             android:enabled="true"
             android:exported="false"
             android:foregroundServiceType="location"/>
+
+        <service
+            android:name=".service.WeFitFirebaseInstanceIdService"
+            android:exported="false">
+            <intent-filter>
+                <action android:name="com.google.firebase.INSTANCE_ID_EVENT" />
+            </intent-filter>
+        </service>
+
+        <service
+            android:name=".service.WeFitFirebaseMessagingService"
+            android:exported="false">
+            <intent-filter>
+                <action android:name="com.google.firebase.MESSAGING_EVENT"/>
+            </intent-filter>
+        </service>
 
     </application>
 </manifest>

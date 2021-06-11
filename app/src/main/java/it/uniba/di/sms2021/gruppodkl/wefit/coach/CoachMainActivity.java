@@ -17,7 +17,6 @@ import it.uniba.di.sms2021.gruppodkl.wefit.LoginActivity;
 import it.uniba.di.sms2021.gruppodkl.wefit.R;
 import it.uniba.di.sms2021.gruppodkl.wefit.SettingsActivity;
 import it.uniba.di.sms2021.gruppodkl.wefit.WeFitApplication;
-import it.uniba.di.sms2021.gruppodkl.wefit.fragment.NotificationsFragment;
 import it.uniba.di.sms2021.gruppodkl.wefit.fragment.TermsFragment;
 import it.uniba.di.sms2021.gruppodkl.wefit.fragment.client.ClientMyProfileFragment;
 import it.uniba.di.sms2021.gruppodkl.wefit.fragment.coach.CoachClientsFragment;
@@ -106,10 +105,6 @@ public class CoachMainActivity extends AppCompatActivity implements WeFitApplica
             case R.id.profile_item:
                 fragment = new CoachProfileFragment();
                 tag = CoachProfileFragment.TAG;
-                break;
-            case R.id.notifications_item:
-                fragment = new NotificationsFragment();
-                tag = NotificationsFragment.TAG;
                 break;
             case R.id.settings_item:
                 res = false;

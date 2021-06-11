@@ -13,15 +13,6 @@
             android:orderInCategory="100"
             android:title="@string/my_profile_drawer"
             app:showAsAction="ifRoom"/>
-
-        <item
-            android:id="@+id/notifications_item"
-            android:checkable="true"
-            android:icon="@drawable/notifications_icon"
-            android:orderInCategory="100"
-            android:title="@string/notifications_drawer"
-            app:showAsAction="ifRoom"/>
-
     </group>
 
     <group android:id="@+id/settings">

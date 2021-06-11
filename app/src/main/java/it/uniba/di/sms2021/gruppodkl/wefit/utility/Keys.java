@@ -44,6 +44,7 @@ public interface Keys {
         String DIET = "diet";
         String MEALS = "meals";
         String REGISTERED_MEALS = "registered_meals";
+        String TOKEN = "token";
     }
 
     interface RatingInfo{

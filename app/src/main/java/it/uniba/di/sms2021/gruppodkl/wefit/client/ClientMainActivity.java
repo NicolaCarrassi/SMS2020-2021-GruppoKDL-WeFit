@@ -28,7 +28,6 @@ import it.uniba.di.sms2021.gruppodkl.wefit.fragment.client.ClientAddFragment;
 import it.uniba.di.sms2021.gruppodkl.wefit.fragment.client.ClientMyCoachFragment;
 import it.uniba.di.sms2021.gruppodkl.wefit.fragment.client.ClientDietFragment;
 import it.uniba.di.sms2021.gruppodkl.wefit.fragment.client.ClientHomeFragment;
-import it.uniba.di.sms2021.gruppodkl.wefit.fragment.NotificationsFragment;
 import it.uniba.di.sms2021.gruppodkl.wefit.fragment.client.ClientMyProfileFragment;
 import it.uniba.di.sms2021.gruppodkl.wefit.fragment.client.ClientMyProgressFragment;
 import it.uniba.di.sms2021.gruppodkl.wefit.fragment.TermsFragment;
@@ -140,10 +139,6 @@ public class ClientMainActivity extends AppCompatActivity implements WeFitApplic
                 Client client = (Client) ((WeFitApplication)getApplicationContext()).getUser();
                 nextFragment = ClientMyCoachFragment.newInstance(true, client.coach);
                 tag = ClientMyCoachFragment.TAG;
-                break;
-            case R.id.notifications_item:
-                nextFragment = new NotificationsFragment();
-                tag = NotificationsFragment.TAG;
                 break;
             case R.id.progress_item:
                 nextFragment = new ClientMyProgressFragment();

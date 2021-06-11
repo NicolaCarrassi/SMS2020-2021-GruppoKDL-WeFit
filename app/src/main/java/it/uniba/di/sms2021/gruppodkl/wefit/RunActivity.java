@@ -12,8 +12,12 @@ import android.content.Intent;
 import android.content.pm.PackageManager;
 import android.location.Location;
 import android.os.Bundle;
+import android.os.Handler;
+import android.os.SystemClock;
 import android.util.Log;
 import android.view.View;
+import android.widget.Chronometer;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import com.google.android.gms.location.FusedLocationProviderClient;
@@ -54,6 +58,10 @@ public class RunActivity extends FragmentActivity implements OnMapReadyCallback,
 
     private MyBroadcastReceiver mMessageReceiver;
     List<Location> listLocation = new ArrayList<Location>();
+    private float mDistanceRun;
+    private String mElapsedTime;
+
+    private Chronometer mCrono;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -80,6 +88,7 @@ public class RunActivity extends FragmentActivity implements OnMapReadyCallback,
     private void bind(){
         mStartButton = findViewById(R.id.start);
         mStopButton = findViewById(R.id.stop);
+        mCrono = findViewById(R.id.crono);
     }
 
     private void setListener(){
@@ -92,6 +101,10 @@ public class RunActivity extends FragmentActivity implements OnMapReadyCallback,
                     mStartingPosition = mPresenter.getCurrentLocation(fusedLocationProviderClient,mMap,RunActivity.this);
                     addMarker(mStartingPosition, getResources().getString(R.string.starting_point));
                     mPresenter.startLocationService(getApplicationContext(), mMessageReceiver,RunActivity.this);
+                    mCrono.setBase(SystemClock.elapsedRealtime());
+                    mCrono.start();
+                    mStartButton.setVisibility(View.GONE);
+                    mStopButton.setVisibility(View.VISIBLE);
                 }
             }
         });
@@ -102,6 +115,14 @@ public class RunActivity extends FragmentActivity implements OnMapReadyCallback,
                 mStopPosition = listLocation.get(listLocation.size()-1);
                 addMarker(mStopPosition, getResources().getString(R.string.stop_point));
                 mPresenter.stopLocationService(getApplicationContext(), RunActivity.this);
+                centerCamera(mStopPosition,16);
+                mDistanceRun = mPresenter.calculateDistance(listLocation);
+                Log.d("gesu", "hai percorso: " + mDistanceRun + " metri");
+                mCrono.stop();
+                mElapsedTime = mPresenter.calculateTime(mCrono);
+                Log.d("gesu", "ci hai messo: " + mElapsedTime);
+                mStartButton.setVisibility(View.VISIBLE);
+                mStopButton.setVisibility(View.GONE);
             }
         });
 
@@ -118,6 +139,7 @@ public class RunActivity extends FragmentActivity implements OnMapReadyCallback,
     @Override
     public void onMapReady(GoogleMap googleMap) {
         mMap = googleMap;
+        mMap.getUiSettings().setMapToolbarEnabled(false);
 
         if (ContextCompat.checkSelfPermission(getApplicationContext(), Manifest.permission.ACCESS_FINE_LOCATION) != PackageManager.PERMISSION_GRANTED) {
             ActivityCompat.requestPermissions(RunActivity.this, new String[]{Manifest.permission.ACCESS_FINE_LOCATION}, REQUEST_CODE_LOCATION_PERMISSION);
@@ -158,12 +180,12 @@ public class RunActivity extends FragmentActivity implements OnMapReadyCallback,
     public void drawPath(Location first, Location second){
         LatLng start = new LatLng(first.getLatitude(),first.getLongitude());
         LatLng end = new LatLng(second.getLatitude(),second.getLongitude());
-        mMap.addPolyline(new PolylineOptions().add(start,end));
+        mMap.addPolyline(new PolylineOptions().color(getColor(R.color.blue)).add(start,end));
     }
 
     @Override
-    public void centerCamera(Location location){
-        mMap.moveCamera(CameraUpdateFactory.newLatLng(new LatLng(location.getLatitude(),location.getLongitude())));
+    public void centerCamera(Location location, int zoom){
+        mMap.animateCamera(CameraUpdateFactory.newLatLngZoom(new LatLng(location.getLatitude(),location.getLongitude()),zoom));
     }
 
     @Override
@@ -172,7 +194,7 @@ public class RunActivity extends FragmentActivity implements OnMapReadyCallback,
             drawPath(mStartingPosition,listLocation.get(0));
         } else {
             drawPath(listLocation.get(listLocation.size()-2),listLocation.get(listLocation.size()-1));
-            centerCamera(listLocation.get(listLocation.size()-1));
+            centerCamera(listLocation.get(listLocation.size()-1),17);
         }
     }
 }

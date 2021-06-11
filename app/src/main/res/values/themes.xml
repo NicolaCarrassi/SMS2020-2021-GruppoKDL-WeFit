@@ -122,6 +122,14 @@
         <item name="android:backgroundTintMode">screen</item>
     </style>
 
+    <!-- Background custom Run -->
+    <style name="BackgroundCustomRun" parent="Theme.AppCompat.Light">
+        <item name="android:background">@drawable/doodle1080p</item>
+        <item name="android:backgroundTint">@color/white_custom</item>
+        <item name="android:backgroundTintMode">screen</item>
+        <item name="android:layout_scale"></item>
+    </style>
+
     <!-- Icon custom -->
     <style name="BackIconCustom" parent="Theme.AppCompat.Light.DarkActionBar">
         <item name="android:tint">?attr/colorPrimary</item>
@@ -134,6 +142,19 @@
         <item name="android:textStyle">bold</item>
         <item name="android:textSize">18sp</item>
         <item name="android:textColor">@color/white</item>
+    </style>
+
+    <!-- Material Button custom round-->
+    <style name="MaterialButtonCustomRound">
+        <item name="cornerRadius">50dp</item>
+        <item name="android:textStyle">bold</item>
+        <item name="android:textSize">18sp</item>
+        <item name="android:textColor">@color/white</item>
+        <item name="android:insetLeft">0dp</item>
+        <item name="android:insetRight">0dp</item>
+        <item name="android:insetTop">0dp</item>
+        <item name="android:insetBottom">0dp</item>
+
     </style>
 
     <!-- Button custom-->

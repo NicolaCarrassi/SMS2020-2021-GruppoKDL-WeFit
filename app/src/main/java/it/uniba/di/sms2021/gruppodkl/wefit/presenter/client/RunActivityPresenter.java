@@ -8,6 +8,8 @@ import android.content.Intent;
 import android.content.IntentFilter;
 import android.location.Location;
 import android.os.Looper;
+import android.os.SystemClock;
+import android.widget.Chronometer;
 import android.widget.Toast;
 import androidx.annotation.NonNull;
 import androidx.fragment.app.FragmentActivity;
@@ -21,6 +23,9 @@ import com.google.android.gms.maps.GoogleMap;
 import com.google.android.gms.maps.model.LatLng;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
+
+import java.util.List;
+import java.util.concurrent.TimeUnit;
 
 import it.uniba.di.sms2021.gruppodkl.wefit.R;
 import it.uniba.di.sms2021.gruppodkl.wefit.contract.client.RunActivityContract;
@@ -109,6 +114,32 @@ public class RunActivityPresenter implements RunActivityContract.Presenter {
             context.startService(intent);
             Toast.makeText(activity, activity.getResources().getString(R.string.run_stopped), Toast.LENGTH_SHORT).show();
         }
+    }
+
+    @Override
+    public float calculateDistance(List<Location> locationList) {
+        float result = 0;
+
+        for(int i = 0; i<locationList.size()-1; i++){
+            result += locationList.get(i).distanceTo(locationList.get(i+1));
+        }
+
+        return result;
+    }
+
+    @Override
+    public String calculateTime(Chronometer chronometer){
+        String result;
+        long elapsedTime;
+        int hour,min,sec;
+
+        elapsedTime = SystemClock.elapsedRealtime() - chronometer.getBase();
+
+        result = String.format("%02d:%02d:%02d", TimeUnit.MILLISECONDS.toHours(elapsedTime),
+                TimeUnit.MILLISECONDS.toMinutes(elapsedTime) % TimeUnit.HOURS.toMinutes(1),
+                TimeUnit.MILLISECONDS.toSeconds(elapsedTime) % TimeUnit.MINUTES.toSeconds(1));
+
+        return result;
     }
 
 }

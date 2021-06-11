@@ -12,15 +12,40 @@ import android.os.Build;
 import androidx.annotation.NonNull;
 import androidx.core.app.NotificationCompat;
 
+import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.firestore.FirebaseFirestore;
 import com.google.firebase.messaging.FirebaseMessagingService;
 import com.google.firebase.messaging.RemoteMessage;
 
+import java.util.HashMap;
+import java.util.Map;
+
 import it.uniba.di.sms2021.gruppodkl.wefit.R;
 import it.uniba.di.sms2021.gruppodkl.wefit.SplashActivity;
+import it.uniba.di.sms2021.gruppodkl.wefit.utility.Keys;
 
 
 public class WeFitFirebaseMessagingService extends FirebaseMessagingService {
     private static final int NOTIFICATION_MAX_CHARACTERS = 30;
+
+
+    @Override
+    public void onNewToken(@NonNull String s) {
+        super.onNewToken(s);
+
+
+        FirebaseAuth auth = FirebaseAuth.getInstance();
+
+
+        if(auth.getCurrentUser() != null) {
+            String userMail = auth.getCurrentUser().getEmail();
+            Map<String, Object> tokenMap = new HashMap<>();
+            tokenMap.put(Keys.Collections.TOKEN, s);
+
+            assert userMail != null;
+            FirebaseFirestore.getInstance().collection(Keys.Collections.TOKEN).document(userMail).set(tokenMap);
+        }
+    }
 
     @Override
     public void onMessageReceived(@NonNull RemoteMessage remoteMessage) {

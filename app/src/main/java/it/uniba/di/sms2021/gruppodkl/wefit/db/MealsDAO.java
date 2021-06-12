@@ -46,7 +46,7 @@ public class MealsDAO {
 
     public static void loadAll(MealsLoaded callback){
         if(sMealsNameList != null)
-            sMealsNameList.clear();
+            callback.onMealsLoaded(sMealsNameList);
         else
             sMealsNameList = new ArrayList<>();
 

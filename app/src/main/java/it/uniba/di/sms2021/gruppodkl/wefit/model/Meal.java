@@ -24,7 +24,7 @@ public class Meal {
     }
 
    public interface MealList{
-        String FETTE_BISCOTTATE = "Fette biscottate";
+        String FETTE_BISCOTTATE = "Fettebiscottate";
         String BISCOTTI = "Biscotti";
         String TACCHINO = "Tacchino";
         String PESCE = "Pesce";

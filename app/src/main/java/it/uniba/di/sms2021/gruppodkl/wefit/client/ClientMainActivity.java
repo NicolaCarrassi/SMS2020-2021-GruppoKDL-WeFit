@@ -1,7 +1,6 @@
 package it.uniba.di.sms2021.gruppodkl.wefit.client;
 
 
-import android.app.FragmentManager;
 import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
@@ -11,6 +10,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.view.GravityCompat;
 import androidx.drawerlayout.widget.DrawerLayout;
 import androidx.fragment.app.Fragment;
+import androidx.fragment.app.FragmentManager;
 
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 import com.google.android.material.navigation.NavigationView;
@@ -178,15 +178,29 @@ public class ClientMainActivity extends AppCompatActivity implements WeFitApplic
         mDrawer.openDrawer(GravityCompat.END);
     }
 
+
+
     @Override
-    public void onBackPressed(){
-        FragmentManager fm = getFragmentManager();
-        if (fm.getBackStackEntryCount() > 0) {
-            fm.popBackStack();
-        } else {
-            super.onBackPressed();
+    public void onBackPressed() {
+        androidx.fragment.app.FragmentManager fm = getSupportFragmentManager();
+        for (Fragment frag : fm.getFragments()) {
+            if (frag.isVisible()) {
+                FragmentManager childFm = frag.getChildFragmentManager();
+                if (childFm.getBackStackEntryCount() > 1){
+                    String tag = childFm.getBackStackEntryAt(childFm.getBackStackEntryCount()-2).getName();
+                    if(frag instanceof ClientDietFragment && tag != null)
+                        ((ClientDietFragment) frag).changeTabItem(tag);
+
+                    childFm.popBackStack(childFm.getBackStackEntryAt(childFm.getBackStackEntryCount()-1).getName(), FragmentManager.POP_BACK_STACK_INCLUSIVE);
+
+                    return;
+                }
+            }
         }
+        super.onBackPressed();
+        selectBottomNavigationItem();
     }
+
 
     @Override
     public void goBack() {

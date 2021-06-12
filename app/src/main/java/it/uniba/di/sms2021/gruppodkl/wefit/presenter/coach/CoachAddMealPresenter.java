@@ -44,8 +44,12 @@ public class CoachAddMealPresenter implements CoachAddMealContract.Presenter, Me
     public void onMealsLoaded(List<String> meals) {
         List<String> translatedList = new ArrayList<>();
 
-        for(String meal: meals)
-            translatedList.add(Meal.convertName(meal,mContext));
+
+        for(String meal: meals) {
+            translatedList.add(Meal.convertName(meal, mContext));
+        }
+
+        translatedList.remove(0);
 
         mView.mealsLoaded(translatedList);
     }

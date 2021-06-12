@@ -18,6 +18,8 @@ public class ClientDietFragment extends Fragment {
 
     public static final String TAG = ClientDietFragment.class.getSimpleName();
 
+    private TabLayout mTabLayout;
+
     public ClientDietFragment() {
         // Required empty public constructor
     }
@@ -46,7 +48,7 @@ public class ClientDietFragment extends Fragment {
         }
 
 
-        TabLayout mTabLayout = view.findViewById(R.id.tab_layout);
+        mTabLayout = view.findViewById(R.id.tab_layout);
         mTabLayout.addOnTabSelectedListener(new TabLayout.OnTabSelectedListener() {
             @Override
             public void onTabSelected(TabLayout.Tab tab) {
@@ -85,6 +87,17 @@ public class ClientDietFragment extends Fragment {
 
         getChildFragmentManager().beginTransaction().replace(R.id.diet_fragment_anchor, fragment, text)
                 .addToBackStack(text).commit();
+    }
+
+
+    public  void changeTabItem(String name){
+            if(name.equals(ClientDietDiaryFragment.TAG))
+                mTabLayout.getTabAt(0).select();
+            else if (name.equals(ClientDietListFragment.TAG))
+                mTabLayout.getTabAt(1).select();
+            else if(name.equals(ClientDietShoppingListFragment.TAG))
+                mTabLayout.getTabAt(2).select();
+
     }
 
 }

@@ -8,33 +8,87 @@
     android:orientation="vertical"
     android:layout_marginVertical="35dp">
 
-    <TextView
+    <LinearLayout
+        android:id="@+id/add_meal_panel"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="@string/add_meal"
-        style="@style/custom_h2"
-        android:textAlignment="center"/>
+        android:orientation="vertical">
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/add_meal"
+            style="@style/custom_h2"
+            android:textAlignment="center"/>
 
-    <Spinner
-        android:id="@+id/spinner_meal"
-        android:layout_marginTop="@dimen/margin_horizontal"
+        <Spinner
+            android:id="@+id/spinner_meal"
+            android:layout_marginTop="@dimen/margin_horizontal"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:paddingVertical="10dp"
+            android:layout_marginHorizontal="@dimen/margin_horizontal"
+            android:spinnerMode="dropdown"
+            style="@style/SpinnerCustom"
+            android:visibility="visible">
+        </Spinner>
+
+        <com.google.android.material.button.MaterialButton
+            android:id="@+id/send_button"
+            android:layout_gravity="center_horizontal"
+            android:layout_marginTop="@dimen/margin_horizontal"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            style="@style/MaterialButtonCustom"
+            android:paddingHorizontal="30dp"
+            android:paddingVertical="15dp"
+            android:text="@string/send"
+            android:visibility="visible"/>
+
+            <TextView
+                android:id="@+id/no_meal_label"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_horizontal"
+                android:gravity="center_horizontal"
+                android:layout_marginHorizontal="30dp"
+                android:layout_marginVertical="100dp"
+                android:text="@string/no_trainings_assigned"
+                android:visibility="gone"
+                style="@style/custom_p">
+            </TextView>
+    </LinearLayout>
+    <LinearLayout
+        android:id="@+id/add_meal_success"
+        android:visibility="gone"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:paddingVertical="10dp"
-        android:layout_marginHorizontal="@dimen/margin_horizontal"
-        android:spinnerMode="dropdown"
-        style="@style/SpinnerCustom">
-    </Spinner>
+        android:layout_marginVertical="40dp"
+        android:orientation="vertical">
 
-    <com.google.android.material.button.MaterialButton
-        android:id="@+id/send_button"
-        android:layout_gravity="center_horizontal"
-        android:layout_marginTop="@dimen/margin_horizontal"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        style="@style/MaterialButtonCustom"
-        android:paddingHorizontal="30dp"
-        android:paddingVertical="15dp"
-        android:text="@string/send"/>
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/meal_successfully_added"
+            android:textAlignment="center"
+            style="@style/custom_h2"/>
 
+        <ImageView
+            android:layout_gravity="center_horizontal"
+            android:layout_marginTop="@dimen/margin_horizontal"
+            android:id="@+id/success_anim"
+            android:layout_width="80dp"
+            android:layout_height="80dp"/>
+
+        <com.google.android.material.button.MaterialButton
+            android:id="@+id/back_home"
+            android:layout_gravity="center_horizontal"
+            android:layout_marginTop="@dimen/margin_horizontal"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            style="@style/MaterialButtonCustom"
+            android:paddingHorizontal="30dp"
+            android:paddingVertical="15dp"
+            android:text="@string/back"/>
+
+    </LinearLayout>
 </LinearLayout>

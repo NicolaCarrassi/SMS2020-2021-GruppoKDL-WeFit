@@ -22,7 +22,8 @@
         android:layout_height="wrap_content"
         android:orientation="horizontal"
         android:layout_gravity="center_horizontal"
-        android:gravity="center">
+        android:gravity="center"
+        android:layout_margin="30dp">
 
         <ImageButton
             android:id="@+id/previous_day_btn"
@@ -37,7 +38,8 @@
             android:layout_marginHorizontal="5dp"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            style="@style/custom_p" />
+            style="@style/custom_p"
+            />
 
         <ImageButton
             android:id="@+id/next_day_btn"
@@ -53,11 +55,11 @@
         android:layout_height="match_parent">
 
         <LinearLayout
-            android:layout_marginTop="@dimen/margin_horizontal"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:orientation="vertical"
-            tools:context=".fragment.client.ClientDailyDietFragment">
+            tools:context=".fragment.client.ClientDailyDietFragment"
+            android:layout_marginHorizontal="30dp">
 
             <TextView
                 android:layout_width="match_parent"

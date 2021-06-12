@@ -1,6 +1,7 @@
 package it.uniba.di.sms2021.gruppodkl.wefit.fragment.client;
 
 import android.app.Activity;
+import android.graphics.drawable.AnimatedVectorDrawable;
 import android.os.Bundle;
 
 import androidx.fragment.app.Fragment;
@@ -9,8 +10,12 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
+import android.widget.ImageView;
+import android.widget.LinearLayout;
 import android.widget.Spinner;
+import android.widget.TextView;
 
+import com.google.android.material.bottomsheet.BottomSheetDialogFragment;
 import com.google.android.material.button.MaterialButton;
 
 import java.util.List;
@@ -21,7 +26,7 @@ import it.uniba.di.sms2021.gruppodkl.wefit.contract.client.ClientAddMealContract
 import it.uniba.di.sms2021.gruppodkl.wefit.presenter.client.ClientAddMealPresenter;
 
 
-public class ClientAddMealFragment extends Fragment implements ClientAddMealContract.View {
+public class ClientAddMealFragment extends BottomSheetDialogFragment implements ClientAddMealContract.View {
 
     public static final String TAG = ClientAddMealFragment.class.getSimpleName();
 
@@ -29,6 +34,10 @@ public class ClientAddMealFragment extends Fragment implements ClientAddMealCont
     private ClientAddMealContract.Presenter mPresenter;
     private MaterialButton mSendButton;
     private View mView;
+    private AnimatedVectorDrawable mSuccessAnimation;
+    private LinearLayout mAddMealPanel;
+    private LinearLayout mAddMealSuccess;
+    private TextView mNoMealLabel;
 
     public ClientAddMealFragment() {
         // Required empty public constructor
@@ -58,6 +67,22 @@ public class ClientAddMealFragment extends Fragment implements ClientAddMealCont
         mSendButton = layout.findViewById(R.id.send_button);
 
         mSendButton.setOnClickListener(v -> registerMeal());
+        mNoMealLabel = layout.findViewById(R.id.no_meal_label);
+        mAddMealPanel = layout.findViewById(R.id.add_meal_panel);
+        mAddMealSuccess = layout.findViewById(R.id.add_meal_success);
+        ImageView mImageView = layout.findViewById(R.id.success_anim);
+        mImageView.setBackgroundResource(R.drawable.success_anim);
+        mSuccessAnimation = (AnimatedVectorDrawable) mImageView.getBackground();
+        MaterialButton mBackButton = layout.findViewById(R.id.back_home);
+
+        mBackButton.setOnClickListener(v -> {
+            dismiss();
+            assert getActivity() != null;
+            ClientAddFragment parent = (ClientAddFragment) getActivity().getSupportFragmentManager().findFragmentByTag(ClientAddFragment.TAG);
+            if(parent!=null){
+                parent.dismiss();
+            }
+        });
     }
 
     @Override
@@ -78,7 +103,10 @@ public class ClientAddMealFragment extends Fragment implements ClientAddMealCont
 
     @Override
     public void mealRegistered() {
-        //TODO NOTIFICA SUCCESSO NELLA REGISTRAZIONE DEL PASTO
+
+        mAddMealPanel.setVisibility(View.GONE);
+        mAddMealSuccess.setVisibility(View.VISIBLE);
+        mSuccessAnimation.start();
     }
 
     @Override
@@ -98,7 +126,8 @@ public class ClientAddMealFragment extends Fragment implements ClientAddMealCont
             mSpinner.setAdapter(adapter);
         } else {
             mSpinner.setVisibility(View.GONE);
-            mSendButton.setVisibility(View.INVISIBLE); //DEVE ESSERE GONE
+            mSendButton.setVisibility(View.GONE);
+            mNoMealLabel.setVisibility(View.VISIBLE);
 
 //            if(dietNotEmpty){
 //                //TODO Notifica che tutti i pasti sono stati aggiunti

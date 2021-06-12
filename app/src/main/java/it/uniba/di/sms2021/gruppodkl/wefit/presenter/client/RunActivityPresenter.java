@@ -21,7 +21,6 @@ import com.google.android.gms.location.LocationResult;
 import com.google.android.gms.maps.CameraUpdateFactory;
 import com.google.android.gms.maps.GoogleMap;
 import com.google.android.gms.maps.model.LatLng;
-import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
 
 import java.util.List;
@@ -29,6 +28,8 @@ import java.util.concurrent.TimeUnit;
 
 import it.uniba.di.sms2021.gruppodkl.wefit.R;
 import it.uniba.di.sms2021.gruppodkl.wefit.contract.client.RunActivityContract;
+import it.uniba.di.sms2021.gruppodkl.wefit.db.ClientDAO;
+import it.uniba.di.sms2021.gruppodkl.wefit.model.Run;
 import it.uniba.di.sms2021.gruppodkl.wefit.service.LocationService;
 
 public class RunActivityPresenter implements RunActivityContract.Presenter {
@@ -45,12 +46,9 @@ public class RunActivityPresenter implements RunActivityContract.Presenter {
     @SuppressLint("MissingPermission")
     public Location getCurrentLocation(FusedLocationProviderClient fusedLocationProviderClient, GoogleMap map,FragmentActivity activity){
         Task<Location> locationResult = fusedLocationProviderClient.getLastLocation();
-        locationResult.addOnCompleteListener(activity, new OnCompleteListener<Location>() {
-            @Override
-            public void onComplete(Task<Location> location) {
-                if(location!=null){
-                    mCurrentLocation = location.getResult();
-                }
+        locationResult.addOnCompleteListener(activity, location -> {
+            if(location!=null){
+                mCurrentLocation = location.getResult();
             }
         });
         return mCurrentLocation;
@@ -131,7 +129,6 @@ public class RunActivityPresenter implements RunActivityContract.Presenter {
     public String calculateTime(Chronometer chronometer){
         String result;
         long elapsedTime;
-        int hour,min,sec;
 
         elapsedTime = SystemClock.elapsedRealtime() - chronometer.getBase();
 
@@ -165,6 +162,11 @@ public class RunActivityPresenter implements RunActivityContract.Presenter {
         }
 
         return result;
+    }
+
+    @Override
+    public void saveRun(String clientMail, Run run) {
+        ClientDAO.saveRun(clientMail, run);
     }
 
 }

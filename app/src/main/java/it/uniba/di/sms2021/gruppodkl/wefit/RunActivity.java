@@ -7,7 +7,6 @@ import androidx.fragment.app.FragmentActivity;
 import android.Manifest;
 import android.annotation.SuppressLint;
 import android.app.AlertDialog;
-import android.content.BroadcastReceiver;
 import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
@@ -15,19 +14,16 @@ import android.content.pm.PackageManager;
 import android.location.Location;
 import android.location.LocationManager;
 import android.os.Bundle;
-import android.os.Handler;
 import android.os.SystemClock;
 import android.provider.Settings;
 import android.util.Log;
 import android.view.View;
 import android.widget.Chronometer;
 import android.widget.ImageView;
-import android.widget.TextView;
 import android.widget.Toast;
 
 import com.google.android.gms.location.FusedLocationProviderClient;
 import com.google.android.gms.location.LocationServices;
-import com.google.android.gms.maps.CameraUpdate;
 import com.google.android.gms.maps.CameraUpdateFactory;
 import com.google.android.gms.maps.GoogleMap;
 import com.google.android.gms.maps.OnMapReadyCallback;
@@ -37,12 +33,15 @@ import com.google.android.gms.maps.model.MarkerOptions;
 import com.google.android.gms.maps.model.PolylineOptions;
 import com.google.android.material.button.MaterialButton;
 
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 
 import it.uniba.di.sms2021.gruppodkl.wefit.contract.client.RunActivityContract;
 import it.uniba.di.sms2021.gruppodkl.wefit.databinding.ActivityRunBinding;
 import it.uniba.di.sms2021.gruppodkl.wefit.model.Client;
+import it.uniba.di.sms2021.gruppodkl.wefit.model.Run;
 import it.uniba.di.sms2021.gruppodkl.wefit.presenter.client.RunActivityPresenter;
 import it.uniba.di.sms2021.gruppodkl.wefit.utility.MyBroadcastReceiver;
 
@@ -56,7 +55,7 @@ public class RunActivity extends FragmentActivity implements OnMapReadyCallback,
     private ImageView mBackButton;
 
     private static final int REQUEST_CODE_LOCATION_PERMISSION = 1;
-    private RunActivityPresenter mPresenter;
+    private RunActivityContract.Presenter mPresenter;
 
     private FusedLocationProviderClient fusedLocationProviderClient;
     private final LatLng defaultLocation = new LatLng(41.1171, 16.8719);
@@ -64,7 +63,7 @@ public class RunActivity extends FragmentActivity implements OnMapReadyCallback,
     private Location mStopPosition;
 
     private MyBroadcastReceiver mMessageReceiver;
-    List<Location> listLocation = new ArrayList<Location>();
+    List<Location> listLocation = new ArrayList<>();
     private float mDistanceRun;
     private String mElapsedTime;
     private float mAverageSpeed;
@@ -124,26 +123,24 @@ public class RunActivity extends FragmentActivity implements OnMapReadyCallback,
             }
         });
 
-        mStopButton.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                mStopPosition = listLocation.get(listLocation.size()-1);
-                addMarker(mStopPosition, getResources().getString(R.string.stop_point));
-                mPresenter.stopLocationService(getApplicationContext(), RunActivity.this);
-                centerCamera(mStopPosition,16);
-                mDistanceRun = mPresenter.calculateDistance(listLocation);
-                Log.d("gesu", "hai percorso: " + mDistanceRun + " metri");
-                mCrono.stop();
-                mElapsedTime = mPresenter.calculateTime(mCrono);
-                Log.d("gesu", "ci hai messo: " + mElapsedTime);
-                mAverageSpeed = mPresenter.calculateAverageSpeed(mCrono,mDistanceRun);
-                Log.d("gesu", "correvi come al puma a: " + mAverageSpeed + " metri al secondo");
-                float weight = ((Client) ((WeFitApplication) getApplicationContext()).getUser()).weight;
-                mAverageKcal = mPresenter.calculateAverageKcal(mDistanceRun,mAverageSpeed,weight);
-                Log.d("gesu", "hai bruciato: " + mAverageKcal + " kcal stupido ciccione");
-                mStartButton.setVisibility(View.VISIBLE);
-                mStopButton.setVisibility(View.GONE);
-            }
+        mStopButton.setOnClickListener(v -> {
+            mStopPosition = listLocation.get(listLocation.size()-1);
+            addMarker(mStopPosition, getResources().getString(R.string.stop_point));
+            mPresenter.stopLocationService(getApplicationContext(), RunActivity.this);
+            centerCamera(mStopPosition,16);
+            mDistanceRun = mPresenter.calculateDistance(listLocation);
+            Log.d("gesu", "hai percorso: " + mDistanceRun + " metri");
+            mCrono.stop();
+            mElapsedTime = mPresenter.calculateTime(mCrono);
+            Log.d("gesu", "ci hai messo: " + mElapsedTime);
+            mAverageSpeed = mPresenter.calculateAverageSpeed(mCrono,mDistanceRun);
+            Log.d("gesu", "correvi come al puma a: " + mAverageSpeed + " metri al secondo");
+            float weight = ((Client) ((WeFitApplication) getApplicationContext()).getUser()).weight;
+            mAverageKcal = mPresenter.calculateAverageKcal(mDistanceRun,mAverageSpeed,weight);
+            Log.d("gesu", "hai bruciato: " + mAverageKcal + " kcal stupido ciccione");
+            mStartButton.setVisibility(View.VISIBLE);
+            mStopButton.setVisibility(View.GONE);
+            fetchData();
         });
 
         mBackButton.setOnClickListener(new View.OnClickListener() {
@@ -250,19 +247,24 @@ public class RunActivity extends FragmentActivity implements OnMapReadyCallback,
         final AlertDialog.Builder builder = new AlertDialog.Builder(this);
         builder.setMessage(getString(R.string.gps_off))
                 .setCancelable(false)
-                .setPositiveButton(getString(R.string.yes), new DialogInterface.OnClickListener() {
-                    public void onClick(@SuppressWarnings("unused") final DialogInterface dialog, @SuppressWarnings("unused") final int id) {
-                        startActivity(new Intent(Settings.ACTION_LOCATION_SOURCE_SETTINGS));
-                    }
-                })
-                .setNegativeButton(getString(R.string.no), new DialogInterface.OnClickListener() {
-                    public void onClick(final DialogInterface dialog, @SuppressWarnings("unused") final int id) {
-                        dialog.cancel();
-                        finish();
-                        Toast.makeText(getApplicationContext(), getString(R.string.gps_off_toast),Toast.LENGTH_SHORT).show();
-                    }
+                .setPositiveButton(getString(R.string.yes), (dialog, id) -> startActivity(new Intent(Settings.ACTION_LOCATION_SOURCE_SETTINGS)))
+
+                .setNegativeButton(getString(R.string.no), (dialog, id) -> {
+                    dialog.cancel();
+                    finish();
+                    Toast.makeText(getApplicationContext(), getString(R.string.gps_off_toast),Toast.LENGTH_SHORT).show();
                 });
         final AlertDialog alert = builder.create();
         alert.show();
+    }
+
+
+    private void fetchData(){
+        SimpleDateFormat sdf = new SimpleDateFormat("dd-MM-yyyy");
+        String date = sdf.format(new Date());
+        Run thisRun = new Run(date,listLocation, mElapsedTime, mAverageSpeed, mAverageKcal);
+        String userMail = ((WeFitApplication)getApplicationContext()).getUser().email;
+        mPresenter.saveRun(userMail, thisRun);
+
     }
 }

@@ -12,6 +12,8 @@ import com.google.android.gms.maps.GoogleMap;
 
 import java.util.List;
 
+import it.uniba.di.sms2021.gruppodkl.wefit.model.Run;
+
 public interface RunActivityContract {
 
     interface View{
@@ -31,6 +33,7 @@ public interface RunActivityContract {
         String calculateTime(Chronometer chronometer);
         float calculateAverageSpeed(Chronometer chronometer, float distance);
         float calculateAverageKcal(float distance, float averageSpeed, float weight);
+        void saveRun(String clientMail, Run run);
     }
 
 }

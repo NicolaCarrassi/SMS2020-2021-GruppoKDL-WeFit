@@ -142,4 +142,29 @@ public class RunActivityPresenter implements RunActivityContract.Presenter {
         return result;
     }
 
+    @Override
+    public float calculateAverageSpeed(Chronometer chronometer, float distance){
+        float result;
+        long elapsedTime;
+
+        elapsedTime = TimeUnit.MILLISECONDS.toSeconds(SystemClock.elapsedRealtime() - chronometer.getBase());
+
+        result = distance/elapsedTime;
+
+        return result;
+    }
+
+    @Override
+    public float calculateAverageKcal(float distance, float averageSpeed, float weight) {
+        float result;
+
+        if(averageSpeed<1.7){
+            result = (float) (0.5*weight*(distance/1000));
+        } else {
+            result = (float) (1*weight*(distance/1000));
+        }
+
+        return result;
+    }
+
 }

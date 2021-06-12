@@ -18,6 +18,7 @@ public interface RunActivityContract {
         void addMarker(Location location, String markerTitle);
         void drawPath(Location first, Location second);
         void centerCamera(Location location,int zoom);
+        void buildAlertMessageNoGps();
     }
 
     interface Presenter{
@@ -28,6 +29,8 @@ public interface RunActivityContract {
         void stopLocationService(Context context, FragmentActivity activity);
         float calculateDistance(List<Location> locationList);
         String calculateTime(Chronometer chronometer);
+        float calculateAverageSpeed(Chronometer chronometer, float distance);
+        float calculateAverageKcal(float distance, float averageSpeed, float weight);
     }
 
 }

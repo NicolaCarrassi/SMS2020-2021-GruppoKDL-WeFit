@@ -233,6 +233,10 @@
     <string name="notification_location_title">WeFit Run Tracker</string>
     <string name="notification_location_description">Tracciamento della corsa attivo</string>
     <string name="run_stopped">Corsa terminata con successo!</string>
+    <string name="cancel_run">Sei sicuro di voler abbandondare la corsa?</string>
+    <string name="cancel_run_message">Tutti i dati relativi a questa corsa andranno persi.</string>
+    <string name="gps_off">Il GPS non è attivo, vuoi abilitarlo?</string>
+    <string name="gps_off_toast">Impossibile tracciare la corsa con il GPS spento!</string>
 
 
     <string name="breakfast_caps">COLAZIONE</string>

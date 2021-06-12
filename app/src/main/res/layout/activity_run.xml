@@ -10,6 +10,8 @@
     android:animateLayoutChanges="true">
 
     <LinearLayout
+        style="@style/BackgroundCustomRun"
+        android:layout_weight="0.8"
         android:paddingVertical="15dp"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
@@ -60,6 +62,7 @@
     </LinearLayout>
 
 <RelativeLayout
+    android:layout_weight="0.6"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical">

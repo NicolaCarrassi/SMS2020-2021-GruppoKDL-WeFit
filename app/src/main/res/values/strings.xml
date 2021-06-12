@@ -239,6 +239,10 @@
     <string name="notification_location_title">WeFit Run Tracker</string>
     <string name="notification_location_description">Run tracker active</string>
     <string name="run_stopped">Run concluded with success!</string>
+    <string name="cancel_run">Are you sure to quit this run?</string>
+    <string name="cancel_run_message">All the data of this run are gonna be loss.</string>
+    <string name="gps_off">Your GPS seems to be disabled, do you want to enable it?</string>
+    <string name="gps_off_toast">Impossible to track run without GPS enabled!</string>
 
 
     <string name="breakfast_caps">BREAKFAST</string>
@@ -253,6 +257,7 @@
     <string name="quantity">Quantity</string>
     <string name="error_quantity">Please insert a valid quantity</string>
     <string name="no_meal_registered">You didn\'t register your meal</string>
+
 
 
 </resources>

@@ -6,17 +6,22 @@ import androidx.fragment.app.FragmentActivity;
 
 import android.Manifest;
 import android.annotation.SuppressLint;
+import android.app.AlertDialog;
 import android.content.BroadcastReceiver;
 import android.content.Context;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.pm.PackageManager;
 import android.location.Location;
+import android.location.LocationManager;
 import android.os.Bundle;
 import android.os.Handler;
 import android.os.SystemClock;
+import android.provider.Settings;
 import android.util.Log;
 import android.view.View;
 import android.widget.Chronometer;
+import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -37,6 +42,7 @@ import java.util.List;
 
 import it.uniba.di.sms2021.gruppodkl.wefit.contract.client.RunActivityContract;
 import it.uniba.di.sms2021.gruppodkl.wefit.databinding.ActivityRunBinding;
+import it.uniba.di.sms2021.gruppodkl.wefit.model.Client;
 import it.uniba.di.sms2021.gruppodkl.wefit.presenter.client.RunActivityPresenter;
 import it.uniba.di.sms2021.gruppodkl.wefit.utility.MyBroadcastReceiver;
 
@@ -47,6 +53,7 @@ public class RunActivity extends FragmentActivity implements OnMapReadyCallback,
 
     private MaterialButton mStartButton;
     private MaterialButton mStopButton;
+    private ImageView mBackButton;
 
     private static final int REQUEST_CODE_LOCATION_PERMISSION = 1;
     private RunActivityPresenter mPresenter;
@@ -60,6 +67,8 @@ public class RunActivity extends FragmentActivity implements OnMapReadyCallback,
     List<Location> listLocation = new ArrayList<Location>();
     private float mDistanceRun;
     private String mElapsedTime;
+    private float mAverageSpeed;
+    private float mAverageKcal;
 
     private Chronometer mCrono;
 
@@ -69,6 +78,11 @@ public class RunActivity extends FragmentActivity implements OnMapReadyCallback,
 
         binding = ActivityRunBinding.inflate(getLayoutInflater());
         setContentView(binding.getRoot());
+
+        final LocationManager manager = (LocationManager) getSystemService( Context.LOCATION_SERVICE );
+        if ( !manager.isProviderEnabled( LocationManager.GPS_PROVIDER ) ) {
+            buildAlertMessageNoGps();
+        }
 
         fusedLocationProviderClient = LocationServices.getFusedLocationProviderClient(this);
 
@@ -89,6 +103,7 @@ public class RunActivity extends FragmentActivity implements OnMapReadyCallback,
         mStartButton = findViewById(R.id.start);
         mStopButton = findViewById(R.id.stop);
         mCrono = findViewById(R.id.crono);
+        mBackButton = findViewById(R.id.back);
     }
 
     private void setListener(){
@@ -121,11 +136,43 @@ public class RunActivity extends FragmentActivity implements OnMapReadyCallback,
                 mCrono.stop();
                 mElapsedTime = mPresenter.calculateTime(mCrono);
                 Log.d("gesu", "ci hai messo: " + mElapsedTime);
+                mAverageSpeed = mPresenter.calculateAverageSpeed(mCrono,mDistanceRun);
+                Log.d("gesu", "correvi come al puma a: " + mAverageSpeed + " metri al secondo");
+                float weight = ((Client) ((WeFitApplication) getApplicationContext()).getUser()).weight;
+                mAverageKcal = mPresenter.calculateAverageKcal(mDistanceRun,mAverageSpeed,weight);
+                Log.d("gesu", "hai bruciato: " + mAverageKcal + " kcal stupido ciccione");
                 mStartButton.setVisibility(View.VISIBLE);
                 mStopButton.setVisibility(View.GONE);
             }
         });
 
+        mBackButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                onBackPressed();
+            }
+        });
+
+    }
+
+    @Override
+    public void onBackPressed() {
+        if(mPresenter.isLocationServiceRunning(getApplicationContext())) {
+            new AlertDialog.Builder(RunActivity.this).setTitle(getResources().
+                    getString(R.string.cancel_run))
+                    .setMessage(getResources().getString(R.string.cancel_run_message))
+                    .setNegativeButton(getResources().getString(R.string.no), (dialog, which) -> {
+                        dialog.dismiss();
+                    })
+                    .setPositiveButton(getResources().getString(R.string.yes), (dialog, which) -> {
+                        dialog.dismiss();
+                        mPresenter.stopLocationService(getApplicationContext(),RunActivity.this);
+                        finish();
+                    })
+                    .show();
+        }else{
+            finish();
+        }
     }
 
     /**
@@ -196,5 +243,26 @@ public class RunActivity extends FragmentActivity implements OnMapReadyCallback,
             drawPath(listLocation.get(listLocation.size()-2),listLocation.get(listLocation.size()-1));
             centerCamera(listLocation.get(listLocation.size()-1),17);
         }
+    }
+
+    @Override
+    public void buildAlertMessageNoGps() {
+        final AlertDialog.Builder builder = new AlertDialog.Builder(this);
+        builder.setMessage(getString(R.string.gps_off))
+                .setCancelable(false)
+                .setPositiveButton(getString(R.string.yes), new DialogInterface.OnClickListener() {
+                    public void onClick(@SuppressWarnings("unused") final DialogInterface dialog, @SuppressWarnings("unused") final int id) {
+                        startActivity(new Intent(Settings.ACTION_LOCATION_SOURCE_SETTINGS));
+                    }
+                })
+                .setNegativeButton(getString(R.string.no), new DialogInterface.OnClickListener() {
+                    public void onClick(final DialogInterface dialog, @SuppressWarnings("unused") final int id) {
+                        dialog.cancel();
+                        finish();
+                        Toast.makeText(getApplicationContext(), getString(R.string.gps_off_toast),Toast.LENGTH_SHORT).show();
+                    }
+                });
+        final AlertDialog alert = builder.create();
+        alert.show();
     }
 }

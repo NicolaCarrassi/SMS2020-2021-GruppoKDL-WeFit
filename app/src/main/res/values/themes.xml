@@ -127,7 +127,6 @@
         <item name="android:background">@drawable/doodle1080p</item>
         <item name="android:backgroundTint">@color/white_custom</item>
         <item name="android:backgroundTintMode">screen</item>
-        <item name="android:layout_scale"></item>
     </style>
 
     <!-- Icon custom -->

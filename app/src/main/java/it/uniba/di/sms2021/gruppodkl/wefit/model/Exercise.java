@@ -11,11 +11,9 @@ public class Exercise {
 
 
     public interface ExerciseKeys{
-        String ID = "exerciseId";
         String NAME = "name";
         String REPS = "reps";
         String TIME = "hasTime";
-        String VIDEO = "videoUrl";
     }
 
     public Exercise(){

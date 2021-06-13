@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <!-- ERRORS STRING -->
+    <string name="error_email"><u>Please insert a valid email address</u></string>
+    <string name="error_password">The password must have a lowercase letter, a capital letter, a digit and it must be between 8 and 20 characters</string>
+    <string name="name_error">Insert a valid name</string>
+    <string name="date_error">Please pick a date</string>
+    <string name="error_radio">Choose a value</string>
+    <string name="error_password_not_matching">Passwords not matching</string>
+    <string name="error_height">Height must be between 100cm and 230 cm</string>
+    <string name="error_weight">Weight must be more than 40kg</string>
+    <string name="error_general">There are some errors</string>
+    <string name="error_gender">Select a valid gender</string>
+    <string name="error_login">Wrong email or password</string>
+    <string name="error_request">Error sending the request. Please try again later</string>
+    <string name="error_loading_profile">There have been problems loading the profile</string>
+    <string name="error_data_missing">Some data are missing</string>
+    <string name="error_training_name">Please insert the name of the training</string>
+    <string name="error_training_time">Please add the duration of the training</string>
+
+
+</resources>

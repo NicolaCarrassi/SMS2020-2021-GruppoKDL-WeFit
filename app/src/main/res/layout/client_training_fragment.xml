@@ -1,9 +1,11 @@
 <?xml version="1.0" encoding="utf-8"?>
+<!-- TODO bg -->
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     tools:context=".fragment.client.ClientMyTrainingFragment"
+    style="@style/BackgroundCustom"
     android:orientation="vertical">
 
     <include layout="@layout/toolbar"
@@ -16,15 +18,17 @@
         android:layout_height="match_parent"
         android:text="@string/training_plan"
         style="@style/custom_h1"
-        android:textSize="25dp"
+        android:textSize="25sp"
         android:gravity="center_horizontal">
     </TextView>
 
     <ScrollView
         android:layout_width="match_parent"
-        android:layout_height="wrap_content">
+        android:layout_height="wrap_content"
+        style="@style/BackgroundCustom">
 
         <LinearLayout
+            style="@style/BackgroundCustom"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:orientation="vertical">
@@ -52,12 +56,4 @@
         </LinearLayout>
 
     </ScrollView>
-    <!--<TextView
-        android:layout_width="wrap_content"
-        android:layout_height="match_parent"
-        style="@style/custom_p"
-        android:text="Scadenza 7/7/77"
-        android:layout_weight="0.8">
-    </TextView>-->
-
 </LinearLayout>

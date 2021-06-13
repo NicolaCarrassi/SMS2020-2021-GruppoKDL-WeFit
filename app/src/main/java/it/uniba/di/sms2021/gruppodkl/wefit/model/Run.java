@@ -1,11 +1,13 @@
 package it.uniba.di.sms2021.gruppodkl.wefit.model;
 
 import android.location.Location;
+import android.os.Parcel;
+import android.os.Parcelable;
 
 import java.util.ArrayList;
 import java.util.List;
 
-public class Run {
+public class Run implements Parcelable {
 
     public interface RunKeys{
         String DATE = "date";
@@ -17,7 +19,6 @@ public class Run {
     public float averageSpeed;
     public float burntKcal;
     public float distance;
-
 
 
     public Run(){
@@ -51,8 +52,48 @@ public class Run {
     public String convertKcal(){
         int caloriesBurnt = (int) burntKcal;
 
-        return String.valueOf(caloriesBurnt);
+        return caloriesBurnt + " kcal";
     }
+
+
+    //implementazione parcelable
+
+    protected Run(Parcel in) {
+        date = in.readString();
+        locationList = in.createTypedArrayList(MyLocation.CREATOR);
+        elapsedTime = in.readString();
+        averageSpeed = in.readFloat();
+        burntKcal = in.readFloat();
+        distance = in.readFloat();
+    }
+
+    public static final Creator<Run> CREATOR = new Creator<Run>() {
+        @Override
+        public Run createFromParcel(Parcel in) {
+            return new Run(in);
+        }
+
+        @Override
+        public Run[] newArray(int size) {
+            return new Run[size];
+        }
+    };
+
+    @Override
+    public int describeContents() {
+        return 0;
+    }
+
+    @Override
+    public void writeToParcel(Parcel dest, int flags) {
+        dest.writeString(date);
+        dest.writeTypedList(locationList);
+        dest.writeString(elapsedTime);
+        dest.writeFloat(averageSpeed);
+        dest.writeFloat(burntKcal);
+        dest.writeFloat(distance);
+    }
+
 
 
 }

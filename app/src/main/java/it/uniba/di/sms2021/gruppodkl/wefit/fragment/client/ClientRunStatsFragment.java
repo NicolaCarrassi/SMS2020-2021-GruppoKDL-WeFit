@@ -36,6 +36,12 @@ public class ClientRunStatsFragment extends Fragment implements ClientRunStatsCo
         // Inflate the layout for this fragment
         View view =  inflater.inflate(R.layout.client_run_stats_fragment, container, false);
 
+        if(getActivity() instanceof WeFitApplication.CallbackOperations){
+            WeFitApplication.CallbackOperations act = (WeFitApplication.CallbackOperations) getActivity();
+            ((WeFitApplication)getActivity().getApplicationContext()).setToolbar(view, act);
+        }
+
+
         mPresenter = new ClientRunStatsPresenter(this);
         assert getActivity() != null;
         String clientMail = ((WeFitApplication) getActivity().getApplicationContext()).getUser().email;

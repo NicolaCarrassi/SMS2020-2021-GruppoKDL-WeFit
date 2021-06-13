@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <!-- ERRORS STRING -->
+    <string name="error_email">Inserire una email valida</string>
+    <string name="error_password">La password deve contenere almeno una lettera maiuscola, una lettera minuscola, un numero e deve essere compresa tra 8 e 20 caratteri</string>
+    <string name="name_error">Inserire un nome valido</string>
+    <string name="date_error">Selezionare una data</string>
+    <string name="error_radio">Selezionare almeno un valore</string>
+    <string name="error_password_not_matching">Le password non corrispondono</string>
+    <string name="error_height">Inserire una altezza compresa tra 100 e 230 cm</string>
+    <string name="error_weight">Il peso deve essee maggiore di  40kg</string>
+    <string name="error_general">Vi sono degli errori</string>
+    <string name="error_gender">Seleziona un genere valido</string>
+    <string name="error_login">Email o password errati</string>
+    <string name="error_request">C\'é un errore nella richiesta. Per favore prova piú tardi.</string>
+    <string name="error_loading_profile">Ci sono stati problemi nel caricare il profilo</string>
+    <string name="error_data_missing">Mancano alcuni dati</string>
+    <string name="error_training_name">Inserire il nome dell\'allenamento</string>
+    <string name="error_training_time">Inserire la durata dell\'allenamento</string>
+
+
+</resources>

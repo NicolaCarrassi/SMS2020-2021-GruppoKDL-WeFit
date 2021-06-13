@@ -2,6 +2,7 @@ package it.uniba.di.sms2021.gruppodkl.wefit.model;
 
 import android.location.Location;
 
+import java.util.ArrayList;
 import java.util.List;
 
 public class Run {
@@ -11,7 +12,7 @@ public class Run {
     }
 
     public String date;
-    public List<Location> locationList;
+    public List<MyLocation> locationList;
     public String elapsedTime;
     public float averageSpeed;
     public float burntKcal;
@@ -20,16 +21,20 @@ public class Run {
 
 
     public Run(){
-
+        //empty constructor
     }
 
     public Run(String date, List<Location> locationList, String elapsedTime, float averageSpeed, float burntKcal, float distance){
         this.date = date;
-        this.locationList = locationList;
+        this.locationList = new ArrayList<>();
         this.elapsedTime = elapsedTime;
         this.averageSpeed = averageSpeed;
         this.burntKcal = burntKcal;
         this.distance = distance;
+
+        for(Location location: locationList)
+            this.locationList.add(MyLocation.createFromAndroidLocation(location));
+
     }
 
 

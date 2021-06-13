@@ -45,6 +45,7 @@ public class ClientRunStatsFragment extends Fragment implements ClientRunStatsCo
         mRecycler.setEmptyView(view.findViewById(R.id.empty));
 
         mAdapter = mPresenter.getAdapter(clientMail);
+        mRecycler.setAdapter(mAdapter);
 
         return view;
     }

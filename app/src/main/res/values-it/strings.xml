@@ -305,5 +305,12 @@ http://www.wefit.com
 gruppokdl@gmail.com </string>
 
 
+    <string name="see_statistics">Visita le statitiche</string>
+    <string name="my_runs">Le mie corsa</string>
+    <string name="distance">Distanza</string>
+    <string name="calories_burnt">Calorie bruciate</string>
+    <string name="no_run">Non hai effettuato nessuna corsa</string>
+
+
 
 </resources>

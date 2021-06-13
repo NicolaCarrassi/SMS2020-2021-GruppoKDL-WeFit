@@ -305,7 +305,11 @@ http://www.wefit.com
 
 gruppokdl@gmail.com</string>
     <string name="meal_successfully_added">Meal added successfully!</string>
-
+    <string name="see_statistics">See your statistics</string>
+    <string name="my_runs">My runs</string>
+    <string name="distance">Distance</string>
+    <string name="calories_burnt">Burnt calories</string>
+    <string name="no_run">You have registered no runs</string>
 
 
 </resources>

@@ -18,7 +18,8 @@ import it.uniba.di.sms2021.gruppodkl.wefit.RunActivity;
 public class ClientRunFragment extends Fragment {
 
     public static final String TAG = ClientRunFragment.class.getSimpleName();
-    private MaterialButton mButton;
+    private MaterialButton mStartButton;
+    private MaterialButton mStatsButton;
 
 
     public ClientRunFragment() {
@@ -39,13 +40,25 @@ public class ClientRunFragment extends Fragment {
     }
 
     private void bind(View layout){
-        mButton = layout.findViewById(R.id.start_run_activity);
+        mStartButton = layout.findViewById(R.id.start_run_activity);
+        mStatsButton = layout.findViewById(R.id.run_statistics);
     }
 
     private void setListener(){
-        mButton.setOnClickListener(v -> {
+        mStartButton.setOnClickListener(v -> {
             Intent intent = new Intent(getActivity(), RunActivity.class);
             startActivity(intent);
         });
+
+        mStatsButton.setOnClickListener(v -> openStatistics());
+    }
+
+
+    private void openStatistics(){
+        ClientRunStatsFragment fragment = new ClientRunStatsFragment();
+
+        assert getActivity() != null;
+        getActivity().getSupportFragmentManager().beginTransaction().replace(R.id.anchor_point, fragment, ClientRunStatsFragment.TAG)
+                .addToBackStack(ClientRunStatsFragment.TAG).commit();
     }
 }

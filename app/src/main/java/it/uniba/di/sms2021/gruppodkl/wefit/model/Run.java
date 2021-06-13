@@ -11,18 +11,32 @@ public class Run {
     public String elapsedTime;
     public float averageSpeed;
     public float burntKcal;
+    public float distance;
+
 
 
     public Run(){
 
     }
 
-    public Run(String date, List<Location> locationList, String elapsedTime, float averageSpeed, float burntKcal){
+    public Run(String date, List<Location> locationList, String elapsedTime, float averageSpeed, float burntKcal, float distance){
         this.date = date;
         this.locationList = locationList;
         this.elapsedTime = elapsedTime;
         this.averageSpeed = averageSpeed;
         this.burntKcal = burntKcal;
+        this.distance = distance;
+    }
+
+
+    public String convertRunDistance(){
+        String res = "";
+        int distanceInMeters = (int) distance;
+
+        if(distanceInMeters % 1000 != distanceInMeters)
+            res += distanceInMeters/1000  + " km ";
+
+        return res + distanceInMeters%1000 + " m";
     }
 
 

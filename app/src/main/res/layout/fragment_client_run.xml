@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<FrameLayout
+<LinearLayout
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
@@ -19,6 +19,18 @@
         android:text="Avvia la corsa"
         android:paddingVertical="15dp"
         style="@style/MaterialButtonCustom"
+        android:gravity="center"
         android:layout_gravity="center_horizontal|center_vertical"/>
 
-</FrameLayout>
+
+    <com.google.android.material.button.MaterialButton
+        android:id="@+id/run_statistics"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/see_statistics"
+        android:paddingVertical="15dp"
+        style="@style/MaterialButtonCustom"
+        android:layout_gravity="center_horizontal"/>
+
+
+</LinearLayout>

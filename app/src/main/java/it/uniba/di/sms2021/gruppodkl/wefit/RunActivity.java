@@ -262,7 +262,7 @@ public class RunActivity extends FragmentActivity implements OnMapReadyCallback,
     private void fetchData(){
         SimpleDateFormat sdf = new SimpleDateFormat("dd-MM-yyyy");
         String date = sdf.format(new Date());
-        Run thisRun = new Run(date,listLocation, mElapsedTime, mAverageSpeed, mAverageKcal);
+        Run thisRun = new Run(date,listLocation, mElapsedTime, mAverageSpeed, mAverageKcal, mDistanceRun);
         String userMail = ((WeFitApplication)getApplicationContext()).getUser().email;
         mPresenter.saveRun(userMail, thisRun);
 

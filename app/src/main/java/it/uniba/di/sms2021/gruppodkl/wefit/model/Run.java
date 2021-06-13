@@ -6,6 +6,10 @@ import java.util.List;
 
 public class Run {
 
+    public interface RunKeys{
+        String DATE = "date";
+    }
+
     public String date;
     public List<Location> locationList;
     public String elapsedTime;
@@ -37,6 +41,12 @@ public class Run {
             res += distanceInMeters/1000  + " km ";
 
         return res + distanceInMeters%1000 + " m";
+    }
+
+    public String convertKcal(){
+        int caloriesBurnt = (int) burntKcal;
+
+        return String.valueOf(caloriesBurnt);
     }
 
 

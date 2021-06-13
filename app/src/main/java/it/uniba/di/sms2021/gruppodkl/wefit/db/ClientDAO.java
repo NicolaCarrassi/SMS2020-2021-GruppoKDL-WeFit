@@ -30,9 +30,14 @@ public class ClientDAO extends UserDAO {
         void onWeightsLoaded(List<Float> weightList, List<String> dateList);
     }
 
+    public interface RunLoaded{
+        void onLastRunLoaded(Run run);
+    }
+
     private static boolean sSuccess;
     private static List<Float> sWeightList;
     private static List<String> sDateList;
+    private static Run sLastRun;
 
     public static void requestToCoach(Client client, Coach coach, Map<String, Object> requestsElement, ClientDAOCallbacks callback){
 
@@ -50,11 +55,6 @@ public class ClientDAO extends UserDAO {
                     sSuccess = task.isSuccessful();
                     callback.requestSent(sSuccess);
                 });
-    }
-
-
-    public static Query listAllCoach(){
-        return FirebaseFirestore.getInstance().collection(Keys.Collections.USERS).whereEqualTo(User.UserKeys.ROLE, Keys.Role.COACH);
     }
 
     public static void deleteRequestToCoach(String clientMail, String coachMail){
@@ -80,23 +80,6 @@ public class ClientDAO extends UserDAO {
         batch.commit();
     }
 
-    public static Query queryTraining(String clientMail){
-        return FirebaseFirestore.getInstance().collection(Keys.Collections.USERS)
-                .document(clientMail).collection(Keys.Collections.TRAINING);
-    }
-
-    public static Query getAllDishesOfTheMeal(String clientMail, String dayOftheWeek, int mealType){
-        return FirebaseFirestore.getInstance().collection(Keys.Collections.USERS).document(clientMail)
-                .collection(Keys.Collections.DIET).document(dayOftheWeek).collection(Keys.Collections.MEALS)
-                .whereEqualTo(Meal.MealKeys.MEAL_TYPE, mealType);
-    }
-
-
-    public static Query getRegisteredMealsOfTheDay(String clientMail, String day, int mealType) {
-        return FirebaseFirestore.getInstance().collection(Keys.Collections.USERS).document(clientMail)
-                .collection(Keys.Collections.REGISTERED_MEALS).document(day).collection(Keys.Collections.MEALS)
-                .whereEqualTo(Meal.MealKeys.MEAL_TYPE, mealType);
-    }
 
     public static void addMeal(String clientMail, String dayOfTheWeek, Meal meal){
         DocumentReference ref = FirebaseFirestore.getInstance().collection(Keys.Collections.USERS).document(clientMail)
@@ -142,8 +125,48 @@ public class ClientDAO extends UserDAO {
     }
 
 
+    public static void getLastRun(String clientMail, RunLoaded callback){
+        FirebaseFirestore.getInstance().collection(Keys.Collections.USERS).document(clientMail)
+                .collection(Keys.Collections.RUNS).orderBy(Run.RunKeys.DATE).get()
+                .addOnCompleteListener(task -> {
+                    if(task.isSuccessful()){
+                        sLastRun = task.getResult().getDocuments().get(0).toObject(Run.class);
+                        callback.onLastRunLoaded(sLastRun);
+                    }
+                });
+    }
+
     public static void saveRun(String clientMail, Run run){
         FirebaseFirestore.getInstance().collection(Keys.Collections.USERS).document(clientMail)
                 .collection(Keys.Collections.RUNS).document().set(run);
     }
+
+    public static Query queryTraining(String clientMail){
+        return FirebaseFirestore.getInstance().collection(Keys.Collections.USERS)
+                .document(clientMail).collection(Keys.Collections.TRAINING);
+    }
+
+    public static Query getAllDishesOfTheMeal(String clientMail, String dayOftheWeek, int mealType){
+        return FirebaseFirestore.getInstance().collection(Keys.Collections.USERS).document(clientMail)
+                .collection(Keys.Collections.DIET).document(dayOftheWeek).collection(Keys.Collections.MEALS)
+                .whereEqualTo(Meal.MealKeys.MEAL_TYPE, mealType);
+    }
+
+
+    public static Query getRegisteredMealsOfTheDay(String clientMail, String day, int mealType) {
+        return FirebaseFirestore.getInstance().collection(Keys.Collections.USERS).document(clientMail)
+                .collection(Keys.Collections.REGISTERED_MEALS).document(day).collection(Keys.Collections.MEALS)
+                .whereEqualTo(Meal.MealKeys.MEAL_TYPE, mealType);
+    }
+
+
+    public static Query listAllCoach(){
+        return FirebaseFirestore.getInstance().collection(Keys.Collections.USERS).whereEqualTo(User.UserKeys.ROLE, Keys.Role.COACH);
+    }
+
+    public static Query queryAllRun(String clientMail){
+        return FirebaseFirestore.getInstance().collection(Keys.Collections.USERS).document(clientMail).collection(Keys.Collections.RUNS);
+    }
+
+
 }

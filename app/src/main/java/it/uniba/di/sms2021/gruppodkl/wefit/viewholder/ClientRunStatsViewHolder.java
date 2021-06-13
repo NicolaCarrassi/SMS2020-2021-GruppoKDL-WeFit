@@ -28,6 +28,6 @@ public class ClientRunStatsViewHolder extends RecyclerView.ViewHolder {
     public void setValues(Run run){
         mRunDate.setText(run.date);
         mRunDistance.setText(run.convertRunDistance());
-        //mRunKcal.setText();
+        mRunKcal.setText(run.convertKcal());
     }
 }

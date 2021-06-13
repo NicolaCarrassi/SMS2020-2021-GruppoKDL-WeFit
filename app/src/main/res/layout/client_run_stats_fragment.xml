@@ -31,10 +31,10 @@
             android:orientation="vertical">
 
             <it.uniba.di.sms2021.gruppodkl.wefit.recyclerview.CustomRecyclerView
-                android:id="@+id/recycler_coach"
+                android:id="@+id/recycler_runs"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                tools:listitem="@layout/client_my_runs_list">
+                tools:listitem="@layout/client_my_runs_list_item">
             </it.uniba.di.sms2021.gruppodkl.wefit.recyclerview.CustomRecyclerView>
             <TextView
                 android:id="@+id/empty"

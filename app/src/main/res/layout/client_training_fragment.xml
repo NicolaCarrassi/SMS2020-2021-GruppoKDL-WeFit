@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
-<!-- TODO bg -->
+
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="wrap_content"
+    android:layout_height="match_parent"
     tools:context=".fragment.client.ClientMyTrainingFragment"
     style="@style/BackgroundCustom"
     android:orientation="vertical">
@@ -13,47 +13,49 @@
         android:layout_height="wrap_content">
     </include>
 
-    <TextView
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:text="@string/training_plan"
-        style="@style/custom_h1"
-        android:textSize="25sp"
-        android:gravity="center_horizontal">
-    </TextView>
-
-    <ScrollView
+    <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        style="@style/BackgroundCustom">
+        android:orientation="vertical">
 
-        <LinearLayout
-            style="@style/BackgroundCustom"
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:text="@string/training_plan"
+            style="@style/custom_h1"
+            android:textSize="25sp"
+            android:gravity="center_horizontal">
+        </TextView>
+
+        <ScrollView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:orientation="vertical">
+            style="@style/BackgroundCustom">
 
-            <it.uniba.di.sms2021.gruppodkl.wefit.recyclerview.CustomRecyclerView
-                android:id="@+id/recycler_training_days"
+            <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                tools:listitem="@layout/training_day_item"
-                android:visibility="visible">
+                android:orientation="vertical">
 
-            </it.uniba.di.sms2021.gruppodkl.wefit.recyclerview.CustomRecyclerView>
-            <TextView
-                android:id="@+id/empty_training_days"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:visibility="gone"
-                android:text="@string/no_training"
-                android:layout_gravity="center"
-                android:gravity="center"
-                style="@style/custom_p"
-                android:layout_margin="30dp"/>
+                <it.uniba.di.sms2021.gruppodkl.wefit.recyclerview.CustomRecyclerView
+                    android:id="@+id/recycler_training_days"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    tools:listitem="@layout/training_day_item"
+                    android:visibility="visible">
 
-
-        </LinearLayout>
-
-    </ScrollView>
+                </it.uniba.di.sms2021.gruppodkl.wefit.recyclerview.CustomRecyclerView>
+                <TextView
+                    android:id="@+id/empty_training_days"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:visibility="gone"
+                    android:text="@string/no_training"
+                    android:layout_gravity="center"
+                    android:gravity="center"
+                    style="@style/custom_p"
+                    android:layout_margin="30dp"/>
+            </LinearLayout>
+        </ScrollView>
+    </LinearLayout>
 </LinearLayout>

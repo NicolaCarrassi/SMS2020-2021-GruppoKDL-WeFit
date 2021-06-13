@@ -26,7 +26,8 @@
             android:textSize="20dp"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="La tua lista della spesa per i prossimi"/>
+            android:text="@string/shopping_list_text"
+            android:gravity="center_horizontal"/>
 
         <LinearLayout
             android:layout_width="match_parent"
@@ -46,9 +47,11 @@
             <TextView
                 style="@style/custom_h2"
                 android:textSize="20dp"
+                android:layout_marginStart="3dp"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_gravity="center_vertical">
+                android:layout_gravity="center_vertical"
+                android:text="@string/days_label">
             </TextView>
         </LinearLayout>
 
@@ -57,7 +60,8 @@
             android:id="@+id/recycler_shopping_list"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            tools:listitem="@layout/shopping_list_item"/>
+            tools:listitem="@layout/shopping_list_item"
+            android:layout_gravity="center_horizontal"/>
 
         <TextView
             android:layout_marginTop="40dp"

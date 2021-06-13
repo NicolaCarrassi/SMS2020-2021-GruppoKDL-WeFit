@@ -141,6 +141,8 @@
         <item quantity="one">Un cliente vorrebbe essere seguito da te</item>
         <item quantity="other">%d clienti vorrebbero essere seguiti da te</item>
     </plurals>
+
+
     <string name="zero_client_request">Non hai ancora richieste</string>
 
     <string name="remove_request">Cancella richiesta</string>
@@ -245,12 +247,13 @@
     <string name="distance">Distanza</string>
     <string name="calories_burnt">Calorie bruciate</string>
     <string name="no_run">Non hai effettuato nessuna corsa</string>
-    <string name="no_product_shopping_list">Your shopping list is empty</string>
-    <string name="no_more_meals_assigned">You have no more meals assigned</string>
-    <string name="no_meals_assigned">You have no meals assigned</string>
+    <string name="no_product_shopping_list">La tua lista della spesa é vuota</string>
+    <string name="no_more_meals_assigned">Non hai piú altri pasti assegnati</string>
+    <string name="no_meals_assigned">Non hai ancora alcun pasto assegnato</string>
 
     <string name="run_date">Data della corsa: </string>
     <string name="average_speed">Velocità media: </string>
     <string name="time_elapsed">Tempo impiegato: </string>
-
+    <string name="shopping_list_text">La tua lista della spesa per i prossimi</string>
+    <string name="days_label">giorni</string>
 </resources>

@@ -245,7 +245,9 @@
     <string name="distance">Distanza</string>
     <string name="calories_burnt">Calorie bruciate</string>
     <string name="no_run">Non hai effettuato nessuna corsa</string>
-
+    <string name="no_product_shopping_list">Your shopping list is empty</string>
+    <string name="no_more_meals_assigned">You have no more meals assigned</string>
+    <string name="no_meals_assigned">You have no meals assigned</string>
 
 
 </resources>

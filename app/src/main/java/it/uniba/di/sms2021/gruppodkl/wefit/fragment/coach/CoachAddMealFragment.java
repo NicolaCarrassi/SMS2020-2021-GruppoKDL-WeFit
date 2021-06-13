@@ -126,8 +126,9 @@ public class CoachAddMealFragment extends BottomSheetDialogFragment implements C
 
             if (quantity != -1)
                 mPresenter.addMeal(mClientMail, mDayOfTheWeek, mealSelected, momentOfTheDay, quantity);
+        }else{
+            Toast.makeText(getActivity(), getString(R.string.error_general), Toast.LENGTH_SHORT).show();
         }
-        //TODO MESSAGGIO DI ERORRE
     }
 
     @Override

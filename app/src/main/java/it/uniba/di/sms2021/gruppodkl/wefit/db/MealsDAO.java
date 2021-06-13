@@ -111,8 +111,8 @@ public class MealsDAO {
                                     .collection(Keys.Collections.MEALS).document().set(meal);
                             callback.onMealRegistered(true);
                         }
-                    }
-                    callback.onMealRegistered(false);
+                    }else
+                        callback.onMealRegistered(false);
         });
     }
 

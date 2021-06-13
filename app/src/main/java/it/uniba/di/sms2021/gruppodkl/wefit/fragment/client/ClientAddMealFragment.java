@@ -14,9 +14,11 @@ import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.Spinner;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.google.android.material.bottomsheet.BottomSheetDialogFragment;
 import com.google.android.material.button.MaterialButton;
+import com.google.android.material.progressindicator.CircularProgressIndicator;
 
 import java.util.List;
 
@@ -38,6 +40,9 @@ public class ClientAddMealFragment extends BottomSheetDialogFragment implements 
     private LinearLayout mAddMealPanel;
     private LinearLayout mAddMealSuccess;
     private TextView mNoMealLabel;
+    private TextView mNoMoreMealLabel;
+    private MaterialButton mBackButton;
+    private CircularProgressIndicator mProgressIndicator;
 
     public ClientAddMealFragment() {
         // Required empty public constructor
@@ -58,6 +63,8 @@ public class ClientAddMealFragment extends BottomSheetDialogFragment implements 
         mView = activity.getWindow().getDecorView();
         mPresenter = new ClientAddMealPresenter(this, mClientMail);
         bind(layout);
+        mSendButton.setVisibility(View.GONE);
+        mSpinner.setVisibility(View.GONE);
 
         return layout;
     }
@@ -65,15 +72,16 @@ public class ClientAddMealFragment extends BottomSheetDialogFragment implements 
     private void bind(View layout){
         mSpinner = layout.findViewById(R.id.spinner_meal);
         mSendButton = layout.findViewById(R.id.send_button);
-
+        mProgressIndicator = layout.findViewById(R.id.progress_indicator);
         mSendButton.setOnClickListener(v -> registerMeal());
         mNoMealLabel = layout.findViewById(R.id.no_meal_label);
+        mNoMoreMealLabel = layout.findViewById(R.id.no_more_meal_label);
         mAddMealPanel = layout.findViewById(R.id.add_meal_panel);
         mAddMealSuccess = layout.findViewById(R.id.add_meal_success);
         ImageView mImageView = layout.findViewById(R.id.success_anim);
         mImageView.setBackgroundResource(R.drawable.success_anim);
         mSuccessAnimation = (AnimatedVectorDrawable) mImageView.getBackground();
-        MaterialButton mBackButton = layout.findViewById(R.id.back_home);
+        mBackButton = layout.findViewById(R.id.back_home);
 
         mBackButton.setOnClickListener(v -> {
             dismiss();
@@ -88,9 +96,8 @@ public class ClientAddMealFragment extends BottomSheetDialogFragment implements 
     @Override
     public void onStart() {
         super.onStart();
+        mProgressIndicator.setVisibility(View.VISIBLE);
 
-        assert getActivity() != null;
-        ((WeFitApplication)getActivity().getApplicationContext()).startProgress(mView);
         mPresenter.checkMealsAvailable();
     }
 
@@ -103,7 +110,7 @@ public class ClientAddMealFragment extends BottomSheetDialogFragment implements 
 
     @Override
     public void mealRegistered() {
-
+        mBackButton.setVisibility(View.VISIBLE);
         mAddMealPanel.setVisibility(View.GONE);
         mAddMealSuccess.setVisibility(View.VISIBLE);
         mSuccessAnimation.start();
@@ -111,30 +118,26 @@ public class ClientAddMealFragment extends BottomSheetDialogFragment implements 
 
     @Override
     public void onFailure() {
-        //TODO NOTIFICA PROBLEMI NELLA REGISTRAZIONE DEL PASTO
+        Toast.makeText(getActivity(), getString(R.string.error_general), Toast.LENGTH_SHORT).show();
     }
 
     @Override
     public void setAvailableMealsToRegister(List<String> mealsList, boolean dietNotEmpty) {
-        assert getActivity() != null;
-        ((WeFitApplication) getActivity().getApplicationContext()).stopProgress(mView);
+        mProgressIndicator.setVisibility(View.GONE);
 
         if(mealsList.size() > 0) {
+            mSendButton.setVisibility(View.VISIBLE);
+            mSpinner.setVisibility(View.VISIBLE);
             ArrayAdapter<String> adapter = new ArrayAdapter<>(getActivity(), R.layout.spinner_layout);
             adapter.addAll(mealsList);
             adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
             mSpinner.setAdapter(adapter);
         } else {
-            mSpinner.setVisibility(View.GONE);
-            mSendButton.setVisibility(View.GONE);
-            mNoMealLabel.setVisibility(View.VISIBLE);
-
-//            if(dietNotEmpty){
-//                //TODO Notifica che tutti i pasti sono stati aggiunti
-//            } else{
-//                //TODO Notifica che non è stata fornita la dieta dal coach
-//            }
-
+            mBackButton.setVisibility(View.VISIBLE);
+            if(dietNotEmpty)
+                mNoMoreMealLabel.setVisibility(View.VISIBLE);
+            else
+                mNoMealLabel.setVisibility(View.VISIBLE);
         }
     }
 }

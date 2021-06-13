@@ -19,6 +19,14 @@
             android:text="@string/add_meal"
             style="@style/custom_h2"
             android:textAlignment="center"/>
+        <com.google.android.material.progressindicator.CircularProgressIndicator
+            android:id="@+id/progress_indicator"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_horizontal"
+            android:indeterminate="true"
+            android:layout_marginTop="20dp"
+            android:visibility="gone"/>
 
         <Spinner
             android:id="@+id/spinner_meal"
@@ -52,10 +60,23 @@
                 android:gravity="center_horizontal"
                 android:layout_marginHorizontal="30dp"
                 android:layout_marginVertical="100dp"
-                android:text="@string/no_trainings_assigned"
+                android:text="@string/no_meals_assigned"
                 android:visibility="gone"
                 style="@style/custom_p">
             </TextView>
+
+        <TextView
+            android:id="@+id/no_more_meal_label"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_horizontal"
+            android:gravity="center_horizontal"
+            android:layout_marginHorizontal="30dp"
+            android:layout_marginVertical="50dp"
+            android:text="@string/no_more_meals_assigned"
+            android:visibility="gone"
+            style="@style/custom_p">
+        </TextView>
     </LinearLayout>
     <LinearLayout
         android:id="@+id/add_meal_success"
@@ -79,16 +100,16 @@
             android:layout_width="80dp"
             android:layout_height="80dp"/>
 
-        <com.google.android.material.button.MaterialButton
-            android:id="@+id/back_home"
-            android:layout_gravity="center_horizontal"
-            android:layout_marginTop="@dimen/margin_horizontal"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            style="@style/MaterialButtonCustom"
-            android:paddingHorizontal="30dp"
-            android:paddingVertical="15dp"
-            android:text="@string/back"/>
-
     </LinearLayout>
+    <com.google.android.material.button.MaterialButton
+        android:id="@+id/back_home"
+        android:layout_gravity="center_horizontal"
+        android:layout_marginTop="@dimen/margin_horizontal"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        style="@style/MaterialButtonCustom"
+        android:paddingHorizontal="30dp"
+        android:paddingVertical="15dp"
+        android:text="@string/back"
+        android:visibility="gone"/>
 </LinearLayout>

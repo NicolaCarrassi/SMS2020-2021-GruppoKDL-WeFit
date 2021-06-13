@@ -1,5 +1,6 @@
 package it.uniba.di.sms2021.gruppodkl.wefit.model;
 
+import android.annotation.SuppressLint;
 import android.location.Location;
 import android.os.Parcel;
 import android.os.Parcelable;
@@ -53,6 +54,11 @@ public class Run implements Parcelable {
         int caloriesBurnt = (int) burntKcal;
 
         return caloriesBurnt + " kcal";
+    }
+
+    @SuppressLint("DefaultLocale")
+    public String convertAvgSpeed(){
+        return String.format("%.2f", averageSpeed) + "m/s";
     }
 
 

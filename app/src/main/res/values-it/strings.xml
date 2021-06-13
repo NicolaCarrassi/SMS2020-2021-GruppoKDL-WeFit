@@ -249,5 +249,8 @@
     <string name="no_more_meals_assigned">You have no more meals assigned</string>
     <string name="no_meals_assigned">You have no meals assigned</string>
 
+    <string name="run_date">Data della corsa: </string>
+    <string name="average_speed">Velocità media: </string>
+    <string name="time_elapsed">Tempo impiegato: </string>
 
 </resources>

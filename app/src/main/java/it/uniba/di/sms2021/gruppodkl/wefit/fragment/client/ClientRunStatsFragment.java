@@ -8,11 +8,13 @@ import androidx.recyclerview.widget.LinearLayoutManager;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Toast;
 
 import it.uniba.di.sms2021.gruppodkl.wefit.R;
 import it.uniba.di.sms2021.gruppodkl.wefit.WeFitApplication;
 import it.uniba.di.sms2021.gruppodkl.wefit.adapter.ClientRunStatsAdapter;
 import it.uniba.di.sms2021.gruppodkl.wefit.contract.client.ClientRunStatsContract;
+import it.uniba.di.sms2021.gruppodkl.wefit.model.Run;
 import it.uniba.di.sms2021.gruppodkl.wefit.presenter.client.ClientRunStatsPresenter;
 import it.uniba.di.sms2021.gruppodkl.wefit.recyclerview.CustomRecyclerView;
 
@@ -66,5 +68,19 @@ public class ClientRunStatsFragment extends Fragment implements ClientRunStatsCo
     public void onStop() {
         super.onStop();
         mAdapter.stopListening();
+    }
+
+    @Override
+    public void openRun(Run run) {
+        ClientRunDetailFragment fragment = ClientRunDetailFragment.newInstance(run);
+
+        assert getActivity() != null;
+        getActivity().getSupportFragmentManager().beginTransaction().replace(R.id.anchor_point, fragment, ClientRunDetailFragment.TAG)
+                .addToBackStack(ClientRunDetailFragment.TAG).commit();
+    }
+
+    @Override
+    public void runNotFound() {
+        Toast.makeText(getActivity(), R.string.error_general, Toast.LENGTH_SHORT).show();
     }
 }

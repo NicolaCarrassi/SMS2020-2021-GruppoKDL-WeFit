@@ -29,6 +29,14 @@ public class ClientRunStatsPresenter implements ClientRunStatsContract.Presenter
         FirestorePagingOptions<Run> options = new FirestorePagingOptions.Builder<Run>()
                 .setQuery(ClientDAO.queryAllRun(clientMail), config, Run.class).build();
 
-        return  new ClientRunStatsAdapter(options);
+        return  new ClientRunStatsAdapter(options, this);
+    }
+
+    @Override
+    public void openSpecifiedRun(Run run) {
+        if (run != null)
+            mView.openRun(run);
+        else
+            mView.runNotFound();
     }
 }

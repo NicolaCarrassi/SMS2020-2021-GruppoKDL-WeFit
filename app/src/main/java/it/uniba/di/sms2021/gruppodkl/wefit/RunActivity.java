@@ -29,6 +29,7 @@ import com.google.android.gms.maps.GoogleMap;
 import com.google.android.gms.maps.OnMapReadyCallback;
 import com.google.android.gms.maps.SupportMapFragment;
 import com.google.android.gms.maps.model.LatLng;
+import com.google.android.gms.maps.model.LatLngBounds;
 import com.google.android.gms.maps.model.MarkerOptions;
 import com.google.android.gms.maps.model.PolylineOptions;
 import com.google.android.material.button.MaterialButton;
@@ -127,7 +128,7 @@ public class RunActivity extends FragmentActivity implements OnMapReadyCallback,
             mStopPosition = listLocation.get(listLocation.size()-1);
             addMarker(mStopPosition, getResources().getString(R.string.stop_point));
             mPresenter.stopLocationService(getApplicationContext(), RunActivity.this);
-            centerCamera(mStopPosition,16);
+            zoomOutPath(listLocation);
             mDistanceRun = mPresenter.calculateDistance(listLocation);
             Log.d("gesu", "hai percorso: " + mDistanceRun + " metri");
             mCrono.stop();
@@ -232,6 +233,23 @@ public class RunActivity extends FragmentActivity implements OnMapReadyCallback,
         mMap.animateCamera(CameraUpdateFactory.newLatLngZoom(new LatLng(location.getLatitude(),location.getLongitude()),zoom));
     }
 
+    public void zoomOutPath(List<Location> locationList){
+        LatLng southwest = new LatLng(locationList.get(0).getLatitude(),locationList.get(0).getLongitude());
+        LatLng northeast = new LatLng(locationList.get(0).getLatitude(),locationList.get(0).getLongitude());
+        LatLngBounds myPosition;
+
+        for(int i=1;i<locationList.size();i++){
+            if(locationList.get(i).getLatitude()+locationList.get(i).getLongitude() > northeast.latitude + northeast.longitude){
+                northeast = new LatLng(locationList.get(i).getLatitude(),locationList.get(i).getLongitude());
+            } else if(locationList.get(i).getLatitude() + locationList.get(i).getLongitude() < southwest.latitude + southwest.longitude){
+                southwest = new LatLng(locationList.get(i).getLatitude(),locationList.get(i).getLongitude());
+            }
+        }
+
+        myPosition = new LatLngBounds(southwest,northeast);
+        mMap.animateCamera(CameraUpdateFactory.newLatLngBounds(myPosition,150));
+    }
+
     @Override
     public void onBroadcastReceive() {
         if(listLocation.size()<=2){
@@ -247,7 +265,9 @@ public class RunActivity extends FragmentActivity implements OnMapReadyCallback,
         final AlertDialog.Builder builder = new AlertDialog.Builder(this);
         builder.setMessage(getString(R.string.gps_off))
                 .setCancelable(false)
-                .setPositiveButton(getString(R.string.yes), (dialog, id) -> startActivity(new Intent(Settings.ACTION_LOCATION_SOURCE_SETTINGS)))
+                .setPositiveButton(getString(R.string.yes), (dialog, id) -> {
+                    startActivity(new Intent(Settings.ACTION_LOCATION_SOURCE_SETTINGS));
+                })
 
                 .setNegativeButton(getString(R.string.no), (dialog, id) -> {
                     dialog.cancel();
@@ -265,6 +285,5 @@ public class RunActivity extends FragmentActivity implements OnMapReadyCallback,
         Run thisRun = new Run(date,listLocation, mElapsedTime, mAverageSpeed, mAverageKcal, mDistanceRun);
         String userMail = ((WeFitApplication)getApplicationContext()).getUser().email;
         mPresenter.saveRun(userMail, thisRun);
-
     }
 }

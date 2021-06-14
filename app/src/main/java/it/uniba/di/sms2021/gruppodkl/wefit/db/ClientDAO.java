@@ -196,12 +196,15 @@ public class ClientDAO extends UserDAO {
      * @param callback implementazione della classe di callback
      */
     public static void getLastRun(String clientMail, RunLoaded callback){
+        sLastRun=null;
         FirebaseFirestore.getInstance().collection(Keys.Collections.USERS).document(clientMail)
                 .collection(Keys.Collections.RUNS).orderBy(Run.RunKeys.DATE).get()
                 .addOnCompleteListener(task -> {
-                    if(task.isSuccessful()){
+                    if(task.isSuccessful()&&task.getResult().getDocuments().size()>0){
                         sLastRun = task.getResult().getDocuments().get(0).toObject(Run.class);
                         callback.onLastRunLoaded(sLastRun);
+                    }else{
+                        callback.onLastRunLoaded(null);
                     }
                 });
     }

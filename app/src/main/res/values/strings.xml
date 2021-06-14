@@ -216,7 +216,7 @@
     <!-- RUN ACTIVITY -->
     <string name="location_permission_denied">Location Permission Denied! Impossible to get current position.</string>
     <string name="starting_point">Starting Point</string>
-    <string name="stop_point">Starting Point</string>
+    <string name="stop_point">Stop Point</string>
     <string name="notification_location_title">WeFit Run Tracker</string>
     <string name="notification_location_description">Run tracker active</string>
     <string name="run_stopped">Run concluded with success!</string>
@@ -224,6 +224,8 @@
     <string name="cancel_run_message">All the data of this run are gonna be loss.</string>
     <string name="gps_off">Your GPS seems to be disabled, do you want to enable it?</string>
     <string name="gps_off_toast">Impossible to track run without GPS enabled!</string>
+    <string name="your_last_run">Your last run</string>
+    <string name="start_run">Start Run</string>
 
 
     <string name="breakfast_caps">BREAKFAST</string>

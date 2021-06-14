@@ -7,11 +7,16 @@
          Google Maps Android API v2, but you must specify either coarse or fine
          location permissions for the "MyLocation" functionality.
     -->
-    <uses-permission android:name="android.permission.INTERNET"/>
     <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
-    <!-- foreground in quanto il servizio non deve essere killato -->
-    <uses-permission android:name="android.permission.ACCESS_FOREGROUND_LOCATION"/>
-    <uses-permission android:name="android.permission.FOREGROUND_SERVICE"/>
+
+    <!--
+         The ACCESS_COARSE/FINE_LOCATION permissions are not required to use
+         Google Maps Android API v2, but you must specify either coarse or fine
+         location permissions for the "MyLocation" functionality.
+    -->
+    <uses-permission android:name="android.permission.INTERNET" /> <!-- foreground in quanto il servizio non deve essere killato -->
+    <uses-permission android:name="android.permission.ACCESS_FOREGROUND_LOCATION" />
+    <uses-permission android:name="android.permission.FOREGROUND_SERVICE" />
 
     <queries>
         <intent>
@@ -38,15 +43,14 @@
         -->
         <meta-data
             android:name="com.google.android.geo.API_KEY"
-            android:value="${MAPS_API_KEY}" />
-
+            android:value="@string/google_maps_key" />
         <meta-data
             android:name="com.google.firebase.messaging.default_notification_icon"
             android:resource="@drawable/logo" />
 
         <activity
             android:name=".RunActivity"
-            android:label="@string/title_activity_run"/>
+            android:label="@string/title_activity_run" />
         <activity
             android:name=".coach.CoachMainActivity"
             android:windowSoftInputMode="adjustPan" />
@@ -64,15 +68,14 @@
         <activity android:name=".LoginActivity" />
         <activity
             android:name=".client.ClientMainActivity"
-            android:windowSoftInputMode="adjustPan" >
-        </activity>
+            android:windowSoftInputMode="adjustPan"></activity>
 
         <service
             android:name=".service.LocationService"
             android:enabled="true"
             android:exported="false"
-            android:foregroundServiceType="location"/>
-
+            android:stopWithTask="true"
+            android:foregroundServiceType="location" />
         <service
             android:name=".service.WeFitFirebaseInstanceIdService"
             android:exported="false">
@@ -80,14 +83,13 @@
                 <action android:name="com.google.firebase.INSTANCE_ID_EVENT" />
             </intent-filter>
         </service>
-
         <service
             android:name=".service.WeFitFirebaseMessagingService"
             android:exported="false">
             <intent-filter>
-                <action android:name="com.google.firebase.MESSAGING_EVENT"/>
+                <action android:name="com.google.firebase.MESSAGING_EVENT" />
             </intent-filter>
         </service>
-
     </application>
+
 </manifest>

@@ -223,6 +223,9 @@
     <string name="cancel_run_message">Tutti i dati relativi a questa corsa andranno persi.</string>
     <string name="gps_off">Il GPS non è attivo, vuoi abilitarlo?</string>
     <string name="gps_off_toast">Impossibile tracciare la corsa con il GPS spento!</string>
+    <string name="your_last_run">Ultima Corsa</string>
+    <string name="start_run">Avvia Corsa</string>
+
 
 
     <string name="breakfast_caps">COLAZIONE</string>

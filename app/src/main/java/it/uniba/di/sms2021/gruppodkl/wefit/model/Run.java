@@ -45,9 +45,20 @@ public class Run implements Parcelable {
         int distanceInMeters = (int) distance;
 
         if(distanceInMeters % 1000 != distanceInMeters)
-            res += distanceInMeters/1000  + " km ";
+            res += distanceInMeters/1000  + "," + distanceInMeters%1000 + " km ";
+        else
+            res +=  distanceInMeters%1000 + " m";
 
-        return res + distanceInMeters%1000 + " m";
+        return res;
+    }
+
+    public String convertTime(){
+        String res = "";
+
+        if(!elapsedTime.startsWith("00"))
+            res = elapsedTime.substring(0,2) + "h:";
+
+        return res + elapsedTime.substring(3,5) +  "m:" + elapsedTime.substring(6,8) + "s";
     }
 
     public String convertKcal(){

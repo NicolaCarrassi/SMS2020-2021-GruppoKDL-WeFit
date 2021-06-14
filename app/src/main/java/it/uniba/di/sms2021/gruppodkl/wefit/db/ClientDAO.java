@@ -201,7 +201,7 @@ public class ClientDAO extends UserDAO {
                 .collection(Keys.Collections.RUNS).orderBy(Run.RunKeys.DATE).get()
                 .addOnCompleteListener(task -> {
                     if(task.isSuccessful()&&task.getResult().getDocuments().size()>0){
-                        sLastRun = task.getResult().getDocuments().get(0).toObject(Run.class);
+                        sLastRun = task.getResult().getDocuments().get(task.getResult().getDocuments().size() -1).toObject(Run.class);
                         callback.onLastRunLoaded(sLastRun);
                     }else{
                         callback.onLastRunLoaded(null);

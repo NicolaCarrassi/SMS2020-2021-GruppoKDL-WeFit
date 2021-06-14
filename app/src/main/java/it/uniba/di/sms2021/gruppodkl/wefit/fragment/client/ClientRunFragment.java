@@ -137,7 +137,7 @@ public class ClientRunFragment extends Fragment implements ClientRunContract.Vie
         centerCamera(run.locationList);
         mSpeed.setText(run.convertAvgSpeed());
         mDistance.setText(run.convertRunDistance());
-        mTime.setText(run.elapsedTime);
+        mTime.setText(run.convertTime());
     }
 
     public void centerCamera(List<MyLocation> locationList){

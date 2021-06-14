@@ -1,5 +1,7 @@
 package it.uniba.di.sms2021.gruppodkl.wefit.utility;
 
+import android.util.Log;
+
 import com.jjoe64.graphview.GraphView;
 import com.jjoe64.graphview.series.DataPoint;
 import com.jjoe64.graphview.series.LineGraphSeries;
@@ -34,6 +36,10 @@ public class GraphSettings {
 
         graph.addSeries(line);
         graph.addSeries(points);
+        graph.getViewport().setXAxisBoundsManual(true);
+        graph.getViewport().setYAxisBoundsManual(true);
+
+
 
         points.setShape(PointsGraphSeries.Shape.POINT);
         graph.getGridLabelRenderer().setHorizontalLabelsVisible(false);

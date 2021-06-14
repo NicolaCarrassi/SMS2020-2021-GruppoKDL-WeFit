@@ -107,7 +107,7 @@ public class ClientDAO extends UserDAO {
             sDateList = new ArrayList<>();
 
         FirebaseFirestore.getInstance().collection(Keys.Collections.USERS).document(clientMail)
-                .collection(Keys.Collections.WEIGHT).get()
+                .collection(Keys.Collections.WEIGHT).orderBy(Client.ClientKeys.WEIGHT_DATE).get()
                 .addOnCompleteListener(task -> {
                     if(task.isSuccessful()){
                         QuerySnapshot qs = task.getResult();

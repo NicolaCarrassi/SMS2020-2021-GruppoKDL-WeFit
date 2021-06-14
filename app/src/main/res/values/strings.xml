@@ -254,6 +254,7 @@
     <string name="time_elapsed">"Elapsed time: "</string>
     <string name="days_label">days</string>
     <string name="shopping_list_text">Your shopping list for the next</string>
+    <string name="add_weight_exceeded">You have already added a weight today. Come back tomorrow!</string>
 
 
 </resources>

@@ -108,7 +108,7 @@
     <string name="back">Indietro</string>
     <string name="weight_successfully_added">Peso inserito con successo!</string>
     <string name="training_added">Allenamento inserito con successo!</string>
-
+    <string name="add_weight_exceeded">Hai giá aggiunto un peso oggi. Torna domani!</string>
 
     <!-- TODO Rimuovi -->
     <string name="hello_blank_fragment">ciao mondo</string>
@@ -242,7 +242,7 @@
 
 
 
-    <string name="see_statistics">Visita le statitiche</string>
+    <string name="see_statistics">Visita le statistiche</string>
     <string name="my_runs">Le mie corse</string>
     <string name="distance">Distanza</string>
     <string name="calories_burnt">Calorie bruciate</string>
@@ -256,4 +256,5 @@
     <string name="time_elapsed">Tempo impiegato: </string>
     <string name="shopping_list_text">La tua lista della spesa per i prossimi</string>
     <string name="days_label">giorni</string>
+
 </resources>

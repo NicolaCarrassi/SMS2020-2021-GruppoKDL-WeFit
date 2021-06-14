@@ -5,7 +5,6 @@ import android.net.Uri;
 import java.util.Map;
 
 import it.uniba.di.sms2021.gruppodkl.wefit.model.Client;
-import it.uniba.di.sms2021.gruppodkl.wefit.model.User;
 
 public interface ClientProfileFragmentContract {
 

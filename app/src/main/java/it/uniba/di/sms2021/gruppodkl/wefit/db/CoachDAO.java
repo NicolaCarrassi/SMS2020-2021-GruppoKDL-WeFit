@@ -220,7 +220,7 @@ public class CoachDAO extends UserDAO {
             if(clientTask.isComplete()) {
                 sClient = clientTask.getResult().toObject(Client.class);
                 instance.collection(Keys.Collections.USERS).document(clientMail).collection(Keys.Collections.WEIGHT)
-                        .get().addOnCompleteListener(weightTask -> {
+                        .orderBy(Client.ClientKeys.WEIGHT_DATE).get().addOnCompleteListener(weightTask -> {
                             if(weightTask.isComplete()){
                                 for (DocumentSnapshot documentSnapshot : weightTask.getResult()) {
                                     float weight = documentSnapshot.getDouble(Client.ClientKeys.WEIGHT).floatValue();

@@ -14,6 +14,7 @@ import android.widget.Spinner;
 import android.widget.TextView;
 import com.google.android.material.bottomsheet.BottomSheetDialogFragment;
 import com.google.android.material.button.MaterialButton;
+import com.google.android.material.progressindicator.CircularProgressIndicator;
 
 import java.text.SimpleDateFormat;
 import java.util.Date;
@@ -38,6 +39,7 @@ public class ClientAddTrainingFragment extends BottomSheetDialogFragment impleme
     private AnimatedVectorDrawable mSuccessAnimation;
     private LinearLayout mAddTrainingPanel;
     private LinearLayout mAddTrainingSuccess;
+    private CircularProgressIndicator mProgressIndicator;
 
 
     public ClientAddTrainingFragment() {
@@ -56,6 +58,8 @@ public class ClientAddTrainingFragment extends BottomSheetDialogFragment impleme
 
         assert getActivity() != null;
         mClientMail = ((WeFitApplication) getActivity().getApplicationContext()).getUser().email;
+        mSendBtn.setVisibility(View.GONE);
+        mSpinner.setVisibility(View.GONE);
 
         return layout;
     }
@@ -74,7 +78,7 @@ public class ClientAddTrainingFragment extends BottomSheetDialogFragment impleme
         mImageView.setBackgroundResource(R.drawable.success_anim);
         mSuccessAnimation = (AnimatedVectorDrawable) mImageView.getBackground();
         MaterialButton mBackButton = layout.findViewById(R.id.back_home);
-
+        mProgressIndicator = layout.findViewById(R.id.loading_indicator);
         mBackButton.setOnClickListener(v -> {
             dismiss();
             assert getActivity() != null;
@@ -93,6 +97,7 @@ public class ClientAddTrainingFragment extends BottomSheetDialogFragment impleme
     public void onStart() {
         super.onStart();
         mPresenter.loadTrainingInformation(mClientMail);
+        mProgressIndicator.setVisibility(View.VISIBLE);
     }
 
 
@@ -103,6 +108,9 @@ public class ClientAddTrainingFragment extends BottomSheetDialogFragment impleme
         adapter.addAll(trainingNames);
         adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
         mSpinner.setAdapter(adapter);
+        mProgressIndicator.setVisibility(View.GONE);
+        mSpinner.setVisibility(View.VISIBLE);
+        mSendBtn.setVisibility(View.VISIBLE);
     }
 
     @Override

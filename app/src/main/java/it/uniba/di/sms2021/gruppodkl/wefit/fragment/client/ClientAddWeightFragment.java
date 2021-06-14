@@ -1,21 +1,31 @@
 package it.uniba.di.sms2021.gruppodkl.wefit.fragment.client;
 
+import android.content.SharedPreferences;
+import android.graphics.DashPathEffect;
 import android.graphics.drawable.AnimatedVectorDrawable;
 import android.os.Bundle;
 
 
-
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
+import android.widget.TextView;
+
+import androidx.preference.PreferenceManager;
 
 import com.google.android.material.bottomsheet.BottomSheetDialogFragment;
 import com.google.android.material.button.MaterialButton;
 
+import org.w3c.dom.Text;
+
 import java.math.BigDecimal;
+import java.text.DateFormat;
+import java.text.SimpleDateFormat;
+import java.util.Date;
 
 import it.uniba.di.sms2021.gruppodkl.wefit.R;
 import it.uniba.di.sms2021.gruppodkl.wefit.WeFitApplication;
@@ -42,6 +52,9 @@ public class ClientAddWeightFragment extends BottomSheetDialogFragment implement
     private LinearLayout mAddWeightSuccess;
 
 
+    private SharedPreferences prefs;
+    private LinearLayout mWeightLimitLabel;
+
     public ClientAddWeightFragment() {
         // Required empty public constructor
     }
@@ -53,6 +66,7 @@ public class ClientAddWeightFragment extends BottomSheetDialogFragment implement
         // Inflate the layout for this fragment
         View layout = inflater.inflate(R.layout.client_add_weight_fragment, container, false);
 
+        prefs = PreferenceManager.getDefaultSharedPreferences(getActivity());
 
         mPresenter = new ClientAddWeightPresenter(this);
         assert getActivity() != null;
@@ -83,6 +97,15 @@ public class ClientAddWeightFragment extends BottomSheetDialogFragment implement
         mAddWeightPanel = layout.findViewById(R.id.add_weight_panel);
         mAddWeightSuccess = layout.findViewById(R.id.add_weight_success);
         mBackButton = layout.findViewById(R.id.back_home);
+
+        mWeightLimitLabel = layout.findViewById(R.id.weight_limit_label);
+        if (isNewDay()){
+            mAddWeightPanel.setVisibility(View.GONE);
+            mWeightLimitLabel.setVisibility(View.VISIBLE);
+        }else{
+            mAddWeightPanel.setVisibility(View.VISIBLE);
+            mWeightLimitLabel.setVisibility(View.GONE);
+        }
     }
 
     /**
@@ -106,6 +129,9 @@ public class ClientAddWeightFragment extends BottomSheetDialogFragment implement
             if(weight > MIN_WEIGHT) {
                 mClient.weight = weight;
                 mPresenter.addWeight(mClient, weight);
+
+                Date date = new Date(System.currentTimeMillis());
+                prefs.edit().putLong("time", date.getTime()).apply();
             }
         });
 
@@ -124,6 +150,18 @@ public class ClientAddWeightFragment extends BottomSheetDialogFragment implement
         mAddWeightPanel.setVisibility(View.GONE);
         mAddWeightSuccess.setVisibility(View.VISIBLE);
         mSuccessAnimation.start();
+    }
+
+    private boolean isNewDay(){
+        boolean check = false;
+        Date prevDate = new Date(prefs.getLong("time", 0));
+        Date today = new Date(System.currentTimeMillis());
+        SimpleDateFormat fmt = new SimpleDateFormat("yyyyMMdd");
+
+        if(fmt.format(prevDate).equals(fmt.format(today))) {
+            check = true;
+        }
+        return check;
     }
 
 }

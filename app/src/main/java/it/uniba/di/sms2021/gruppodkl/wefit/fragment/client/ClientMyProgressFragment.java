@@ -1,15 +1,13 @@
 package it.uniba.di.sms2021.gruppodkl.wefit.fragment.client;
 
 import android.os.Bundle;
-
-import androidx.fragment.app.Fragment;
-
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
 import android.widget.Toast;
+
+import androidx.fragment.app.Fragment;
 
 import com.jjoe64.graphview.GraphView;
 
@@ -62,6 +60,7 @@ public class ClientMyProgressFragment extends Fragment implements ClientProgress
         mView = layout;
         mPresenter = new ClientProgressPresenter(this);
 
+        assert getActivity() != null;
         mClientMail = ((WeFitApplication)getActivity().getApplicationContext()).getUser().email;
         bind();
         return layout;
@@ -88,6 +87,7 @@ public class ClientMyProgressFragment extends Fragment implements ClientProgress
     public void onClientDataReceived(List<Float> weightList, List<Date> dateList) {
 
         String clientInitialWeight = Float.toString(weightList.get(0)) ;
+        assert getActivity() != null;
         String clientCurrentWeight = Float.toString(((Client) ((WeFitApplication) getActivity().getApplicationContext()).getUser()).weight);
 
 

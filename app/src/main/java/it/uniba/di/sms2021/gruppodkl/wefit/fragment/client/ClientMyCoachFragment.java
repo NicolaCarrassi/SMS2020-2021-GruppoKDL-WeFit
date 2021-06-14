@@ -32,7 +32,14 @@ import it.uniba.di.sms2021.gruppodkl.wefit.utility.Keys;
 
 public class ClientMyCoachFragment extends Fragment implements ClientMyCoachContract.View, User.MyImageBitmapCallback {
 
+    /**
+     * Interfaccia per le operazioni di callback
+     */
     public interface CoachProfileCallbacks{
+        /**
+         * Il metodo permette di lasciare un feeback al coach
+         * @param map mappa contenente le informazioni del feebdack
+         */
         void makeRating(Map<String, Object> map);
     }
 
@@ -269,16 +276,26 @@ public class ClientMyCoachFragment extends Fragment implements ClientMyCoachCont
         mCoachProfileImage.setImageBitmap(mCoach.getImageBitmap());
     }
 
+    /**
+     * Il metodo permette di aprire il dialog per lasciare un feedback
+     */
     public void openFeedbackDialog(){
         AddFeedbackDialog addDialog = new AddFeedbackDialog(getActivity());
         addDialog.show();
     }
 
 
+    /**
+     * Il metodo permette di gestire il feedback del coach
+     * @param map mappa contenete le informazioni  del feedback
+     */
     public void handleFeedback(Map<String, Object> map) {
         mPresenter.addFeedback(map, mCoach.email);
     }
 
+    /**
+     * Il metodo permette di lasciare il proprio coach
+     */
     public void leaveCoachDialog(){
         assert getActivity() != null;
         new MaterialAlertDialogBuilder(getActivity())
@@ -292,12 +309,17 @@ public class ClientMyCoachFragment extends Fragment implements ClientMyCoachCont
     }
 
 
-
+    /**
+     * Il metodo permette di richiedere ad un coach di iscriversi
+     */
     private void requestSubToCoach() {
         mRequestSubButton.setClickable(false);
         mPresenter.sendRequestToCoach(mClient, mCoach);
     }
 
+    /**
+     * Il metodo permette di annullare la richiesta al coach
+     */
     private void removeRequestToCoach() {
         mRemoveRequestButton.setClickable(false);
 

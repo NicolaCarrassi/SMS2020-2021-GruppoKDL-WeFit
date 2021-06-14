@@ -39,6 +39,10 @@ public class ClientMyTrainingFragment extends Fragment implements ClientMyTraini
 
     }
 
+    /**
+     * Il metodo permette di associare gli elementi della view ad oggetti
+     *
+     */
     private void bind(View view){
 
         if(getActivity() instanceof WeFitApplication.CallbackOperations) {

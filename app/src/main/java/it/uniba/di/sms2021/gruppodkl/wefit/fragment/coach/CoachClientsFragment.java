@@ -45,6 +45,10 @@ public class CoachClientsFragment extends Fragment implements CoachClientsContra
         return layout;
     }
 
+    /**
+     * Il metodo permette di associare gli elementi della view ad oggetti
+     *
+     */
     private void bind(View view){
         //toolbar
         if(getActivity() instanceof WeFitApplication.CallbackOperations) {

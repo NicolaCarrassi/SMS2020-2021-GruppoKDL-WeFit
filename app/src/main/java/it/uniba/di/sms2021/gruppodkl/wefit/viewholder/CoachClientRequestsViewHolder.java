@@ -13,10 +13,28 @@ import it.uniba.di.sms2021.gruppodkl.wefit.model.Request;
 
 public class CoachClientRequestsViewHolder extends RecyclerView.ViewHolder implements Request.RequestImageBitmapCallback {
 
-
+    /**
+     * Interfaccia contenente le operazioni di callback per
+     * la gestione delle richieste
+     */
     public interface ViewHolderCallback{
+        /**
+         * Il metodo permette di accettare una richiesta data la sua posizione nella RecyclerView
+         * @param position posizione della richiesta
+         */
         void acceptRequest(int position);
+
+        /**
+         * Il metodo permette di rifiutare una richiesta data la sua posizione nella RecyclerView
+         * @param position posizione della richiesta
+         */
         void declineRequest(int position);
+
+        /**
+         * Il metodo permette di visualizzare il profilo di un cliente che ha
+         * fatto una richiesta, data la sua posizione nella RecyclerView
+         * @param position posizione della richiesta
+         */
         void showUserProfile(int position);
     }
 
@@ -25,8 +43,6 @@ public class CoachClientRequestsViewHolder extends RecyclerView.ViewHolder imple
 
     private final ImageView mProfilePicture;
     private final TextView mClientName;
-    private final Button mAcceptButton;
-    private final Button mDeclineButton;
 
     public CoachClientRequestsViewHolder(@NonNull  View itemView, ViewHolderCallback callback) {
         super(itemView);
@@ -34,8 +50,8 @@ public class CoachClientRequestsViewHolder extends RecyclerView.ViewHolder imple
 
         mProfilePicture = itemView.findViewById(R.id.client_pfp);
         mClientName = itemView.findViewById(R.id.client_name);
-        mAcceptButton = itemView.findViewById(R.id.accept_button);
-        mDeclineButton = itemView.findViewById(R.id.decline_button);
+        Button mAcceptButton = itemView.findViewById(R.id.accept_button);
+        Button mDeclineButton = itemView.findViewById(R.id.decline_button);
 
         mAcceptButton.setOnClickListener(v -> mCallback.acceptRequest(getAdapterPosition()));
         mDeclineButton.setOnClickListener(v -> mCallback.declineRequest(getAdapterPosition()));
@@ -43,6 +59,10 @@ public class CoachClientRequestsViewHolder extends RecyclerView.ViewHolder imple
     }
 
 
+    /**
+     * Il metodo permette di associare i valori del model al viewHolder
+     * @param request model
+     */
     public void setValues(Request request){
         mRequest = request;
 

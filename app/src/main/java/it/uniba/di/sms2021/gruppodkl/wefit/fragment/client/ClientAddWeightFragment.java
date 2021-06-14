@@ -65,6 +65,10 @@ public class ClientAddWeightFragment extends BottomSheetDialogFragment implement
     }
 
 
+    /**
+     * Il metodo permette di associare gli elementi della view ad oggetti
+     *
+     */
     private void bind(View layout){
         String weight = Float.toString(mClient.weight);
 
@@ -81,6 +85,10 @@ public class ClientAddWeightFragment extends BottomSheetDialogFragment implement
         mBackButton = layout.findViewById(R.id.back_home);
     }
 
+    /**
+     * Il metodo permette di impostare i listeners
+     *
+     */
     private void setListener(){
         mButtonDecrease.setOnClickListener(v -> {
             final BigDecimal newValue = new BigDecimal(mWeightValue.getText().toString()).subtract(BigDecimal.valueOf(0.1));

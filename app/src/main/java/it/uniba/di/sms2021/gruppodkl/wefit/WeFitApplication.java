@@ -73,10 +73,21 @@ public class WeFitApplication extends Application {
     }
 
 
+    /**
+     * Il metodo permette di far partire la progress bar
+     *
+     * @param view view contenente la progress bar
+     */
     public void startProgress(View view){
         view.findViewById(R.id.circular_progress_indicator).setVisibility(View.VISIBLE);
     }
 
+
+    /**
+     * Il metodo permette di stoppare la progress bar
+     *
+     * @param view view contenente la progress bar
+     */
     public void stopProgress(View view){
         view.findViewById(R.id.circular_progress_indicator).setVisibility(View.GONE);
     }

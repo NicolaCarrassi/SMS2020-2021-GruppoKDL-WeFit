@@ -128,6 +128,9 @@ public class CoachAddExerciseFragment extends BottomSheetDialogFragment implemen
     }
 
 
+    /**
+     * Il metodo permette di aggiungere un esercizio
+     */
     private void addExercise() {
         boolean isCorrect = true;
         int exerciseReps = 0;

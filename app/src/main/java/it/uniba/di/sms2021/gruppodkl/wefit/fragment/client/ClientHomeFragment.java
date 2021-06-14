@@ -76,6 +76,10 @@ public class ClientHomeFragment extends Fragment implements User.MyImageBitmapCa
         return layout;
     }
 
+    /**
+     * Il metodo permette di associare gli elementi della view ad oggetti
+     *
+     */
     private void bind(View view) {
         mView = view;
         assert getActivity() != null;
@@ -99,7 +103,10 @@ public class ClientHomeFragment extends Fragment implements User.MyImageBitmapCa
         }
     }
 
-
+    /**
+     * Il metodo permette impostare i listeners agli elementi della view
+     *
+     */
     private void setListener(){
         mImageView.setOnClickListener(v -> {
             final ClientMyProfileFragment clientMyProfileFragment = new ClientMyProfileFragment();

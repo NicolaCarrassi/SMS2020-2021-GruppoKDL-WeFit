@@ -130,6 +130,10 @@ public class ClientExerciseSpecificationFragment extends Fragment implements Cli
         Toast.makeText(getActivity(), getResources().getString(R.string.error_general), Toast.LENGTH_SHORT).show();
     }
 
+    /**
+     * Il metodo permette di inizializzare il fragment relativo al player di youtube
+     *
+     */
     private void initFragment(){
         if(mYoutubePlayerFragment == null){
             mYoutubePlayerFragment = (YouTubePlayerSupportFragmentX) getChildFragmentManager().findFragmentById(R.id.youtube_frag);

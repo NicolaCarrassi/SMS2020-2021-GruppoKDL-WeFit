@@ -1,7 +1,6 @@
 package it.uniba.di.sms2021.gruppodkl.wefit.presenter.client;
 
 import java.util.HashMap;
-import java.util.List;
 import java.util.Map;
 
 import it.uniba.di.sms2021.gruppodkl.wefit.contract.client.ClientMyCoachContract;
@@ -16,7 +15,7 @@ import it.uniba.di.sms2021.gruppodkl.wefit.utility.Keys;
 
 public class ClientMyCoachPresenter implements ClientMyCoachContract.Presenter, ClientDAO.ClientDAOCallbacks {
 
-    private ClientMyCoachContract.View mView;
+    private final ClientMyCoachContract.View mView;
     private final UserDAO.UserCallbacks mUserCallbacks;
     private final CoachDAO.RatingCallbacks mRatingCallbacks;
 

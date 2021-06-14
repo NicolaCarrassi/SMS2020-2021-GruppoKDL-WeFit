@@ -11,14 +11,20 @@ import it.uniba.di.sms2021.gruppodkl.wefit.R;
 
 public class DietDayViewHolder extends RecyclerView.ViewHolder {
 
+    /**
+     * Interfaccia contentente le operazioni di callback
+     */
     public interface DietDayCallbacks{
+        /**
+         * Il metodo permette di visualizzare il giorno di dieta, data la sua posizone
+         * @param position posizione
+         */
         void goToDietDay(int position);
     }
 
 
-    private TextView mDayLabel;
-    private CardView mDietDayCard;
-    private DietDayCallbacks mCallback;
+    private final TextView mDayLabel;
+    private final DietDayCallbacks mCallback;
 
     public DietDayViewHolder(@NonNull View itemView, DietDayCallbacks callback) {
         super(itemView);
@@ -26,11 +32,15 @@ public class DietDayViewHolder extends RecyclerView.ViewHolder {
 
         mCallback = callback;
         mDayLabel = itemView.findViewById(R.id.day_of_the_week_label);
-        mDietDayCard = itemView.findViewById(R.id.diet_day_card);
+        CardView mDietDayCard = itemView.findViewById(R.id.diet_day_card);
 
         mDietDayCard.setOnClickListener(v -> mCallback.goToDietDay(getAdapterPosition()));
     }
 
+    /**
+     * Il metodo permette di associare i valori del model al viewholder
+     * @param model Stringa contenente il giorno della settimana
+     */
     public void setValues(String model){
         mDayLabel.setText(model);
     }

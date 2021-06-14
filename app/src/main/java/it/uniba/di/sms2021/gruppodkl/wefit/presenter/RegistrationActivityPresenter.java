@@ -169,6 +169,11 @@ public class RegistrationActivityPresenter implements RegistrationActivityContra
         mView.onSuccess(client);
     }
 
+    /**
+     * Il metodo permette di effettuare il caricamento della certificazione del coach
+     * nello storage
+     * @param coach coach di cui si intende caricare la certificazione
+     */
     public void loadCertification(Coach coach){
         if(coach.certificationUri != null) {
             StorageReference fileRef = FirebaseStorage.getInstance().getReference(Keys.Collections.CERTIFICATION)

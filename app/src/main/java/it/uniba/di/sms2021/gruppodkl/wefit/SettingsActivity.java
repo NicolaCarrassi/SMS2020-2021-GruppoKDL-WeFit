@@ -61,6 +61,7 @@ public class SettingsActivity extends BaseActivity {
 
             CheckBoxPreference mDarkModePref = findPreference(SettingKeys.DARK);
 
+            assert mDarkModePref != null;
             mDarkModePref.setOnPreferenceChangeListener((preference, newValue) -> {
                 setDarkMode(newValue);
                 return true;

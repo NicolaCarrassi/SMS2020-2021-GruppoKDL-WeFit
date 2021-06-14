@@ -121,6 +121,9 @@ public class CoachMyClientDailyTrainingFragment extends Fragment implements Coac
         mAdapter.stopListening();
     }
 
+    /**
+     * Il metodo permette di mostrare il fragment per aggiungere un esercizio
+     */
     private void showAdd(){
         final CoachAddExerciseFragment addFragment = CoachAddExerciseFragment.newInstance(mClientMail,mTraining);
         assert getActivity() != null;
@@ -142,7 +145,10 @@ public class CoachMyClientDailyTrainingFragment extends Fragment implements Coac
         mPresenter.updateTraining(mClientMail, mTraining);
     }
 
-
+    /**
+     * Il metodo permette di aprire il dialogo per modificare le informazioni
+     * dell'allenamento
+     */
     private void openEditTrainingDialog(){
         assert getActivity() != null;
         EditTrainingDialog dialog = new EditTrainingDialog(getActivity(), this, mTraining);

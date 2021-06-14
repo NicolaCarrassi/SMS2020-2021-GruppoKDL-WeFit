@@ -69,6 +69,10 @@ public class ClientAddMealFragment extends BottomSheetDialogFragment implements 
         return layout;
     }
 
+    /**
+     * Il metodo permette di associare gli elementi della view ad oggetti
+     *
+     */
     private void bind(View layout){
         mSpinner = layout.findViewById(R.id.spinner_meal);
         mSendButton = layout.findViewById(R.id.send_button);
@@ -101,8 +105,9 @@ public class ClientAddMealFragment extends BottomSheetDialogFragment implements 
         mPresenter.checkMealsAvailable();
     }
 
-
-
+    /**
+     * Il metodo permette di registrare un pasto
+     */
     private void registerMeal(){
         if(mSpinner.getSelectedItem() != null)
             mPresenter.registerMeal((String) mSpinner.getSelectedItem());

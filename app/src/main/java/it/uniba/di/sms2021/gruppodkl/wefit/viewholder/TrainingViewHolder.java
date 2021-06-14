@@ -37,6 +37,13 @@ public class TrainingViewHolder extends RecyclerView.ViewHolder {
     }
 
 
+    /**
+     * il metodo permette di associare al viewholder gli elementi specifici
+     * del model a cui esso è associato
+     *
+     * @param model model del viewHolder
+     * @param isEditable indica la possibilità di effettuare operazioni di modifica
+     */
     public void setValues(Training model, boolean isEditable){
 
         mDay.setText(DayOfTheWeek.getDayOfTheWeek(model.dayOfWeek, mView));
@@ -53,7 +60,17 @@ public class TrainingViewHolder extends RecyclerView.ViewHolder {
 
 
     public interface ClientMyTrainingCallbacks{
+        /**
+         *
+         * Il metodo permette di cancellare l'allenamento in una data posizione
+         * @param position posizione dell'allenamento da cancellare
+         */
         void deleteTraining(int position);
+
+        /**
+         * Il metodo permette di gestire l'evento di touch su un dato elemento
+         * @param position posizione dell'elemento
+         */
         void onElementChecked(int position);
     }
 

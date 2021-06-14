@@ -16,17 +16,17 @@ public class TermsFragment extends Fragment {
 
     public static final String TAG = TermsFragment.class.getSimpleName();
 
-    private View mView;
+
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
         View layout = inflater.inflate(R.layout.fragment_terms, container, false);
-        mView = layout;
+
         if(getActivity() instanceof WeFitApplication.CallbackOperations){
             WeFitApplication.CallbackOperations act = (WeFitApplication.CallbackOperations) getActivity();
-            ((WeFitApplication) getActivity().getApplicationContext()).setToolbar(mView,act);
+            ((WeFitApplication) getActivity().getApplicationContext()).setToolbar(layout,act);
         }
         return layout;
     }

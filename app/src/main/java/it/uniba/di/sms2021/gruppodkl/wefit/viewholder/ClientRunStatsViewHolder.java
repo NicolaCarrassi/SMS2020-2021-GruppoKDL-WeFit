@@ -13,7 +13,15 @@ import it.uniba.di.sms2021.gruppodkl.wefit.model.Run;
 
 public class ClientRunStatsViewHolder extends RecyclerView.ViewHolder {
 
+    /**
+     * Interfaccia delle operazioni di callback
+     */
     public interface ClientRunCallback{
+        /**
+         * Il metodo permette di aprire al specifica delle statistiche di una corsa
+         * data la sua posizione
+         * @param position posizione della corsa
+         */
         void openRunDetail(int position);
     }
 
@@ -33,6 +41,10 @@ public class ClientRunStatsViewHolder extends RecyclerView.ViewHolder {
         mCardView.setOnClickListener(v -> mCallback.openRunDetail(getAdapterPosition()));
     }
 
+    /**
+     * Il metodo permette di associare il model al viewHolder
+     * @param run model
+     */
     public void setValues(Run run){
         mRunDate.setText(run.date);
         mRunDistance.setText(run.convertRunDistance());

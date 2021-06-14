@@ -18,6 +18,7 @@ import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Calendar;
 import java.util.Date;
+import java.util.Objects;
 
 import it.uniba.di.sms2021.gruppodkl.wefit.R;
 import it.uniba.di.sms2021.gruppodkl.wefit.WeFitApplication;
@@ -65,7 +66,7 @@ public class ClientDietDiaryFragment extends Fragment implements ClientDietDiary
         if (savedInstanceState != null &&
                 savedInstanceState.containsKey(DATE_SELECTED) && savedInstanceState.getString(DATE_SELECTED) != null) {
             try{
-                mSelectedDate = mSimpleDateFormatDateToQuery.format(mSimpleDateFormatDateToQuery.parse(savedInstanceState.getString(DATE_SELECTED)));
+                mSelectedDate = mSimpleDateFormatDateToQuery.format(Objects.requireNonNull(mSimpleDateFormatDateToQuery.parse(savedInstanceState.getString(DATE_SELECTED))));
             } catch (Exception e) {
                 mSelectedDate = mSimpleDateFormatDateToQuery.format(new Date());
             }
@@ -94,6 +95,10 @@ public class ClientDietDiaryFragment extends Fragment implements ClientDietDiary
     }
 
 
+    /**
+     * Il metodo permette di associare gli elementi della view ad oggetti
+     *
+     */
     private void bind(View view){
         mProgressIndicator = view.findViewById(R.id.day_loader);
         mBackBtn = view.findViewById(R.id.previous_day_btn);
@@ -141,6 +146,13 @@ public class ClientDietDiaryFragment extends Fragment implements ClientDietDiary
         mDinnerAdapter.stopListening();
     }
 
+    /**
+     * Il metodo permette di modificare la data di cui si visualizza il diario
+     * alimentare
+     *
+     * @param forward booleano, indica che si vuole visualizzare la data successiva
+     *                 a quella che si sta visualizzando
+     */
     private void changeDay(boolean forward){
         mBreakfastRecycler.setVisibility(View.GONE);
         mLunchRecycler.setVisibility(View.GONE);
@@ -189,14 +201,21 @@ public class ClientDietDiaryFragment extends Fragment implements ClientDietDiary
         mProgressIndicator.setVisibility(View.GONE);
     }
 
+    /**
+     * Il metodo permette di impostare la label relativa alla data
+     *
+     */
     private void setDateLabel(){
         try {
-            mDateTextView.setText(mSdfDateLabel.format(mSimpleDateFormatDateToQuery.parse(mSelectedDate)));
+            mDateTextView.setText(mSdfDateLabel.format(Objects.requireNonNull(mSimpleDateFormatDateToQuery.parse(mSelectedDate))));
         } catch (ParseException e){
             mDateTextView.setText(mSelectedDate);
         }
     }
 
+    /**
+     * Il metodo permette di ottenere e impostare gli adapters
+     */
     private void handleAdapters(){
         mBreakfastAdapter = mPresenter.getAdapter(mClientMail, mSelectedDate, Meal.MealType.BREAKFAST);
         mLunchAdapter = mPresenter.getAdapter(mClientMail, mSelectedDate, Meal.MealType.LUNCH);

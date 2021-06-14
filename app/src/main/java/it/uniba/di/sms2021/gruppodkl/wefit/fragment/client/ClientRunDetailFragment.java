@@ -19,6 +19,7 @@ import it.uniba.di.sms2021.gruppodkl.wefit.model.Run;
  * Use the {@link ClientRunDetailFragment#newInstance} factory method to
  * create an instance of this fragment.
  */
+// TODO Inserire grafico della corsa
 public class ClientRunDetailFragment extends Fragment {
     public static final String TAG = ClientRunDetailFragment.class.getSimpleName();
 
@@ -79,7 +80,9 @@ public class ClientRunDetailFragment extends Fragment {
         return view;
     }
 
-
+    /**
+     * Il metodo permette di impostare i valori della corsa
+     */
     private void setValues(){
         mRunDate.setText(mRun.date);
         mRunTime.setText(mRun.elapsedTime);

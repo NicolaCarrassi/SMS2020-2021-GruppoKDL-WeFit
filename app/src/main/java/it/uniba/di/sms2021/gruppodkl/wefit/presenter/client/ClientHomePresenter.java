@@ -1,7 +1,5 @@
 package it.uniba.di.sms2021.gruppodkl.wefit.presenter.client;
 
-import android.util.Log;
-
 import java.util.Set;
 
 import it.uniba.di.sms2021.gruppodkl.wefit.contract.client.ClientHomeContract;

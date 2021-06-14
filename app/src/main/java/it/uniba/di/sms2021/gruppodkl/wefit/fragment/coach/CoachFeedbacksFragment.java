@@ -81,7 +81,10 @@ public class CoachFeedbacksFragment extends Fragment implements User.MyImageBitm
         return layout;
     }
 
-
+    /**
+     * Il metodo permette di associare gli elementi della view ad oggetti
+     *
+     */
     private void bind(View view){
         assert getActivity() != null;
         ((WeFitApplication) getActivity().getApplicationContext()).setToolbar(view, mActivity);
@@ -141,6 +144,9 @@ public class CoachFeedbacksFragment extends Fragment implements User.MyImageBitm
         }
     }
 
+    /**
+     * Il metodo permette di visualizzare la pagina in cui non vi sono esercizi
+     */
     private void openAllFeedbackPage() {
         CoachAllFeedbackFragment fragment = new CoachAllFeedbackFragment();
 

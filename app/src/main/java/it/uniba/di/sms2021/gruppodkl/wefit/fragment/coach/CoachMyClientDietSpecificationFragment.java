@@ -39,7 +39,7 @@ public class CoachMyClientDietSpecificationFragment extends Fragment
     private CoachDietDayAdapter mLunchAdapter;
     private CoachDietDayAdapter mDinnerAdapter;
 
-    //TODO Aggiungere switch per cambiare giorno  < Lunedi >
+
 
 
     public CoachMyClientDietSpecificationFragment() {

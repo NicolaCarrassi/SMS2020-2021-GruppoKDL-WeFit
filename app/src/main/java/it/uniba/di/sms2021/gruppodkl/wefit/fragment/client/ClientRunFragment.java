@@ -39,11 +39,21 @@ public class ClientRunFragment extends Fragment {
         return layout;
     }
 
+    /**
+     * Il metodo permette di associare gli elementi della view ad oggetti
+     *
+     */
     private void bind(View layout){
         mStartButton = layout.findViewById(R.id.start_run_activity);
         mStatsButton = layout.findViewById(R.id.run_statistics);
     }
 
+
+    /**
+     * Il metodo permette di associare i listeners agli elementi
+     * della view
+     *
+     */
     private void setListener(){
         mStartButton.setOnClickListener(v -> {
             Intent intent = new Intent(getActivity(), RunActivity.class);
@@ -54,6 +64,9 @@ public class ClientRunFragment extends Fragment {
     }
 
 
+    /**
+     * Il metodo permette di passare alla pagina delle statistiche
+     */
     private void openStatistics(){
         ClientRunStatsFragment fragment = new ClientRunStatsFragment();
 

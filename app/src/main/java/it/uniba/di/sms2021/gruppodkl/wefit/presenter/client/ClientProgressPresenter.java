@@ -8,8 +8,6 @@ import java.util.List;
 
 import it.uniba.di.sms2021.gruppodkl.wefit.contract.client.ClientProgressContract;
 import it.uniba.di.sms2021.gruppodkl.wefit.db.ClientDAO;
-import it.uniba.di.sms2021.gruppodkl.wefit.db.CoachDAO;
-import it.uniba.di.sms2021.gruppodkl.wefit.model.Client;
 
 public class ClientProgressPresenter implements ClientProgressContract.Presenter, ClientDAO.WeightsLoaded {
     private final ClientProgressContract.View mView;

@@ -60,6 +60,10 @@ public class ClientAddTrainingFragment extends BottomSheetDialogFragment impleme
         return layout;
     }
 
+    /**
+     * Il metodo permette di associare gli elementi della view ad oggetti
+     *
+     */
     private void bind(View layout){
         mSendBtn = layout.findViewById(R.id.send_button);
         mSpinner = layout.findViewById(R.id.spinner_training);

@@ -3,7 +3,6 @@ package it.uniba.di.sms2021.gruppodkl.wefit.presenter.client;
 import android.net.Uri;
 
 import com.google.android.gms.tasks.Task;
-import com.google.firebase.firestore.FirebaseFirestore;
 import com.google.firebase.storage.FirebaseStorage;
 import com.google.firebase.storage.StorageReference;
 

@@ -32,7 +32,10 @@ public class CoachMyClientListViewHolder extends RecyclerView.ViewHolder impleme
         mClientImage.setOnClickListener(v -> mCallback.openYourClientProfile(getAdapterPosition()));
     }
 
-
+    /**
+     * Il metodo permette di associare i valori del model al viewholder
+     * @param model istanza del cliente
+     */
     public void setValues(Client model){
         mClient = model;
 
@@ -53,7 +56,14 @@ public class CoachMyClientListViewHolder extends RecyclerView.ViewHolder impleme
     }
 
 
+    /**
+     * Interfaccia conentente le operazioni di callback
+     */
     public interface ClientListCallbacks{
+        /**
+         * Il metodo permette di aprire il profilo del cliente data la sua posizione
+         * @param position posizione del cliente nella recyclerView
+         */
         void openYourClientProfile(int position);
     }
 }

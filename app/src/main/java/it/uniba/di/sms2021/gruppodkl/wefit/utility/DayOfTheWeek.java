@@ -22,8 +22,16 @@ public class DayOfTheWeek {
     }
 
 
-
-
+    /**
+     * Il metodo permette di ottenere una stringa corrispondente al giorno della settimana nella
+     * lingua attiva dell'applicazione
+     *
+     * @param day intero rappresentante il giorno della settimana, deve essere un numero compreso tra 0
+     *            e 6, dove 0 indica SUNDAY e 6 SATURDAY
+     *
+     * @param view view necessaria per l'ottenimento delle risorse
+     * @return Stringa contenente il giorno della settimana se 0 <= day <= 6, null altrimenti
+     */
     public static String getDayOfTheWeek(int day, View view){
         String dayOfTheWeek;
         switch (day){
@@ -54,6 +62,14 @@ public class DayOfTheWeek {
         return dayOfTheWeek;
     }
 
+    /**
+     * Il metodo permette di ottenere il valore numerico corrispondente al giorno della settimana
+     *
+     * @param dayOfTheWeek Stringa contenente il giorno della settimana
+     * @param context context
+     * @return numero corrispondente al giorno della settimana se la stringa corrisponde
+     *         ad uno di essi, NOT_SET altrimenti
+     */
     public static int getStringValue(String dayOfTheWeek, Context context){
         int res = -1;
         String sunday = context.getResources().getString(R.string.sunday);
@@ -94,7 +110,13 @@ public class DayOfTheWeek {
     }
 
 
-
+    /**
+     * Il metodo permette di convertire un intero nel giorno della settimana
+     * corrispondente
+     *
+     * @param day valore numerico del giorno
+     * @return giorno della settimana
+     */
     public static String convertPositionToDayOfTheWeek(int day){
         String res = null;
 
@@ -127,6 +149,15 @@ public class DayOfTheWeek {
         return res;
     }
 
+    /**
+     * Il metodo permette di ottenere il giorno della settimana
+     *
+     * @param daysToAdd giorni da aggiungere alla data corrente,
+     *                  se si vuole ottenere il giorno della settimana corrente, è sufficiente
+     *                  passare 0 come parametro
+     *
+     * @return  intero corrispondente al giorno della settimana
+     */
     public static int getDayOfTheWeekFromCalendar(int daysToAdd){
         Date dt = new Date();
         Calendar calendar = Calendar.getInstance();

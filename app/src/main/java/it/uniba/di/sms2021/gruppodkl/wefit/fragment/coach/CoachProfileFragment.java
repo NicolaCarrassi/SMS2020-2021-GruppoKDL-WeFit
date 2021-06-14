@@ -72,7 +72,9 @@ public class CoachProfileFragment extends Fragment implements CoachProfileContra
         int IMAGE_RECEIVED_CODE = 777;
     }
 
-    public CoachProfileFragment(){}
+    public CoachProfileFragment(){
+        //empty constructor
+    }
 
 
     @Override
@@ -310,6 +312,9 @@ public class CoachProfileFragment extends Fragment implements CoachProfileContra
         mProfileImage.setImageBitmap(mCoach.getImageBitmap());
     }
 
+    /**
+     * Il metodo permette al coach di allegare la certificazione, mediante un intent
+     */
     private void openFindFile(){
         mNoCertificationAttachedImage.setClickable(false);
         Intent intent = new Intent(Intent.ACTION_GET_CONTENT);
@@ -317,6 +322,10 @@ public class CoachProfileFragment extends Fragment implements CoachProfileContra
         startActivityForResult(intent, CoachProfileActivity.FILE_RECEIVED_CODE);
     }
 
+    /**
+     * Il metodo permette di gestire l'azione di ricezione del file
+     * @param file Stringa contenente l'uri del file
+     */
     public void onFileReceived(String file){
         mCoach.certificationUri = file;
 

@@ -11,8 +11,8 @@ import it.uniba.di.sms2021.gruppodkl.wefit.model.Meal;
 
 public class ShoppingListItemViewHolder extends RecyclerView.ViewHolder {
 
-    private TextView mMealQuantity;
-    private TextView mMealName;
+    private final TextView mMealQuantity;
+    private final TextView mMealName;
 
 
     public ShoppingListItemViewHolder(@NonNull View itemView) {
@@ -22,6 +22,10 @@ public class ShoppingListItemViewHolder extends RecyclerView.ViewHolder {
         mMealName = itemView.findViewById(R.id.meal_name);
     }
 
+    /**
+     * Il metodo permette di associare i valori della classe model al viewholder
+     * @param meal oggetto della classe model
+     */
     public void setValues(Meal meal){
         mMealName.setText(meal.name);
         mMealQuantity.setText(meal.convertQuantity());

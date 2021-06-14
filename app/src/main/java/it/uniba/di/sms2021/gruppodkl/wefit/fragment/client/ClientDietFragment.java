@@ -67,6 +67,10 @@ public class ClientDietFragment extends Fragment {
     }
 
 
+    /**
+     * Il metodo permette di gestire il tab selezionato relativamente alla dieta
+     * @param tab tab selezionato
+     */
     private void handleTabSelected(TabLayout.Tab tab){
         Fragment fragment;
         String text;
@@ -90,6 +94,10 @@ public class ClientDietFragment extends Fragment {
     }
 
 
+    /**
+     * IL meetodo permette di cambiare tab dato il nome
+     * @param name Stringa contenente il nome del tab
+     */
     public  void changeTabItem(String name){
             if(name.equals(ClientDietDiaryFragment.TAG))
                 mTabLayout.getTabAt(0).select();

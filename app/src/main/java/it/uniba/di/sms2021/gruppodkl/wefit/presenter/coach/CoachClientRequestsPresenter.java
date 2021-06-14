@@ -12,7 +12,7 @@ import it.uniba.di.sms2021.gruppodkl.wefit.model.Request;
 public class CoachClientRequestsPresenter implements CoachClientsRequestsContract.Presenter {
 
     private final CoachClientsRequestsContract.View mView;
-    private Coach mCoach;
+    private final Coach mCoach;
 
 
     public CoachClientRequestsPresenter(CoachClientsRequestsContract.View view, Coach coach){

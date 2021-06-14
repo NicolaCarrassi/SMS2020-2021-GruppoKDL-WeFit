@@ -35,7 +35,16 @@ public class CoachRegistrationFragment extends Fragment implements CoachRegistra
     private CoachCallBackActivity mActivity;
 
     public interface CoachCallBackActivity{
+        /**
+         * Il metodo permette di aprire l'intente che permette di effetuare
+         * la scelta di un file
+         */
         void openFindFile();
+
+        /**
+         * Il metodo permette di ottenre il fileURI
+         * @return FileURI
+         */
         Uri getFileURI();
     }
 

@@ -57,6 +57,10 @@ public class ClientAddFragment extends BottomSheetDialogFragment {
         return layout;
     }
 
+    /**
+     * Il metodo permette di associare gli elementi della view ad oggetti
+     *
+     */
     private void bind(View layout){
         mAddPanel = layout.findViewById(R.id.add_container);
         mAddWeight = layout.findViewById(R.id.add_weight);
@@ -65,6 +69,11 @@ public class ClientAddFragment extends BottomSheetDialogFragment {
 
     }
 
+    /**
+     * Il metodo permette impostare i listeners agli elementi della
+     * view
+     *
+     */
     private void setListener(){
         mAddWeight.setOnClickListener(v -> {
             mAddPanel.setVisibility(View.GONE);
@@ -94,6 +103,9 @@ public class ClientAddFragment extends BottomSheetDialogFragment {
         });
     }
 
+    /**
+     * Il metodo permette di gestire la bottom navigation
+     */
     public interface BottomNavigationSelector {
         void selectBottomNavigationItem();
     }

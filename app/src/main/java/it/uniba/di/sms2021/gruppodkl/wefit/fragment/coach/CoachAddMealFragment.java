@@ -104,6 +104,9 @@ public class CoachAddMealFragment extends BottomSheetDialogFragment implements C
 
     }
 
+    /**
+     * Il metodo permette di aggiungere un pasto
+     */
     private void addMeal(){
         if(mMealSpinner.getSelectedItem() != null && mMomentOfTheDaySpinner.getSelectedItem() != null) {
             String mealSelected = mMealSpinner.getSelectedItem().toString();

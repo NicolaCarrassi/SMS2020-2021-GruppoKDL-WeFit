@@ -1,12 +1,12 @@
 package it.uniba.di.sms2021.gruppodkl.wefit.utility;
 
-import android.util.Log;
 
 import com.jjoe64.graphview.GraphView;
 import com.jjoe64.graphview.series.DataPoint;
 import com.jjoe64.graphview.series.LineGraphSeries;
 import com.jjoe64.graphview.series.PointsGraphSeries;
 
+import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 
@@ -28,11 +28,21 @@ public class GraphSettings {
     public static void graphSettings(GraphView graph, List<Date> xList, List<Float> yList){
         LineGraphSeries<DataPoint> line = new LineGraphSeries<>(new DataPoint[]{});
         PointsGraphSeries<DataPoint> points = new PointsGraphSeries<>(new DataPoint[]{});
+        List<DataPoint> list = new ArrayList<>();
 
-        for (int i =0 ; i < yList.size(); i++) {
-            line.appendData(new DataPoint(xList.get(i), yList.get(i)), true, 10);
-            points.appendData(new DataPoint(xList.get(i), yList.get(i)), true, 10);
+        for(int i = 0; i<yList.size(); i++){
+            if (i > 0) {
+                if (xList.get(i).compareTo(xList.get(i - 1)) == 0)
+                    list.remove(i - 1);
+            }
+            list.add(new DataPoint(xList.get(i), yList.get(i)));
         }
+
+        for(DataPoint dp: list){
+            line.appendData(dp, true, 10);
+            points.appendData(dp, true, 10);
+        }
+
 
         graph.addSeries(line);
         graph.addSeries(points);

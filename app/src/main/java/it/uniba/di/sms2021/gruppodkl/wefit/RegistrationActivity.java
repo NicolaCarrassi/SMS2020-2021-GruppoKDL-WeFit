@@ -1,5 +1,6 @@
 package it.uniba.di.sms2021.gruppodkl.wefit;
 
+import android.annotation.SuppressLint;
 import android.app.DatePickerDialog;
 import android.content.ContentResolver;
 import android.content.Intent;
@@ -135,6 +136,7 @@ public class RegistrationActivity extends BaseActivity implements DatePickerDial
     /**
      * Il metodo permette di impostare tutti i listener necessari alla view
      */
+    @SuppressLint("ClickableViewAccessibility")
     private void setListeners(){
 
         mFirstForwardButton.setOnClickListener(v -> changeActiveLayout(mCoachClientLayout, mPersonalDataLayout));
@@ -312,7 +314,6 @@ public class RegistrationActivity extends BaseActivity implements DatePickerDial
         }
 
         if(checkSpinner(mSpinner)){
-            Log.d("DIOCANE", "" + mSpinner.getSelectedItem());
             if(mSpinner.getSelectedItem().toString().equals(getResources().getString(R.string.male))){
                 userData.put(User.UserKeys.GENDER,Keys.Gender.MALE);
             }else{
@@ -516,6 +517,11 @@ public class RegistrationActivity extends BaseActivity implements DatePickerDial
         Toast.makeText(this, getResources().getString(R.string.failed_to_register), Toast.LENGTH_SHORT).show();
     }
 
+    /**
+     * Il metodo permette di ottenere l'estensione di un file
+     *
+     * @return Stringa rappresentante l'estensione del file
+     */
     public String getFileExtension(){
         ContentResolver contentResolver = getContentResolver();
         MimeTypeMap mime = MimeTypeMap.getSingleton();

@@ -32,8 +32,6 @@ public class CoachHomeFragment extends Fragment implements User.MyImageBitmapCal
     private WeFitApplication.CallbackOperations mActivity;
     private Coach mCoach;
     private ImageView mImageView;
-    private CardView mTrainingCard;
-    private CardView mDietCard;
     private CardView mRequestsTab;
     private TextView mFollowerRequestTextView;
     private CoachHomeContract.Presenter mPresenter;
@@ -81,8 +79,6 @@ public class CoachHomeFragment extends Fragment implements User.MyImageBitmapCal
         ((WeFitApplication) getActivity().getApplicationContext()).setToolbar(mView, mActivity);
 
         mImageView = mView.findViewById(R.id.user_image);
-        mDietCard = mView.findViewById(R.id.diet_tab);
-        mTrainingCard = mView.findViewById(R.id.training_tab);
         mRequestsTab = mView.findViewById(R.id.requests_tab);
 
         TextView textView = mView.findViewById(R.id.hi_user);

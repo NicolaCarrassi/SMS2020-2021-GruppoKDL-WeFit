@@ -52,6 +52,10 @@ public class ClientRegistrationFragment extends Fragment implements Registration
     }
 
 
+    /**
+     * Il metodo permette di associare gli elementi della view ad oggetti
+     *
+     */
     private void bind(View layout){
 
         mHeightEdit = layout.findViewById(R.id.height_edit_text);

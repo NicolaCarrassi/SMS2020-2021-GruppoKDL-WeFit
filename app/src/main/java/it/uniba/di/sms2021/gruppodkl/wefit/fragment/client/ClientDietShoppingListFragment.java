@@ -1,17 +1,15 @@
 package it.uniba.di.sms2021.gruppodkl.wefit.fragment.client;
 
 import android.os.Bundle;
-
-import androidx.fragment.app.Fragment;
-import androidx.recyclerview.widget.LinearLayoutManager;
-
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.Spinner;
+
+import androidx.fragment.app.Fragment;
+import androidx.recyclerview.widget.LinearLayoutManager;
 
 import com.google.android.material.progressindicator.LinearProgressIndicator;
 
@@ -82,7 +80,12 @@ public class ClientDietShoppingListFragment extends Fragment implements ClientDi
     }
 
 
-
+    /**
+     * Il metodo permette di ottenere le informazioni della lista della spesa, ottenuto il numero di giorni
+     *
+     * @param numberOfDays numero di giorni per i quali si vuole conoscere la lista
+     *                     della spesa
+     */
     private void fetchInformations(int numberOfDays){
         mNumberOfDaysSpinner.setEnabled(false);
         mLinearProgress.setVisibility(View.VISIBLE);

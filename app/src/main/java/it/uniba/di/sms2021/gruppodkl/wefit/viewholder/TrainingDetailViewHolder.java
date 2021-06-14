@@ -12,11 +12,25 @@ import it.uniba.di.sms2021.gruppodkl.wefit.model.Exercise;
 
 public class TrainingDetailViewHolder extends RecyclerView.ViewHolder {
 
+    /**
+     * Interfaccia contenente le operazioni di callback per il cliente
+     */
     public interface TrainingDetailClient{
+        /**
+         * Il metodo permette di visualizzare le informazioni di un dato esercizio
+         * @param position posizione dell'esercizio
+         */
         void showExerciseInfo(int position);
     }
 
+    /**
+     * Interfaccia contenente le operazioni di callback per il coach
+     */
     public interface TrainingDetailCoach{
+        /**
+         * Il metodo permette di cancellare un esercizio
+         * @param position posizione dell'esercizio
+         */
         void deleteExercise(int position);
     }
 
@@ -27,6 +41,12 @@ public class TrainingDetailViewHolder extends RecyclerView.ViewHolder {
     private final TextView mRepetitionNumber;
     private final TextView mExerciseName;
 
+    /**
+     * Costruttore del viewholder per il coach
+     *
+     * @param itemView view
+     * @param coachCallback interfaccia di callback per le operazioni del coach
+     */
     public TrainingDetailViewHolder(View itemView, TrainingDetailCoach coachCallback) {
         super(itemView);
 
@@ -43,6 +63,12 @@ public class TrainingDetailViewHolder extends RecyclerView.ViewHolder {
     }
 
 
+    /**
+     * Costruttore del viewholder per il cliente
+     *
+     * @param itemView view
+     * @param clientCallback operazioni di callback per il cliente
+     */
     public TrainingDetailViewHolder(View itemView, TrainingDetailClient clientCallback) {
         super(itemView);
 
@@ -59,6 +85,10 @@ public class TrainingDetailViewHolder extends RecyclerView.ViewHolder {
     }
 
 
+    /**
+     * Il metodo permette di impostare i valori del viewHolder
+     * @param exercise classe model
+     */
     public void setValues(Exercise exercise) {
         mRepetitionNumber.setText(exercise.convertRepsNumberToString());
 

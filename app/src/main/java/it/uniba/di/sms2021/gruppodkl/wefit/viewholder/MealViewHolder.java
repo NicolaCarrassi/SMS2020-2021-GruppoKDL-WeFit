@@ -13,14 +13,20 @@ import it.uniba.di.sms2021.gruppodkl.wefit.model.Meal;
 
 public class MealViewHolder extends RecyclerView.ViewHolder {
 
+    /**
+     * Interfaccia di callback per le operazioni del coach
+     */
     public interface CoachDietCallbackInterface{
+        /**
+         * Il metodo permette di cancellare un pasto, data la sua posizione
+         * @param position posizione del pasto da eliminare
+         */
         void deleteMeal(int position);
     }
 
-    private TextView mMealQuantity;
-    private TextView mMealName;
+    private final TextView mMealQuantity;
+    private final TextView mMealName;
     private CoachDietCallbackInterface mCallback;
-    private ImageButton mDeleteMealButton;
 
 
     public MealViewHolder(@NonNull View itemView) {
@@ -33,10 +39,14 @@ public class MealViewHolder extends RecyclerView.ViewHolder {
     public MealViewHolder(View itemView, CoachDietCallbackInterface callback){
         this(itemView);
         mCallback = callback;
-        mDeleteMealButton = itemView.findViewById(R.id.delete_meal_button);
+        ImageButton mDeleteMealButton = itemView.findViewById(R.id.delete_meal_button);
         mDeleteMealButton.setOnClickListener(v -> mCallback.deleteMeal(getAdapterPosition()));
     }
 
+    /**
+     * Il metodo permette di associare i valori del model al viewholder
+     * @param meal model
+     */
     public void setValues(Meal meal){
         mMealName.setText(Meal.convertName(meal.name, itemView.getContext()));
         mMealQuantity.setText(meal.convertQuantity());

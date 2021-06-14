@@ -17,7 +17,6 @@ import it.uniba.di.sms2021.gruppodkl.wefit.WeFitApplication;
 import it.uniba.di.sms2021.gruppodkl.wefit.contract.client.ClientTrainingSpecificationContract;
 import it.uniba.di.sms2021.gruppodkl.wefit.model.Exercise;
 import it.uniba.di.sms2021.gruppodkl.wefit.model.Training;
-import it.uniba.di.sms2021.gruppodkl.wefit.model.User;
 import it.uniba.di.sms2021.gruppodkl.wefit.presenter.client.ClientMyTrainingSpecificationPresenter;
 import it.uniba.di.sms2021.gruppodkl.wefit.recyclerview.CustomRecyclerView;
 import it.uniba.di.sms2021.gruppodkl.wefit.utility.DayOfTheWeek;

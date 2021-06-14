@@ -9,7 +9,6 @@ public class Meal {
 
     public interface MealKeys{
         String NAME = "name";
-        String ID = "id";
         String QUANTITY = "quantity";
         String MEAL_TYPE = "mealType";
     }

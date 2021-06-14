@@ -61,7 +61,12 @@ public class WeFitFirebaseMessagingService extends FirebaseMessagingService {
     }
 
 
-
+    /**
+     * Il metodo permette di mostrare una notifica
+     *
+     * @param title titolo della notifica
+     * @param message messaggio della notifica
+     */
     private void sendNotification(String title, String message) {
         String channelID = "message_notification_channel";
 

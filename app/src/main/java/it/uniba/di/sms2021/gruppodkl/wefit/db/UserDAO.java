@@ -23,12 +23,43 @@ import it.uniba.di.sms2021.gruppodkl.wefit.utility.Keys;
 
 public class UserDAO {
 
+    /**
+     * Interfaccia contentente operazioni di callback relative al
+     * caricamento e creazione utente
+     */
     public interface UserCallbacks{
+        /**
+         * Il metodo permette di ottenere un riferimento all'utente
+         * @param user istanza dell'utente ottenuta dal database
+         *
+         * @param success paramentro che indica il successo della operazione,
+         *                true se l'operazione ha avuuto esito positivo,
+         *                false altrimenti
+         */
         void userLoaded(User user, boolean success);
+
+        /**
+         * Il metodo permette di notificare l'avvenuta creazione dell'utente
+         * @param user istanza dell'utente appena creato
+         *
+         * @param success paramentro che indica il successo della operazione,
+         *                true se l'operazione ha avuuto esito positivo,
+         *                false altrimenti
+         */
         void hasBeenCreated(User user, boolean success);
     }
 
+    /**
+     * Interfaccia contenente le operazioni di callback per i training
+     */
     public interface TrainingLoaded{
+        /**
+         * Il metodo restituisce l'insieme degli allenamenti svolti dal cliente e quelli a
+         * esso assegnati dal coach
+         *
+         * @param trainingMade nomi degli allenameni svolti
+         * @param trainingAssigned nomi degli allenamenti assegnati
+         */
         void trainingLoaded(Set<String> trainingMade, Set<String> trainingAssigned);
     }
 
@@ -39,6 +70,12 @@ public class UserDAO {
     private static Set<String> sTrainingAssigned;
 
 
+    /**
+     * Il metodo permette di ottenere una istanza dell'utente
+     *
+     * @param email email dell'utente di cui si vuole ottenere il riferiemnto
+     * @param callback implementazione dell'interfaccia di callback necessaria per la risposta
+     */
     public static void getUser(String email, UserCallbacks callback){
         sUser = null;
 
@@ -74,6 +111,12 @@ public class UserDAO {
     }
 
 
+    /**
+     * Il metodo permette di creare una istanza dell'utente
+     *
+     * @param user Utente che si vuole inserire nel db
+     * @param callbacks implementazione dell'interfaccia di callback necessaria per la risposta
+     */
     public static void create(User user, UserCallbacks callbacks){
 
         FirebaseFirestore.getInstance().collection(Keys.Collections.USERS).document(user.email).set(user)
@@ -85,6 +128,12 @@ public class UserDAO {
     }
 
 
+    /**
+     * Il metodo permette di modificare le informazioni dell'utente
+     *
+     * @param user Utente di cui si vuole effettuare l'update
+     * @param map mappa delle informazioni da aggiornare
+     */
     public static void update(User user, Map<String, Object> map){
         Map<String,Object> requestToCoachUpdate = new HashMap<>();
         WriteBatch batch = FirebaseFirestore.getInstance().batch();
@@ -116,12 +165,25 @@ public class UserDAO {
     }
 
 
+    /**
+     * Il metodo permette di inserire delle informazioni in una subcollection dell'utente
+     *
+     * @param userEmail mail dell'utente cui si vogliono aggiungere info
+     * @param subCollection nome della subcollection
+     * @param map mappa degli elementi da inserire
+     */
     public static void addInSubCollection(String userEmail, String subCollection, Map<String,Object> map){
         FirebaseFirestore.getInstance().collection(Keys.Collections.USERS).document(userEmail)
                 .collection(subCollection).add(map);
     }
 
 
+    /**
+     * Il metodo permette di ottenere le informazioni relative agli allenamenti del cliente
+     *
+     * @param clientMail mail del cliente di cui si vogliono ottenere le informazioni
+     * @param callback  implementazione dell'interfaccia di callback necessaria per la risposta
+     */
     public static void loadClientTrainingInformation(String clientMail, TrainingLoaded callback){
 
         if(sTrainingAssigned != null)

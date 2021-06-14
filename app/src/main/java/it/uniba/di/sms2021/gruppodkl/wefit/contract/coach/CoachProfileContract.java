@@ -9,6 +9,9 @@ import it.uniba.di.sms2021.gruppodkl.wefit.model.User;
 
 public interface CoachProfileContract {
 
+    /**
+     * Interfaccia contenente i metodi che l'implementazione della view deve contenere
+     */
     interface View{
         /**
          * Il metodo permette di ottenere l'estensione di un file, fornito in input il proprio URI
@@ -19,6 +22,9 @@ public interface CoachProfileContract {
         String getFileExtension(Uri uri);
     }
 
+    /**
+     * Interfaccia contenente i metodi che l'implementazione del presenter deve contenere
+     */
     interface Presenter{
         /**
          * Il metodo permette di savlare una immagine

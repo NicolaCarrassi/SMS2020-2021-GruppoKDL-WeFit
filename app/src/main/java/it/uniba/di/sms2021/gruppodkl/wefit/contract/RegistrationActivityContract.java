@@ -8,6 +8,9 @@ import it.uniba.di.sms2021.gruppodkl.wefit.model.User;
 
 public interface RegistrationActivityContract {
 
+    /**
+     * Interfaccia contenente i metodi che l'implementazione della view deve contenere
+     */
     interface View{
         /**
          * Il metodo permette di gestire la risposta positiva alla creazione dell'utente
@@ -34,6 +37,9 @@ public interface RegistrationActivityContract {
         Uri getFileURI();
     }
 
+    /**
+     * Interfaccia contenente i metodi che l'implementazione del presenter deve contenere
+     */
     interface Presenter{
         /**
          * Il metodo permette di effettuare la registrazione dell'utente, indipendentemente

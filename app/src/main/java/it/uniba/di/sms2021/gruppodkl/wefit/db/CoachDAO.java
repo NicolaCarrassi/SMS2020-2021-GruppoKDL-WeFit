@@ -31,23 +31,61 @@ public class CoachDAO extends UserDAO {
     private static List<String> sDateList;
 
 
-
+    /**
+     * Interfaccia che permette di gestire le risposte relative
+     * alla gestione dei feebdack
+     */
     public interface RatingCallbacks{
+        /**
+         * Il metodo permette di notificare la valutazione media
+         * @param ratingMean valutazione media
+         */
         void ratingMeanLoaded(float ratingMean);
+
+        /**
+         * Il metodo permette di fornire l'ultimo feebdack ricevuto
+         * @param feedback feedback
+         * @param mean media dei feedback
+         * @param numElem numero di feedback ricevuti
+         */
         void lastFeedbackLoaded(Feedback feedback, float mean, int numElem);
     }
 
+    /**
+     * Interfaccia che permette di notificare le operazioni relative alla richiesta
+     */
     public interface RequestCallbacks{
+        /**
+         * Metodo che pemrette di registrare il numero di richieste ricevute
+         * @param numRequest numero di richieste
+         */
         void requestNumberLoaded(int numRequest);
     }
 
+    /**
+     * Interfaccia che permette di notificare le risposte alle operazioni relative ai clienti
+     */
     public interface ClientCallbacks{
-
+        /**
+         * Il metodo permette di notificare eventuali errori avvenuti
+         */
         void failure();
+
+        /**
+         * IL metodo permette di ottenere le informazioni della pagina riepilogativa del cliente,
+         * @param client cliente
+         * @param weightList lista dei pesi del cliente
+         * @param dateList lista delle date in cui il cliente ha inserito un peso
+         */
         void success(Client client, List<Float> weightList, List<String> dateList);
     }
 
 
+    /**
+     * Il metodo permette di ottenere l'ultimo feedback ricevuto
+     * @param coachEmail mail del coach
+     * @param callbacks implementazione dell'interfaccia di callback necessaria per la risposta
+     */
     public static void getLastFeedback(String coachEmail, RatingCallbacks callbacks){
         sFeedback = null;
         sNumElement = 0;
@@ -73,6 +111,11 @@ public class CoachDAO extends UserDAO {
     }
 
 
+    /**
+     * Il metodo permette di ottenere la valutazione media di un dato coach
+     * @param coach coach di cui si vuole conoscere la valutazione
+     * @param callbacks implementazione dell'interfaccia di callback necessaria per la risposta
+     */
     public static void getCoachRatingStars(Coach coach, RatingCallbacks callbacks){
         sRatingMean = 0;
         sNumElement = 0;
@@ -97,6 +140,11 @@ public class CoachDAO extends UserDAO {
                 });
     }
 
+    /**
+     * Il metodo permette di ottenere il numero di richieste ricevute da un coach
+     * @param coachEmail mail del coach
+     * @param callback implementazione dell'interfaccia di callback necessaria per la risposta
+     */
     public static void getRequestNumber(String coachEmail, RequestCallbacks callback){
         sNumElement=0;
         FirebaseFirestore.getInstance().collection(Keys.Collections.USERS).document(coachEmail)
@@ -111,7 +159,16 @@ public class CoachDAO extends UserDAO {
     }
 
 
-
+    /**
+     * Il metodo permette di gestire la risposta alle richieste dei clienti di essere seguiti
+     * da un coach
+     *
+     * @param coach coach che risponde alla richiesta
+     * @param request richiesta per il coach
+     * @param accepted indica l'accettazione o meno della richiesta, true indica che il coach
+     *                 intende seguire il cliente della richiesta, false indica che la richiesta
+     *                 è rifiutata.
+     */
     public static void handleRequest(Coach coach, Request request, boolean accepted){
 
         CollectionReference collection = FirebaseFirestore.getInstance().collection(Keys.Collections.USERS);
@@ -136,7 +193,12 @@ public class CoachDAO extends UserDAO {
         batch.commit();
     }
 
-
+    /**
+     * Il metodo permette di ottenere tutte le informazioni dei clienti di un dato coach
+     *
+     * @param clientMail mail del coach
+     * @param callback implementazione dell'interfaccia di callback necessaria per la risposta
+     */
     public static void getAllClientInfo(String clientMail,ClientCallbacks callback){
         //inizializzo le variabili statiche
         sClient = null;
@@ -175,12 +237,25 @@ public class CoachDAO extends UserDAO {
     }
 
 
+    /**
+     * Il seguente metdoo permette di ottenere la query per ottenere tutte le richieste ricevute
+     * da un dato coach
+     * @param coachMail mail del coach
+     *
+     * @return query
+     */
     public static Query queryAllRequests(String coachMail) {
         return FirebaseFirestore.getInstance().collection(Keys.Collections.USERS)
                 .document(coachMail).collection(Keys.Collections.REQUESTS);
     }
 
 
+    /**
+     * Il metodo permette di ottenere la lista dei clienti di un dato coach
+     *
+     * @param coachMail mail del coach
+     * @return query
+     */
     public static Query queryClentsList(String coachMail){
         return FirebaseFirestore.getInstance().collection(Keys.Collections.USERS)
                 .whereEqualTo(Client.ClientKeys.COACH, coachMail)
@@ -188,6 +263,12 @@ public class CoachDAO extends UserDAO {
     }
 
 
+    /**
+     * Il seguente metodo permette di ottenere la query per la lista dei feedback ricevuti da un dato
+     * coach
+     * @param coachMail mail del coach
+     * @return query
+     */
     public static Query queryFeedbackList(String coachMail){
         return FirebaseFirestore.getInstance().collection(Keys.Collections.USERS)
                 .document(coachMail).collection(Keys.Collections.RATINGS);

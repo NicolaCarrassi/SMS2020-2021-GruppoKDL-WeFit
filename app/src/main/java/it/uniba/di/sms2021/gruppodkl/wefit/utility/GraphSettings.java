@@ -26,14 +26,18 @@ public class GraphSettings {
      * @param yList coordinate y dei punti
      */
     public static void graphSettings(GraphView graph, List<Date> xList, List<Float> yList){
+        int removedItems = 0;
         LineGraphSeries<DataPoint> line = new LineGraphSeries<>(new DataPoint[]{});
         PointsGraphSeries<DataPoint> points = new PointsGraphSeries<>(new DataPoint[]{});
         List<DataPoint> list = new ArrayList<>();
 
+
         for(int i = 0; i<yList.size(); i++){
             if (i > 0) {
-                if (xList.get(i).compareTo(xList.get(i - 1)) == 0)
-                    list.remove(i - 1);
+                if (xList.get(i).compareTo(xList.get(i - 1)) == 0) {
+                    removedItems++;
+                    list.remove(i - removedItems);
+                }
             }
             list.add(new DataPoint(xList.get(i), yList.get(i)));
         }

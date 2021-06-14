@@ -37,6 +37,8 @@ public class CoachMyClientScheduleFragment extends Fragment implements CoachMyCl
     private FirestoreRecyclerAdapter<Training, TrainingViewHolder> mAdapter;
 
     private CoachMyClientScheduleContract.Presenter mPresenter;
+    private boolean mTwoPane = false;
+    private boolean mSomethingAdded = false;
 
 
     public CoachMyClientScheduleFragment() {
@@ -71,7 +73,9 @@ public class CoachMyClientScheduleFragment extends Fragment implements CoachMyCl
         // Inflate the layout for this fragment
         View view =  inflater.inflate(R.layout.coach_my_client_schedule_fragment, container, false);
 
-        if(getActivity() instanceof WeFitApplication.CallbackOperations){
+        if(view.findViewById(R.id.training_detail_container) != null)
+            mTwoPane = true;
+        else if(getActivity() instanceof WeFitApplication.CallbackOperations){
             WeFitApplication.CallbackOperations act = (WeFitApplication.CallbackOperations) getActivity();
             ((WeFitApplication) getActivity().getApplicationContext()).setToolbar(view,act);
         }
@@ -112,13 +116,25 @@ public class CoachMyClientScheduleFragment extends Fragment implements CoachMyCl
     }
 
     @Override
-    //TODO AGGIUNGI LOGICA MASTER FLOW DETAIL
     public void openTrainingSpecification(Training training) {
         CoachMyClientDailyTrainingFragment fragment = CoachMyClientDailyTrainingFragment.newInstance(mClientMail,training);
-
+        int containerId = mTwoPane ? R.id.training_detail_container : R.id.anchor_point;
         assert getActivity() != null;
+
+        if(mTwoPane){
+            if(!mSomethingAdded){
+                mSomethingAdded = true;
+                getChildFragmentManager().beginTransaction()
+                        .add(containerId, fragment, CoachMyClientDailyTrainingFragment.TAG)
+                        .addToBackStack(CoachMyClientDailyTrainingFragment.TAG).commit();
+            } else
+                getChildFragmentManager().beginTransaction()
+                        .replace(containerId, fragment, CoachMyClientDailyTrainingFragment.TAG)
+                        .addToBackStack(CoachMyClientDailyTrainingFragment.TAG).commit();
+        }
+
         getActivity().getSupportFragmentManager().beginTransaction()
-                .replace(R.id.anchor_point, fragment, CoachMyClientDailyTrainingFragment.TAG)
+                .replace(containerId, fragment, CoachMyClientDailyTrainingFragment.TAG)
                 .addToBackStack(CoachMyClientDailyTrainingFragment.TAG).commit();
     }
 }

@@ -32,6 +32,8 @@ public class CoachMyClientDietListFragment extends Fragment implements CoachMyCl
 
     private CoachMyClientDietListContract.Presenter mPresenter;
 
+    private boolean mTwoPane = false;
+    private boolean isSomethingVisibile = false;
 
     private String mClientMail;
     private String mClienName;
@@ -74,7 +76,9 @@ public class CoachMyClientDietListFragment extends Fragment implements CoachMyCl
         String title = mClienName.split(" ")[0] + " " + getResources().getString(R.string.diet_caps);
         mPresenter = new CoachMyClientDietListPresenter(this);
 
-        if(getActivity() != null && getActivity() instanceof WeFitApplication.CallbackOperations){
+        if(view.findViewById(R.id.diet_detail_container) != null)
+            mTwoPane = true;
+        else if(getActivity() != null && getActivity() instanceof WeFitApplication.CallbackOperations){
             WeFitApplication.CallbackOperations act = (WeFitApplication.CallbackOperations) getActivity();
             ((WeFitApplication) getActivity().getApplicationContext()).setToolbar(view,act);
         }
@@ -84,6 +88,7 @@ public class CoachMyClientDietListFragment extends Fragment implements CoachMyCl
         mTextClientName.setText(title);
 
         RecyclerView recyclerView = view.findViewById(R.id.recycler_diet_days);
+        assert getActivity() != null;
         recyclerView.setAdapter(new DietListAdapter(getActivity(), mPresenter));
         recyclerView.setLayoutManager(new LinearLayoutManager(getActivity()));
 
@@ -93,9 +98,20 @@ public class CoachMyClientDietListFragment extends Fragment implements CoachMyCl
     @Override
     public void showDietOfTheDay(String weekDay) {
         CoachMyClientDietSpecificationFragment fragment = CoachMyClientDietSpecificationFragment.newInstance(mClientMail, weekDay);
+        int containerID = mTwoPane ? R.id.diet_detail_container : R.id.anchor_point;
+        assert getActivity() != null;
 
-        if(getActivity() != null)
-            getActivity().getSupportFragmentManager().beginTransaction().replace(R.id.anchor_point, fragment, CoachMyClientDietSpecificationFragment.TAG)
+        if(mTwoPane){
+            if(!isSomethingVisibile) {
+                isSomethingVisibile = true;
+                getChildFragmentManager().beginTransaction().add(containerID, fragment, CoachMyClientDietSpecificationFragment.TAG)
+                        .addToBackStack(CoachMyClientDietSpecificationFragment.TAG).commit();
+            } else{
+                getChildFragmentManager().beginTransaction().replace(containerID, fragment, CoachMyClientDietSpecificationFragment.TAG)
+                        .addToBackStack(CoachMyClientDietSpecificationFragment.TAG).commit();
+            }
+        } else
+            getActivity().getSupportFragmentManager().beginTransaction().replace(containerID, fragment, CoachMyClientDietSpecificationFragment.TAG)
                 .addToBackStack(CoachMyClientDietSpecificationFragment.TAG).commit();
     }
 }

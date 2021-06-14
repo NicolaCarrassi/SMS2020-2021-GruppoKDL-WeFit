@@ -10,5 +10,7 @@
     <dimen name="font_size_card_title">24sp</dimen>
     <dimen name="font_size_card_text">22sp</dimen>
     <dimen name="splash_size">200dp</dimen>
+    <dimen name="container_margin">8dp</dimen>
+
 
 </resources>

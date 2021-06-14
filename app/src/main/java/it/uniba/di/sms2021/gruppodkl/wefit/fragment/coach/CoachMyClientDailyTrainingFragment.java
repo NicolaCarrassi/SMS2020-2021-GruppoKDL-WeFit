@@ -17,6 +17,7 @@ import com.google.android.material.button.MaterialButton;
 
 
 import it.uniba.di.sms2021.gruppodkl.wefit.R;
+import it.uniba.di.sms2021.gruppodkl.wefit.WeFitApplication;
 import it.uniba.di.sms2021.gruppodkl.wefit.coach.EditTrainingDialog;
 import it.uniba.di.sms2021.gruppodkl.wefit.contract.coach.CoachMyClientDailyTrainingContract;
 import it.uniba.di.sms2021.gruppodkl.wefit.model.Exercise;
@@ -28,7 +29,7 @@ import it.uniba.di.sms2021.gruppodkl.wefit.viewholder.TrainingDetailViewHolder;
 
 public class CoachMyClientDailyTrainingFragment extends Fragment implements CoachMyClientDailyTrainingContract.View, EditTrainingDialog.EditTrainingDialogCallbacks {
 
-    public static final String TAG = CoachMyClientDailyTrainingFragment.class.getSimpleName();
+    public static String TAG;
 
     private static final String CLIENT_MAIL = "clientMail";
     private static final String TRAINING = "training";
@@ -41,6 +42,7 @@ public class CoachMyClientDailyTrainingFragment extends Fragment implements Coac
     private TextView mTrainingDay;
     private TextView mTrainingTime;
 
+
     private FirestoreRecyclerAdapter<Exercise, TrainingDetailViewHolder> mAdapter;
 
 
@@ -50,7 +52,7 @@ public class CoachMyClientDailyTrainingFragment extends Fragment implements Coac
 
     public static CoachMyClientDailyTrainingFragment newInstance(String clientMail, Training training) {
         CoachMyClientDailyTrainingFragment fragment = new CoachMyClientDailyTrainingFragment();
-
+        TAG =  CoachMyClientDailyTrainingFragment.class.getSimpleName() + training.getId();
         Bundle args = new Bundle();
         args.putString(CLIENT_MAIL, clientMail);
         args.putParcelable(TRAINING, training);
@@ -77,6 +79,11 @@ public class CoachMyClientDailyTrainingFragment extends Fragment implements Coac
 
 
         mPresenter = new CoachMyClientDailyTrainingPresenter(this);
+
+        if(getActivity() instanceof WeFitApplication.CallbackOperations){
+            WeFitApplication.CallbackOperations act =(WeFitApplication.CallbackOperations) getActivity();
+            ((WeFitApplication)getActivity().getApplicationContext()).setToolbar(layout,act);
+        }
 
         mTrainingName = layout.findViewById(R.id.training_name);
         mTrainingDay = layout.findViewById(R.id.training_day);

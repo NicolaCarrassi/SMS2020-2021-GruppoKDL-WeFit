@@ -28,10 +28,17 @@ public class ClientMyTrainingFragment extends Fragment implements ClientMyTraini
 
     private ClientMyTrainingAdapter mAdapter;
 
+    private boolean mTwoPane = false;
+    private boolean somethingShown = false;
+
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
 
         View view = inflater.inflate(R.layout.client_training_fragment, container, false);
+
+        if(view.findViewById(R.id.training_detail_container) != null){
+            mTwoPane = true;
+        }
         mPresenter = new ClientMyTrainingPresenter(this);
         bind(view);
 
@@ -45,7 +52,7 @@ public class ClientMyTrainingFragment extends Fragment implements ClientMyTraini
      */
     private void bind(View view){
 
-        if(getActivity() instanceof WeFitApplication.CallbackOperations) {
+        if(!mTwoPane && getActivity() instanceof WeFitApplication.CallbackOperations) {
             WeFitApplication.CallbackOperations activity = (WeFitApplication.CallbackOperations) getActivity();
             ((WeFitApplication) getActivity().getApplicationContext()).setToolbar(view, activity);
         }
@@ -78,13 +85,26 @@ public class ClientMyTrainingFragment extends Fragment implements ClientMyTraini
 
 
     @Override
-    //TODO AGGIUNGI LOGICA MASTER FLOW DETAIL
     public void openTrainingSchedule(Training training) {
-        ClientMyTrainingSpecificationFragment fragment = ClientMyTrainingSpecificationFragment.newInstance(training);
+        ClientMyTrainingSpecificationFragment fragment = ClientMyTrainingSpecificationFragment.newInstance(training, mTwoPane);
         assert getActivity() != null;
-        getActivity().getSupportFragmentManager().beginTransaction()
-                .replace(R.id.anchor_point,fragment,ClientMyTrainingSpecificationFragment.TAG)
-                .addToBackStack(ClientMyTrainingSpecificationFragment.TAG).commit();
+        if (mTwoPane) {
+            if(!somethingShown){
+                somethingShown = true;
+                getChildFragmentManager().beginTransaction()
+                        .add(R.id.training_detail_container, fragment, ClientMyTrainingSpecificationFragment.TAG)
+                        .addToBackStack(ClientMyTrainingSpecificationFragment.TAG).commit();
+            } else
+                getChildFragmentManager().beginTransaction()
+                        .replace(R.id.training_detail_container, fragment, ClientMyTrainingSpecificationFragment.TAG)
+                        .addToBackStack(ClientMyTrainingSpecificationFragment.TAG).commit();
+        }else
+            getActivity().getSupportFragmentManager().beginTransaction()
+                    .replace(R.id.anchor_point, fragment, ClientMyTrainingSpecificationFragment.TAG)
+                    .addToBackStack(ClientMyTrainingSpecificationFragment.TAG).commit();
     }
+
+
+
 
 }

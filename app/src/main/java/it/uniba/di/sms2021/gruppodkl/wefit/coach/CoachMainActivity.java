@@ -8,6 +8,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.view.GravityCompat;
 import androidx.drawerlayout.widget.DrawerLayout;
 import androidx.fragment.app.Fragment;
+import androidx.fragment.app.FragmentManager;
 
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 import com.google.android.material.navigation.NavigationView;
@@ -18,6 +19,7 @@ import it.uniba.di.sms2021.gruppodkl.wefit.R;
 import it.uniba.di.sms2021.gruppodkl.wefit.SettingsActivity;
 import it.uniba.di.sms2021.gruppodkl.wefit.WeFitApplication;
 import it.uniba.di.sms2021.gruppodkl.wefit.fragment.TermsFragment;
+import it.uniba.di.sms2021.gruppodkl.wefit.fragment.client.ClientAddFragment;
 import it.uniba.di.sms2021.gruppodkl.wefit.fragment.client.ClientMyProfileFragment;
 import it.uniba.di.sms2021.gruppodkl.wefit.fragment.coach.CoachClientsFragment;
 import it.uniba.di.sms2021.gruppodkl.wefit.fragment.coach.CoachFeedbacksFragment;
@@ -25,7 +27,7 @@ import it.uniba.di.sms2021.gruppodkl.wefit.fragment.coach.CoachHomeFragment;
 import it.uniba.di.sms2021.gruppodkl.wefit.fragment.coach.CoachProfileFragment;
 
 public class CoachMainActivity extends AppCompatActivity implements WeFitApplication.CallbackOperations,
-        CoachProfileFragment.CoachProfileActivity {
+        CoachProfileFragment.CoachProfileActivity, ClientAddFragment.BottomNavigationSelector {
 
     private BottomNavigationView mBottomNavigationView;
     private NavigationView mNavigationView;
@@ -184,6 +186,37 @@ public class CoachMainActivity extends AppCompatActivity implements WeFitApplica
                     if(coachProfileFragment != null && coachProfileFragment.isVisible())
                         coachProfileFragment.onFileReceived(data.getData().toString());
                 }
+        }
+    }
+
+
+    @Override
+    public void onBackPressed() {
+        androidx.fragment.app.FragmentManager fm = getSupportFragmentManager();
+        for (Fragment frag : fm.getFragments()) {
+            if (frag.isVisible()) {
+                FragmentManager childFm = frag.getChildFragmentManager();
+                if (childFm.getBackStackEntryCount() > 1){
+                    childFm.popBackStack(childFm.getBackStackEntryAt(childFm.getBackStackEntryCount()-1).getName(), FragmentManager.POP_BACK_STACK_INCLUSIVE);
+                    return;
+                }
+            }
+        }
+        super.onBackPressed();
+        selectBottomNavigationItem();
+    }
+
+
+    @Override
+    public void selectBottomNavigationItem() {
+        Fragment f = getSupportFragmentManager().findFragmentById(R.id.anchor_point);
+
+        if(f instanceof CoachHomeFragment){
+            mBottomNavigationView.setSelectedItemId(R.id.home_item);
+        } else if (f instanceof CoachFeedbacksFragment){
+            mBottomNavigationView.setSelectedItemId(R.id.feedbacks);
+        } else if (f instanceof CoachClientsFragment){
+            mBottomNavigationView.setSelectedItemId(R.id.clients);
         }
     }
 

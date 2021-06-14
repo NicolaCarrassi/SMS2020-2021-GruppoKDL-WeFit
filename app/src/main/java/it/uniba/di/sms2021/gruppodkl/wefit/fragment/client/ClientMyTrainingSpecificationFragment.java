@@ -27,8 +27,10 @@ public class ClientMyTrainingSpecificationFragment extends Fragment implements C
     public static final String TAG = ClientMyTrainingSpecificationFragment.class.getSimpleName();
 
     private static final String TRAINING = "training";
+    private static final String TWO_PANE = "two_pane";
 
     private Training mTraining;
+    private boolean mTwoPane;
 
     private FirestorePagingAdapter<Exercise, TrainingDetailViewHolder> mAdapter;
 
@@ -37,12 +39,14 @@ public class ClientMyTrainingSpecificationFragment extends Fragment implements C
         // empty constructor
     }
 
-    public static ClientMyTrainingSpecificationFragment newInstance(Training training) {
+    public static ClientMyTrainingSpecificationFragment newInstance(Training training, boolean twoPane) {
         ClientMyTrainingSpecificationFragment fragment = new ClientMyTrainingSpecificationFragment();
 
         Bundle args = new Bundle();
         args.putParcelable(TRAINING, training);
+        args.putBoolean(TWO_PANE, twoPane);
         fragment.setArguments(args);
+
 
         return fragment;
     }
@@ -51,9 +55,10 @@ public class ClientMyTrainingSpecificationFragment extends Fragment implements C
     public void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
 
-        if(getArguments() != null)
+        if(getArguments() != null) {
             mTraining = getArguments().getParcelable(TRAINING);
-
+            mTwoPane = getArguments().getBoolean(TWO_PANE);
+        }
     }
 
     @Override
@@ -113,9 +118,13 @@ public class ClientMyTrainingSpecificationFragment extends Fragment implements C
     @Override
     public void openExercisePage(String exerciseName) {
         ClientExerciseSpecificationFragment fragment = ClientExerciseSpecificationFragment.newInstance(exerciseName);
-
         assert getActivity() != null;
-        getActivity().getSupportFragmentManager().beginTransaction().replace(R.id.anchor_point, fragment, ClientExerciseSpecificationFragment.TAG)
+
+        if(mTwoPane)
+            getActivity().getSupportFragmentManager().beginTransaction().replace(R.id.training_detail_container, fragment, ClientExerciseSpecificationFragment.TAG)
+                    .addToBackStack(ClientExerciseSpecificationFragment.TAG).commit();
+        else
+            getActivity().getSupportFragmentManager().beginTransaction().replace(R.id.anchor_point, fragment, ClientExerciseSpecificationFragment.TAG)
                 .addToBackStack(ClientExerciseSpecificationFragment.TAG).commit();
     }
 }

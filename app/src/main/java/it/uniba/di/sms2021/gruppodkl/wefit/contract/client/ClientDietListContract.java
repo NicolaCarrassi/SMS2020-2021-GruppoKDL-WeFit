@@ -4,12 +4,30 @@ import it.uniba.di.sms2021.gruppodkl.wefit.contract.DietListBaseContract;
 
 public interface ClientDietListContract {
 
-    interface View extends DietListBaseContract.View{
 
+    /**
+     * Interfaccia contenente i metodi che l'implementazione della view deve contenere
+     */
+    interface View extends DietListBaseContract.View{
+        /*
+        * NON VI SONO METODI IN QUANTO QUELLI DELL'INTERFACCIA PADRE PERMETTONO
+        * DI SVOLGERE TUTTE LE FUNZIONI NECESSARIE, L'INTERFACCIA RIMANE VUOTA
+        * CONSENTENDO LA POSSIBILITA' DI INSERIRE NUOVE FUNZIONALITA' SPECIFICHE PER IL
+        * CLIENTE
+        */
     }
 
-    interface Presenter extends DietListBaseContract.Presenter{
 
+    /**
+     * Interfaccia contenente i metodi che l'implementazione del presenter deve contenere
+     */
+    interface Presenter extends DietListBaseContract.Presenter{
+        /*
+         * NON VI SONO METODI IN QUANTO QUELLI DELL'INTERFACCIA PADRE PERMETTONO
+         * DI SVOLGERE TUTTE LE FUNZIONI NECESSARIE, L'INTERFACCIA RIMANE VUOTA
+         * CONSENTENDO LA POSSIBILITA' DI INSERIRE NUOVE FUNZIONALITA' SPECIFICHE PER IL
+         * CLIENTE
+         */
     }
 
 }

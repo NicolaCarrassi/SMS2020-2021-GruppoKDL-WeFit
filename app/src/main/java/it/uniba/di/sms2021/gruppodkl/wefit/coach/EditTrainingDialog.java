@@ -4,7 +4,6 @@ import android.app.Dialog;
 import android.content.Context;
 import android.os.Bundle;
 import android.text.TextUtils;
-import android.util.Log;
 import android.view.View;
 import android.view.Window;
 import android.widget.ArrayAdapter;
@@ -23,7 +22,15 @@ import it.uniba.di.sms2021.gruppodkl.wefit.utility.DayOfTheWeek;
 public class EditTrainingDialog extends Dialog implements View.OnClickListener{
 
 
+    /**
+     * Interfaccia contenente le operazioni di callback per il
+     * dialog
+     */
     public interface EditTrainingDialogCallbacks{
+        /**
+         * Il seguente metodo permette di modificare un training
+         * @param training training da modificare
+         */
         void editTraining(Training training);
     }
 
@@ -39,7 +46,7 @@ public class EditTrainingDialog extends Dialog implements View.OnClickListener{
     public EditTrainingDialog(@NonNull Context context, final EditTrainingDialogCallbacks callback, Training training) {
         super(context);
 
-        mTrainingCallbacks = (EditTrainingDialogCallbacks) callback;
+        mTrainingCallbacks = callback;
         mTraining = training;
         mContext = context;
     }
@@ -86,6 +93,9 @@ public class EditTrainingDialog extends Dialog implements View.OnClickListener{
     }
 
 
+    /**
+     * Il seguente metodo permette di modificare le informazioni dell'allenamento
+     */
     private void updateTrainingInfo(){
         boolean errors = false;
         int time = 0 ;
@@ -112,7 +122,6 @@ public class EditTrainingDialog extends Dialog implements View.OnClickListener{
             mTraining.time = time;
             mTraining.dayOfWeek = DayOfTheWeek.getStringValue((String) mDayOfTheWeekSpinner.getSelectedItem(), mContext);
 
-            Log.d("AOO", "" + mTraining.dayOfWeek);
             mTrainingCallbacks.editTraining(mTraining);
             dismiss();
         }

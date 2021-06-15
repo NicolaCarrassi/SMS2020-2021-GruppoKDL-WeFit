@@ -3,7 +3,6 @@ package it.uniba.di.sms2021.gruppodkl.wefit.client;
 
 import android.content.Intent;
 import android.os.Bundle;
-import android.util.Log;
 import android.view.MenuItem;
 
 import androidx.appcompat.app.AppCompatActivity;
@@ -110,13 +109,15 @@ public class ClientMainActivity extends AppCompatActivity implements WeFitApplic
 
     }
 
+    /**
+     * Il seguente metodo permette di effettuare il binding della navigation view
+     */
     private void setNavigationView(){
         mDrawer = findViewById(R.id.drawer_layout);
         mNavigationView = findViewById(R.id.navigation);
         mNavigationView.inflateMenu(R.menu.client_menu_drawer);
         mNavigationView.setNavigationItemSelectedListener(item -> {
             showFragment(item);
-            Log.d("DRAWER","Selezionato nel drawer: " + item);
             mDrawer.closeDrawer(mNavigationView);
             return false;
         });

@@ -259,5 +259,6 @@
     <string name="time_elapsed">Tempo impiegato: </string>
     <string name="shopping_list_text">La tua lista della spesa per i prossimi</string>
     <string name="days_label">giorni</string>
+    <string name="nfc_label">Aggiungi un cliente usando l\'NFC</string>
 
 </resources>

@@ -304,13 +304,13 @@ public class ClientMainActivity extends AppCompatActivity implements WeFitApplic
      */
     private void makeAlert(){
         final AlertDialog.Builder builder = new AlertDialog.Builder(this);
-        builder.setMessage("Vuoi essere seguito da: " + mNfcCoachMail + " ?") //TODO STRINGHE
+        builder.setMessage(getString(R.string.trained_by_question) + mNfcCoachMail + " ?")
                 .setCancelable(false)
                 .setPositiveButton(getString(R.string.yes), (dialog, id) -> mPresenter.addCoachFromNFC(mClientMail,mNfcCoachMail))
                 .setNegativeButton(getString(R.string.no), (dialog, id) -> {
                     dialog.cancel();
                     finish();
-                    Toast.makeText(getApplicationContext(), getString(R.string.gps_off_toast),Toast.LENGTH_SHORT).show(); //TODO RIVEDI TOAST
+                    Toast.makeText(getApplicationContext(), getString(R.string.pairing_cancelled),Toast.LENGTH_SHORT).show();
                 });
         final AlertDialog alert = builder.create();
         alert.show();
@@ -319,7 +319,6 @@ public class ClientMainActivity extends AppCompatActivity implements WeFitApplic
     @Override
     public void onSuccess() {
         ((Client)((WeFitApplication)getApplicationContext()).getUser()).coach = mNfcCoachMail;
-        Toast.makeText(this, "DIOCANE SONO IL KING DELLE INTERFACCE", Toast.LENGTH_SHORT).show();
-        //TODO CONFERMA INSERIMENTO COACH
+        Toast.makeText(this, getString(R.string.pairing_successful), Toast.LENGTH_SHORT).show();
     }
 }

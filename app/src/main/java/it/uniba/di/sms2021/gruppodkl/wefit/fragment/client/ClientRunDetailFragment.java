@@ -33,7 +33,7 @@ import it.uniba.di.sms2021.gruppodkl.wefit.model.Run;
  * Use the {@link ClientRunDetailFragment#newInstance} factory method to
  * create an instance of this fragment.
  */
-// TODO Inserire grafico della corsa
+
 public class ClientRunDetailFragment extends Fragment implements OnMapReadyCallback {
     public static final String TAG = ClientRunDetailFragment.class.getSimpleName();
 

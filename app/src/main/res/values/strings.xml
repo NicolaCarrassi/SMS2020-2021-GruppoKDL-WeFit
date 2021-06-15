@@ -258,5 +258,11 @@
     <string name="shopping_list_text">Your shopping list for the next</string>
     <string name="add_weight_exceeded">You have already added a weight today. Come back tomorrow!</string>
 
+    <string name="trained_by_question">Do you want to be trained by </string>
+    <string name="pairing_cancelled">Pairing with coach cancelled!</string>
+    <string name="pairing_successful">Pairing with coach successful!</string>
+    <string name="nfc_required">NFC Active Required</string>
+    <string name="nfc_required_message">Your NFC seems to be disabled, do you want to enable it?</string>
+
 
 </resources>

@@ -260,4 +260,15 @@
     <string name="shopping_list_text">La tua lista della spesa per i prossimi</string>
     <string name="days_label">giorni</string>
 
+    <string name="trained_by_question">Vorresti essere seguito da </string>
+    <string name="pairing_cancelled">Accoppiamento con il coach annullato!</string>
+    <string name="pairing_successful">Accoppiamento con il coach riuscito!</string>
+    <string name="nfc_required">NFC attivo richiesto</string>
+    <string name="nfc_required_message">L\' NFC sembra essere disattivato, vuoi attivarlo?</string>
+
+
+
+
+
+
 </resources>

@@ -26,19 +26,18 @@ public class CoachNFCActivity extends BaseActivity {
 
         NfcAdapter mNfcAdapter = NfcAdapter.getDefaultAdapter(this);
 
-        //TODO MODIFICA ALERT
         if(mNfcAdapter != null){
             if(!mNfcAdapter.isEnabled()){
                 AlertDialog.Builder alertbox = new AlertDialog.Builder(this);
-                alertbox.setTitle("Info");
-                alertbox.setMessage("R.string.msg_nfcon");
-                alertbox.setPositiveButton("Turn On", (dialog, which) -> {
+                alertbox.setTitle(getString(R.string.nfc_required));
+                alertbox.setMessage(R.string.nfc_required_message);
+                alertbox.setPositiveButton(getString(R.string.yes), (dialog, which) -> {
                     {
                         Intent intent = new Intent(Settings.ACTION_NFC_SETTINGS);
                         startActivity(intent);
                     }
                 });
-                    alertbox.setNegativeButton("Close", (dialog, which) -> {
+                    alertbox.setNegativeButton(getString(R.string.no), (dialog, which) -> {
 
                     });
                     alertbox.show();

@@ -67,7 +67,14 @@ public class ClientDAO extends UserDAO {
     }
 
 
+    /**
+     * La seguente interfaccia contiene i metodi relativi alla risposta delle richieste
+     * relative alla gestione della connettività NFC
+     */
     public interface NFCCallback{
+        /**
+         * Il metodo permette di notificare il successo della richiesta
+         */
         void notifySuccess();
     }
 
@@ -216,9 +223,16 @@ public class ClientDAO extends UserDAO {
     }
 
 
+    /**
+     * Il seguente metodo permette di impostare il coach per il cliente
+     *
+     * @param clientMail mail del cliente
+     * @param coachMail mail del coach
+     * @param callback implementazione dell'interfaccia di callback
+     */
     public static void setCoachFromNFC(String clientMail, String coachMail, NFCCallback callback){
 
-        Map<String, Object> map = new HashMap();
+        Map<String, Object> map = new HashMap<>();
         map.put(Client.ClientKeys.COACH, coachMail);
         map.put(Client.ClientKeys.HAS_PENDING_REQUESTS, false);
 

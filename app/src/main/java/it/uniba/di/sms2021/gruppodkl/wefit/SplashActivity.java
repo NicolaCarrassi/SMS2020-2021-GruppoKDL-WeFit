@@ -113,6 +113,20 @@ public class SplashActivity extends BaseActivity  implements SplashActivityContr
         setIntent(intent);
     }
 
+
+    @Override
+    protected void onDestroy() {
+        super.onDestroy();
+        mHandler.removeCallbacksAndMessages(null);
+    }
+
+
+    /**
+     * Il seguente metodo permette di effettuare il processing dell'intent in caso di
+     * avvio dell'applicazione mediante Beam NFC
+     *
+     * @param intent intent
+     */
     private void processIntent(Intent intent){
         Parcelable[] rawMsg = intent.getParcelableArrayExtra(NfcAdapter.EXTRA_NDEF_MESSAGES);
 
@@ -121,11 +135,6 @@ public class SplashActivity extends BaseActivity  implements SplashActivityContr
         mNfcCoachMail =  new String(msg.getRecords()[0].getPayload());
     }
 
-    @Override
-    protected void onDestroy() {
-        super.onDestroy();
-        mHandler.removeCallbacksAndMessages(null);
-    }
 
     /**
      * Il metodo permette di passare alla schermata successiva dopo

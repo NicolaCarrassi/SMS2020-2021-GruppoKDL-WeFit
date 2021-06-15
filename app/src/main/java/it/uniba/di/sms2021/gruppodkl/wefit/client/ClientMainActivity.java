@@ -298,6 +298,10 @@ public class ClientMainActivity extends AppCompatActivity implements WeFitApplic
     }
 
 
+    /**
+     * Il seguente metodo permette di creare l'alert necessario
+     * per la conferma dell'associazione con il coach tramite NFC
+     */
     private void makeAlert(){
         final AlertDialog.Builder builder = new AlertDialog.Builder(this);
         builder.setMessage("Vuoi essere seguito da: " + mNfcCoachMail + " ?") //TODO STRINGHE

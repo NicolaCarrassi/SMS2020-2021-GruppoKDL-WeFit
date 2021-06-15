@@ -10,8 +10,9 @@
     android:animateLayoutChanges="true">
 
     <LinearLayout
-        style="@style/BackgroundCustomRun"
-        android:layout_weight="0.8"
+        style="@style/BackgroundCustomLand"
+
+        android:layout_weight="0.1"
         android:paddingVertical="15dp"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
@@ -57,7 +58,8 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:gravity="center_horizontal"
-            android:textSize="45sp" />
+            android:textSize="45sp"
+            />
 
     </LinearLayout>
 

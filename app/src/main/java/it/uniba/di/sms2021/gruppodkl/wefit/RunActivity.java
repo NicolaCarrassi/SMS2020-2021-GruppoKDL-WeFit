@@ -1,14 +1,9 @@
 package it.uniba.di.sms2021.gruppodkl.wefit;
 
-import androidx.core.app.ActivityCompat;
-import androidx.core.content.ContextCompat;
-import androidx.fragment.app.FragmentActivity;
-
 import android.Manifest;
 import android.annotation.SuppressLint;
 import android.app.AlertDialog;
 import android.content.Context;
-import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.pm.PackageManager;
 import android.location.Location;
@@ -16,11 +11,15 @@ import android.location.LocationManager;
 import android.os.Bundle;
 import android.os.SystemClock;
 import android.provider.Settings;
-import android.util.Log;
 import android.view.View;
 import android.widget.Chronometer;
 import android.widget.ImageView;
 import android.widget.Toast;
+
+import androidx.annotation.NonNull;
+import androidx.core.app.ActivityCompat;
+import androidx.core.content.ContextCompat;
+import androidx.fragment.app.FragmentActivity;
 
 import com.google.android.gms.location.FusedLocationProviderClient;
 import com.google.android.gms.location.LocationServices;
@@ -49,7 +48,6 @@ import it.uniba.di.sms2021.gruppodkl.wefit.utility.MyBroadcastReceiver;
 public class RunActivity extends FragmentActivity implements OnMapReadyCallback, RunActivityContract.View, MyBroadcastReceiver.OnBroadcastReceiveListener {
 
     private GoogleMap mMap;
-    private ActivityRunBinding binding;
 
     private MaterialButton mStartButton;
     private MaterialButton mStopButton;
@@ -61,7 +59,6 @@ public class RunActivity extends FragmentActivity implements OnMapReadyCallback,
     private FusedLocationProviderClient fusedLocationProviderClient;
     private final LatLng defaultLocation = new LatLng(41.1171, 16.8719);
     private Location mStartingPosition;
-    private Location mStopPosition;
 
     private MyBroadcastReceiver mMessageReceiver;
     List<Location> listLocation = new ArrayList<>();
@@ -76,7 +73,7 @@ public class RunActivity extends FragmentActivity implements OnMapReadyCallback,
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
 
-        binding = ActivityRunBinding.inflate(getLayoutInflater());
+        it.uniba.di.sms2021.gruppodkl.wefit.databinding.ActivityRunBinding binding = ActivityRunBinding.inflate(getLayoutInflater());
         setContentView(binding.getRoot());
 
         final LocationManager manager = (LocationManager) getSystemService( Context.LOCATION_SERVICE );
@@ -96,9 +93,14 @@ public class RunActivity extends FragmentActivity implements OnMapReadyCallback,
         // Obtain the SupportMapFragment and get notified when the map is ready to be used.
         SupportMapFragment mapFragment = (SupportMapFragment) getSupportFragmentManager()
                 .findFragmentById(R.id.map);
+        assert mapFragment != null;
         mapFragment.getMapAsync(this);
     }
 
+    /**
+     * Il seguente metodo permette di associare gli elementi della view
+     *  ad oggetti
+     */
     private void bind(){
         mStartButton = findViewById(R.id.start);
         mStopButton = findViewById(R.id.stop);
@@ -106,51 +108,14 @@ public class RunActivity extends FragmentActivity implements OnMapReadyCallback,
         mBackButton = findViewById(R.id.back);
     }
 
+    /**
+     * Il seguente metodo permette di impostare i listeners per gli elementi della
+     * view
+     */
     private void setListener(){
-        mStartButton.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                if (ContextCompat.checkSelfPermission(getApplicationContext(), Manifest.permission.ACCESS_FINE_LOCATION) != PackageManager.PERMISSION_GRANTED) {
-                    ActivityCompat.requestPermissions(RunActivity.this, new String[]{Manifest.permission.ACCESS_FINE_LOCATION}, REQUEST_CODE_LOCATION_PERMISSION);
-                } else {
-                    mStartingPosition = mPresenter.getCurrentLocation(fusedLocationProviderClient,mMap,RunActivity.this);
-                    addMarker(mStartingPosition, getResources().getString(R.string.starting_point));
-                    mPresenter.startLocationService(getApplicationContext(), mMessageReceiver,RunActivity.this);
-                    mCrono.setBase(SystemClock.elapsedRealtime());
-                    mCrono.start();
-                    mStartButton.setVisibility(View.GONE);
-                    mStopButton.setVisibility(View.VISIBLE);
-                }
-            }
-        });
-
-        mStopButton.setOnClickListener(v -> {
-            mStopPosition = listLocation.get(listLocation.size()-1);
-            addMarker(mStopPosition, getResources().getString(R.string.stop_point));
-            mPresenter.stopLocationService(getApplicationContext(), RunActivity.this);
-            zoomOutPath(listLocation);
-            mDistanceRun = mPresenter.calculateDistance(listLocation);
-            Log.d("gesu", "hai percorso: " + mDistanceRun + " metri");
-            mCrono.stop();
-            mElapsedTime = mPresenter.calculateTime(mCrono);
-            Log.d("gesu", "ci hai messo: " + mElapsedTime);
-            mAverageSpeed = mPresenter.calculateAverageSpeed(mCrono,mDistanceRun);
-            Log.d("gesu", "correvi come al puma a: " + mAverageSpeed + " metri al secondo");
-            float weight = ((Client) ((WeFitApplication) getApplicationContext()).getUser()).weight;
-            mAverageKcal = mPresenter.calculateAverageKcal(mDistanceRun,mAverageSpeed,weight);
-            Log.d("gesu", "hai bruciato: " + mAverageKcal + " kcal stupido ciccione");
-            mStartButton.setVisibility(View.VISIBLE);
-            mStopButton.setVisibility(View.GONE);
-            fetchData();
-        });
-
-        mBackButton.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                onBackPressed();
-            }
-        });
-
+        mStartButton.setOnClickListener(v -> startRun());
+        mStopButton.setOnClickListener(v -> stopRun());
+        mBackButton.setOnClickListener(v -> onBackPressed());
     }
 
     @Override
@@ -159,9 +124,7 @@ public class RunActivity extends FragmentActivity implements OnMapReadyCallback,
             new AlertDialog.Builder(RunActivity.this).setTitle(getResources().
                     getString(R.string.cancel_run))
                     .setMessage(getResources().getString(R.string.cancel_run_message))
-                    .setNegativeButton(getResources().getString(R.string.no), (dialog, which) -> {
-                        dialog.dismiss();
-                    })
+                    .setNegativeButton(getResources().getString(R.string.no), (dialog, which) -> dialog.dismiss())
                     .setPositiveButton(getResources().getString(R.string.yes), (dialog, which) -> {
                         dialog.dismiss();
                         mPresenter.stopLocationService(getApplicationContext(),RunActivity.this);
@@ -182,7 +145,7 @@ public class RunActivity extends FragmentActivity implements OnMapReadyCallback,
      * installed Google Play services and returned to the app.
      */
     @Override
-    public void onMapReady(GoogleMap googleMap) {
+    public void onMapReady(@NonNull GoogleMap googleMap) {
         mMap = googleMap;
         mMap.getUiSettings().setMapToolbarEnabled(false);
 
@@ -197,7 +160,7 @@ public class RunActivity extends FragmentActivity implements OnMapReadyCallback,
 
     @SuppressLint("MissingPermission")
     @Override
-    public void onRequestPermissionsResult(int requestCode, String[] permissions, int[] grantResults) {
+    public void onRequestPermissionsResult(int requestCode, @NonNull String[] permissions, @NonNull int[] grantResults) {
         super.onRequestPermissionsResult(requestCode, permissions, grantResults);
         if (requestCode == REQUEST_CODE_LOCATION_PERMISSION && grantResults.length > 0) {
             if (grantResults[0] == PackageManager.PERMISSION_GRANTED) {
@@ -233,6 +196,12 @@ public class RunActivity extends FragmentActivity implements OnMapReadyCallback,
         mMap.animateCamera(CameraUpdateFactory.newLatLngZoom(new LatLng(location.getLatitude(),location.getLongitude()),zoom));
     }
 
+    /**
+     * Il seguente metodo permette di calcolare il punto più a nord-est e più a sud-ovest.
+     * Grazie ai due punti è possibile effettuare lo zoom out in modo da inquadrare il percorso
+     *
+     * @param locationList lista di posizioni
+     */
     public void zoomOutPath(List<Location> locationList){
         LatLng southwest = new LatLng(locationList.get(0).getLatitude(),locationList.get(0).getLongitude());
         LatLng northeast = new LatLng(locationList.get(0).getLatitude(),locationList.get(0).getLongitude());
@@ -265,9 +234,7 @@ public class RunActivity extends FragmentActivity implements OnMapReadyCallback,
         final AlertDialog.Builder builder = new AlertDialog.Builder(this);
         builder.setMessage(getString(R.string.gps_off))
                 .setCancelable(false)
-                .setPositiveButton(getString(R.string.yes), (dialog, id) -> {
-                    startActivity(new Intent(Settings.ACTION_LOCATION_SOURCE_SETTINGS));
-                })
+                .setPositiveButton(getString(R.string.yes), (dialog, id) -> startActivity(new Intent(Settings.ACTION_LOCATION_SOURCE_SETTINGS)))
 
                 .setNegativeButton(getString(R.string.no), (dialog, id) -> {
                     dialog.cancel();
@@ -279,6 +246,47 @@ public class RunActivity extends FragmentActivity implements OnMapReadyCallback,
     }
 
 
+    /**
+     * Il seguente metodo permette di avviare la corsa
+     */
+    private void startRun(){
+        if (ContextCompat.checkSelfPermission(getApplicationContext(), Manifest.permission.ACCESS_FINE_LOCATION) != PackageManager.PERMISSION_GRANTED) {
+            ActivityCompat.requestPermissions(RunActivity.this, new String[]{Manifest.permission.ACCESS_FINE_LOCATION}, REQUEST_CODE_LOCATION_PERMISSION);
+        } else {
+            mStartingPosition = mPresenter.getCurrentLocation(fusedLocationProviderClient,mMap,RunActivity.this);
+            addMarker(mStartingPosition, getResources().getString(R.string.starting_point));
+            mPresenter.startLocationService(getApplicationContext(), mMessageReceiver,RunActivity.this);
+            mCrono.setBase(SystemClock.elapsedRealtime());
+            mCrono.start();
+            mStartButton.setVisibility(View.GONE);
+            mStopButton.setVisibility(View.VISIBLE);
+        }
+    }
+
+
+    /**
+     * Il seguente metodo permette di stoppare la corsa
+     */
+    private void stopRun(){
+        Location mStopPosition = listLocation.get(listLocation.size() - 1);
+        addMarker(mStopPosition, getResources().getString(R.string.stop_point));
+        mPresenter.stopLocationService(getApplicationContext(), RunActivity.this);
+        zoomOutPath(listLocation);
+        mDistanceRun = mPresenter.calculateDistance(listLocation);
+        mCrono.stop();
+        mElapsedTime = mPresenter.calculateTime(mCrono);
+        mAverageSpeed = mPresenter.calculateAverageSpeed(mCrono,mDistanceRun);
+        float weight = ((Client) ((WeFitApplication) getApplicationContext()).getUser()).weight;
+        mAverageKcal = mPresenter.calculateAverageKcal(mDistanceRun,mAverageSpeed,weight);
+        mStartButton.setVisibility(View.VISIBLE);
+        mStopButton.setVisibility(View.GONE);
+        fetchData();
+    }
+
+    /**
+     * Il seguente metodo permette di salvare le informazioni della corsa
+     *  e le salva nel database
+     */
     private void fetchData(){
         SimpleDateFormat sdf = new SimpleDateFormat("dd-MM-yyyy");
         String date = sdf.format(new Date());

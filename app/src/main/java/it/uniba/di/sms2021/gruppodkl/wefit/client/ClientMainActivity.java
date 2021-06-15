@@ -1,9 +1,11 @@
 package it.uniba.di.sms2021.gruppodkl.wefit.client;
 
 
+import android.app.AlertDialog;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.MenuItem;
+import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.view.GravityCompat;
@@ -23,6 +25,7 @@ import it.uniba.di.sms2021.gruppodkl.wefit.LoginActivity;
 import it.uniba.di.sms2021.gruppodkl.wefit.R;
 import it.uniba.di.sms2021.gruppodkl.wefit.SettingsActivity;
 import it.uniba.di.sms2021.gruppodkl.wefit.WeFitApplication;
+import it.uniba.di.sms2021.gruppodkl.wefit.contract.client.ClientMainActivityContract;
 import it.uniba.di.sms2021.gruppodkl.wefit.fragment.client.ClientAddFragment;
 import it.uniba.di.sms2021.gruppodkl.wefit.fragment.client.ClientMyCoachFragment;
 import it.uniba.di.sms2021.gruppodkl.wefit.fragment.client.ClientDietFragment;
@@ -34,14 +37,23 @@ import it.uniba.di.sms2021.gruppodkl.wefit.fragment.client.ClientMyTrainingFragm
 import it.uniba.di.sms2021.gruppodkl.wefit.fragment.client.ClientRunFragment;
 import it.uniba.di.sms2021.gruppodkl.wefit.model.Client;
 import it.uniba.di.sms2021.gruppodkl.wefit.model.User;
+import it.uniba.di.sms2021.gruppodkl.wefit.presenter.client.ClientMainActivityPresenter;
 import it.uniba.di.sms2021.gruppodkl.wefit.utility.Keys;
 
 public class ClientMainActivity extends AppCompatActivity implements WeFitApplication.CallbackOperations,
-        ClientMyProfileFragment.ProfileFragmentActivity, ClientMyCoachFragment.CoachProfileCallbacks, ClientAddFragment.BottomNavigationSelector {
+        ClientMyProfileFragment.ProfileFragmentActivity, ClientMyCoachFragment.CoachProfileCallbacks,
+        ClientAddFragment.BottomNavigationSelector, ClientMainActivityContract.View {
+
+    private static final String NFC_COACH_REQUEST = "nfc_coach";
 
     private BottomNavigationView mBottomNavigation;
     private NavigationView mNavigationView;
     private DrawerLayout mDrawer;
+
+    private ClientMainActivityContract.Presenter mPresenter;
+    private String mNfcCoachMail = null;
+    private String mClientMail;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -53,9 +65,20 @@ public class ClientMainActivity extends AppCompatActivity implements WeFitApplic
             getSupportFragmentManager().beginTransaction().add(R.id.anchor_point, clientHomeFragment).addToBackStack("homedefault").commit();
         }
 
+        mPresenter = new ClientMainActivityPresenter(this);
         bind();
         setListener();
         setNavigationView();
+    }
+
+
+    @Override
+    protected void onStart() {
+        super.onStart();
+
+        if(mNfcCoachMail != null){
+           makeAlert();
+        }
     }
 
     /**
@@ -65,6 +88,11 @@ public class ClientMainActivity extends AppCompatActivity implements WeFitApplic
     private void bind() {
         mBottomNavigation = findViewById(R.id.bottom_navigation);
         mBottomNavigation.inflateMenu(R.menu.client_bottom_navigation_menu);
+
+        mClientMail = FirebaseAuth.getInstance().getCurrentUser().getEmail();
+
+        if(getIntent().getStringExtra(NFC_COACH_REQUEST) != null)
+            mNfcCoachMail = getIntent().getStringExtra(NFC_COACH_REQUEST);
     }
 
 
@@ -267,5 +295,27 @@ public class ClientMainActivity extends AppCompatActivity implements WeFitApplic
         } else if (f instanceof ClientMyTrainingFragment){
             mBottomNavigation.setSelectedItemId(R.id.training);
         }
+    }
+
+
+    private void makeAlert(){
+        final AlertDialog.Builder builder = new AlertDialog.Builder(this);
+        builder.setMessage("Vuoi essere seguito da: " + mNfcCoachMail + " ?") //TODO STRINGHE
+                .setCancelable(false)
+                .setPositiveButton(getString(R.string.yes), (dialog, id) -> mPresenter.addCoachFromNFC(mClientMail,mNfcCoachMail))
+                .setNegativeButton(getString(R.string.no), (dialog, id) -> {
+                    dialog.cancel();
+                    finish();
+                    Toast.makeText(getApplicationContext(), getString(R.string.gps_off_toast),Toast.LENGTH_SHORT).show(); //TODO RIVEDI TOAST
+                });
+        final AlertDialog alert = builder.create();
+        alert.show();
+    }
+
+    @Override
+    public void onSuccess() {
+        ((Client)((WeFitApplication)getApplicationContext()).getUser()).coach = mNfcCoachMail;
+        Toast.makeText(this, "DIOCANE SONO IL KING DELLE INTERFACCE", Toast.LENGTH_SHORT).show();
+        //TODO CONFERMA INSERIMENTO COACH
     }
 }

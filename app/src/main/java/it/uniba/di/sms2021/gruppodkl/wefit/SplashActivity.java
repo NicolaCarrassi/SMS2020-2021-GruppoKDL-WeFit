@@ -3,9 +3,12 @@ package it.uniba.di.sms2021.gruppodkl.wefit;
 import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
+import android.nfc.NdefMessage;
+import android.nfc.NfcAdapter;
 import android.os.Bundle;
 import android.os.Handler;
 import android.os.Message;
+import android.os.Parcelable;
 import android.os.SystemClock;
 import android.util.Log;
 import android.view.View;
@@ -28,19 +31,20 @@ public class SplashActivity extends BaseActivity  implements SplashActivityContr
 
     // costanti
     private static final String TAG_LOG = SplashActivity.class.getName();
-    private static final String IS_DONE_KEY = "it.kdl.sosa.fra.fraalbguidaibus.key.IS_DONE_KEY";
-    private static final String START_TIME_KEY = "it.kdl.sosa.fra.fraalbguidaibus.key.START_TIME_KEY";
+    private static final String IS_DONE_KEY = "it.uniba.di.sms2021.gruppokdl.wefit.key.IS_DONE_KEY";
+    private static final String START_TIME_KEY = "it.uniba.di.sms2021.gruppokdl.wefit.key.START_TIME_KEY";
 
     private static final long INTERVALLO_MINIMO = 500L;
     private static final long INTERVALLO_MASSIMO = 1500L;
 
     private static final int GO_AHEAD_WHAT = 1;
-
+    private static final String NFC_COACH_REQUEST = "nfc_coach";
 
     private long mStartTime = -1L;
     private boolean mIsDone;
     private UiHandler mHandler;
     private SplashActivityContract.Presenter mPresenter;
+    private String mNfcCoachMail = null;
 
 
 
@@ -96,6 +100,26 @@ public class SplashActivity extends BaseActivity  implements SplashActivityContr
         Log.d(TAG_LOG, "Messaggio inviato");
     }
 
+    @Override
+    protected void onResume() {
+        super.onResume();
+        if(NfcAdapter.ACTION_NDEF_DISCOVERED.equals(getIntent().getAction()))
+            processIntent(getIntent());
+    }
+
+    @Override
+    protected void onNewIntent(Intent intent) {
+        super.onNewIntent(intent);
+        setIntent(intent);
+    }
+
+    private void processIntent(Intent intent){
+        Parcelable[] rawMsg = intent.getParcelableArrayExtra(NfcAdapter.EXTRA_NDEF_MESSAGES);
+
+        //viene inviato solo un messaggio per volta
+        NdefMessage msg = (NdefMessage) rawMsg[0];
+        mNfcCoachMail =  new String(msg.getRecords()[0].getPayload());
+    }
 
     @Override
     protected void onDestroy() {
@@ -124,9 +148,10 @@ public class SplashActivity extends BaseActivity  implements SplashActivityContr
 
         ((WeFitApplication) getApplication()).setUser(user);
 
-        if(user instanceof Client)
+        if(user instanceof Client) {
             intent = new Intent(this, ClientMainActivity.class);
-        else
+            intent.putExtra(NFC_COACH_REQUEST, mNfcCoachMail);
+        }else
             intent = new Intent(this, CoachMainActivity.class);
 
 

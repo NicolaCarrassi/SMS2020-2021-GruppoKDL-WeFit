@@ -1,14 +1,12 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="it.uniba.di.sms2021.gruppodkl.wefit">
-
     <!--
          The ACCESS_COARSE/FINE_LOCATION permissions are not required to use
          Google Maps Android API v2, but you must specify either coarse or fine
          location permissions for the "MyLocation" functionality.
     -->
     <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
-
     <!--
          The ACCESS_COARSE/FINE_LOCATION permissions are not required to use
          Google Maps Android API v2, but you must specify either coarse or fine
@@ -17,6 +15,7 @@
     <uses-permission android:name="android.permission.INTERNET" /> <!-- foreground in quanto il servizio non deve essere killato -->
     <uses-permission android:name="android.permission.ACCESS_FOREGROUND_LOCATION" />
     <uses-permission android:name="android.permission.FOREGROUND_SERVICE" />
+    <uses-permission android:name="android.permission.NFC" />
 
     <queries>
         <intent>
@@ -32,7 +31,7 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.WeFit">
-
+        <activity android:name=".coach.CoachNFCActivity"/>
         <!--
              The API key for Google Maps-based APIs is defined as a string resource.
              (See the file "res/values/google_maps_api.xml").
@@ -56,6 +55,11 @@
             android:windowSoftInputMode="adjustPan" />
         <activity android:name=".SplashActivity">
             <intent-filter>
+                <action android:name="android.nfc.action.NDEF_DISCOVERED"/>
+                <category android:name="android.intent.category.DEFAULT"/>
+                <data android:mimeType="text/plain" />
+            </intent-filter>
+            <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
@@ -68,14 +72,14 @@
         <activity android:name=".LoginActivity" />
         <activity
             android:name=".client.ClientMainActivity"
-            android:windowSoftInputMode="adjustPan"></activity>
+            android:windowSoftInputMode="adjustPan" />
 
         <service
             android:name=".service.LocationService"
             android:enabled="true"
             android:exported="false"
-            android:stopWithTask="true"
-            android:foregroundServiceType="location" />
+            android:foregroundServiceType="location"
+            android:stopWithTask="true" />
         <service
             android:name=".service.WeFitFirebaseInstanceIdService"
             android:exported="false">

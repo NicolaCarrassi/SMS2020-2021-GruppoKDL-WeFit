@@ -1,6 +1,7 @@
 package it.uniba.di.sms2021.gruppodkl.wefit.fragment.coach;
 
 import android.content.Context;
+import android.content.Intent;
 import android.content.res.Resources;
 import android.os.Bundle;
 
@@ -17,6 +18,7 @@ import android.widget.TextView;
 
 import it.uniba.di.sms2021.gruppodkl.wefit.R;
 import it.uniba.di.sms2021.gruppodkl.wefit.WeFitApplication;
+import it.uniba.di.sms2021.gruppodkl.wefit.coach.CoachNFCActivity;
 import it.uniba.di.sms2021.gruppodkl.wefit.contract.coach.CoachHomeContract;
 import it.uniba.di.sms2021.gruppodkl.wefit.model.Coach;
 import it.uniba.di.sms2021.gruppodkl.wefit.model.User;
@@ -35,6 +37,7 @@ public class CoachHomeFragment extends Fragment implements User.MyImageBitmapCal
     private CardView mRequestsTab;
     private TextView mFollowerRequestTextView;
     private CoachHomeContract.Presenter mPresenter;
+    private CardView mTrainingCard;
 
     public CoachHomeFragment(){
 
@@ -84,6 +87,9 @@ public class CoachHomeFragment extends Fragment implements User.MyImageBitmapCal
         TextView textView = mView.findViewById(R.id.hi_user);
         temp = getResources().getString(R.string.hi_user_string)+ " "+ mCoach.fullName.split(" ")[0]+ " !";
         textView.setText(temp);
+
+        mTrainingCard = mView.findViewById(R.id.training_tab);
+        mTrainingCard.setOnClickListener(v -> openNFCActivity());
 
         mFollowerRequestTextView = mView.findViewById(R.id.follower_request_textview);
 
@@ -143,5 +149,11 @@ public class CoachHomeFragment extends Fragment implements User.MyImageBitmapCal
             mFollowerRequestTextView.setText(R.string.zero_client_request);
         else
             mFollowerRequestTextView.setText(res.getQuantityString(R.plurals.numberClientRequest, num, num));
+    }
+
+
+    private void openNFCActivity(){
+        Intent intent = new Intent(getActivity(), CoachNFCActivity.class);
+        startActivity(intent);
     }
 }

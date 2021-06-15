@@ -66,6 +66,12 @@ public class ClientDAO extends UserDAO {
         void onLastRunLoaded(Run run);
     }
 
+
+    public interface NFCCallback{
+        void notifySuccess();
+    }
+
+
     private static boolean sSuccess;
     private static List<Float> sWeightList;
     private static List<String> sDateList;
@@ -208,6 +214,21 @@ public class ClientDAO extends UserDAO {
                     }
                 });
     }
+
+
+    public static void setCoachFromNFC(String clientMail, String coachMail, NFCCallback callback){
+
+        Map<String, Object> map = new HashMap();
+        map.put(Client.ClientKeys.COACH, coachMail);
+        map.put(Client.ClientKeys.HAS_PENDING_REQUESTS, false);
+
+        FirebaseFirestore.getInstance().collection(Keys.Collections.USERS).document(clientMail)
+                .update(map).addOnCompleteListener(task -> {
+                    if(task.isSuccessful())
+                        callback.notifySuccess();
+        });
+    }
+
 
     /**
      * Il seguente metodo permette di registrare una nuova corsa

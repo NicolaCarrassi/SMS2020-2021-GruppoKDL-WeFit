@@ -106,6 +106,13 @@
         <item name="android:backgroundTintMode">src_over</item>
     </style>
 
+    <!-- Background customLand -->
+    <style name="BackgroundCustomLand" parent="Theme.AppCompat.Light">
+        <item name="android:background">@drawable/backg_land</item>
+        <item name="android:backgroundTint">@color/black_custom</item>
+        <item name="android:backgroundTintMode">src_over</item>
+    </style>
+
     <!-- Icon custom -->
     <style name="BackIconCustom" parent="Theme.AppCompat.Light">
         <item name="android:tint">@color/white</item>

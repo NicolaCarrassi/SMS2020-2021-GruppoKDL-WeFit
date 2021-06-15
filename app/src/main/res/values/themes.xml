@@ -122,6 +122,13 @@
         <item name="android:backgroundTintMode">screen</item>
     </style>
 
+    <!-- Background customLand -->
+    <style name="BackgroundCustomLand" parent="Theme.AppCompat.Light">
+        <item name="android:background">@drawable/backg_land</item>
+        <item name="android:backgroundTint">@color/white_custom</item>
+        <item name="android:backgroundTintMode">screen</item>
+    </style>
+
     <!-- Background custom Run -->
     <style name="BackgroundCustomRun" parent="Theme.AppCompat.Light">
         <item name="android:background">@drawable/doodle1080p</item>

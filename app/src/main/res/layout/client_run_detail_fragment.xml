@@ -13,99 +13,111 @@
 
     <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:orientation="horizontal">
-
-        <TextView
-            android:layout_marginHorizontal="@dimen/margin_horizontal"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="@string/run_date"/>
+        android:layout_height="300dp"
+        android:orientation="vertical"
+        android:layout_marginHorizontal="@dimen/margin_horizontal">
 
         <TextView
             android:id="@+id/run_date"
-            android:layout_marginHorizontal="@dimen/margin_horizontal"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"/>
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center_horizontal"
+            style="@style/custom_h1"
+            android:layout_marginBottom="@dimen/margin_horizontal"
+            android:layout_marginTop="10dp"/>
+
+        <fragment
+            xmlns:map="http://schemas.android.com/apk/res-auto"
+            android:id="@+id/map"
+            android:name="com.google.android.gms.maps.SupportMapFragment"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            tools:context=".RunActivity" />
+
     </LinearLayout>
 
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:orientation="horizontal">
+        android:orientation="horizontal"
+        android:layout_marginHorizontal="30dp"
+        android:layout_marginTop="10dp">
 
-        <TextView
-            android:layout_marginHorizontal="@dimen/margin_horizontal"
-            android:layout_width="wrap_content"
+        <LinearLayout
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="@string/time_elapsed"/>
+            android:orientation="horizontal"
+            android:layout_weight="1">
+            <ImageView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:background="@drawable/map_24"
+                android:backgroundTint="@color/black" />
+            <TextView
+                android:id="@+id/run_distance"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                style="@style/custom_p"
+                android:textSize="18dp"/>
+        </LinearLayout>
 
-        <TextView
-            android:id="@+id/run_time_elapsed"
-            android:layout_marginHorizontal="@dimen/margin_horizontal"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"/>
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:layout_weight="1">
+            <ImageView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:background="@drawable/timer_24"
+                android:backgroundTint="@color/black" />
+            <TextView
+                android:id="@+id/run_time_elapsed"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                style="@style/custom_p"
+                android:textSize="18dp"/>
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:layout_weight="1">
+            <ImageView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:background="@drawable/speed_24"
+                android:backgroundTint="@color/black" />
+            <TextView
+                android:id="@+id/run_avg_speed"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                style="@style/custom_p"
+                android:textSize="18dp"/>
+        </LinearLayout>
+
     </LinearLayout>
 
-
-
     <LinearLayout
+        android:layout_marginTop="@dimen/margin_horizontal"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:orientation="horizontal">
 
         <TextView
-            android:layout_marginHorizontal="@dimen/margin_horizontal"
+            android:layout_marginLeft="@dimen/margin_horizontal"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="@string/calories_burnt"/>
+            android:text="@string/calories_burnt"
+            style="@style/custom_p"/>
 
         <TextView
+            style="@style/custom_p"
+            android:layout_marginLeft="10dp"
             android:id="@+id/run_calories"
-            android:layout_marginHorizontal="@dimen/margin_horizontal"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"/>
     </LinearLayout>
-
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:orientation="horizontal">
-
-        <TextView
-            android:layout_marginHorizontal="@dimen/margin_horizontal"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="@string/distance"/>
-
-        <TextView
-            android:id="@+id/run_distance"
-            android:layout_marginHorizontal="@dimen/margin_horizontal"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"/>
-    </LinearLayout>
-
-
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:orientation="horizontal">
-
-        <TextView
-            android:layout_marginHorizontal="@dimen/margin_horizontal"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="@string/average_speed"/>
-
-        <TextView
-            android:id="@+id/run_avg_speed"
-            android:layout_marginHorizontal="@dimen/margin_horizontal"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"/>
-    </LinearLayout>
-
-
-
-
 
 </LinearLayout>

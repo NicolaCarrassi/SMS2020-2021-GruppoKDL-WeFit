@@ -246,7 +246,7 @@
     <string name="see_statistics">See your statistics</string>
     <string name="my_runs">My runs</string>
     <string name="distance">Distance</string>
-    <string name="calories_burnt">Burnt calories</string>
+    <string name="calories_burnt">With this run you have burnt: </string>
     <string name="no_run">You have registered no runs</string>
     <string name="no_product_shopping_list">Your shopping list is empty</string>
     <string name="no_more_meals_assigned">You have no more meals assigned</string>

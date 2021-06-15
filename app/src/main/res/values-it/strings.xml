@@ -248,7 +248,7 @@
     <string name="see_statistics">Visita le statistiche</string>
     <string name="my_runs">Le mie corse</string>
     <string name="distance">Distanza</string>
-    <string name="calories_burnt">Calorie bruciate</string>
+    <string name="calories_burnt">Con questa corsa hai bruciato:</string>
     <string name="no_run">Non hai effettuato nessuna corsa</string>
     <string name="no_product_shopping_list">La tua lista della spesa é vuota</string>
     <string name="no_more_meals_assigned">Non hai piú altri pasti assegnati</string>

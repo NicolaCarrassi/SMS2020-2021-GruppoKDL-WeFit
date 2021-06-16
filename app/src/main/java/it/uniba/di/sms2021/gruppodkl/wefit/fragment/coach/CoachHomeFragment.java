@@ -37,7 +37,7 @@ public class CoachHomeFragment extends Fragment implements User.MyImageBitmapCal
     private CardView mRequestsTab;
     private TextView mFollowerRequestTextView;
     private CoachHomeContract.Presenter mPresenter;
-    private CardView mTrainingCard;
+    private CardView mNFCCard;
 
     public CoachHomeFragment(){
 
@@ -88,8 +88,8 @@ public class CoachHomeFragment extends Fragment implements User.MyImageBitmapCal
         temp = getResources().getString(R.string.hi_user_string)+ " "+ mCoach.fullName.split(" ")[0]+ " !";
         textView.setText(temp);
 
-        mTrainingCard = mView.findViewById(R.id.training_tab);
-        mTrainingCard.setOnClickListener(v -> openNFCActivity());
+        mNFCCard = mView.findViewById(R.id.nfc_tab);
+        mNFCCard.setOnClickListener(v -> openNFCActivity());
 
         mFollowerRequestTextView = mView.findViewById(R.id.follower_request_textview);
 
@@ -151,6 +151,9 @@ public class CoachHomeFragment extends Fragment implements User.MyImageBitmapCal
             mFollowerRequestTextView.setText(res.getQuantityString(R.plurals.numberClientRequest, num, num));
     }
 
+    /**
+     * Il metodo apre l'activity di aggiunta cliente tramite NFC
+     */
 
     private void openNFCActivity(){
         Intent intent = new Intent(getActivity(), CoachNFCActivity.class);

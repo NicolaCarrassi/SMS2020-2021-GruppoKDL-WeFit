@@ -257,6 +257,7 @@
     <string name="days_label">days</string>
     <string name="shopping_list_text">Your shopping list for the next</string>
     <string name="add_weight_exceeded">You have already added a weight today. Come back tomorrow!</string>
+    <string name="nfc_label">Add a client using NFC</string>
 
     <string name="trained_by_question">Do you want to be trained by </string>
     <string name="pairing_cancelled">Pairing with coach cancelled!</string>

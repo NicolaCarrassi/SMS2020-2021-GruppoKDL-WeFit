@@ -25,6 +25,7 @@
         </ImageView>
 
         <TextView
+            android:layout_marginTop="10dp"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:text="@string/terms_drawer"
@@ -41,7 +42,7 @@
                 android:layout_height="wrap_content"
                 android:orientation="vertical"
                 android:layout_marginHorizontal="30dp"
-                android:layout_marginVertical="30dp">
+                android:layout_marginVertical="5dp">
 
                 <TextView
                     android:layout_width="match_parent"
@@ -49,9 +50,8 @@
                     android:text="@string/terms_and_conditions"
                     android:inputType="textMultiLine"
                     android:textSize="17dp"
-
+                    android:layout_marginBottom="10dp"
                     style="@style/custom_p">
-
                 </TextView>
             </LinearLayout>
         </ScrollView>

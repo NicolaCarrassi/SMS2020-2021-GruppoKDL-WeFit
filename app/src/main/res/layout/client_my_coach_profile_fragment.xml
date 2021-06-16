@@ -27,7 +27,7 @@
         android:layout_width="150dp"
         android:layout_height="150dp"
         app:cardCornerRadius="75dp"
-        android:layout_marginTop="40dp">
+        android:layout_marginTop="20dp">
 
         <ImageView
             android:id="@+id/profile_image_coach"
@@ -51,7 +51,7 @@
         android:layout_height="wrap_content"
         android:orientation="vertical"
         android:layout_marginHorizontal="@dimen/margin_horizontal"
-        android:layout_marginTop="40dp">
+        android:layout_marginTop="20dp">
 
         <TextView
             android:id="@+id/coach_full_name"

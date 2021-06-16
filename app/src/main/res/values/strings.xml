@@ -243,11 +243,13 @@
 
 
     <string name="meal_successfully_added">Meal added successfully!</string>
+    <string name="training_successfully_added">Training added successfully!</string>
     <string name="see_statistics">See your statistics</string>
     <string name="no_run_message">No run found! Press the round button to start one now.</string>
     <string name="my_runs">My runs</string>
-    <string name="distance">Distance</string>
+    <string name="distance">Distance: </string>
     <string name="calories_burnt">With this run you have burnt: </string>
+    <string name="calories_burnt_title">Calories burnt: </string>
     <string name="no_run">You have registered no runs</string>
     <string name="no_product_shopping_list">Your shopping list is empty</string>
     <string name="no_more_meals_assigned">You have no more meals assigned</string>

@@ -1,7 +1,6 @@
 package it.uniba.di.sms2021.gruppodkl.wefit.db;
 
 
-
 import com.google.firebase.firestore.DocumentReference;
 import com.google.firebase.firestore.DocumentSnapshot;
 import com.google.firebase.firestore.FirebaseFirestore;
@@ -9,11 +8,11 @@ import com.google.firebase.firestore.QuerySnapshot;
 import com.google.firebase.firestore.WriteBatch;
 
 import java.text.SimpleDateFormat;
+import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.HashMap;
-import java.util.HashSet;
+import java.util.List;
 import java.util.Map;
-import java.util.Set;
 
 import it.uniba.di.sms2021.gruppodkl.wefit.model.Client;
 import it.uniba.di.sms2021.gruppodkl.wefit.model.Coach;
@@ -60,14 +59,14 @@ public class UserDAO {
          * @param trainingMade nomi degli allenameni svolti
          * @param trainingAssigned nomi degli allenamenti assegnati
          */
-        void trainingLoaded(Set<String> trainingMade, Set<String> trainingAssigned);
+        void trainingLoaded(List<String> trainingMade, List<String> trainingAssigned);
     }
 
 
     private static User sUser;
     private static boolean sResult;
-    private static Set<String> sTrainingMade;
-    private static Set<String> sTrainingAssigned;
+    private static List<String> sTrainingMade;
+    private static List<String> sTrainingAssigned;
 
 
     /**
@@ -189,14 +188,14 @@ public class UserDAO {
         if(sTrainingAssigned != null)
             sTrainingAssigned.clear();
         else
-            sTrainingAssigned = new HashSet<>();
+            sTrainingAssigned = new ArrayList<>();
 
         if(sTrainingMade != null)
             sTrainingMade.clear();
         else
-            sTrainingMade = new HashSet<>();
+            sTrainingMade = new ArrayList<>();
 
-        SimpleDateFormat sdf = new SimpleDateFormat("dd/MM/yy");
+        SimpleDateFormat sdf = new SimpleDateFormat("yyyy/MM/dd");
 
         Calendar cal = Calendar.getInstance();
         cal.add(Calendar.DATE, -7);
@@ -204,26 +203,27 @@ public class UserDAO {
 
         DocumentReference instance = FirebaseFirestore.getInstance().collection(Keys.Collections.USERS).document(clientMail);
 
-        instance.collection(Keys.Collections.COMPLETED_TRAINING)
-                .whereGreaterThan(TrainingDAO.RegisterTrainingKeys.DATE, startDate)
-                .get().addOnCompleteListener(task -> {
-                    if(task.isSuccessful()){
-                        QuerySnapshot snapshots = task.getResult();
-                        for(DocumentSnapshot document : snapshots.getDocuments())
-                            sTrainingMade.add(document.getString(TrainingDAO.RegisterTrainingKeys.TRAINING_NAME));
+        instance.collection(Keys.Collections.TRAINING).get()
+                .addOnCompleteListener(completed -> {
+                    if(completed.isSuccessful()) {
+                        QuerySnapshot querySnapshot = completed.getResult();
+                        for (DocumentSnapshot document : querySnapshot.getDocuments())
+                            sTrainingAssigned.add(document.getString(Training.TrainingKeys.TITLE));
 
-                        instance.collection(Keys.Collections.TRAINING).get()
-                                .addOnCompleteListener(completed -> {
-                                    if(completed.isSuccessful()){
-                                        QuerySnapshot querySnapshot = task.getResult();
-                                        for(DocumentSnapshot document: querySnapshot.getDocuments())
-                                            sTrainingAssigned.add(document.getString(Training.TrainingKeys.TITLE));
+                        instance.collection(Keys.Collections.COMPLETED_TRAINING)
+                                .whereGreaterThan(TrainingDAO.RegisterTrainingKeys.DATE, startDate)
+                                .get().addOnCompleteListener(task -> {
 
-                                        callback.trainingLoaded(sTrainingMade, sTrainingAssigned);
-                                    }
-                                });
-                    }
-        });
-    }
+                                    if (task.isSuccessful()) {
+                                        QuerySnapshot snapshots = task.getResult();
+                                        for (DocumentSnapshot document : snapshots.getDocuments())
+                                            sTrainingMade.add(document.getString(TrainingDAO.RegisterTrainingKeys.TRAINING_NAME));
 
+                                    callback.trainingLoaded(sTrainingMade, sTrainingAssigned);
+                            }
+                        });
+                    }else
+                        callback.trainingLoaded(sTrainingMade, sTrainingAssigned);
+                    });
+            }
 }

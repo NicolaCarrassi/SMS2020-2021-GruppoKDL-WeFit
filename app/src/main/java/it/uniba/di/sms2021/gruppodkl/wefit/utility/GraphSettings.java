@@ -52,6 +52,7 @@ public class GraphSettings {
         graph.addSeries(points);
         graph.getViewport().setXAxisBoundsManual(true);
         graph.getViewport().setYAxisBoundsManual(true);
+        graph.getViewport().setScrollable(true);
 
 
 

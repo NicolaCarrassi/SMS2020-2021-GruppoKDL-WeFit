@@ -216,6 +216,7 @@ public class ClientMyProfileFragment extends Fragment implements ClientProfileFr
         if(!editText.isClickable()) {
             editText.setClickable(true);
             editText.setFocusable(true);
+            editText.setFocusableInTouchMode(true);
             editText.requestFocus();
         }
     }
@@ -238,6 +239,7 @@ public class ClientMyProfileFragment extends Fragment implements ClientProfileFr
      * Il metodo permette di effettuare l'update delle informazioni contenute sul profilo
      */
     private void updateInfo() {
+        resetStatus();
         boolean somethingChanged = false;
         String fullName = mFullNameEditText.getText().toString().trim();
         String gender = mGenderEditText.getText().toString();
@@ -375,6 +377,27 @@ public class ClientMyProfileFragment extends Fragment implements ClientProfileFr
         builder.setNegativeButton(getResources().getString(R.string.back_button), null);
         builder.create().show();
     }
+
+
+    /**
+     * Il seguente metodo permette di far tornare lo stato della pagina
+     * alla situazione iniziale.
+     */
+    private void resetStatus(){
+        mFullNameEditText.setClickable(false);
+        mFullNameEditText.setFocusable(false);
+        mFullNameEditText.setFocusableInTouchMode(false);
+        mGenderEditText.setClickable(false);
+        mGenderEditText.setFocusable(false);
+        mGenderEditText.setFocusableInTouchMode(false);
+        mHeightEditText.setClickable(false);
+        mHeightEditText.setFocusable(false);
+        mHeightEditText.setFocusableInTouchMode(false);
+        mObjectiveEditText.setClickable(false);
+        mObjectiveEditText.setFocusable(false);
+        mObjectiveEditText.setFocusableInTouchMode(false);
+    }
+
 
 
     @Override

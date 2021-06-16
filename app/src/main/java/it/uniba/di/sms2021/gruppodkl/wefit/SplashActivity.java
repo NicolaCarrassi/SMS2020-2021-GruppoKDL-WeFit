@@ -103,6 +103,7 @@ public class SplashActivity extends BaseActivity  implements SplashActivityContr
     @Override
     protected void onResume() {
         super.onResume();
+        Log.d("AOO", getIntent().getAction());
         if(NfcAdapter.ACTION_NDEF_DISCOVERED.equals(getIntent().getAction()))
             processIntent(getIntent());
     }
@@ -142,9 +143,9 @@ public class SplashActivity extends BaseActivity  implements SplashActivityContr
      */
     private void goAhead(){
         final Intent intent;
-        if(FirebaseAuth.getInstance().getCurrentUser() != null)
+        if(FirebaseAuth.getInstance().getCurrentUser() != null) {
             mPresenter.fetchUserData(FirebaseAuth.getInstance().getCurrentUser().getEmail());
-        else {
+        }else {
             intent = new Intent(this, LoginActivity.class);
             startActivity(intent);
             finish();
@@ -185,16 +186,13 @@ public class SplashActivity extends BaseActivity  implements SplashActivityContr
             final SplashActivity activity = this.activityRef.get();
             if(activity == null)
                 Log.d(TAG_LOG, "Perso il riferimento");
-            else
-                switch (msg.what){
-                    case GO_AHEAD_WHAT:
-                        long tempoPassato = SystemClock.uptimeMillis() - activity.mStartTime;
-                        if(tempoPassato >= INTERVALLO_MINIMO && !activity.mIsDone){
-                            activity.mIsDone = true;
-                            activity.goAhead();
-                        }
-                        break;
+            else if (msg.what == GO_AHEAD_WHAT) {
+                long tempoPassato = SystemClock.uptimeMillis() - activity.mStartTime;
+                if (tempoPassato >= INTERVALLO_MINIMO && !activity.mIsDone) {
+                    activity.mIsDone = true;
+                    activity.goAhead();
                 }
+            }
         }
     }
 }

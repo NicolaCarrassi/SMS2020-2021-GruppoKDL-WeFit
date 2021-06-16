@@ -160,7 +160,7 @@ public class ClientRunFragment extends Fragment implements ClientRunContract.Vie
 
     @Override
     public void lastRunEmpty() {
-
+        //TODO da implementare
     }
 
 }

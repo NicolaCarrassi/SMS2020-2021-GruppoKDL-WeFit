@@ -14,6 +14,8 @@
         android:layout_height="wrap_content" />
 
     <LinearLayout
+        android:id="@+id/map_block"
+        android:visibility="visible"
         android:layout_width="match_parent"
         android:layout_height="300dp"
         android:orientation="vertical"
@@ -39,6 +41,8 @@
     </LinearLayout>
 
     <LinearLayout
+        android:id="@+id/stats_block"
+        android:visibility="visible"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:orientation="horizontal"
@@ -103,6 +107,7 @@
 
     <com.google.android.material.button.MaterialButton
         android:id="@+id/run_statistics"
+        android:visibility="visible"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="@string/see_statistics"
@@ -111,6 +116,17 @@
         android:layout_marginTop="10dp"
         android:layout_gravity="center_horizontal"
         android:textSize="13sp"/>
+
+    <TextView
+        android:layout_marginHorizontal="@dimen/margin_horizontal"
+        android:layout_marginTop="@dimen/margin_horizontal"
+        android:gravity="center_horizontal"
+        android:id="@+id/text_no_run"
+        android:visibility="gone"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="@string/no_run_message"
+        style="@style/custom_p"/>
 
     <RelativeLayout
         android:layout_width="match_parent"

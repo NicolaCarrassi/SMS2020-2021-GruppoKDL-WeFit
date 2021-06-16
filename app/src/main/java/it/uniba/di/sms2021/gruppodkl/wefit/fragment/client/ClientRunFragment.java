@@ -10,6 +10,7 @@ import androidx.fragment.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.LinearLayout;
 import android.widget.TextView;
 
 import com.google.android.gms.maps.CameraUpdateFactory;
@@ -45,7 +46,9 @@ public class ClientRunFragment extends Fragment implements ClientRunContract.Vie
     private TextView mDistance;
     private TextView mTime;
     private TextView mSpeed;
-
+    private LinearLayout mMapBlock;
+    private LinearLayout mStatsBlock;
+    private TextView mNoRunMessage;
 
 
 
@@ -102,6 +105,9 @@ public class ClientRunFragment extends Fragment implements ClientRunContract.Vie
         mDistance = layout.findViewById(R.id.distance);
         mSpeed = layout.findViewById(R.id.speed);
         mTime = layout.findViewById(R.id.time);
+        mMapBlock = layout.findViewById(R.id.map_block);
+        mStatsBlock = layout.findViewById(R.id.stats_block);
+        mNoRunMessage = layout.findViewById(R.id.text_no_run);
     }
 
     private void setListener(){
@@ -160,7 +166,10 @@ public class ClientRunFragment extends Fragment implements ClientRunContract.Vie
 
     @Override
     public void lastRunEmpty() {
-        //TODO da implementare
+        mMapBlock.setVisibility(View.GONE);
+        mStatsBlock.setVisibility(View.GONE);
+        mStatsButton.setVisibility(View.GONE);
+        mNoRunMessage.setVisibility(View.VISIBLE);
     }
 
 }

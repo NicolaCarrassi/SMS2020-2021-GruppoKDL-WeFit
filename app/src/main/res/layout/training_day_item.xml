@@ -9,6 +9,7 @@
         android:layout_height="wrap_content"
         android:orientation="horizontal"
         android:layout_marginHorizontal="20dp"
+        android:layout_marginBottom="20dp"
         android:gravity="center_vertical">
 
     <androidx.cardview.widget.CardView
@@ -16,8 +17,7 @@
         android:layout_weight="0.5"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        app:cardCornerRadius="30dp"
-        android:layout_marginVertical="20dp">
+        app:cardCornerRadius="30dp">
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
@@ -51,8 +51,8 @@
                 android:layout_gravity="center_vertical"
                 android:gravity="right">
                 <ImageView
-                    android:layout_width="30dp"
-                    android:layout_height="30dp"
+                    android:layout_width="25dp"
+                    android:layout_height="25dp"
                     android:src="@drawable/timer_icon"
                     android:layout_gravity="center_vertical">
                 </ImageView>

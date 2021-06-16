@@ -133,7 +133,7 @@ public class ClientAddTrainingFragment extends BottomSheetDialogFragment impleme
         mSendBtn.setClickable(false);
 
         String trainingName = (String) mSpinner.getSelectedItem();
-        SimpleDateFormat sdf = new SimpleDateFormat("dd/MM/yy");
+        SimpleDateFormat sdf = new SimpleDateFormat("yyyy/MM/dd");
         String today = sdf.format(new Date());
 
         mPresenter.registerTrainingComplete(mClientMail,trainingName, today);

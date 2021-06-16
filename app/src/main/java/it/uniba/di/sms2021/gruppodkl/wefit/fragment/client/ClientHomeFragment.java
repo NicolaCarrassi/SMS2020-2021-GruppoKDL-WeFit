@@ -8,6 +8,7 @@ import androidx.cardview.widget.CardView;
 import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentActivity;
 
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -163,7 +164,6 @@ public class ClientHomeFragment extends Fragment implements User.MyImageBitmapCa
     @Override
     public void userCompletedTrainings(int completedTrainings, int trainingsNumber, int flag) {
         String text;
-
         switch (flag){
             case Keys.CompletedFlags.NO_DENOMINATOR:
                 text = getResources().getString(R.string.no_trainings_assigned);

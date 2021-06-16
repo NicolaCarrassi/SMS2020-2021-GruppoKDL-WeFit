@@ -151,6 +151,7 @@ public class CoachProfileFragment extends Fragment implements CoachProfileContra
             mFullName.setClickable(true);
             mFullName.setFocusable(true);
             mFullName.setFocusableInTouchMode(true);
+            mFullName.requestFocus();
             checkIfButtonIsActivated();
         });
 
@@ -211,6 +212,7 @@ public class CoachProfileFragment extends Fragment implements CoachProfileContra
      * Il metodo permette di effettuare l'update delle informazioni contenute sul profilo
      */
     private void updateInfo() {
+        resetStatus();
         mUpdateButton.setClickable(false);
         boolean anyChange = false;
         Map<String, Object> map = new HashMap<>();
@@ -337,6 +339,19 @@ public class CoachProfileFragment extends Fragment implements CoachProfileContra
             mNoCertificationAttachedImage.setOnClickListener(null);
         }else
             mNoCertificationAttachedImage.setClickable(true);
+    }
+
+    /**
+     * Il seguente metodo permette di far tornare lo stato della pagina
+     * alla situazione iniziale.
+     */
+    private void resetStatus(){
+        mFullName.setClickable(false);
+        mFullName.setFocusable(false);
+        mFullName.setFocusableInTouchMode(false);
+        mGender.setClickable(false);
+        mGender.setFocusable(false);
+        mGender.setFocusableInTouchMode(false);
     }
 
 }

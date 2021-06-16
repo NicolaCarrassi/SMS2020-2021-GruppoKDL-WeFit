@@ -1,6 +1,7 @@
 package it.uniba.di.sms2021.gruppodkl.wefit.presenter.client;
 
-import java.util.Set;
+
+import java.util.List;
 
 import it.uniba.di.sms2021.gruppodkl.wefit.contract.client.ClientHomeContract;
 import it.uniba.di.sms2021.gruppodkl.wefit.db.UserDAO;
@@ -19,13 +20,14 @@ public class ClientHomePresenter implements ClientHomeContract.Presenter, UserDA
     }
 
     @Override
-    public void trainingLoaded(Set<String> trainingMade, Set<String> trainingAssigned) {
+    public void trainingLoaded(List<String> trainingMade, List<String> trainingAssigned) {
         int trainingTotal = trainingAssigned.size();
         int trainingCompleted = 0;
 
         for(String item : trainingMade)
             if(trainingAssigned.contains(item))
                 trainingCompleted++;
+
 
         if(trainingTotal == 0)
             mView.userCompletedTrainings(trainingCompleted, trainingCompleted, Keys.CompletedFlags.NO_DENOMINATOR);

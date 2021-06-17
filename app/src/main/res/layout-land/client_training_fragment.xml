@@ -24,19 +24,19 @@
             android:text="@string/training_plan"
             style="@style/custom_h1"
             android:textSize="25sp"
-            android:gravity="center_horizontal">
+            android:gravity="center_horizontal"
+            android:layout_marginBottom="5dp">
         </TextView>
 
         <ScrollView
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            >
+            android:layout_height="wrap_content">
 
             <LinearLayout
-                android:layout_width="match_parent"
+                android:layout_width="400dp"
                 android:layout_height="wrap_content"
                 android:orientation="vertical"
-                android:layout_marginTop="@dimen/margin_horizontal">
+                android:layout_gravity="center_horizontal">
 
                 <it.uniba.di.sms2021.gruppodkl.wefit.recyclerview.CustomRecyclerView
                     android:id="@+id/recycler_training_days"

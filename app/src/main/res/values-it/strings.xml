@@ -9,7 +9,7 @@
     <string name="text_label_run">Corsa</string>
 
 
-    <string name="new_user_label"><u>Non sei iscritto? Clicca qui per registrati!</u></string>
+    <string name="new_user_label"><u>Non sei iscritto? Clicca qui per registrarti!</u></string>
     <string name="forgot_password">Ho dimenticato la password</string>
     <string name="otherwise_login_label">Oppure accedi con:</string>
     <string name="forgot_mail_sent">Ti è stata inviata una mail</string>

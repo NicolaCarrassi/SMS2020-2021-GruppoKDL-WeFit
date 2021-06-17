@@ -271,9 +271,7 @@
     <string name="nfc_required_message">L\' NFC sembra essere disattivato, vuoi attivarlo?</string>
 
     <string name="add_training_coach">Aggiungi Allenamento</string>
-
-
-
+    <string name="nfc_activity_message">Avvicinare il dispositivo del cliente, non è necessario che abbia l\' applicazione aperta. Assicurarsi che entrambi i dispositivi abbiano l\' NFC attivo.</string>
 
 
 </resources>

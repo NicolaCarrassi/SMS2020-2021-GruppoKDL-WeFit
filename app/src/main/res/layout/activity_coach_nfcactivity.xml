@@ -1,9 +1,35 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".coach.CoachNFCActivity">
+    android:layout_marginHorizontal="@dimen/margin_horizontal"
+    android:orientation="vertical"
+    tools:context=".coach.CoachNFCActivity"
+    style="@style/BackgroundCustom">
 
-</androidx.constraintlayout.widget.ConstraintLayout>
+    <ImageView
+        android:id="@+id/back_butt"
+        android:layout_width="40dp"
+        android:layout_height="40dp"
+        android:layout_marginTop="@dimen/margin_horizontal"
+        android:background="@drawable/back_24"
+        android:backgroundTint="@color/blue"/>
+
+    <WebView
+        android:layout_marginVertical="@dimen/margin_horizontal"
+        android:layout_gravity="center"
+        android:layout_width="280dp"
+        android:layout_height="wrap_content"
+        android:id="@+id/gif_nfc"/>
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="@string/nfc_activity_message"
+        style="@style/custom_p"
+        android:textAlignment="center"/>
+
+</LinearLayout>

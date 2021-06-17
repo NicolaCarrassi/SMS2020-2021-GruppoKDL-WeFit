@@ -6,6 +6,10 @@ import android.nfc.NdefRecord;
 import android.nfc.NfcAdapter;
 import android.os.Bundle;
 import android.provider.Settings;
+import android.view.View;
+import android.webkit.WebSettings;
+import android.webkit.WebView;
+import android.widget.ImageView;
 
 import androidx.appcompat.app.AlertDialog;
 
@@ -16,13 +20,26 @@ import java.util.Objects;
 import it.uniba.di.sms2021.gruppodkl.wefit.BaseActivity;
 import it.uniba.di.sms2021.gruppodkl.wefit.BuildConfig;
 import it.uniba.di.sms2021.gruppodkl.wefit.R;
+import it.uniba.di.sms2021.gruppodkl.wefit.WeFitApplication;
 
 public class CoachNFCActivity extends BaseActivity {
+
+    private WebView mWebView;
+    private ImageView mBackButton;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_coach_nfcactivity);
+
+        mWebView = findViewById(R.id.gif_nfc);
+        WebSettings webSettings = mWebView.getSettings();
+        webSettings.setJavaScriptEnabled(true);
+        String file = "file:android_res/drawable/nfc_tutorial.gif";
+        mWebView.loadUrl(file);
+
+        mBackButton = findViewById(R.id.back_butt);
+        mBackButton.setOnClickListener(v -> onBackPressed());
 
         NfcAdapter mNfcAdapter = NfcAdapter.getDefaultAdapter(this);
 
@@ -53,5 +70,6 @@ public class CoachNFCActivity extends BaseActivity {
                 });
                 mNfcAdapter.setNdefPushMessage(mNdfMessage, this);
             }
-        }
+    }
+
 }

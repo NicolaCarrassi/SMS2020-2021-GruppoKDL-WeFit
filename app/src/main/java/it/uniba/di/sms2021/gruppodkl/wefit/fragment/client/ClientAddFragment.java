@@ -6,13 +6,17 @@ import android.os.Bundle;
 
 
 import androidx.annotation.NonNull;
+import androidx.coordinatorlayout.widget.CoordinatorLayout;
 import androidx.fragment.app.FragmentTransaction;
 
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.FrameLayout;
 import android.widget.LinearLayout;
 
+import com.google.android.material.bottomsheet.BottomSheetBehavior;
+import com.google.android.material.bottomsheet.BottomSheetDialog;
 import com.google.android.material.bottomsheet.BottomSheetDialogFragment;
 
 import it.uniba.di.sms2021.gruppodkl.wefit.R;
@@ -50,6 +54,18 @@ public class ClientAddFragment extends BottomSheetDialogFragment {
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
         View layout =  inflater.inflate(R.layout.client_add_fragment, container, false);
+
+        getDialog().setOnShowListener(new DialogInterface.OnShowListener() {
+            @Override
+            public void onShow(DialogInterface dialog) {
+                BottomSheetDialog d = (BottomSheetDialog) dialog;
+                FrameLayout bottomSheet = (FrameLayout) d.findViewById(R.id.design_bottom_sheet);
+                CoordinatorLayout coordinatorLayout = (CoordinatorLayout) bottomSheet.getParent();
+                BottomSheetBehavior bottomSheetBehavior = BottomSheetBehavior.from(bottomSheet);
+                bottomSheetBehavior.setPeekHeight(bottomSheet.getHeight());
+                coordinatorLayout.getParent().requestLayout();
+            }
+        });
 
         bind(layout);
         setListener();
@@ -121,4 +137,5 @@ public class ClientAddFragment extends BottomSheetDialogFragment {
         super.onDismiss(dialog);
         mActivity.selectBottomNavigationItem();
     }
+
 }

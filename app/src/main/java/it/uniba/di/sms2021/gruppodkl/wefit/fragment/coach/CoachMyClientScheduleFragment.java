@@ -53,6 +53,7 @@ public class CoachMyClientScheduleFragment extends Fragment implements CoachMyCl
      * this fragment using the provided parameters.
      *
      * @param clientMail mail del cliente di cui si vuole visualizzare la schedule
+     * @param clientName nome del cliente di cui si visualizza la schedule
      * @return A new instance of fragment CoachMyClientScheduleFragment.
      */
     public static CoachMyClientScheduleFragment newInstance(String clientMail, String clientName) {

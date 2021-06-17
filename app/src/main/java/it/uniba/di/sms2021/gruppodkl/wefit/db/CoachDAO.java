@@ -8,6 +8,7 @@ import com.google.firebase.firestore.FirebaseFirestore;
 import com.google.firebase.firestore.Query;
 import com.google.firebase.firestore.QueryDocumentSnapshot;
 import com.google.firebase.firestore.WriteBatch;
+import com.google.firebase.functions.FirebaseFunctions;
 
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -191,6 +192,15 @@ public class CoachDAO extends UserDAO {
         batch.update(updateClientInfo, map);
 
         batch.commit();
+
+        //in caso di richiesta accettata verrà inviata la notifica al cliente
+        if(accepted){
+            Map<String, Object> notificationMap = new HashMap<>();
+            notificationMap.put("coachName", coach.fullName);
+            notificationMap.put("clientMail", request.email);
+
+            FirebaseFunctions.getInstance().getHttpsCallable("acceptedRequest").call(notificationMap);
+        }
     }
 
     /**

@@ -115,6 +115,7 @@ public class ClientAddTrainingFragment extends BottomSheetDialogFragment impleme
 
     @Override
     public void emptyTrainingList() {
+        mProgressIndicator.setVisibility(View.GONE);
         mSendBtn.setVisibility(View.GONE);
         mSendBtn.setVisibility(View.GONE);
         mSpinner.setVisibility(View.GONE);

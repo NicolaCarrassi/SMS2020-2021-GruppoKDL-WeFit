@@ -103,7 +103,6 @@ public class SplashActivity extends BaseActivity  implements SplashActivityContr
     @Override
     protected void onResume() {
         super.onResume();
-        Log.d("AOO", getIntent().getAction());
         if(NfcAdapter.ACTION_NDEF_DISCOVERED.equals(getIntent().getAction()))
             processIntent(getIntent());
     }

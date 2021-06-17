@@ -31,6 +31,8 @@ public class CoachMyClientScheduleFragment extends Fragment implements CoachMyCl
 
     public static final String TAG = CoachMyClientScheduleFragment.class.getSimpleName();
 
+    private static final String CLIENT_NAME = "clientName";
+    private String mClientName;
     private static final String CLIENT_MAIL = "coachMail";
     private String mClientMail;
 
@@ -39,6 +41,7 @@ public class CoachMyClientScheduleFragment extends Fragment implements CoachMyCl
     private CoachMyClientScheduleContract.Presenter mPresenter;
     private boolean mTwoPane = false;
     private boolean mSomethingAdded = false;
+    private TextView mClientNameTextView;
 
 
     public CoachMyClientScheduleFragment() {
@@ -52,10 +55,11 @@ public class CoachMyClientScheduleFragment extends Fragment implements CoachMyCl
      * @param clientMail mail del cliente di cui si vuole visualizzare la schedule
      * @return A new instance of fragment CoachMyClientScheduleFragment.
      */
-    public static CoachMyClientScheduleFragment newInstance(String clientMail) {
+    public static CoachMyClientScheduleFragment newInstance(String clientMail, String clientName) {
         CoachMyClientScheduleFragment fragment = new CoachMyClientScheduleFragment();
         Bundle args = new Bundle();
         args.putString(CLIENT_MAIL, clientMail);
+        args.putString(CLIENT_NAME,clientName);
         fragment.setArguments(args);
         return fragment;
     }
@@ -63,8 +67,10 @@ public class CoachMyClientScheduleFragment extends Fragment implements CoachMyCl
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        if (getArguments() != null)
+        if (getArguments() != null) {
             mClientMail = getArguments().getString(CLIENT_MAIL);
+            mClientName = getArguments().getString(CLIENT_NAME);
+        }
     }
 
     @Override
@@ -79,6 +85,9 @@ public class CoachMyClientScheduleFragment extends Fragment implements CoachMyCl
             WeFitApplication.CallbackOperations act = (WeFitApplication.CallbackOperations) getActivity();
             ((WeFitApplication) getActivity().getApplicationContext()).setToolbar(view,act);
         }
+
+        mClientNameTextView = view.findViewById(R.id.client_name);
+        mClientNameTextView.setText(mClientName);
 
         mPresenter = new CoachMyClientSchedulePresenter(this, mClientMail);
 

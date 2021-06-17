@@ -62,7 +62,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     style="@style/MaterialButtonCustom"
-                    android:text="@string/add_training"
+                    android:text="@string/add_training_coach"
                     android:lines="2"
                     android:maxLines="2"
                     android:layout_gravity="center_horizontal"/>

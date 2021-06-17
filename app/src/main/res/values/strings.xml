@@ -12,7 +12,7 @@
     <string name="email" translatable="false">Email</string>
     <string name="password" translatable="false">Password</string>
     <string name="login" translatable="false">Login</string>
-    <string name="new_user_label">New user? Sign up</string>
+    <string name="new_user_label"><u>New user? Click here to sign up!</u></string>
     <string name="forgot_password">I forgot my password</string>
     <string name="otherwise_login_label">Otherwise login with:</string>
     <string name="forgot_mail_sent">Email sent</string>
@@ -138,7 +138,7 @@
     <string name="decline">Decline</string>
     <string name="no_requests">There are no requests</string>
     <string name="request_sent">You have already sent a request to a coach</string>
-    <string name="follower_request">Follower request</string>
+    <string name="follower_request">NEW CLIENT REQUEST</string>
 
     <!-- PLURALS -->
     <plurals name="numberClientRequest">
@@ -260,7 +260,7 @@
     <string name="days_label">days</string>
     <string name="shopping_list_text">Your shopping list for the next</string>
     <string name="add_weight_exceeded">You have already added a weight today. Come back tomorrow!</string>
-    <string name="nfc_label">Add a client using NFC</string>
+    <string name="nfc_label">ADD A CLIENT USING NFC</string>
 
     <string name="trained_by_question">Do you want to be trained by </string>
     <string name="pairing_cancelled">Pairing with coach cancelled!</string>
@@ -268,5 +268,6 @@
     <string name="nfc_required">NFC Active Required</string>
     <string name="nfc_required_message">Your NFC seems to be disabled, do you want to enable it?</string>
 
+    <string name="add_training_coach">Add Training Day</string>
 
 </resources>

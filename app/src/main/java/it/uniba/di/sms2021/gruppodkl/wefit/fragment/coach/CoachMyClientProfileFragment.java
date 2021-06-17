@@ -118,7 +118,8 @@ public class CoachMyClientProfileFragment extends Fragment implements CoachMyCli
     }
 
     private void goClientTraining(){
-        CoachMyClientScheduleFragment fragment = CoachMyClientScheduleFragment.newInstance(mClientMail);
+
+        CoachMyClientScheduleFragment fragment = CoachMyClientScheduleFragment.newInstance(mClientMail, mClientProfile.fullName);
 
         assert getActivity() != null;
         getActivity().getSupportFragmentManager().beginTransaction().replace(R.id.anchor_point, fragment,CoachMyClientScheduleFragment.TAG)

@@ -50,128 +50,121 @@
     
             <ImageView
                 android:id="@+id/edit_pfp"
-                android:layout_width="35dp"
-                android:layout_height="35dp"
+                android:layout_width="30dp"
+                android:layout_height="30dp"
+                android:layout_marginBottom="20dp"
                 android:background="@drawable/pencil_icon"
-                android:layout_marginStart="10dp"
                 android:layout_gravity="bottom"
                 android:backgroundTint="@color/black"
                 android:contentDescription="@string/edit_pfp"/>
     
         </LinearLayout>
-    
-    
+
         <LinearLayout
-            android:baselineAligned="false"
+            android:layout_marginTop="@dimen/margin_horizontal"
+            android:layout_marginHorizontal="@dimen/margin_horizontal"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:orientation="horizontal"
-            android:layout_marginTop="10dp">
-    
+            android:orientation="vertical">
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:orientation="vertical"
-                android:layout_weight="0.2"
-                android:layout_marginStart="30dp">
-    
+                android:orientation="horizontal">
+
                 <EditText
+                    android:layout_weight="1"
                     android:id="@+id/profile_full_name"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:hint="@string/full_name"
                     android:layout_gravity="start"
+                    android:inputType="text"
                     android:clickable="false"
                     android:focusable="false"
-                    android:inputType="text"
                     style="@style/custom_p"/>
-    
+
+                <ImageView
+                    android:layout_gravity="center_vertical"
+                    android:id="@+id/edit_full_name"
+                    android:layout_width="25dp"
+                    android:layout_height="25dp"
+                    android:background="@drawable/pencil_icon"
+                    android:backgroundTint="?attr/colorOnPrimary"
+                    android:contentDescription="@string/edit_name"
+                    android:clickable="true"
+                    android:focusable="true"/>
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal">
+
                 <EditText
+                    android:layout_weight="1"
                     android:id="@+id/profile_gender_text"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:hint="@string/gender"
                     android:layout_gravity="start"
-    
+                    android:inputType="text"
                     android:clickable="false"
                     android:focusable="false"
-                    android:inputType="text"
                     style="@style/custom_p"/>
-                
-                <LinearLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="match_parent"
-                    android:orientation="horizontal"
-                    android:layout_marginTop="5dp"
-                    android:layout_marginBottom="3dp">
-    
-                    <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="match_parent"
-                        android:text="@string/email_hint"
-                        android:layout_marginStart="5dp"
-                        android:clickable="false"
-                        style="@style/custom_p"/>
-                    <TextView
-                        android:id="@+id/profile_email"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:hint="@string/email"
-                        android:clickable="false"
-                        style="@style/custom_p"
-                        android:layout_marginStart="2dp"/>
-                </LinearLayout>
-                <View
-                    android:layout_width="match_parent"
-                    android:layout_height="1dp"
-                    android:layout_marginHorizontal="3dp"
-                    android:background="@color/black"
-                    android:alpha="0.5"/>
-                
-                <View
-                    android:layout_width="match_parent"
-                    android:layout_height="1dp"
-                    android:layout_marginHorizontal="5dp"
-                    android:background="@color/black"
-                    android:alpha="0.5"/>
-            </LinearLayout>
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:orientation="vertical"
-                android:layout_weight="0.8"
-    
-                android:gravity="center|top"
-                android:layout_marginEnd="20dp">
-    
-                <ImageView
-                    android:id="@+id/edit_full_name"
-                    android:layout_width="30dp"
-                    android:layout_height="30dp"
-                    android:background="@drawable/pencil_icon"
-                    android:backgroundTint="@color/black"
-                    android:contentDescription="@string/edit_name"
-                    android:clickable="true"
-                    android:focusable="true"
-                    android:layout_marginTop="15dp"
-                    android:layout_marginBottom="20dp"
-                    />
 
                 <ImageView
+                    android:layout_gravity="center_vertical"
                     android:id="@+id/edit_gender"
-                    android:layout_width="30dp"
-
+                    android:layout_width="25dp"
+                    android:layout_height="25dp"
                     android:background="@drawable/pencil_icon"
-
-                    android:backgroundTint="@color/black"
+                    android:backgroundTint="?attr/colorOnPrimary"
                     android:contentDescription="@string/edit_gender"
-                    android:layout_height="30dp"
-                    android:layout_marginBottom="15dp"/>
+                    android:clickable="true"
+                    android:focusable="true"/>
+
             </LinearLayout>
         </LinearLayout>
+
+        <LinearLayout
+            android:layout_marginHorizontal="@dimen/margin_horizontal"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:layout_marginTop="10dp">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:text="Email: "
+                android:layout_gravity="center_vertical"
+                android:layout_marginStart="5dp"
+                android:clickable="false"
+                style="@style/custom_p"/>
+            <TextView
+                android:id="@+id/profile_email"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:hint="@string/email"
+                android:clickable="false"
+                style="@style/custom_p"
+                android:layout_gravity="center_vertical"
+                android:textSize="17dp"
+                android:layout_marginLeft="2dp"/>
+        </LinearLayout>
+
+        <View
+            android:id="@+id/zero_separation"
+            android:layout_width="match_parent"
+            android:layout_height="2dp"
+            android:background="?attr/colorPrimary"
+            android:layout_marginVertical="20dp"
+            android:layout_marginHorizontal="40dp"
+            android:layout_marginBottom="25dp"
+            android:elevation="2dp"/>
     
         <TextView
-            android:layout_marginTop="10dp"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:gravity="center_horizontal"
@@ -203,7 +196,7 @@
             android:layout_width="match_parent"
             android:layout_height="2dp"
             android:background="?attr/colorPrimary"
-            android:layout_marginVertical="5dp"
+            android:layout_marginVertical="20dp"
             android:layout_marginHorizontal="40dp"
             android:layout_marginBottom="25dp"
             android:elevation="2dp"/>
@@ -216,7 +209,7 @@
             android:textSize="20sp"
             android:textStyle="bold"
             android:gravity="center"
-            android:layout_marginVertical="15dp"/>
+            android:layout_marginBottom="10dp"/>
 
         <ImageView
             android:id="@+id/send_certification"

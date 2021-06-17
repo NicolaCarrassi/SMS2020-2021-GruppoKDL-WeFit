@@ -38,7 +38,8 @@
                 android:layout_height="wrap_content"
                 android:orientation="vertical"
                 android:gravity="center"
-                android:layout_gravity="center">
+                android:layout_gravity="center"
+                android:layout_marginRight="10dp">
                 <TextView
                     android:id="@+id/client_name"
                     android:layout_width="match_parent"
@@ -47,7 +48,7 @@
                     android:layout_gravity="center_horizontal"
                     android:gravity="center"
                     android:textColor="@color/white"
-                    style="@style/custom_h1">
+                    style="@style/custom_h2">
                 </TextView>
             </LinearLayout>
         </LinearLayout>

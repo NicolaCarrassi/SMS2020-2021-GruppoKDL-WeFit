@@ -9,7 +9,7 @@
     <string name="text_label_run">Corsa</string>
 
 
-    <string name="new_user_label">Non sei iscritto? Registrati</string>
+    <string name="new_user_label"><u>Non sei iscritto? Clicca qui per registrati!</u></string>
     <string name="forgot_password">Ho dimenticato la password</string>
     <string name="otherwise_login_label">Oppure accedi con:</string>
     <string name="forgot_mail_sent">Ti è stata inviata una mail</string>
@@ -75,7 +75,7 @@
     <string name="edit_height">Aggiorna la tua altezza</string>
     <string name="edit_objective">Modifica il tuo obiettivo</string>
     <string name="client_current_weight">Peso attuale: </string>
-    <string name="btn_save_update">Aggiorna</string>
+    <string name="btn_save_update">Modificar</string>
     <string name="edit_pfp">Modifica la foto del profilo</string>
     <string name="confirm">Conferma</string>
     <string name="update_successful">Profilo aggiornato con successo</string>
@@ -134,7 +134,7 @@
     <string name="decline">Rifiuta</string>
     <string name="no_requests">Non ci sono richieste</string>
     <string name="request_sent">Hai giá mandato la richiesta</string>
-    <string name="follower_request">Richieste di segui</string>
+    <string name="follower_request">RICHIESTE NUOVI CLIENTI</string>
 
     <!-- PLURALS-->
     <plurals name="numberClientRequest">
@@ -262,7 +262,7 @@
     <string name="time_elapsed">Tempo impiegato: </string>
     <string name="shopping_list_text">La tua lista della spesa per i prossimi</string>
     <string name="days_label">giorni</string>
-    <string name="nfc_label">Aggiungi un cliente usando l\'NFC</string>
+    <string name="nfc_label">AGGIUNGI UN CLIENTE USANDO L\'NFC</string>
 
     <string name="trained_by_question">Vorresti essere seguito da </string>
     <string name="pairing_cancelled">Accoppiamento con il coach annullato!</string>
@@ -270,6 +270,7 @@
     <string name="nfc_required">NFC attivo richiesto</string>
     <string name="nfc_required_message">L\' NFC sembra essere disattivato, vuoi attivarlo?</string>
 
+    <string name="add_training_coach">Aggiungi Allenamento</string>
 
 
 

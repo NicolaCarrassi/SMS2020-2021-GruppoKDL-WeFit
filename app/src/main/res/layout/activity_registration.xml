@@ -194,6 +194,7 @@
             android:layout_height="wrap_content"
             android:text="@string/role_label"
             android:gravity="center"
+            style="@style/custom_h2"
             />
 
             <RadioGroup
@@ -214,6 +215,7 @@
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
                     android:text="@string/coach_label"
+                    style="@style/custom_p"
                     android:gravity="center"
                     android:layout_marginRight="10dp"/>
 
@@ -221,6 +223,7 @@
                     android:id="@+id/radio_client"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
+                    style="@style/custom_p"
                     android:layout_weight="1"
                     android:text="@string/client_label"
                     android:gravity="center"/>
@@ -250,6 +253,7 @@
         </LinearLayout>
 
         <LinearLayout
+            android:layout_marginTop="@dimen/margin_horizontal"
             android:id="@+id/register_anchor_point"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"

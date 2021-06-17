@@ -98,7 +98,6 @@
             android:layout_height="wrap_content"
             android:layout_marginHorizontal="30dp"
             android:gravity="center"
-            android:lines="5"
             android:maxLines="5"
             android:layout_marginVertical="20dp"/>
 

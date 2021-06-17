@@ -35,7 +35,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="@string/personal_trainer"
-        android:layout_marginHorizontal="140dp"
+        android:layout_marginLeft="140dp"
         android:layoutDirection="inherit"
         />
 
@@ -45,7 +45,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="@string/dietician"
-        android:layout_marginHorizontal="140dp"
+        android:layout_marginLeft="140dp"
         android:layoutDirection="inherit"/>
 
     <View

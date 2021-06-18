@@ -10,7 +10,7 @@ import java.util.Date;
 import java.util.List;
 
 import it.uniba.di.sms2021.gruppokdl.wefit.R;
-import it.uniba.di.sms2021.gruppokdl.wefit.contract.client.ClientAddMealContract;
+import it.uniba.di.sms2021.gruppokdl.wefit.client.contract.ClientAddMealContract;
 import it.uniba.di.sms2021.gruppokdl.wefit.db.MealsDAO;
 import it.uniba.di.sms2021.gruppokdl.wefit.model.Meal;
 import it.uniba.di.sms2021.gruppokdl.wefit.utility.DayOfTheWeek;

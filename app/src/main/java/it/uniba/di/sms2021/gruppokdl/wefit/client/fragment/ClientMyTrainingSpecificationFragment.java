@@ -1,4 +1,4 @@
-package it.uniba.di.sms2021.gruppokdl.wefit.fragment.client;
+package it.uniba.di.sms2021.gruppokdl.wefit.client.fragment;
 
 import android.os.Bundle;
 import android.view.LayoutInflater;
@@ -14,10 +14,10 @@ import com.firebase.ui.firestore.paging.FirestorePagingAdapter;
 
 import it.uniba.di.sms2021.gruppokdl.wefit.R;
 import it.uniba.di.sms2021.gruppokdl.wefit.WeFitApplication;
-import it.uniba.di.sms2021.gruppokdl.wefit.contract.client.ClientTrainingSpecificationContract;
+import it.uniba.di.sms2021.gruppokdl.wefit.client.contract.ClientTrainingSpecificationContract;
 import it.uniba.di.sms2021.gruppokdl.wefit.model.Exercise;
 import it.uniba.di.sms2021.gruppokdl.wefit.model.Training;
-import it.uniba.di.sms2021.gruppokdl.wefit.presenter.client.ClientMyTrainingSpecificationPresenter;
+import it.uniba.di.sms2021.gruppokdl.wefit.client.presenter.ClientMyTrainingSpecificationPresenter;
 import it.uniba.di.sms2021.gruppokdl.wefit.recyclerview.CustomRecyclerView;
 import it.uniba.di.sms2021.gruppokdl.wefit.utility.DayOfTheWeek;
 import it.uniba.di.sms2021.gruppokdl.wefit.viewholder.TrainingDetailViewHolder;

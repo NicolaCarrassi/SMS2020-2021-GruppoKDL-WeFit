@@ -7,7 +7,7 @@ import com.firebase.ui.firestore.paging.FirestorePagingOptions;
 import com.google.firebase.firestore.Query;
 
 import it.uniba.di.sms2021.gruppokdl.wefit.client.adapter.ClientTrainingSpecificationListAdapter;
-import it.uniba.di.sms2021.gruppokdl.wefit.contract.client.ClientTrainingSpecificationContract;
+import it.uniba.di.sms2021.gruppokdl.wefit.client.contract.ClientTrainingSpecificationContract;
 import it.uniba.di.sms2021.gruppokdl.wefit.db.TrainingDAO;
 import it.uniba.di.sms2021.gruppokdl.wefit.model.Exercise;
 import it.uniba.di.sms2021.gruppokdl.wefit.model.Training;

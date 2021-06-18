@@ -1,37 +1,33 @@
-package it.uniba.di.sms2021.gruppokdl.wefit.fragment.client;
+package it.uniba.di.sms2021.gruppokdl.wefit.client.fragment;
 
 import android.content.SharedPreferences;
-import android.graphics.DashPathEffect;
 import android.graphics.drawable.AnimatedVectorDrawable;
 import android.os.Bundle;
 
 
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
-import android.widget.TextView;
 
 import androidx.preference.PreferenceManager;
 
 import com.google.android.material.bottomsheet.BottomSheetDialogFragment;
 import com.google.android.material.button.MaterialButton;
 
-import org.w3c.dom.Text;
+
 
 import java.math.BigDecimal;
-import java.text.DateFormat;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 
 import it.uniba.di.sms2021.gruppokdl.wefit.R;
 import it.uniba.di.sms2021.gruppokdl.wefit.WeFitApplication;
-import it.uniba.di.sms2021.gruppokdl.wefit.contract.client.ClientAddWeightContract;
+import it.uniba.di.sms2021.gruppokdl.wefit.client.contract.ClientAddWeightContract;
 import it.uniba.di.sms2021.gruppokdl.wefit.model.Client;
-import it.uniba.di.sms2021.gruppokdl.wefit.presenter.client.ClientAddWeightPresenter;
+import it.uniba.di.sms2021.gruppokdl.wefit.client.presenter.ClientAddWeightPresenter;
 
 
 public class ClientAddWeightFragment extends BottomSheetDialogFragment implements ClientAddWeightContract.View {

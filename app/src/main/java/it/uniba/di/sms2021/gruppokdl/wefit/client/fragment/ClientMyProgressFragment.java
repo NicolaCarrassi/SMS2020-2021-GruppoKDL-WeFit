@@ -1,4 +1,4 @@
-package it.uniba.di.sms2021.gruppokdl.wefit.fragment.client;
+package it.uniba.di.sms2021.gruppokdl.wefit.client.fragment;
 
 import android.os.Bundle;
 import android.view.LayoutInflater;
@@ -16,9 +16,9 @@ import java.util.List;
 
 import it.uniba.di.sms2021.gruppokdl.wefit.R;
 import it.uniba.di.sms2021.gruppokdl.wefit.WeFitApplication;
-import it.uniba.di.sms2021.gruppokdl.wefit.contract.client.ClientProgressContract;
+import it.uniba.di.sms2021.gruppokdl.wefit.client.contract.ClientProgressContract;
 import it.uniba.di.sms2021.gruppokdl.wefit.model.Client;
-import it.uniba.di.sms2021.gruppokdl.wefit.presenter.client.ClientProgressPresenter;
+import it.uniba.di.sms2021.gruppokdl.wefit.client.presenter.ClientProgressPresenter;
 import it.uniba.di.sms2021.gruppokdl.wefit.utility.GraphSettings;
 
 

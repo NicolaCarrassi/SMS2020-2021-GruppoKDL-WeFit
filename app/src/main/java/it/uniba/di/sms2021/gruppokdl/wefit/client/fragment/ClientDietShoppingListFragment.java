@@ -1,4 +1,4 @@
-package it.uniba.di.sms2021.gruppokdl.wefit.fragment.client;
+package it.uniba.di.sms2021.gruppokdl.wefit.client.fragment;
 
 import android.os.Bundle;
 import android.view.LayoutInflater;
@@ -18,8 +18,8 @@ import java.util.Map;
 import it.uniba.di.sms2021.gruppokdl.wefit.R;
 import it.uniba.di.sms2021.gruppokdl.wefit.WeFitApplication;
 import it.uniba.di.sms2021.gruppokdl.wefit.client.adapter.ClientShoppingListAdapter;
-import it.uniba.di.sms2021.gruppokdl.wefit.contract.client.ClientDietShoppingListContract;
-import it.uniba.di.sms2021.gruppokdl.wefit.presenter.client.ClientDietShoppingListPresenter;
+import it.uniba.di.sms2021.gruppokdl.wefit.client.contract.ClientDietShoppingListContract;
+import it.uniba.di.sms2021.gruppokdl.wefit.client.presenter.ClientDietShoppingListPresenter;
 import it.uniba.di.sms2021.gruppokdl.wefit.recyclerview.CustomRecyclerView;
 
 

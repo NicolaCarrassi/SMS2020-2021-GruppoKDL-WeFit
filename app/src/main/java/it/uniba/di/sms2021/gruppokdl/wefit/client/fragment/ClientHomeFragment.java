@@ -1,4 +1,4 @@
-package it.uniba.di.sms2021.gruppokdl.wefit.fragment.client;
+package it.uniba.di.sms2021.gruppokdl.wefit.client.fragment;
 
 import android.content.Context;
 import android.os.Bundle;
@@ -8,7 +8,7 @@ import androidx.cardview.widget.CardView;
 import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentActivity;
 
-import android.util.Log;
+
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -17,10 +17,10 @@ import android.widget.TextView;
 
 import it.uniba.di.sms2021.gruppokdl.wefit.R;
 import it.uniba.di.sms2021.gruppokdl.wefit.WeFitApplication;
-import it.uniba.di.sms2021.gruppokdl.wefit.contract.client.ClientHomeContract;
+import it.uniba.di.sms2021.gruppokdl.wefit.client.contract.ClientHomeContract;
 import it.uniba.di.sms2021.gruppokdl.wefit.model.Client;
 import it.uniba.di.sms2021.gruppokdl.wefit.model.User;
-import it.uniba.di.sms2021.gruppokdl.wefit.presenter.client.ClientHomePresenter;
+import it.uniba.di.sms2021.gruppokdl.wefit.client.presenter.ClientHomePresenter;
 import it.uniba.di.sms2021.gruppokdl.wefit.utility.Keys;
 
 

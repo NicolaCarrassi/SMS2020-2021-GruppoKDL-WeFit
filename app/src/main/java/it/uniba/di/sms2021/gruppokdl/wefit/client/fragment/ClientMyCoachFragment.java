@@ -1,4 +1,4 @@
-package it.uniba.di.sms2021.gruppokdl.wefit.fragment.client;
+package it.uniba.di.sms2021.gruppokdl.wefit.client.fragment;
 
 import android.app.AlertDialog;
 import android.content.Context;
@@ -23,11 +23,11 @@ import java.util.Map;
 import it.uniba.di.sms2021.gruppokdl.wefit.client.AddFeedbackDialog;
 import it.uniba.di.sms2021.gruppokdl.wefit.R;
 import it.uniba.di.sms2021.gruppokdl.wefit.WeFitApplication;
-import it.uniba.di.sms2021.gruppokdl.wefit.contract.client.ClientMyCoachContract;
+import it.uniba.di.sms2021.gruppokdl.wefit.client.contract.ClientMyCoachContract;
 import it.uniba.di.sms2021.gruppokdl.wefit.model.Client;
 import it.uniba.di.sms2021.gruppokdl.wefit.model.Coach;
 import it.uniba.di.sms2021.gruppokdl.wefit.model.User;
-import it.uniba.di.sms2021.gruppokdl.wefit.presenter.client.ClientMyCoachPresenter;
+import it.uniba.di.sms2021.gruppokdl.wefit.client.presenter.ClientMyCoachPresenter;
 import it.uniba.di.sms2021.gruppokdl.wefit.utility.Keys;
 
 public class ClientMyCoachFragment extends Fragment implements ClientMyCoachContract.View, User.MyImageBitmapCallback {

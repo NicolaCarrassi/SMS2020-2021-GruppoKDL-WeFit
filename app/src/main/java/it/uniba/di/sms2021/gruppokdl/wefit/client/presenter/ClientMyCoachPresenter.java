@@ -3,7 +3,7 @@ package it.uniba.di.sms2021.gruppokdl.wefit.client.presenter;
 import java.util.HashMap;
 import java.util.Map;
 
-import it.uniba.di.sms2021.gruppokdl.wefit.contract.client.ClientMyCoachContract;
+import it.uniba.di.sms2021.gruppokdl.wefit.client.contract.ClientMyCoachContract;
 import it.uniba.di.sms2021.gruppokdl.wefit.db.ClientDAO;
 import it.uniba.di.sms2021.gruppokdl.wefit.db.CoachDAO;
 import it.uniba.di.sms2021.gruppokdl.wefit.db.UserDAO;

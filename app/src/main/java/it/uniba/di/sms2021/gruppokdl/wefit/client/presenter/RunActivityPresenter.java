@@ -27,7 +27,7 @@ import java.util.List;
 import java.util.concurrent.TimeUnit;
 
 import it.uniba.di.sms2021.gruppokdl.wefit.R;
-import it.uniba.di.sms2021.gruppokdl.wefit.contract.client.RunActivityContract;
+import it.uniba.di.sms2021.gruppokdl.wefit.client.contract.RunActivityContract;
 import it.uniba.di.sms2021.gruppokdl.wefit.db.ClientDAO;
 import it.uniba.di.sms2021.gruppokdl.wefit.model.Run;
 import it.uniba.di.sms2021.gruppokdl.wefit.service.LocationService;

@@ -1,4 +1,4 @@
-package it.uniba.di.sms2021.gruppokdl.wefit.fragment.client;
+package it.uniba.di.sms2021.gruppokdl.wefit.client.fragment;
 
 import android.os.Bundle;
 
@@ -23,9 +23,9 @@ import java.util.Objects;
 import it.uniba.di.sms2021.gruppokdl.wefit.R;
 import it.uniba.di.sms2021.gruppokdl.wefit.WeFitApplication;
 import it.uniba.di.sms2021.gruppokdl.wefit.client.adapter.ClientDietDiaryAdapter;
-import it.uniba.di.sms2021.gruppokdl.wefit.contract.client.ClientDietDiaryContract;
+import it.uniba.di.sms2021.gruppokdl.wefit.client.contract.ClientDietDiaryContract;
 import it.uniba.di.sms2021.gruppokdl.wefit.model.Meal;
-import it.uniba.di.sms2021.gruppokdl.wefit.presenter.client.ClientDietDiaryPresenter;
+import it.uniba.di.sms2021.gruppokdl.wefit.client.presenter.ClientDietDiaryPresenter;
 import it.uniba.di.sms2021.gruppokdl.wefit.recyclerview.CustomRecyclerView;
 
 

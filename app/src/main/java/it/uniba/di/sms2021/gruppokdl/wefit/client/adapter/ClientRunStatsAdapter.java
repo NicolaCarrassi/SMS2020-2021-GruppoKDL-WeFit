@@ -10,7 +10,7 @@ import com.firebase.ui.firestore.paging.FirestorePagingAdapter;
 import com.firebase.ui.firestore.paging.FirestorePagingOptions;
 
 import it.uniba.di.sms2021.gruppokdl.wefit.R;
-import it.uniba.di.sms2021.gruppokdl.wefit.contract.client.ClientRunStatsContract;
+import it.uniba.di.sms2021.gruppokdl.wefit.client.contract.ClientRunStatsContract;
 import it.uniba.di.sms2021.gruppokdl.wefit.model.Run;
 import it.uniba.di.sms2021.gruppokdl.wefit.client.viewholder.ClientRunStatsViewHolder;
 

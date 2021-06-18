@@ -1,4 +1,4 @@
-package it.uniba.di.sms2021.gruppokdl.wefit.contract.client;
+package it.uniba.di.sms2021.gruppokdl.wefit.client.contract;
 
 public interface ClientMainActivityContract {
 

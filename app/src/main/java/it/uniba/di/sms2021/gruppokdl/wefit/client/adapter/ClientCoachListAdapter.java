@@ -11,7 +11,7 @@ import com.firebase.ui.firestore.paging.FirestorePagingAdapter;
 import com.firebase.ui.firestore.paging.FirestorePagingOptions;
 
 import it.uniba.di.sms2021.gruppokdl.wefit.R;
-import it.uniba.di.sms2021.gruppokdl.wefit.contract.client.ClientCoachListContract;
+import it.uniba.di.sms2021.gruppokdl.wefit.client.contract.ClientCoachListContract;
 import it.uniba.di.sms2021.gruppokdl.wefit.model.Coach;
 import it.uniba.di.sms2021.gruppokdl.wefit.client.viewholder.ClientCoachListViewHolder;
 

@@ -12,7 +12,7 @@ import com.firebase.ui.firestore.paging.FirestorePagingOptions;
 import java.util.Objects;
 
 import it.uniba.di.sms2021.gruppokdl.wefit.R;
-import it.uniba.di.sms2021.gruppokdl.wefit.contract.client.ClientMyTrainingContract;
+import it.uniba.di.sms2021.gruppokdl.wefit.client.contract.ClientMyTrainingContract;
 import it.uniba.di.sms2021.gruppokdl.wefit.model.Training;
 import it.uniba.di.sms2021.gruppokdl.wefit.viewholder.TrainingViewHolder;
 

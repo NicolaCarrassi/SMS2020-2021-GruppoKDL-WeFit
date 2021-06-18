@@ -1,6 +1,6 @@
 package it.uniba.di.sms2021.gruppokdl.wefit.client.presenter;
 
-import it.uniba.di.sms2021.gruppokdl.wefit.contract.client.ClientMainActivityContract;
+import it.uniba.di.sms2021.gruppokdl.wefit.client.contract.ClientMainActivityContract;
 import it.uniba.di.sms2021.gruppokdl.wefit.db.ClientDAO;
 
 public class ClientMainActivityPresenter implements ClientMainActivityContract.Presenter, ClientDAO.NFCCallback {

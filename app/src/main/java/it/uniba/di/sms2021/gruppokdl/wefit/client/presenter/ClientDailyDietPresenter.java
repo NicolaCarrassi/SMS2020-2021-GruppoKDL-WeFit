@@ -5,7 +5,7 @@ import androidx.paging.PagedList;
 import com.firebase.ui.firestore.paging.FirestorePagingOptions;
 
 import it.uniba.di.sms2021.gruppokdl.wefit.client.adapter.ClientDietDayAdapter;
-import it.uniba.di.sms2021.gruppokdl.wefit.contract.client.ClientDailyDietContract;
+import it.uniba.di.sms2021.gruppokdl.wefit.client.contract.ClientDailyDietContract;
 import it.uniba.di.sms2021.gruppokdl.wefit.db.ClientDAO;
 import it.uniba.di.sms2021.gruppokdl.wefit.model.Meal;
 

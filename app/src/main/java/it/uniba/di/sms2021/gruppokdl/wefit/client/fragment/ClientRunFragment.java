@@ -1,4 +1,4 @@
-package it.uniba.di.sms2021.gruppokdl.wefit.fragment.client;
+package it.uniba.di.sms2021.gruppokdl.wefit.client.fragment;
 
 import android.content.Intent;
 import android.os.Bundle;
@@ -28,10 +28,10 @@ import java.util.List;
 import it.uniba.di.sms2021.gruppokdl.wefit.R;
 import it.uniba.di.sms2021.gruppokdl.wefit.client.RunActivity;
 import it.uniba.di.sms2021.gruppokdl.wefit.WeFitApplication;
-import it.uniba.di.sms2021.gruppokdl.wefit.contract.client.ClientRunContract;
+import it.uniba.di.sms2021.gruppokdl.wefit.client.contract.ClientRunContract;
 import it.uniba.di.sms2021.gruppokdl.wefit.model.MyLocation;
 import it.uniba.di.sms2021.gruppokdl.wefit.model.Run;
-import it.uniba.di.sms2021.gruppokdl.wefit.presenter.client.ClientRunPresenter;
+import it.uniba.di.sms2021.gruppokdl.wefit.client.presenter.ClientRunPresenter;
 
 
 public class ClientRunFragment extends Fragment implements ClientRunContract.View, OnMapReadyCallback {

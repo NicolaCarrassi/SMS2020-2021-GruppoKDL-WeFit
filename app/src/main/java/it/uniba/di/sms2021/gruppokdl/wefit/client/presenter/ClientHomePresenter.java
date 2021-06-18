@@ -3,7 +3,7 @@ package it.uniba.di.sms2021.gruppokdl.wefit.client.presenter;
 
 import java.util.List;
 
-import it.uniba.di.sms2021.gruppokdl.wefit.contract.client.ClientHomeContract;
+import it.uniba.di.sms2021.gruppokdl.wefit.client.contract.ClientHomeContract;
 import it.uniba.di.sms2021.gruppokdl.wefit.db.UserDAO;
 import it.uniba.di.sms2021.gruppokdl.wefit.utility.Keys;
 

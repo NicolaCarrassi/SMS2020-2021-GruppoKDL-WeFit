@@ -1,6 +1,6 @@
 package it.uniba.di.sms2021.gruppokdl.wefit.client.presenter;
 
-import it.uniba.di.sms2021.gruppokdl.wefit.contract.client.ClientRunContract;
+import it.uniba.di.sms2021.gruppokdl.wefit.client.contract.ClientRunContract;
 import it.uniba.di.sms2021.gruppokdl.wefit.db.ClientDAO;
 import it.uniba.di.sms2021.gruppokdl.wefit.model.Run;
 

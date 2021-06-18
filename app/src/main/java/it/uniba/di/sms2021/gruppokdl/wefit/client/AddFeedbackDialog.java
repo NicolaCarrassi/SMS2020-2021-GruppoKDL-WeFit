@@ -13,7 +13,7 @@ import java.util.HashMap;
 import java.util.Map;
 
 import it.uniba.di.sms2021.gruppokdl.wefit.R;
-import it.uniba.di.sms2021.gruppokdl.wefit.fragment.client.ClientMyCoachFragment;
+import it.uniba.di.sms2021.gruppokdl.wefit.client.fragment.ClientMyCoachFragment;
 import it.uniba.di.sms2021.gruppokdl.wefit.utility.Keys;
 
 public class AddFeedbackDialog extends Dialog implements View.OnClickListener {

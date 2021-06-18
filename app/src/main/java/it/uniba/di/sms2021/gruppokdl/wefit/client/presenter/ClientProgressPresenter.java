@@ -6,7 +6,7 @@ import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 
-import it.uniba.di.sms2021.gruppokdl.wefit.contract.client.ClientProgressContract;
+import it.uniba.di.sms2021.gruppokdl.wefit.client.contract.ClientProgressContract;
 import it.uniba.di.sms2021.gruppokdl.wefit.db.ClientDAO;
 
 public class ClientProgressPresenter implements ClientProgressContract.Presenter, ClientDAO.WeightsLoaded {

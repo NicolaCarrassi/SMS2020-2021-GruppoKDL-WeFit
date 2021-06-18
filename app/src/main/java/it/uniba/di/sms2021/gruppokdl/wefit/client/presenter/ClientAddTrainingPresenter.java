@@ -4,7 +4,7 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
-import it.uniba.di.sms2021.gruppokdl.wefit.contract.client.ClientAddTrainingContract;
+import it.uniba.di.sms2021.gruppokdl.wefit.client.contract.ClientAddTrainingContract;
 import it.uniba.di.sms2021.gruppokdl.wefit.db.TrainingDAO;
 
 public class ClientAddTrainingPresenter implements ClientAddTrainingContract.Presenter, TrainingDAO.TrainingCallbacks {

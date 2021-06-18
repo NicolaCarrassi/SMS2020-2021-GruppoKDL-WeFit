@@ -3,7 +3,7 @@ package it.uniba.di.sms2021.gruppokdl.wefit.client.presenter;
 import com.firebase.ui.firestore.FirestoreRecyclerOptions;
 
 import it.uniba.di.sms2021.gruppokdl.wefit.client.adapter.ClientDietDiaryAdapter;
-import it.uniba.di.sms2021.gruppokdl.wefit.contract.client.ClientDietDiaryContract;
+import it.uniba.di.sms2021.gruppokdl.wefit.client.contract.ClientDietDiaryContract;
 import it.uniba.di.sms2021.gruppokdl.wefit.db.ClientDAO;
 import it.uniba.di.sms2021.gruppokdl.wefit.model.Meal;
 

@@ -9,7 +9,7 @@ import com.google.firebase.storage.StorageReference;
 import java.util.HashMap;
 import java.util.Map;
 
-import it.uniba.di.sms2021.gruppokdl.wefit.contract.client.ClientProfileFragmentContract;
+import it.uniba.di.sms2021.gruppokdl.wefit.client.contract.ClientProfileFragmentContract;
 import it.uniba.di.sms2021.gruppokdl.wefit.db.UserDAO;
 import it.uniba.di.sms2021.gruppokdl.wefit.model.Client;
 import it.uniba.di.sms2021.gruppokdl.wefit.model.User;

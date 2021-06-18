@@ -6,7 +6,7 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
-import it.uniba.di.sms2021.gruppokdl.wefit.contract.client.ClientDietShoppingListContract;
+import it.uniba.di.sms2021.gruppokdl.wefit.client.contract.ClientDietShoppingListContract;
 import it.uniba.di.sms2021.gruppokdl.wefit.db.MealsDAO;
 import it.uniba.di.sms2021.gruppokdl.wefit.utility.DayOfTheWeek;
 

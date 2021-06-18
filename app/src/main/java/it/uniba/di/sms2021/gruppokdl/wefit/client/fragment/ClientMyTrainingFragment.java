@@ -1,4 +1,4 @@
-package it.uniba.di.sms2021.gruppokdl.wefit.fragment.client;
+package it.uniba.di.sms2021.gruppokdl.wefit.client.fragment;
 
 import android.os.Bundle;
 
@@ -14,9 +14,9 @@ import android.widget.TextView;
 import it.uniba.di.sms2021.gruppokdl.wefit.R;
 import it.uniba.di.sms2021.gruppokdl.wefit.WeFitApplication;
 import it.uniba.di.sms2021.gruppokdl.wefit.client.adapter.ClientMyTrainingAdapter;
-import it.uniba.di.sms2021.gruppokdl.wefit.contract.client.ClientMyTrainingContract;
+import it.uniba.di.sms2021.gruppokdl.wefit.client.contract.ClientMyTrainingContract;
 import it.uniba.di.sms2021.gruppokdl.wefit.model.Training;
-import it.uniba.di.sms2021.gruppokdl.wefit.presenter.client.ClientMyTrainingPresenter;
+import it.uniba.di.sms2021.gruppokdl.wefit.client.presenter.ClientMyTrainingPresenter;
 import it.uniba.di.sms2021.gruppokdl.wefit.recyclerview.CustomRecyclerView;
 
 

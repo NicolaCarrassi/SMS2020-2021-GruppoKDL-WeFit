@@ -5,7 +5,7 @@ import android.content.Context;
 import java.util.List;
 
 import it.uniba.di.sms2021.gruppokdl.wefit.R;
-import it.uniba.di.sms2021.gruppokdl.wefit.contract.client.ClientExerciseSpecificationContract;
+import it.uniba.di.sms2021.gruppokdl.wefit.client.contract.ClientExerciseSpecificationContract;
 import it.uniba.di.sms2021.gruppokdl.wefit.db.TrainingDAO;
 import it.uniba.di.sms2021.gruppokdl.wefit.model.Exercise;
 

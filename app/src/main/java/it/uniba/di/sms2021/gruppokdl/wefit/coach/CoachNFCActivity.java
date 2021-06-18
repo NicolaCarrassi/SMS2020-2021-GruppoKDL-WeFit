@@ -73,6 +73,7 @@ public class CoachNFCActivity extends BaseActivity {
 
             mNfcAdapter.setNdefPushMessage(mNdfMessage, this);
             }else{
+
             mWebView.setVisibility(View.GONE);
             mNfcMessage.setVisibility(View.GONE);
             mNoNfcMessage.setVisibility(View.VISIBLE);

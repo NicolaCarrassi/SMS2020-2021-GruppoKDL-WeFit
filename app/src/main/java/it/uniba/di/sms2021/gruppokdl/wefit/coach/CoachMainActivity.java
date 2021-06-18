@@ -25,12 +25,12 @@ import it.uniba.di.sms2021.gruppokdl.wefit.R;
 import it.uniba.di.sms2021.gruppokdl.wefit.SettingsActivity;
 import it.uniba.di.sms2021.gruppokdl.wefit.WeFitApplication;
 import it.uniba.di.sms2021.gruppokdl.wefit.fragment.TermsFragment;
-import it.uniba.di.sms2021.gruppokdl.wefit.fragment.client.ClientAddFragment;
-import it.uniba.di.sms2021.gruppokdl.wefit.fragment.client.ClientMyProfileFragment;
-import it.uniba.di.sms2021.gruppokdl.wefit.fragment.coach.CoachClientsFragment;
-import it.uniba.di.sms2021.gruppokdl.wefit.fragment.coach.CoachFeedbacksFragment;
-import it.uniba.di.sms2021.gruppokdl.wefit.fragment.coach.CoachHomeFragment;
-import it.uniba.di.sms2021.gruppokdl.wefit.fragment.coach.CoachProfileFragment;
+import it.uniba.di.sms2021.gruppokdl.wefit.client.fragment.ClientAddFragment;
+import it.uniba.di.sms2021.gruppokdl.wefit.client.fragment.ClientMyProfileFragment;
+import it.uniba.di.sms2021.gruppokdl.wefit.coach.fragment.CoachClientsFragment;
+import it.uniba.di.sms2021.gruppokdl.wefit.coach.fragment.CoachFeedbacksFragment;
+import it.uniba.di.sms2021.gruppokdl.wefit.coach.fragment.CoachHomeFragment;
+import it.uniba.di.sms2021.gruppokdl.wefit.coach.fragment.CoachProfileFragment;
 
 public class CoachMainActivity extends AppCompatActivity implements WeFitApplication.CallbackOperations,
         CoachProfileFragment.CoachProfileActivity, ClientAddFragment.BottomNavigationSelector {

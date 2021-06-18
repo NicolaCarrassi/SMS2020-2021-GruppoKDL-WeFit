@@ -123,6 +123,16 @@ public class CoachAddExerciseFragment extends BottomSheetDialogFragment implemen
             mEditTextNumber.setText("");
         });
 
+        getDialog().setOnShowListener(dialog -> {
+            BottomSheetDialog d = (BottomSheetDialog) dialog;
+            FrameLayout bottomSheet = d.findViewById(R.id.design_bottom_sheet);
+            assert bottomSheet != null;
+            CoordinatorLayout coordinatorLayout = (CoordinatorLayout) bottomSheet.getParent();
+            BottomSheetBehavior bottomSheetBehavior = BottomSheetBehavior.from(bottomSheet);
+            bottomSheetBehavior.setPeekHeight(bottomSheet.getHeight());
+            coordinatorLayout.getParent().requestLayout();
+        });
+
         mButtonCancel.setOnClickListener(v -> dismiss());
         mButtonAdd.setOnClickListener(v -> addExercise());
 
@@ -172,6 +182,7 @@ public class CoachAddExerciseFragment extends BottomSheetDialogFragment implemen
 
             mPresenter.addExercise(mClientMail, mTraining.getId(), map);
             mEditTextNumber.setText("");
+            Toast.makeText(getActivity(), R.string.exercise_added, Toast.LENGTH_SHORT).show();
         } else
             Toast.makeText(getActivity(),getResources().getString(R.string.error_data_missing), Toast.LENGTH_SHORT).show();
     }

@@ -75,7 +75,7 @@
     <string name="edit_height">Aggiorna la tua altezza</string>
     <string name="edit_objective">Modifica il tuo obiettivo</string>
     <string name="client_current_weight">Peso attuale: </string>
-    <string name="btn_save_update">Modificar</string>
+    <string name="btn_save_update">Modifica</string>
     <string name="edit_pfp">Modifica la foto del profilo</string>
     <string name="confirm">Conferma</string>
     <string name="update_successful">Profilo aggiornato con successo</string>
@@ -272,6 +272,7 @@
 
     <string name="add_training_coach">Aggiungi Allenamento</string>
     <string name="nfc_activity_message">Avvicinare il dispositivo del cliente, non è necessario che abbia l\' applicazione aperta. Assicurarsi che entrambi i dispositivi abbiano l\' NFC attivo.</string>
-    <string name="no_nfc_message">Il tuo dispositivo non ha l\' NFC. Non puoi utilizzare questa funzionalità.</string>
+    <string name="exercise_added">Esercizio aggiunto correttamente!</string>
+
 
 </resources>

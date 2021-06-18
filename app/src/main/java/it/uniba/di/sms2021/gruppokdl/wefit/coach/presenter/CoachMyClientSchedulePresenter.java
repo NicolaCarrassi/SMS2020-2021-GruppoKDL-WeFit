@@ -1,4 +1,4 @@
-package it.uniba.di.sms2021.gruppokdl.wefit.presenter.coach;
+package it.uniba.di.sms2021.gruppokdl.wefit.coach.presenter;
 
 import com.firebase.ui.firestore.FirestoreRecyclerAdapter;
 import com.firebase.ui.firestore.FirestoreRecyclerOptions;

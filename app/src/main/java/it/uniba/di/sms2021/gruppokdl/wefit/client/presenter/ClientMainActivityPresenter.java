@@ -1,4 +1,4 @@
-package it.uniba.di.sms2021.gruppokdl.wefit.presenter.client;
+package it.uniba.di.sms2021.gruppokdl.wefit.client.presenter;
 
 import it.uniba.di.sms2021.gruppokdl.wefit.contract.client.ClientMainActivityContract;
 import it.uniba.di.sms2021.gruppokdl.wefit.db.ClientDAO;

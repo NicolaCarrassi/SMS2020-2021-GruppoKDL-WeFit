@@ -1,4 +1,4 @@
-package it.uniba.di.sms2021.gruppokdl.wefit.presenter.coach;
+package it.uniba.di.sms2021.gruppokdl.wefit.coach.presenter;
 
 import it.uniba.di.sms2021.gruppokdl.wefit.contract.coach.CoachClientRequestProfileContract;
 import it.uniba.di.sms2021.gruppokdl.wefit.db.CoachDAO;

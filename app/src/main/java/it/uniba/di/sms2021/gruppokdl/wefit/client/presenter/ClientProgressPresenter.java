@@ -1,4 +1,4 @@
-package it.uniba.di.sms2021.gruppokdl.wefit.presenter.client;
+package it.uniba.di.sms2021.gruppokdl.wefit.client.presenter;
 
 import java.text.ParseException;
 import java.text.SimpleDateFormat;

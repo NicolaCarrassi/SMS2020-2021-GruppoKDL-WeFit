@@ -3,9 +3,6 @@ package it.uniba.di.sms2021.gruppokdl.wefit.client.fragment;
 import android.app.Activity;
 import android.graphics.drawable.AnimatedVectorDrawable;
 import android.os.Bundle;
-
-import androidx.fragment.app.Fragment;
-
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -35,7 +32,6 @@ public class ClientAddMealFragment extends BottomSheetDialogFragment implements 
     private Spinner mSpinner;
     private ClientAddMealContract.Presenter mPresenter;
     private MaterialButton mSendButton;
-    private View mView;
     private AnimatedVectorDrawable mSuccessAnimation;
     private LinearLayout mAddMealPanel;
     private LinearLayout mAddMealSuccess;
@@ -60,7 +56,7 @@ public class ClientAddMealFragment extends BottomSheetDialogFragment implements 
         assert getActivity() != null;
         Activity activity = getActivity();
         assert activity.getWindow() != null;
-        mView = activity.getWindow().getDecorView();
+        View mView = activity.getWindow().getDecorView();
         mPresenter = new ClientAddMealPresenter(this, mClientMail);
         bind(layout);
         mSendButton.setVisibility(View.GONE);

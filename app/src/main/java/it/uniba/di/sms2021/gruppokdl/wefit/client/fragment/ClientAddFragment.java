@@ -55,16 +55,14 @@ public class ClientAddFragment extends BottomSheetDialogFragment {
         // Inflate the layout for this fragment
         View layout =  inflater.inflate(R.layout.client_add_fragment, container, false);
 
-        getDialog().setOnShowListener(new DialogInterface.OnShowListener() {
-            @Override
-            public void onShow(DialogInterface dialog) {
-                BottomSheetDialog d = (BottomSheetDialog) dialog;
-                FrameLayout bottomSheet = (FrameLayout) d.findViewById(R.id.design_bottom_sheet);
-                CoordinatorLayout coordinatorLayout = (CoordinatorLayout) bottomSheet.getParent();
-                BottomSheetBehavior bottomSheetBehavior = BottomSheetBehavior.from(bottomSheet);
-                bottomSheetBehavior.setPeekHeight(bottomSheet.getHeight());
-                coordinatorLayout.getParent().requestLayout();
-            }
+        getDialog().setOnShowListener(dialog -> {
+            BottomSheetDialog d = (BottomSheetDialog) dialog;
+            FrameLayout bottomSheet = d.findViewById(R.id.design_bottom_sheet);
+            assert bottomSheet != null;
+            CoordinatorLayout coordinatorLayout = (CoordinatorLayout) bottomSheet.getParent();
+            BottomSheetBehavior bottomSheetBehavior = BottomSheetBehavior.from(bottomSheet);
+            bottomSheetBehavior.setPeekHeight(bottomSheet.getHeight());
+            coordinatorLayout.getParent().requestLayout();
         });
 
         bind(layout);

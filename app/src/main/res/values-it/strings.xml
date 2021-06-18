@@ -272,6 +272,6 @@
 
     <string name="add_training_coach">Aggiungi Allenamento</string>
     <string name="nfc_activity_message">Avvicinare il dispositivo del cliente, non è necessario che abbia l\' applicazione aperta. Assicurarsi che entrambi i dispositivi abbiano l\' NFC attivo.</string>
-
+    <string name="no_nfc_message">Il tuo dispositivo non ha l\' NFC. Non puoi utilizzare questa funzionalità.</string>
 
 </resources>

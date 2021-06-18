@@ -19,6 +19,7 @@
         android:backgroundTint="@color/blue"/>
 
     <WebView
+        android:visibility="visible"
         android:layout_marginVertical="@dimen/margin_horizontal"
         android:layout_gravity="center"
         android:layout_width="280dp"
@@ -26,9 +27,21 @@
         android:id="@+id/gif_nfc"/>
 
     <TextView
+        android:visibility="visible"
+        android:id="@+id/nfc_message"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:text="@string/nfc_activity_message"
+        style="@style/custom_p"
+        android:textAlignment="center"/>
+
+    <TextView
+        android:visibility="gone"
+        android:layout_marginTop="40dp"
+        android:id="@+id/no_nfc_message"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="@string/no_nfc_message"
         style="@style/custom_p"
         android:textAlignment="center"/>
 

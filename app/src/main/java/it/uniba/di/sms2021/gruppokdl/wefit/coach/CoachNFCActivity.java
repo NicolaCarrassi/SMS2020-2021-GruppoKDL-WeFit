@@ -10,6 +10,7 @@ import android.view.View;
 import android.webkit.WebSettings;
 import android.webkit.WebView;
 import android.widget.ImageView;
+import android.widget.TextView;
 
 import androidx.appcompat.app.AlertDialog;
 
@@ -26,11 +27,16 @@ public class CoachNFCActivity extends BaseActivity {
 
     private WebView mWebView;
     private ImageView mBackButton;
+    private TextView mNfcMessage;
+    private TextView mNoNfcMessage;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_coach_nfcactivity);
+
+        mNfcMessage = findViewById(R.id.nfc_message);
+        mNoNfcMessage = findViewById(R.id.no_nfc_message);
 
         mWebView = findViewById(R.id.gif_nfc);
         WebSettings webSettings = mWebView.getSettings();
@@ -66,6 +72,10 @@ public class CoachNFCActivity extends BaseActivity {
             });
 
             mNfcAdapter.setNdefPushMessage(mNdfMessage, this);
-            }
+            }else{
+            mWebView.setVisibility(View.GONE);
+            mNfcMessage.setVisibility(View.GONE);
+            mNoNfcMessage.setVisibility(View.VISIBLE);
+        }
     }
 }

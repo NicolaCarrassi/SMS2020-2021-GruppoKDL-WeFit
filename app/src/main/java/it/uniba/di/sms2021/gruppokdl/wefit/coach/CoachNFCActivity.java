@@ -45,31 +45,27 @@ public class CoachNFCActivity extends BaseActivity {
 
         if(mNfcAdapter != null){
             if(!mNfcAdapter.isEnabled()){
-                AlertDialog.Builder alertbox = new AlertDialog.Builder(this);
-                alertbox.setTitle(getString(R.string.nfc_required));
-                alertbox.setMessage(R.string.nfc_required_message);
-                alertbox.setPositiveButton(getString(R.string.yes), (dialog, which) -> {
-                    {
+                AlertDialog.Builder alertbox = new AlertDialog.Builder(this)
+                .setTitle(getString(R.string.nfc_required))
+                .setMessage(R.string.nfc_required_message)
+                .setPositiveButton(getString(R.string.yes), (dialog, which) -> {
                         Intent intent = new Intent(Settings.ACTION_NFC_SETTINGS);
                         startActivity(intent);
-                    }
-                });
-                    alertbox.setNegativeButton(getString(R.string.no), (dialog, which) -> {
+                })
+                .setNegativeButton(getString(R.string.no), (dialog, which) -> {});
 
-                    });
-                    alertbox.show();
+                alertbox.show();
+            }
+            //CREATE MESSAGE NDF
+            String coachMail = Objects.requireNonNull(FirebaseAuth.getInstance().getCurrentUser()).getEmail();
 
-                }
-                //CREATE MESSAGE NDF
-                String coachMail = Objects.requireNonNull(FirebaseAuth.getInstance().getCurrentUser()).getEmail();
             assert coachMail != null;
             NdefMessage mNdfMessage = new NdefMessage(new NdefRecord[]{
-                        NdefRecord.createMime("text/plain", coachMail.getBytes()),
+                    NdefRecord.createMime("text/plain", coachMail.getBytes()),
+                    NdefRecord.createApplicationRecord(BuildConfig.APPLICATION_ID)
+            });
 
-                        NdefRecord.createApplicationRecord(BuildConfig.APPLICATION_ID)
-                });
-                mNfcAdapter.setNdefPushMessage(mNdfMessage, this);
+            mNfcAdapter.setNdefPushMessage(mNdfMessage, this);
             }
     }
-
 }

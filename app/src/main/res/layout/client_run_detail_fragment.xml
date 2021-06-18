@@ -32,7 +32,7 @@
             android:name="com.google.android.gms.maps.SupportMapFragment"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            tools:context=".RunActivity" />
+            tools:context="it.uniba.di.sms2021.gruppokdl.wefit.client.RunActivity" />
 
     </LinearLayout>
 

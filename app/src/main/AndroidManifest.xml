@@ -48,7 +48,7 @@
             android:resource="@drawable/logo" />
 
         <activity
-            android:name=".RunActivity"
+            android:name="it.uniba.di.sms2021.gruppokdl.wefit.client.RunActivity"
             android:screenOrientation="portrait"
             android:label="@string/title_activity_run" />
         <activity

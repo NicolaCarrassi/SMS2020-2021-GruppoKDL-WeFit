@@ -3,6 +3,7 @@ package it.uniba.di.sms2021.gruppokdl.wefit.coach.fragment;
 import android.os.Bundle;
 
 import androidx.annotation.Nullable;
+import androidx.coordinatorlayout.widget.CoordinatorLayout;
 
 import android.text.TextUtils;
 import android.view.LayoutInflater;
@@ -11,11 +12,14 @@ import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.FrameLayout;
 import android.widget.RadioGroup;
 import android.widget.Spinner;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.google.android.material.bottomsheet.BottomSheetBehavior;
+import com.google.android.material.bottomsheet.BottomSheetDialog;
 import com.google.android.material.bottomsheet.BottomSheetDialogFragment;
 
 import java.util.HashMap;
@@ -106,6 +110,16 @@ public class CoachAddExerciseFragment extends BottomSheetDialogFragment implemen
             mEditTextNumber.setText("");
         });
 
+        getDialog().setOnShowListener(dialog -> {
+            BottomSheetDialog d = (BottomSheetDialog) dialog;
+            FrameLayout bottomSheet = d.findViewById(R.id.design_bottom_sheet);
+            assert bottomSheet != null;
+            CoordinatorLayout coordinatorLayout = (CoordinatorLayout) bottomSheet.getParent();
+            BottomSheetBehavior bottomSheetBehavior = BottomSheetBehavior.from(bottomSheet);
+            bottomSheetBehavior.setPeekHeight(bottomSheet.getHeight());
+            coordinatorLayout.getParent().requestLayout();
+        });
+
         mButtonCancel.setOnClickListener(v -> dismiss());
         mButtonAdd.setOnClickListener(v -> addExercise());
 
@@ -155,6 +169,7 @@ public class CoachAddExerciseFragment extends BottomSheetDialogFragment implemen
 
             mPresenter.addExercise(mClientMail, mTraining.getId(), map);
             mEditTextNumber.setText("");
+            Toast.makeText(getActivity(), R.string.exercise_added, Toast.LENGTH_SHORT).show();
         } else
             Toast.makeText(getActivity(),getResources().getString(R.string.error_data_missing), Toast.LENGTH_SHORT).show();
     }

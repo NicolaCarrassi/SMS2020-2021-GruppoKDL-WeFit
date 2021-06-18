@@ -2,6 +2,7 @@ package it.uniba.di.sms2021.gruppokdl.wefit.coach.fragment;
 
 import android.os.Bundle;
 
+import androidx.coordinatorlayout.widget.CoordinatorLayout;
 import androidx.fragment.app.Fragment;
 
 import android.text.TextUtils;
@@ -10,9 +11,12 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
 import android.widget.EditText;
+import android.widget.FrameLayout;
 import android.widget.Spinner;
 import android.widget.Toast;
 
+import com.google.android.material.bottomsheet.BottomSheetBehavior;
+import com.google.android.material.bottomsheet.BottomSheetDialog;
 import com.google.android.material.bottomsheet.BottomSheetDialogFragment;
 import com.google.android.material.button.MaterialButton;
 
@@ -89,6 +93,16 @@ public class CoachAddMealFragment extends BottomSheetDialogFragment implements C
         MaterialButton mAddButton = view.findViewById(R.id.btn_add);
         mAddButton.setOnClickListener(v -> addMeal());
 
+        getDialog().setOnShowListener(dialog -> {
+            BottomSheetDialog d = (BottomSheetDialog) dialog;
+            FrameLayout bottomSheet = d.findViewById(R.id.design_bottom_sheet);
+            assert bottomSheet != null;
+            CoordinatorLayout coordinatorLayout = (CoordinatorLayout) bottomSheet.getParent();
+            BottomSheetBehavior bottomSheetBehavior = BottomSheetBehavior.from(bottomSheet);
+            bottomSheetBehavior.setPeekHeight(bottomSheet.getHeight());
+            coordinatorLayout.getParent().requestLayout();
+        });
+
         ArrayAdapter<CharSequence> momentOfTheDayAdapter = ArrayAdapter.createFromResource(getActivity(), R.array.moment_of_the_day, R.layout.spinner_layout);
         momentOfTheDayAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
         mMomentOfTheDaySpinner.setAdapter(momentOfTheDayAdapter);
@@ -129,6 +143,8 @@ public class CoachAddMealFragment extends BottomSheetDialogFragment implements C
 
             if (quantity != -1)
                 mPresenter.addMeal(mClientMail, mDayOfTheWeek, mealSelected, momentOfTheDay, quantity);
+
+            Toast.makeText(getActivity(), R.string.meal_successfully_added, Toast.LENGTH_SHORT).show();
         }else{
             Toast.makeText(getActivity(), getString(R.string.error_general), Toast.LENGTH_SHORT).show();
         }

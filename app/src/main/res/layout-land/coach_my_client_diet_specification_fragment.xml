@@ -1,0 +1,136 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical"
+    style="@style/BackgroundCustom">
+
+    <include layout="@layout/toolbar"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+    </include>
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        style="@style/custom_h1"
+        android:layout_gravity="center_horizontal"
+        android:text="@string/diet_tab_title">
+    </TextView>
+    <ScrollView
+        xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:tools="http://schemas.android.com/tools"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+
+        <LinearLayout
+            android:layout_marginTop="5dp"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical"
+            tools:context=".fragment.client.CoachMyClientDietSpecificationFragment"
+            android:layout_marginHorizontal="30dp">
+
+
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="@string/breakfast"
+                style="@style/custom_h2"/>
+
+            <it.uniba.di.sms2021.gruppokdl.wefit.recyclerview.CustomRecyclerView
+                android:id="@+id/breakfast_recycler"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                tools:listitem="@layout/meal_list_item"/>
+
+
+            <TextView
+                android:id="@+id/text_empty_breakfast"
+                android:layout_marginVertical="10dp"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="@string/no_meal_added"
+                android:visibility="gone"/>
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="@string/lunch"
+                style="@style/custom_h2"/>
+
+            <it.uniba.di.sms2021.gruppokdl.wefit.recyclerview.CustomRecyclerView
+                android:id="@+id/lunch_recycler"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                tools:listitem="@layout/meal_list_item"/>
+
+            <TextView
+                android:id="@+id/text_empty_lunch"
+                android:layout_marginVertical="10dp"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="@string/no_meal_added"
+                android:visibility="gone"/>
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="@string/dinner"
+                style="@style/custom_h2"/>
+
+            <it.uniba.di.sms2021.gruppokdl.wefit.recyclerview.CustomRecyclerView
+                android:id="@+id/dinner_recycler"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                tools:listitem="@layout/meal_list_item"/>
+
+
+            <TextView
+                android:id="@+id/text_empty_dinner"
+                android:layout_marginVertical="10dp"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="@string/no_meal_added"
+                android:visibility="gone"/>
+
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:gravity="center_horizontal"
+                android:layout_marginVertical="10dp">
+
+                <com.google.android.material.button.MaterialButton
+                    android:id="@+id/btn_add_meal"
+                    android:layout_weight="0.5"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="@string/add_meal"
+                    style="@style/MaterialButtonCustom"
+                    android:maxLines="2"
+                    android:layout_marginEnd="5dp"
+                    android:textSize="16sp"
+                    android:paddingVertical="10dp"/>
+
+                <com.google.android.material.button.MaterialButton
+                    android:id="@+id/btn_update"
+                    android:layout_weight="0.5"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:text="@string/btn_save_update"
+                    style="@style/MaterialButtonCustom"
+                    android:layout_marginStart="5dp"
+                    android:paddingVertical="10dp"
+                    />
+
+            </LinearLayout>
+
+
+        </LinearLayout>
+    </ScrollView>
+</LinearLayout>

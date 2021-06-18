@@ -1,12 +1,12 @@
-package it.uniba.di.sms2021.gruppodkl.wefit.presenter.coach;
+package it.uniba.di.sms2021.gruppokdl.wefit.presenter.coach;
 
 
 import com.firebase.ui.firestore.FirestoreRecyclerOptions;
 
 import it.uniba.di.sms2021.gruppokdl.wefit.coach.adapter.CoachDietDayAdapter;
-import it.uniba.di.sms2021.gruppodkl.wefit.contract.coach.CoachMyClientDietSpecificationContract;
-import it.uniba.di.sms2021.gruppodkl.wefit.db.ClientDAO;
-import it.uniba.di.sms2021.gruppodkl.wefit.model.Meal;
+import it.uniba.di.sms2021.gruppokdl.wefit.contract.coach.CoachMyClientDietSpecificationContract;
+import it.uniba.di.sms2021.gruppokdl.wefit.db.ClientDAO;
+import it.uniba.di.sms2021.gruppokdl.wefit.model.Meal;
 
 public class CoachMyClientDietSpecificationPresenter implements CoachMyClientDietSpecificationContract.Presenter {
 

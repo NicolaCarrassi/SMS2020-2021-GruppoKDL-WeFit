@@ -1,4 +1,4 @@
-package it.uniba.di.sms2021.gruppodkl.wefit.fragment.client;
+package it.uniba.di.sms2021.gruppokdl.wefit.fragment.client;
 
 import android.app.Activity;
 import android.graphics.drawable.AnimatedVectorDrawable;
@@ -22,10 +22,10 @@ import com.google.android.material.progressindicator.CircularProgressIndicator;
 
 import java.util.List;
 
-import it.uniba.di.sms2021.gruppodkl.wefit.R;
-import it.uniba.di.sms2021.gruppodkl.wefit.WeFitApplication;
-import it.uniba.di.sms2021.gruppodkl.wefit.contract.client.ClientAddMealContract;
-import it.uniba.di.sms2021.gruppodkl.wefit.presenter.client.ClientAddMealPresenter;
+import it.uniba.di.sms2021.gruppokdl.wefit.R;
+import it.uniba.di.sms2021.gruppokdl.wefit.WeFitApplication;
+import it.uniba.di.sms2021.gruppokdl.wefit.contract.client.ClientAddMealContract;
+import it.uniba.di.sms2021.gruppokdl.wefit.presenter.client.ClientAddMealPresenter;
 
 
 public class ClientAddMealFragment extends BottomSheetDialogFragment implements ClientAddMealContract.View {

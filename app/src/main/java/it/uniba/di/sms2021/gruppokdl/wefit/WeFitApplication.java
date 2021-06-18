@@ -1,4 +1,4 @@
-package it.uniba.di.sms2021.gruppodkl.wefit;
+package it.uniba.di.sms2021.gruppokdl.wefit;
 
 import android.app.Application;
 import android.view.MenuItem;
@@ -7,7 +7,7 @@ import android.view.View;
 import androidx.appcompat.widget.Toolbar;
 
 
-import it.uniba.di.sms2021.gruppodkl.wefit.model.User;
+import it.uniba.di.sms2021.gruppokdl.wefit.model.User;
 
 public class WeFitApplication extends Application {
 

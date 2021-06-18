@@ -1,11 +1,11 @@
-package it.uniba.di.sms2021.gruppodkl.wefit;
+package it.uniba.di.sms2021.gruppokdl.wefit;
 
 import android.content.Context;
 import android.os.Bundle;
 
 import androidx.appcompat.app.AppCompatActivity;
 
-import it.uniba.di.sms2021.gruppodkl.wefit.utility.LocaleHelper;
+import it.uniba.di.sms2021.gruppokdl.wefit.utility.LocaleHelper;
 
 
 public class BaseActivity extends AppCompatActivity {

@@ -1,4 +1,4 @@
-package it.uniba.di.sms2021.gruppodkl.wefit.coach;
+package it.uniba.di.sms2021.gruppokdl.wefit.coach;
 
 import android.content.Intent;
 import android.nfc.NdefMessage;
@@ -17,10 +17,10 @@ import com.google.firebase.auth.FirebaseAuth;
 
 import java.util.Objects;
 
-import it.uniba.di.sms2021.gruppodkl.wefit.BaseActivity;
-import it.uniba.di.sms2021.gruppodkl.wefit.BuildConfig;
-import it.uniba.di.sms2021.gruppodkl.wefit.R;
-import it.uniba.di.sms2021.gruppodkl.wefit.WeFitApplication;
+import it.uniba.di.sms2021.gruppokdl.wefit.BaseActivity;
+import it.uniba.di.sms2021.gruppokdl.wefit.BuildConfig;
+import it.uniba.di.sms2021.gruppokdl.wefit.R;
+import it.uniba.di.sms2021.gruppokdl.wefit.WeFitApplication;
 
 public class CoachNFCActivity extends BaseActivity {
 

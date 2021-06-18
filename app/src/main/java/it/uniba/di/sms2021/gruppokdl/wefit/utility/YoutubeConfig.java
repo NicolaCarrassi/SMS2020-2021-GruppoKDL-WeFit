@@ -1,4 +1,4 @@
-package it.uniba.di.sms2021.gruppodkl.wefit.utility;
+package it.uniba.di.sms2021.gruppokdl.wefit.utility;
 
 public class YoutubeConfig {
     private static final  String API_KEY = "AIzaSyBiop05uZmEEtyPZvxysyVK06d-jiZIC1E";

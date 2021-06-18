@@ -1,15 +1,15 @@
-package it.uniba.di.sms2021.gruppodkl.wefit.presenter.coach;
+package it.uniba.di.sms2021.gruppokdl.wefit.presenter.coach;
 
 import android.content.Context;
 
 import java.util.ArrayList;
 import java.util.List;
 
-import it.uniba.di.sms2021.gruppodkl.wefit.R;
-import it.uniba.di.sms2021.gruppodkl.wefit.contract.coach.CoachAddMealContract;
-import it.uniba.di.sms2021.gruppodkl.wefit.db.ClientDAO;
-import it.uniba.di.sms2021.gruppodkl.wefit.db.MealsDAO;
-import it.uniba.di.sms2021.gruppodkl.wefit.model.Meal;
+import it.uniba.di.sms2021.gruppokdl.wefit.R;
+import it.uniba.di.sms2021.gruppokdl.wefit.contract.coach.CoachAddMealContract;
+import it.uniba.di.sms2021.gruppokdl.wefit.db.ClientDAO;
+import it.uniba.di.sms2021.gruppokdl.wefit.db.MealsDAO;
+import it.uniba.di.sms2021.gruppokdl.wefit.model.Meal;
 
 public class CoachAddMealPresenter implements CoachAddMealContract.Presenter, MealsDAO.MealsLoaded {
 

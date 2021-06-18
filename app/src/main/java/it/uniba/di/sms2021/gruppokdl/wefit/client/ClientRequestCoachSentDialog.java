@@ -1,4 +1,4 @@
-package it.uniba.di.sms2021.gruppodkl.wefit.client;
+package it.uniba.di.sms2021.gruppokdl.wefit.client;
 
 import android.app.Dialog;
 import android.content.Context;
@@ -6,8 +6,8 @@ import android.graphics.drawable.AnimatedVectorDrawable;
 import android.os.Bundle;
 import android.widget.ImageView;
 
-import it.uniba.di.sms2021.gruppodkl.wefit.R;
-import it.uniba.di.sms2021.gruppodkl.wefit.WeFitApplication.CallbackOperations;
+import it.uniba.di.sms2021.gruppokdl.wefit.R;
+import it.uniba.di.sms2021.gruppokdl.wefit.WeFitApplication.CallbackOperations;
 
 import com.google.android.material.button.MaterialButton;
 

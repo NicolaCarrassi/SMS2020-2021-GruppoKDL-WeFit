@@ -9,8 +9,8 @@ import androidx.annotation.NonNull;
 import com.firebase.ui.firestore.FirestoreRecyclerAdapter;
 import com.firebase.ui.firestore.FirestoreRecyclerOptions;
 
-import it.uniba.di.sms2021.gruppodkl.wefit.R;
-import it.uniba.di.sms2021.gruppodkl.wefit.model.Feedback;
+import it.uniba.di.sms2021.gruppokdl.wefit.R;
+import it.uniba.di.sms2021.gruppokdl.wefit.model.Feedback;
 import it.uniba.di.sms2021.gruppokdl.wefit.coach.viewholder.CoachAllFeedbacksViewHolder;
 
 public class CoachAllFeedbacksAdapter extends FirestoreRecyclerAdapter<Feedback, CoachAllFeedbacksViewHolder> {

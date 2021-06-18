@@ -1,4 +1,4 @@
-package it.uniba.di.sms2021.gruppodkl.wefit.presenter.coach;
+package it.uniba.di.sms2021.gruppokdl.wefit.presenter.coach;
 
 import android.net.Uri;
 
@@ -10,11 +10,11 @@ import com.google.firebase.storage.StorageReference;
 import java.util.HashMap;
 import java.util.Map;
 
-import it.uniba.di.sms2021.gruppodkl.wefit.contract.coach.CoachProfileContract;
-import it.uniba.di.sms2021.gruppodkl.wefit.db.UserDAO;
-import it.uniba.di.sms2021.gruppodkl.wefit.model.Coach;
-import it.uniba.di.sms2021.gruppodkl.wefit.model.User;
-import it.uniba.di.sms2021.gruppodkl.wefit.utility.Keys;
+import it.uniba.di.sms2021.gruppokdl.wefit.contract.coach.CoachProfileContract;
+import it.uniba.di.sms2021.gruppokdl.wefit.db.UserDAO;
+import it.uniba.di.sms2021.gruppokdl.wefit.model.Coach;
+import it.uniba.di.sms2021.gruppokdl.wefit.model.User;
+import it.uniba.di.sms2021.gruppokdl.wefit.utility.Keys;
 
 /**
  * La classe rappresenta il presenter per il profilo del Coach

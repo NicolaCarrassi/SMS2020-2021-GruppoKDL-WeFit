@@ -1,4 +1,4 @@
-package it.uniba.di.sms2021.gruppodkl.wefit.presenter.client;
+package it.uniba.di.sms2021.gruppokdl.wefit.presenter.client;
 
 import androidx.paging.PagedList;
 
@@ -8,11 +8,11 @@ import java.util.HashMap;
 import java.util.Map;
 
 import it.uniba.di.sms2021.gruppokdl.wefit.client.adapter.ClientCoachListAdapter;
-import it.uniba.di.sms2021.gruppodkl.wefit.contract.client.ClientCoachListContract;
-import it.uniba.di.sms2021.gruppodkl.wefit.db.ClientDAO;
-import it.uniba.di.sms2021.gruppodkl.wefit.model.Client;
-import it.uniba.di.sms2021.gruppodkl.wefit.model.Coach;
-import it.uniba.di.sms2021.gruppodkl.wefit.utility.Keys;
+import it.uniba.di.sms2021.gruppokdl.wefit.contract.client.ClientCoachListContract;
+import it.uniba.di.sms2021.gruppokdl.wefit.db.ClientDAO;
+import it.uniba.di.sms2021.gruppokdl.wefit.model.Client;
+import it.uniba.di.sms2021.gruppokdl.wefit.model.Coach;
+import it.uniba.di.sms2021.gruppokdl.wefit.utility.Keys;
 
 
 public class ClientCoachListPresenter implements ClientCoachListContract.Presenter, ClientDAO.ClientDAOCallbacks {

@@ -1,17 +1,17 @@
-package it.uniba.di.sms2021.gruppodkl.wefit.presenter.client;
+package it.uniba.di.sms2021.gruppokdl.wefit.presenter.client;
 
 import java.util.HashMap;
 import java.util.Map;
 
-import it.uniba.di.sms2021.gruppodkl.wefit.contract.client.ClientMyCoachContract;
-import it.uniba.di.sms2021.gruppodkl.wefit.db.ClientDAO;
-import it.uniba.di.sms2021.gruppodkl.wefit.db.CoachDAO;
-import it.uniba.di.sms2021.gruppodkl.wefit.db.UserDAO;
-import it.uniba.di.sms2021.gruppodkl.wefit.model.Client;
-import it.uniba.di.sms2021.gruppodkl.wefit.model.Coach;
-import it.uniba.di.sms2021.gruppodkl.wefit.model.Feedback;
-import it.uniba.di.sms2021.gruppodkl.wefit.model.User;
-import it.uniba.di.sms2021.gruppodkl.wefit.utility.Keys;
+import it.uniba.di.sms2021.gruppokdl.wefit.contract.client.ClientMyCoachContract;
+import it.uniba.di.sms2021.gruppokdl.wefit.db.ClientDAO;
+import it.uniba.di.sms2021.gruppokdl.wefit.db.CoachDAO;
+import it.uniba.di.sms2021.gruppokdl.wefit.db.UserDAO;
+import it.uniba.di.sms2021.gruppokdl.wefit.model.Client;
+import it.uniba.di.sms2021.gruppokdl.wefit.model.Coach;
+import it.uniba.di.sms2021.gruppokdl.wefit.model.Feedback;
+import it.uniba.di.sms2021.gruppokdl.wefit.model.User;
+import it.uniba.di.sms2021.gruppokdl.wefit.utility.Keys;
 
 public class ClientMyCoachPresenter implements ClientMyCoachContract.Presenter, ClientDAO.ClientDAOCallbacks {
 

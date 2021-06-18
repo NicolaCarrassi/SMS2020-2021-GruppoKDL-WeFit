@@ -1,4 +1,4 @@
-package it.uniba.di.sms2021.gruppodkl.wefit.fragment.client;
+package it.uniba.di.sms2021.gruppokdl.wefit.fragment.client;
 
 import android.os.Bundle;
 
@@ -10,10 +10,10 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
-import it.uniba.di.sms2021.gruppodkl.wefit.R;
-import it.uniba.di.sms2021.gruppodkl.wefit.adapter.DietListAdapter;
-import it.uniba.di.sms2021.gruppodkl.wefit.contract.client.ClientDietListContract;
-import it.uniba.di.sms2021.gruppodkl.wefit.presenter.client.ClientDietListPresenter;
+import it.uniba.di.sms2021.gruppokdl.wefit.R;
+import it.uniba.di.sms2021.gruppokdl.wefit.adapter.DietListAdapter;
+import it.uniba.di.sms2021.gruppokdl.wefit.contract.client.ClientDietListContract;
+import it.uniba.di.sms2021.gruppokdl.wefit.presenter.client.ClientDietListPresenter;
 
 
 public class ClientDietListFragment extends Fragment implements ClientDietListContract.View {

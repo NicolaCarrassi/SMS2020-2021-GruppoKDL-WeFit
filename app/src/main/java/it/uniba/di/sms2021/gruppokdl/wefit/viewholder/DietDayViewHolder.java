@@ -1,4 +1,4 @@
-package it.uniba.di.sms2021.gruppodkl.wefit.viewholder;
+package it.uniba.di.sms2021.gruppokdl.wefit.viewholder;
 
 import android.view.View;
 import android.widget.TextView;
@@ -7,7 +7,7 @@ import androidx.annotation.NonNull;
 import androidx.cardview.widget.CardView;
 import androidx.recyclerview.widget.RecyclerView;
 
-import it.uniba.di.sms2021.gruppodkl.wefit.R;
+import it.uniba.di.sms2021.gruppokdl.wefit.R;
 
 public class DietDayViewHolder extends RecyclerView.ViewHolder {
 

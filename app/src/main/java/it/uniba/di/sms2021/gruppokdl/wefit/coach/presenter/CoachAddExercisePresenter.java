@@ -1,12 +1,12 @@
-package it.uniba.di.sms2021.gruppodkl.wefit.presenter.coach;
+package it.uniba.di.sms2021.gruppokdl.wefit.presenter.coach;
 
 
 import java.util.List;
 import java.util.Map;
 
-import it.uniba.di.sms2021.gruppodkl.wefit.contract.coach.CoachAddExerciseContract;
-import it.uniba.di.sms2021.gruppodkl.wefit.db.TrainingDAO;
-import it.uniba.di.sms2021.gruppodkl.wefit.model.Exercise;
+import it.uniba.di.sms2021.gruppokdl.wefit.contract.coach.CoachAddExerciseContract;
+import it.uniba.di.sms2021.gruppokdl.wefit.db.TrainingDAO;
+import it.uniba.di.sms2021.gruppokdl.wefit.model.Exercise;
 
 public class CoachAddExercisePresenter implements CoachAddExerciseContract.Presenter, TrainingDAO.ExercisesCallbacks {
 

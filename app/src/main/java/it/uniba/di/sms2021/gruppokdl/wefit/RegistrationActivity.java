@@ -1,4 +1,4 @@
-package it.uniba.di.sms2021.gruppodkl.wefit;
+package it.uniba.di.sms2021.gruppokdl.wefit;
 
 import android.annotation.SuppressLint;
 import android.app.DatePickerDialog;
@@ -39,17 +39,17 @@ import java.util.HashMap;
 import java.util.Map;
 import java.util.regex.Pattern;
 
-import it.uniba.di.sms2021.gruppodkl.wefit.client.ClientMainActivity;
-import it.uniba.di.sms2021.gruppodkl.wefit.coach.CoachMainActivity;
-import it.uniba.di.sms2021.gruppodkl.wefit.contract.RegistrationActivityContract;
-import it.uniba.di.sms2021.gruppodkl.wefit.contract.RegistrationFragmentContract;
-import it.uniba.di.sms2021.gruppodkl.wefit.fragment.client.ClientRegistrationFragment;
-import it.uniba.di.sms2021.gruppodkl.wefit.fragment.coach.CoachRegistrationFragment;
-import it.uniba.di.sms2021.gruppodkl.wefit.model.Client;
-import it.uniba.di.sms2021.gruppodkl.wefit.model.User;
-import it.uniba.di.sms2021.gruppodkl.wefit.presenter.RegistrationActivityPresenter;
-import it.uniba.di.sms2021.gruppodkl.wefit.utility.Keys;
-import it.uniba.di.sms2021.gruppodkl.wefit.utility.UtilityStrings;
+import it.uniba.di.sms2021.gruppokdl.wefit.client.ClientMainActivity;
+import it.uniba.di.sms2021.gruppokdl.wefit.coach.CoachMainActivity;
+import it.uniba.di.sms2021.gruppokdl.wefit.contract.RegistrationActivityContract;
+import it.uniba.di.sms2021.gruppokdl.wefit.contract.RegistrationFragmentContract;
+import it.uniba.di.sms2021.gruppokdl.wefit.fragment.client.ClientRegistrationFragment;
+import it.uniba.di.sms2021.gruppokdl.wefit.fragment.coach.CoachRegistrationFragment;
+import it.uniba.di.sms2021.gruppokdl.wefit.model.Client;
+import it.uniba.di.sms2021.gruppokdl.wefit.model.User;
+import it.uniba.di.sms2021.gruppokdl.wefit.presenter.RegistrationActivityPresenter;
+import it.uniba.di.sms2021.gruppokdl.wefit.utility.Keys;
+import it.uniba.di.sms2021.gruppokdl.wefit.utility.UtilityStrings;
 
 public class RegistrationActivity extends BaseActivity implements DatePickerDialog.OnDateSetListener,
         RegistrationActivityContract.View, CoachRegistrationFragment.CoachCallBackActivity {

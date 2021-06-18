@@ -8,9 +8,9 @@ import androidx.annotation.NonNull;
 import androidx.cardview.widget.CardView;
 import androidx.recyclerview.widget.RecyclerView;
 
-import it.uniba.di.sms2021.gruppodkl.wefit.R;
-import it.uniba.di.sms2021.gruppodkl.wefit.model.Client;
-import it.uniba.di.sms2021.gruppodkl.wefit.model.User;
+import it.uniba.di.sms2021.gruppokdl.wefit.R;
+import it.uniba.di.sms2021.gruppokdl.wefit.model.Client;
+import it.uniba.di.sms2021.gruppokdl.wefit.model.User;
 
 public class CoachMyClientListViewHolder extends RecyclerView.ViewHolder implements User.MyImageBitmapCallback {
 

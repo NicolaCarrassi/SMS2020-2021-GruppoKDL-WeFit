@@ -1,4 +1,4 @@
-package it.uniba.di.sms2021.gruppodkl.wefit.presenter.coach;
+package it.uniba.di.sms2021.gruppokdl.wefit.presenter.coach;
 
 import com.firebase.ui.firestore.FirestoreRecyclerAdapter;
 import com.firebase.ui.firestore.FirestoreRecyclerOptions;
@@ -8,11 +8,11 @@ import java.util.HashMap;
 import java.util.Map;
 
 import it.uniba.di.sms2021.gruppokdl.wefit.coach.adapter.CoachMyClientTrainingSpecificationListAdapter;
-import it.uniba.di.sms2021.gruppodkl.wefit.contract.coach.CoachMyClientDailyTrainingContract;
-import it.uniba.di.sms2021.gruppodkl.wefit.db.TrainingDAO;
-import it.uniba.di.sms2021.gruppodkl.wefit.model.Exercise;
-import it.uniba.di.sms2021.gruppodkl.wefit.model.Training;
-import it.uniba.di.sms2021.gruppodkl.wefit.viewholder.TrainingDetailViewHolder;
+import it.uniba.di.sms2021.gruppokdl.wefit.contract.coach.CoachMyClientDailyTrainingContract;
+import it.uniba.di.sms2021.gruppokdl.wefit.db.TrainingDAO;
+import it.uniba.di.sms2021.gruppokdl.wefit.model.Exercise;
+import it.uniba.di.sms2021.gruppokdl.wefit.model.Training;
+import it.uniba.di.sms2021.gruppokdl.wefit.viewholder.TrainingDetailViewHolder;
 
 public class CoachMyClientDailyTrainingPresenter implements CoachMyClientDailyTrainingContract.Presenter {
 

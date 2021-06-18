@@ -1,4 +1,4 @@
-package it.uniba.di.sms2021.gruppodkl.wefit.fragment.client;
+package it.uniba.di.sms2021.gruppokdl.wefit.fragment.client;
 
 import android.os.Bundle;
 
@@ -10,8 +10,8 @@ import android.view.ViewGroup;
 
 import com.google.android.material.tabs.TabLayout;
 
-import it.uniba.di.sms2021.gruppodkl.wefit.R;
-import it.uniba.di.sms2021.gruppodkl.wefit.WeFitApplication;
+import it.uniba.di.sms2021.gruppokdl.wefit.R;
+import it.uniba.di.sms2021.gruppokdl.wefit.WeFitApplication;
 
 
 public class ClientDietFragment extends Fragment {

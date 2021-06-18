@@ -1,4 +1,4 @@
-package it.uniba.di.sms2021.gruppodkl.wefit.service;
+package it.uniba.di.sms2021.gruppokdl.wefit.service;
 
 import android.app.NotificationChannel;
 import android.app.NotificationManager;
@@ -20,9 +20,9 @@ import com.google.firebase.messaging.RemoteMessage;
 import java.util.HashMap;
 import java.util.Map;
 
-import it.uniba.di.sms2021.gruppodkl.wefit.R;
-import it.uniba.di.sms2021.gruppodkl.wefit.SplashActivity;
-import it.uniba.di.sms2021.gruppodkl.wefit.utility.Keys;
+import it.uniba.di.sms2021.gruppokdl.wefit.R;
+import it.uniba.di.sms2021.gruppokdl.wefit.SplashActivity;
+import it.uniba.di.sms2021.gruppokdl.wefit.utility.Keys;
 
 
 public class WeFitFirebaseMessagingService extends FirebaseMessagingService {

@@ -1,7 +1,7 @@
-package it.uniba.di.sms2021.gruppodkl.wefit.contract.client;
+package it.uniba.di.sms2021.gruppokdl.wefit.contract.client;
 
 import it.uniba.di.sms2021.gruppokdl.wefit.client.adapter.ClientMyTrainingAdapter;
-import it.uniba.di.sms2021.gruppodkl.wefit.model.Training;
+import it.uniba.di.sms2021.gruppokdl.wefit.model.Training;
 
 public interface ClientMyTrainingContract {
 

@@ -1,4 +1,4 @@
-package it.uniba.di.sms2021.gruppodkl.wefit.fragment.client;
+package it.uniba.di.sms2021.gruppokdl.wefit.fragment.client;
 
 import android.app.AlertDialog;
 import android.content.Context;
@@ -20,15 +20,15 @@ import com.google.android.material.dialog.MaterialAlertDialogBuilder;
 
 import java.util.Map;
 
-import it.uniba.di.sms2021.gruppodkl.wefit.client.AddFeedbackDialog;
-import it.uniba.di.sms2021.gruppodkl.wefit.R;
-import it.uniba.di.sms2021.gruppodkl.wefit.WeFitApplication;
-import it.uniba.di.sms2021.gruppodkl.wefit.contract.client.ClientMyCoachContract;
-import it.uniba.di.sms2021.gruppodkl.wefit.model.Client;
-import it.uniba.di.sms2021.gruppodkl.wefit.model.Coach;
-import it.uniba.di.sms2021.gruppodkl.wefit.model.User;
-import it.uniba.di.sms2021.gruppodkl.wefit.presenter.client.ClientMyCoachPresenter;
-import it.uniba.di.sms2021.gruppodkl.wefit.utility.Keys;
+import it.uniba.di.sms2021.gruppokdl.wefit.client.AddFeedbackDialog;
+import it.uniba.di.sms2021.gruppokdl.wefit.R;
+import it.uniba.di.sms2021.gruppokdl.wefit.WeFitApplication;
+import it.uniba.di.sms2021.gruppokdl.wefit.contract.client.ClientMyCoachContract;
+import it.uniba.di.sms2021.gruppokdl.wefit.model.Client;
+import it.uniba.di.sms2021.gruppokdl.wefit.model.Coach;
+import it.uniba.di.sms2021.gruppokdl.wefit.model.User;
+import it.uniba.di.sms2021.gruppokdl.wefit.presenter.client.ClientMyCoachPresenter;
+import it.uniba.di.sms2021.gruppokdl.wefit.utility.Keys;
 
 public class ClientMyCoachFragment extends Fragment implements ClientMyCoachContract.View, User.MyImageBitmapCallback {
 

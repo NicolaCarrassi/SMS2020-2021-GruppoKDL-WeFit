@@ -1,4 +1,4 @@
-package it.uniba.di.sms2021.gruppodkl.wefit.contract.coach;
+package it.uniba.di.sms2021.gruppokdl.wefit.contract.coach;
 
 import it.uniba.di.sms2021.gruppokdl.wefit.coach.adapter.CoachMyClientListAdapter;
 

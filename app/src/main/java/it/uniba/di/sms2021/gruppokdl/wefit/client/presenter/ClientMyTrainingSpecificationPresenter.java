@@ -1,4 +1,4 @@
-package it.uniba.di.sms2021.gruppodkl.wefit.presenter.client;
+package it.uniba.di.sms2021.gruppokdl.wefit.presenter.client;
 
 import androidx.paging.PagedList;
 
@@ -7,11 +7,11 @@ import com.firebase.ui.firestore.paging.FirestorePagingOptions;
 import com.google.firebase.firestore.Query;
 
 import it.uniba.di.sms2021.gruppokdl.wefit.client.adapter.ClientTrainingSpecificationListAdapter;
-import it.uniba.di.sms2021.gruppodkl.wefit.contract.client.ClientTrainingSpecificationContract;
-import it.uniba.di.sms2021.gruppodkl.wefit.db.TrainingDAO;
-import it.uniba.di.sms2021.gruppodkl.wefit.model.Exercise;
-import it.uniba.di.sms2021.gruppodkl.wefit.model.Training;
-import it.uniba.di.sms2021.gruppodkl.wefit.viewholder.TrainingDetailViewHolder;
+import it.uniba.di.sms2021.gruppokdl.wefit.contract.client.ClientTrainingSpecificationContract;
+import it.uniba.di.sms2021.gruppokdl.wefit.db.TrainingDAO;
+import it.uniba.di.sms2021.gruppokdl.wefit.model.Exercise;
+import it.uniba.di.sms2021.gruppokdl.wefit.model.Training;
+import it.uniba.di.sms2021.gruppokdl.wefit.viewholder.TrainingDetailViewHolder;
 
 public class ClientMyTrainingSpecificationPresenter implements ClientTrainingSpecificationContract.Presenter {
 

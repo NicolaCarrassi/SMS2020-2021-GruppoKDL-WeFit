@@ -1,4 +1,4 @@
-package it.uniba.di.sms2021.gruppodkl.wefit.db;
+package it.uniba.di.sms2021.gruppokdl.wefit.db;
 
 
 import com.google.firebase.firestore.DocumentReference;
@@ -14,11 +14,11 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
-import it.uniba.di.sms2021.gruppodkl.wefit.model.Client;
-import it.uniba.di.sms2021.gruppodkl.wefit.model.Coach;
-import it.uniba.di.sms2021.gruppodkl.wefit.model.Training;
-import it.uniba.di.sms2021.gruppodkl.wefit.model.User;
-import it.uniba.di.sms2021.gruppodkl.wefit.utility.Keys;
+import it.uniba.di.sms2021.gruppokdl.wefit.model.Client;
+import it.uniba.di.sms2021.gruppokdl.wefit.model.Coach;
+import it.uniba.di.sms2021.gruppokdl.wefit.model.Training;
+import it.uniba.di.sms2021.gruppokdl.wefit.model.User;
+import it.uniba.di.sms2021.gruppokdl.wefit.utility.Keys;
 
 public class UserDAO {
 

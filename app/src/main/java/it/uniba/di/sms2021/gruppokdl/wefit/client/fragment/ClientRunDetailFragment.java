@@ -1,4 +1,4 @@
-package it.uniba.di.sms2021.gruppodkl.wefit.fragment.client;
+package it.uniba.di.sms2021.gruppokdl.wefit.fragment.client;
 
 import android.os.Bundle;
 
@@ -23,10 +23,10 @@ import com.google.android.gms.maps.model.PolylineOptions;
 
 import java.util.List;
 
-import it.uniba.di.sms2021.gruppodkl.wefit.R;
-import it.uniba.di.sms2021.gruppodkl.wefit.WeFitApplication;
-import it.uniba.di.sms2021.gruppodkl.wefit.model.MyLocation;
-import it.uniba.di.sms2021.gruppodkl.wefit.model.Run;
+import it.uniba.di.sms2021.gruppokdl.wefit.R;
+import it.uniba.di.sms2021.gruppokdl.wefit.WeFitApplication;
+import it.uniba.di.sms2021.gruppokdl.wefit.model.MyLocation;
+import it.uniba.di.sms2021.gruppokdl.wefit.model.Run;
 
 /**
  * A simple {@link Fragment} subclass.

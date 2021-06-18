@@ -9,10 +9,10 @@ import androidx.annotation.NonNull;
 import com.firebase.ui.firestore.FirestoreRecyclerAdapter;
 import com.firebase.ui.firestore.FirestoreRecyclerOptions;
 
-import it.uniba.di.sms2021.gruppodkl.wefit.R;
-import it.uniba.di.sms2021.gruppodkl.wefit.db.TrainingDAO;
-import it.uniba.di.sms2021.gruppodkl.wefit.model.Exercise;
-import it.uniba.di.sms2021.gruppodkl.wefit.viewholder.TrainingDetailViewHolder;
+import it.uniba.di.sms2021.gruppokdl.wefit.R;
+import it.uniba.di.sms2021.gruppokdl.wefit.db.TrainingDAO;
+import it.uniba.di.sms2021.gruppokdl.wefit.model.Exercise;
+import it.uniba.di.sms2021.gruppokdl.wefit.viewholder.TrainingDetailViewHolder;
 
 public class CoachMyClientTrainingSpecificationListAdapter extends FirestoreRecyclerAdapter<Exercise, TrainingDetailViewHolder>
         implements TrainingDetailViewHolder.TrainingDetailCoach {

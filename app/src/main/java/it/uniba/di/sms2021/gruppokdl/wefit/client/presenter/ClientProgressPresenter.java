@@ -1,4 +1,4 @@
-package it.uniba.di.sms2021.gruppodkl.wefit.presenter.client;
+package it.uniba.di.sms2021.gruppokdl.wefit.presenter.client;
 
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
@@ -6,8 +6,8 @@ import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 
-import it.uniba.di.sms2021.gruppodkl.wefit.contract.client.ClientProgressContract;
-import it.uniba.di.sms2021.gruppodkl.wefit.db.ClientDAO;
+import it.uniba.di.sms2021.gruppokdl.wefit.contract.client.ClientProgressContract;
+import it.uniba.di.sms2021.gruppokdl.wefit.db.ClientDAO;
 
 public class ClientProgressPresenter implements ClientProgressContract.Presenter, ClientDAO.WeightsLoaded {
     private final ClientProgressContract.View mView;

@@ -1,4 +1,4 @@
-package it.uniba.di.sms2021.gruppodkl.wefit.presenter;
+package it.uniba.di.sms2021.gruppokdl.wefit.presenter;
 
 import android.net.Uri;
 
@@ -13,12 +13,12 @@ import java.util.HashMap;
 import java.util.Map;
 import java.util.Objects;
 
-import it.uniba.di.sms2021.gruppodkl.wefit.contract.RegistrationActivityContract;
-import it.uniba.di.sms2021.gruppodkl.wefit.db.UserDAO;
-import it.uniba.di.sms2021.gruppodkl.wefit.model.Client;
-import it.uniba.di.sms2021.gruppodkl.wefit.model.Coach;
-import it.uniba.di.sms2021.gruppodkl.wefit.model.User;
-import it.uniba.di.sms2021.gruppodkl.wefit.utility.Keys;
+import it.uniba.di.sms2021.gruppokdl.wefit.contract.RegistrationActivityContract;
+import it.uniba.di.sms2021.gruppokdl.wefit.db.UserDAO;
+import it.uniba.di.sms2021.gruppokdl.wefit.model.Client;
+import it.uniba.di.sms2021.gruppokdl.wefit.model.Coach;
+import it.uniba.di.sms2021.gruppokdl.wefit.model.User;
+import it.uniba.di.sms2021.gruppokdl.wefit.utility.Keys;
 
 public class RegistrationActivityPresenter implements RegistrationActivityContract.Presenter {
 

@@ -1,8 +1,8 @@
-package it.uniba.di.sms2021.gruppodkl.wefit.contract.client;
+package it.uniba.di.sms2021.gruppokdl.wefit.contract.client;
 
 import android.content.Context;
 
-import it.uniba.di.sms2021.gruppodkl.wefit.model.Exercise;
+import it.uniba.di.sms2021.gruppokdl.wefit.model.Exercise;
 
 public interface ClientExerciseSpecificationContract {
 

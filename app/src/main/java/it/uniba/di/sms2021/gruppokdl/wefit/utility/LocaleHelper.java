@@ -1,4 +1,4 @@
-package it.uniba.di.sms2021.gruppodkl.wefit.utility;
+package it.uniba.di.sms2021.gruppokdl.wefit.utility;
 
 
 import android.annotation.TargetApi;
@@ -11,7 +11,7 @@ import android.preference.PreferenceManager;
 
 import java.util.Locale;
 
-import it.uniba.di.sms2021.gruppodkl.wefit.SettingsActivity;
+import it.uniba.di.sms2021.gruppokdl.wefit.SettingsActivity;
 
 
 /**

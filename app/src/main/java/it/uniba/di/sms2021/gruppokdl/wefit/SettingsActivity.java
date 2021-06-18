@@ -1,4 +1,4 @@
-package it.uniba.di.sms2021.gruppodkl.wefit;
+package it.uniba.di.sms2021.gruppokdl.wefit;
 
 import android.content.Intent;
 import android.content.SharedPreferences;
@@ -12,7 +12,7 @@ import androidx.preference.PreferenceFragmentCompat;
 import androidx.preference.PreferenceManager;
 
 
-import it.uniba.di.sms2021.gruppodkl.wefit.utility.LocaleHelper;
+import it.uniba.di.sms2021.gruppokdl.wefit.utility.LocaleHelper;
 
 public class SettingsActivity extends BaseActivity {
 

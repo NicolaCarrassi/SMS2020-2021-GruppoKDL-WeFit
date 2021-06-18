@@ -1,4 +1,4 @@
-package it.uniba.di.sms2021.gruppodkl.wefit.fragment.client;
+package it.uniba.di.sms2021.gruppokdl.wefit.fragment.client;
 
 import android.content.Context;
 import android.os.Bundle;
@@ -12,13 +12,13 @@ import androidx.fragment.app.Fragment;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
-import it.uniba.di.sms2021.gruppodkl.wefit.client.ClientRequestCoachSentDialog;
-import it.uniba.di.sms2021.gruppodkl.wefit.R;
-import it.uniba.di.sms2021.gruppodkl.wefit.WeFitApplication;
+import it.uniba.di.sms2021.gruppokdl.wefit.client.ClientRequestCoachSentDialog;
+import it.uniba.di.sms2021.gruppokdl.wefit.R;
+import it.uniba.di.sms2021.gruppokdl.wefit.WeFitApplication;
 import it.uniba.di.sms2021.gruppokdl.wefit.client.adapter.ClientCoachListAdapter;
-import it.uniba.di.sms2021.gruppodkl.wefit.contract.client.ClientCoachListContract;
-import it.uniba.di.sms2021.gruppodkl.wefit.model.Client;
-import it.uniba.di.sms2021.gruppodkl.wefit.presenter.client.ClientCoachListPresenter;
+import it.uniba.di.sms2021.gruppokdl.wefit.contract.client.ClientCoachListContract;
+import it.uniba.di.sms2021.gruppokdl.wefit.model.Client;
+import it.uniba.di.sms2021.gruppokdl.wefit.presenter.client.ClientCoachListPresenter;
 
 public class ClientCoachListFragment extends Fragment implements ClientCoachListContract.View {
 

@@ -1,6 +1,6 @@
-package it.uniba.di.sms2021.gruppodkl.wefit.contract.client;
+package it.uniba.di.sms2021.gruppokdl.wefit.contract.client;
 
-import it.uniba.di.sms2021.gruppodkl.wefit.model.Client;
+import it.uniba.di.sms2021.gruppokdl.wefit.model.Client;
 
 public interface ClientAddWeightContract {
 

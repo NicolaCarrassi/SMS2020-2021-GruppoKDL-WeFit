@@ -1,11 +1,11 @@
-package it.uniba.di.sms2021.gruppodkl.wefit.presenter.client;
+package it.uniba.di.sms2021.gruppokdl.wefit.presenter.client;
 
 
 import java.util.List;
 
-import it.uniba.di.sms2021.gruppodkl.wefit.contract.client.ClientHomeContract;
-import it.uniba.di.sms2021.gruppodkl.wefit.db.UserDAO;
-import it.uniba.di.sms2021.gruppodkl.wefit.utility.Keys;
+import it.uniba.di.sms2021.gruppokdl.wefit.contract.client.ClientHomeContract;
+import it.uniba.di.sms2021.gruppokdl.wefit.db.UserDAO;
+import it.uniba.di.sms2021.gruppokdl.wefit.utility.Keys;
 
 public class ClientHomePresenter implements ClientHomeContract.Presenter, UserDAO.TrainingLoaded {
 

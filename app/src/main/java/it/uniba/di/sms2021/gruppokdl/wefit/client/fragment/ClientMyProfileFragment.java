@@ -1,4 +1,4 @@
-package it.uniba.di.sms2021.gruppodkl.wefit.fragment.client;
+package it.uniba.di.sms2021.gruppokdl.wefit.fragment.client;
 
 import android.app.AlertDialog;
 import android.content.ContentResolver;
@@ -25,13 +25,13 @@ import com.google.android.material.button.MaterialButton;
 import java.util.HashMap;
 import java.util.Map;
 
-import it.uniba.di.sms2021.gruppodkl.wefit.R;
-import it.uniba.di.sms2021.gruppodkl.wefit.WeFitApplication;
-import it.uniba.di.sms2021.gruppodkl.wefit.contract.client.ClientProfileFragmentContract;
-import it.uniba.di.sms2021.gruppodkl.wefit.model.Client;
-import it.uniba.di.sms2021.gruppodkl.wefit.model.User;
-import it.uniba.di.sms2021.gruppodkl.wefit.presenter.client.ClientMyProfilePresenter;
-import it.uniba.di.sms2021.gruppodkl.wefit.utility.Keys;
+import it.uniba.di.sms2021.gruppokdl.wefit.R;
+import it.uniba.di.sms2021.gruppokdl.wefit.WeFitApplication;
+import it.uniba.di.sms2021.gruppokdl.wefit.contract.client.ClientProfileFragmentContract;
+import it.uniba.di.sms2021.gruppokdl.wefit.model.Client;
+import it.uniba.di.sms2021.gruppokdl.wefit.model.User;
+import it.uniba.di.sms2021.gruppokdl.wefit.presenter.client.ClientMyProfilePresenter;
+import it.uniba.di.sms2021.gruppokdl.wefit.utility.Keys;
 
 
 public class ClientMyProfileFragment extends Fragment implements ClientProfileFragmentContract.View, User.MyImageBitmapCallback {

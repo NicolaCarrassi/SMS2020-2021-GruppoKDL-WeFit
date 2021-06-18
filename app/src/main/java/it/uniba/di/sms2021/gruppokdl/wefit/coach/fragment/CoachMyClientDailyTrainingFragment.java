@@ -1,4 +1,4 @@
-package it.uniba.di.sms2021.gruppodkl.wefit.fragment.coach;
+package it.uniba.di.sms2021.gruppokdl.wefit.fragment.coach;
 
 import android.os.Bundle;
 import android.view.LayoutInflater;
@@ -16,16 +16,16 @@ import com.google.android.material.button.MaterialButton;
 
 
 
-import it.uniba.di.sms2021.gruppodkl.wefit.R;
-import it.uniba.di.sms2021.gruppodkl.wefit.WeFitApplication;
-import it.uniba.di.sms2021.gruppodkl.wefit.coach.EditTrainingDialog;
-import it.uniba.di.sms2021.gruppodkl.wefit.contract.coach.CoachMyClientDailyTrainingContract;
-import it.uniba.di.sms2021.gruppodkl.wefit.model.Exercise;
-import it.uniba.di.sms2021.gruppodkl.wefit.model.Training;
-import it.uniba.di.sms2021.gruppodkl.wefit.presenter.coach.CoachMyClientDailyTrainingPresenter;
-import it.uniba.di.sms2021.gruppodkl.wefit.recyclerview.CustomRecyclerView;
-import it.uniba.di.sms2021.gruppodkl.wefit.utility.DayOfTheWeek;
-import it.uniba.di.sms2021.gruppodkl.wefit.viewholder.TrainingDetailViewHolder;
+import it.uniba.di.sms2021.gruppokdl.wefit.R;
+import it.uniba.di.sms2021.gruppokdl.wefit.WeFitApplication;
+import it.uniba.di.sms2021.gruppokdl.wefit.coach.EditTrainingDialog;
+import it.uniba.di.sms2021.gruppokdl.wefit.contract.coach.CoachMyClientDailyTrainingContract;
+import it.uniba.di.sms2021.gruppokdl.wefit.model.Exercise;
+import it.uniba.di.sms2021.gruppokdl.wefit.model.Training;
+import it.uniba.di.sms2021.gruppokdl.wefit.presenter.coach.CoachMyClientDailyTrainingPresenter;
+import it.uniba.di.sms2021.gruppokdl.wefit.recyclerview.CustomRecyclerView;
+import it.uniba.di.sms2021.gruppokdl.wefit.utility.DayOfTheWeek;
+import it.uniba.di.sms2021.gruppokdl.wefit.viewholder.TrainingDetailViewHolder;
 
 public class CoachMyClientDailyTrainingFragment extends Fragment implements CoachMyClientDailyTrainingContract.View, EditTrainingDialog.EditTrainingDialogCallbacks {
 

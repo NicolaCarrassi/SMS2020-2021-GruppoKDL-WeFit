@@ -4,12 +4,12 @@
 
     To get one, follow this link, follow the directions and press "Create" at the end:
 
-    https://console.developers.google.com/flows/enableapi?apiid=maps_android_backend&keyType=CLIENT_SIDE_ANDROID&r=A6:DF:AF:F1:F1:06:AD:D6:1B:25:4A:F2:D3:AD:29:83:8D:C9:94:AE%3Bit.uniba.di.sms2021.gruppodkl.wefit
+    https://console.developers.google.com/flows/enableapi?apiid=maps_android_backend&keyType=CLIENT_SIDE_ANDROID&r=A6:DF:AF:F1:F1:06:AD:D6:1B:25:4A:F2:D3:AD:29:83:8D:C9:94:AE%3Bit.uniba.di.sms2021.gruppokdl.wefit
 
     You can also add your credentials to an existing key, using these values:
 
     Package name:
-    it.uniba.di.sms2021.gruppodkl.wefit
+    it.uniba.di.sms2021.gruppokdl.wefit
 
     SHA-1 certificate fingerprint:
     A6:DF:AF:F1:F1:06:AD:D6:1B:25:4A:F2:D3:AD:29:83:8D:C9:94:AE

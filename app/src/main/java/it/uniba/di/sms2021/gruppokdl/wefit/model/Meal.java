@@ -1,9 +1,9 @@
-package it.uniba.di.sms2021.gruppodkl.wefit.model;
+package it.uniba.di.sms2021.gruppokdl.wefit.model;
 
 import android.content.Context;
 
 
-import it.uniba.di.sms2021.gruppodkl.wefit.R;
+import it.uniba.di.sms2021.gruppokdl.wefit.R;
 
 public class Meal {
 

@@ -1,4 +1,4 @@
-package it.uniba.di.sms2021.gruppodkl.wefit.fragment.coach;
+package it.uniba.di.sms2021.gruppokdl.wefit.fragment.coach;
 
 import android.os.Bundle;
 
@@ -13,15 +13,15 @@ import android.widget.Toast;
 
 import com.google.android.material.button.MaterialButton;
 
-import it.uniba.di.sms2021.gruppodkl.wefit.R;
-import it.uniba.di.sms2021.gruppodkl.wefit.WeFitApplication;
-import it.uniba.di.sms2021.gruppodkl.wefit.contract.coach.CoachClientRequestProfileContract;
-import it.uniba.di.sms2021.gruppodkl.wefit.model.Client;
-import it.uniba.di.sms2021.gruppodkl.wefit.model.Coach;
-import it.uniba.di.sms2021.gruppodkl.wefit.model.Request;
-import it.uniba.di.sms2021.gruppodkl.wefit.model.User;
-import it.uniba.di.sms2021.gruppodkl.wefit.presenter.coach.CoachClientRequestProfilePresenter;
-import it.uniba.di.sms2021.gruppodkl.wefit.utility.Keys;
+import it.uniba.di.sms2021.gruppokdl.wefit.R;
+import it.uniba.di.sms2021.gruppokdl.wefit.WeFitApplication;
+import it.uniba.di.sms2021.gruppokdl.wefit.contract.coach.CoachClientRequestProfileContract;
+import it.uniba.di.sms2021.gruppokdl.wefit.model.Client;
+import it.uniba.di.sms2021.gruppokdl.wefit.model.Coach;
+import it.uniba.di.sms2021.gruppokdl.wefit.model.Request;
+import it.uniba.di.sms2021.gruppokdl.wefit.model.User;
+import it.uniba.di.sms2021.gruppokdl.wefit.presenter.coach.CoachClientRequestProfilePresenter;
+import it.uniba.di.sms2021.gruppokdl.wefit.utility.Keys;
 
 
 public class CoachClientRequestProfileFragment extends Fragment implements CoachClientRequestProfileContract.View,

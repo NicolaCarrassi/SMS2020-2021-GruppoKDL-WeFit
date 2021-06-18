@@ -38,14 +38,14 @@ import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 
-import it.uniba.di.sms2021.gruppodkl.wefit.R;
-import it.uniba.di.sms2021.gruppodkl.wefit.WeFitApplication;
-import it.uniba.di.sms2021.gruppodkl.wefit.contract.client.RunActivityContract;
-import it.uniba.di.sms2021.gruppodkl.wefit.databinding.ActivityRunBinding;
-import it.uniba.di.sms2021.gruppodkl.wefit.model.Client;
-import it.uniba.di.sms2021.gruppodkl.wefit.model.Run;
-import it.uniba.di.sms2021.gruppodkl.wefit.presenter.client.RunActivityPresenter;
-import it.uniba.di.sms2021.gruppodkl.wefit.utility.MyBroadcastReceiver;
+import it.uniba.di.sms2021.gruppokdl.wefit.R;
+import it.uniba.di.sms2021.gruppokdl.wefit.WeFitApplication;
+import it.uniba.di.sms2021.gruppokdl.wefit.contract.client.RunActivityContract;
+import it.uniba.di.sms2021.gruppokdl.wefit.databinding.ActivityRunBinding;
+import it.uniba.di.sms2021.gruppokdl.wefit.model.Client;
+import it.uniba.di.sms2021.gruppokdl.wefit.model.Run;
+import it.uniba.di.sms2021.gruppokdl.wefit.presenter.client.RunActivityPresenter;
+import it.uniba.di.sms2021.gruppokdl.wefit.utility.MyBroadcastReceiver;
 
 public class RunActivity extends FragmentActivity implements OnMapReadyCallback, RunActivityContract.View, MyBroadcastReceiver.OnBroadcastReceiveListener {
 
@@ -75,7 +75,7 @@ public class RunActivity extends FragmentActivity implements OnMapReadyCallback,
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
 
-        it.uniba.di.sms2021.gruppodkl.wefit.databinding.ActivityRunBinding binding = ActivityRunBinding.inflate(getLayoutInflater());
+        it.uniba.di.sms2021.gruppokdl.wefit.databinding.ActivityRunBinding binding = ActivityRunBinding.inflate(getLayoutInflater());
         setContentView(binding.getRoot());
 
         final LocationManager manager = (LocationManager) getSystemService( Context.LOCATION_SERVICE );

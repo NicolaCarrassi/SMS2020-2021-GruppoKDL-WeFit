@@ -1,6 +1,6 @@
-package it.uniba.di.sms2021.gruppodkl.wefit.contract;
+package it.uniba.di.sms2021.gruppokdl.wefit.contract;
 
-import it.uniba.di.sms2021.gruppodkl.wefit.model.User;
+import it.uniba.di.sms2021.gruppokdl.wefit.model.User;
 
 public interface SplashActivityContract {
 

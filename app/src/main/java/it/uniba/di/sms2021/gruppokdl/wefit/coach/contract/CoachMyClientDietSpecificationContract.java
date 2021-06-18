@@ -1,7 +1,7 @@
-package it.uniba.di.sms2021.gruppodkl.wefit.contract.coach;
+package it.uniba.di.sms2021.gruppokdl.wefit.contract.coach;
 
 import it.uniba.di.sms2021.gruppokdl.wefit.coach.adapter.CoachDietDayAdapter;
-import it.uniba.di.sms2021.gruppodkl.wefit.model.Meal;
+import it.uniba.di.sms2021.gruppokdl.wefit.model.Meal;
 
 public interface CoachMyClientDietSpecificationContract {
 

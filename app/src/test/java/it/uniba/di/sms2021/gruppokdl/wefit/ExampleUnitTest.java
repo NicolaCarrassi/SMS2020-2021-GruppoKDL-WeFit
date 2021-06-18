@@ -1,4 +1,4 @@
-package it.uniba.di.sms2021.gruppodkl.wefit;
+package it.uniba.di.sms2021.gruppokdl.wefit;
 
 import org.junit.Test;
 

@@ -1,4 +1,4 @@
-package it.uniba.di.sms2021.gruppodkl.wefit.fragment.client;
+package it.uniba.di.sms2021.gruppokdl.wefit.fragment.client;
 
 import android.os.Bundle;
 import android.view.LayoutInflater;
@@ -14,12 +14,12 @@ import com.jjoe64.graphview.GraphView;
 import java.util.Date;
 import java.util.List;
 
-import it.uniba.di.sms2021.gruppodkl.wefit.R;
-import it.uniba.di.sms2021.gruppodkl.wefit.WeFitApplication;
-import it.uniba.di.sms2021.gruppodkl.wefit.contract.client.ClientProgressContract;
-import it.uniba.di.sms2021.gruppodkl.wefit.model.Client;
-import it.uniba.di.sms2021.gruppodkl.wefit.presenter.client.ClientProgressPresenter;
-import it.uniba.di.sms2021.gruppodkl.wefit.utility.GraphSettings;
+import it.uniba.di.sms2021.gruppokdl.wefit.R;
+import it.uniba.di.sms2021.gruppokdl.wefit.WeFitApplication;
+import it.uniba.di.sms2021.gruppokdl.wefit.contract.client.ClientProgressContract;
+import it.uniba.di.sms2021.gruppokdl.wefit.model.Client;
+import it.uniba.di.sms2021.gruppokdl.wefit.presenter.client.ClientProgressPresenter;
+import it.uniba.di.sms2021.gruppokdl.wefit.utility.GraphSettings;
 
 
 public class ClientMyProgressFragment extends Fragment implements ClientProgressContract.View {

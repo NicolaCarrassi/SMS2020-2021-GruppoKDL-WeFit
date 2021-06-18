@@ -1,4 +1,4 @@
-package it.uniba.di.sms2021.gruppodkl.wefit.contract.client;
+package it.uniba.di.sms2021.gruppokdl.wefit.contract.client;
 
 import android.content.BroadcastReceiver;
 import android.content.Context;
@@ -12,7 +12,7 @@ import com.google.android.gms.maps.GoogleMap;
 
 import java.util.List;
 
-import it.uniba.di.sms2021.gruppodkl.wefit.model.Run;
+import it.uniba.di.sms2021.gruppokdl.wefit.model.Run;
 
 public interface RunActivityContract {
 

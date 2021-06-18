@@ -1,4 +1,4 @@
-package it.uniba.di.sms2021.gruppodkl.wefit.fragment.client;
+package it.uniba.di.sms2021.gruppokdl.wefit.fragment.client;
 
 import android.graphics.drawable.AnimatedVectorDrawable;
 import android.os.Bundle;
@@ -20,10 +20,10 @@ import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.List;
 
-import it.uniba.di.sms2021.gruppodkl.wefit.R;
-import it.uniba.di.sms2021.gruppodkl.wefit.WeFitApplication;
-import it.uniba.di.sms2021.gruppodkl.wefit.contract.client.ClientAddTrainingContract;
-import it.uniba.di.sms2021.gruppodkl.wefit.presenter.client.ClientAddTrainingPresenter;
+import it.uniba.di.sms2021.gruppokdl.wefit.R;
+import it.uniba.di.sms2021.gruppokdl.wefit.WeFitApplication;
+import it.uniba.di.sms2021.gruppokdl.wefit.contract.client.ClientAddTrainingContract;
+import it.uniba.di.sms2021.gruppokdl.wefit.presenter.client.ClientAddTrainingPresenter;
 
 
 public class ClientAddTrainingFragment extends BottomSheetDialogFragment implements ClientAddTrainingContract.View{

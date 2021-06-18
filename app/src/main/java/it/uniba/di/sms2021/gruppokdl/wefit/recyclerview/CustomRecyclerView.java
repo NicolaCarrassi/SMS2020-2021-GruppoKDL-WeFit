@@ -1,4 +1,4 @@
-package it.uniba.di.sms2021.gruppodkl.wefit.recyclerview;
+package it.uniba.di.sms2021.gruppokdl.wefit.recyclerview;
 
 import android.content.Context;
 import android.util.AttributeSet;

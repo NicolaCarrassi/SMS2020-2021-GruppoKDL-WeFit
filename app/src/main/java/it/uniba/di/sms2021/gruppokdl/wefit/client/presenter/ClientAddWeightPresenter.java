@@ -1,14 +1,14 @@
-package it.uniba.di.sms2021.gruppodkl.wefit.presenter.client;
+package it.uniba.di.sms2021.gruppokdl.wefit.presenter.client;
 
 import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.HashMap;
 import java.util.Map;
 
-import it.uniba.di.sms2021.gruppodkl.wefit.contract.client.ClientAddWeightContract;
-import it.uniba.di.sms2021.gruppodkl.wefit.db.UserDAO;
-import it.uniba.di.sms2021.gruppodkl.wefit.model.Client;
-import it.uniba.di.sms2021.gruppodkl.wefit.utility.Keys;
+import it.uniba.di.sms2021.gruppokdl.wefit.contract.client.ClientAddWeightContract;
+import it.uniba.di.sms2021.gruppokdl.wefit.db.UserDAO;
+import it.uniba.di.sms2021.gruppokdl.wefit.model.Client;
+import it.uniba.di.sms2021.gruppokdl.wefit.utility.Keys;
 
 public class ClientAddWeightPresenter implements ClientAddWeightContract.Presenter {
 

@@ -1,12 +1,12 @@
-package it.uniba.di.sms2021.gruppodkl.wefit.presenter;
+package it.uniba.di.sms2021.gruppokdl.wefit.presenter;
 
 import android.util.Patterns;
 
 import com.google.firebase.auth.FirebaseAuth;
 
-import it.uniba.di.sms2021.gruppodkl.wefit.contract.LoginActivityContract;
-import it.uniba.di.sms2021.gruppodkl.wefit.db.UserDAO;
-import it.uniba.di.sms2021.gruppodkl.wefit.model.User;
+import it.uniba.di.sms2021.gruppokdl.wefit.contract.LoginActivityContract;
+import it.uniba.di.sms2021.gruppokdl.wefit.db.UserDAO;
+import it.uniba.di.sms2021.gruppokdl.wefit.model.User;
 
 public class LoginActivityPresenter implements LoginActivityContract.Presenter {
 

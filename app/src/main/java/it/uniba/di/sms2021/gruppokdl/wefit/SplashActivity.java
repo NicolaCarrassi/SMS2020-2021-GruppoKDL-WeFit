@@ -1,4 +1,4 @@
-package it.uniba.di.sms2021.gruppodkl.wefit;
+package it.uniba.di.sms2021.gruppokdl.wefit;
 
 import android.content.Context;
 import android.content.Intent;
@@ -20,12 +20,12 @@ import com.google.firebase.auth.FirebaseAuth;
 
 import java.lang.ref.WeakReference;
 
-import it.uniba.di.sms2021.gruppodkl.wefit.client.ClientMainActivity;
-import it.uniba.di.sms2021.gruppodkl.wefit.coach.CoachMainActivity;
-import it.uniba.di.sms2021.gruppodkl.wefit.contract.SplashActivityContract;
-import it.uniba.di.sms2021.gruppodkl.wefit.model.Client;
-import it.uniba.di.sms2021.gruppodkl.wefit.model.User;
-import it.uniba.di.sms2021.gruppodkl.wefit.presenter.SplashActivityPresenter;
+import it.uniba.di.sms2021.gruppokdl.wefit.client.ClientMainActivity;
+import it.uniba.di.sms2021.gruppokdl.wefit.coach.CoachMainActivity;
+import it.uniba.di.sms2021.gruppokdl.wefit.contract.SplashActivityContract;
+import it.uniba.di.sms2021.gruppokdl.wefit.model.Client;
+import it.uniba.di.sms2021.gruppokdl.wefit.model.User;
+import it.uniba.di.sms2021.gruppokdl.wefit.presenter.SplashActivityPresenter;
 
 public class SplashActivity extends BaseActivity  implements SplashActivityContract.View {
 

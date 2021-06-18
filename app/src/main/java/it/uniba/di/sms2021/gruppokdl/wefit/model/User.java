@@ -10,7 +10,7 @@ import com.google.firebase.storage.StorageReference;
 import java.io.File;
 import java.io.IOException;
 
-import it.uniba.di.sms2021.gruppodkl.wefit.presenter.LoginActivityPresenter;
+import it.uniba.di.sms2021.gruppokdl.wefit.presenter.LoginActivityPresenter;
 
 
 public class User {

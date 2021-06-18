@@ -1,13 +1,13 @@
-package it.uniba.di.sms2021.gruppodkl.wefit.presenter.coach;
+package it.uniba.di.sms2021.gruppokdl.wefit.presenter.coach;
 
 
 import com.firebase.ui.firestore.FirestoreRecyclerOptions;
 
 import it.uniba.di.sms2021.gruppokdl.wefit.coach.adapter.CoachClientRequestsAdapter;
-import it.uniba.di.sms2021.gruppodkl.wefit.contract.coach.CoachClientsRequestsContract;
-import it.uniba.di.sms2021.gruppodkl.wefit.db.CoachDAO;
-import it.uniba.di.sms2021.gruppodkl.wefit.model.Coach;
-import it.uniba.di.sms2021.gruppodkl.wefit.model.Request;
+import it.uniba.di.sms2021.gruppokdl.wefit.contract.coach.CoachClientsRequestsContract;
+import it.uniba.di.sms2021.gruppokdl.wefit.db.CoachDAO;
+import it.uniba.di.sms2021.gruppokdl.wefit.model.Coach;
+import it.uniba.di.sms2021.gruppokdl.wefit.model.Request;
 
 public class CoachClientRequestsPresenter implements CoachClientsRequestsContract.Presenter {
 

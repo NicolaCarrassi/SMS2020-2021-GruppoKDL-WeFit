@@ -11,10 +11,10 @@ import com.firebase.ui.firestore.paging.FirestorePagingOptions;
 
 import java.util.Objects;
 
-import it.uniba.di.sms2021.gruppodkl.wefit.R;
-import it.uniba.di.sms2021.gruppodkl.wefit.contract.client.ClientTrainingSpecificationContract;
-import it.uniba.di.sms2021.gruppodkl.wefit.model.Exercise;
-import it.uniba.di.sms2021.gruppodkl.wefit.viewholder.TrainingDetailViewHolder;
+import it.uniba.di.sms2021.gruppokdl.wefit.R;
+import it.uniba.di.sms2021.gruppokdl.wefit.contract.client.ClientTrainingSpecificationContract;
+import it.uniba.di.sms2021.gruppokdl.wefit.model.Exercise;
+import it.uniba.di.sms2021.gruppokdl.wefit.viewholder.TrainingDetailViewHolder;
 
 public class ClientTrainingSpecificationListAdapter extends FirestorePagingAdapter<Exercise, TrainingDetailViewHolder> implements TrainingDetailViewHolder.TrainingDetailClient {
 

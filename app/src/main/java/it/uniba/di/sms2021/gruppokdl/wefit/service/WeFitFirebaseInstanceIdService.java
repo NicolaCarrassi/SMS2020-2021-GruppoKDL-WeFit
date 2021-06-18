@@ -1,4 +1,4 @@
-package it.uniba.di.sms2021.gruppodkl.wefit.service;
+package it.uniba.di.sms2021.gruppokdl.wefit.service;
 
 
 
@@ -11,7 +11,7 @@ import com.google.firebase.messaging.FirebaseMessagingService;
 import java.util.HashMap;
 import java.util.Map;
 
-import it.uniba.di.sms2021.gruppodkl.wefit.utility.Keys;
+import it.uniba.di.sms2021.gruppokdl.wefit.utility.Keys;
 
 public class WeFitFirebaseInstanceIdService extends FirebaseMessagingService {
 

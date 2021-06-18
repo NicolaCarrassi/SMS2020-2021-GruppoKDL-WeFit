@@ -1,9 +1,9 @@
-package it.uniba.di.sms2021.gruppodkl.wefit.contract.coach;
+package it.uniba.di.sms2021.gruppokdl.wefit.contract.coach;
 
 import java.util.Date;
 import java.util.List;
 
-import it.uniba.di.sms2021.gruppodkl.wefit.model.Client;
+import it.uniba.di.sms2021.gruppokdl.wefit.model.Client;
 
 public interface CoachMyClientProfileContract  {
 

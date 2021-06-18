@@ -1,11 +1,11 @@
-package it.uniba.di.sms2021.gruppodkl.wefit.contract.coach;
+package it.uniba.di.sms2021.gruppokdl.wefit.contract.coach;
 
 import android.net.Uri;
 
 import java.util.Map;
 
-import it.uniba.di.sms2021.gruppodkl.wefit.model.Coach;
-import it.uniba.di.sms2021.gruppodkl.wefit.model.User;
+import it.uniba.di.sms2021.gruppokdl.wefit.model.Coach;
+import it.uniba.di.sms2021.gruppokdl.wefit.model.User;
 
 public interface CoachProfileContract {
 

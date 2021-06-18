@@ -1,8 +1,8 @@
-package it.uniba.di.sms2021.gruppodkl.wefit.presenter.coach;
+package it.uniba.di.sms2021.gruppokdl.wefit.presenter.coach;
 
-import it.uniba.di.sms2021.gruppodkl.wefit.contract.coach.CoachHomeContract;
-import it.uniba.di.sms2021.gruppodkl.wefit.db.CoachDAO;
-import it.uniba.di.sms2021.gruppodkl.wefit.model.Coach;
+import it.uniba.di.sms2021.gruppokdl.wefit.contract.coach.CoachHomeContract;
+import it.uniba.di.sms2021.gruppokdl.wefit.db.CoachDAO;
+import it.uniba.di.sms2021.gruppokdl.wefit.model.Coach;
 
 public class CoachHomePresenter implements CoachHomeContract.Presenter, CoachDAO.RequestCallbacks {
     private final CoachHomeContract.View mView;

@@ -9,9 +9,9 @@ import androidx.annotation.NonNull;
 import com.firebase.ui.firestore.FirestoreRecyclerAdapter;
 import com.firebase.ui.firestore.FirestoreRecyclerOptions;
 
-import it.uniba.di.sms2021.gruppodkl.wefit.R;
-import it.uniba.di.sms2021.gruppodkl.wefit.model.Meal;
-import it.uniba.di.sms2021.gruppodkl.wefit.viewholder.MealViewHolder;
+import it.uniba.di.sms2021.gruppokdl.wefit.R;
+import it.uniba.di.sms2021.gruppokdl.wefit.model.Meal;
+import it.uniba.di.sms2021.gruppokdl.wefit.viewholder.MealViewHolder;
 
 public class ClientDietDiaryAdapter extends FirestoreRecyclerAdapter<Meal, MealViewHolder> {
 

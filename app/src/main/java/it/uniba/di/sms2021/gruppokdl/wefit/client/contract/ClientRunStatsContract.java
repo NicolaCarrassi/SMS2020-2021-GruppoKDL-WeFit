@@ -1,7 +1,7 @@
-package it.uniba.di.sms2021.gruppodkl.wefit.contract.client;
+package it.uniba.di.sms2021.gruppokdl.wefit.contract.client;
 
 import it.uniba.di.sms2021.gruppokdl.wefit.client.adapter.ClientRunStatsAdapter;
-import it.uniba.di.sms2021.gruppodkl.wefit.model.Run;
+import it.uniba.di.sms2021.gruppokdl.wefit.model.Run;
 
 public interface ClientRunStatsContract {
 

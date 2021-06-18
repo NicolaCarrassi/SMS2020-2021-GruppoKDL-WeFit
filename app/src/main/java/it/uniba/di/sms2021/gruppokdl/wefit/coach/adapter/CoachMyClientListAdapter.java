@@ -11,9 +11,9 @@ import com.firebase.ui.firestore.paging.FirestorePagingOptions;
 
 import java.util.Objects;
 
-import it.uniba.di.sms2021.gruppodkl.wefit.R;
-import it.uniba.di.sms2021.gruppodkl.wefit.contract.coach.CoachClientsContract;
-import it.uniba.di.sms2021.gruppodkl.wefit.model.Client;
+import it.uniba.di.sms2021.gruppokdl.wefit.R;
+import it.uniba.di.sms2021.gruppokdl.wefit.contract.coach.CoachClientsContract;
+import it.uniba.di.sms2021.gruppokdl.wefit.model.Client;
 import it.uniba.di.sms2021.gruppokdl.wefit.coach.viewholder.CoachMyClientListViewHolder;
 
 public class CoachMyClientListAdapter extends FirestorePagingAdapter<Client, CoachMyClientListViewHolder>

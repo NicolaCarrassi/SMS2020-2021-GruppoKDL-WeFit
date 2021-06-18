@@ -41,12 +41,12 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:orientation="vertical">
-                <it.uniba.di.sms2021.gruppodkl.wefit.recyclerview.CustomRecyclerView
+                <it.uniba.di.sms2021.gruppokdl.wefit.recyclerview.CustomRecyclerView
                     android:id="@+id/train_recycler"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     tools:listitem="@layout/training_day_item">
-                </it.uniba.di.sms2021.gruppodkl.wefit.recyclerview.CustomRecyclerView>
+                </it.uniba.di.sms2021.gruppokdl.wefit.recyclerview.CustomRecyclerView>
 
                 <TextView
                     android:id="@+id/no_trainings"

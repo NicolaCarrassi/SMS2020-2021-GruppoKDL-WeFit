@@ -1,4 +1,4 @@
-package it.uniba.di.sms2021.gruppodkl.wefit.coach;
+package it.uniba.di.sms2021.gruppokdl.wefit.coach;
 
 import android.app.Dialog;
 import android.content.Context;
@@ -15,9 +15,9 @@ import androidx.annotation.NonNull;
 
 import com.google.android.material.button.MaterialButton;
 
-import it.uniba.di.sms2021.gruppodkl.wefit.R;
-import it.uniba.di.sms2021.gruppodkl.wefit.model.Training;
-import it.uniba.di.sms2021.gruppodkl.wefit.utility.DayOfTheWeek;
+import it.uniba.di.sms2021.gruppokdl.wefit.R;
+import it.uniba.di.sms2021.gruppokdl.wefit.model.Training;
+import it.uniba.di.sms2021.gruppokdl.wefit.utility.DayOfTheWeek;
 
 public class EditTrainingDialog extends Dialog implements View.OnClickListener{
 

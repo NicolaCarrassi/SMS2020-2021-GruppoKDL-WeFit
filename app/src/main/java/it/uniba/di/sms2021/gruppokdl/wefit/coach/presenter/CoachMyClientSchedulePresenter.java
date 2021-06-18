@@ -1,14 +1,14 @@
-package it.uniba.di.sms2021.gruppodkl.wefit.presenter.coach;
+package it.uniba.di.sms2021.gruppokdl.wefit.presenter.coach;
 
 import com.firebase.ui.firestore.FirestoreRecyclerAdapter;
 import com.firebase.ui.firestore.FirestoreRecyclerOptions;
 
 import it.uniba.di.sms2021.gruppokdl.wefit.coach.adapter.CoachMyClientTrainingAdapter;
-import it.uniba.di.sms2021.gruppodkl.wefit.contract.coach.CoachMyClientScheduleContract;
-import it.uniba.di.sms2021.gruppodkl.wefit.db.TrainingDAO;
-import it.uniba.di.sms2021.gruppodkl.wefit.model.Training;
-import it.uniba.di.sms2021.gruppodkl.wefit.utility.DayOfTheWeek;
-import it.uniba.di.sms2021.gruppodkl.wefit.viewholder.TrainingViewHolder;
+import it.uniba.di.sms2021.gruppokdl.wefit.contract.coach.CoachMyClientScheduleContract;
+import it.uniba.di.sms2021.gruppokdl.wefit.db.TrainingDAO;
+import it.uniba.di.sms2021.gruppokdl.wefit.model.Training;
+import it.uniba.di.sms2021.gruppokdl.wefit.utility.DayOfTheWeek;
+import it.uniba.di.sms2021.gruppokdl.wefit.viewholder.TrainingViewHolder;
 
 public class CoachMyClientSchedulePresenter implements CoachMyClientScheduleContract.Presenter {
 

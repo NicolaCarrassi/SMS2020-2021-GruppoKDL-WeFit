@@ -1,4 +1,4 @@
-package it.uniba.di.sms2021.gruppodkl.wefit.fragment.client;
+package it.uniba.di.sms2021.gruppokdl.wefit.fragment.client;
 
 import android.os.Bundle;
 
@@ -20,13 +20,13 @@ import java.util.Calendar;
 import java.util.Date;
 import java.util.Objects;
 
-import it.uniba.di.sms2021.gruppodkl.wefit.R;
-import it.uniba.di.sms2021.gruppodkl.wefit.WeFitApplication;
+import it.uniba.di.sms2021.gruppokdl.wefit.R;
+import it.uniba.di.sms2021.gruppokdl.wefit.WeFitApplication;
 import it.uniba.di.sms2021.gruppokdl.wefit.client.adapter.ClientDietDiaryAdapter;
-import it.uniba.di.sms2021.gruppodkl.wefit.contract.client.ClientDietDiaryContract;
-import it.uniba.di.sms2021.gruppodkl.wefit.model.Meal;
-import it.uniba.di.sms2021.gruppodkl.wefit.presenter.client.ClientDietDiaryPresenter;
-import it.uniba.di.sms2021.gruppodkl.wefit.recyclerview.CustomRecyclerView;
+import it.uniba.di.sms2021.gruppokdl.wefit.contract.client.ClientDietDiaryContract;
+import it.uniba.di.sms2021.gruppokdl.wefit.model.Meal;
+import it.uniba.di.sms2021.gruppokdl.wefit.presenter.client.ClientDietDiaryPresenter;
+import it.uniba.di.sms2021.gruppokdl.wefit.recyclerview.CustomRecyclerView;
 
 
 public class ClientDietDiaryFragment extends Fragment implements ClientDietDiaryContract.View {

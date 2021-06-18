@@ -1,4 +1,4 @@
-package it.uniba.di.sms2021.gruppodkl.wefit;
+package it.uniba.di.sms2021.gruppokdl.wefit;
 
 import android.content.Context;
 
@@ -21,6 +21,6 @@ public class ExampleInstrumentedTest {
     public void useAppContext() {
         // Context of the app under test.
         Context appContext = InstrumentationRegistry.getInstrumentation().getTargetContext();
-        assertEquals("it.uniba.di.sms2021.gruppodkl.wefit", appContext.getPackageName());
+        assertEquals("it.uniba.di.sms2021.gruppokdl.wefit", appContext.getPackageName());
     }
 }

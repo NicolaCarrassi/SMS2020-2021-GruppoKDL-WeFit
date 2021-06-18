@@ -1,4 +1,4 @@
-package it.uniba.di.sms2021.gruppodkl.wefit.adapter;
+package it.uniba.di.sms2021.gruppokdl.wefit.adapter;
 
 import android.content.Context;
 import android.view.LayoutInflater;
@@ -11,10 +11,10 @@ import androidx.recyclerview.widget.RecyclerView;
 import java.util.ArrayList;
 import java.util.List;
 
-import it.uniba.di.sms2021.gruppodkl.wefit.R;
-import it.uniba.di.sms2021.gruppodkl.wefit.contract.DietListBaseContract;
-import it.uniba.di.sms2021.gruppodkl.wefit.utility.DayOfTheWeek;
-import it.uniba.di.sms2021.gruppodkl.wefit.viewholder.DietDayViewHolder;
+import it.uniba.di.sms2021.gruppokdl.wefit.R;
+import it.uniba.di.sms2021.gruppokdl.wefit.contract.DietListBaseContract;
+import it.uniba.di.sms2021.gruppokdl.wefit.utility.DayOfTheWeek;
+import it.uniba.di.sms2021.gruppokdl.wefit.viewholder.DietDayViewHolder;
 
 public class DietListAdapter extends RecyclerView.Adapter<DietDayViewHolder> implements DietDayViewHolder.DietDayCallbacks {
 

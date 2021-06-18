@@ -1,6 +1,6 @@
-package it.uniba.di.sms2021.gruppodkl.wefit.contract.coach;
+package it.uniba.di.sms2021.gruppokdl.wefit.contract.coach;
 
-import it.uniba.di.sms2021.gruppodkl.wefit.contract.RegistrationFragmentContract;
+import it.uniba.di.sms2021.gruppokdl.wefit.contract.RegistrationFragmentContract;
 
 public interface CoachRegistrationFragmentContract{
 

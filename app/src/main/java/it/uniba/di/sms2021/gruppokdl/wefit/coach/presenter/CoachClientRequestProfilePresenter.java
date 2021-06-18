@@ -1,12 +1,12 @@
-package it.uniba.di.sms2021.gruppodkl.wefit.presenter.coach;
+package it.uniba.di.sms2021.gruppokdl.wefit.presenter.coach;
 
-import it.uniba.di.sms2021.gruppodkl.wefit.contract.coach.CoachClientRequestProfileContract;
-import it.uniba.di.sms2021.gruppodkl.wefit.db.CoachDAO;
-import it.uniba.di.sms2021.gruppodkl.wefit.db.UserDAO;
-import it.uniba.di.sms2021.gruppodkl.wefit.model.Client;
-import it.uniba.di.sms2021.gruppodkl.wefit.model.Coach;
-import it.uniba.di.sms2021.gruppodkl.wefit.model.Request;
-import it.uniba.di.sms2021.gruppodkl.wefit.model.User;
+import it.uniba.di.sms2021.gruppokdl.wefit.contract.coach.CoachClientRequestProfileContract;
+import it.uniba.di.sms2021.gruppokdl.wefit.db.CoachDAO;
+import it.uniba.di.sms2021.gruppokdl.wefit.db.UserDAO;
+import it.uniba.di.sms2021.gruppokdl.wefit.model.Client;
+import it.uniba.di.sms2021.gruppokdl.wefit.model.Coach;
+import it.uniba.di.sms2021.gruppokdl.wefit.model.Request;
+import it.uniba.di.sms2021.gruppokdl.wefit.model.User;
 
 public class CoachClientRequestProfilePresenter implements CoachClientRequestProfileContract.Presenter,
         UserDAO.UserCallbacks{

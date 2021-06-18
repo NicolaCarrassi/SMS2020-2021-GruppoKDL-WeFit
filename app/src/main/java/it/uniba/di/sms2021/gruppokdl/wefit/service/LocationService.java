@@ -1,4 +1,4 @@
-package it.uniba.di.sms2021.gruppodkl.wefit.service;
+package it.uniba.di.sms2021.gruppokdl.wefit.service;
 
 import android.annotation.SuppressLint;
 import android.app.NotificationChannel;
@@ -22,7 +22,7 @@ import com.google.android.gms.location.LocationRequest;
 import com.google.android.gms.location.LocationResult;
 import com.google.android.gms.location.LocationServices;
 
-import it.uniba.di.sms2021.gruppodkl.wefit.R;
+import it.uniba.di.sms2021.gruppokdl.wefit.R;
 
 public class LocationService extends Service {
 

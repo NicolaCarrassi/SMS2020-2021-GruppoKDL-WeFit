@@ -1,4 +1,4 @@
-package it.uniba.di.sms2021.gruppodkl.wefit.client;
+package it.uniba.di.sms2021.gruppokdl.wefit.client;
 
 
 import android.app.AlertDialog;
@@ -21,24 +21,24 @@ import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.Map;
 
-import it.uniba.di.sms2021.gruppodkl.wefit.LoginActivity;
-import it.uniba.di.sms2021.gruppodkl.wefit.R;
-import it.uniba.di.sms2021.gruppodkl.wefit.SettingsActivity;
-import it.uniba.di.sms2021.gruppodkl.wefit.WeFitApplication;
-import it.uniba.di.sms2021.gruppodkl.wefit.contract.client.ClientMainActivityContract;
-import it.uniba.di.sms2021.gruppodkl.wefit.fragment.client.ClientAddFragment;
-import it.uniba.di.sms2021.gruppodkl.wefit.fragment.client.ClientMyCoachFragment;
-import it.uniba.di.sms2021.gruppodkl.wefit.fragment.client.ClientDietFragment;
-import it.uniba.di.sms2021.gruppodkl.wefit.fragment.client.ClientHomeFragment;
-import it.uniba.di.sms2021.gruppodkl.wefit.fragment.client.ClientMyProfileFragment;
-import it.uniba.di.sms2021.gruppodkl.wefit.fragment.client.ClientMyProgressFragment;
-import it.uniba.di.sms2021.gruppodkl.wefit.fragment.TermsFragment;
-import it.uniba.di.sms2021.gruppodkl.wefit.fragment.client.ClientMyTrainingFragment;
-import it.uniba.di.sms2021.gruppodkl.wefit.fragment.client.ClientRunFragment;
-import it.uniba.di.sms2021.gruppodkl.wefit.model.Client;
-import it.uniba.di.sms2021.gruppodkl.wefit.model.User;
-import it.uniba.di.sms2021.gruppodkl.wefit.presenter.client.ClientMainActivityPresenter;
-import it.uniba.di.sms2021.gruppodkl.wefit.utility.Keys;
+import it.uniba.di.sms2021.gruppokdl.wefit.LoginActivity;
+import it.uniba.di.sms2021.gruppokdl.wefit.R;
+import it.uniba.di.sms2021.gruppokdl.wefit.SettingsActivity;
+import it.uniba.di.sms2021.gruppokdl.wefit.WeFitApplication;
+import it.uniba.di.sms2021.gruppokdl.wefit.contract.client.ClientMainActivityContract;
+import it.uniba.di.sms2021.gruppokdl.wefit.fragment.client.ClientAddFragment;
+import it.uniba.di.sms2021.gruppokdl.wefit.fragment.client.ClientMyCoachFragment;
+import it.uniba.di.sms2021.gruppokdl.wefit.fragment.client.ClientDietFragment;
+import it.uniba.di.sms2021.gruppokdl.wefit.fragment.client.ClientHomeFragment;
+import it.uniba.di.sms2021.gruppokdl.wefit.fragment.client.ClientMyProfileFragment;
+import it.uniba.di.sms2021.gruppokdl.wefit.fragment.client.ClientMyProgressFragment;
+import it.uniba.di.sms2021.gruppokdl.wefit.fragment.TermsFragment;
+import it.uniba.di.sms2021.gruppokdl.wefit.fragment.client.ClientMyTrainingFragment;
+import it.uniba.di.sms2021.gruppokdl.wefit.fragment.client.ClientRunFragment;
+import it.uniba.di.sms2021.gruppokdl.wefit.model.Client;
+import it.uniba.di.sms2021.gruppokdl.wefit.model.User;
+import it.uniba.di.sms2021.gruppokdl.wefit.presenter.client.ClientMainActivityPresenter;
+import it.uniba.di.sms2021.gruppokdl.wefit.utility.Keys;
 
 public class ClientMainActivity extends AppCompatActivity implements WeFitApplication.CallbackOperations,
         ClientMyProfileFragment.ProfileFragmentActivity, ClientMyCoachFragment.CoachProfileCallbacks,

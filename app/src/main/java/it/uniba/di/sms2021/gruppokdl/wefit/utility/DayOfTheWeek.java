@@ -1,4 +1,4 @@
-package it.uniba.di.sms2021.gruppodkl.wefit.utility;
+package it.uniba.di.sms2021.gruppokdl.wefit.utility;
 
 import android.content.Context;
 import android.view.View;
@@ -6,7 +6,7 @@ import android.view.View;
 import java.util.Calendar;
 import java.util.Date;
 
-import it.uniba.di.sms2021.gruppodkl.wefit.R;
+import it.uniba.di.sms2021.gruppokdl.wefit.R;
 
 public class DayOfTheWeek {
 

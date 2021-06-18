@@ -11,9 +11,9 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
 
-import it.uniba.di.sms2021.gruppodkl.wefit.R;
-import it.uniba.di.sms2021.gruppodkl.wefit.model.Meal;
-import it.uniba.di.sms2021.gruppodkl.wefit.viewholder.ShoppingListItemViewHolder;
+import it.uniba.di.sms2021.gruppokdl.wefit.R;
+import it.uniba.di.sms2021.gruppokdl.wefit.model.Meal;
+import it.uniba.di.sms2021.gruppokdl.wefit.viewholder.ShoppingListItemViewHolder;
 
 public class ClientShoppingListAdapter extends RecyclerView.Adapter<ShoppingListItemViewHolder> {
 

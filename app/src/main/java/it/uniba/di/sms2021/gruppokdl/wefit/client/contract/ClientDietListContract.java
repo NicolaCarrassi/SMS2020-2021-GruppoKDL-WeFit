@@ -1,6 +1,6 @@
-package it.uniba.di.sms2021.gruppodkl.wefit.contract.client;
+package it.uniba.di.sms2021.gruppokdl.wefit.contract.client;
 
-import it.uniba.di.sms2021.gruppodkl.wefit.contract.DietListBaseContract;
+import it.uniba.di.sms2021.gruppokdl.wefit.contract.DietListBaseContract;
 
 public interface ClientDietListContract {
 

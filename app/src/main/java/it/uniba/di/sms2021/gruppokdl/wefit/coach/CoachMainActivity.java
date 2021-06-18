@@ -1,4 +1,4 @@
-package it.uniba.di.sms2021.gruppodkl.wefit.coach;
+package it.uniba.di.sms2021.gruppokdl.wefit.coach;
 
 import android.content.DialogInterface;
 import android.content.Intent;
@@ -20,17 +20,17 @@ import com.google.android.material.bottomnavigation.BottomNavigationView;
 import com.google.android.material.navigation.NavigationView;
 import com.google.firebase.auth.FirebaseAuth;
 
-import it.uniba.di.sms2021.gruppodkl.wefit.LoginActivity;
-import it.uniba.di.sms2021.gruppodkl.wefit.R;
-import it.uniba.di.sms2021.gruppodkl.wefit.SettingsActivity;
-import it.uniba.di.sms2021.gruppodkl.wefit.WeFitApplication;
-import it.uniba.di.sms2021.gruppodkl.wefit.fragment.TermsFragment;
-import it.uniba.di.sms2021.gruppodkl.wefit.fragment.client.ClientAddFragment;
-import it.uniba.di.sms2021.gruppodkl.wefit.fragment.client.ClientMyProfileFragment;
-import it.uniba.di.sms2021.gruppodkl.wefit.fragment.coach.CoachClientsFragment;
-import it.uniba.di.sms2021.gruppodkl.wefit.fragment.coach.CoachFeedbacksFragment;
-import it.uniba.di.sms2021.gruppodkl.wefit.fragment.coach.CoachHomeFragment;
-import it.uniba.di.sms2021.gruppodkl.wefit.fragment.coach.CoachProfileFragment;
+import it.uniba.di.sms2021.gruppokdl.wefit.LoginActivity;
+import it.uniba.di.sms2021.gruppokdl.wefit.R;
+import it.uniba.di.sms2021.gruppokdl.wefit.SettingsActivity;
+import it.uniba.di.sms2021.gruppokdl.wefit.WeFitApplication;
+import it.uniba.di.sms2021.gruppokdl.wefit.fragment.TermsFragment;
+import it.uniba.di.sms2021.gruppokdl.wefit.fragment.client.ClientAddFragment;
+import it.uniba.di.sms2021.gruppokdl.wefit.fragment.client.ClientMyProfileFragment;
+import it.uniba.di.sms2021.gruppokdl.wefit.fragment.coach.CoachClientsFragment;
+import it.uniba.di.sms2021.gruppokdl.wefit.fragment.coach.CoachFeedbacksFragment;
+import it.uniba.di.sms2021.gruppokdl.wefit.fragment.coach.CoachHomeFragment;
+import it.uniba.di.sms2021.gruppokdl.wefit.fragment.coach.CoachProfileFragment;
 
 public class CoachMainActivity extends AppCompatActivity implements WeFitApplication.CallbackOperations,
         CoachProfileFragment.CoachProfileActivity, ClientAddFragment.BottomNavigationSelector {

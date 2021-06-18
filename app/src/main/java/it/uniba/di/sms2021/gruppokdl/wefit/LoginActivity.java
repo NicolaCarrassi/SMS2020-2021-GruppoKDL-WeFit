@@ -1,4 +1,4 @@
-package it.uniba.di.sms2021.gruppodkl.wefit;
+package it.uniba.di.sms2021.gruppokdl.wefit;
 
 import android.content.Intent;
 import android.os.Bundle;
@@ -18,13 +18,13 @@ import com.google.android.material.button.MaterialButton;
 
 import java.util.regex.Pattern;
 
-import it.uniba.di.sms2021.gruppodkl.wefit.client.ClientMainActivity;
-import it.uniba.di.sms2021.gruppodkl.wefit.coach.CoachMainActivity;
-import it.uniba.di.sms2021.gruppodkl.wefit.contract.LoginActivityContract;
-import it.uniba.di.sms2021.gruppodkl.wefit.model.Client;
-import it.uniba.di.sms2021.gruppodkl.wefit.model.User;
-import it.uniba.di.sms2021.gruppodkl.wefit.presenter.LoginActivityPresenter;
-import it.uniba.di.sms2021.gruppodkl.wefit.utility.UtilityStrings;
+import it.uniba.di.sms2021.gruppokdl.wefit.client.ClientMainActivity;
+import it.uniba.di.sms2021.gruppokdl.wefit.coach.CoachMainActivity;
+import it.uniba.di.sms2021.gruppokdl.wefit.contract.LoginActivityContract;
+import it.uniba.di.sms2021.gruppokdl.wefit.model.Client;
+import it.uniba.di.sms2021.gruppokdl.wefit.model.User;
+import it.uniba.di.sms2021.gruppokdl.wefit.presenter.LoginActivityPresenter;
+import it.uniba.di.sms2021.gruppokdl.wefit.utility.UtilityStrings;
 
 public class LoginActivity extends BaseActivity implements LoginActivityContract.View {
 

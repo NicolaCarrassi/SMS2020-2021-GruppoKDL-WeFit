@@ -1,11 +1,11 @@
-package it.uniba.di.sms2021.gruppodkl.wefit.presenter.coach;
+package it.uniba.di.sms2021.gruppokdl.wefit.presenter.coach;
 
 import com.firebase.ui.firestore.FirestoreRecyclerOptions;
 
 import it.uniba.di.sms2021.gruppokdl.wefit.coach.adapter.CoachAllFeedbacksAdapter;
-import it.uniba.di.sms2021.gruppodkl.wefit.contract.coach.CoachAllFeedbacksContract;
-import it.uniba.di.sms2021.gruppodkl.wefit.db.CoachDAO;
-import it.uniba.di.sms2021.gruppodkl.wefit.model.Feedback;
+import it.uniba.di.sms2021.gruppokdl.wefit.contract.coach.CoachAllFeedbacksContract;
+import it.uniba.di.sms2021.gruppokdl.wefit.db.CoachDAO;
+import it.uniba.di.sms2021.gruppokdl.wefit.model.Feedback;
 
 public class CoachAllFeedbacksPresenter implements CoachAllFeedbacksContract.Presenter {
 

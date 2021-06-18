@@ -1,4 +1,4 @@
-package it.uniba.di.sms2021.gruppodkl.wefit.fragment.client;
+package it.uniba.di.sms2021.gruppokdl.wefit.fragment.client;
 
 import android.os.Bundle;
 import android.view.LayoutInflater;
@@ -15,12 +15,12 @@ import com.google.android.material.progressindicator.LinearProgressIndicator;
 
 import java.util.Map;
 
-import it.uniba.di.sms2021.gruppodkl.wefit.R;
-import it.uniba.di.sms2021.gruppodkl.wefit.WeFitApplication;
+import it.uniba.di.sms2021.gruppokdl.wefit.R;
+import it.uniba.di.sms2021.gruppokdl.wefit.WeFitApplication;
 import it.uniba.di.sms2021.gruppokdl.wefit.client.adapter.ClientShoppingListAdapter;
-import it.uniba.di.sms2021.gruppodkl.wefit.contract.client.ClientDietShoppingListContract;
-import it.uniba.di.sms2021.gruppodkl.wefit.presenter.client.ClientDietShoppingListPresenter;
-import it.uniba.di.sms2021.gruppodkl.wefit.recyclerview.CustomRecyclerView;
+import it.uniba.di.sms2021.gruppokdl.wefit.contract.client.ClientDietShoppingListContract;
+import it.uniba.di.sms2021.gruppokdl.wefit.presenter.client.ClientDietShoppingListPresenter;
+import it.uniba.di.sms2021.gruppokdl.wefit.recyclerview.CustomRecyclerView;
 
 
 public class ClientDietShoppingListFragment extends Fragment implements ClientDietShoppingListContract.View {

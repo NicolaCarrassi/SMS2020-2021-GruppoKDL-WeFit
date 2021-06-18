@@ -1,6 +1,6 @@
-package it.uniba.di.sms2021.gruppodkl.wefit.presenter.client;
+package it.uniba.di.sms2021.gruppokdl.wefit.presenter.client;
 
-import it.uniba.di.sms2021.gruppodkl.wefit.contract.client.ClientDietListContract;
+import it.uniba.di.sms2021.gruppokdl.wefit.contract.client.ClientDietListContract;
 
 public class ClientDietListPresenter implements ClientDietListContract.Presenter {
 

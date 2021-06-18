@@ -1,9 +1,9 @@
-package it.uniba.di.sms2021.gruppodkl.wefit.contract.coach;
+package it.uniba.di.sms2021.gruppokdl.wefit.contract.coach;
 
 import com.firebase.ui.firestore.FirestoreRecyclerAdapter;
 
-import it.uniba.di.sms2021.gruppodkl.wefit.model.Training;
-import it.uniba.di.sms2021.gruppodkl.wefit.viewholder.TrainingViewHolder;
+import it.uniba.di.sms2021.gruppokdl.wefit.model.Training;
+import it.uniba.di.sms2021.gruppokdl.wefit.viewholder.TrainingViewHolder;
 
 public interface CoachMyClientScheduleContract {
 

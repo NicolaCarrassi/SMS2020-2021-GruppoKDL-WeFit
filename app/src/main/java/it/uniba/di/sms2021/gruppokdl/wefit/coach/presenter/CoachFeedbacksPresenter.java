@@ -1,11 +1,11 @@
-package it.uniba.di.sms2021.gruppodkl.wefit.presenter.coach;
+package it.uniba.di.sms2021.gruppokdl.wefit.presenter.coach;
 
 import java.util.List;
 
-import it.uniba.di.sms2021.gruppodkl.wefit.contract.coach.CoachFeedbacksContract;
-import it.uniba.di.sms2021.gruppodkl.wefit.db.CoachDAO;
-import it.uniba.di.sms2021.gruppodkl.wefit.model.Coach;
-import it.uniba.di.sms2021.gruppodkl.wefit.model.Feedback;
+import it.uniba.di.sms2021.gruppokdl.wefit.contract.coach.CoachFeedbacksContract;
+import it.uniba.di.sms2021.gruppokdl.wefit.db.CoachDAO;
+import it.uniba.di.sms2021.gruppokdl.wefit.model.Coach;
+import it.uniba.di.sms2021.gruppokdl.wefit.model.Feedback;
 
 public class CoachFeedbacksPresenter implements CoachFeedbacksContract.Presenter, CoachDAO.RatingCallbacks {
 

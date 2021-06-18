@@ -57,7 +57,7 @@
         </LinearLayout>
 
 
-        <it.uniba.di.sms2021.gruppodkl.wefit.recyclerview.CustomRecyclerView
+        <it.uniba.di.sms2021.gruppokdl.wefit.recyclerview.CustomRecyclerView
             android:id="@+id/recycler_shopping_list"
             android:layout_width="match_parent"
             android:layout_height="match_parent"

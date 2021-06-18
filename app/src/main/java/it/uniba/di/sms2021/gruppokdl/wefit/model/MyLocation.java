@@ -1,4 +1,4 @@
-package it.uniba.di.sms2021.gruppodkl.wefit.model;
+package it.uniba.di.sms2021.gruppokdl.wefit.model;
 
 import android.location.Location;
 import android.os.Parcel;

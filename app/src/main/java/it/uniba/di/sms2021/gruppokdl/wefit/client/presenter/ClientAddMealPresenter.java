@@ -1,4 +1,4 @@
-package it.uniba.di.sms2021.gruppodkl.wefit.presenter.client;
+package it.uniba.di.sms2021.gruppokdl.wefit.presenter.client;
 
 import android.content.Context;
 
@@ -9,11 +9,11 @@ import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 
-import it.uniba.di.sms2021.gruppodkl.wefit.R;
-import it.uniba.di.sms2021.gruppodkl.wefit.contract.client.ClientAddMealContract;
-import it.uniba.di.sms2021.gruppodkl.wefit.db.MealsDAO;
-import it.uniba.di.sms2021.gruppodkl.wefit.model.Meal;
-import it.uniba.di.sms2021.gruppodkl.wefit.utility.DayOfTheWeek;
+import it.uniba.di.sms2021.gruppokdl.wefit.R;
+import it.uniba.di.sms2021.gruppokdl.wefit.contract.client.ClientAddMealContract;
+import it.uniba.di.sms2021.gruppokdl.wefit.db.MealsDAO;
+import it.uniba.di.sms2021.gruppokdl.wefit.model.Meal;
+import it.uniba.di.sms2021.gruppokdl.wefit.utility.DayOfTheWeek;
 
 public class ClientAddMealPresenter implements ClientAddMealContract.Presenter, MealsDAO.MealRegistered {
 

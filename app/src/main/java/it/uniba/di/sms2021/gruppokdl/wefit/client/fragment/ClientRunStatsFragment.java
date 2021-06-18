@@ -1,4 +1,4 @@
-package it.uniba.di.sms2021.gruppodkl.wefit.fragment.client;
+package it.uniba.di.sms2021.gruppokdl.wefit.fragment.client;
 
 import android.os.Bundle;
 
@@ -10,13 +10,13 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Toast;
 
-import it.uniba.di.sms2021.gruppodkl.wefit.R;
-import it.uniba.di.sms2021.gruppodkl.wefit.WeFitApplication;
+import it.uniba.di.sms2021.gruppokdl.wefit.R;
+import it.uniba.di.sms2021.gruppokdl.wefit.WeFitApplication;
 import it.uniba.di.sms2021.gruppokdl.wefit.client.adapter.ClientRunStatsAdapter;
-import it.uniba.di.sms2021.gruppodkl.wefit.contract.client.ClientRunStatsContract;
-import it.uniba.di.sms2021.gruppodkl.wefit.model.Run;
-import it.uniba.di.sms2021.gruppodkl.wefit.presenter.client.ClientRunStatsPresenter;
-import it.uniba.di.sms2021.gruppodkl.wefit.recyclerview.CustomRecyclerView;
+import it.uniba.di.sms2021.gruppokdl.wefit.contract.client.ClientRunStatsContract;
+import it.uniba.di.sms2021.gruppokdl.wefit.model.Run;
+import it.uniba.di.sms2021.gruppokdl.wefit.presenter.client.ClientRunStatsPresenter;
+import it.uniba.di.sms2021.gruppokdl.wefit.recyclerview.CustomRecyclerView;
 
 
 public class ClientRunStatsFragment extends Fragment implements ClientRunStatsContract.View {

@@ -1,4 +1,4 @@
-package it.uniba.di.sms2021.gruppodkl.wefit.viewholder;
+package it.uniba.di.sms2021.gruppokdl.wefit.viewholder;
 
 import android.view.View;
 import android.widget.TextView;
@@ -6,8 +6,8 @@ import android.widget.TextView;
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
-import it.uniba.di.sms2021.gruppodkl.wefit.R;
-import it.uniba.di.sms2021.gruppodkl.wefit.model.Meal;
+import it.uniba.di.sms2021.gruppokdl.wefit.R;
+import it.uniba.di.sms2021.gruppokdl.wefit.model.Meal;
 
 public class ShoppingListItemViewHolder extends RecyclerView.ViewHolder {
 

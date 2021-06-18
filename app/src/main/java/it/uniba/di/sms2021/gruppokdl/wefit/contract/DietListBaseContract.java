@@ -1,4 +1,4 @@
-package it.uniba.di.sms2021.gruppodkl.wefit.contract;
+package it.uniba.di.sms2021.gruppokdl.wefit.contract;
 
 public interface DietListBaseContract {
 

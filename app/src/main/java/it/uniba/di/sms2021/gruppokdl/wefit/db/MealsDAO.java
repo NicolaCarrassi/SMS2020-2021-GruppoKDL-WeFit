@@ -1,4 +1,4 @@
-package it.uniba.di.sms2021.gruppodkl.wefit.db;
+package it.uniba.di.sms2021.gruppokdl.wefit.db;
 
 import com.google.firebase.firestore.CollectionReference;
 import com.google.firebase.firestore.DocumentReference;
@@ -11,8 +11,8 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
-import it.uniba.di.sms2021.gruppodkl.wefit.model.Meal;
-import it.uniba.di.sms2021.gruppodkl.wefit.utility.Keys;
+import it.uniba.di.sms2021.gruppokdl.wefit.model.Meal;
+import it.uniba.di.sms2021.gruppokdl.wefit.utility.Keys;
 
 public class MealsDAO {
 

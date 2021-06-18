@@ -1,4 +1,4 @@
-package it.uniba.di.sms2021.gruppodkl.wefit.fragment.coach;
+package it.uniba.di.sms2021.gruppokdl.wefit.fragment.coach;
 
 import android.os.Bundle;
 
@@ -11,11 +11,11 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
 
-import it.uniba.di.sms2021.gruppodkl.wefit.R;
-import it.uniba.di.sms2021.gruppodkl.wefit.WeFitApplication;
-import it.uniba.di.sms2021.gruppodkl.wefit.adapter.DietListAdapter;
-import it.uniba.di.sms2021.gruppodkl.wefit.contract.coach.CoachMyClientDietListContract;
-import it.uniba.di.sms2021.gruppodkl.wefit.presenter.coach.CoachMyClientDietListPresenter;
+import it.uniba.di.sms2021.gruppokdl.wefit.R;
+import it.uniba.di.sms2021.gruppokdl.wefit.WeFitApplication;
+import it.uniba.di.sms2021.gruppokdl.wefit.adapter.DietListAdapter;
+import it.uniba.di.sms2021.gruppokdl.wefit.contract.coach.CoachMyClientDietListContract;
+import it.uniba.di.sms2021.gruppokdl.wefit.presenter.coach.CoachMyClientDietListPresenter;
 
 /**
  * A simple {@link Fragment} subclass.

@@ -1,8 +1,8 @@
-package it.uniba.di.sms2021.gruppodkl.wefit.presenter;
+package it.uniba.di.sms2021.gruppokdl.wefit.presenter;
 
-import it.uniba.di.sms2021.gruppodkl.wefit.contract.SplashActivityContract;
-import it.uniba.di.sms2021.gruppodkl.wefit.db.UserDAO;
-import it.uniba.di.sms2021.gruppodkl.wefit.model.User;
+import it.uniba.di.sms2021.gruppokdl.wefit.contract.SplashActivityContract;
+import it.uniba.di.sms2021.gruppokdl.wefit.db.UserDAO;
+import it.uniba.di.sms2021.gruppokdl.wefit.model.User;
 
 public class SplashActivityPresenter implements SplashActivityContract.Presenter {
 

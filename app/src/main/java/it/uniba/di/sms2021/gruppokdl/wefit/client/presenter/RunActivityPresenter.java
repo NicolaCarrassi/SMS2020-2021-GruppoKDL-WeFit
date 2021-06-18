@@ -1,4 +1,4 @@
-package it.uniba.di.sms2021.gruppodkl.wefit.presenter.client;
+package it.uniba.di.sms2021.gruppokdl.wefit.presenter.client;
 
 import android.annotation.SuppressLint;
 import android.app.ActivityManager;
@@ -26,11 +26,11 @@ import com.google.android.gms.tasks.Task;
 import java.util.List;
 import java.util.concurrent.TimeUnit;
 
-import it.uniba.di.sms2021.gruppodkl.wefit.R;
-import it.uniba.di.sms2021.gruppodkl.wefit.contract.client.RunActivityContract;
-import it.uniba.di.sms2021.gruppodkl.wefit.db.ClientDAO;
-import it.uniba.di.sms2021.gruppodkl.wefit.model.Run;
-import it.uniba.di.sms2021.gruppodkl.wefit.service.LocationService;
+import it.uniba.di.sms2021.gruppokdl.wefit.R;
+import it.uniba.di.sms2021.gruppokdl.wefit.contract.client.RunActivityContract;
+import it.uniba.di.sms2021.gruppokdl.wefit.db.ClientDAO;
+import it.uniba.di.sms2021.gruppokdl.wefit.model.Run;
+import it.uniba.di.sms2021.gruppokdl.wefit.service.LocationService;
 
 public class RunActivityPresenter implements RunActivityContract.Presenter {
 

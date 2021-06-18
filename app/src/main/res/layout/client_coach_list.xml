@@ -30,12 +30,12 @@
             android:orientation="vertical">
 
 
-                <it.uniba.di.sms2021.gruppodkl.wefit.recyclerview.CustomRecyclerView
+                <it.uniba.di.sms2021.gruppokdl.wefit.recyclerview.CustomRecyclerView
                     android:id="@+id/recycler_coach"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     tools:listitem="@layout/client_list_coach_item">
-                </it.uniba.di.sms2021.gruppodkl.wefit.recyclerview.CustomRecyclerView>
+                </it.uniba.di.sms2021.gruppokdl.wefit.recyclerview.CustomRecyclerView>
         </LinearLayout>
     </ScrollView>
 

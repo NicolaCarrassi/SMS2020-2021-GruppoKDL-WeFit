@@ -1,4 +1,4 @@
-package it.uniba.di.sms2021.gruppodkl.wefit.presenter.client;
+package it.uniba.di.sms2021.gruppokdl.wefit.presenter.client;
 
 
 import java.util.ArrayList;
@@ -6,9 +6,9 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
-import it.uniba.di.sms2021.gruppodkl.wefit.contract.client.ClientDietShoppingListContract;
-import it.uniba.di.sms2021.gruppodkl.wefit.db.MealsDAO;
-import it.uniba.di.sms2021.gruppodkl.wefit.utility.DayOfTheWeek;
+import it.uniba.di.sms2021.gruppokdl.wefit.contract.client.ClientDietShoppingListContract;
+import it.uniba.di.sms2021.gruppokdl.wefit.db.MealsDAO;
+import it.uniba.di.sms2021.gruppokdl.wefit.utility.DayOfTheWeek;
 
 public class ClientDietShoppingListPresenter implements ClientDietShoppingListContract.Presenter, MealsDAO.ShoppingCartLoaded {
 

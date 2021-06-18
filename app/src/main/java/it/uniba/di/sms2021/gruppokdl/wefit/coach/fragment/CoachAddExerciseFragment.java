@@ -1,4 +1,4 @@
-package it.uniba.di.sms2021.gruppokdl.wefit.fragment.coach;
+package it.uniba.di.sms2021.gruppokdl.wefit.coach.fragment;
 
 import android.os.Bundle;
 
@@ -26,7 +26,7 @@ import it.uniba.di.sms2021.gruppokdl.wefit.R;
 import it.uniba.di.sms2021.gruppokdl.wefit.contract.coach.CoachAddExerciseContract;
 import it.uniba.di.sms2021.gruppokdl.wefit.model.Exercise;
 import it.uniba.di.sms2021.gruppokdl.wefit.model.Training;
-import it.uniba.di.sms2021.gruppokdl.wefit.presenter.coach.CoachAddExercisePresenter;
+import it.uniba.di.sms2021.gruppokdl.wefit.coach.presenter.CoachAddExercisePresenter;
 
 
 public class CoachAddExerciseFragment extends BottomSheetDialogFragment implements CoachAddExerciseContract.View {

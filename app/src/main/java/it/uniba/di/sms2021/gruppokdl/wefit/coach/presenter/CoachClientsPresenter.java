@@ -5,7 +5,7 @@ import androidx.paging.PagedList;
 import com.firebase.ui.firestore.paging.FirestorePagingOptions;
 
 import it.uniba.di.sms2021.gruppokdl.wefit.coach.adapter.CoachMyClientListAdapter;
-import it.uniba.di.sms2021.gruppokdl.wefit.contract.coach.CoachClientsContract;
+import it.uniba.di.sms2021.gruppokdl.wefit.coach.contract.CoachClientsContract;
 import it.uniba.di.sms2021.gruppokdl.wefit.db.CoachDAO;
 import it.uniba.di.sms2021.gruppokdl.wefit.model.Client;
 

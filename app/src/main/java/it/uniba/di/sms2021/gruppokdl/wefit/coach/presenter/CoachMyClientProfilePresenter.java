@@ -7,7 +7,7 @@ import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 
-import it.uniba.di.sms2021.gruppokdl.wefit.contract.coach.CoachMyClientProfileContract;
+import it.uniba.di.sms2021.gruppokdl.wefit.coach.contract.CoachMyClientProfileContract;
 import it.uniba.di.sms2021.gruppokdl.wefit.db.CoachDAO;
 import it.uniba.di.sms2021.gruppokdl.wefit.model.Client;
 

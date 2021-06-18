@@ -1,6 +1,6 @@
 package it.uniba.di.sms2021.gruppokdl.wefit.coach.presenter;
 
-import it.uniba.di.sms2021.gruppokdl.wefit.contract.coach.CoachMyClientDietListContract;
+import it.uniba.di.sms2021.gruppokdl.wefit.coach.contract.CoachMyClientDietListContract;
 
 public class CoachMyClientDietListPresenter implements CoachMyClientDietListContract.Presenter {
 

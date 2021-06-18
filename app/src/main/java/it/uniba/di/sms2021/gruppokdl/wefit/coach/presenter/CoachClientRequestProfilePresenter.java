@@ -1,6 +1,6 @@
 package it.uniba.di.sms2021.gruppokdl.wefit.coach.presenter;
 
-import it.uniba.di.sms2021.gruppokdl.wefit.contract.coach.CoachClientRequestProfileContract;
+import it.uniba.di.sms2021.gruppokdl.wefit.coach.contract.CoachClientRequestProfileContract;
 import it.uniba.di.sms2021.gruppokdl.wefit.db.CoachDAO;
 import it.uniba.di.sms2021.gruppokdl.wefit.db.UserDAO;
 import it.uniba.di.sms2021.gruppokdl.wefit.model.Client;

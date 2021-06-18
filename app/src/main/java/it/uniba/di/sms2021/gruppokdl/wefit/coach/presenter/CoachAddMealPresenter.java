@@ -6,7 +6,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 import it.uniba.di.sms2021.gruppokdl.wefit.R;
-import it.uniba.di.sms2021.gruppokdl.wefit.contract.coach.CoachAddMealContract;
+import it.uniba.di.sms2021.gruppokdl.wefit.coach.contract.CoachAddMealContract;
 import it.uniba.di.sms2021.gruppokdl.wefit.db.ClientDAO;
 import it.uniba.di.sms2021.gruppokdl.wefit.db.MealsDAO;
 import it.uniba.di.sms2021.gruppokdl.wefit.model.Meal;

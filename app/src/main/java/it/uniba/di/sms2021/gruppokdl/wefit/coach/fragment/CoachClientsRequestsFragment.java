@@ -1,4 +1,4 @@
-package it.uniba.di.sms2021.gruppokdl.wefit.fragment.coach;
+package it.uniba.di.sms2021.gruppokdl.wefit.coach.fragment;
 
 import android.content.Context;
 import android.os.Bundle;
@@ -16,10 +16,10 @@ import android.widget.TextView;
 import it.uniba.di.sms2021.gruppokdl.wefit.R;
 import it.uniba.di.sms2021.gruppokdl.wefit.WeFitApplication;
 import it.uniba.di.sms2021.gruppokdl.wefit.coach.adapter.CoachClientRequestsAdapter;
-import it.uniba.di.sms2021.gruppokdl.wefit.contract.coach.CoachClientsRequestsContract;
+import it.uniba.di.sms2021.gruppokdl.wefit.coach.contract.CoachClientsRequestsContract;
 import it.uniba.di.sms2021.gruppokdl.wefit.model.Coach;
 import it.uniba.di.sms2021.gruppokdl.wefit.model.Request;
-import it.uniba.di.sms2021.gruppokdl.wefit.presenter.coach.CoachClientRequestsPresenter;
+import it.uniba.di.sms2021.gruppokdl.wefit.coach.presenter.CoachClientRequestsPresenter;
 import it.uniba.di.sms2021.gruppokdl.wefit.recyclerview.CustomRecyclerView;
 
 public class CoachClientsRequestsFragment extends Fragment

@@ -1,4 +1,4 @@
-package it.uniba.di.sms2021.gruppokdl.wefit.fragment.coach;
+package it.uniba.di.sms2021.gruppokdl.wefit.coach.fragment;
 
 import android.content.Context;
 import android.net.Uri;
@@ -17,7 +17,7 @@ import java.util.HashMap;
 import java.util.Map;
 
 import it.uniba.di.sms2021.gruppokdl.wefit.R;
-import it.uniba.di.sms2021.gruppokdl.wefit.contract.coach.CoachRegistrationFragmentContract;
+import it.uniba.di.sms2021.gruppokdl.wefit.coach.contract.CoachRegistrationFragmentContract;
 import it.uniba.di.sms2021.gruppokdl.wefit.model.Coach;
 
 

@@ -11,7 +11,7 @@ import com.firebase.ui.firestore.FirestoreRecyclerAdapter;
 import com.firebase.ui.firestore.FirestoreRecyclerOptions;
 
 import it.uniba.di.sms2021.gruppokdl.wefit.R;
-import it.uniba.di.sms2021.gruppokdl.wefit.contract.coach.CoachMyClientDietSpecificationContract;
+import it.uniba.di.sms2021.gruppokdl.wefit.coach.contract.CoachMyClientDietSpecificationContract;
 import it.uniba.di.sms2021.gruppokdl.wefit.model.Meal;
 import it.uniba.di.sms2021.gruppokdl.wefit.viewholder.MealViewHolder;
 

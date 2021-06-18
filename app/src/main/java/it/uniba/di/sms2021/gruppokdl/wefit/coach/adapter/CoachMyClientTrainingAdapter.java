@@ -10,7 +10,7 @@ import com.firebase.ui.firestore.FirestoreRecyclerAdapter;
 import com.firebase.ui.firestore.FirestoreRecyclerOptions;
 
 import it.uniba.di.sms2021.gruppokdl.wefit.R;
-import it.uniba.di.sms2021.gruppokdl.wefit.contract.coach.CoachMyClientScheduleContract;
+import it.uniba.di.sms2021.gruppokdl.wefit.coach.contract.CoachMyClientScheduleContract;
 import it.uniba.di.sms2021.gruppokdl.wefit.model.Training;
 import it.uniba.di.sms2021.gruppokdl.wefit.viewholder.TrainingViewHolder;
 

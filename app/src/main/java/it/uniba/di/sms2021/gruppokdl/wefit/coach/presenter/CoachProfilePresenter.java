@@ -10,7 +10,7 @@ import com.google.firebase.storage.StorageReference;
 import java.util.HashMap;
 import java.util.Map;
 
-import it.uniba.di.sms2021.gruppokdl.wefit.contract.coach.CoachProfileContract;
+import it.uniba.di.sms2021.gruppokdl.wefit.coach.contract.CoachProfileContract;
 import it.uniba.di.sms2021.gruppokdl.wefit.db.UserDAO;
 import it.uniba.di.sms2021.gruppokdl.wefit.model.Coach;
 import it.uniba.di.sms2021.gruppokdl.wefit.model.User;

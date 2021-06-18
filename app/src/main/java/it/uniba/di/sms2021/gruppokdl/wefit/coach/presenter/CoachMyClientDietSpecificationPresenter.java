@@ -4,7 +4,7 @@ package it.uniba.di.sms2021.gruppokdl.wefit.coach.presenter;
 import com.firebase.ui.firestore.FirestoreRecyclerOptions;
 
 import it.uniba.di.sms2021.gruppokdl.wefit.coach.adapter.CoachDietDayAdapter;
-import it.uniba.di.sms2021.gruppokdl.wefit.contract.coach.CoachMyClientDietSpecificationContract;
+import it.uniba.di.sms2021.gruppokdl.wefit.coach.contract.CoachMyClientDietSpecificationContract;
 import it.uniba.di.sms2021.gruppokdl.wefit.db.ClientDAO;
 import it.uniba.di.sms2021.gruppokdl.wefit.model.Meal;
 

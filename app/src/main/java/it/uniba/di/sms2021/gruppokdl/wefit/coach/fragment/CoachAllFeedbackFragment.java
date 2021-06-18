@@ -1,4 +1,4 @@
-package it.uniba.di.sms2021.gruppokdl.wefit.fragment.coach;
+package it.uniba.di.sms2021.gruppokdl.wefit.coach.fragment;
 
 import android.os.Bundle;
 import android.view.LayoutInflater;
@@ -13,9 +13,9 @@ import androidx.recyclerview.widget.RecyclerView;
 import it.uniba.di.sms2021.gruppokdl.wefit.R;
 import it.uniba.di.sms2021.gruppokdl.wefit.WeFitApplication;
 import it.uniba.di.sms2021.gruppokdl.wefit.coach.adapter.CoachAllFeedbacksAdapter;
-import it.uniba.di.sms2021.gruppokdl.wefit.contract.coach.CoachAllFeedbacksContract;
+import it.uniba.di.sms2021.gruppokdl.wefit.coach.contract.CoachAllFeedbacksContract;
 import it.uniba.di.sms2021.gruppokdl.wefit.model.Coach;
-import it.uniba.di.sms2021.gruppokdl.wefit.presenter.coach.CoachAllFeedbacksPresenter;
+import it.uniba.di.sms2021.gruppokdl.wefit.coach.presenter.CoachAllFeedbacksPresenter;
 
 public class CoachAllFeedbackFragment extends Fragment implements CoachAllFeedbacksContract.View{
 

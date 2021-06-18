@@ -1,4 +1,4 @@
-package it.uniba.di.sms2021.gruppokdl.wefit.fragment.coach;
+package it.uniba.di.sms2021.gruppokdl.wefit.coach.fragment;
 
 import android.os.Bundle;
 
@@ -15,12 +15,12 @@ import com.google.android.material.button.MaterialButton;
 
 import it.uniba.di.sms2021.gruppokdl.wefit.R;
 import it.uniba.di.sms2021.gruppokdl.wefit.WeFitApplication;
-import it.uniba.di.sms2021.gruppokdl.wefit.contract.coach.CoachClientRequestProfileContract;
+import it.uniba.di.sms2021.gruppokdl.wefit.coach.contract.CoachClientRequestProfileContract;
 import it.uniba.di.sms2021.gruppokdl.wefit.model.Client;
 import it.uniba.di.sms2021.gruppokdl.wefit.model.Coach;
 import it.uniba.di.sms2021.gruppokdl.wefit.model.Request;
 import it.uniba.di.sms2021.gruppokdl.wefit.model.User;
-import it.uniba.di.sms2021.gruppokdl.wefit.presenter.coach.CoachClientRequestProfilePresenter;
+import it.uniba.di.sms2021.gruppokdl.wefit.coach.presenter.CoachClientRequestProfilePresenter;
 import it.uniba.di.sms2021.gruppokdl.wefit.utility.Keys;
 
 

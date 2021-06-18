@@ -8,7 +8,7 @@ import java.util.HashMap;
 import java.util.Map;
 
 import it.uniba.di.sms2021.gruppokdl.wefit.coach.adapter.CoachMyClientTrainingSpecificationListAdapter;
-import it.uniba.di.sms2021.gruppokdl.wefit.contract.coach.CoachMyClientDailyTrainingContract;
+import it.uniba.di.sms2021.gruppokdl.wefit.coach.contract.CoachMyClientDailyTrainingContract;
 import it.uniba.di.sms2021.gruppokdl.wefit.db.TrainingDAO;
 import it.uniba.di.sms2021.gruppokdl.wefit.model.Exercise;
 import it.uniba.di.sms2021.gruppokdl.wefit.model.Training;

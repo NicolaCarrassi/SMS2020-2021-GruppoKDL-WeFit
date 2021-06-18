@@ -1,4 +1,4 @@
-package it.uniba.di.sms2021.gruppokdl.wefit.fragment.coach;
+package it.uniba.di.sms2021.gruppokdl.wefit.coach.fragment;
 
 import android.os.Bundle;
 
@@ -14,9 +14,9 @@ import com.google.android.material.button.MaterialButton;
 import it.uniba.di.sms2021.gruppokdl.wefit.R;
 import it.uniba.di.sms2021.gruppokdl.wefit.WeFitApplication;
 import it.uniba.di.sms2021.gruppokdl.wefit.coach.adapter.CoachDietDayAdapter;
-import it.uniba.di.sms2021.gruppokdl.wefit.contract.coach.CoachMyClientDietSpecificationContract;
+import it.uniba.di.sms2021.gruppokdl.wefit.coach.contract.CoachMyClientDietSpecificationContract;
 import it.uniba.di.sms2021.gruppokdl.wefit.model.Meal;
-import it.uniba.di.sms2021.gruppokdl.wefit.presenter.coach.CoachMyClientDietSpecificationPresenter;
+import it.uniba.di.sms2021.gruppokdl.wefit.coach.presenter.CoachMyClientDietSpecificationPresenter;
 import it.uniba.di.sms2021.gruppokdl.wefit.recyclerview.CustomRecyclerView;
 
 /**

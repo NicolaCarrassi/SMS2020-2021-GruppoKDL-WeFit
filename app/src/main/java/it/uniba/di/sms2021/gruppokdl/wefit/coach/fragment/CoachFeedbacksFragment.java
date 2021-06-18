@@ -1,4 +1,4 @@
-package it.uniba.di.sms2021.gruppokdl.wefit.fragment.coach;
+package it.uniba.di.sms2021.gruppokdl.wefit.coach.fragment;
 
 import android.content.Context;
 import android.os.Bundle;
@@ -19,11 +19,11 @@ import com.google.android.material.button.MaterialButton;
 
 import it.uniba.di.sms2021.gruppokdl.wefit.R;
 import it.uniba.di.sms2021.gruppokdl.wefit.WeFitApplication;
-import it.uniba.di.sms2021.gruppokdl.wefit.contract.coach.CoachFeedbacksContract;
+import it.uniba.di.sms2021.gruppokdl.wefit.coach.contract.CoachFeedbacksContract;
 import it.uniba.di.sms2021.gruppokdl.wefit.model.Coach;
 import it.uniba.di.sms2021.gruppokdl.wefit.model.Feedback;
 import it.uniba.di.sms2021.gruppokdl.wefit.model.User;
-import it.uniba.di.sms2021.gruppokdl.wefit.presenter.coach.CoachFeedbacksPresenter;
+import it.uniba.di.sms2021.gruppokdl.wefit.coach.presenter.CoachFeedbacksPresenter;
 
 
 public class CoachFeedbacksFragment extends Fragment implements User.MyImageBitmapCallback, CoachFeedbacksContract.View {

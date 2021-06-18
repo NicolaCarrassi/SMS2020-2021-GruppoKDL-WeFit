@@ -1,6 +1,6 @@
 package it.uniba.di.sms2021.gruppokdl.wefit.coach.presenter;
 
-import it.uniba.di.sms2021.gruppokdl.wefit.contract.coach.CoachHomeContract;
+import it.uniba.di.sms2021.gruppokdl.wefit.coach.contract.CoachHomeContract;
 import it.uniba.di.sms2021.gruppokdl.wefit.db.CoachDAO;
 import it.uniba.di.sms2021.gruppokdl.wefit.model.Coach;
 

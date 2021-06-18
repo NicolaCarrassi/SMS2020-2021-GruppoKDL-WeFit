@@ -1,4 +1,4 @@
-package it.uniba.di.sms2021.gruppokdl.wefit.contract.coach;
+package it.uniba.di.sms2021.gruppokdl.wefit.coach.contract;
 
 import it.uniba.di.sms2021.gruppokdl.wefit.contract.RegistrationFragmentContract;
 

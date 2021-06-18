@@ -5,7 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    tools:context=".fragment.client.ClientMyProfileFragment"
+    tools:context=".client.fragment.ClientMyProfileFragment"
     android:gravity="center_horizontal"
     android:orientation="vertical"
     style="@style/BackgroundCustom">
@@ -19,8 +19,10 @@
         android:layout_height="wrap_content"
         android:gravity="center_horizontal"
         android:text="@string/my_profile_drawer"
-        android:layout_marginBottom="5dp"
         style="@style/custom_h1"/>
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
@@ -267,4 +269,5 @@
             </LinearLayout>
         </ScrollView>
     </LinearLayout>
+    </ScrollView>
 </LinearLayout>

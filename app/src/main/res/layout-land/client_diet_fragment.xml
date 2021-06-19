@@ -17,7 +17,8 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         app:tabMode="fixed"
-        android:background="@color/transparent">
+        android:background="@color/transparent"
+        android:layout_marginTop="-20dp">
 
         <com.google.android.material.tabs.TabItem
             android:id="@+id/food_diary_tab_item"

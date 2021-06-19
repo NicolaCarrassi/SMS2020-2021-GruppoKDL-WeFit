@@ -83,7 +83,7 @@
         android:visibility="gone"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginTop="10dp"
+
         android:orientation="vertical">
 
         <TextView
@@ -95,7 +95,7 @@
 
         <ImageView
             android:layout_gravity="center_horizontal"
-            android:layout_marginTop="@dimen/margin_horizontal"
+            android:layout_marginTop="10dp"
             android:id="@+id/success_anim"
             android:layout_width="80dp"
             android:layout_height="80dp"/>
@@ -104,7 +104,7 @@
     <com.google.android.material.button.MaterialButton
         android:id="@+id/back_home"
         android:layout_gravity="center_horizontal"
-        android:layout_marginTop="@dimen/margin_horizontal"
+        android:layout_marginTop="10dp"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         style="@style/MaterialButtonCustom"

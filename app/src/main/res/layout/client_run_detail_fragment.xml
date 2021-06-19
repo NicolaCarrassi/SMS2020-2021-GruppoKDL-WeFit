@@ -5,7 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     style="@style/BackgroundCustom"
-    tools:context=".fragment.client.ClientRunDetailFragment">
+    tools:context=".client.fragment.ClientRunDetailFragment">
 
     <include layout="@layout/toolbar"
         android:layout_width="match_parent"

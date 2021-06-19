@@ -4,7 +4,7 @@
     android:layout_height="match_parent">
 
     <ImageView
-        android:id="@+id/splash_gabMaialino"
+        android:id="@+id/splash_logo"
         android:layout_width="@dimen/splash_size"
         android:layout_height="@dimen/splash_size"
         android:layout_gravity="center"

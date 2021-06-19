@@ -6,7 +6,7 @@
     android:layout_height="match_parent"
     tools:context=".client.fragment.ClientAddTrainingFragment"
     android:orientation="vertical"
-    android:layout_marginVertical="35dp">
+    android:layout_marginVertical="15dp">
 <LinearLayout
     android:id="@+id/add_training_panel"
     android:layout_width="match_parent"

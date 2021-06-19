@@ -5,7 +5,7 @@
     android:layout_height="match_parent"
     xmlns:tools="http://schemas.android.com/tools"
     style="@style/BackgroundCustom"
-    tools:context=".fragment.coach.CoachClientsRequestsFragment"
+    tools:context=".coach.fragment.CoachClientsRequestsFragment"
     >
 
     <include layout="@layout/toolbar"
@@ -31,12 +31,13 @@
             android:layout_height="wrap_content"
             android:orientation="vertical">
 
+
             <it.uniba.di.sms2021.gruppokdl.wefit.recyclerview.CustomRecyclerView
                 android:id="@+id/recycler_client_list"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 tools:listitem="@layout/client_list_item"
-                android:visibility="visible"/>
+                android:visibility="gone"/>
 
             <TextView
                 android:id="@+id/empty_client_list"

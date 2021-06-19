@@ -174,6 +174,9 @@ public class ClientHomeFragment extends Fragment implements User.MyImageBitmapCa
             case Keys.CompletedFlags.CORRECT:
                 text = getResources().getString(R.string.completed_trainings) + completedTrainings + "/" + trainingsNumber;
                 break;
+            case Keys.CompletedFlags.ALL_SET:
+                text = getResources().getString(R.string.training_allSet);
+                break;
             default:
                 text = "";
         }

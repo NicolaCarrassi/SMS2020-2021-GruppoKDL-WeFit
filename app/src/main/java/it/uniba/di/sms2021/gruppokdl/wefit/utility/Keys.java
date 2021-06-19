@@ -66,6 +66,7 @@ public interface Keys {
         int NO_DENOMINATOR = 0;
         int NO_NUMERATOR = 1;
         int CORRECT = 2;
+        int ALL_SET = 3;
     }
 
 }

@@ -109,7 +109,7 @@
     <!-- Add panel -->
     <string name="add_string">Add</string>
     <string name="select_training">Select Training</string>
-    <string name="select_meal">Select Meal</string>
+    <string name="select_meal">Select Meal:</string>
     <string name="back">Back</string>
     <string name="weight_successfully_added">Weight added successfully!</string>
     <string name="training_added">Training added successfully</string>
@@ -273,6 +273,7 @@
     <string name="nfc_activity_message">Bring near the client\'s smartphone, it is not necessary that the app is running. Make sure that both smartphone have NFC enabled.</string>
     <string name="no_nfc_message">Your device doesn\'t have NFC. You can not use this functionality.</string>
     <string name="exercise_added">Exercise added correctly!</string>
+    <string name="training_allSet">You have completed all trainings for this week!</string>
 
 
 </resources>

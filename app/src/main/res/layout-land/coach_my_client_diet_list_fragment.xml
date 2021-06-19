@@ -18,7 +18,7 @@
         style="@style/custom_h1"
         android:layout_gravity="center_horizontal"
         android:gravity="center"
-        android:layout_marginBottom="@dimen/margin_horizontal"/>
+        android:layout_marginBottom="5dp"/>
 
 
     <androidx.recyclerview.widget.RecyclerView

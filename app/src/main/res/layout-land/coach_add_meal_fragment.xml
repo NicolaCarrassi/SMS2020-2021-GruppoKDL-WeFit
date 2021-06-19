@@ -1,0 +1,136 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    tools:context=".coach.fragment.CoachAddMealFragment">
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:layout_marginVertical="10dp"
+        android:layout_marginHorizontal="30dp">
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/add_meal"
+            style="@style/custom_h1"
+            android:gravity="center_horizontal"/>
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:layout_gravity="center_horizontal">
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:layout_marginTop="10dp">
+                <TextView
+                    android:layout_width="150dp"
+                    android:layout_height="wrap_content"
+                    android:text="@string/select_meal"
+                    style="@style/custom_p"
+                    android:gravity="start"/>
+
+                <Spinner
+                    android:id="@+id/meal_spinner"
+                    android:layout_width="300dp"
+                    android:minHeight="35dp"
+                    android:layout_height="wrap_content"
+                    android:spinnerMode="dropdown"
+                    style="@style/SpinnerCustom"/>
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:gravity="start|center_vertical"
+                android:layout_gravity="center_vertical"
+                android:layout_marginTop="10dp">
+                <TextView
+                    android:layout_width="150dp"
+                    android:layout_height="wrap_content"
+                    android:text="@string/add_meal_to"
+                    style="@style/custom_p"
+                    android:gravity="start"/>
+
+                <Spinner
+                    android:id="@+id/moment_of_the_day_spinner"
+                    android:layout_width="300dp"
+                    android:minHeight="35dp"
+                    android:layout_height="wrap_content"
+                    android:spinnerMode="dropdown"
+                    style="@style/SpinnerCustom"/>
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:gravity="start|center_vertical"
+                android:layout_gravity="center_vertical"
+                android:layout_marginTop="10dp">
+                <TextView
+                    android:layout_width="150dp"
+                    android:layout_height="wrap_content"
+                    android:text="@string/quantity"
+                    style="@style/custom_p"
+                    android:gravity="start"/>
+
+                <LinearLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal"
+                    android:layout_gravity="center_vertical">
+
+                    <EditText
+                        android:id="@+id/meal_quantity"
+                        android:layout_width="300dp"
+                        android:layout_height="wrap_content"
+                        android:inputType="number"
+                        android:background="@drawable/edittext_rounded_corners"
+                        android:theme="@style/EditTextCustom"
+                        android:layout_gravity="center_horizontal"/>
+
+                    <TextView
+
+                        android:lines="1"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center_vertical"
+                        android:text="g"
+                        android:layout_marginStart="5dp"
+                        style="@style/custom_p"
+                        android:visibility="visible"/>
+                </LinearLayout>
+            </LinearLayout>
+        </LinearLayout>
+        <LinearLayout
+            android:layout_marginTop="10dp"
+            android:layout_width="200dp"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:layout_marginHorizontal="20dp"
+            android:layout_gravity="center_horizontal">
+
+            <com.google.android.material.button.MaterialButton
+                android:layout_marginHorizontal="@dimen/margin_horizontal"
+                android:id="@+id/btn_add"
+                android:layout_weight="0.5"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="@string/add"
+                android:textSize="15sp"
+                style="@style/MaterialButtonCustom"
+                android:backgroundTint="@color/blue"
+                android:backgroundTintMode="add"
+                android:layout_marginStart="5dp"
+                android:paddingVertical="10dp"/>
+
+        </LinearLayout>
+    </LinearLayout>
+</LinearLayout>

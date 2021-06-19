@@ -28,12 +28,18 @@ public class ClientHomePresenter implements ClientHomeContract.Presenter, UserDA
             if(trainingAssigned.contains(item))
                 trainingCompleted++;
 
+        for(String item : trainingAssigned)
+            if(!trainingMade.contains(item))
+                trainingCompleted--;
 
         if(trainingTotal == 0)
             mView.userCompletedTrainings(trainingCompleted, trainingCompleted, Keys.CompletedFlags.NO_DENOMINATOR);
         else if(trainingCompleted == 0)
             mView.userCompletedTrainings(trainingCompleted, trainingCompleted, Keys.CompletedFlags.NO_NUMERATOR);
-        else
+        else if(trainingCompleted < trainingTotal)
             mView.userCompletedTrainings(trainingCompleted, trainingTotal, Keys.CompletedFlags.CORRECT);
+        else
+            mView.userCompletedTrainings(trainingCompleted, trainingTotal, Keys.CompletedFlags.ALL_SET);
+
     }
 }

@@ -1,15 +1,9 @@
 package it.uniba.di.sms2021.gruppokdl.wefit.coach;
 
-import android.content.DialogInterface;
 import android.content.Intent;
-import android.nfc.NfcAdapter;
-import android.os.Build;
 import android.os.Bundle;
-import android.provider.Settings;
-import android.util.Log;
 import android.view.MenuItem;
 
-import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.view.GravityCompat;
 import androidx.drawerlayout.widget.DrawerLayout;
@@ -24,13 +18,13 @@ import it.uniba.di.sms2021.gruppokdl.wefit.LoginActivity;
 import it.uniba.di.sms2021.gruppokdl.wefit.R;
 import it.uniba.di.sms2021.gruppokdl.wefit.SettingsActivity;
 import it.uniba.di.sms2021.gruppokdl.wefit.WeFitApplication;
-import it.uniba.di.sms2021.gruppokdl.wefit.fragment.TermsFragment;
 import it.uniba.di.sms2021.gruppokdl.wefit.client.fragment.ClientAddFragment;
 import it.uniba.di.sms2021.gruppokdl.wefit.client.fragment.ClientMyProfileFragment;
 import it.uniba.di.sms2021.gruppokdl.wefit.coach.fragment.CoachClientsFragment;
 import it.uniba.di.sms2021.gruppokdl.wefit.coach.fragment.CoachFeedbacksFragment;
 import it.uniba.di.sms2021.gruppokdl.wefit.coach.fragment.CoachHomeFragment;
 import it.uniba.di.sms2021.gruppokdl.wefit.coach.fragment.CoachProfileFragment;
+import it.uniba.di.sms2021.gruppokdl.wefit.fragment.TermsFragment;
 
 public class CoachMainActivity extends AppCompatActivity implements WeFitApplication.CallbackOperations,
         CoachProfileFragment.CoachProfileActivity, ClientAddFragment.BottomNavigationSelector {
@@ -52,7 +46,7 @@ public class CoachMainActivity extends AppCompatActivity implements WeFitApplica
 
         if(savedInstanceState == null){
             final CoachHomeFragment coachHomeFragment = new CoachHomeFragment();
-            getSupportFragmentManager().beginTransaction().replace(R.id.anchor_point, coachHomeFragment).commit();
+            getSupportFragmentManager().beginTransaction().replace(R.id.anchor_point, coachHomeFragment).addToBackStack(CoachHomeFragment.TAG).commit();
             mBottomNavigationView.setSelectedItemId(R.id.home_item);
         }
 
@@ -212,6 +206,19 @@ public class CoachMainActivity extends AppCompatActivity implements WeFitApplica
                 }
             }
         }
+
+        if(fm.getBackStackEntryCount() > 2) {
+            fm.popBackStackImmediate(fm.getBackStackEntryAt(fm.getBackStackEntryCount() - 1).getName(), FragmentManager.POP_BACK_STACK_INCLUSIVE);
+            selectBottomNavigationItem();
+            return;
+        } else if((fm.getBackStackEntryCount() == 2 && fm.getBackStackEntryAt(0).getName().equals(CoachHomeFragment.TAG)
+                && fm.getBackStackEntryAt(0).getName().equals(fm.getBackStackEntryAt(1).getName())) || fm.getBackStackEntryCount() == 1)
+
+            finish();
+
+
+
+
         super.onBackPressed();
         selectBottomNavigationItem();
     }

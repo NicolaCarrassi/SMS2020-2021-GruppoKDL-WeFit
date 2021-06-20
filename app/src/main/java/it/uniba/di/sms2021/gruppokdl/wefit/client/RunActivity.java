@@ -207,7 +207,7 @@ public class RunActivity extends FragmentActivity implements OnMapReadyCallback,
     public void zoomOutPath(List<Location> locationList){
         LatLng southwest = new LatLng(locationList.get(0).getLatitude(),locationList.get(0).getLongitude());
         LatLng northeast = new LatLng(locationList.get(0).getLatitude(),locationList.get(0).getLongitude());
-        LatLngBounds myPosition;
+        LatLngBounds.Builder myPosition = new LatLngBounds.Builder();
 
         for(int i=1;i<locationList.size();i++){
             if(locationList.get(i).getLatitude()+locationList.get(i).getLongitude() > northeast.latitude + northeast.longitude){
@@ -217,8 +217,8 @@ public class RunActivity extends FragmentActivity implements OnMapReadyCallback,
             }
         }
 
-        myPosition = new LatLngBounds(southwest,northeast);
-        mMap.animateCamera(CameraUpdateFactory.newLatLngBounds(myPosition,150));
+        myPosition.include(southwest).include(northeast);
+        mMap.animateCamera(CameraUpdateFactory.newLatLngBounds(myPosition.build(),150));
     }
 
     @Override

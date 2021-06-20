@@ -1,0 +1,290 @@
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    style="@style/BackgroundCustom">
+    <LinearLayout 
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        xmlns:app="http://schemas.android.com/apk/res-auto"
+        tools:context=".coach.fragment.CoachProfileFragment"
+        android:gravity="center_horizontal"
+        android:orientation="vertical"
+        >
+    
+        <include layout="@layout/toolbar"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content" />
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:layout_marginHorizontal="10dp">
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:layout_weight="0.7">
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:gravity="center_horizontal"
+                    android:layout_gravity="center_horizontal"
+                    android:text="@string/my_profile_drawer"
+                    style="@style/custom_h1"
+                    android:textSize="25sp"/>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal"
+                    android:gravity="center"
+                    >
+
+                    <androidx.cardview.widget.CardView
+                        android:layout_gravity="center"
+                        android:layout_width="150dp"
+                        android:layout_height="150dp"
+                        android:layout_marginStart="35dp"
+                        android:layout_marginBottom="20dp"
+                        app:cardCornerRadius="75dp"
+                        android:layout_marginTop="20dp">
+
+                        <ImageView
+                            android:id="@+id/profile_image"
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"
+                            android:src="@drawable/default_avatar"
+                            android:scaleType="centerCrop"/>
+
+                    </androidx.cardview.widget.CardView>
+
+
+                    <ImageView
+                        android:id="@+id/edit_pfp"
+                        android:layout_width="30dp"
+                        android:layout_height="30dp"
+                        android:layout_marginBottom="20dp"
+                        android:background="@drawable/pencil_icon"
+                        android:layout_gravity="bottom"
+                        android:backgroundTint="@color/black"
+                        android:contentDescription="@string/edit_pfp"/>
+
+                </LinearLayout>
+                <com.google.android.material.button.MaterialButton
+                    android:id="@+id/btn_save_profile_update"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/btn_save_update"
+                    android:visibility="invisible"
+                    style="@style/MaterialButtonCustom"
+                    android:paddingHorizontal="30dp"
+                    android:paddingVertical="15dp"
+                    android:layout_gravity="center_horizontal"/>
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:layout_weight="0.3">
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal">
+
+                    <EditText
+                        android:layout_weight="1"
+                        android:id="@+id/profile_full_name"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:hint="@string/full_name"
+                        android:layout_gravity="start"
+                        android:inputType="text"
+                        android:clickable="false"
+                        android:focusable="false"
+                        style="@style/custom_p"
+                        android:layout_marginStart="20dp"/>
+
+                    <ImageView
+                        android:layout_gravity="center_vertical"
+                        android:id="@+id/edit_full_name"
+                        android:layout_width="25dp"
+                        android:layout_height="25dp"
+                        android:background="@drawable/pencil_icon"
+                        android:backgroundTint="?attr/colorOnPrimary"
+                        android:contentDescription="@string/edit_name"
+                        android:clickable="true"
+                        android:focusable="true"
+                        android:layout_marginEnd="20dp"/>
+
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal">
+
+                    <EditText
+                        android:layout_weight="1"
+                        android:id="@+id/profile_gender_text"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:hint="@string/gender"
+                        android:layout_gravity="start"
+                        android:inputType="text"
+                        android:clickable="false"
+                        android:focusable="false"
+                        style="@style/custom_p"
+                        android:layout_marginStart="20dp"/>
+
+                    <ImageView
+                        android:layout_gravity="center_vertical"
+                        android:id="@+id/edit_gender"
+                        android:layout_width="25dp"
+                        android:layout_height="25dp"
+                        android:background="@drawable/pencil_icon"
+                        android:backgroundTint="?attr/colorOnPrimary"
+                        android:contentDescription="@string/edit_gender"
+                        android:clickable="true"
+                        android:focusable="true"
+                        android:layout_marginEnd="20dp"/>
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_marginHorizontal="@dimen/margin_horizontal"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal"
+                    android:layout_marginTop="10dp"
+                    android:layout_gravity="start"
+                    android:gravity="start"
+                    >
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="match_parent"
+                        android:text="Email: "
+                        android:layout_gravity="center_vertical"
+                        android:layout_marginStart="5dp"
+                        android:clickable="false"
+                        style="@style/custom_p"/>
+                    <TextView
+                        android:id="@+id/profile_email"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:hint="@string/email"
+                        android:clickable="false"
+                        style="@style/custom_p"
+                        android:layout_gravity="center_vertical"
+                        android:textSize="18dp"
+                        android:layout_marginLeft="2dp"
+                        android:gravity="center_vertical"/>
+                </LinearLayout>
+                <View
+                    android:id="@+id/zero_separation"
+                    android:layout_width="match_parent"
+                    android:layout_height="2dp"
+                    android:background="?attr/colorPrimary"
+                    android:layout_marginVertical="10dp"
+                    android:layout_marginHorizontal="40dp"
+                    android:layout_marginBottom="25dp"
+                    android:elevation="2dp"/>
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:gravity="center_horizontal"
+                    android:text="@string/competences"
+                    style="@style/custom_h2"/>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal"
+                    android:layout_marginHorizontal="50dp"
+                    >
+
+                    <CheckBox
+                        android:id="@+id/check_box_pt"
+                        android:layout_weight="1"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:text="@string/personal_trainer"/>
+
+                    <CheckBox
+                        android:id="@+id/check_box_dietician"
+                        android:layout_weight="1"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:text="@string/dietician"/>
+                </LinearLayout>
+                <View
+                    android:id="@+id/first_separation"
+                    android:layout_width="match_parent"
+                    android:layout_height="2dp"
+                    android:background="?attr/colorPrimary"
+                    android:layout_marginVertical="10dp"
+                    android:layout_marginHorizontal="40dp"
+                    android:layout_marginBottom="25dp"
+                    android:elevation="2dp"/>
+
+                <TextView
+                    android:id="@+id/attach_certification_label"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="@string/attach_certification"
+                    android:textSize="20sp"
+                    android:textStyle="bold"
+                    android:gravity="center"
+                    android:layout_marginBottom="10dp"/>
+
+                <ImageView
+                    android:id="@+id/send_certification"
+                    android:layout_width="50dp"
+                    android:layout_height="50dp"
+                    android:layout_gravity="center"
+                    android:src="@drawable/add_doc_icon"
+                    android:theme="@style/BackIconCustom"
+                    android:visibility="visible"/>
+
+                <ImageView
+                    android:id="@+id/check_icon"
+                    android:src="@drawable/check_icon"
+                    android:layout_width="50dp"
+                    android:layout_height="50dp"
+                    app:tint="#11FF00"
+                    android:layout_gravity="center"
+                    android:visibility="gone">
+                </ImageView>
+                <TextView
+                    android:id="@+id/certification_control"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/certification_checked"
+                    android:layout_gravity="center"
+                    android:layout_marginVertical="10dp"
+                    android:maxEms="16"/>
+
+                <View
+                    android:id="@+id/second_separation"
+                    android:layout_width="match_parent"
+                    android:layout_height="2dp"
+                    android:background="?attr/colorPrimary"
+                    android:layout_marginHorizontal="40dp"
+                    android:elevation="2dp"
+                    android:layout_marginBottom="20dp"/>
+            </LinearLayout>
+
+
+
+        </LinearLayout>
+    
+
+
+
+
+
+    </LinearLayout>
+</ScrollView>

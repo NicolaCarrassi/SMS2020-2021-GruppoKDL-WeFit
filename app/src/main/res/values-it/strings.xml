@@ -262,7 +262,7 @@
     <string name="time_elapsed">Tempo impiegato: </string>
     <string name="shopping_list_text">La tua lista della spesa per i prossimi</string>
     <string name="days_label">giorni</string>
-    <string name="nfc_label">AGGIUNGI UN CLIENTE USANDO L\'NFC</string>
+    <string name="nfc_label">CREA UN TAG NFC</string>
 
     <string name="trained_by_question">Vorresti essere seguito da </string>
     <string name="pairing_cancelled">Accoppiamento con il coach annullato!</string>
@@ -271,9 +271,13 @@
     <string name="nfc_required_message">L\' NFC sembra essere disattivato, vuoi attivarlo?</string>
 
     <string name="add_training_coach">Aggiungi Allenamento</string>
-    <string name="nfc_activity_message">Avvicinare il dispositivo del cliente, non è necessario che abbia l\' applicazione aperta. Assicurarsi che entrambi i dispositivi abbiano l\' NFC attivo.</string>
+    <string name="nfc_activity_message">Avvicinare un Tag NFC. Assicurarsi che il tuo dispositivo abbia l\' NFC attivo.</string>
     <string name="exercise_added">Esercizio aggiunto correttamente!</string>
-    <string name="training_allSet">You have completed all trainings for this week!</string>
+    <string name="training_allSet">Hai completato tutti gli allenamenti questa settimana.</string>
     <string name="no_nfc_message">Il tuo telefono non possiede l\'NFC. Non puoi utilizzare questa funzionalitá.</string>
+    <string name="create_nfc">Crea Tag NFC</string>
+    <string name="nfc_registration_title">Associazione NFC </string>
+    <string name="nfc_registration_message">Avvicina il tag NFC allo smartphone.</string>
+    <string name="nfc_success">Tag NFC creato con successo!</string>
 
 </resources>

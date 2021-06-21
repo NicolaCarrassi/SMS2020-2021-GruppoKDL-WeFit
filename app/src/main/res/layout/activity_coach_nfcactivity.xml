@@ -45,4 +45,14 @@
         style="@style/custom_p"
         android:textAlignment="center"/>
 
+    <com.google.android.material.button.MaterialButton
+        android:id="@+id/nfc_button"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/create_nfc"
+        android:layout_gravity="center_horizontal"
+        android:layout_marginTop="30dp"
+        style="@style/MaterialButtonCustom">
+    </com.google.android.material.button.MaterialButton>
+
 </LinearLayout>

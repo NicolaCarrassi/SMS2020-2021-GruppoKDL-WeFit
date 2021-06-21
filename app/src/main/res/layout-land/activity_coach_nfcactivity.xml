@@ -1,0 +1,79 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:layout_marginHorizontal="@dimen/margin_horizontal"
+    android:orientation="vertical"
+    tools:context=".coach.CoachNFCActivity"
+    style="@style/BackgroundCustom">
+
+    <ImageView
+        android:id="@+id/back_butt"
+        android:layout_width="40dp"
+        android:layout_height="40dp"
+        android:layout_marginTop="@dimen/margin_horizontal"
+        android:background="@drawable/back_24"
+        android:backgroundTint="@color/blue"/>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="horizontal"
+        android:gravity="center">
+
+        <WebView
+            android:visibility="visible"
+            android:layout_marginVertical="@dimen/margin_horizontal"
+            android:layout_gravity="center"
+            android:layout_width="280dp"
+            android:layout_height="wrap_content"
+            android:id="@+id/gif_nfc"
+            android:scaleX=".8"
+            android:scaleY=".8"/>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+
+            <TextView
+                android:visibility="visible"
+                android:id="@+id/nfc_message"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="@string/nfc_activity_message"
+                style="@style/custom_p"
+                android:textAlignment="center"/>
+
+            <TextView
+                android:visibility="gone"
+                android:layout_marginTop="40dp"
+                android:id="@+id/no_nfc_message"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="@string/no_nfc_message"
+                style="@style/custom_p"
+                android:textAlignment="center"/>
+
+            <com.google.android.material.button.MaterialButton
+                android:id="@+id/nfc_button"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/create_nfc"
+                android:layout_gravity="center_horizontal"
+                android:layout_marginTop="30dp"
+                style="@style/MaterialButtonCustom">
+            </com.google.android.material.button.MaterialButton>
+
+
+        </LinearLayout>
+    </LinearLayout>
+
+
+
+
+
+</LinearLayout>

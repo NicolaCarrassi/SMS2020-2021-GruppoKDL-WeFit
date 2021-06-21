@@ -227,7 +227,6 @@ public class ClientMainActivity extends AppCompatActivity implements WeFitApplic
             }
         }
 
-
         // se il numero di figli è uguale a 2 allora posso chiudere l'activity in quanto sono all'ultima schermata del backstack
         if(fm.getBackStackEntryCount() > 2) {
             fm.popBackStack(fm.getBackStackEntryAt(fm.getBackStackEntryCount() - 1).getName(), FragmentManager.POP_BACK_STACK_INCLUSIVE);
@@ -239,8 +238,6 @@ public class ClientMainActivity extends AppCompatActivity implements WeFitApplic
                 || fm.getBackStackEntryCount() == 1)
                 finish();
         }
-
-
         super.onBackPressed();
         selectBottomNavigationItem();
     }
@@ -319,7 +316,7 @@ public class ClientMainActivity extends AppCompatActivity implements WeFitApplic
      */
     private void makeAlert(){
         final AlertDialog.Builder builder = new AlertDialog.Builder(this);
-        builder.setMessage(getString(R.string.trained_by_question) + mNfcCoachMail + " ?")
+        builder.setMessage(getString(R.string.trained_by_question) + " " + mNfcCoachMail + " ?")
                 .setCancelable(false)
                 .setPositiveButton(getString(R.string.yes), (dialog, id) -> mPresenter.addCoachFromNFC(mClientMail,mNfcCoachMail))
                 .setNegativeButton(getString(R.string.no), (dialog, id) -> {

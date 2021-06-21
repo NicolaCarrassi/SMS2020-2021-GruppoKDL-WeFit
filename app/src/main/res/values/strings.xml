@@ -278,6 +278,8 @@
     <string name="nfc_registration_title">NFC Pairing</string>
     <string name="nfc_registration_message">Bring near an NFC Tag to your phone.</string>
     <string name="nfc_success">NFC Tag created successfully!</string>
+    <string name="tag_not_writable">Error: tag not writable</string>
+    <string name="tag_too_small">Error: tag too small</string>
 
 
 </resources>

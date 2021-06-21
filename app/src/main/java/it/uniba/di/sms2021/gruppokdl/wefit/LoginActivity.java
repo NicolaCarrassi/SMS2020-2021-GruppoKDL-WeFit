@@ -79,6 +79,7 @@ public class LoginActivity extends BaseActivity implements LoginActivityContract
             }else {
                 mPassword.setInputType(129);
             }
+            mPassword.setSelection(mPassword.getText().length());
         });
 
         mPassword.setOnEditorActionListener((v, actionId, event) -> {

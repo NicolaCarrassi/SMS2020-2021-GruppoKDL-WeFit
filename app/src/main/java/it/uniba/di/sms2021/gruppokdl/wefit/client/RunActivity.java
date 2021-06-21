@@ -18,6 +18,7 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import androidx.annotation.NonNull;
+import androidx.appcompat.app.AppCompatDelegate;
 import androidx.core.app.ActivityCompat;
 import androidx.core.content.ContextCompat;
 import androidx.fragment.app.FragmentActivity;
@@ -181,6 +182,7 @@ public class RunActivity extends FragmentActivity implements OnMapReadyCallback,
             }
         }
     }
+
 
     @Override
     public void addMarker(Location location, String markerTitle) {

@@ -28,6 +28,9 @@ public class LocationService extends Service {
 
     private Location mLocation;
 
+    /**
+     * Interfaccia contenente le costanti
+     */
     public interface LocationServiceConstants{
         int LOCATION_SERVICE_ID = 175;
         String ACTION_START_LOCATION_SERVICE = "startLocationService";
@@ -51,6 +54,10 @@ public class LocationService extends Service {
         }
     };
 
+    /**
+     * Metodo che consente di inviare tramite broadcast le location all' activity
+     * @param l location
+     */
     private void sendMessageToActivity(Location l) {
         Intent intent = new Intent("LocationUpdates");
         Bundle b = new Bundle();
@@ -60,6 +67,9 @@ public class LocationService extends Service {
     }
 
 
+    /**
+     * Metodo che consente di avviare il service e di creare la notifica che avvisa dell' esecuzione
+     */
     @SuppressLint("MissingPermission")
     private void startLocationService() {
         String channelID = "location_notification_channel";
@@ -93,6 +103,9 @@ public class LocationService extends Service {
 
     }
 
+    /**
+     * Metodo che consente di stoppare il service
+     */
     private void stopLocationService(){
         LocationServices.getFusedLocationProviderClient(this).removeLocationUpdates(mLocationCallback);
         stopForeground(true);

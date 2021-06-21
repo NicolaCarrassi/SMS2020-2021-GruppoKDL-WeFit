@@ -9,6 +9,7 @@ import android.content.IntentFilter;
 import android.location.Location;
 import android.os.Looper;
 import android.os.SystemClock;
+import android.view.View;
 import android.widget.Chronometer;
 import android.widget.Toast;
 import androidx.annotation.NonNull;
@@ -57,6 +58,7 @@ public class RunActivityPresenter implements RunActivityContract.Presenter {
     @Override
     @SuppressLint("MissingPermission")
     public void updateCurrentLocation(FusedLocationProviderClient fusedLocationProviderClient, GoogleMap map, FragmentActivity activity){
+        mView.setLoaderVisibility(View.VISIBLE);
         LocationRequest locationRequest = LocationRequest.create();
         locationRequest.setInterval(10000);
         locationRequest.setFastestInterval(3000);
@@ -72,6 +74,8 @@ public class RunActivityPresenter implements RunActivityContract.Presenter {
                         mCurrentLocation = locationResult.getLocations().get(latestLocationIndex);
                         LatLng myPosition = new LatLng(mCurrentLocation.getLatitude(), mCurrentLocation.getLongitude());
                         map.moveCamera(CameraUpdateFactory.newLatLngZoom(myPosition,15));
+                        mView.setLoaderVisibility(View.GONE);
+                        mView.setChronometerVisibility(View.VISIBLE);
                     }
                 }
             }, Looper.getMainLooper());

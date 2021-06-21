@@ -21,6 +21,8 @@ public interface RunActivityContract {
         void drawPath(Location first, Location second);
         void centerCamera(Location location,int zoom);
         void buildAlertMessageNoGps();
+        void setLoaderVisibility(int visibility);
+        void setChronometerVisibility(int visibility);
     }
 
     interface Presenter{

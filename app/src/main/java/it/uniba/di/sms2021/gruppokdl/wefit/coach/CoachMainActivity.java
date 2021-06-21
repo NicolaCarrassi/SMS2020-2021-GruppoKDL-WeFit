@@ -46,7 +46,8 @@ public class CoachMainActivity extends AppCompatActivity implements WeFitApplica
 
         if(savedInstanceState == null){
             final CoachHomeFragment coachHomeFragment = new CoachHomeFragment();
-            getSupportFragmentManager().beginTransaction().replace(R.id.anchor_point, coachHomeFragment).addToBackStack(CoachHomeFragment.TAG).commit();
+            getSupportFragmentManager().beginTransaction().add(R.id.anchor_point, coachHomeFragment, CoachHomeFragment.TAG)
+                    .addToBackStack(CoachHomeFragment.TAG).commit();
             mBottomNavigationView.setSelectedItemId(R.id.home_item);
         }
 

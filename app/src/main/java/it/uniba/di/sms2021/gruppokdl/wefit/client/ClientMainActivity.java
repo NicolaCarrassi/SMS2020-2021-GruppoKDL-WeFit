@@ -4,6 +4,7 @@ package it.uniba.di.sms2021.gruppokdl.wefit.client;
 import android.app.AlertDialog;
 import android.content.Intent;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.MenuItem;
 import android.widget.Toast;
 
@@ -62,7 +63,8 @@ public class ClientMainActivity extends AppCompatActivity implements WeFitApplic
 
         if (savedInstanceState == null){
             final ClientHomeFragment clientHomeFragment = new ClientHomeFragment();
-            getSupportFragmentManager().beginTransaction().add(R.id.anchor_point, clientHomeFragment).commit();
+            getSupportFragmentManager().beginTransaction().add(R.id.anchor_point, clientHomeFragment, ClientHomeFragment.TAG)
+                    .addToBackStack(ClientHomeFragment.TAG).commit();
         }
 
         mPresenter = new ClientMainActivityPresenter(this);
@@ -211,7 +213,7 @@ public class ClientMainActivity extends AppCompatActivity implements WeFitApplic
 
     @Override
     public void onBackPressed() {
-        androidx.fragment.app.FragmentManager fm = getSupportFragmentManager();
+        FragmentManager fm = getSupportFragmentManager();
         for (Fragment frag : fm.getFragments()) {
             if (frag.isVisible()) {
                 FragmentManager childFm = frag.getChildFragmentManager();
@@ -229,17 +231,14 @@ public class ClientMainActivity extends AppCompatActivity implements WeFitApplic
 
         // se il numero di figli è uguale a 2 allora posso chiudere l'activity in quanto sono all'ultima schermata del backstack
         if(fm.getBackStackEntryCount() > 2) {
-            fm.popBackStack(fm.getBackStackEntryAt(fm.getBackStackEntryCount() - 1).getName(), FragmentManager.POP_BACK_STACK_INCLUSIVE);
+            fm.popBackStackImmediate(fm.getBackStackEntryAt(fm.getBackStackEntryCount() - 1).getName(), FragmentManager.POP_BACK_STACK_INCLUSIVE);
             selectBottomNavigationItem();
-            return;
         } else {
             if((fm.getBackStackEntryCount() == 2 && fm.getBackStackEntryAt(0).getName().equals(ClientHomeFragment.TAG) &&
                     fm.getBackStackEntryAt(1).getName().equals(fm.getBackStackEntryAt(0).getName()))
                 || fm.getBackStackEntryCount() == 1)
                 finish();
         }
-        super.onBackPressed();
-        selectBottomNavigationItem();
     }
 
 

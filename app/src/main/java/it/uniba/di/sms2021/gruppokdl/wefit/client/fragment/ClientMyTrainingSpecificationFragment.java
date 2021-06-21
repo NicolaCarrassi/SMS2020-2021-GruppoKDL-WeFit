@@ -79,12 +79,12 @@ public class ClientMyTrainingSpecificationFragment extends Fragment implements C
         CustomRecyclerView mRecycler = layout.findViewById(R.id.train_recycler);
         TextView mEmpty = layout.findViewById(R.id.no_exercises);
 
-        String temp = mTrainingTime.getText() + mTraining.convertDurationTime();
+        String temp = mTrainingTime.getText() + "\n" + mTraining.convertDurationTime();
 
         mTrainingName.setText(mTraining.title);
         mTrainingTime.setText(temp);
 
-        temp = mTrainingDay.getText() + DayOfTheWeek.getDayOfTheWeek(mTraining.dayOfWeek, layout);
+        temp = mTrainingDay.getText() + "\n" + DayOfTheWeek.getDayOfTheWeek(mTraining.dayOfWeek, layout);
 
         mTrainingDay.setText(temp);
 

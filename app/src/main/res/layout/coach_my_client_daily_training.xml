@@ -40,7 +40,8 @@
                 android:layout_height="wrap_content"
                 android:text="@string/training_day"
                 style="@style/custom_p"
-                android:textSize="18dp"/>
+                android:textSize="18dp"
+                android:gravity="center_horizontal"/>
 
             <TextView
                 android:id="@+id/training_time"
@@ -48,7 +49,8 @@
                 android:layout_height="wrap_content"
                 android:text="@string/duration"
                 style="@style/custom_p"
-                android:textSize="18dp"/>
+                android:textSize="18dp"
+                android:gravity="center_horizontal"/>
 
         </LinearLayout>
         <ImageView

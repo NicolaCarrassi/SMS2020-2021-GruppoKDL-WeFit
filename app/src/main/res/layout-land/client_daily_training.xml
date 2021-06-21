@@ -10,66 +10,87 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content">
     </include>
-    <TextView
-        android:id="@+id/training_name"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        style="@style/custom_h1"
-        android:layout_gravity="center_horizontal"
-        android:gravity="center"
-        android:layout_marginHorizontal="@dimen/margin_horizontal"/>
-
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:orientation="vertical"
-        android:layout_marginHorizontal="30dp"
-        android:gravity="center"
-        android:layout_marginBottom="5dp">
-
-
-        <TextView
-            android:id="@+id/training_day"
-            android:layout_width="wrap_content"
+        android:orientation="horizontal"
+        android:gravity="center_vertical"
+        android:layout_gravity="center_vertical">
+        <LinearLayout
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="@string/training_day"
-            style="@style/custom_p"/>
+            android:orientation="vertical"
+            android:layout_weight="0.7"
+            >
+            <TextView
+                android:id="@+id/training_name"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                style="@style/custom_h1"
+                android:layout_gravity="center_horizontal"
+                android:gravity="center"
+                android:layout_marginHorizontal="10dp"/>
 
-        <TextView
-            android:id="@+id/training_time"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="@string/duration"
-            style="@style/custom_p"/>
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:gravity="center"
+                android:layout_marginBottom="5dp">
+                <TextView
+                    android:id="@+id/training_day"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/training_day"
+                    style="@style/custom_p"
+                    android:gravity="center_horizontal"/>
 
-    </LinearLayout>
-
-    <ScrollView
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content">
+                <TextView
+                    android:id="@+id/training_time"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/duration"
+                    style="@style/custom_p"
+                    android:gravity="center_horizontal"/>
+            </LinearLayout>
+        </LinearLayout>
 
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:orientation="vertical"
-            android:layout_marginHorizontal="@dimen/margin_horizontal">
-
-                <it.uniba.di.sms2021.gruppokdl.wefit.recyclerview.CustomRecyclerView
-                    android:id="@+id/train_recycler"
-                    android:layout_width="500dp"
-                    android:layout_height="wrap_content"
-                    tools:listitem="@layout/training_exercise_item"
-                    android:layout_gravity="center_horizontal">
-                </it.uniba.di.sms2021.gruppokdl.wefit.recyclerview.CustomRecyclerView>
-
-            <TextView
-                android:id="@+id/no_exercises"
+            android:layout_weight="0.3">
+            <ScrollView
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:text="@string/no_exercises"
-                style="@style/custom_h2"
-                android:visibility="gone"
-                android:gravity="center_horizontal"/>
+                android:layout_height="wrap_content">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical"
+                    android:layout_marginHorizontal="10dp">
+
+                    <it.uniba.di.sms2021.gruppokdl.wefit.recyclerview.CustomRecyclerView
+                        android:id="@+id/train_recycler"
+                        android:layout_width="500dp"
+                        android:layout_height="wrap_content"
+                        tools:listitem="@layout/training_exercise_item"
+                        android:layout_gravity="center_horizontal">
+                    </it.uniba.di.sms2021.gruppokdl.wefit.recyclerview.CustomRecyclerView>
+
+                    <TextView
+                        android:id="@+id/no_exercises"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:text="@string/no_exercises"
+                        style="@style/custom_h2"
+                        android:visibility="gone"
+                        android:gravity="center_horizontal"
+                        android:layout_marginHorizontal="30dp"/>
+                </LinearLayout>
+            </ScrollView>
         </LinearLayout>
-    </ScrollView>
+    </LinearLayout>
+
+
 </LinearLayout>

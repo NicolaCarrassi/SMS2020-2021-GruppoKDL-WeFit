@@ -280,4 +280,6 @@
     <string name="nfc_registration_message">Avvicina il tag NFC allo smartphone.</string>
     <string name="nfc_success">Tag NFC creato con successo!</string>
 
+
+
 </resources>

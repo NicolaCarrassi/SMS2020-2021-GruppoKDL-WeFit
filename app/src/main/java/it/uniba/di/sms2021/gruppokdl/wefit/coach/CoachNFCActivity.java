@@ -54,6 +54,8 @@ public class CoachNFCActivity extends BaseActivity {
 
         mWebView = findViewById(R.id.gif_nfc);
         WebSettings webSettings = mWebView.getSettings();
+        webSettings.setUseWideViewPort(true);
+        webSettings.setLoadWithOverviewMode(true);
         webSettings.setJavaScriptEnabled(true);
         String file = "file:android_res/drawable/nfc_tutorial.gif";
         mWebView.loadUrl(file);

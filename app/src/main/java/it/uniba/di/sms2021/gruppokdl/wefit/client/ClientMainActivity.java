@@ -229,16 +229,23 @@ public class ClientMainActivity extends AppCompatActivity implements WeFitApplic
             }
         }
 
+
         // se il numero di figli è uguale a 2 allora posso chiudere l'activity in quanto sono all'ultima schermata del backstack
         if(fm.getBackStackEntryCount() > 2) {
             fm.popBackStackImmediate(fm.getBackStackEntryAt(fm.getBackStackEntryCount() - 1).getName(), FragmentManager.POP_BACK_STACK_INCLUSIVE);
             selectBottomNavigationItem();
+            return;
         } else {
             if((fm.getBackStackEntryCount() == 2 && fm.getBackStackEntryAt(0).getName().equals(ClientHomeFragment.TAG) &&
                     fm.getBackStackEntryAt(1).getName().equals(fm.getBackStackEntryAt(0).getName()))
-                || fm.getBackStackEntryCount() == 1)
+                || fm.getBackStackEntryCount() == 1){
                 finish();
+                return;
+            }
         }
+
+        super.onBackPressed();
+        selectBottomNavigationItem();
     }
 
 
@@ -331,5 +338,6 @@ public class ClientMainActivity extends AppCompatActivity implements WeFitApplic
     public void onSuccess() {
         ((Client)((WeFitApplication)getApplicationContext()).getUser()).coach = mNfcCoachMail;
         Toast.makeText(this, getString(R.string.pairing_successful), Toast.LENGTH_SHORT).show();
+        mNfcCoachMail = null;
     }
 }

@@ -212,13 +212,14 @@ public class CoachMainActivity extends AppCompatActivity implements WeFitApplica
             fm.popBackStackImmediate(fm.getBackStackEntryAt(fm.getBackStackEntryCount() - 1).getName(), FragmentManager.POP_BACK_STACK_INCLUSIVE);
             selectBottomNavigationItem();
             return;
-        } else if((fm.getBackStackEntryCount() == 2 && fm.getBackStackEntryAt(0).getName().equals(CoachHomeFragment.TAG)
-                && fm.getBackStackEntryAt(0).getName().equals(fm.getBackStackEntryAt(1).getName())) || fm.getBackStackEntryCount() == 1)
+        } else if((fm.getBackStackEntryCount() == 2
+                && fm.getBackStackEntryAt(0).getName().equals(CoachHomeFragment.TAG)
+                && fm.getBackStackEntryAt(0).getName().equals(fm.getBackStackEntryAt(1).getName()))
+                || fm.getBackStackEntryCount() == 1) {
 
-            finish();
-
-
-
+               finish();
+               return;
+        }
 
         super.onBackPressed();
         selectBottomNavigationItem();

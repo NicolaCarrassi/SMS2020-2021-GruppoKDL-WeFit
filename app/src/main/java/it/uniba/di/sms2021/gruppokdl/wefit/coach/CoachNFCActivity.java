@@ -1,6 +1,7 @@
 package it.uniba.di.sms2021.gruppokdl.wefit.coach;
 
 import android.app.PendingIntent;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.IntentFilter;
 import android.nfc.NdefMessage;
@@ -35,6 +36,7 @@ public class CoachNFCActivity extends BaseActivity {
     boolean mWriteMode = false;
     private NfcAdapter mNfcAdapter;
     private PendingIntent mNfcPendingIntent;
+    private AlertDialog alertDialog;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -79,10 +81,12 @@ public class CoachNFCActivity extends BaseActivity {
 
             enableTagWriteMode();
 
-            new AlertDialog.Builder(this).setTitle(R.string.nfc_registration_title)
+            alertDialog = new AlertDialog.Builder(this).setTitle(R.string.nfc_registration_title)
                     .setMessage(R.string.nfc_registration_message)
                     .setOnCancelListener(dialog -> disableTagWriteMode())
-                    .create().show();
+                    .create();
+            alertDialog.show();
+
         }else{
             AlertDialog.Builder alertBox = new AlertDialog.Builder(this)
                     .setTitle(getString(R.string.nfc_required))
@@ -131,6 +135,7 @@ public class CoachNFCActivity extends BaseActivity {
             if (writeTag(mNdfMessage, detectedTag)) {
                 Toast.makeText(this, R.string.nfc_success, Toast.LENGTH_LONG)
                         .show();
+                alertDialog.dismiss();
             }
         }
     }

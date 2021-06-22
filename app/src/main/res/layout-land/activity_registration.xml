@@ -42,7 +42,7 @@
         android:id="@+id/layout_personal_data"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:layout_marginTop="40dp">
+        android:layout_marginTop="0dp">
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
@@ -124,18 +124,17 @@
 
         <EditText
             android:id="@+id/registration_email_edit_text"
-            android:layout_width="300dp"
+            android:layout_width="@dimen/width_edit_text"
             android:layout_height="wrap_content"
             android:hint="@string/email"
             android:inputType="textEmailAddress"
             android:background="@drawable/edittext_rounded_corners"
             android:theme="@style/EditTextCustom"
             android:layout_gravity="center_horizontal"
-            android:layout_marginTop="40dp"
-            android:layout_marginStart="-20dp"/>
+            android:layout_marginTop="40dp"/>
 
         <LinearLayout
-            android:layout_width="match_parent"
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:orientation="horizontal"
             android:gravity="center"
@@ -152,9 +151,9 @@
                 android:hint="@string/password"
                 android:inputType="textPassword"
                 android:theme="@style/EditTextCustom"
-                android:layout_weight="0.8"
-                android:imeOptions="actionGo"
-                />
+                android:layout_marginStart="45dp"
+
+                android:imeOptions="actionGo" />
 
             <ImageView
                 android:id="@+id/registration_password_visible"
@@ -168,7 +167,7 @@
         </LinearLayout>
 
         <LinearLayout
-            android:layout_width="match_parent"
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:orientation="horizontal"
             android:gravity="center"
@@ -182,11 +181,12 @@
                 android:layout_width="@dimen/width_edit_text"
                 android:layout_height="wrap_content"
                 android:background="@drawable/edittext_rounded_corners"
-                android:hint="@string/password"
+                android:hint="@string/confirm_password"
                 android:inputType="textPassword"
                 android:theme="@style/EditTextCustom"
                 android:layout_weight="0.8"
-                android:imeOptions="actionGo" />
+                android:imeOptions="actionGo"
+                android:layout_marginStart="45dp"/>
 
             <ImageView
                 android:id="@+id/registration_confirm_password_visible"

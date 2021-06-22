@@ -112,7 +112,7 @@
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:text="@string/btn_save_update"
-            android:textSize="15sp"
+            android:textSize="14sp"
             style="@style/MaterialButtonCustom"
             android:layout_marginStart="5dp"
             android:paddingVertical="10dp"/>

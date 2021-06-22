@@ -14,9 +14,11 @@ import android.provider.Settings;
 import android.view.View;
 import android.widget.Chronometer;
 import android.widget.ImageView;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import androidx.annotation.NonNull;
+import androidx.appcompat.app.AppCompatDelegate;
 import androidx.core.app.ActivityCompat;
 import androidx.core.content.ContextCompat;
 import androidx.fragment.app.FragmentActivity;
@@ -32,6 +34,7 @@ import com.google.android.gms.maps.model.LatLngBounds;
 import com.google.android.gms.maps.model.MarkerOptions;
 import com.google.android.gms.maps.model.PolylineOptions;
 import com.google.android.material.button.MaterialButton;
+import com.google.android.material.progressindicator.CircularProgressIndicator;
 
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
@@ -54,6 +57,7 @@ public class RunActivity extends FragmentActivity implements OnMapReadyCallback,
     private MaterialButton mStartButton;
     private MaterialButton mStopButton;
     private ImageView mBackButton;
+    private CircularProgressIndicator loader;
 
     private static final int REQUEST_CODE_LOCATION_PERMISSION = 1;
     private RunActivityContract.Presenter mPresenter;
@@ -70,6 +74,7 @@ public class RunActivity extends FragmentActivity implements OnMapReadyCallback,
     private float mAverageKcal;
 
     private Chronometer mCrono;
+    private TextView mElapsedTimeText;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -90,6 +95,7 @@ public class RunActivity extends FragmentActivity implements OnMapReadyCallback,
         mMessageReceiver = new MyBroadcastReceiver(listLocation,this);
 
         bind();
+        setChronometerVisibility(View.GONE);
         setListener();
 
         // Obtain the SupportMapFragment and get notified when the map is ready to be used.
@@ -107,7 +113,9 @@ public class RunActivity extends FragmentActivity implements OnMapReadyCallback,
         mStartButton = findViewById(R.id.start);
         mStopButton = findViewById(R.id.stop);
         mCrono = findViewById(R.id.crono);
+        mElapsedTimeText = findViewById(R.id.elapsed_time);
         mBackButton = findViewById(R.id.back);
+        loader=findViewById(R.id.loader);
     }
 
     /**
@@ -174,6 +182,7 @@ public class RunActivity extends FragmentActivity implements OnMapReadyCallback,
             }
         }
     }
+
 
     @Override
     public void addMarker(Location location, String markerTitle) {
@@ -245,6 +254,17 @@ public class RunActivity extends FragmentActivity implements OnMapReadyCallback,
                 });
         final AlertDialog alert = builder.create();
         alert.show();
+    }
+
+    @Override
+    public void setLoaderVisibility(int visibility){
+        loader.setVisibility(visibility);
+    }
+
+    @Override
+    public void setChronometerVisibility(int visibility){
+        mCrono.setVisibility(visibility);
+        mElapsedTimeText.setVisibility(visibility);
     }
 
 

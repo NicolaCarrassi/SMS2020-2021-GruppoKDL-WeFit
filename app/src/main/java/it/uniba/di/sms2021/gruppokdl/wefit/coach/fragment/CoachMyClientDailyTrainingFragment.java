@@ -75,7 +75,7 @@ public class CoachMyClientDailyTrainingFragment extends Fragment implements Coac
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
 
-        View layout = inflater.inflate(R.layout.coach_my_client_daily_traning, container, false);
+        View layout = inflater.inflate(R.layout.coach_my_client_daily_training, container, false);
 
 
         mPresenter = new CoachMyClientDailyTrainingPresenter(this);
@@ -93,8 +93,8 @@ public class CoachMyClientDailyTrainingFragment extends Fragment implements Coac
         TextView mEmpty = layout.findViewById(R.id.no_exercises);
         ImageView mEditTrainingImage = layout.findViewById(R.id.edit_training_info);
 
-        String trainingTime = mTrainingTime.getText() + mTraining.convertDurationTime();
-        String trainingDay = mTrainingDay.getText() + DayOfTheWeek.getDayOfTheWeek(mTraining.dayOfWeek, layout);
+        String trainingTime = mTrainingTime.getText() + "\n" + mTraining.convertDurationTime();
+        String trainingDay = mTrainingDay.getText() + "\n" + DayOfTheWeek.getDayOfTheWeek(mTraining.dayOfWeek, layout);
 
         mTrainingName.setText(mTraining.title);
         mTrainingTime.setText(trainingTime);

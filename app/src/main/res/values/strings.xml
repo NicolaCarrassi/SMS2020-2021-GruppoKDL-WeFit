@@ -270,7 +270,7 @@
 
     <string name="add_training_coach">Add Training Day</string>
 
-    <string name="nfc_activity_message">Bring near a NFC Tag. Make sure that your smartphone have NFC enabled.</string>
+    <string name="nfc_activity_message">Make sure that your smartphone has NFC enabled. Click on the button below to start pairing the NFC Tag.</string>
     <string name="no_nfc_message">Your device doesn\'t have NFC. You can not use this functionality.</string>
     <string name="exercise_added">Exercise added correctly!</string>
     <string name="training_allSet">You have completed all trainings for this week!</string>
@@ -280,6 +280,7 @@
     <string name="nfc_success">NFC Tag created successfully!</string>
     <string name="tag_not_writable">Error: tag not writable</string>
     <string name="tag_too_small">Error: tag too small</string>
+    <string name="elapsed_time">Elapsed Time</string>
 
 
 </resources>

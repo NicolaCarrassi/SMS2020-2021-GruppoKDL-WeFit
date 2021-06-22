@@ -271,7 +271,7 @@
     <string name="nfc_required_message">L\' NFC sembra essere disattivato, vuoi attivarlo?</string>
 
     <string name="add_training_coach">Aggiungi Allenamento</string>
-    <string name="nfc_activity_message">Avvicinare un Tag NFC. Assicurarsi che il tuo dispositivo abbia l\' NFC attivo.</string>
+    <string name="nfc_activity_message">Assicurarsi che il dispositivo abbia l\' NFC attivo. Cliccare sul bottone sottostante per iniziare la procedura di associazione del Tag NFC.</string>
     <string name="exercise_added">Esercizio aggiunto correttamente!</string>
     <string name="training_allSet">Hai completato tutti gli allenamenti questa settimana.</string>
     <string name="no_nfc_message">Il tuo telefono non possiede l\'NFC. Non puoi utilizzare questa funzionalitá.</string>
@@ -281,6 +281,8 @@
     <string name="nfc_success">Tag NFC creato con successo!</string>
     <string name="tag_not_writable">Errore: tag non scrivibile</string>
     <string name="tag_too_small">Errore: tag troppo piccolo</string>
+    <string name="elapsed_time">Tempo Trascorso</string>
+
 
 
 

@@ -13,136 +13,149 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content" />
 
-    <LinearLayout
-        android:id="@+id/map_block"
-        android:visibility="visible"
-        android:layout_width="match_parent"
-        android:layout_height="300dp"
-        android:orientation="vertical"
-        android:layout_marginHorizontal="@dimen/margin_horizontal">
-        
-        <TextView
+
+        <ScrollView
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="@string/your_last_run"
-            android:gravity="center_horizontal"
-            style="@style/custom_h1"
-            android:layout_marginBottom="@dimen/margin_horizontal"
-            android:layout_marginTop="10dp"/>
-
-        <fragment
-            xmlns:map="http://schemas.android.com/apk/res-auto"
-            android:id="@+id/map"
-            android:name="com.google.android.gms.maps.SupportMapFragment"
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            tools:context="it.uniba.di.sms2021.gruppokdl.wefit.client.RunActivity" />
-
-    </LinearLayout>
-
-    <LinearLayout
-        android:id="@+id/stats_block"
-        android:visibility="visible"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:orientation="horizontal"
-        android:layout_marginHorizontal="30dp"
-        android:layout_marginTop="10dp">
-
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:orientation="horizontal"
-            android:layout_weight="1">
-            <ImageView
-                android:layout_width="wrap_content"
+            android:layout_height="wrap_content">
+            <LinearLayout
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:background="@drawable/map_24"
-                android:backgroundTint="?attr/colorOnPrimary" />
-            <TextView
-                android:id="@+id/distance"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                style="@style/custom_p"
-                android:textSize="18dp"/>
-        </LinearLayout>
+                android:orientation="vertical">
 
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:orientation="horizontal"
-            android:layout_weight="1">
-            <ImageView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:background="@drawable/timer_24"
-                android:backgroundTint="?attr/colorOnPrimary" />
-            <TextView
-                android:id="@+id/time"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                style="@style/custom_p"
-                android:textSize="18dp"/>
-        </LinearLayout>
+                <LinearLayout
+                    android:id="@+id/map_block"
+                    android:visibility="visible"
+                    android:layout_width="match_parent"
+                    android:layout_height="300dp"
+                    android:orientation="vertical"
+                    android:layout_marginHorizontal="@dimen/margin_horizontal">
 
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:orientation="horizontal"
-            android:layout_weight="1">
-            <ImageView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:background="@drawable/speed_24"
-                android:backgroundTint="?attr/colorOnPrimary" />
-            <TextView
-                android:id="@+id/speed"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                style="@style/custom_p"
-                android:textSize="18dp"/>
-        </LinearLayout>
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:text="@string/your_last_run"
+                        android:gravity="center_horizontal"
+                        style="@style/custom_h1"
+                        android:layout_marginBottom="@dimen/margin_horizontal"
+                        android:layout_marginTop="10dp"/>
 
-    </LinearLayout>
+                    <fragment
+                        xmlns:map="http://schemas.android.com/apk/res-auto"
+                        android:id="@+id/map"
+                        android:name="com.google.android.gms.maps.SupportMapFragment"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        tools:context="it.uniba.di.sms2021.gruppokdl.wefit.client.RunActivity" />
 
-    <com.google.android.material.button.MaterialButton
-        android:id="@+id/run_statistics"
-        android:visibility="visible"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="@string/see_statistics"
-        android:paddingVertical="10dp"
-        style="@style/MaterialButtonCustom"
-        android:layout_marginTop="10dp"
-        android:layout_gravity="center_horizontal"
-        android:textSize="13sp"/>
+                </LinearLayout>
 
-    <TextView
-        android:layout_marginHorizontal="@dimen/margin_horizontal"
-        android:layout_marginTop="@dimen/margin_horizontal"
-        android:gravity="center_horizontal"
-        android:id="@+id/text_no_run"
-        android:visibility="gone"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="@string/no_run_message"
-        style="@style/custom_p"/>
+                <LinearLayout
+                    android:id="@+id/stats_block"
+                    android:visibility="visible"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal"
+                    android:layout_marginHorizontal="30dp"
+                    android:layout_marginTop="10dp">
 
-    <RelativeLayout
-        android:layout_width="match_parent"
-        android:layout_height="match_parent">
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="horizontal"
+                        android:layout_weight="1">
+                        <ImageView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:background="@drawable/map_24"
+                            android:backgroundTint="?attr/colorOnPrimary" />
+                        <TextView
+                            android:id="@+id/distance"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            style="@style/custom_p"
+                            android:textSize="18dp"/>
+                    </LinearLayout>
 
-        <com.google.android.material.button.MaterialButton
-            android:id="@+id/start_run_activity"
-            android:layout_width="120dp"
-            android:layout_height="120dp"
-            android:text="@string/start_run"
-            android:paddingVertical="15dp"
-            android:layout_marginBottom="@dimen/margin_horizontal"
-            style="@style/MaterialButtonCustomRoundBigger"
-            android:layout_centerHorizontal="true"
-            android:layout_alignParentBottom="true"/>
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="horizontal"
+                        android:layout_weight="1">
+                        <ImageView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:background="@drawable/timer_24"
+                            android:backgroundTint="?attr/colorOnPrimary" />
+                        <TextView
+                            android:id="@+id/time"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            style="@style/custom_p"
+                            android:textSize="18dp"/>
+                    </LinearLayout>
 
-    </RelativeLayout>
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="horizontal"
+                        android:layout_weight="1">
+                        <ImageView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:background="@drawable/speed_24"
+                            android:backgroundTint="?attr/colorOnPrimary" />
+                        <TextView
+                            android:id="@+id/speed"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            style="@style/custom_p"
+                            android:textSize="18dp"/>
+                    </LinearLayout>
+
+                </LinearLayout>
+
+                <com.google.android.material.button.MaterialButton
+                    android:id="@+id/run_statistics"
+                    android:visibility="visible"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/see_statistics"
+                    android:paddingVertical="10dp"
+                    style="@style/MaterialButtonCustom"
+                    android:layout_marginTop="10dp"
+                    android:layout_gravity="center_horizontal"
+                    android:textSize="13sp"/>
+
+                <TextView
+                    android:layout_marginHorizontal="@dimen/margin_horizontal"
+                    android:layout_marginTop="@dimen/margin_horizontal"
+                    android:gravity="center_horizontal"
+                    android:id="@+id/text_no_run"
+                    android:visibility="gone"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="@string/no_run_message"
+                    style="@style/custom_p"/>
+
+                <RelativeLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent">
+
+                    <com.google.android.material.button.MaterialButton
+                        android:id="@+id/start_run_activity"
+                        android:layout_width="120dp"
+                        android:layout_height="120dp"
+                        android:text="@string/start_run"
+                        android:paddingVertical="15dp"
+                        android:layout_marginBottom="@dimen/margin_horizontal"
+                        style="@style/MaterialButtonCustomRoundBigger"
+                        android:layout_centerHorizontal="true"
+                        android:layout_alignParentBottom="true"/>
+
+                </RelativeLayout>
+            </LinearLayout>
+        </ScrollView>
+
+
 
 </LinearLayout>

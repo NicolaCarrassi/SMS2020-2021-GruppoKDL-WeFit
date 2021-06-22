@@ -87,13 +87,13 @@ public class ClientMyProgressFragment extends Fragment implements ClientProgress
     public void onClientDataReceived(List<Float> weightList, List<Date> dateList) {
 
         String clientInitialWeight = Float.toString(weightList.get(0)) ;
-        assert getActivity() != null;
-        String clientCurrentWeight = Float.toString(((Client) ((WeFitApplication) getActivity().getApplicationContext()).getUser()).weight);
+        if(getActivity() != null) {
+            String clientCurrentWeight = Float.toString(((Client) ((WeFitApplication) getActivity().getApplicationContext()).getUser()).weight);
 
+            mClientInitialWeight.setText(clientInitialWeight);
+            mClientCurrentWeight.setText(clientCurrentWeight);
 
-        mClientInitialWeight.setText(clientInitialWeight);
-        mClientCurrentWeight.setText(clientCurrentWeight);
-
-        GraphSettings.graphSettings(mWeightGraph, dateList, weightList);
+            GraphSettings.graphSettings(mWeightGraph, dateList, weightList);
+        }
     }
 }

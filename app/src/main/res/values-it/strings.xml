@@ -282,8 +282,8 @@
     <string name="tag_not_writable">Errore: tag non scrivibile</string>
     <string name="tag_too_small">Errore: tag troppo piccolo</string>
     <string name="elapsed_time">Tempo Trascorso</string>
-
-
+    <string name="go">GO</string>
+    <string name="stop">Stop</string>
 
 
 </resources>

@@ -1,9 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 
 <LinearLayout
-
     xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
@@ -31,7 +29,7 @@
                 android:layout_width="40dp"
                 android:layout_height="40dp"
                 android:layout_centerVertical="true"
-                android:layout_marginLeft="@dimen/margin_horizontal"
+                android:layout_marginStart="@dimen/margin_horizontal"
                 android:gravity="start"
                 android:background="@drawable/back_24"
                 android:backgroundTint="@color/blue"/>
@@ -86,8 +84,7 @@
     android:layout_height="match_parent"
     android:orientation="vertical">
 
-    <fragment
-        xmlns:map="http://schemas.android.com/apk/res-auto"
+    <androidx.fragment.app.FragmentContainerView
         android:id="@+id/map"
         android:name="com.google.android.gms.maps.SupportMapFragment"
         android:layout_width="match_parent"
@@ -102,7 +99,7 @@
     <com.google.android.material.button.MaterialButton
         android:layout_width="100dp"
         android:layout_height="100dp"
-        android:text="GO"
+        android:text="@string/go"
         android:id="@+id/start"
         style="@style/MaterialButtonCustomRound"
         android:layout_centerHorizontal="true"
@@ -112,7 +109,7 @@
     <com.google.android.material.button.MaterialButton
         android:layout_width="100dp"
         android:layout_height="100dp"
-        android:text="Stop"
+        android:text="@string/stop"
         android:id="@+id/stop"
         style="@style/MaterialButtonCustomRound"
         android:layout_marginBottom="20dp"

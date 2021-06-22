@@ -326,8 +326,8 @@ public class ClientMainActivity extends AppCompatActivity implements WeFitApplic
                 .setCancelable(false)
                 .setPositiveButton(getString(R.string.yes), (dialog, id) -> mPresenter.addCoachFromNFC(mClientMail,mNfcCoachMail))
                 .setNegativeButton(getString(R.string.no), (dialog, id) -> {
+                    mNfcCoachMail = null;
                     dialog.cancel();
-                    finish();
                     Toast.makeText(getApplicationContext(), getString(R.string.pairing_cancelled),Toast.LENGTH_SHORT).show();
                 });
         final AlertDialog alert = builder.create();

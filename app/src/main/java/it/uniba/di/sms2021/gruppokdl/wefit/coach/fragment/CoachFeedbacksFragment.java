@@ -126,21 +126,23 @@ public class CoachFeedbacksFragment extends Fragment implements User.MyImageBitm
 
     @Override
     public void onLastFeedbackReceived(Feedback feedback, float mean, int numElem) {
-        String feedbackNumber = getResources().getString(R.string.feedback_number) + numElem;
-        String firstName = feedback.clientFullName.split(" ")[0];
+        if(getActivity() != null) {
+            String feedbackNumber = getResources().getString(R.string.feedback_number) + numElem;
+            String firstName = feedback.clientFullName.split(" ")[0];
 
-        mMeanRating.setRating(mean);
-        mFeedbackNumberText.setText(feedbackNumber);
-        mLastFeedbackUserName.setText(firstName);
-        mLastFeedbackRating.setRating(feedback.rate);
-        mLastReviewText.setText(feedback.message);
+            mMeanRating.setRating(mean);
+            mFeedbackNumberText.setText(feedbackNumber);
+            mLastFeedbackUserName.setText(firstName);
+            mLastFeedbackRating.setRating(feedback.rate);
+            mLastReviewText.setText(feedback.message);
 
-        if(numElem > 1){
-            mReadAllButton.setVisibility(View.VISIBLE);
-            mReadAllButton.setClickable(true);
-            mReadAllButton.setFocusable(true);
+            if (numElem > 1) {
+                mReadAllButton.setVisibility(View.VISIBLE);
+                mReadAllButton.setClickable(true);
+                mReadAllButton.setFocusable(true);
 
-            mReadAllButton.setOnClickListener(v -> openAllFeedbackPage());
+                mReadAllButton.setOnClickListener(v -> openAllFeedbackPage());
+            }
         }
     }
 

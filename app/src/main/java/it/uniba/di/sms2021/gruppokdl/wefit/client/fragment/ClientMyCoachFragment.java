@@ -3,7 +3,6 @@ package it.uniba.di.sms2021.gruppokdl.wefit.client.fragment;
 import android.app.AlertDialog;
 import android.content.Context;
 import android.os.Bundle;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -205,11 +204,10 @@ public class ClientMyCoachFragment extends Fragment implements ClientMyCoachCont
         mCoach = coach;
         setListeners();
 
-        if (coach.image != null) {
+        if (coach.image != null && getActivity() != null) {
             if (!coach.isBitmapImageAvailable()) {
-                assert getActivity() != null;
-                ((WeFitApplication) getActivity().getApplicationContext()).startProgress(mView);
-                coach.createImageBitmap(this);
+                    ((WeFitApplication) getActivity().getApplicationContext()).startProgress(mView);
+                    coach.createImageBitmap(this);
             }else
                 mCoachProfileImage.setImageBitmap(coach.getImageBitmap());
         }
@@ -245,16 +243,10 @@ public class ClientMyCoachFragment extends Fragment implements ClientMyCoachCont
     @Override
     public void onCoachNotFound() {
         ClientCoachListFragment fragment = new ClientCoachListFragment();
-        assert getActivity() != null;
 
-        getActivity().getSupportFragmentManager().beginTransaction().replace(R.id.anchor_point,fragment,ClientCoachListFragment.TAG).commit();
-
-        Log.d("AOO", "" + getActivity().getSupportFragmentManager().getBackStackEntryCount());
-
-        for(int i = 0 ; i < getActivity().getSupportFragmentManager().getBackStackEntryCount() ; i++)
-            Log.d("AOO", "Sto nel fragm: " + getActivity().getSupportFragmentManager().getBackStackEntryAt(i).getName());
-
-
+        if(getActivity() != null)
+            getActivity().getSupportFragmentManager().beginTransaction()
+                    .replace(R.id.anchor_point,fragment,ClientCoachListFragment.TAG).commit();
     }
 
     @Override
@@ -278,9 +270,10 @@ public class ClientMyCoachFragment extends Fragment implements ClientMyCoachCont
 
     @Override
     public void handleCallback() {
-        assert getActivity() != null;
-        ((WeFitApplication) getActivity().getApplicationContext()).stopProgress(mView);
-        mCoachProfileImage.setImageBitmap(mCoach.getImageBitmap());
+        if(getActivity() != null) {
+            ((WeFitApplication) getActivity().getApplicationContext()).stopProgress(mView);
+            mCoachProfileImage.setImageBitmap(mCoach.getImageBitmap());
+        }
     }
 
     /**

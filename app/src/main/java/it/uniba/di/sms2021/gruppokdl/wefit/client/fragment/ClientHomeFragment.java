@@ -149,9 +149,10 @@ public class ClientHomeFragment extends Fragment implements User.MyImageBitmapCa
 
     @Override
     public void handleCallback() {
-        assert getActivity() != null;
-        ((WeFitApplication) getActivity().getApplicationContext()).stopProgress(mView);
-        mImageView.setImageBitmap(mUser.getImageBitmap());
+        if(getActivity() != null) {
+            ((WeFitApplication) getActivity().getApplicationContext()).stopProgress(mView);
+            mImageView.setImageBitmap(mUser.getImageBitmap());
+        }
     }
 
     @Override
@@ -163,23 +164,25 @@ public class ClientHomeFragment extends Fragment implements User.MyImageBitmapCa
 
     @Override
     public void userCompletedTrainings(int completedTrainings, int trainingsNumber, int flag) {
-        String text;
-        switch (flag){
-            case Keys.CompletedFlags.NO_DENOMINATOR:
-                text = getResources().getString(R.string.no_trainings_assigned);
-                break;
-            case Keys.CompletedFlags.NO_NUMERATOR:
-                text = getResources().getString(R.string.no_trainings_made);
-                break;
-            case Keys.CompletedFlags.CORRECT:
-                text = getResources().getString(R.string.completed_trainings) + completedTrainings + "/" + trainingsNumber;
-                break;
-            case Keys.CompletedFlags.ALL_SET:
-                text = getResources().getString(R.string.training_allSet);
-                break;
-            default:
-                text = "";
+        if (getActivity() != null) {
+            String text;
+            switch (flag) {
+                case Keys.CompletedFlags.NO_DENOMINATOR:
+                    text = getResources().getString(R.string.no_trainings_assigned);
+                    break;
+                case Keys.CompletedFlags.NO_NUMERATOR:
+                    text = getResources().getString(R.string.no_trainings_made);
+                    break;
+                case Keys.CompletedFlags.CORRECT:
+                    text = getResources().getString(R.string.completed_trainings) + completedTrainings + "/" + trainingsNumber;
+                    break;
+                case Keys.CompletedFlags.ALL_SET:
+                    text = getResources().getString(R.string.training_allSet);
+                    break;
+                default:
+                    text = "";
+            }
+            mCompletedTrainingTextView.setText(text);
         }
-        mCompletedTrainingTextView.setText(text);
     }
 }

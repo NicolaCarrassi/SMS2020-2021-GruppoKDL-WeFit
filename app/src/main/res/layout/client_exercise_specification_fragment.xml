@@ -22,7 +22,7 @@
         android:layout_marginVertical="20dp"/>
 
 
-    <fragment
+    <androidx.fragment.app.FragmentContainerView
         android:id="@+id/youtube_frag"
         android:name="com.google.android.youtube.player.YouTubePlayerSupportFragmentX"
         android:layout_width="match_parent"

@@ -184,7 +184,7 @@
                 android:layout_width="@dimen/width_edit_text"
                 android:layout_height="wrap_content"
                 android:background="@drawable/edittext_rounded_corners"
-                android:hint="@string/password"
+                android:hint="@string/confirm_password"
                 android:inputType="textPassword"
                 android:theme="@style/EditTextCustom"
                 android:layout_weight="0.8"

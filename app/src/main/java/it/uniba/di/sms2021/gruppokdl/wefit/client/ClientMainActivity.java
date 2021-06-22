@@ -4,6 +4,7 @@ package it.uniba.di.sms2021.gruppokdl.wefit.client;
 import android.app.AlertDialog;
 import android.content.Intent;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.MenuItem;
 import android.widget.Toast;
 
@@ -229,23 +230,20 @@ public class ClientMainActivity extends AppCompatActivity implements WeFitApplic
             }
         }
 
-
         // se il numero di figli è uguale a 2 allora posso chiudere l'activity in quanto sono all'ultima schermata del backstack
         if(fm.getBackStackEntryCount() > 2) {
             fm.popBackStackImmediate(fm.getBackStackEntryAt(fm.getBackStackEntryCount() - 1).getName(), FragmentManager.POP_BACK_STACK_INCLUSIVE);
             selectBottomNavigationItem();
-            return;
-        } else {
-            if((fm.getBackStackEntryCount() == 2 && fm.getBackStackEntryAt(0).getName().equals(ClientHomeFragment.TAG) &&
-                    fm.getBackStackEntryAt(1).getName().equals(fm.getBackStackEntryAt(0).getName()))
+        } else if((fm.getBackStackEntryCount() == 2 && Objects.equals(fm.getBackStackEntryAt(0).getName(), ClientHomeFragment.TAG) &&
+                Objects.equals(fm.getBackStackEntryAt(1).getName(), fm.getBackStackEntryAt(0).getName()))
                 || fm.getBackStackEntryCount() == 1){
-                finish();
-                return;
-            }
+            finish();
+        } else {
+            super.onBackPressed();
+            selectBottomNavigationItem();
         }
+        Log.d(this.getClass().getSimpleName(), "On back pressed ok");
 
-        super.onBackPressed();
-        selectBottomNavigationItem();
     }
 
 

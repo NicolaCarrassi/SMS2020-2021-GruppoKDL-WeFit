@@ -3,6 +3,7 @@ package it.uniba.di.sms2021.gruppokdl.wefit.client.fragment;
 import android.app.AlertDialog;
 import android.content.Context;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -246,8 +247,14 @@ public class ClientMyCoachFragment extends Fragment implements ClientMyCoachCont
         ClientCoachListFragment fragment = new ClientCoachListFragment();
         assert getActivity() != null;
 
-        getActivity().getSupportFragmentManager().beginTransaction().replace(R.id.anchor_point,fragment,ClientCoachListFragment.TAG)
-                .addToBackStack(null).commit();
+        getActivity().getSupportFragmentManager().beginTransaction().replace(R.id.anchor_point,fragment,ClientCoachListFragment.TAG).commit();
+
+        Log.d("AOO", "" + getActivity().getSupportFragmentManager().getBackStackEntryCount());
+
+        for(int i = 0 ; i < getActivity().getSupportFragmentManager().getBackStackEntryCount() ; i++)
+            Log.d("AOO", "Sto nel fragm: " + getActivity().getSupportFragmentManager().getBackStackEntryAt(i).getName());
+
+
     }
 
     @Override

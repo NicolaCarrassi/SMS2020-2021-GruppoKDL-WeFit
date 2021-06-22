@@ -24,7 +24,7 @@ import it.uniba.di.sms2021.gruppokdl.wefit.utility.GraphSettings;
 
 public class ClientMyProgressFragment extends Fragment implements ClientProgressContract.View {
 
-    public static final String TAG = ClientHomeFragment.class.getSimpleName();
+    public static final String TAG = ClientMyProgressFragment.class.getSimpleName();
     private static final String CLIENT_MAIL = "clientMail";
 
     private View mView;

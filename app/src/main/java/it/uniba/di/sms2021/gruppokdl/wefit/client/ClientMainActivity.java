@@ -4,7 +4,6 @@ package it.uniba.di.sms2021.gruppokdl.wefit.client;
 import android.app.AlertDialog;
 import android.content.Intent;
 import android.os.Bundle;
-import android.util.Log;
 import android.view.MenuItem;
 import android.widget.Toast;
 
@@ -21,6 +20,7 @@ import com.google.firebase.auth.FirebaseAuth;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.Map;
+import java.util.Objects;
 
 import it.uniba.di.sms2021.gruppokdl.wefit.LoginActivity;
 import it.uniba.di.sms2021.gruppokdl.wefit.R;
@@ -91,7 +91,7 @@ public class ClientMainActivity extends AppCompatActivity implements WeFitApplic
         mBottomNavigation = findViewById(R.id.bottom_navigation);
         mBottomNavigation.inflateMenu(R.menu.client_bottom_navigation_menu);
 
-        mClientMail = FirebaseAuth.getInstance().getCurrentUser().getEmail();
+        mClientMail = Objects.requireNonNull(FirebaseAuth.getInstance().getCurrentUser()).getEmail();
 
         if(getIntent().getStringExtra(NFC_COACH_REQUEST) != null)
             mNfcCoachMail = getIntent().getStringExtra(NFC_COACH_REQUEST);

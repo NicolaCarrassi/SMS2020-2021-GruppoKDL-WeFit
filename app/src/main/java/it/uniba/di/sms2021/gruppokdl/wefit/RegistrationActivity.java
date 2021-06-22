@@ -7,6 +7,7 @@ import android.content.Intent;
 import android.net.Uri;
 import android.os.Bundle;
 import android.text.Editable;
+import android.text.InputType;
 import android.text.TextUtils;
 import android.text.TextWatcher;
 import android.util.Log;
@@ -77,6 +78,8 @@ public class RegistrationActivity extends BaseActivity implements DatePickerDial
     private RadioGroup mRadioRole;
     private MaterialButton mRegisterButton;
     private ImageView mBackIcon;
+    private ImageView mPasswordVisible;
+    private ImageView mConfirmPasswordVisible;
 
     private boolean mHasBeenOpened = false;
     private RegistrationFragmentContract.View mFragmentView;
@@ -100,8 +103,6 @@ public class RegistrationActivity extends BaseActivity implements DatePickerDial
                 changeActiveLayout(mCoachClientLayout, mPersonalDataLayout);
             }
         }
-
-
 
         this.setListeners();
     }
@@ -131,6 +132,9 @@ public class RegistrationActivity extends BaseActivity implements DatePickerDial
         mRegisterButton = findViewById(R.id.register_button);
         mBackIcon = findViewById(R.id.back_icon);
 
+        mPasswordVisible = findViewById(R.id.registration_password_visible);
+        mConfirmPasswordVisible = findViewById(R.id.registration_confirm_password_visible);
+
     }
 
     /**
@@ -140,6 +144,9 @@ public class RegistrationActivity extends BaseActivity implements DatePickerDial
     private void setListeners(){
 
         mFirstForwardButton.setOnClickListener(v -> changeActiveLayout(mCoachClientLayout, mPersonalDataLayout));
+
+        mPasswordVisible.setOnClickListener(v -> showHidePassword(mPasswordEdit));
+        mConfirmPasswordVisible.setOnClickListener(v-> showHidePassword(mConfirmPasswordEdit));
 
 
         //date picker
@@ -227,6 +234,15 @@ public class RegistrationActivity extends BaseActivity implements DatePickerDial
         ArrayAdapter<CharSequence> adapter = ArrayAdapter.createFromResource(this, R.array.gender, R.layout.spinner_layout);
         adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
         mSpinner.setAdapter(adapter);
+    }
+
+    private void showHidePassword(EditText editText) {
+        int inputType = editText.getInputType() == 129 ?
+                InputType.TYPE_TEXT_VARIATION_VISIBLE_PASSWORD :
+                129;
+
+        editText.setInputType(inputType);
+        editText.setSelection(editText.getText().length());
     }
 
     /**

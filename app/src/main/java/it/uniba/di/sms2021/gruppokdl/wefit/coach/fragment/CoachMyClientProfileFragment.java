@@ -147,9 +147,10 @@ public class CoachMyClientProfileFragment extends Fragment implements CoachMyCli
 
         if(client.image != null) {
             if (!client.isBitmapImageAvailable()) {
-                assert getActivity() != null;
-                ((WeFitApplication)getActivity().getApplicationContext()).startProgress(mView);
-                client.createImageBitmap(this);
+                if(getActivity() != null){
+                    ((WeFitApplication)getActivity().getApplicationContext()).startProgress(mView);
+                    client.createImageBitmap(this);
+                }
             }else
                 mClientImage.setImageBitmap(client.getImageBitmap());
         }
@@ -166,9 +167,11 @@ public class CoachMyClientProfileFragment extends Fragment implements CoachMyCli
 
     @Override
     public void handleCallback() {
-        assert getActivity() != null;
-        ((WeFitApplication)getActivity().getApplicationContext()).stopProgress(mView);
-        mClientImage.setImageBitmap(mClientProfile.getImageBitmap());
+
+        if(getActivity() != null){
+            ((WeFitApplication)getActivity().getApplicationContext()).stopProgress(mView);
+            mClientImage.setImageBitmap(mClientProfile.getImageBitmap());
+        }
     }
 
 

@@ -5,8 +5,8 @@
 
     <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
 
-    <uses-permission android:name="android.permission.INTERNET" /> <!-- foreground in quanto il servizio non deve essere killato -->
-    <uses-permission android:name="android.permission.ACCESS_FOREGROUND_LOCATION" />
+    <uses-permission android:name="android.permission.INTERNET" />
+    <uses-permission android:name="android.permission.ACCESS_FOREGROUND_LOCATION" />  <!-- foreground in quanto il servizio non deve essere killato -->
     <uses-permission android:name="android.permission.FOREGROUND_SERVICE" />
     <uses-permission android:name="android.permission.NFC" />
 

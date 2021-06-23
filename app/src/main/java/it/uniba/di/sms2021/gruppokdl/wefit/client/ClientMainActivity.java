@@ -230,13 +230,14 @@ public class ClientMainActivity extends AppCompatActivity implements WeFitApplic
             }
         }
 
+
         // se il numero di figli è uguale a 2 allora posso chiudere l'activity in quanto sono all'ultima schermata del backstack
         if(fm.getBackStackEntryCount() > 2) {
             fm.popBackStackImmediate(fm.getBackStackEntryAt(fm.getBackStackEntryCount() - 1).getName(), FragmentManager.POP_BACK_STACK_INCLUSIVE);
             selectBottomNavigationItem();
         } else if((fm.getBackStackEntryCount() == 2 && Objects.equals(fm.getBackStackEntryAt(0).getName(), ClientHomeFragment.TAG) &&
                 Objects.equals(fm.getBackStackEntryAt(1).getName(), fm.getBackStackEntryAt(0).getName()))
-                || fm.getBackStackEntryCount() == 1){
+                || fm.getBackStackEntryCount() <= 1){
             finish();
         } else {
             super.onBackPressed();

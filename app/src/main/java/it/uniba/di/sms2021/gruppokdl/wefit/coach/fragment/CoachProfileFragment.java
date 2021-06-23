@@ -258,7 +258,7 @@ public class CoachProfileFragment extends Fragment implements CoachProfileContra
         }
         Toast.makeText(getActivity(), msg, Toast.LENGTH_SHORT).show();
         mHasImageChanged = false;
-        mUpdateButton.setClickable(true);
+        mUpdateButton.setVisibility(View.INVISIBLE);
     }
 
 

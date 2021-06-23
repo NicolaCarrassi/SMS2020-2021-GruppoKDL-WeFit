@@ -215,7 +215,7 @@ public class CoachMainActivity extends AppCompatActivity implements WeFitApplica
         } else if((fm.getBackStackEntryCount() == 2
                 && fm.getBackStackEntryAt(0).getName().equals(CoachHomeFragment.TAG)
                 && fm.getBackStackEntryAt(0).getName().equals(fm.getBackStackEntryAt(1).getName()))
-                || fm.getBackStackEntryCount() == 1) {
+                || fm.getBackStackEntryCount() <= 1) {
 
                finish();
                return;

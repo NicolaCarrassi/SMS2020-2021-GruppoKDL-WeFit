@@ -44,7 +44,6 @@ public class LocationService extends Service {
             if (locationResult != null && locationResult.getLastLocation() != null) {
                 mLocation = locationResult.getLastLocation();
                 sendMessageToActivity(mLocation);
-                Log.d("posizioni", "- " + mLocation.getLatitude() + " - " + mLocation.getLongitude());
             }
         }
 

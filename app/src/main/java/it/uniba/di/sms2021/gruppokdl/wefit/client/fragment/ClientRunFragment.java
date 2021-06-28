@@ -22,6 +22,7 @@ import com.google.android.gms.maps.model.LatLngBounds;
 import com.google.android.gms.maps.model.MarkerOptions;
 import com.google.android.gms.maps.model.PolylineOptions;
 import com.google.android.material.button.MaterialButton;
+import com.google.firebase.auth.FirebaseAuth;
 
 import java.util.List;
 
@@ -93,7 +94,13 @@ public class ClientRunFragment extends Fragment implements ClientRunContract.Vie
     @Override
     public void onStart() {
         super.onStart();
-        String mail = ((WeFitApplication) getActivity().getApplicationContext()).getUser().email;
+        String mail;
+        if(((WeFitApplication) getActivity().getApplicationContext()).getUser() == null){
+            mail = FirebaseAuth.getInstance().getCurrentUser().getEmail();
+            mPresenter.restoreUser(mail);
+        } else
+            mail = ((WeFitApplication) getActivity().getApplicationContext()).getUser().email;
+
         mPresenter.getLastRun(mail);
     }
 
@@ -145,7 +152,6 @@ public class ClientRunFragment extends Fragment implements ClientRunContract.Vie
     }
 
     public void centerCamera(List<MyLocation> locationList){
-
         LatLng southwest = new LatLng(locationList.get(0).getLatitude(),locationList.get(0).getLongitude());
         LatLng northeast = new LatLng(locationList.get(0).getLatitude(),locationList.get(0).getLongitude());
         LatLngBounds myPosition;
@@ -159,7 +165,7 @@ public class ClientRunFragment extends Fragment implements ClientRunContract.Vie
         }
 
         myPosition = new LatLngBounds(southwest,northeast);
-        mMap.animateCamera(CameraUpdateFactory.newLatLngBounds(myPosition,150));
+        mMap.animateCamera(CameraUpdateFactory.newLatLngBounds(myPosition,350,230,20));
     }
 
     @Override

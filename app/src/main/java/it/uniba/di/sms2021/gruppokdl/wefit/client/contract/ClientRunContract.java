@@ -1,5 +1,8 @@
 package it.uniba.di.sms2021.gruppokdl.wefit.client.contract;
 
+import androidx.fragment.app.Fragment;
+import androidx.fragment.app.FragmentActivity;
+
 import it.uniba.di.sms2021.gruppokdl.wefit.model.Run;
 
 public interface ClientRunContract {
@@ -19,13 +22,19 @@ public interface ClientRunContract {
          * nessuna corsa
          */
         void lastRunEmpty();
+        FragmentActivity getActivity();
     }
 
     /**
      * Interfaccia contenente i metodi che l'implementazione del presenter deve contenere
      */
     interface Presenter{
+        /**
+         * Il metodo permette di ottenere l'ultima corsa di un cliente
+         * @param mail
+         */
         void getLastRun(String mail);
+        void restoreUser(String mail);
     }
 
 }

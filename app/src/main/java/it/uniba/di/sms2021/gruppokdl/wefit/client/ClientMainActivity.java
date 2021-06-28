@@ -8,7 +8,6 @@ import android.util.Log;
 import android.view.MenuItem;
 import android.widget.Toast;
 
-import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.view.GravityCompat;
 import androidx.drawerlayout.widget.DrawerLayout;
 import androidx.fragment.app.Fragment;
@@ -30,17 +29,17 @@ import it.uniba.di.sms2021.gruppokdl.wefit.SettingsActivity;
 import it.uniba.di.sms2021.gruppokdl.wefit.WeFitApplication;
 import it.uniba.di.sms2021.gruppokdl.wefit.client.contract.ClientMainActivityContract;
 import it.uniba.di.sms2021.gruppokdl.wefit.client.fragment.ClientAddFragment;
-import it.uniba.di.sms2021.gruppokdl.wefit.client.fragment.ClientMyCoachFragment;
 import it.uniba.di.sms2021.gruppokdl.wefit.client.fragment.ClientDietFragment;
 import it.uniba.di.sms2021.gruppokdl.wefit.client.fragment.ClientHomeFragment;
+import it.uniba.di.sms2021.gruppokdl.wefit.client.fragment.ClientMyCoachFragment;
 import it.uniba.di.sms2021.gruppokdl.wefit.client.fragment.ClientMyProfileFragment;
 import it.uniba.di.sms2021.gruppokdl.wefit.client.fragment.ClientMyProgressFragment;
-import it.uniba.di.sms2021.gruppokdl.wefit.fragment.TermsFragment;
 import it.uniba.di.sms2021.gruppokdl.wefit.client.fragment.ClientMyTrainingFragment;
 import it.uniba.di.sms2021.gruppokdl.wefit.client.fragment.ClientRunFragment;
+import it.uniba.di.sms2021.gruppokdl.wefit.client.presenter.ClientMainActivityPresenter;
+import it.uniba.di.sms2021.gruppokdl.wefit.fragment.TermsFragment;
 import it.uniba.di.sms2021.gruppokdl.wefit.model.Client;
 import it.uniba.di.sms2021.gruppokdl.wefit.model.User;
-import it.uniba.di.sms2021.gruppokdl.wefit.client.presenter.ClientMainActivityPresenter;
 import it.uniba.di.sms2021.gruppokdl.wefit.utility.Keys;
 
 public class ClientMainActivity extends BaseActivity implements WeFitApplication.CallbackOperations,

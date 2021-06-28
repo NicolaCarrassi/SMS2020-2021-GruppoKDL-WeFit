@@ -23,6 +23,7 @@ import java.util.Date;
 import java.util.Map;
 import java.util.Objects;
 
+import it.uniba.di.sms2021.gruppokdl.wefit.BaseActivity;
 import it.uniba.di.sms2021.gruppokdl.wefit.LoginActivity;
 import it.uniba.di.sms2021.gruppokdl.wefit.R;
 import it.uniba.di.sms2021.gruppokdl.wefit.SettingsActivity;
@@ -42,7 +43,7 @@ import it.uniba.di.sms2021.gruppokdl.wefit.model.User;
 import it.uniba.di.sms2021.gruppokdl.wefit.client.presenter.ClientMainActivityPresenter;
 import it.uniba.di.sms2021.gruppokdl.wefit.utility.Keys;
 
-public class ClientMainActivity extends AppCompatActivity implements WeFitApplication.CallbackOperations,
+public class ClientMainActivity extends BaseActivity implements WeFitApplication.CallbackOperations,
         ClientMyProfileFragment.ProfileFragmentActivity, ClientMyCoachFragment.CoachProfileCallbacks,
         ClientAddFragment.BottomNavigationSelector, ClientMainActivityContract.View {
 

@@ -40,6 +40,7 @@ import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 
+import it.uniba.di.sms2021.gruppokdl.wefit.BaseActivity;
 import it.uniba.di.sms2021.gruppokdl.wefit.R;
 import it.uniba.di.sms2021.gruppokdl.wefit.WeFitApplication;
 import it.uniba.di.sms2021.gruppokdl.wefit.client.contract.RunActivityContract;
@@ -48,7 +49,7 @@ import it.uniba.di.sms2021.gruppokdl.wefit.model.Client;
 import it.uniba.di.sms2021.gruppokdl.wefit.model.Run;
 import it.uniba.di.sms2021.gruppokdl.wefit.client.presenter.RunActivityPresenter;
 
-public class RunActivity extends FragmentActivity implements OnMapReadyCallback, RunActivityContract.View, MyBroadcastReceiver.OnBroadcastReceiveListener {
+public class RunActivity extends BaseActivity implements OnMapReadyCallback, RunActivityContract.View, MyBroadcastReceiver.OnBroadcastReceiveListener {
 
     private GoogleMap mMap;
 

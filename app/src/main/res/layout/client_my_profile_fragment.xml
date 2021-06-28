@@ -14,6 +14,14 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content" />
 
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        >
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
     <TextView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
@@ -243,10 +251,14 @@
         android:id="@+id/btn_save_profile_update"
         android:layout_marginTop="20dp"
         android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_height="50dp"
         android:text="@string/btn_save_update"
         style="@style/MaterialButtonCustom"
         android:paddingHorizontal="30dp"
-        android:paddingVertical="15dp"
-        android:visibility="invisible"/>
+        android:layout_gravity="center_horizontal"
+        android:visibility="invisible"
+        android:layout_marginBottom="10dp"
+        android:textSize="15sp"/>
+        </LinearLayout>
+    </ScrollView>
 </LinearLayout>

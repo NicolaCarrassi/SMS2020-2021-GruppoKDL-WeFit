@@ -101,6 +101,7 @@
             style="@style/MaterialButtonCustom"
             android:paddingVertical="10dp"
             android:layout_weight="1"
+            android:textSize="15sp"
             android:layout_marginRight="10dp"/>
 
         <com.google.android.material.button.MaterialButton
@@ -109,7 +110,7 @@
             android:layout_width="fill_parent"
             style="@style/MaterialButtonCustom"
             android:backgroundTint="@color/red"
-            android:textSize="15dp"
+            android:textSize="15sp"
             android:paddingVertical="10dp"
             android:layout_weight="1"
             android:layout_marginLeft="10dp"

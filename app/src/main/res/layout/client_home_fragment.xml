@@ -67,6 +67,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="10dp"
+                    android:textSize="17sp"
                     android:gravity="center_horizontal"
                     style="@style/card_text"/>
 
@@ -100,7 +101,7 @@
                         android:layout_height="wrap_content"
                         android:text="@string/training_tab_title"
                         style="@style/card_title"
-                        android:textSize="20dp"
+                        android:textSize="18sp"
                         android:layout_marginHorizontal="5dp"
                         android:gravity="center_horizontal"/>
 
@@ -126,7 +127,7 @@
                         android:text="@string/diet_tab_title"
                         style="@style/card_title"
                         android:gravity="center_horizontal"
-                        android:textSize="20dp"
+                        android:textSize="18sp"
                         android:layout_marginHorizontal="5dp"/>
 
                 </LinearLayout>

@@ -15,12 +15,13 @@
         android:layout_height="wrap_content"
         android:orientation="horizontal"
         android:gravity="center_vertical"
-        android:layout_gravity="center_vertical">
+        android:layout_gravity="center_vertical"
+        android:weightSum="1">
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:orientation="vertical"
-            android:layout_weight="0.7"
+            android:layout_weight="0.75"
             >
             <TextView
                 android:id="@+id/training_name"
@@ -59,7 +60,8 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:orientation="vertical"
-            android:layout_weight="0.3">
+            android:layout_weight="0.25"
+            android:layout_marginEnd="5dp">
             <ScrollView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content">
@@ -67,8 +69,7 @@
                 <LinearLayout
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:orientation="vertical"
-                    android:layout_marginHorizontal="10dp">
+                    android:orientation="vertical">
 
                     <it.uniba.di.sms2021.gruppokdl.wefit.recyclerview.CustomRecyclerView
                         android:id="@+id/train_recycler"

@@ -222,9 +222,9 @@
                 android:layout_height="wrap_content"
                 android:text="@string/training_schedule_caps"
                 style="@style/MaterialButtonCustom"
-
+                android:paddingVertical="10dp"
                 android:layout_marginEnd="3dp"
-                android:textSize="12sp"
+                android:textSize="11sp"
                 />
 
             <com.google.android.material.button.MaterialButton

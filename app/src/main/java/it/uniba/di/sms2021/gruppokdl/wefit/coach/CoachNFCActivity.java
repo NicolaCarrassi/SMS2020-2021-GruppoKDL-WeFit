@@ -118,7 +118,10 @@ public class CoachNFCActivity extends BaseActivity {
         mNfcAdapter.disableForegroundDispatch(this);
     }
 
-
+    /**
+     * Il metodo permette di preparare un NDEF message nel momento in cui viene ricevuto un
+     * intent dato dall'avvicinamento del Tag NFC.
+     */
     protected void onNewIntent(Intent intent) {
         super.onNewIntent(intent);
 

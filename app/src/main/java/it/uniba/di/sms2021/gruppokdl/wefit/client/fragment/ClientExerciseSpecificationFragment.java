@@ -8,6 +8,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.webkit.WebView;
 import android.webkit.WebViewClient;
+import android.widget.LinearLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -50,6 +51,7 @@ public class ClientExerciseSpecificationFragment extends Fragment implements Cli
     private YouTubePlayer mYoutubePlayer;
     private YouTubePlayerSupportFragmentX mYoutubePlayerFragment;
 
+    private LinearLayout mYoutubeLayout;
 
 
     public ClientExerciseSpecificationFragment() {
@@ -95,6 +97,7 @@ public class ClientExerciseSpecificationFragment extends Fragment implements Cli
 
         mTextViewExerciseDescription = layout.findViewById(R.id.exercise_description);
         mTextViewExerciseTitle = layout.findViewById(R.id.exercise_name);
+        mYoutubeLayout = layout.findViewById(R.id.youtube_layout);
 
         initFragment();
         
@@ -162,6 +165,7 @@ public class ClientExerciseSpecificationFragment extends Fragment implements Cli
     private void showEmbeddedPlayer(){
         getChildFragmentManager().beginTransaction().remove(mYoutubePlayerFragment).commit();
         mWebView.setVisibility(View.VISIBLE);
+        mYoutubeLayout.setVisibility(View.GONE);
         mWebView.getSettings().setJavaScriptEnabled(true);
         mWebView.setWebViewClient(new WebViewClient(){
             @Override

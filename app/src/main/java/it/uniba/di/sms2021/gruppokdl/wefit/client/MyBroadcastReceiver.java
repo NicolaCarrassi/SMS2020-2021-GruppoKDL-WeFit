@@ -1,4 +1,4 @@
-package it.uniba.di.sms2021.gruppokdl.wefit.utility;
+package it.uniba.di.sms2021.gruppokdl.wefit.client;
 
 import android.content.BroadcastReceiver;
 import android.content.Context;

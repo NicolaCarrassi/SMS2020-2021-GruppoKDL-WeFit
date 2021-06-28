@@ -18,7 +18,6 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import androidx.annotation.NonNull;
-import androidx.appcompat.app.AppCompatDelegate;
 import androidx.core.app.ActivityCompat;
 import androidx.core.content.ContextCompat;
 import androidx.fragment.app.FragmentActivity;
@@ -48,7 +47,6 @@ import it.uniba.di.sms2021.gruppokdl.wefit.databinding.ActivityRunBinding;
 import it.uniba.di.sms2021.gruppokdl.wefit.model.Client;
 import it.uniba.di.sms2021.gruppokdl.wefit.model.Run;
 import it.uniba.di.sms2021.gruppokdl.wefit.client.presenter.RunActivityPresenter;
-import it.uniba.di.sms2021.gruppokdl.wefit.utility.MyBroadcastReceiver;
 
 public class RunActivity extends FragmentActivity implements OnMapReadyCallback, RunActivityContract.View, MyBroadcastReceiver.OnBroadcastReceiveListener {
 

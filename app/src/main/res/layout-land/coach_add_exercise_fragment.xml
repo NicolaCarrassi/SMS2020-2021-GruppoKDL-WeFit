@@ -27,7 +27,7 @@
             android:layout_marginBottom="10dp"
             style="@style/custom_p"
 
-            android:gravity="start"
+            android:gravity="center_horizontal"
             android:layout_gravity="center_horizontal"/>
 
 
@@ -46,13 +46,12 @@
             android:id="@+id/exercise_type_radio_group"
             android:layout_marginTop="10dp"
             android:orientation="horizontal"
-            android:layout_width="500dp"
+            android:layout_width="400dp"
             android:layout_height="wrap_content"
             android:layout_gravity="center_horizontal">
 
             <com.google.android.material.radiobutton.MaterialRadioButton
                 android:id="@+id/time_radio"
-                android:layout_marginStart="@dimen/margin_horizontal"
                 android:layout_weight="1"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
@@ -73,27 +72,26 @@
 
         <TextView
             android:id="@+id/number_of_text_view"
-            android:layout_marginTop="10dp"
+            android:layout_marginTop="5dp"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             style="@style/custom_p"
-            android:layout_marginStart="@dimen/margin_horizontal"
             android:gravity="start"
             android:layout_gravity="center_horizontal"/>
 
         <LinearLayout
-            android:layout_width="500dp"
+            android:layout_width="310dp"
             android:layout_height="wrap_content"
             android:orientation="horizontal"
-            android:gravity="center_vertical"
+            android:gravity="center_horizontal"
             android:layout_gravity="center_horizontal">
 
             <EditText
                 android:id="@+id/edit_text_number"
                 android:layout_weight="0.1"
                 android:layout_marginTop="5dp"
-                android:layout_marginHorizontal="@dimen/margin_horizontal"
-                android:layout_width="500dp"
+                android:layout_marginEnd="5dp"
+                android:layout_width="300dp"
                 android:layout_height="wrap_content"
                 android:inputType="number"
                 android:background="@drawable/edittext_rounded_corners"
